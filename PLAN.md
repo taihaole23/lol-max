@@ -73,7 +73,7 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
 
 **Step 5: Items**
 - **Base stats come from data, not by hand:**
-  - A small Node script (`scripts/update-items.mjs`, no new dependency) downloads Meraki's `items.json`. It falls back to Data Dragon.
+  - A small Node script (`scripts/update-items.mjs`, no new dependency) downloads Data Dragon's `item.json`. (Changed from Meraki in Step 5a: Meraki's item stats were out of date.)
   - It saves a snapshot in `src/data/items.<patch>.json` with the source URL and patch.
   - The site reads that saved snapshot. It never fetches anything while running, so results can't change unless we update the snapshot.
 - **Passives are hand-coded,** one per file in `src/items/<item>.ts`, each with its own test.

@@ -1,0 +1,1366 @@
+{
+  "source": "https://ddragon.leagueoflegends.com/cdn/16.23.1/data/en_US/item.json",
+  "ddragonVersion": "16.23.1",
+  "patch": "26.23",
+  "items": [
+    {
+      "id": "3006",
+      "name": "Berserker's Greaves",
+      "category": "boots",
+      "gold": 1100,
+      "stats": {
+        "attackSpeed": 0.3,
+        "moveSpeed": 45
+      }
+    },
+    {
+      "id": "3009",
+      "name": "Boots of Swiftness",
+      "category": "boots",
+      "gold": 1000,
+      "stats": {
+        "moveSpeed": 55
+      }
+    },
+    {
+      "id": "3008",
+      "name": "Gluttonous Greaves",
+      "category": "boots",
+      "gold": 1100,
+      "stats": {
+        "moveSpeed": 45,
+        "omnivamp": 0.04
+      }
+    },
+    {
+      "id": "3158",
+      "name": "Ionian Boots of Lucidity",
+      "category": "boots",
+      "gold": 900,
+      "stats": {
+        "abilityHaste": 10,
+        "moveSpeed": 45
+      }
+    },
+    {
+      "id": "3111",
+      "name": "Mercury's Treads",
+      "category": "boots",
+      "gold": 1250,
+      "stats": {
+        "magicResist": 20,
+        "moveSpeed": 45,
+        "tenacity": 0.3
+      }
+    },
+    {
+      "id": "3047",
+      "name": "Plated Steelcaps",
+      "category": "boots",
+      "gold": 1200,
+      "stats": {
+        "armor": 25,
+        "moveSpeed": 45
+      }
+    },
+    {
+      "id": "3020",
+      "name": "Sorcerer's Shoes",
+      "category": "boots",
+      "gold": 1100,
+      "stats": {
+        "flatMagicPenetration": 12,
+        "moveSpeed": 45
+      }
+    },
+    {
+      "id": "3174",
+      "name": "Armored Advance",
+      "category": "boots-tier-3",
+      "gold": 1200,
+      "stats": {
+        "armor": 35,
+        "moveSpeed": 45
+      }
+    },
+    {
+      "id": "3173",
+      "name": "Chainlaced Crushers",
+      "category": "boots-tier-3",
+      "gold": 1250,
+      "stats": {
+        "magicResist": 25,
+        "moveSpeed": 45,
+        "tenacity": 0.3
+      }
+    },
+    {
+      "id": "3171",
+      "name": "Crimson Lucidity",
+      "category": "boots-tier-3",
+      "gold": 900,
+      "stats": {
+        "abilityHaste": 20,
+        "moveSpeed": 45
+      }
+    },
+    {
+      "id": "3172",
+      "name": "Gunmetal Greaves",
+      "category": "boots-tier-3",
+      "gold": 1100,
+      "stats": {
+        "attackSpeed": 0.45,
+        "moveSpeed": 45,
+        "lifeSteal": 0.05
+      }
+    },
+    {
+      "id": "3168",
+      "name": "Immortal Path",
+      "category": "boots-tier-3",
+      "gold": 1100,
+      "stats": {
+        "moveSpeed": 45,
+        "omnivamp": 0.04
+      }
+    },
+    {
+      "id": "3175",
+      "name": "Spellslinger's Shoes",
+      "category": "boots-tier-3",
+      "gold": 1100,
+      "stats": {
+        "flatMagicPenetration": 20,
+        "percentMagicPenetration": 0.08,
+        "moveSpeed": 45
+      }
+    },
+    {
+      "id": "3170",
+      "name": "Swiftmarch",
+      "category": "boots-tier-3",
+      "gold": 1000,
+      "stats": {
+        "moveSpeed": 65
+      }
+    },
+    {
+      "id": "8020",
+      "name": "Abyssal Mask",
+      "category": "legendary",
+      "gold": 2650,
+      "stats": {
+        "health": 350,
+        "magicResist": 45,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "2522",
+      "name": "Actualizer",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "abilityPower": 90,
+        "mana": 300,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3003",
+      "name": "Archangel's Staff",
+      "category": "legendary",
+      "gold": 2900,
+      "stats": {
+        "abilityPower": 70,
+        "mana": 600,
+        "abilityHaste": 25
+      }
+    },
+    {
+      "id": "3504",
+      "name": "Ardent Censer",
+      "category": "legendary",
+      "gold": 2200,
+      "stats": {
+        "abilityPower": 45,
+        "healAndShieldPower": 0.1,
+        "baseManaRegen": 1.25,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "6696",
+      "name": "Axiom Arc",
+      "category": "legendary",
+      "gold": 2750,
+      "stats": {
+        "attackDamage": 55,
+        "lethality": 18,
+        "abilityHaste": 20
+      }
+    },
+    {
+      "id": "2524",
+      "name": "Bandlepipes",
+      "category": "legendary",
+      "gold": 2300,
+      "stats": {
+        "health": 200,
+        "abilityHaste": 15,
+        "armor": 20,
+        "magicResist": 20
+      }
+    },
+    {
+      "id": "3102",
+      "name": "Banshee's Veil",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "abilityPower": 105,
+        "magicResist": 40
+      }
+    },
+    {
+      "id": "2520",
+      "name": "Bastionbreaker",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 55,
+        "lethality": 18,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "3071",
+      "name": "Black Cleaver",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 45,
+        "health": 400,
+        "abilityHaste": 20
+      }
+    },
+    {
+      "id": "2503",
+      "name": "Blackfire Torch",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "abilityPower": 80,
+        "mana": 600,
+        "abilityHaste": 20
+      }
+    },
+    {
+      "id": "3153",
+      "name": "Blade of The Ruined King",
+      "category": "legendary",
+      "gold": 3200,
+      "stats": {
+        "attackDamage": 40,
+        "attackSpeed": 0.25,
+        "lifeSteal": 0.1
+      }
+    },
+    {
+      "id": "8010",
+      "name": "Bloodletter's Curse",
+      "category": "legendary",
+      "gold": 2900,
+      "stats": {
+        "abilityPower": 65,
+        "health": 400,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "3072",
+      "name": "Bloodthirster",
+      "category": "legendary",
+      "gold": 3400,
+      "stats": {
+        "attackDamage": 80,
+        "lifeSteal": 0.15
+      }
+    },
+    {
+      "id": "6609",
+      "name": "Chempunk Chainsword",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 45,
+        "health": 450,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "4629",
+      "name": "Cosmic Drive",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "abilityPower": 70,
+        "health": 350,
+        "abilityHaste": 25,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "3137",
+      "name": "Cryptbloom",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "abilityPower": 75,
+        "percentMagicPenetration": 0.3,
+        "abilityHaste": 20
+      }
+    },
+    {
+      "id": "6621",
+      "name": "Dawncore",
+      "category": "legendary",
+      "gold": 2500,
+      "stats": {
+        "abilityPower": 45,
+        "healAndShieldPower": 0.16,
+        "baseManaRegen": 1
+      }
+    },
+    {
+      "id": "3742",
+      "name": "Dead Man's Plate",
+      "category": "legendary",
+      "gold": 2900,
+      "stats": {
+        "health": 350,
+        "armor": 55,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "6333",
+      "name": "Death's Dance",
+      "category": "legendary",
+      "gold": 3300,
+      "stats": {
+        "attackDamage": 60,
+        "armor": 50,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "2510",
+      "name": "Dusk and Dawn",
+      "category": "legendary",
+      "gold": 3100,
+      "stats": {
+        "health": 300,
+        "abilityPower": 60,
+        "abilityHaste": 20,
+        "attackSpeed": 0.2
+      }
+    },
+    {
+      "id": "6620",
+      "name": "Echoes of Helia",
+      "category": "legendary",
+      "gold": 2200,
+      "stats": {
+        "abilityPower": 35,
+        "health": 200,
+        "abilityHaste": 20,
+        "baseManaRegen": 1.25
+      }
+    },
+    {
+      "id": "6692",
+      "name": "Eclipse",
+      "category": "legendary",
+      "gold": 2900,
+      "stats": {
+        "attackDamage": 60,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "3814",
+      "name": "Edge of Night",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 50,
+        "lethality": 15,
+        "health": 250
+      }
+    },
+    {
+      "id": "2517",
+      "name": "Endless Hunger",
+      "category": "legendary",
+      "gold": 3100,
+      "stats": {
+        "attackDamage": 65,
+        "omnivamp": 0.05,
+        "tenacity": 0.2
+      }
+    },
+    {
+      "id": "3508",
+      "name": "Essence Reaver",
+      "category": "legendary",
+      "gold": 3050,
+      "stats": {
+        "attackDamage": 50,
+        "abilityHaste": 20,
+        "critChance": 0.25
+      }
+    },
+    {
+      "id": "3073",
+      "name": "Experimental Hexplate",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 40,
+        "attackSpeed": 0.2,
+        "health": 450
+      }
+    },
+    {
+      "id": "2512",
+      "name": "Fiendhunter Bolts",
+      "category": "legendary",
+      "gold": 2650,
+      "stats": {
+        "attackSpeed": 0.45,
+        "critChance": 0.25,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "4401",
+      "name": "Force of Nature",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "health": 400,
+        "magicResist": 55,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "3110",
+      "name": "Frozen Heart",
+      "category": "legendary",
+      "gold": 2500,
+      "stats": {
+        "armor": 75,
+        "mana": 400,
+        "abilityHaste": 20
+      }
+    },
+    {
+      "id": "3026",
+      "name": "Guardian Angel",
+      "category": "legendary",
+      "gold": 3200,
+      "stats": {
+        "attackDamage": 55,
+        "armor": 45
+      }
+    },
+    {
+      "id": "3124",
+      "name": "Guinsoo's Rageblade",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 30,
+        "abilityPower": 30,
+        "attackSpeed": 0.25
+      }
+    },
+    {
+      "id": "3084",
+      "name": "Heartsteel",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "health": 900,
+        "baseHealthRegen": 1
+      }
+    },
+    {
+      "id": "2523",
+      "name": "Hexoptics C44",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "attackDamage": 55,
+        "critChance": 0.25
+      }
+    },
+    {
+      "id": "3146",
+      "name": "Hextech Gunblade",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "abilityPower": 80,
+        "attackDamage": 40,
+        "omnivamp": 0.1
+      }
+    },
+    {
+      "id": "3152",
+      "name": "Hextech Rocketbelt",
+      "category": "legendary",
+      "gold": 2650,
+      "stats": {
+        "abilityPower": 60,
+        "health": 350,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "6664",
+      "name": "Hollow Radiance",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "health": 400,
+        "magicResist": 40,
+        "abilityHaste": 10,
+        "baseHealthRegen": 1
+      }
+    },
+    {
+      "id": "4628",
+      "name": "Horizon Focus",
+      "category": "legendary",
+      "gold": 2700,
+      "stats": {
+        "abilityPower": 75,
+        "abilityHaste": 25
+      }
+    },
+    {
+      "id": "6697",
+      "name": "Hubris",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "attackDamage": 55,
+        "lethality": 18,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3181",
+      "name": "Hullbreaker",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 40,
+        "health": 500,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "6662",
+      "name": "Iceborn Gauntlet",
+      "category": "legendary",
+      "gold": 2900,
+      "stats": {
+        "health": 300,
+        "armor": 50,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "6673",
+      "name": "Immortal Shieldbow",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 55,
+        "critChance": 0.25
+      }
+    },
+    {
+      "id": "4005",
+      "name": "Imperial Mandate",
+      "category": "legendary",
+      "gold": 2400,
+      "stats": {
+        "abilityPower": 60,
+        "abilityHaste": 15,
+        "baseManaRegen": 1.5
+      }
+    },
+    {
+      "id": "3031",
+      "name": "Infinity Edge",
+      "category": "legendary",
+      "gold": 3500,
+      "stats": {
+        "attackDamage": 75,
+        "critChance": 0.25,
+        "critDamage": 0.3
+      }
+    },
+    {
+      "id": "6665",
+      "name": "Jak'Sho, The Protean",
+      "category": "legendary",
+      "gold": 3200,
+      "stats": {
+        "health": 350,
+        "armor": 45,
+        "magicResist": 45
+      }
+    },
+    {
+      "id": "2504",
+      "name": "Kaenic Rookern",
+      "category": "legendary",
+      "gold": 2900,
+      "stats": {
+        "health": 400,
+        "magicResist": 80,
+        "baseHealthRegen": 1
+      }
+    },
+    {
+      "id": "3109",
+      "name": "Knight's Vow",
+      "category": "legendary",
+      "gold": 2300,
+      "stats": {
+        "health": 200,
+        "armor": 40,
+        "abilityHaste": 10,
+        "baseHealthRegen": 1
+      }
+    },
+    {
+      "id": "6672",
+      "name": "Kraken Slayer",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 45,
+        "attackSpeed": 0.4,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "6653",
+      "name": "Liandry's Torment",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "abilityPower": 60,
+        "health": 300
+      }
+    },
+    {
+      "id": "3100",
+      "name": "Lich Bane",
+      "category": "legendary",
+      "gold": 2900,
+      "stats": {
+        "abilityPower": 100,
+        "percentMoveSpeed": 0.06,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3190",
+      "name": "Locket of the Iron Solari",
+      "category": "legendary",
+      "gold": 2200,
+      "stats": {
+        "health": 200,
+        "armor": 30,
+        "magicResist": 30,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3036",
+      "name": "Lord Dominik's Regards",
+      "category": "legendary",
+      "gold": 3300,
+      "stats": {
+        "attackDamage": 35,
+        "percentArmorPenetration": 0.35,
+        "critChance": 0.25
+      }
+    },
+    {
+      "id": "6655",
+      "name": "Luden's Echo",
+      "category": "legendary",
+      "gold": 2750,
+      "stats": {
+        "abilityPower": 100,
+        "mana": 600,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3118",
+      "name": "Malignance",
+      "category": "legendary",
+      "gold": 2700,
+      "stats": {
+        "abilityPower": 90,
+        "mana": 600,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "3004",
+      "name": "Manamune",
+      "category": "legendary",
+      "gold": 2900,
+      "stats": {
+        "attackDamage": 35,
+        "mana": 500,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "3156",
+      "name": "Maw of Malmortius",
+      "category": "legendary",
+      "gold": 3100,
+      "stats": {
+        "attackDamage": 60,
+        "abilityHaste": 15,
+        "magicResist": 40
+      }
+    },
+    {
+      "id": "3041",
+      "name": "Mejai's Soulstealer",
+      "category": "legendary",
+      "gold": 1500,
+      "stats": {
+        "abilityPower": 20,
+        "health": 100
+      }
+    },
+    {
+      "id": "3139",
+      "name": "Mercurial Scimitar",
+      "category": "legendary",
+      "gold": 3200,
+      "stats": {
+        "attackDamage": 50,
+        "magicResist": 35,
+        "lifeSteal": 0.1
+      }
+    },
+    {
+      "id": "3222",
+      "name": "Mikael's Blessing",
+      "category": "legendary",
+      "gold": 2300,
+      "stats": {
+        "health": 250,
+        "baseManaRegen": 1,
+        "healAndShieldPower": 0.12,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "6617",
+      "name": "Moonstone Renewer",
+      "category": "legendary",
+      "gold": 2200,
+      "stats": {
+        "abilityPower": 25,
+        "health": 200,
+        "abilityHaste": 20,
+        "baseManaRegen": 1.25
+      }
+    },
+    {
+      "id": "3165",
+      "name": "Morellonomicon",
+      "category": "legendary",
+      "gold": 2850,
+      "stats": {
+        "abilityPower": 75,
+        "health": 350,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "3033",
+      "name": "Mortal Reminder",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 35,
+        "percentArmorPenetration": 0.3,
+        "critChance": 0.25
+      }
+    },
+    {
+      "id": "3115",
+      "name": "Nashor's Tooth",
+      "category": "legendary",
+      "gold": 2900,
+      "stats": {
+        "abilityPower": 80,
+        "attackSpeed": 0.5,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "6675",
+      "name": "Navori Flickerblade",
+      "category": "legendary",
+      "gold": 2650,
+      "stats": {
+        "attackSpeed": 0.4,
+        "critChance": 0.25,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "2501",
+      "name": "Overlord's Bloodmail",
+      "category": "legendary",
+      "gold": 3300,
+      "stats": {
+        "attackDamage": 40,
+        "health": 550
+      }
+    },
+    {
+      "id": "3046",
+      "name": "Phantom Dancer",
+      "category": "legendary",
+      "gold": 2650,
+      "stats": {
+        "attackSpeed": 0.65,
+        "critChance": 0.25,
+        "percentMoveSpeed": 0.1
+      }
+    },
+    {
+      "id": "6698",
+      "name": "Profane Hydra",
+      "category": "legendary",
+      "gold": 2850,
+      "stats": {
+        "attackDamage": 55,
+        "lethality": 18,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "2525",
+      "name": "Protoplasm Harness",
+      "category": "legendary",
+      "gold": 2600,
+      "stats": {
+        "health": 600,
+        "abilityHaste": 20
+      }
+    },
+    {
+      "id": "3089",
+      "name": "Rabadon's Deathcap",
+      "category": "legendary",
+      "gold": 3500,
+      "stats": {
+        "abilityPower": 130
+      }
+    },
+    {
+      "id": "3143",
+      "name": "Randuin's Omen",
+      "category": "legendary",
+      "gold": 2700,
+      "stats": {
+        "health": 350,
+        "armor": 75
+      }
+    },
+    {
+      "id": "3094",
+      "name": "Rapid Firecannon",
+      "category": "legendary",
+      "gold": 2650,
+      "stats": {
+        "attackSpeed": 0.35,
+        "critChance": 0.25,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "3074",
+      "name": "Ravenous Hydra",
+      "category": "legendary",
+      "gold": 3300,
+      "stats": {
+        "attackDamage": 65,
+        "abilityHaste": 15,
+        "lifeSteal": 0.12
+      }
+    },
+    {
+      "id": "3107",
+      "name": "Redemption",
+      "category": "legendary",
+      "gold": 2300,
+      "stats": {
+        "abilityPower": 30,
+        "abilityHaste": 15,
+        "baseManaRegen": 1,
+        "healAndShieldPower": 0.1
+      }
+    },
+    {
+      "id": "4633",
+      "name": "Riftmaker",
+      "category": "legendary",
+      "gold": 3100,
+      "stats": {
+        "abilityPower": 70,
+        "health": 350,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "6657",
+      "name": "Rod of Ages",
+      "category": "legendary",
+      "gold": 2600,
+      "stats": {
+        "abilityPower": 45,
+        "health": 350,
+        "mana": 500
+      }
+    },
+    {
+      "id": "3085",
+      "name": "Runaan's Hurricane",
+      "category": "legendary",
+      "gold": 2650,
+      "stats": {
+        "attackSpeed": 0.4,
+        "critChance": 0.25,
+        "percentMoveSpeed": 0.05
+      }
+    },
+    {
+      "id": "3116",
+      "name": "Rylai's Crystal Scepter",
+      "category": "legendary",
+      "gold": 2600,
+      "stats": {
+        "abilityPower": 65,
+        "health": 400
+      }
+    },
+    {
+      "id": "6695",
+      "name": "Serpent's Fang",
+      "category": "legendary",
+      "gold": 2500,
+      "stats": {
+        "attackDamage": 55,
+        "lethality": 15
+      }
+    },
+    {
+      "id": "6694",
+      "name": "Serylda's Grudge",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 45,
+        "percentArmorPenetration": 0.35,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "4645",
+      "name": "Shadowflame",
+      "category": "legendary",
+      "gold": 3200,
+      "stats": {
+        "abilityPower": 110,
+        "flatMagicPenetration": 15
+      }
+    },
+    {
+      "id": "2065",
+      "name": "Shurelya's Battlesong",
+      "category": "legendary",
+      "gold": 2200,
+      "stats": {
+        "abilityPower": 50,
+        "abilityHaste": 15,
+        "percentMoveSpeed": 0.04,
+        "baseManaRegen": 1.25
+      }
+    },
+    {
+      "id": "3161",
+      "name": "Spear of Shojin",
+      "category": "legendary",
+      "gold": 3100,
+      "stats": {
+        "attackDamage": 45,
+        "health": 450
+      }
+    },
+    {
+      "id": "3065",
+      "name": "Spirit Visage",
+      "category": "legendary",
+      "gold": 2700,
+      "stats": {
+        "health": 400,
+        "magicResist": 50,
+        "abilityHaste": 10,
+        "baseHealthRegen": 1
+      }
+    },
+    {
+      "id": "6616",
+      "name": "Staff of Flowing Water",
+      "category": "legendary",
+      "gold": 2250,
+      "stats": {
+        "abilityPower": 35,
+        "healAndShieldPower": 0.1,
+        "baseManaRegen": 1.25,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3087",
+      "name": "Statikk Shiv",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 45,
+        "abilityPower": 45,
+        "attackSpeed": 0.3,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "3053",
+      "name": "Sterak's Gage",
+      "category": "legendary",
+      "gold": 3200,
+      "stats": {
+        "health": 400,
+        "tenacity": 0.2
+      }
+    },
+    {
+      "id": "3095",
+      "name": "Stormrazor",
+      "category": "legendary",
+      "gold": 3200,
+      "stats": {
+        "attackDamage": 50,
+        "attackSpeed": 0.25,
+        "critChance": 0.25
+      }
+    },
+    {
+      "id": "4646",
+      "name": "Stormsurge",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "abilityPower": 90,
+        "flatMagicPenetration": 15,
+        "percentMoveSpeed": 0.06
+      }
+    },
+    {
+      "id": "6631",
+      "name": "Stridebreaker",
+      "category": "legendary",
+      "gold": 3300,
+      "stats": {
+        "attackDamage": 40,
+        "attackSpeed": 0.25,
+        "health": 450
+      }
+    },
+    {
+      "id": "6610",
+      "name": "Sundered Sky",
+      "category": "legendary",
+      "gold": 3100,
+      "stats": {
+        "attackDamage": 40,
+        "health": 400,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3068",
+      "name": "Sunfire Aegis",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "health": 350,
+        "armor": 50,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3302",
+      "name": "Terminus",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 30,
+        "attackSpeed": 0.35
+      }
+    },
+    {
+      "id": "6676",
+      "name": "The Collector",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 50,
+        "lethality": 10,
+        "critChance": 0.25
+      }
+    },
+    {
+      "id": "3075",
+      "name": "Thornmail",
+      "category": "legendary",
+      "gold": 2450,
+      "stats": {
+        "health": 150,
+        "armor": 75
+      }
+    },
+    {
+      "id": "3748",
+      "name": "Titanic Hydra",
+      "category": "legendary",
+      "gold": 3300,
+      "stats": {
+        "attackDamage": 40,
+        "health": 600
+      }
+    },
+    {
+      "id": "3078",
+      "name": "Trinity Force",
+      "category": "legendary",
+      "gold": 3333,
+      "stats": {
+        "attackDamage": 36,
+        "attackSpeed": 0.3,
+        "health": 333,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "3179",
+      "name": "Umbral Glaive",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "attackDamage": 60,
+        "lethality": 18,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "2502",
+      "name": "Unending Despair",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "health": 400,
+        "armor": 50,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "3135",
+      "name": "Void Staff",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "abilityPower": 95,
+        "percentMagicPenetration": 0.4
+      }
+    },
+    {
+      "id": "6699",
+      "name": "Voltaic Cyclosword",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 55,
+        "lethality": 10,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3083",
+      "name": "Warmog's Armor",
+      "category": "legendary",
+      "gold": 3100,
+      "stats": {
+        "health": 1000,
+        "baseHealthRegen": 1
+      }
+    },
+    {
+      "id": "3119",
+      "name": "Winter's Approach",
+      "category": "legendary",
+      "gold": 2400,
+      "stats": {
+        "health": 550,
+        "mana": 500,
+        "abilityHaste": 15
+      }
+    },
+    {
+      "id": "3091",
+      "name": "Wit's End",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "attackSpeed": 0.5,
+        "magicResist": 45,
+        "tenacity": 0.2
+      }
+    },
+    {
+      "id": "3142",
+      "name": "Youmuu's Ghostblade",
+      "category": "legendary",
+      "gold": 2800,
+      "stats": {
+        "attackDamage": 55,
+        "lethality": 18,
+        "percentMoveSpeed": 0.04
+      }
+    },
+    {
+      "id": "3032",
+      "name": "Yun Tal Wildarrows",
+      "category": "legendary",
+      "gold": 3000,
+      "stats": {
+        "attackDamage": 50,
+        "attackSpeed": 0.45,
+        "critChance": 0
+      }
+    },
+    {
+      "id": "3050",
+      "name": "Zeke's Convergence",
+      "category": "legendary",
+      "gold": 2200,
+      "stats": {
+        "health": 300,
+        "armor": 25,
+        "magicResist": 25,
+        "abilityHaste": 10
+      }
+    },
+    {
+      "id": "3157",
+      "name": "Zhonya's Hourglass",
+      "category": "legendary",
+      "gold": 3250,
+      "stats": {
+        "abilityPower": 105,
+        "armor": 50
+      }
+    },
+    {
+      "id": "3877",
+      "name": "Bloodsong",
+      "category": "support",
+      "gold": 400,
+      "stats": {
+        "health": 200,
+        "baseHealthRegen": 0.75,
+        "baseManaRegen": 0.75,
+        "goldPer10": 9
+      }
+    },
+    {
+      "id": "3869",
+      "name": "Celestial Opposition",
+      "category": "support",
+      "gold": 400,
+      "stats": {
+        "health": 200,
+        "baseHealthRegen": 0.75,
+        "baseManaRegen": 0.75,
+        "goldPer10": 9
+      }
+    },
+    {
+      "id": "3870",
+      "name": "Dream Maker",
+      "category": "support",
+      "gold": 400,
+      "stats": {
+        "health": 200,
+        "baseHealthRegen": 0.75,
+        "baseManaRegen": 0.75,
+        "goldPer10": 9
+      }
+    },
+    {
+      "id": "3876",
+      "name": "Solstice Sleigh",
+      "category": "support",
+      "gold": 400,
+      "stats": {
+        "health": 200,
+        "baseHealthRegen": 0.75,
+        "baseManaRegen": 0.75,
+        "goldPer10": 9
+      }
+    },
+    {
+      "id": "3871",
+      "name": "Zaz'Zak's Realmspike",
+      "category": "support",
+      "gold": 400,
+      "stats": {
+        "health": 200,
+        "baseHealthRegen": 0.75,
+        "baseManaRegen": 0.75,
+        "goldPer10": 9
+      }
+    }
+  ]
+}

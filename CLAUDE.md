@@ -61,7 +61,10 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
 ## Data rules
 - Ability data comes from the League of Legends Wiki (wiki.leagueoflegends.com), or from the Meraki lolstaticdata project, which is sourced from the wiki.
 - Riot's Data Dragon is fine for item and rune lists, but its ability numbers are unreliable.
-- Item base stats are loaded from a saved snapshot of Meraki's data (Data Dragon as a fallback) and are never typed in by hand. Only item passives are hand-coded.
+- Item base stats are loaded from a saved snapshot of Data Dragon's data (`scripts/update-items.mjs`) and are never typed in by hand. Only item passives are hand-coded.
+  - Stats are read from each item's description text, because Data Dragon's `stats` field leaves out penetration and lethality.
+  - Meraki is NOT used for items or champion stats: its data was out of date (see NOTES.md).
+  - `tests/items-wiki-check.test.ts` compares a few items with the wiki, as an independent check on Data Dragon.
 - Every game number lives in a data file with a source link and the patch it's from. No magic numbers inside formulas.
 - Known: Death Lotus on-hit/on-attack effectiveness is 25 / 30 / 35% by R rank (not 33%).
 - Each item passive that matters is hand-coded and has its own test.
