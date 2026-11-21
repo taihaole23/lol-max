@@ -21,6 +21,12 @@ export const resistance = {
   formulaConstant: 100,
 };
 
+// The champion levels at which an ultimate (R) can be learned / ranked up: rank 1, 2, 3.
+export const ultimateRanks = {
+  source: { url: WIKI + "Champion_ability", patch: PATCH },
+  levels: [6, 11, 16],
+};
+
 // Our own rules for the simulation, not Riot's (see CLAUDE.md), so no wiki source.
 export const simulationRules = {
   // Overkill rule: the dummy never dies. Its HP stops here, and later hits still count in full.
