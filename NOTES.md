@@ -11,7 +11,13 @@ These notes are for anyone joining the project.
 - Step 1 (Katarina data) is done: `src/data/patch.ts`, `src/data/katarina.ts` and a test that checks the data for typos.
 - Step 2 (dummy presets) is done: `src/data/stages.ts`, `src/data/champions.ts`, `src/data/dummy-presets.ts` and a test.
 - Step 3 (core formulas) is done: `src/formulas/` has stats-at-level, raw Death Lotus damage and armor/MR with penetration, each with tests built from the wiki's own examples.
-- Next is Step 4 (dagger-by-dagger simulation).
+- Step 4 (dagger-by-dagger simulation) is done: `src/simulation/` runs one ult as a timeline of events and adds the results up into breakdowns. Tested with fake items.
+- Next is Step 5 (items).
+
+## Unconfirmed: to check in the Practice Tool (Step 8)
+- **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
+- **Whether daggers give Guinsoo's Rageblade stacks** (Seething Strike and Phantom). Daggers trigger "on-attack" effects, but the wiki never says they count for Guinsoo's.
+- **"Deal X% more damage" effects** (damage amplification): whether they apply after armor/MR, and whether two of them add or multiply. The wiki's page for this is gone, and its Damage page says it's out of date.
 
 ## How to run
 You need Node.js (v24 works). In a terminal inside this folder:
@@ -75,6 +81,10 @@ validation/    Practice Tool test plan and measurements
   - Only flat reduction can push resist below 0. Once resist is 0 or below, the other steps do nothing.
   - **The wiki contradicts itself** on how flat reduction is split between base and bonus resist. One sentence says "bonus first, then base"; another says "proportionally", and the page's worked example uses proportional. We use proportional, so our tests match the example. Revisit if a Practice Tool test disagrees.
   - Two % reductions (or two % pens) stack multiplicatively: 20% and 30% make 44%, not 50%. Whoever adds up the item stats (Step 5) must combine them this way.
+- **The simulation is a timeline (a to-do list sorted by time), not a plain loop over 15 daggers:** some effects happen later than the dagger that caused them (Guinsoo's Phantom Hit lands 0.15 s later, burns tick every 0.5 s). With a timeline, each one lands at its real time, so the channel window rule can be applied exactly.
+- **Katarina's stats can change during the ult:** item effects may change them (for example attack speed stacks), and each dagger uses her stats at the moment it's thrown. Runes like Conqueror (version 2) will need the same thing.
+- **A tick that lands exactly when the channel ends still counts.**
+- **The magic part of a dagger is dealt as two pieces** ("base" and "AP ratio"). MR reduces both by the same share, so the source breakdown can show them separately without any extra math.
 - **Data Dragon lists some items twice with different stats** (e.g. Thornmail `3075` and `323075`). The `32xxxx` copies look like another game mode's versions. Step 5 must pick the Summoner's Rift version.
 
 - **The dummy gets items, chosen from real legendaries, not made-up defensive numbers:**

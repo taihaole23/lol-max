@@ -26,6 +26,9 @@ export const katarina = {
     source: { url: WIKI_URL, patch: PATCH },
     channelSeconds: 2.5,
     secondsBetweenDaggers: 0.166,
+    // UNCONFIRMED: the wiki doesn't say when the first dagger lands. We assume right
+    // at the start of the channel. To check in the Practice Tool (Step 8).
+    firstDaggerSeconds: 0,
     // The wiki doesn't state the dagger count. It does give "maximum magic damage"
     // 375 / 562.5 / 750, which is 15 x the per-dagger damage, so a full channel = 15 daggers.
     daggersPerTarget: 15,

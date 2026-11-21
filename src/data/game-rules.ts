@@ -20,3 +20,9 @@ export const resistance = {
   source: { url: WIKI + "Armor", patch: PATCH },
   formulaConstant: 100,
 };
+
+// Our own rules for the simulation, not Riot's (see CLAUDE.md), so no wiki source.
+export const simulationRules = {
+  // Overkill rule: the dummy never dies. Its HP stops here, and later hits still count in full.
+  minimumHp: 1,
+};

@@ -119,6 +119,7 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
   3. Pure AD: one item.
   4. On-hit, such as Nashor's, at different R ranks to check the 25 / 30 / 35%.
   5. One test per coded passive, such as Liandry's burn or Riftmaker + Warmog's.
+  6. The open questions from NOTES.md ("Unconfirmed: to check in the Practice Tool"): when the first dagger lands, whether daggers give Guinsoo's stacks, and how "X% more damage" effects combine.
 - **For each build, I give you** the expected total and each item's expected marginal damage.
 - **For each build, you record** the total from one ult. Where you can, also test the same build without one item, so each item's contribution can be checked on its own.
 - **Results:**
