@@ -1,0 +1,18 @@
+# Tools downloaded by npm (huge, and re-downloadable with `npm install`)
+node_modules/
+
+# The built website that Vite produces (Vercel builds its own copy)
+dist/
+
+# Secrets and local settings (this project has no secrets, but just in case)
+.env
+.env.*
+.claude/settings.local.json
+
+# Log files
+*.log
+npm-debug.log*
+
+# Files that the operating system creates by itself
+.DS_Store
+Thumbs.db
