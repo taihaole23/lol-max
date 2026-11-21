@@ -10,7 +10,8 @@ These notes are for anyone joining the project.
 - Step 0 (project setup) is done: Vite, TypeScript and Vitest are installed, and the page shows a placeholder heading.
 - Step 1 (Katarina data) is done: `src/data/patch.ts`, `src/data/katarina.ts` and a test that checks the data for typos.
 - Step 2 (dummy presets) is done: `src/data/stages.ts`, `src/data/champions.ts`, `src/data/dummy-presets.ts` and a test.
-- Next is Step 3 (core formulas).
+- Step 3 (core formulas) is done: `src/formulas/` has stats-at-level, raw Death Lotus damage and armor/MR with penetration, each with tests built from the wiki's own examples.
+- Next is Step 4 (dagger-by-dagger simulation).
 
 ## How to run
 You need Node.js (v24 works). In a terminal inside this folder:
@@ -69,6 +70,11 @@ validation/    Practice Tool test plan and measurements
   - Attack speed items raise R damage even without on-hit. The item filter must keep them.
   - Katarina's per-level attack speed growth counts as bonus attack speed.
 - The wiki says Katarina has 10.82% bonus attack speed at level 6, which we can use as a known answer for the stat-growth test in Step 3.
+- **Per-level AD growth counts as *base* AD,** so it doesn't add to Death Lotus. Per-level attack speed growth is the one exception: it counts as *bonus* attack speed (wiki, Champion statistic page).
+- **Penetration order** (wiki, Armor penetration and Magic penetration pages): flat reduction → % reduction → % penetration (and % bonus penetration) → flat penetration (lethality is 1:1 flat armor pen since V14.1).
+  - Only flat reduction can push resist below 0. Once resist is 0 or below, the other steps do nothing.
+  - **The wiki contradicts itself** on how flat reduction is split between base and bonus resist. One sentence says "bonus first, then base"; another says "proportionally", and the page's worked example uses proportional. We use proportional, so our tests match the example. Revisit if a Practice Tool test disagrees.
+  - Two % reductions (or two % pens) stack multiplicatively: 20% and 30% make 44%, not 50%. Whoever adds up the item stats (Step 5) must combine them this way.
 - **Data Dragon lists some items twice with different stats** (e.g. Thornmail `3075` and `323075`). The `32xxxx` copies look like another game mode's versions. Step 5 must pick the Summoner's Rift version.
 
 - **The dummy gets items, chosen from real legendaries, not made-up defensive numbers:**
