@@ -20,7 +20,9 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
 - **Dummy:** the user picks a stage (which sets the level) and an enemy type. Every value stays editable afterwards.
   - The enemy types are based on real champions, and the site names them: squishy = **Nami**, bruiser = **Illaoi**, tank = **Sion**.
   - Only the champion's stats are used. Their abilities (shields, passives) are ignored.
-  - Still to decide in Step 2: whether the dummy also gets item stats for its stage.
+  - **Decided later (during Step 1):** the dummy also gets items. A dummy = champion + level + items, and its HP / armor / MR = champion stats at that level + the items' plain stats (no item passives).
+    - A "Use recommended items" checkbox (on by default) uses a recommended item list per champion and stage. Unchecked, the user picks the items from the legendary list.
+    - Adding champions must be data-only. Any champion as the dummy is planned for version 2.
 - **Overkill rule:** the dummy never dies.
   - Once a hit would kill it, it stays at 1 HP and every remaining hit still counts at full damage.
   - Effects that depend on the target's HP then see 1 HP.
@@ -57,6 +59,7 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
 **Step 2: Dummy presets**
 - `src/data/dummies.ts` holds the base stats and per-level growth for Nami, Illaoi and Sion, with wiki sources.
 - The dummy's stats at each stage's level come from the same stat-at-level formula that Katarina uses.
+- A recommended item list for each champion and stage (item names only, chosen by Eric). Their stats get added in Step 5, once the item snapshot exists.
 
 **Step 3: Core formulas, with unit tests** (a unit test checks one formula against an answer we already know)
 - Stats at a given level.
@@ -75,6 +78,7 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
   - The site reads that saved snapshot. It never fetches anything while running, so results can't change unless we update the snapshot.
 - **Passives are hand-coded,** one per file in `src/items/<item>.ts`, each with its own test.
 - **Stat conversions** (Riftmaker turning HP into AP, mana into AP, and so on) run in a "final stats" step after all item stats are added up. They're tested with item pairs such as Warmog's + Riftmaker.
+- **Dummy items:** the dummy's HP / armor / MR adds the plain stats of its items. A test checks that every recommended item name exists in the snapshot.
 - **Checklist in NOTES.md:** every legendary item and boots option, each marked "modelled", "checked, irrelevant" or "not checked yet".
 
 **Step 6: Optimizer**
@@ -88,7 +92,7 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
   - **Filter test:** Early, Mid and Late, each run filtered and unfiltered, must give an identical top 5. If the Late version is slow, it gets marked as a slow test that you run before each release.
 
 **Step 7: User interface (plain HTML/TS)**
-- Controls: stage, enemy type, editable HP/armor/MR, boots toggle, mid quest toggle.
+- Controls: stage, enemy type, "Use recommended items" checkbox with a dummy item picker when it's off, editable HP/armor/MR, boots toggle, mid quest toggle.
 - Results: the top 5 builds, each with:
   - the source breakdown (base, AP ratio, AD ratio, on-hit, item passives)
   - each item's marginal damage

@@ -33,19 +33,22 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   | Late | 16 | 3 + boots | 3 |
   | Full | 18 | 5 + boots | 6 |
 
-- Target dummy:
-  - The user picks an enemy type. Each type is a real champion's stats at the stage's level, and the site names the champion: squishy = Nami, bruiser = Illaoi, tank = Sion.
-  - Only the champion's stats are used, not their abilities.
-  - Users can edit the dummy's HP / armor / MR after picking a preset.
+- Target dummy = a champion + the stage's level + a list of items.
+  - Its HP / armor / MR = the champion's stats at that level + the items' stats added up.
+  - The user picks an enemy type, and the site names the champion: squishy = Nami, bruiser = Illaoi, tank = Sion. The code must make adding more champions a data-only change.
+  - Only the champion's base stats and the items' plain HP / armor / MR are used. Champion abilities and item passives are ignored.
+  - A "Use recommended items" checkbox, on by default, gives the dummy a recommended item list for its champion and stage. Unchecked, the user picks the dummy's items from the legendary list, up to the stage's slot count.
+  - Users can still type in the dummy's HP / armor / MR. Typing a number overrides the calculated value.
 - Item filter, used to speed up the search:
   - An item is removed only if no code anywhere reads any of its stats. Riftmaker turns HP into AP, so every item that gives HP stays in.
   - Removed items are listed on the site.
   - A test checks that Early, Mid and Late give the same top 5 builds with and without the filter.
 - Runes: NOT in version 1. Planned for version 2.
+- Any champion as the dummy: NOT in version 1. Planned for version 2.
 - Out of scope: match data, Riot API, accounts, tier lists, anything like u.gg.
 
 ## Open decisions (ask Eric before assuming)
-- Does the target dummy also get item stats for its stage? (To decide in PLAN.md Step 2.)
+- None right now.
 
 ## Team
 - Built by **Eric Zhong**, a beginner. Public GitHub repo on Eric's account; Eric commits directly to `main` for now.

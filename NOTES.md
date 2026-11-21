@@ -9,7 +9,8 @@ These notes are for anyone joining the project.
 - Planning is done.
 - Step 0 (project setup) is done: Vite, TypeScript and Vitest are installed, and the page shows a placeholder heading.
 - Step 1 (Katarina data) is done: `src/data/patch.ts`, `src/data/katarina.ts` and a test that checks the data for typos.
-- Next is Step 2 (dummy presets).
+- Step 2 (dummy presets) is done: `src/data/stages.ts`, `src/data/champions.ts`, `src/data/dummy-presets.ts` and a test.
+- Next is Step 3 (core formulas).
 
 ## How to run
 You need Node.js (v24 works). In a terminal inside this folder:
@@ -54,6 +55,12 @@ validation/    Practice Tool test plan and measurements
 - **Removed the Vite template's demo files (counter, logos, styles):** we didn't need them, and it's less code to read.
 - **One `source` per group of numbers, not one per number:** all of a group's numbers come from the same wiki section, so repeating the link would just be noise.
 - **The wiki wins when it disagrees with Meraki:** Meraki's Katarina file (marked patch 25.S1.3) gives base armor 28, while the wiki (last changed V26.08) gives 32. We use 32. The wiki is our primary source, and Meraki's champion data was out of date.
+  - Same in Step 2: Meraki has Sion's HP growth as 87, while the wiki and Data Dragon say 95.
+  - So champion base stats always come from the wiki. Data Dragon is a quick cross-check: it agreed with the wiki on all four champions.
+- **Dummy recommended items are stored once, in buy order:** a stage with N items uses boots + the first N. One list per champion instead of four, and every stage is consistent with the next.
+  - The dummy always uses the boots-on counts (boots + 1 / 2 / 3 / 5), because Eric's builds include boots and boots like Steelcaps add real armor.
+- **Item names, not item IDs, in the presets:** names are readable. Step 5 checks every name against the item data.
+- **Sion's permanent HP from his W passive is ignored,** like every champion ability. So a real late-game Sion has more HP than our dummy. Users can type in more HP if they want.
 - **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
 
 ## Things we learned from the data
@@ -62,9 +69,20 @@ validation/    Practice Tool test plan and measurements
   - Attack speed items raise R damage even without on-hit. The item filter must keep them.
   - Katarina's per-level attack speed growth counts as bonus attack speed.
 - The wiki says Katarina has 10.82% bonus attack speed at level 6, which we can use as a known answer for the stat-growth test in Step 3.
+- **Data Dragon lists some items twice with different stats** (e.g. Thornmail `3075` and `323075`). The `32xxxx` copies look like another game mode's versions. Step 5 must pick the Summoner's Rift version.
+
+- **The dummy gets items, chosen from real legendaries, not made-up defensive numbers:**
+  - A dummy = champion + level + items. Every number traces back to the wiki or the item data, and a late-game Sion is as tanky as a real one.
+  - A "Use recommended items" checkbox (on by default) gives a recommended list per champion and stage, so users don't have to hunt for tank items. Unchecked, users pick the items themselves.
+  - Only plain HP / armor / MR count, no item passives, the same way champion abilities are ignored.
+  - Typed-in HP / armor / MR still override everything, for "what if" questions.
+
+## Ideas for version 2
+- Runes.
+- Any champion as the dummy. The code is built so this only needs data, but every champion's base stats must be checked against the wiki, since Meraki's champion data can be out of date.
 
 ## Still open
-- Does the dummy also get item stats for its stage? (Step 2)
+None right now.
 
 ## Bugs (bug / cause / fix)
 None yet.
