@@ -8,7 +8,8 @@ These notes are for anyone joining the project.
 ## Status
 - Planning is done.
 - Step 0 (project setup) is done: Vite, TypeScript and Vitest are installed, and the page shows a placeholder heading.
-- Next is Step 1 (Katarina data).
+- Step 1 (Katarina data) is done: `src/data/patch.ts`, `src/data/katarina.ts` and a test that checks the data for typos.
+- Next is Step 2 (dummy presets).
 
 ## How to run
 You need Node.js (v24 works). In a terminal inside this folder:
@@ -51,6 +52,16 @@ validation/    Practice Tool test plan and measurements
 - **Vite + plain TypeScript, no framework:** a small setup that a beginner can read.
 - **Vitest instead of Node's built-in test runner:** Vitest reads our TypeScript and Vite settings without extra setup, while Node's runner is stricter about how files import each other. Vitest is only used during development and never ships to the site.
 - **Removed the Vite template's demo files (counter, logos, styles):** we didn't need them, and it's less code to read.
+- **One `source` per group of numbers, not one per number:** all of a group's numbers come from the same wiki section, so repeating the link would just be noise.
+- **The wiki wins when it disagrees with Meraki:** Meraki's Katarina file (marked patch 25.S1.3) gives base armor 28, while the wiki (last changed V26.08) gives 32. We use 32. The wiki is our primary source, and Meraki's champion data was out of date.
+- **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
+
+## Things we learned from the data
+- **Death Lotus's physical part scales with bonus AD *and* bonus attack speed.** Per dagger: 16% bonus AD × (1 + 3.125 × bonus attack speed). So:
+  - The "AD ratio" line in the breakdown is really a *bonus* AD ratio. AD from levels doesn't count.
+  - Attack speed items raise R damage even without on-hit. The item filter must keep them.
+  - Katarina's per-level attack speed growth counts as bonus attack speed.
+- The wiki says Katarina has 10.82% bonus attack speed at level 6, which we can use as a known answer for the stat-growth test in Step 3.
 
 ## Still open
 - Does the dummy also get item stats for its stage? (Step 2)
