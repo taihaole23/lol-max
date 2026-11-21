@@ -7,12 +7,19 @@ These notes are for anyone joining the project.
 
 ## Status
 - Planning is done.
-- Step 0 (project setup) is in progress: `.gitignore` and this file are added, and Vite and Vitest are not set up yet.
+- Step 0 (project setup) is done: Vite, TypeScript and Vitest are installed, and the page shows a placeholder heading.
+- Next is Step 1 (Katarina data).
 
 ## How to run
-To be added in Step 0, once Vite is set up.
-- Run the site locally: `npm run dev` (planned)
-- Run the tests: `npm test` (planned)
+You need Node.js (v24 works). In a terminal inside this folder:
+
+| Command | What it does |
+|---|---|
+| `npm install` | Downloads the tools listed in `package.json` into `node_modules/`. Run it once after cloning. |
+| `npm run dev` | Starts the site on your computer. Open the link it prints. The page reloads when you save a file. |
+| `npm test` | Runs every test once and shows pass/fail. |
+| `npm run test:watch` | Re-runs the tests every time you save. |
+| `npm run build` | Type-checks the code (`tsc`), then builds the real website into `dist/`. This is what Vercel runs. |
 
 ## Project layout (planned)
 ```
@@ -42,6 +49,8 @@ validation/    Practice Tool test plan and measurements
   - It's safe because Riftmaker turns HP into AP, so items like Warmog's still count.
   - A test checks that the filter doesn't change the results.
 - **Vite + plain TypeScript, no framework:** a small setup that a beginner can read.
+- **Vitest instead of Node's built-in test runner:** Vitest reads our TypeScript and Vite settings without extra setup, while Node's runner is stricter about how files import each other. Vitest is only used during development and never ships to the site.
+- **Removed the Vite template's demo files (counter, logos, styles):** we didn't need them, and it's less code to read.
 
 ## Still open
 - Does the dummy also get item stats for its stage? (Step 2)
