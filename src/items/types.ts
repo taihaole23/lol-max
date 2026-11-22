@@ -2,6 +2,7 @@
 // listed in index.ts.
 import type { Item } from "../data/items.ts";
 import type { KatarinaStats } from "../stats/katarina-stats.ts";
+import type { ItemEffect } from "../simulation/simulate.ts";
 
 // Extra things a stat passive may read besides Katarina's current stats.
 export type StatContext = {
@@ -31,4 +32,9 @@ export type ItemPassive = {
     step: StatStep;
     apply: (stats: KatarinaStats, context: StatContext) => void;
   };
+
+  // A passive that does something DURING the ult (on-hit damage, stacks...).
+  // It's a function that makes a fresh effect, because an effect may remember things
+  // (like "Spellblade already used") and every simulation must start clean.
+  createEffect?: () => ItemEffect;
 };

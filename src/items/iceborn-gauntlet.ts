@@ -1,0 +1,15 @@
+// Iceborn Gauntlet, "Spellblade": 150% base AD bonus physical damage, first dagger only.
+// The frost field only slows, so it doesn't matter.
+import { PATCH } from "../data/patch.ts";
+import { spellbladeEffect } from "./spellblade.ts";
+import type { ItemPassive } from "./types.ts";
+
+const data = {
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Iceborn_Gauntlet", patch: PATCH },
+  baseAdRatio: 1.5,
+};
+
+export const icebornGauntlet: ItemPassive = {
+  name: "Iceborn Gauntlet",
+  createEffect: () => spellbladeEffect("Iceborn Gauntlet", "physical", (a) => data.baseAdRatio * a.baseAd),
+};

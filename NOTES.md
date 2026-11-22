@@ -18,22 +18,24 @@ These notes are for anyone joining the project.
   - 5c (item checklist) is done: item groups in `src/data/item-groups.ts`, the `canBeBuiltTogether` rule in `src/optimizer/legal.ts`, and the checklist at the end of this file (47 items "to model" after Eric's Spellblade correction; 40 after 5d-1).
   - 5d (item passives) is split by the kind of code each item needs:
     - 5d-1 stat passives is done: Rabadon's, Riftmaker HP → AP, Warmog's, Overlord's, Sterak's, Rod of Ages, Swiftmarch in `src/items/`, run by `katarina-stats.ts`. Dawncore turned out irrelevant.
-    - Next is 5d-2 plain on-hit + Spellblade (Nashor's, Wit's End, Guinsoo's 30 magic, Terminus Shadow, BotRK, Titanic Hydra, the 5 Spellblade items)
-    - 5d-3 resist shred (Black Cleaver, Bloodletter's, Malignance, Terminus Juxtaposition)
+    - 5d-2 plain on-hit + Spellblade is done: Nashor's, Wit's End, Guinsoo's 30 magic, Terminus Shadow, BotRK, Titanic Hydra and the 5 Spellblade items. `src/simulation/simulate-build.ts` runs a whole build (stats + effects + simulation). 31 items left "to model".
+    - Next is 5d-3 resist shred (Black Cleaver, Bloodletter's, Malignance, Terminus Juxtaposition)
     - 5d-4 damage amps (Immortal Path, Abyssal Mask, Liandry's Suffering, Riftmaker Void Corruption, Lord Dominik's, Shadowflame, Spear of Shojin)
     - 5d-5 burns, auras and timed effects (Liandry's burn, Blackfire, Sunfire, Hollow Radiance, Unending Despair, Zeke's, Stormsurge, Bastionbreaker, Luden's, Hexplate, Eclipse)
     - 5d-6 stack-then-proc (Guinsoo's stacks, Kraken, Hullbreaker, Heartsteel, Rapid Firecannon, Statikk, Stormrazor, Voltaic, Dead Man's Plate, Yun Tal)
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
-- **Whether daggers give Guinsoo's Rageblade stacks** (Seething Strike and Phantom). Daggers trigger "on-attack" effects, but the wiki never says they count for Guinsoo's.
+- **Whether daggers give Guinsoo's Rageblade stacks** (Seething Strike and Phantom). Daggers trigger "on-attack" effects, but the wiki never says they count for Guinsoo's. Eric, from playing: they trigger the Phantom hit.
+- **Within one dagger, R's own damage lands before on-hit effects** (our assumption). Only matters for BotRK, which reads the dummy's current HP.
 - **Whether R's 25 / 30 / 35% effectiveness also shrinks Terminus's Juxtaposition stacks** (10% pen per Dark stack), or only on-hit *damage* (our assumption). Neither the wiki nor Eric knows.
   - That daggers *do* give Juxtaposition stacks is confirmed by Eric from playing. The wiki only says "basic attacks on-hit".
 - **"Deal X% more damage" effects** (damage amplification): whether they apply after armor/MR, and whether two of them add or multiply. The wiki's page for this is gone, and its Damage page says it's out of date.
 - **Which on-hit / on-attack effects the daggers really trigger.** The wiki says daggers apply on-hit and on-attack effects, but not whether that includes stack-and-proc effects (Kraken Slayer, Hullbreaker, Heartsteel, Energized items, Dead Man's Plate, Yun Tal's Flurry).
   - **Eric, from playing:** daggers DO trigger Kraken Slayer's proc, Energized items (e.g. Statikk Shiv) and Guinsoo's Phantom hit. We model them that way, and the Practice Tool confirms it.
   - **Eric, from playing:** daggers trigger **Spellblade** (Lich Bane, Trinity Force...), but only on the **first** dagger. It doesn't proc again during the ult.
-    - Still unknown: is the Spellblade hit reduced by R's 25 / 30 / 35% like other on-hit damage?
+    - Still unknown: is the Spellblade hit reduced by R's 25 / 30 / 35% like other on-hit damage? **We assume yes** (the wiki calls it on-hit damage; Eric thinks so too).
+  - **Dusk and Dawn** (our assumption, from its wiki text; Eric thinks "maybe"): the first dagger's Spellblade also re-applies every on-hit effect 0.2 s later, at R's effectiveness. The wiki lists a bug that changes the repeated hits' damage type; we ignore it because the note is unclear.
   - We assume Sundered Sky and Fiendhunter Bolts (which empower Katarina's next *basic attack*) are NOT triggered by daggers. Hullbreaker, Heartsteel, Dead Man's Plate and Yun Tal stay marked "Check:" in the item checklist.
 
 ## How to run
@@ -94,6 +96,9 @@ validation/    Practice Tool test plan and measurements
   - Rabadon's "stacks recursively" with every AP source, including Riftmaker's and the adaptive AP, so it comes last.
   - The order of items within a step never matters; a test checks this.
 - **Known gap: Swiftmarch reads move speed once, when R is cast.** Move speed gained during the ult (Hexplate, Cosmic Drive...) would add about 1 AP per 20 move speed. Revisit when Hexplate is coded in 5d-5.
+- **During-the-ult passives use one hook, `onHit`, called once per dagger (Step 5d-2):** renamed from `onDaggerHit`, because some items apply on-hit effects at other times too (Dusk and Dawn's repeat, later Guinsoo's Phantom hit). Those call `applyOnHitEffects()`, which runs every item's `onHit` once more.
+- **Each item makes a fresh effect for every simulation (`createEffect`):** Spellblade remembers "already used", and a leftover memory from the previous build would give wrong numbers. A test checks this.
+- **The 5 Spellblade items share one helper (`src/items/spellblade.ts`)** for "first dagger only, × R's effectiveness"; each item file only says its own damage formula.
 - **Rod of Ages' extra level raises Katarina's stats but not R's rank:** R rank comes from the stage, and 7 / 12 / 17 give the same rank as 6 / 11 / 16 anyway.
 - **Four checklist statuses instead of three:** "to model" was added for passives that matter but aren't coded yet, so "not checked yet" only means nobody has read the item.
 - **The item filter only removes items whose stats nothing reads:**
@@ -212,7 +217,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Bastionbreaker | to model | "Shaped Charge": the first ability damage instance deals bonus true damage (40 + 1.5 per lethality for melee), 20 s cooldown. |
 | Black Cleaver | to model | "Carve": physical damage gives armor reduction stacks (6% each, up to 30%). |
 | Blackfire Torch | to model | Burn on ability damage (only the part inside the channel counts) + 4% AP while the dummy burns. |
-| Blade of The Ruined King | to model | On-hit physical damage based on the dummy's current HP (1 HP after the overkill point). |
+| Blade of The Ruined King | modelled | On-hit 9% (melee) of the dummy's current HP, physical (1 HP after the overkill point). `src/items/blade-of-the-ruined-king.ts`. |
 | Bloodletter's Curse | to model | "Vile Decay": magic damage from an ability gives MR reduction stacks (up to 30%). |
 | Bloodthirster | checked, irrelevant | Shield. |
 | Chempunk Chainsword | checked, irrelevant | Grievous Wounds; the dummy doesn't heal. |
@@ -221,18 +226,18 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Dawncore | checked, irrelevant | AP per 100% base mana regen, but manaless champions "do not use nor benefit from mana or mana regeneration" (wiki: Manaless). Its plain AP counts. |
 | Dead Man's Plate | to model | Momentum is full at R cast (from walking). Check: do daggers consume it like a basic attack? |
 | Death's Dance | checked, irrelevant | Defensive. |
-| Dusk and Dawn | to model | Spellblade: procs on the first dagger only (Eric, from playing). Also re-applies on-hit effects 0.2 s later. |
+| Dusk and Dawn | modelled | Spellblade, first dagger only: 75% base AD + 10% AP magic, then all on-hit effects once more 0.2 s later. `src/items/dusk-and-dawn.ts`. |
 | Echoes of Helia | checked, irrelevant | Needs healing allies. |
 | Eclipse | to model | Bonus damage after 2 stacks from different cast instances within 2 s. Check: R is one cast instance; do its burns or item effects count as separate ones? |
 | Edge of Night | checked, irrelevant | Defensive. |
 | Endless Hunger | checked, irrelevant | Needs takedowns. |
-| Essence Reaver | to model | Spellblade: procs on the first dagger only (Eric, from playing). |
+| Essence Reaver | modelled | Spellblade, first dagger only: 125% base AD + 0.5 per 1% crit chance, physical. `src/items/essence-reaver.ts`. |
 | Experimental Hexplate | to model | "Overdrive": casting R gives 50% bonus attack speed (melee) for 8 s, which raises R's physical part. |
 | Fiendhunter Bolts | checked, irrelevant | Empowers basic attacks after R. |
 | Force of Nature | checked, irrelevant | Defensive. |
 | Frozen Heart | checked, irrelevant | Defensive. |
 | Guardian Angel | checked, irrelevant | Defensive. |
-| Guinsoo's Rageblade | to model | On-hit 30 magic damage, plus on-attack attack speed stacks and Phantom hits. Check: see "Unconfirmed". |
+| Guinsoo's Rageblade | to model | "Wrath" (on-hit 30 magic) is modelled in `src/items/guinsoos-rageblade.ts`. Still to do in 5d-6: "Seething Strike" attack speed stacks and Phantom hits (daggers trigger them: Eric, from playing). |
 | Heartsteel | to model | Stacks build up each second near the dummy (starting at 0), then an on-hit proc. Check: do daggers trigger the proc? Permanent HP stacks start at 0. |
 | Hexoptics C44 | checked, irrelevant | Increases *basic attack* damage only. |
 | Hextech Gunblade | checked, irrelevant | Active only. |
@@ -241,7 +246,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Horizon Focus | checked, irrelevant | Needs 600+ range; R's daggers only reach 550. |
 | Hubris | checked, irrelevant | Needs takedowns (starts at 0 stacks). |
 | Hullbreaker | to model | On-hit stacks, proc at max stacks. Check: do daggers count? |
-| Iceborn Gauntlet | to model | Spellblade: procs on the first dagger only (Eric, from playing). The slow doesn't matter. |
+| Iceborn Gauntlet | modelled | Spellblade, first dagger only: 150% base AD physical. `src/items/iceborn-gauntlet.ts`. |
 | Immortal Shieldbow | checked, irrelevant | Defensive. |
 | Imperial Mandate | checked, irrelevant | Needs an immobilize; R has none. |
 | Infinity Edge | checked, irrelevant | No passive. Crit stats do nothing: abilities and on-hit can't crit. |
@@ -250,7 +255,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Knight's Vow | checked, irrelevant | Needs an ally. |
 | Kraken Slayer | to model | On-attack stacks (starting at 0), proc at 2 stacks. Daggers trigger it (Eric, from playing). |
 | Liandry's Torment | to model | Burn on ability damage (only inside the channel) + "Suffering": 2% more damage per second in combat, starting at 0 when R is cast. |
-| Lich Bane | to model | Spellblade: procs on the first dagger only (Eric, from playing). |
+| Lich Bane | modelled | Spellblade, first dagger only (Eric, from playing): 75% base AD + 45% AP magic. `src/items/lich-bane.ts`. |
 | Locket of the Iron Solari | checked, irrelevant | Active only. |
 | Lord Dominik's Regards | to model | "Giant Slayer": more damage the more max HP the dummy has than Katarina. |
 | Luden's Echo | to model | "Echo": ability damage fires bonus magic damage. Check: with only one enemy, how many of the 6 stacks hit it? |
@@ -263,7 +268,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Moonstone Renewer | checked, irrelevant | Needs healing allies. |
 | Morellonomicon | checked, irrelevant | Grievous Wounds; the dummy doesn't heal. |
 | Mortal Reminder | checked, irrelevant | Grievous Wounds. Its armor pen stat counts. |
-| Nashor's Tooth | to model | On-hit magic damage. |
+| Nashor's Tooth | modelled | On-hit 15 + 15% AP magic damage. `src/items/nashors-tooth.ts`. |
 | Navori Flickerblade | checked, irrelevant | Lowers cooldowns of basic abilities. |
 | Overlord's Bloodmail | modelled | "Tyranny": bonus AD = 2.5% bonus HP. "Retribution" is 0 at full HP. `src/items/overlords-bloodmail.ts`. |
 | Phantom Dancer | checked, irrelevant | Ghosting. |
@@ -292,18 +297,18 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Stridebreaker | checked, irrelevant | Cleave hits only other enemies; active doesn't count. |
 | Sundered Sky | checked, irrelevant | Empowers the next *basic attack*. |
 | Sunfire Aegis | to model | "Immolate" aura: magic damage every second near Katarina. |
-| Terminus | to model | On-hit magic damage + "Juxtaposition" pen stacks. Check: see "Unconfirmed". |
+| Terminus | to model | "Shadow" (on-hit 30 + 10% bonus AD + 10% AP magic) is modelled in `src/items/terminus.ts`. Still to do in 5d-3: "Juxtaposition" pen stacks. Check: see "Unconfirmed". |
 | The Collector | checked, irrelevant | Execute below 5% HP; under our overkill rule the dummy never dies. Its lethality stat counts. |
 | Thornmail | checked, irrelevant | Reflects damage Katarina takes. Its HP stat counts (Riftmaker). |
-| Titanic Hydra | to model | "Cleave": on-hit bonus physical damage to the target, scales with max HP. |
-| Trinity Force | to model | Spellblade: procs on the first dagger only (Eric, from playing). "Quicken" move speed doesn't matter. |
+| Titanic Hydra | modelled | "Cleave": on-hit 1% (melee) of Katarina's max HP, physical. `src/items/titanic-hydra.ts`. |
+| Trinity Force | modelled | Spellblade, first dagger only: 200% base AD physical. `src/items/trinity-force.ts`. |
 | Umbral Glaive | checked, irrelevant | Needs Katarina unseen; Death Lotus reveals her. |
 | Unending Despair | to model | Sap: magic damage every 4 s in combat. Check: does the first sap happen right away? |
 | Void Staff | checked, irrelevant | No passive. Its 40% magic pen stat counts. |
 | Voltaic Cyclosword | to model | Energized (full at R cast) + "Galvanize": ability damage triggers the Energized hit. |
 | Warmog's Armor | modelled | "Warmog's Vitality": +12% of items' plain HP stats (not HP from item passives). Matters with Riftmaker / Overlord's. `src/items/warmogs-armor.ts`. |
 | Winter's Approach | checked, irrelevant | HP from mana, but Katarina has no mana. |
-| Wit's End | to model | On-hit 45 magic damage. |
+| Wit's End | modelled | On-hit 45 magic damage. `src/items/wits-end.ts`. |
 | Youmuu's Ghostblade | checked, irrelevant | Move speed; active doesn't count. |
 | Yun Tal Wildarrows | to model | "Flurry": 30% attack speed when launching a basic attack. Check: do daggers trigger it? (Its crit stacks don't matter.) |
 | Zeke's Convergence | to model | Casting R summons a storm that damages the dummy (Katarina is next to it). |

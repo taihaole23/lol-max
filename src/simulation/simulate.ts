@@ -25,6 +25,9 @@ export type DamageEvent = {
 export type Attacker = {
   ap: number;
   bonusAd: number;
+  baseAd: number; // AD from her level alone (Spellblade uses it)
+  health: number; // her maximum health; the dummy never hits back, so she's always full (Titanic Hydra uses it)
+  critChance: number; // a fraction: 0.25 = 25%. R and on-hit can't crit, but Essence Reaver reads it
   bonusAttackSpeed: number; // a fraction: 0.5 = 50%
   armorShred: ResistShred;
   magicShred: ResistShred;
@@ -49,13 +52,17 @@ export type EffectContext = {
   dealDamage: (raw: number, type: DamageType) => void;
   // Run something later, e.g. a burn tick 0.5 s from now.
   schedule: (delaySeconds: number, run: (later: EffectContext) => void) => void;
+  // Apply every item's on-hit effects once more, right now (Dusk and Dawn does this).
+  applyOnHitEffects: () => void;
 };
 
 // An item's hand-coded passive. It may keep its own stacks, so create a new
 // one for every simulation.
 export type ItemEffect = {
   name: string;
-  onDaggerHit?: (context: EffectContext) => void;
+  // Runs every time on-hit effects are applied: once per dagger, plus any extra
+  // times an item causes (Dusk and Dawn).
+  onHit?: (context: EffectContext) => void;
 };
 
 export type SimulationInput = {
@@ -105,7 +112,15 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
         const later = time + delaySeconds;
         todo.push({ time: later, run: () => run(contextAt(later, item)) });
       },
+      applyOnHitEffects: () => applyOnHitEffects(time),
     };
+  }
+
+  // Every item's on-hit effect, in build order.
+  function applyOnHitEffects(time: number): void {
+    for (const item of input.items) {
+      item.onHit?.(contextAt(time, item));
+    }
   }
 
   function throwDagger(time: number): void {
@@ -115,9 +130,9 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
     dealDamage(time, r.magicApRatio * attacker.ap, "magic", "apRatio", false);
     dealDamage(time, daggerPhysicalDamage(attacker.bonusAd, attacker.bonusAttackSpeed), "physical", "bonusAdRatio", false);
 
-    for (const item of input.items) {
-      item.onDaggerHit?.(contextAt(time, item));
-    }
+    // ASSUMPTION (to check in the Practice Tool): R's own damage lands first, then
+    // on-hit effects. Only matters for effects that read the dummy's HP (BotRK).
+    applyOnHitEffects(time);
   }
 
   for (let i = 0; i < r.daggersPerTarget; i++) {

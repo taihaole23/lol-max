@@ -33,6 +33,12 @@ export const championLevels = {
   max: 18,
 };
 
+// Critical strike chance can't go above 100%.
+export const criticalStrike = {
+  source: { url: WIKI + "Critical_strike", patch: PATCH },
+  maxChance: 1,
+};
+
 // Adaptive force gives bonus AD or AP, whichever of the two is higher (wiki: Adaptive force).
 // 1 point of adaptive force = 0.6 bonus AD, or 1 AP.
 export const adaptiveForce = {

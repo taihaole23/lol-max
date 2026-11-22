@@ -1,6 +1,6 @@
 // Katarina's stats for a level and a list of items, in the shape the simulation takes.
 import { katarina } from "../data/katarina.ts";
-import { championLevels, ultimateRanks } from "../data/game-rules.ts";
+import { championLevels, criticalStrike, ultimateRanks } from "../data/game-rules.ts";
 import type { Item } from "../data/items.ts";
 import { passivesFor } from "../items/index.ts";
 import { statSteps } from "../items/types.ts";
@@ -11,9 +11,9 @@ import type { Attacker } from "../simulation/simulate.ts";
 import { combinePercent } from "./combine.ts";
 import { listStat, sumStat } from "./sum-items.ts";
 
-// Everything the simulation needs, plus HP for items that turn HP into other stats.
+// Everything the simulation needs (the simulation calls this shape `Attacker`).
 // `stageLevel` is the stage's level; Rod of Ages may raise the level her stats use.
-export type KatarinaStats = Attacker & { health: number };
+export type KatarinaStats = Attacker;
 
 export function katarinaStats(stageLevel: number, items: Item[]): KatarinaStats {
   const base = katarina.baseStats;
@@ -31,6 +31,8 @@ export function katarinaStats(stageLevel: number, items: Item[]): KatarinaStats 
     ap: sumStat(items, "abilityPower"),
     // AD from levels is BASE AD, so only items count here.
     bonusAd: sumStat(items, "attackDamage"),
+    baseAd,
+    critChance: Math.min(sumStat(items, "critChance"), criticalStrike.maxChance),
     // Attack speed from levels is the exception: it counts as BONUS attack speed.
     bonusAttackSpeed: statAtLevel(0, base.attackSpeed.bonusPerLevel, level) + sumStat(items, "attackSpeed"),
     health: baseHealth + sumStat(items, "health"),

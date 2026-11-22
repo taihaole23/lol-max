@@ -10,12 +10,15 @@ import { noShred } from "../src/formulas/resistance.ts";
 const attacker: Attacker = {
   ap: 200,
   bonusAd: 100,
+  baseAd: 60,
+  health: 1000,
+  critChance: 0,
   bonusAttackSpeed: 0,
   armorShred: noShred,
   magicShred: noShred,
 };
 
-// 100 armor and 50 MR: physical damage × 0.5, magic damage × 100/150.
+// 100 armor and 50 MR: physical damage Ã— 0.5, magic damage Ã— 100/150.
 const target: Target = {
   hp: 100_000,
   baseArmor: 100,
@@ -58,7 +61,7 @@ test("channel window: a 4 s burn only counts the ticks inside the 2.5 s channel"
   let started = false;
   const burn: ItemEffect = {
     name: "Fake Burn",
-    onDaggerHit: (context) => {
+    onHit: (context) => {
       if (started) return;
       started = true;
       for (let tick = 1; tick <= 8; tick++) {
@@ -76,7 +79,7 @@ test("on-hit damage is scaled by the R rank's effectiveness (25 / 30 / 35%)", ()
   // Fake item: 100 true damage on-hit.
   const onHit: ItemEffect = {
     name: "Fake On-Hit",
-    onDaggerHit: (context) => context.dealDamage(100 * context.onHitEffectiveness, "true"),
+    onHit: (context) => context.dealDamage(100 * context.onHitEffectiveness, "true"),
   };
   for (const [rank, effectiveness] of [[1, 0.25], [2, 0.3], [3, 0.35]] as const) {
     const { events } = simulateDeathLotus({ rank, attacker, target, items: [onHit] });
@@ -88,14 +91,14 @@ test("attack speed gained mid-ult makes later daggers' physical damage bigger", 
   // Fake item: every dagger gives +10% bonus attack speed, AFTER that dagger hits.
   const stacking: ItemEffect = {
     name: "Fake Stacks",
-    onDaggerHit: (context) => {
+    onHit: (context) => {
       context.attacker.bonusAttackSpeed += 0.1;
     },
   };
   const { events } = simulateDeathLotus({ rank: 1, attacker, target, items: [stacking] });
   const physical = events.filter((e) => e.type === "physical");
   // First dagger: 0 stacks. Last dagger: 14 stacks = +140% bonus attack speed.
-  // (16% + 50% × 1.4) × 100 bonus AD × 0.5 from armor
+  // (16% + 50% Ã— 1.4) Ã— 100 bonus AD Ã— 0.5 from armor
   expect(physical[0].amount).toBeCloseTo(0.16 * 100 * 0.5);
   expect(physical[14].amount).toBeCloseTo((0.16 + 0.5 * 1.4) * 100 * 0.5);
   // The caller's attacker is not changed by the simulation.
@@ -105,7 +108,7 @@ test("attack speed gained mid-ult makes later daggers' physical damage bigger", 
 test("all breakdown views add up to the same total", () => {
   const onHit: ItemEffect = {
     name: "Fake On-Hit",
-    onDaggerHit: (context) => context.dealDamage(50 * context.onHitEffectiveness, "magic"),
+    onHit: (context) => context.dealDamage(50 * context.onHitEffectiveness, "magic"),
   };
   const result = breakdown(simulateDeathLotus({ rank: 2, attacker, target, items: [onHit] }).events);
   const sum = (values: number[]) => values.reduce((a, b) => a + b, 0);
