@@ -19,7 +19,11 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   - Each item's marginal damage: damage with the item minus damage without it. The leftover is shown as an "item interactions" line.
   - By damage type: magic, physical and true.
   - Ability vs. item effects.
-- Item pool: completed legendary items only. No duplicates, and items that share a unique passive can't be combined.
+- Item pool: completed legendary items only. No duplicates, and at most one item from each item group (the wiki's "Limitations", e.g. Void Staff + Terminus are both Blight). Items that only share a passive name can be combined, as in the real shop; the passive counts once.
+- Rules for item passives (show them on the site):
+  - Item actives don't count.
+  - Combat starts when R is cast. Katarina stands right next to the dummy.
+  - Stacks that fill up on their own (Rod of Ages, Energized, Dead Man's Plate) are full at R cast. Stacks earned by fighting (Mejai's, Hubris, in-combat stacks) start at 0 and may build up during the ult.
 - Boots:
   - A toggle turns boots on or off. When on, the optimizer chooses tier-2 boots in their own slot. A build never has more than 6 slots.
   - A "mid quest completed" toggle, which needs boots on, switches the choice to tier-3 boots.
@@ -68,7 +72,7 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
 - Every game number lives in a data file with a source link and the patch it's from. No magic numbers inside formulas.
 - Known: Death Lotus on-hit/on-attack effectiveness is 25 / 30 / 35% by R rank (not 33%).
 - Each item passive that matters is hand-coded and has its own test.
-- NOTES.md keeps a checklist of every legendary item, each marked "modelled", "checked, irrelevant" or "not checked yet".
+- NOTES.md keeps a checklist of every legendary item, each marked "modelled", "to model", "checked, irrelevant" or "not checked yet". A test checks every item is listed.
 
 ## Correctness
 - Unit tests for every formula.
