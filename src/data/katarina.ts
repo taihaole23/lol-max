@@ -19,6 +19,14 @@ export const katarina = {
     // BONUS attack speed per level (0.0274 = +2.74%). Death Lotus scales with bonus
     // attack speed, so this growth adds to her R damage.
     attackSpeed: { base: 0.658, bonusPerLevel: 0.0274 },
+    // Move speed doesn't grow with level. Used by Swiftmarch (adaptive force from move speed).
+    moveSpeed: 335,
+  },
+
+  // Which stat adaptive force gives when bonus AD and AP are exactly equal (e.g. both 0).
+  adaptiveType: {
+    source: { url: WIKI_URL, patch: PATCH },
+    whenTied: "ap" as "ad" | "ap", // the wiki's champion data says "Magic"
   },
 
   // Death Lotus (R). Lists with 3 entries are by R rank: [rank 1, rank 2, rank 3].

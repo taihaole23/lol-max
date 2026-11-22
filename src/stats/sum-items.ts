@@ -2,7 +2,8 @@
 import type { Item } from "../data/items.ts";
 
 // The total of one stat, e.g. sumStat(items, "abilityPower"). Items without it count as 0.
-export function sumStat(items: Item[], stat: string): number {
+// `readonly` means the function promises not to change the list.
+export function sumStat(items: readonly Item[], stat: string): number {
   let total = 0;
   for (const item of items) {
     total += item.stats[stat] ?? 0;

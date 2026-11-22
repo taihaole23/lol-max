@@ -1,7 +1,8 @@
 // Makes sure the item checklist in NOTES.md covers every legendary and boots item,
 // so an item added on a future patch can't be skipped by accident.
 import { test, expect } from "vitest";
-import { items } from "../src/data/items.ts";
+import { items, getItem } from "../src/data/items.ts";
+import { itemPassives } from "../src/items/index.ts";
 // "?raw" is a Vite feature: it loads the file's text as a plain string.
 import notes from "../NOTES.md?raw";
 
@@ -35,6 +36,25 @@ test("every legendary and boots item is in the checklist", () => {
 test("every row has a known status", () => {
   for (const [name, status] of checklist) {
     expect(STATUSES, `${name} has status "${status}"`).toContain(status);
+  }
+});
+
+test("every coded passive belongs to a real item, and is coded only once", () => {
+  for (const passive of itemPassives) getItem(passive.name); // throws on a typo
+  const names = itemPassives.map((p) => p.name);
+  expect(new Set(names).size).toBe(names.length);
+});
+
+test("every coded item is marked 'modelled' (or 'to model' if only part of it is coded yet)", () => {
+  for (const passive of itemPassives) {
+    expect(["modelled", "to model"], passive.name).toContain(checklist.get(passive.name));
+  }
+});
+
+test("every item marked 'modelled' has a coded passive", () => {
+  const coded = new Set(itemPassives.map((p) => p.name));
+  for (const [name, status] of checklist) {
+    if (status === "modelled") expect(coded.has(name), name).toBe(true);
   }
 });
 

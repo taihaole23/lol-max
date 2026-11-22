@@ -1,0 +1,36 @@
+// Swiftmarch (tier-3 boots), "Noxian Fervor": adaptive force equal to 5% of total move speed.
+// Adaptive force becomes bonus AD or AP, whichever of the two Katarina has more of
+// (item passives count, which is why this runs after the "convert" step).
+//
+// Known gap: move speed is read once, when R is cast. Move speed gained DURING the ult
+// (Experimental Hexplate, Cosmic Drive...) would add a tiny bit more. Revisit in 5d-5.
+import { PATCH } from "../data/patch.ts";
+import { adaptiveForce } from "../data/game-rules.ts";
+import { katarina } from "../data/katarina.ts";
+import { totalMoveSpeed } from "../formulas/move-speed.ts";
+import { sumStat } from "../stats/sum-items.ts";
+import type { ItemPassive } from "./types.ts";
+
+const data = {
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Swiftmarch", patch: PATCH },
+  adaptiveForceFromMoveSpeed: 0.05,
+};
+
+export const swiftmarch: ItemPassive = {
+  name: "Swiftmarch",
+  stats: {
+    step: "adaptive",
+    apply: (stats, context) => {
+      const speed = totalMoveSpeed(
+        katarina.baseStats.moveSpeed + sumStat(context.items, "moveSpeed"),
+        sumStat(context.items, "percentMoveSpeed"),
+      );
+      const points = data.adaptiveForceFromMoveSpeed * speed;
+
+      const givesAd =
+        stats.bonusAd > stats.ap || (stats.bonusAd === stats.ap && katarina.adaptiveType.whenTied === "ad");
+      if (givesAd) stats.bonusAd += points * adaptiveForce.adPerPoint;
+      else stats.ap += points * adaptiveForce.apPerPoint;
+    },
+  },
+};

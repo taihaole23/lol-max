@@ -1,7 +1,9 @@
 // Katarina's stats for a level and a list of items, in the shape the simulation takes.
 import { katarina } from "../data/katarina.ts";
-import { ultimateRanks } from "../data/game-rules.ts";
+import { championLevels, ultimateRanks } from "../data/game-rules.ts";
 import type { Item } from "../data/items.ts";
+import { passivesFor } from "../items/index.ts";
+import { statSteps } from "../items/types.ts";
 import { statAtLevel } from "../formulas/stats.ts";
 import { noShred } from "../formulas/resistance.ts";
 import type { RRank } from "../formulas/death-lotus.ts";
@@ -9,11 +11,21 @@ import type { Attacker } from "../simulation/simulate.ts";
 import { combinePercent } from "./combine.ts";
 import { listStat, sumStat } from "./sum-items.ts";
 
-// Everything the simulation needs, plus HP for items that turn HP into other stats (Step 5d).
+// Everything the simulation needs, plus HP for items that turn HP into other stats.
+// `stageLevel` is the stage's level; Rod of Ages may raise the level her stats use.
 export type KatarinaStats = Attacker & { health: number };
 
-export function katarinaStats(level: number, items: Item[]): KatarinaStats {
+export function katarinaStats(stageLevel: number, items: Item[]): KatarinaStats {
   const base = katarina.baseStats;
+  const passives = passivesFor(items);
+
+  // Rod of Ages can add a level, but never past the level cap.
+  let extraLevels = 0;
+  for (const passive of passives) extraLevels += passive.extraLevels ?? 0;
+  const level = Math.min(stageLevel + extraLevels, championLevels.max);
+
+  const baseHealth = statAtLevel(base.health.base, base.health.perLevel, level);
+  const baseAd = statAtLevel(base.attackDamage.base, base.attackDamage.perLevel, level);
 
   const stats: KatarinaStats = {
     ap: sumStat(items, "abilityPower"),
@@ -21,7 +33,7 @@ export function katarinaStats(level: number, items: Item[]): KatarinaStats {
     bonusAd: sumStat(items, "attackDamage"),
     // Attack speed from levels is the exception: it counts as BONUS attack speed.
     bonusAttackSpeed: statAtLevel(0, base.attackSpeed.bonusPerLevel, level) + sumStat(items, "attackSpeed"),
-    health: statAtLevel(base.health.base, base.health.perLevel, level) + sumStat(items, "health"),
+    health: baseHealth + sumStat(items, "health"),
     armorShred: {
       ...noShred,
       percentPenetration: combinePercent(listStat(items, "percentArmorPenetration")),
@@ -34,8 +46,14 @@ export function katarinaStats(level: number, items: Item[]): KatarinaStats {
     },
   };
 
-  // Step 5d: stat-changing item passives (like Rabadon's "+X% AP") will run here,
-  // after the plain stats are added up.
+  // Stat-changing item passives run now, after the plain stats are added up,
+  // one step at a time in the order of `statSteps` (see src/items/types.ts).
+  const context = { level, baseHealth, baseAd, items };
+  for (const step of statSteps) {
+    for (const passive of passives) {
+      if (passive.stats?.step === step) passive.stats.apply(stats, context);
+    }
+  }
 
   return stats;
 }

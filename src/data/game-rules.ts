@@ -27,6 +27,31 @@ export const ultimateRanks = {
   levels: [6, 11, 16],
 };
 
+// The highest champion level. Rod of Ages' extra level can't go past it.
+export const championLevels = {
+  source: { url: WIKI + "Experience_(champion)", patch: PATCH },
+  max: 18,
+};
+
+// Adaptive force gives bonus AD or AP, whichever of the two is higher (wiki: Adaptive force).
+// 1 point of adaptive force = 0.6 bonus AD, or 1 AP.
+export const adaptiveForce = {
+  source: { url: WIKI + "Adaptive_force", patch: PATCH },
+  adPerPoint: 0.6,
+  apPerPoint: 1,
+};
+
+// Move speed: (base + flat bonuses) × (1 + sum of % bonuses), then soft caps:
+//   the part between 415 and 490 counts 80%, the part above 490 counts 50%.
+// (There are also caps below 220, but nothing in this project slows Katarina.)
+export const moveSpeed = {
+  source: { url: WIKI + "Movement_speed", patch: PATCH },
+  firstCapAt: 415,
+  firstCapKeeps: 0.8,
+  secondCapAt: 490,
+  secondCapKeeps: 0.5,
+};
+
 // Our own rules for the simulation, not Riot's (see CLAUDE.md), so no wiki source.
 export const simulationRules = {
   // Overkill rule: the dummy never dies. Its HP stops here, and later hits still count in full.
