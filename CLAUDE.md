@@ -18,7 +18,7 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   - Late and Full use a **beam search** (Eric, Step 6): every legal combination would take ~30 s (Late) and ~4.5 hours (Full).
     - The beam builds one item at a time, keeping the best 300 partial builds at each size.
     - A slow test checks that Late's beam top 5 equals the every-combination top 5 for each enemy type.
-    - A test checks that Full's top 5 is the same with a beam of 300 and of 1,000.
+    - A slow test checks that Full's top 5 is the same with a beam of 300 and of 5,000.
 - Each build shows these breakdowns:
   - By source: base, AP ratio, AD ratio, on-hit at the R rank's effectiveness, and each item passive.
   - Each item's marginal damage: damage with the item minus damage without it. The leftover is shown as an "item interactions" line.

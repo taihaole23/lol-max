@@ -87,7 +87,7 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
   - Early and Mid try every legal combination.
   - Late and Full use a beam search: build one item at a time and keep the best 300 partial builds at each size.
   - Slow test: Late's beam top 5 must equal the every-combination top 5, for each enemy type.
-  - Test: Full's top 5 must be the same with a beam of 300 and 1,000.
+  - Slow test: Full's top 5 must be the same with a beam of 300 and 5,000.
 - The filter from the decisions above runs first.
   - Early, Mid and Late: the filtered search should give the same top 5 as an unfiltered one.
 - The search runs in a **Web Worker**, which is a background thread in the browser, so the page doesn't freeze.
@@ -97,6 +97,7 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
 
 **Step 7: User interface (plain HTML/TS)**
 - Controls: stage, enemy type, "Use recommended items" checkbox with a dummy item picker when it's off, editable HP/armor/MR, boots toggle, mid quest toggle.
+- Progress bar while the search runs (from `startSearch`), with an easter egg (Eric chose option A): the bar shows the percentage, except between about 40% and 60%, where the text in the middle of the bar changes to "getting advice from thebausffs...".
 - Results: the top 5 builds, each with:
   - the source breakdown (base, AP ratio, AD ratio, on-hit, item passives)
   - each item's marginal damage

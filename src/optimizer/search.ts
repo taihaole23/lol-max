@@ -103,7 +103,9 @@ export function beamSearch(input: SearchInput, beamWidth: number): FoundBuild[] 
     const partialOf = new Map<FoundBuild, Partial>();
     const seen = new Set<string>(); // the same build can be reached by adding items in any order
 
-    for (const partial of beam) {
+    beam.forEach((partial, done) => {
+      // Progress: whole slots finished so far, plus how far through this slot's beam we are.
+      input.onProgress?.((size - 1 + done / beam.length) / itemCount);
       for (let i = 0; i < legendaries.length; i++) {
         if (partial.indices.includes(i)) continue;
         if (!partial.indices.every((j) => legal[i][j]) || !bootsLegal(partial.boots, i)) continue;
@@ -116,7 +118,7 @@ export function beamSearch(input: SearchInput, beamWidth: number): FoundBuild[] 
         partialOf.set(build, { indices, boots: partial.boots });
         keepTop(best, build, size === itemCount ? searchSettings.topBuilds : beamWidth);
       }
-    }
+    });
 
     input.onProgress?.(size / itemCount);
     if (size === itemCount) return best;

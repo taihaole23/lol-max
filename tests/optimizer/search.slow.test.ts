@@ -16,8 +16,8 @@ for (const enemyType of enemyTypes) {
     expect(summary(beamSearch(input, 300))).toEqual(summary(everyBuildSearch(input)));
   }, 10 * minutes);
 
-  test.runIf(runSlow)(`Full, ${enemyType}: a beam of 300 gives the same top 5 as a beam of 1,000`, () => {
+  test.runIf(runSlow)(`Full, ${enemyType}: a beam of 300 gives the same top 5 as a beam of 5,000`, () => {
     const input = { stage: "full" as const, target: presetDummy(enemyType, "full"), boots: "tier2" as const };
-    expect(summary(beamSearch(input, 300))).toEqual(summary(beamSearch(input, 1000)));
+    expect(summary(beamSearch(input, 300))).toEqual(summary(beamSearch(input, 5000)));
   }, 10 * minutes);
 }
