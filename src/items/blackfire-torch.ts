@@ -29,6 +29,7 @@ const data = {
 
 export const blackfireTorch: ItemPassive = {
   name: "Blackfire Torch",
+  source: data.source,
   createEffect: () => {
     const burn = tickingEffect({
       name: "Blackfire Torch",

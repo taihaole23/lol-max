@@ -9,6 +9,7 @@ const data = {
 
 export const witsEnd: ItemPassive = {
   name: "Wit's End",
+  source: data.source,
   createEffect: () => ({
     name: "Wit's End",
     onHit: (context) => context.dealDamage(data.damage * context.onHitEffectiveness, "magic"),

@@ -12,6 +12,7 @@ const data = {
 
 export const warmogsArmor: ItemPassive = {
   name: "Warmog's Armor",
+  source: data.source,
   stats: {
     step: "add",
     apply: (stats, context) => {

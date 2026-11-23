@@ -15,6 +15,7 @@ const data = {
 
 export const yunTalWildarrows: ItemPassive = {
   name: "Yun Tal Wildarrows",
+  source: data.source,
   createEffect: () => {
     let used = false;
     return {

@@ -18,6 +18,7 @@ const data = {
 
 export const hullbreaker: ItemPassive = {
   name: "Hullbreaker",
+  source: data.source,
   createEffect: () => {
     let stacks = 0;
     return {

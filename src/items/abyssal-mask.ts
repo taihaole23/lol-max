@@ -11,6 +11,7 @@ const data = {
 
 export const abyssalMask: ItemPassive = {
   name: "Abyssal Mask",
+  source: data.source,
   createEffect: () => ({
     name: "Abyssal Mask",
     damageMultiplier: (_context, damage) => (damage.type === "magic" ? 1 + data.magicDamageAmp : 1),

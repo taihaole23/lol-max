@@ -11,5 +11,6 @@ const data = {
 
 export const trinityForce: ItemPassive = {
   name: "Trinity Force",
+  source: data.source,
   createEffect: () => spellbladeEffect("Trinity Force", "physical", (a) => data.baseAdRatio * a.baseAd),
 };

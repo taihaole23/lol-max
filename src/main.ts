@@ -15,6 +15,8 @@ import type { SearchResult } from "./optimizer/messages.ts";
 import { maxItemCount } from "./optimizer/setup.ts";
 import { allowedRRanks } from "./stats/katarina-stats.ts";
 import { byId, escapeHtml, readNumber } from "./ui/html.ts";
+import { PATCH } from "./data/patch.ts";
+import { rulesHtml, sourcesHtml } from "./ui/info-view.ts";
 import { progressLabel } from "./ui/progress.ts";
 import { breakdownHtml, formatDamage, topBuildsHtml } from "./ui/results-view.ts";
 import * as searches from "./ui/searches.ts";
@@ -311,6 +313,11 @@ byId("dummy-items").addEventListener("change", (event) => {
     update((s) => actions.setCustomDummyBoots(s, name));
   }
 });
+
+// The parts that never change: the patch, the rules and the sources. Drawn once.
+byId("patch").textContent = `Patch ${PATCH}`;
+byId("rules").innerHTML = rulesHtml();
+byId("sources").innerHTML = sourcesHtml();
 
 // When a search starts, moves the progress bar or finishes, redraw only the results part.
 // (Redrawing the whole page ~100 times during Optimize would wipe out a number half-typed in a box.)

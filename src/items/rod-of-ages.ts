@@ -13,6 +13,7 @@ const data = {
 
 export const rodOfAges: ItemPassive = {
   name: "Rod of Ages",
+  source: data.source,
   extraLevels: data.levelsAtFullStacks,
   stats: {
     step: "add",

@@ -24,6 +24,7 @@ export type StatStep = (typeof statSteps)[number];
 
 export type ItemPassive = {
   name: string; // the exact item name, as in the item snapshot
+  source: { url: string; patch: string }; // the item's wiki page (listed in the site's sources section)
 
   // Levels added to Katarina's level for her stats (Rod of Ages at full stacks).
   extraLevels?: number;

@@ -22,6 +22,7 @@ const data = {
 
 export const stormsurge: ItemPassive = {
   name: "Stormsurge",
+  source: data.source,
   createEffect: () => {
     let damageSoFar = 0;
     let applied = false;

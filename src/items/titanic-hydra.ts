@@ -10,6 +10,7 @@ const data = {
 
 export const titanicHydra: ItemPassive = {
   name: "Titanic Hydra",
+  source: data.source,
   createEffect: () => ({
     name: "Titanic Hydra",
     onHit: (context) => {

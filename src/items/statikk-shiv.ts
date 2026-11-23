@@ -15,5 +15,6 @@ const data = {
 
 export const statikkShiv: ItemPassive = {
   name: "Statikk Shiv",
+  source: data.source,
   createEffect: () => energizedEffect("Statikk Shiv", (context) => context.dealDamage(data.damage, "magic")),
 };

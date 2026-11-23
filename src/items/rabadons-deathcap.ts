@@ -14,6 +14,7 @@ const data = {
 
 export const rabadonsDeathcap: ItemPassive = {
   name: "Rabadon's Deathcap",
+  source: data.source,
   stats: {
     step: "percent",
     apply: (stats) => {

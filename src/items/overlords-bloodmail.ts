@@ -11,6 +11,7 @@ const data = {
 
 export const overlordsBloodmail: ItemPassive = {
   name: "Overlord's Bloodmail",
+  source: data.source,
   stats: {
     step: "convert",
     apply: (stats, context) => {

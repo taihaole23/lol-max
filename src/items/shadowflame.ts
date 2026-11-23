@@ -16,6 +16,7 @@ const data = {
 
 export const shadowflame: ItemPassive = {
   name: "Shadowflame",
+  source: data.source,
   createEffect: () => ({
     name: "Shadowflame",
     damageMultiplier: (context, damage) => {

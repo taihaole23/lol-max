@@ -18,6 +18,7 @@ const data = {
 
 export const blackCleaver: ItemPassive = {
   name: "Black Cleaver",
+  source: data.source,
   createEffect: () => {
     let stacks = 0;
     let lastStackTime: number | undefined;

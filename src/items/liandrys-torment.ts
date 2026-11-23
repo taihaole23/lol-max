@@ -24,6 +24,7 @@ const data = {
 
 export const liandrysTorment: ItemPassive = {
   name: "Liandry's Torment",
+  source: data.source,
   createEffect: () => ({
     // One effect with both passives: the amp's damageMultiplier and the burn's afterDamage.
     ...inCombatAmpEffect("Liandry's Torment", data.ampPerStack, data.maxStacks, data.secondsPerStack),

@@ -11,6 +11,7 @@ const data = {
 
 export const immortalPath: ItemPassive = {
   name: "Immortal Path",
+  source: data.source,
   createEffect: () => ({
     name: "Immortal Path",
     damageMultiplier: () => 1 + data.damageAmp,

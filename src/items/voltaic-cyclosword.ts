@@ -20,6 +20,7 @@ const data = {
 
 export const voltaicCyclosword: ItemPassive = {
   name: "Voltaic Cyclosword",
+  source: data.source,
   createEffect: () => {
     let firedAt: number | undefined; // undefined = not fired yet
     return {

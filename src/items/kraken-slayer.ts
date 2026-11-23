@@ -24,6 +24,7 @@ export function krakenDamage(level: number): number {
 
 export const krakenSlayer: ItemPassive = {
   name: "Kraken Slayer",
+  source: data.source,
   createEffect: () => {
     let stacks = 0;
     return {

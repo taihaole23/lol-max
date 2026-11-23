@@ -17,6 +17,7 @@ const data = {
 
 export const riftmaker: ItemPassive = {
   name: "Riftmaker",
+  source: data.source,
   stats: {
     step: "convert",
     apply: (stats, context) => {

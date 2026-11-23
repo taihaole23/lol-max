@@ -12,6 +12,7 @@ const data = {
 
 export const lordDominiksRegards: ItemPassive = {
   name: "Lord Dominik's Regards",
+  source: data.source,
   createEffect: () => ({
     name: "Lord Dominik's Regards",
     damageMultiplier: (context) => {

@@ -19,6 +19,7 @@ const data = {
 
 export const duskAndDawn: ItemPassive = {
   name: "Dusk and Dawn",
+  source: data.source,
   createEffect: () =>
     spellbladeEffect(
       "Dusk and Dawn",

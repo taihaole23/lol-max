@@ -18,6 +18,7 @@ const data = {
 
 export const swiftmarch: ItemPassive = {
   name: "Swiftmarch",
+  source: data.source,
   stats: {
     step: "adaptive",
     apply: (stats) => {

@@ -20,6 +20,7 @@ const data = {
 
 export const eclipse: ItemPassive = {
   name: "Eclipse",
+  source: data.source,
   createEffect: () => {
     const stackTimes: number[] = [];
     let used = false;

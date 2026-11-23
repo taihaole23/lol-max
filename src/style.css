@@ -158,6 +158,32 @@ h3 { font-size: 0.95rem; margin: 0 0 8px; }
 .number { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .bar-table thead th.number { text-align: right; }
 
+/* Rules and sources (Step 7e) */
+.patch {
+  display: inline-block; margin-left: 6px; padding: 1px 8px;
+  border: 1px solid var(--border); border-radius: 999px; font-size: 0.8rem;
+}
+.panel.info { margin-top: 16px; line-height: 1.5; }
+.panel.info h3 { margin-top: 16px; }
+.panel.info ul { margin: 0; padding-left: 20px; }
+.panel.info li { margin-bottom: 4px; }
+a { color: var(--accent); }
+.source-list { columns: 2 260px; font-size: 0.9rem; }
+footer { margin: 24px 0 8px; text-align: center; }
+
+/* Phones: a bit less padding, and long tables scroll inside their box instead of the page */
+@media (max-width: 480px) {
+  .panel { padding: 12px; }
+  .bar-table { overflow-x: auto; }
+  .ability-row { gap: 6px; }
+  .ability-card { width: 76px; }
+  /* 5 boxes of 12px + gaps = 68px, so they fit under a 76px card and all 4 abilities fit in one row */
+  .rank-boxes { gap: 2px; }
+  .rank-box { width: 12px; height: 12px; }
+  .ability-name { font-size: 0.7rem; }
+  .build-card { grid-template-columns: 2em 4em 1fr; }
+}
+
 .dummy-items { margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px; }
 .dummy-items select { padding: 4px; max-width: 100%; }
 .item-list { margin: 0; padding-left: 20px; }

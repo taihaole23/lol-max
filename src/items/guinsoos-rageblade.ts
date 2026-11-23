@@ -26,6 +26,7 @@ const data = {
 
 export const guinsoosRageblade: ItemPassive = {
   name: "Guinsoo's Rageblade",
+  source: data.source,
   createEffect: () => {
     let attackSpeedStacks = 0;
     let phantomStacks = 0;

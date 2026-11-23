@@ -16,6 +16,7 @@ const data = {
 
 export const experimentalHexplate: ItemPassive = {
   name: "Experimental Hexplate",
+  source: data.source,
   stats: {
     step: "add",
     apply: (stats) => {

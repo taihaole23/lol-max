@@ -19,6 +19,7 @@ const data = {
 
 export const spearOfShojin: ItemPassive = {
   name: "Spear of Shojin",
+  source: data.source,
   createEffect: () => {
     const stackTimes: number[] = [];
 

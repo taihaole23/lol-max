@@ -11,6 +11,7 @@ const data = {
 
 export const bladeOfTheRuinedKing: ItemPassive = {
   name: "Blade of The Ruined King",
+  source: data.source,
   createEffect: () => ({
     name: "Blade of The Ruined King",
     onHit: (context) => {

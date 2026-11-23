@@ -23,6 +23,7 @@ const data = {
 
 export const malignance: ItemPassive = {
   name: "Malignance",
+  source: data.source,
   createEffect: () => {
     let zoneTime: number | undefined; // when the zone appeared
 

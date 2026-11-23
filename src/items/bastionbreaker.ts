@@ -13,6 +13,7 @@ const data = {
 
 export const bastionbreaker: ItemPassive = {
   name: "Bastionbreaker",
+  source: data.source,
   createEffect: () => {
     let used = false;
     return {

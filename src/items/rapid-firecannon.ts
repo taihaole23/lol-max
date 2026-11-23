@@ -12,6 +12,7 @@ const data = {
 
 export const rapidFirecannon: ItemPassive = {
   name: "Rapid Firecannon",
+  source: data.source,
   createEffect: () =>
     energizedEffect("Rapid Firecannon", (context) =>
       context.dealDamage(data.damage * context.onHitEffectiveness, "magic"),

@@ -18,6 +18,7 @@ const data = {
 
 export const bloodlettersCurse: ItemPassive = {
   name: "Bloodletter's Curse",
+  source: data.source,
   createEffect: () => {
     const stackTimes: number[] = []; // when each stack was added
 

@@ -10,6 +10,7 @@ const data = {
 
 export const steraksGage: ItemPassive = {
   name: "Sterak's Gage",
+  source: data.source,
   stats: {
     step: "convert",
     apply: (stats, context) => {

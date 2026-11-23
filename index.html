@@ -9,7 +9,7 @@
     <!-- The fixed layout. Parts with an id are filled in by src/main.ts. -->
     <header>
       <h1>lol-max</h1>
-      <p class="tagline">Which build makes an ability hit the hardest?</p>
+      <p class="tagline">Which build makes an ability hit the hardest? <span id="patch" class="patch"></span></p>
     </header>
 
     <main>
@@ -96,7 +96,15 @@
           <div id="breakdown"></div>
         </div>
       </section>
+
+      <!-- Filled in once by main.ts (src/ui/info-view.ts). -->
+      <section id="rules" class="panel info"></section>
+      <section id="sources" class="panel info"></section>
     </main>
+
+    <footer class="hint">
+      lol-max is a fan project, not made or endorsed by Riot Games. League of Legends is a trademark of Riot Games, Inc.
+    </footer>
 
     <script type="module" src="/src/main.ts"></script>
   </body>

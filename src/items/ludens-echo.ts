@@ -24,6 +24,7 @@ const data = {
 
 export const ludensEcho: ItemPassive = {
   name: "Luden's Echo",
+  source: data.source,
   createEffect: () => {
     let used = false;
     return {

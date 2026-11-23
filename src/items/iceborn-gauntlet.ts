@@ -11,5 +11,6 @@ const data = {
 
 export const icebornGauntlet: ItemPassive = {
   name: "Iceborn Gauntlet",
+  source: data.source,
   createEffect: () => spellbladeEffect("Iceborn Gauntlet", "physical", (a) => data.baseAdRatio * a.baseAd),
 };

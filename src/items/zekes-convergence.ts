@@ -16,6 +16,7 @@ const data = {
 
 export const zekesConvergence: ItemPassive = {
   name: "Zeke's Convergence",
+  source: data.source,
   createEffect: () => ({
     name: "Zeke's Convergence",
     onUltCast: (context) => {

@@ -12,6 +12,7 @@ const data = {
 
 export const stormrazor: ItemPassive = {
   name: "Stormrazor",
+  source: data.source,
   createEffect: () =>
     energizedEffect("Stormrazor", (context) => context.dealDamage(data.damage * context.onHitEffectiveness, "magic")),
 };

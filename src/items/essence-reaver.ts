@@ -13,6 +13,7 @@ const data = {
 
 export const essenceReaver: ItemPassive = {
   name: "Essence Reaver",
+  source: data.source,
   createEffect: () =>
     spellbladeEffect(
       "Essence Reaver",

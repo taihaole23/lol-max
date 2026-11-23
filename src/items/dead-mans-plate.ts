@@ -16,6 +16,7 @@ const data = {
 
 export const deadMansPlate: ItemPassive = {
   name: "Dead Man's Plate",
+  source: data.source,
   createEffect: () => {
     let used = false;
     return {

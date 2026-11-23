@@ -12,6 +12,7 @@ const data = {
 
 export const lichBane: ItemPassive = {
   name: "Lich Bane",
+  source: data.source,
   createEffect: () =>
     spellbladeEffect("Lich Bane", "magic", (a) => data.baseAdRatio * a.baseAd + data.apRatio * a.ap),
 };

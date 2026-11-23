@@ -23,6 +23,7 @@ const data = {
 
 export const terminus: ItemPassive = {
   name: "Terminus",
+  source: data.source,
   createEffect: () => {
     let hits = 0;
     const darkStackTimes: number[] = [];

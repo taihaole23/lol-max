@@ -10,6 +10,7 @@ const data = {
 
 export const nashorsTooth: ItemPassive = {
   name: "Nashor's Tooth",
+  source: data.source,
   createEffect: () => ({
     name: "Nashor's Tooth",
     onHit: (context) => {
