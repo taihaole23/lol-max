@@ -34,7 +34,7 @@ These notes are for anyone joining the project.
   - 7a (engine: stage becomes a preset) is done: the search takes `level`, `rRank` and `itemCount` (`src/optimizer/setup.ts`) instead of a stage name. `stagePreset()` fills them in from a stage. Impossible setups (rank 3 at level 6, 7 slots) throw.
   - 7b (page layout) is done: `index.html` (fixed layout), `src/main.ts` (draws the page from the state, reacts to clicks), `src/ui/state.ts` (the page's state + the functions that change it, unit tested), `src/style.css`. Checked in headless Chrome: no console errors.
   - 7c (searches on the page) is done: `src/ui/searches.ts` runs the quick search on every change and Optimize on click, `src/ui/progress.ts` makes the progress bar's text. Checked in headless Chrome: the quick search shows up ~0.1-0.3 s after a change, Optimize on Full took ~2.6 s, the thebausffs text appeared, and changing the enemy mid-Optimize cancelled it. No console errors.
-  - 7d: the damage chart, the four breakdowns and the other 4 builds.
+  - 7d (breakdowns) is done: `src/ui/breakdown-rows.ts` turns a build's explanation into rows (tested: each breakdown adds up to the total), `src/ui/results-view.ts` draws them, and the top 5 are clickable cards. Checked in headless Chrome in light and dark mode, no console errors.
   - 7e: rules, filtered items, sources and patch, CSS.
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
@@ -122,6 +122,11 @@ validation/    Practice Tool test plan and measurements
   - with 1 slot, the quick question and the full question have the same key, so the quick result IS the answer and Optimize is hidden.
   - A search whose key no longer matches is cancelled (`cancelSearch` in `start-search.ts`), so changing the dummy mid-Optimize stops the old one.
 - **Search updates redraw only the results part (Step 7c):** progress arrives ~100 times during Optimize; redrawing the whole page each time would reset a number box you were halfway through typing.
+- **How the breakdowns are drawn (Step 7d):**
+  - "By source" and "What each item adds" are tables with one bar per row, all one colour, instead of one big stacked bar. A full build can have 10+ sources, and a stacked bar can't give that many parts colours people can tell apart.
+  - Damage type (3 parts) and ability vs. items (2 parts) are thin stacked bars. Their colours come from a colour-blind-checked palette and were run through a checker script against our panel colours in light and dark mode. Every colour also has a written label and number, so colour is never the only clue.
+  - Items with no damage effect of their own (Yun Tal, boots) don't appear in "By source"; their value shows in "What each item adds".
+  - Numbers are rounded to whole damage, so a column can be 1-2 off its total.
 - **Ties rank the cheaper build first, then by name:** so the top 5 never depends on the order the search happened to try builds.
 - **Builds are always listed in the same item order** (legendaries in pool order, then boots): BotRK reads current HP, so item order can change the damage by a hair. With one order, both searches give the exact same number for the same build.
 - **"Item interactions" can be negative:** each item's marginal damage is "with the build minus without that item". When items boost each other (Rabadon's × another AP item), the boost shows up in BOTH items' marginals, so interactions take one copy back out, and the line adds up to the total.

@@ -11,10 +11,12 @@ import { dummyPresets, type EnemyType } from "./data/dummy-presets.ts";
 import { items } from "./data/items.ts";
 import { modelledAbilities, playableChampions, type AbilityKey } from "./data/playable-champions.ts";
 import { stages, type StageName } from "./data/stages.ts";
+import type { SearchResult } from "./optimizer/messages.ts";
 import { maxItemCount } from "./optimizer/setup.ts";
 import { allowedRRanks } from "./stats/katarina-stats.ts";
 import { byId, escapeHtml, readNumber } from "./ui/html.ts";
 import { progressLabel } from "./ui/progress.ts";
+import { breakdownHtml, formatDamage, topBuildsHtml } from "./ui/results-view.ts";
 import * as searches from "./ui/searches.ts";
 import * as actions from "./ui/state.ts";
 import type { PageState } from "./ui/state.ts";
@@ -124,10 +126,14 @@ function renderKatarina(): void {
 
 // The item slots, the Optimize button, the progress bar and the damage total: everything
 // that comes from a search result.
+// Which of the top 5 is shown. It belongs to one result: a new result starts again at #1.
+let selectedBuild: { result: SearchResult | null; index: number } = { result: null, index: 0 };
+
 function renderResults(): void {
   const full = fullRequest();
   const shown = searches.shownResult(quickRequest(), full);
-  const best = shown?.result.builds[0];
+  if (shown?.result !== selectedBuild.result) selectedBuild = { result: shown?.result ?? null, index: 0 };
+  const best = shown?.result.builds[selectedBuild.index];
   const running = searches.searchStatus.running;
 
   // Slots: the best build's items, "?" where the quick result doesn't reach yet.
@@ -155,7 +161,7 @@ function renderResults(): void {
     byId("progress-text").textContent = progressLabel(running.fraction);
   }
 
-  // Damage total. The chart and breakdowns come in Step 7d.
+  // Damage total, the top 5 and the breakdowns of the selected build.
   const total = byId("damage-total");
   const note = byId("damage-note");
   if (full === null) {
@@ -165,11 +171,13 @@ function renderResults(): void {
     total.textContent = "…";
     note.textContent = "Working it out…";
   } else {
-    total.textContent = `${Math.round(best.damage).toLocaleString("en-US")} damage`;
+    total.textContent = `${formatDamage(best.damage)} damage`;
     note.textContent = shown?.complete
       ? "One full Death Lotus, every dagger hitting the dummy."
       : "Best first item + boots so far. Press Optimize to fill every slot.";
   }
+  byId("top-builds").innerHTML = shown ? topBuildsHtml(shown.result.builds, selectedBuild.index) : "";
+  byId("breakdown").innerHTML = best ? breakdownHtml(best) : "";
 
   const error = byId("search-error");
   error.hidden = searches.searchStatus.error === null;
@@ -255,6 +263,10 @@ document.addEventListener("click", (event) => {
     update((s) => actions.changeItemCount(s, -1));
   } else if (button.id === "reset-stats") {
     update(actions.clearTypedStats);
+  } else if (data.buildIndex) {
+    // A top-5 card: show that build. Nothing about the inputs changed, so only the results redraw.
+    selectedBuild.index = Number(data.buildIndex);
+    renderResults();
   } else if (button.id === "optimize") {
     const full = fullRequest();
     if (full) searches.optimize(full);

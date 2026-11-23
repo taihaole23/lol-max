@@ -86,12 +86,14 @@
           <p class="hint">Type a number to override it. <button id="reset-stats" type="button" class="link-button">Reset to calculated</button></p>
         </div>
 
-        <div class="panel">
+        <div class="panel results">
           <h2>Damage</h2>
-          <!-- The total is filled in by main.ts. The chart and breakdowns come in Step 7d. -->
+          <!-- Everything below is filled in by main.ts from the search result. -->
           <p id="damage-total" class="damage-total"></p>
           <p id="damage-note" class="hint"></p>
           <p id="search-error" class="warning" hidden></p>
+          <div id="top-builds"></div>
+          <div id="breakdown"></div>
         </div>
       </section>
     </main>

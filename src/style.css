@@ -9,6 +9,14 @@
   --accent: #b3122e; /* Katarina red */
   --accent-soft: #f6dde2;
   --typed: #fff3c4; /* a dummy stat the user typed in */
+  /* Chart colours: from a colour-blind-checked palette (validated for this panel colour, Step 7d).
+     Each colour always means the same thing, and is always next to a written label. */
+  --type-magic: #2a78d6;
+  --type-physical: #eb6834;
+  --type-true: #1baf7a;
+  --part-ability: #6250d6;
+  --part-items: #008300;
+  --bar: #2a78d6;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--text);
   background: var(--bg);
@@ -24,6 +32,12 @@
     --accent: #e0455f;
     --accent-soft: #3a1c23;
     --typed: #4a4020;
+    --type-magic: #3987e5;
+    --type-physical: #d95926;
+    --type-true: #199e70;
+    --part-ability: #9085e9;
+    --part-items: #0ca30c;
+    --bar: #3987e5;
   }
 }
 
@@ -86,7 +100,8 @@ input.typed { background: var(--typed); }
 .rank-box.filled { background: var(--accent); border-color: var(--accent); }
 
 /* The optimizer: Katarina, the dummy and the results side by side on wide screens */
-.optimizer { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+/* Two columns on wide screens (at least 420px each), one column on phones. */
+.optimizer { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
 
 .slot-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .slots { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -109,6 +124,39 @@ button.primary { background: var(--accent); border-color: var(--accent); color: 
 .progress-text { position: absolute; inset: 0; display: grid; place-items: center; font-size: 0.85rem; }
 
 .damage-total { font-size: 1.8rem; font-weight: 700; margin: 0 0 4px; }
+.muted { color: var(--muted); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+/* The results panel takes the whole width, under the two input panels. */
+.panel.results { grid-column: 1 / -1; }
+h3 { font-size: 0.95rem; margin: 0 0 8px; }
+
+/* Top 5 builds */
+.top-builds { list-style: none; padding: 0; margin: 12px 0 20px; display: grid; gap: 6px; }
+.build-card {
+  width: 100%; display: grid; grid-template-columns: 2.5em 5em 1fr; gap: 8px;
+  text-align: left; align-items: baseline;
+}
+.build-rank { color: var(--muted); }
+.build-damage { font-weight: 700; font-variant-numeric: tabular-nums; }
+.build-items { font-size: 0.85rem; }
+
+/* Split bars (damage type, ability vs. items): parts separated by a 2px gap, rounded ends */
+.splits, .bar-tables { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 20px; }
+.split-bar { display: flex; gap: 2px; height: 14px; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+.segment { min-width: 2px; }
+.legend { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 0.9rem; }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+
+/* Bar tables (by source, what each item adds) */
+.bar-table table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.bar-table th, .bar-table td { padding: 4px 6px; border-bottom: 1px solid var(--border); }
+.bar-table thead th { font-weight: 600; color: var(--muted); font-size: 0.8rem; text-align: left; }
+.bar-table tbody th { font-weight: 400; text-align: left; }
+.bar-cell { width: 40%; }
+.bar { height: 10px; background: var(--bar); border-radius: 0 4px 4px 0; min-width: 0; }
+.number { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bar-table thead th.number { text-align: right; }
 
 .dummy-items { margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px; }
 .dummy-items select { padding: 4px; max-width: 100%; }
