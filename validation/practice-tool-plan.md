@@ -75,6 +75,31 @@ code changes later, the test uses the new numbers.
 **Most important:** tests 1-3. If those are off, something outside the items is adding damage (a rune,
 Katarina's passive...), and the other tests can't be trusted until we find it.
 
+## 4b. Round 2 (after round 1's results)
+
+Round 1: 12 of 16 matched. Off: 7 Bloodthirster (+22), 12 Liandry's (+10, about one extra burn tick),
+15 BotRK (+34), 16 Guinsoo's (+13). Round 2 narrows down test 7 and tries items together.
+
+Same setup as before. Raise the dummy's HP where the table says (Ctrl+Shift+T, +100 each).
+
+| # | Level | R rank | Items | Dummy HP / resist | Checks | Calculator says now | You measured |
+|---|---|---|---|---|---|---|---|
+| 7a | 6 | 1 | Bloodthirster | 3000 / 0 | Test 7 at low level | 632 | |
+| 7c | 11 | 2 | Death's Dance | 3000 / 0 | Is it Bloodthirster itself? | 815 | |
+| 7b | 16 | 3 | Bloodthirster | 3000 / 0 | Test 7 at high level | 1180 | |
+| 17 | 16 | 3 | Guinsoo's + BotRK | **6000** / 0 | Phantom Hits repeat BotRK | 3525 | |
+| 18 | 16 | 3 | Guinsoo's + BotRK + Terminus | **5000** / **50** | All three together | 3252 | |
+| 19 | 16 | 3 | Nashor's + Guinsoo's | **4000** / 0 | On-hit Katarina | 1841 | |
+| 20 | 16 | 3 | Liandry's + Riftmaker | **4000** / 0 | Two % boosts together | 1262 | |
+| 21 | 16 | 3 | Rabadon's + Luden's | **4000** / 0 | AP % on an item's ratio | 1665 | |
+
+**Also, one quick check (no ult needed):** at level 11 with only Bloodthirster, open the stats panel
+(**C**) and write down Katarina's **total AD** and **attack speed**. The calculator expects about
+**166 AD** and **0.816 attack speed**. If the game shows more of either, that's the test 7 gap.
+
+"Calculator says now" may change as round 1's mismatches get fixed; `npm test` always uses the current
+numbers, so your measurements stay valid.
+
 ## 5. After testing
 
 Send me the numbers (both tries per test), or put them in `tests/practice-tool-cases.ts`, in each case's

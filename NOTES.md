@@ -38,7 +38,11 @@ These notes are for anyone joining the project.
   - 7e (rules, sources, styling) is done: `src/ui/info-view.ts` (the "How it's calculated" rules and the filtered items), `src/data/sources.ts` (every source link, gathered from the data files). Every item passive now has a required `source` field. Checked in headless Chrome at desktop width and at 375 px (a phone): nothing sticks out sideways, no console errors. **Step 7 is done.**
 - Step 8 (Practice Tool validation) is in progress:
   - Done: the plan `validation/practice-tool-plan.md` (16 tests), the cases in `tests/practice-tool-cases.ts`, the test `tests/practice-tool.test.ts` (skips cases with no measurement yet), and the dummy's facts in `src/data/practice-tool.ts`.
-  - Waiting on: Eric's in-game measurements.
+  - Round 1 measured (Nov 23, 2026, patch 26.23, one ult each): **12 of 16 match** within 1%, most of them exactly (base damage at all 3 ranks, MR, Void Staff, AP ratio, Rabadon's, Nashor's at 25 / 30 / 35%, Luden's). Riftmaker + Warmog's is 0.5% low (passes).
+  - **Off:** 7 Bloodthirster +22, 12 Liandry's +10, 15 BotRK +34, 16 Guinsoo's +13. `npm test` fails on these 4 until they're explained; that's on purpose.
+    - Liandry's: +9.6 ≈ one more burn tick (each is ~9.2), so the burn probably ticks once right away. Matches Eric's feeling in game.
+    - 7, 15, 16 are the only tests with bonus AD. No single change (attack speed growth, the physical ratio, the ratio per attack speed, flat extra AD) fits all three, so they likely have separate causes. Round 2 (7a, 7b, 7c) narrows down test 7.
+  - Round 2 (tests 7a-7c and 17-21, items together) is in the plan, waiting on measurements.
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
