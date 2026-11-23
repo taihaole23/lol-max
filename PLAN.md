@@ -82,10 +82,14 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
 - **Checklist in NOTES.md:** every legendary item and boots option, each marked "modelled", "checked, irrelevant" or "not checked yet".
 
 **Step 6: Optimizer**
-- It runs every legal combination for the stage, including boots and tier-3 boots when those toggles are on, and keeps the top 5 builds by damage.
+- It keeps the top 5 builds by damage, including boots and tier-3 boots when those toggles are on.
+- **Changed in Step 6 (Eric approved):** the filter only removes 1 item (Frozen Heart), because almost every item gives HP and Riftmaker turns HP into AP. Full is ~680 million builds with boots (~4.5 hours), and Late ~1.3 million (~30 s).
+  - Early and Mid try every legal combination.
+  - Late and Full use a beam search: build one item at a time and keep the best 300 partial builds at each size.
+  - Slow test: Late's beam top 5 must equal the every-combination top 5, for each enemy type.
+  - Test: Full's top 5 must be the same with a beam of 300 and 1,000.
 - The filter from the decisions above runs first.
   - Early, Mid and Late: the filtered search should give the same top 5 as an unfiltered one.
-  - Full: there are about 75 million combinations before boots, so it only ever runs filtered.
 - The search runs in a **Web Worker**, which is a background thread in the browser, so the page doesn't freeze.
 - Tests:
   - Legality rules and ranking.

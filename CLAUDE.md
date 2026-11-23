@@ -13,7 +13,12 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   including on-hit / on-attack effects and item effects triggered during the channel.
   Effects that deal damage AFTER the channel ends (burns, DoTs) are counted only for the part inside the channel window. Show this rule on the site.
 - Overkill rule: the dummy never dies. It stays at 1 HP and the remaining hits still count in full. Show this rule on the site.
-- Optimizer: try every legal combination of items for the chosen game stage, return the **top 5 builds** ranked by damage.
+- Optimizer: return the **top 5 builds** ranked by damage for the chosen game stage.
+  - Early and Mid try every legal combination of items.
+  - Late and Full use a **beam search** (Eric, Step 6): every legal combination would take ~30 s (Late) and ~4.5 hours (Full).
+    - The beam builds one item at a time, keeping the best 300 partial builds at each size.
+    - A slow test checks that Late's beam top 5 equals the every-combination top 5 for each enemy type.
+    - A test checks that Full's top 5 is the same with a beam of 300 and of 1,000.
 - Each build shows these breakdowns:
   - By source: base, AP ratio, AD ratio, on-hit at the R rank's effectiveness, and each item passive.
   - Each item's marginal damage: damage with the item minus damage without it. The leftover is shown as an "item interactions" line.

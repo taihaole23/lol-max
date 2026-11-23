@@ -26,7 +26,10 @@ These notes are for anyone joining the project.
       - 5d-5b is done: Blackfire Torch (burn + 4% AP that adds to Rabadon's), Experimental Hexplate (closes the Swiftmarch move speed gap), Stormsurge. 10 items left "to model".
       - 5d-5c (fixes from the Death Lotus wiki page) is done: the Death Lotus bug now shrinks Liandry's, Blackfire's and Luden's damage, and Eclipse is modelled (it was "irrelevant").
     - 5d-6 stack-then-proc is done: Guinsoo's Seething Strike (attack speed + Phantom Hits), Kraken, Hullbreaker, Yun Tal, the Energized items (Rapid Firecannon, Statikk, Stormrazor, Voltaic), Dead Man's Plate. Heartsteel turned out irrelevant. **0 items left "to model": Step 5 is done.**
-- Next is Step 6, the optimizer.
+- Step 6 (optimizer) is split in two:
+  - 6a (the search) is done: `src/optimizer/` has the item pool and filter, the top-5 keeper, the every-build and beam searches, and `explainBuild` (breakdown + marginal damage + interactions).
+    - One-time check (Nov 23, 2026, patch 26.23): `npm run test:slow` passed. For all 3 enemy types, Late's beam top 5 matched trying all ~1.3 million builds, and Full's beam of 300 matched a beam of 1,000.
+  - Next is 6b: run the search in a Web Worker, with progress for a loading bar.
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
@@ -70,6 +73,7 @@ You need Node.js (v24 works). In a terminal inside this folder:
 | `npm run dev` | Starts the site on your computer. Open the link it prints. The page reloads when you save a file. |
 | `npm test` | Runs every test once and shows pass/fail. |
 | `npm run test:watch` | Re-runs the tests every time you save. |
+| `npm run test:slow` | The slow optimizer checks (~2 minutes): the beam search against trying every Late build, for each enemy type. Run it before each release and after changing item passives or the search. `npm test` skips these. |
 | `npm run update-items -- 16.23.1` | Downloads Riot's item data and saves the snapshot `src/data/items.<patch>.json`. The number is Data Dragon's version for our patch. Only needed when the patch changes. |
 | `npm run build` | Type-checks the code (`tsc`), then builds the real website into `dist/`. This is what Vercel runs. |
 
@@ -79,7 +83,7 @@ src/
   data/        game numbers, each with a source link and patch
   items/       one file per hand-coded item passive
   ...          formulas, simulation, optimizer, user interface
-  optimizer/   which builds are legal; the search itself comes in Step 6
+  optimizer/   item pool + filter, legal builds, the searches, the top 5 and each build's explanation
 scripts/       update-items.mjs: downloads item data from Data Dragon
 tests/         unit tests and the Practice Tool validation test
 validation/    Practice Tool test plan and measurements
@@ -87,6 +91,15 @@ validation/    Practice Tool test plan and measurements
 
 ## Decisions (chose X over Y because...)
 - **Top 5 builds instead of top 10:** easier to read, and shows enough options.
+- **Beam search for Late and Full, every build for Early and Mid (Eric, Step 6):**
+  - Measured: one simulation takes ~0.024 ms, and the item filter only removes Frozen Heart. Almost every item gives HP, and Riftmaker turns HP into AP, so nearly everything must stay. PLAN.md had guessed the filter would cut Full to ~75 million builds.
+  - Trying every build: Late ~1.3 million (~30 s) and Full ~680 million (~4.5 hours). Too slow for a website.
+  - A **beam search** builds one item at a time and keeps only the best 300 partial builds at each size: ~2 s for Late, ~3 s for Full. It isn't guaranteed to find the true best, so two slow tests check it (see "How to run").
+  - Chose 300 because a beam of 1,000 gave the same answers at about 4× the time.
+- **Ties rank the cheaper build first, then by name:** so the top 5 never depends on the order the search happened to try builds.
+- **Builds are always listed in the same item order** (legendaries in pool order, then boots): BotRK reads current HP, so item order can change the damage by a hair. With one order, both searches give the exact same number for the same build.
+- **"Item interactions" can be negative:** each item's marginal damage is "with the build minus without that item". When items boost each other (Rabadon's × another AP item), the boost shows up in BOTH items' marginals, so interactions take one copy back out, and the line adds up to the total.
+- **Slow tests use `npm_lifecycle_event`:** npm sets it to the running script's name, so `search.slow.test.ts` runs only under `npm run test:slow`. Chose this over a separate config file or an environment variable, because setting a variable differs between Windows and Mac/Linux.
 - **Legendary items only, not components:** keeps the number of combinations and hand-coded passives manageable.
 - **Boots in their own slot, controlled by a toggle:** players think "my 3rd item + boots".
   - A build never has more than 6 slots, as in the game, so Full with boots means 5 items + boots.

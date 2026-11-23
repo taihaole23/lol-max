@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:slow": "vitest run tests/optimizer/search.slow.test.ts",
     "update-items": "node scripts/update-items.mjs"
   },
   "devDependencies": {
