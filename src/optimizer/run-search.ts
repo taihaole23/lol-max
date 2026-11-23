@@ -1,6 +1,5 @@
 // The whole job the worker does, as a plain function: search, then explain each of the top 5.
 // It's kept out of worker.ts so the tests can call it (Vitest runs in Node, which has no Web Workers).
-import { stages } from "../data/stages.ts";
 import { explainBuild } from "./explain.ts";
 import { legendaryPool } from "./item-pool.ts";
 import type { SearchRequest, SearchResult } from "./messages.ts";
@@ -21,9 +20,11 @@ export function runSearch(request: SearchRequest, onProgress: (fraction: number)
     },
   });
 
-  const level = stages[request.stage].level;
   return {
-    builds: builds.map((build) => ({ ...build, explanation: explainBuild(level, build.items, request.target) })),
+    builds: builds.map((build) => ({
+      ...build,
+      explanation: explainBuild(request.level, build.items, request.target, request.rRank),
+    })),
     removedByFilter: legendaryPool().removedByFilter,
   };
 }

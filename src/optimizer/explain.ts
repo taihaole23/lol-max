@@ -1,5 +1,6 @@
 // Everything the site shows for one build: the breakdowns, and how much each item adds.
 import type { Item } from "../data/items.ts";
+import type { RRank } from "../formulas/death-lotus.ts";
 import { breakdown, type Breakdown } from "../simulation/breakdown.ts";
 import { simulateBuild } from "../simulation/simulate-build.ts";
 import type { Target } from "../simulation/simulate.ts";
@@ -15,10 +16,11 @@ export type BuildExplanation = {
   interactions: number;
 };
 
-export function explainBuild(level: number, items: Item[], target: Target): BuildExplanation {
-  const totalOf = (build: Item[]) => breakdown(simulateBuild(level, build, target).events).total;
+// `rank` defaults to the highest rank the level allows, like simulateBuild.
+export function explainBuild(level: number, items: Item[], target: Target, rank?: RRank): BuildExplanation {
+  const totalOf = (build: Item[]) => breakdown(simulateBuild(level, build, target, rank).events).total;
 
-  const result = breakdown(simulateBuild(level, items, target).events);
+  const result = breakdown(simulateBuild(level, items, target, rank).events);
   const noItemsDamage = totalOf([]);
   const marginal = items.map((item) => ({
     item,

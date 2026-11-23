@@ -12,17 +12,17 @@ import { combinePercent } from "./combine.ts";
 import { listStat, sumStat } from "./sum-items.ts";
 
 // Everything the simulation needs (the simulation calls this shape `Attacker`).
-// `stageLevel` is the stage's level; Rod of Ages may raise the level her stats use.
+// `chosenLevel` is the level the user picked; Rod of Ages may raise the level her stats use.
 export type KatarinaStats = Attacker;
 
-export function katarinaStats(stageLevel: number, items: Item[]): KatarinaStats {
+export function katarinaStats(chosenLevel: number, items: Item[]): KatarinaStats {
   const base = katarina.baseStats;
   const passives = passivesFor(items);
 
   // Rod of Ages can add a level, but never past the level cap.
   let extraLevels = 0;
   for (const passive of passives) extraLevels += passive.extraLevels ?? 0;
-  const level = Math.min(stageLevel + extraLevels, championLevels.max);
+  const level = Math.min(chosenLevel + extraLevels, championLevels.max);
 
   const baseHealth = statAtLevel(base.health.base, base.health.perLevel, level);
   const baseAd = statAtLevel(base.attackDamage.base, base.attackDamage.perLevel, level);
@@ -75,4 +75,11 @@ export function rRankAtLevel(level: number): RRank {
   if (level >= rank2) return 2;
   if (level >= rank1) return 1;
   throw new Error(`Katarina has no R before level ${rank1} (got level ${level}).`);
+}
+
+// Stops impossible game states, like rank 3 R at level 6. The site disables those rank boxes,
+// so this only fires if some code has a bug.
+export function checkRRank(level: number, rank: RRank): void {
+  const highest = rRankAtLevel(level);
+  if (rank > highest) throw new Error(`R rank ${rank} needs a higher level (level ${level} allows up to rank ${highest}).`);
 }

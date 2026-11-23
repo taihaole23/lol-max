@@ -1,45 +1,45 @@
 // The optimizer: finds the builds that make one Death Lotus deal the most damage.
 //
 // Two ways to search (see NOTES.md, "Decisions"):
-// - every build: tries every legal combination. Used for Early and Mid.
+// - every build: tries every legal combination. Used for 1 or 2 items (Early and Mid).
 // - beam search: builds one item at a time and only keeps the best `beamWidth` partial builds
-//   at each size. Much faster, but not guaranteed to find the true best. Used for Late and Full,
-//   where trying every build would take ~30 s and ~4.5 hours. Tests check it against the real answer.
+//   at each size. Much faster, but not guaranteed to find the true best. Used for 3+ items,
+//   where trying every build would take ~30 s (3 items) to ~4.5 hours (5 + boots).
+//   Tests check it against the real answer.
 import type { Item } from "../data/items.ts";
-import { stages, type StageName } from "../data/stages.ts";
 import { simulateBuild } from "../simulation/simulate-build.ts";
 import type { Target } from "../simulation/simulate.ts";
 import { canBeBuiltTogether } from "./legal.ts";
 import { bootsPool, legendaryPool, type BootsSetting } from "./item-pool.ts";
+import { checkSetup, type KatarinaSetup } from "./setup.ts";
 import { keepTop, type FoundBuild } from "./top-builds.ts";
 
 export const searchSettings = {
   topBuilds: 5,
   beamWidth: 300,
-  // Stages where trying every build is fast enough.
-  everyBuildStages: ["early", "mid"] as StageName[],
+  // Up to this many legendary items, trying every build is fast enough (2 items: under 1 s).
+  everyBuildMaxItems: 2,
 };
 
-export type SearchInput = {
-  stage: StageName;
+export type SearchInput = KatarinaSetup & {
   target: Target;
   boots: BootsSetting;
   useFilter?: boolean; // default true; false only in the filter test
   onProgress?: (fraction: number) => void; // 0 to 1, for a loading bar
 };
 
-// Picks the right search for the stage.
+// Picks the right search for the number of items.
 export function findTopBuilds(input: SearchInput): FoundBuild[] {
-  if (searchSettings.everyBuildStages.includes(input.stage)) return everyBuildSearch(input);
+  if (input.itemCount <= searchSettings.everyBuildMaxItems) return everyBuildSearch(input);
   return beamSearch(input, searchSettings.beamWidth);
 }
 
 // Everything both searches share: the items, the legality table and how to score a build.
 function prepare(input: SearchInput) {
+  checkSetup(input, input.boots);
   const legendaries = legendaryPool(input.useFilter ?? true).legendaries;
   const boots = bootsPool(input.boots);
-  const stage = stages[input.stage];
-  const itemCount = input.boots === "off" ? stage.itemsWithoutBoots : stage.itemsWithBoots;
+  const itemCount = input.itemCount;
 
   // legal[i][j]: can legendaries i and j be in one build? Worked out once, not millions of times.
   const legal = legendaries.map((a) => legendaries.map((b) => canBeBuiltTogether(a.name, b.name)));
@@ -52,7 +52,7 @@ function prepare(input: SearchInput) {
     const sorted = [...indices].sort((a, b) => a - b);
     const items = sorted.map((i) => legendaries[i]);
     if (bootsItem) items.push(bootsItem);
-    const events = simulateBuild(stage.level, items, input.target).events;
+    const events = simulateBuild(input.level, items, input.target, input.rRank).events;
     let damage = 0;
     for (const event of events) damage += event.amount;
     let gold = 0;
@@ -124,5 +124,5 @@ export function beamSearch(input: SearchInput, beamWidth: number): FoundBuild[] 
     if (size === itemCount) return best;
     beam = best.map((build) => partialOf.get(build)!);
   }
-  return []; // only reached when the stage has 0 items
+  return []; // never reached: checkSetup makes sure itemCount is at least 1
 }

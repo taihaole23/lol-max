@@ -96,7 +96,15 @@ Eric is learning, so we go one small step at a time. Each step starts with a pla
   - **Filter test:** Early, Mid and Late, each run filtered and unfiltered, must give an identical top 5. If the Late version is slow, it gets marked as a slow test that you run before each release.
 
 **Step 7: User interface (plain HTML/TS)**
-- Controls: stage, enemy type, "Use recommended items" checkbox with a dummy item picker when it's off, editable HP/armor/MR, boots toggle, mid quest toggle.
+- **Reshaped by Eric during Step 7 planning** (details in NOTES.md, "Decisions"). Split into:
+  - 7a: the engine takes level / R rank / item count instead of a stage name. A stage is a preset.
+  - 7b: page layout.
+  - 7c: quick search on every change + Optimize button + progress bar.
+  - 7d: chart and breakdowns.
+  - 7e: rules, sources, CSS.
+- Page flow: champion picker (only Katarina) → her 4 ability cards, always on screen, with rank boxes under each (only R works) → Katarina's item slots (+/− to add or remove slots), the dummy panel and the damage chart.
+  - Every input change instantly shows the best first item + boots. The other slots show "?" and an Optimize button.
+- Controls: stage presets, Katarina's level, R rank (only legal ranks for the level), item slots +/−, enemy type, dummy level, "Use recommended items" checkbox with a dummy item picker when it's off (legendaries + one optional boots), editable HP/armor/MR, boots toggle, mid quest toggle.
 - Progress bar while the search runs (from `startSearch`), with an easter egg (Eric chose option A): the bar shows the percentage, except between about 40% and 60%, where the text in the middle of the bar changes to "getting advice from thebausffs...".
 - Results: the top 5 builds, each with:
   - the source breakdown (base, AP ratio, AD ratio, on-hit, item passives)

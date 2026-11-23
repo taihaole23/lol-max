@@ -33,6 +33,10 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   - A toggle turns boots on or off. When on, the optimizer chooses tier-2 boots in their own slot. A build never has more than 6 slots.
   - A "mid quest completed" toggle, which needs boots on, switches the choice to tier-3 boots.
   - The extra boots slot from the bot-lane role quest is ignored.
+- Every input is editable (Eric, Step 7). A stage is a preset that fills in Katarina's level, R rank and item count, and the dummy's level and items.
+  - R rank must be legal for the level (6-10: rank 1, 11-15: up to 2, 16+: up to 3).
+  - Item slots: 1 to 6 legendaries with boots off, 1 to 5 with boots on.
+- The page shows a champion picker (only Katarina) and her 4 abilities with rank boxes. Only R works in version 1; Q, W and E say "coming soon". This is a shell for later, not a scope change.
 - Preset game stages:
 
   | Stage | Level | Items with boots on | Items with boots off |
@@ -42,7 +46,7 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   | Late | 16 | 3 + boots | 3 |
   | Full | 18 | 5 + boots | 6 |
 
-- Target dummy = a champion + the stage's level + a list of items.
+- Target dummy = a champion + a level (starts at the stage's level, editable) + a list of items.
   - Its HP / armor / MR = the champion's stats at that level + the items' stats added up.
   - The user picks an enemy type, and the site names the champion: squishy = Nami, bruiser = Illaoi, tank = Sion. The code must make adding more champions a data-only change.
   - Only the champion's base stats and the items' plain HP / armor / MR are used. Champion abilities and item passives are ignored.

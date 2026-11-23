@@ -33,6 +33,12 @@ export const championLevels = {
   max: 18,
 };
 
+// A champion has 6 item slots (boots take one of them). The trinket slot doesn't count.
+export const inventory = {
+  source: { url: WIKI + "Item", patch: PATCH },
+  slots: 6,
+};
+
 // Critical strike chance can't go above 100%.
 export const criticalStrike = {
   source: { url: WIKI + "Critical_strike", patch: PATCH },

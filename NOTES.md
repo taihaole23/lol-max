@@ -30,7 +30,12 @@ These notes are for anyone joining the project.
   - 6a (the search) is done: `src/optimizer/` has the item pool and filter, the top-5 keeper, the every-build and beam searches, and `explainBuild` (breakdown + marginal damage + interactions).
     - One-time check (Nov 23, 2026, patch 26.23): `npm run test:slow` passed. For all 3 enemy types, Late's beam top 5 matched trying all ~1.3 million builds, and Full's beam of 300 matched a beam of 1,000 and, in a second run, a beam of 5,000 (~40 s each). The slow test now uses 5,000.
   - 6b (Web Worker) is done: `worker.ts` runs `runSearch` (search + explain the top 5) in its own thread. The page will call `startSearch`, which returns a Promise and reports progress. `npm run build` bundles the worker as its own file. It gets its first real browser test in Step 7.
-- Next is Step 7, the user interface.
+- Step 7 (user interface) is split into 5 parts (Eric reshaped the page in planning, see "Decisions"):
+  - 7a (engine: stage becomes a preset) is done: the search takes `level`, `rRank` and `itemCount` (`src/optimizer/setup.ts`) instead of a stage name. `stagePreset()` fills them in from a stage. Impossible setups (rank 3 at level 6, 7 slots) throw.
+  - 7b: page layout (champion and ability pickers with rank boxes, stage presets, level, item slots with +/−, dummy panel).
+  - 7c: the quick search on every input change (best 1 item + boots), the Optimize button and the progress bar.
+  - 7d: the damage chart, the four breakdowns and the other 4 builds.
+  - 7e: rules, filtered items, sources and patch, CSS.
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
@@ -84,7 +89,8 @@ src/
   data/        game numbers, each with a source link and patch
   items/       one file per hand-coded item passive
   ...          formulas, simulation, optimizer, user interface
-  optimizer/   item pool + filter, legal builds, the searches, the top 5 and each build's explanation
+  optimizer/   item pool + filter, legal builds, Katarina's setup (level / R rank / item count) and stage presets,
+               the searches, the top 5 and each build's explanation
 scripts/       update-items.mjs: downloads item data from Data Dragon
 tests/         unit tests and the Practice Tool validation test
 validation/    Practice Tool test plan and measurements
@@ -97,6 +103,15 @@ validation/    Practice Tool test plan and measurements
   - Trying every build: Late ~1.3 million (~30 s) and Full ~680 million (~4.5 hours). Too slow for a website.
   - A **beam search** builds one item at a time and keeps only the best 300 partial builds at each size: ~2 s for Late, ~3 s for Full. It isn't guaranteed to find the true best, so two slow tests check it (see "How to run").
   - Chose 300 because beams of 1,000 and 5,000 gave the same answers, at about 4× and 12× the time.
+- **Stages are presets, and every input is editable (Eric, Step 7):** a stage button fills in Katarina's level, R rank and item count, and the dummy's level and items. The user can change each one. The site is meant to be a sandbox; the presets just save time.
+  - R rank must be legal for the level (rank 2 needs level 11). Chose "accurate" over "allow anything" because the site's value is that the numbers are real. Basic ability rank rules are ignored for now.
+  - Item slots have +/− buttons: 1 to 6 legendaries with boots off, 1 to 5 with boots on (6 slots in total, `inventory.slots` in `game-rules.ts`).
+  - The search picks its method from the item count, not the stage: up to 2 items tries every build, 3 or more uses the beam. Same split as before for the presets.
+  - Typed-in dummy stats may go below the preset (a squishier mid-game Nami is fine). Typed armor / MR below the champion's base: base becomes the typed number and bonus becomes 0. Otherwise bonus = typed − base (same rule as HP).
+  - The dummy has its own level box, which starts at the stage's level.
+  - The dummy's custom items: legendaries plus one optional boots, like the recommended lists.
+- **The page as a shell for later champions (Eric, Step 7):** a champion picker (only Katarina) and her 4 ability cards are always on screen, so switching to another ability later is one click. Only R works in version 1; Q, W and E show "coming soon". The math is still Katarina R only.
+- **A quick search on every change, Optimize for the rest (Eric, Step 7):** the best 1 item + boots takes ~15 ms, so it reruns whenever an input changes. Filling every slot takes up to ~3 s, so it waits for the Optimize button. A button instead of auto-running everything, because typing "120" into a box would start 3 searches.
 - **Ties rank the cheaper build first, then by name:** so the top 5 never depends on the order the search happened to try builds.
 - **Builds are always listed in the same item order** (legendaries in pool order, then boots): BotRK reads current HP, so item order can change the damage by a hair. With one order, both searches give the exact same number for the same build.
 - **"Item interactions" can be negative:** each item's marginal damage is "with the build minus without that item". When items boost each other (Rabadon's × another AP item), the boost shows up in BOTH items' marginals, so interactions take one copy back out, and the line adds up to the total.
@@ -163,7 +178,7 @@ validation/    Practice Tool test plan and measurements
 - **Shadowflame checks HP per piece of damage:** R's base and AP ratio pieces of one dagger are one hit in the game, so if the base piece crosses 40%, the AP ratio piece gets the bonus a moment early. That's at most one dagger's AP part per ult, so we accept it.
 - **"Same time" = "same frame" = "same hit":** a dagger's magic damage is stored as 2 pieces (base, AP ratio) for the breakdown, but it's one hit, so stack rules check the time to add only 1 stack per dagger.
 - **The 5 Spellblade items share one helper (`src/items/spellblade.ts`)** for "first dagger only, × R's effectiveness"; each item file only says its own damage formula.
-- **Rod of Ages' extra level raises Katarina's stats but not R's rank:** R rank comes from the stage, and 7 / 12 / 17 give the same rank as 6 / 11 / 16 anyway.
+- **Rod of Ages' extra level raises Katarina's stats but not R's rank:** R rank is its own input (Step 7a), checked against her real level.
 - **Four checklist statuses instead of three:** "to model" was added for passives that matter but aren't coded yet, so "not checked yet" only means nobody has read the item.
 - **The item filter only removes items whose stats nothing reads:**
   - It's safe because Riftmaker turns HP into AP, so items like Warmog's still count.
@@ -199,7 +214,7 @@ validation/    Practice Tool test plan and measurements
 - **Item base stats come from Data Dragon, not Meraki:** Meraki's item data disagreed with Riot's current data on 12 legendary stats (e.g. Black Cleaver 40 vs 45 AD). Data Dragon is Riot's own data for the exact patch. A test compares 6 items with the wiki (all matched on 26.23), each chosen to catch a different Data Dragon problem.
 
 - **Adaptive Force isn't handled:** no item Katarina can buy has it on 26.23 (only components and other modes). A test fails if a future patch adds it, and then we add the AD-or-AP rule.
-- **R rank comes from the stage's level** (wiki: R is ranked up at 6 / 11 / 16): Early = rank 1, Mid = rank 2, Late and Full = rank 3.
+- **R rank follows the game's level rule** (wiki: R is ranked up at 6 / 11 / 16): levels 6-10 allow rank 1 only, 11-15 up to rank 2, 16+ up to rank 3. Stage presets pick the highest rank (Early = 1, Mid = 2, Late and Full = 3); the user can pick a lower one.
 - **Stat-changing passives (Rabadon's...) run after the plain stats are added up,** in one marked spot in `katarina-stats.ts` (done in 5d-1).
 - **Warmog's Vitality only counts items' plain HP stats,** not HP from item passives like Rod of Ages' stacks (wiki note on Warmog's page).
 - **Adaptive force:** 1 point = 0.6 bonus AD or 1 AP, whichever of bonus AD and AP is higher. On a tie, the champion's "adaptive type" decides (Katarina's is magic → AP).
