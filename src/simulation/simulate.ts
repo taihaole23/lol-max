@@ -5,7 +5,7 @@
 // Anything that would happen after the channel ends is thrown away (the channel window rule).
 import { katarina } from "../data/katarina.ts";
 import { daggerPhysicalDamage, type RRank } from "../formulas/death-lotus.ts";
-import { damageMultiplier, effectiveResist, type ResistShred } from "../formulas/resistance.ts";
+import { addShred, damageMultiplier, effectiveResist, type ResistShred } from "../formulas/resistance.ts";
 import { hpAfterHit } from "./hp.ts";
 
 const r = katarina.deathLotus;
@@ -56,6 +56,20 @@ export type EffectContext = {
   applyOnHitEffects: () => void;
 };
 
+// What an item effect is told about a piece of damage (before its amount is known).
+export type DamageInfo = {
+  type: DamageType;
+  fromItem: boolean; // false = R's own damage (ability damage)
+};
+
+// Shred an item gives right now, on top of Katarina's own penetration.
+// Debuffs on the dummy (Black Cleaver's armor reduction) go here too: with one
+// target, it makes no difference whose side they're counted on.
+export type ItemShred = {
+  armor?: Partial<ResistShred>;
+  magic?: Partial<ResistShred>;
+};
+
 // An item's hand-coded passive. It may keep its own stacks, so create a new
 // one for every simulation.
 export type ItemEffect = {
@@ -63,6 +77,11 @@ export type ItemEffect = {
   // Runs every time on-hit effects are applied: once per dagger, plus any extra
   // times an item causes (Dusk and Dawn).
   onHit?: (context: EffectContext) => void;
+  // Run just before / just after any piece of damage lands (R's or an item's).
+  beforeDamage?: (context: EffectContext, damage: DamageInfo) => void;
+  afterDamage?: (context: EffectContext, damage: DamageInfo) => void;
+  // The shred this item gives for damage landing at `time`. Asked every time damage is calculated.
+  shred?: (time: number) => ItemShred;
 };
 
 export type SimulationInput = {
@@ -86,18 +105,39 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
   const events: DamageEvent[] = [];
   const todo: ToDo[] = [];
 
-  function multiplierFor(type: DamageType): number {
+  // Katarina's own shred plus what every item gives at this moment.
+  function shredAt(time: number, resist: "armor" | "magic"): ResistShred {
+    let shred = resist === "armor" ? attacker.armorShred : attacker.magicShred;
+    for (const item of input.items) {
+      const extra = item.shred?.(time)[resist];
+      if (extra) shred = addShred(shred, extra);
+    }
+    return shred;
+  }
+
+  function multiplierFor(type: DamageType, time: number): number {
     if (type === "true") return 1;
     if (type === "physical") {
-      return damageMultiplier(effectiveResist(target.baseArmor, target.bonusArmor, attacker.armorShred));
+      return damageMultiplier(effectiveResist(target.baseArmor, target.bonusArmor, shredAt(time, "armor")));
     }
-    return damageMultiplier(effectiveResist(target.baseMagicResist, target.bonusMagicResist, attacker.magicShred));
+    return damageMultiplier(effectiveResist(target.baseMagicResist, target.bonusMagicResist, shredAt(time, "magic")));
   }
 
   function dealDamage(time: number, raw: number, type: DamageType, source: string, fromItem: boolean): void {
-    const amount = raw * multiplierFor(type);
+    // 0 damage (e.g. R's AD part with no bonus AD) isn't really dealt, so it can't add stacks.
+    const info: DamageInfo = { type, fromItem };
+    const dealt = raw > 0;
+    if (dealt) {
+      for (const item of input.items) item.beforeDamage?.(contextAt(time, item), info);
+    }
+
+    const amount = raw * multiplierFor(type, time);
     events.push({ time, amount, type, source, fromItem });
     target.hp = hpAfterHit(target.hp, amount);
+
+    if (dealt) {
+      for (const item of input.items) item.afterDamage?.(contextAt(time, item), info);
+    }
   }
 
   function contextAt(time: number, item: ItemEffect): EffectContext {

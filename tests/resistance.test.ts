@@ -1,7 +1,16 @@
 // Tests for armor/MR. Known answers are the wiki's own examples
 // (Armor, Armor penetration and Magic penetration pages).
 import { test, expect } from "vitest";
-import { damageMultiplier, effectiveResist, noShred } from "../src/formulas/resistance.ts";
+import { addShred, damageMultiplier, effectiveResist, noShred } from "../src/formulas/resistance.ts";
+
+test("addShred: flat amounts add, percentages multiply", () => {
+  const start = { ...noShred, flatReduction: 5, percentPenetration: 0.4, flatPenetration: 10 };
+  const total = addShred(start, { flatReduction: 10, percentPenetration: 0.3 });
+  expect(total.flatReduction).toBe(15);
+  expect(total.percentPenetration).toBeCloseTo(0.58); // keeps 0.6 × 0.7 = 0.42
+  expect(total.flatPenetration).toBe(10); // left alone
+  expect(total.percentReduction).toBe(0);
+});
 
 test("wiki: 1000 damage into 0 / 25 / 100 / 200 armor", () => {
   expect(1000 * damageMultiplier(0)).toBe(1000);

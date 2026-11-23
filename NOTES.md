@@ -19,7 +19,8 @@ These notes are for anyone joining the project.
   - 5d (item passives) is split by the kind of code each item needs:
     - 5d-1 stat passives is done: Rabadon's, Riftmaker HP → AP, Warmog's, Overlord's, Sterak's, Rod of Ages, Swiftmarch in `src/items/`, run by `katarina-stats.ts`. Dawncore turned out irrelevant.
     - 5d-2 plain on-hit + Spellblade is done: Nashor's, Wit's End, Guinsoo's 30 magic, Terminus Shadow, BotRK, Titanic Hydra and the 5 Spellblade items. `src/simulation/simulate-build.ts` runs a whole build (stats + effects + simulation). 31 items left "to model".
-    - Next is 5d-3 resist shred (Black Cleaver, Bloodletter's, Malignance, Terminus Juxtaposition)
+    - 5d-3 resist shred is done: Black Cleaver, Bloodletter's, Malignance (zone damage + −10 MR), Terminus Juxtaposition. 27 items left "to model".
+    - Next is 5d-4.
     - 5d-4 damage amps (Immortal Path, Abyssal Mask, Liandry's Suffering, Riftmaker Void Corruption, Lord Dominik's, Shadowflame, Spear of Shojin)
     - 5d-5 burns, auras and timed effects (Liandry's burn, Blackfire, Sunfire, Hollow Radiance, Unending Despair, Zeke's, Stormsurge, Bastionbreaker, Luden's, Hexplate, Eclipse)
     - 5d-6 stack-then-proc (Guinsoo's stacks, Kraken, Hullbreaker, Heartsteel, Rapid Firecannon, Statikk, Stormrazor, Voltaic, Dead Man's Plate, Yun Tal)
@@ -30,6 +31,10 @@ These notes are for anyone joining the project.
 - **Within one dagger, R's own damage lands before on-hit effects** (our assumption). Only matters for BotRK, which reads the dummy's current HP.
 - **Whether R's 25 / 30 / 35% effectiveness also shrinks Terminus's Juxtaposition stacks** (10% pen per Dark stack), or only on-hit *damage* (our assumption). Neither the wiki nor Eric knows.
   - That daggers *do* give Juxtaposition stacks is confirmed by Eric from playing. The wiki only says "basic attacks on-hit".
+  - **Whether the first Juxtaposition hit is Light or Dark.** We assume Light (Dark = 2nd, 4th, 6th hit), the safer guess.
+- **Malignance's tick timing.** We assume the first tick lands 0.25 s after the zone appears (12 ticks over 3 s = the wiki's "180 total"), so 10 ticks fall inside the channel. If the zone ticks right away, it's 11.
+- **Bloodletter's Curse stacks only from R's own magic damage,** not from items' on-hit magic damage (our assumption: on-hit damage is item damage, not ability damage).
+- **Black Cleaver: R's hit benefits from its own stack.** The wiki says so (listed as a bug) for non-basic damage. If it's been fixed, dagger N has N − 1 stacks instead of N.
 - **"Deal X% more damage" effects** (damage amplification): whether they apply after armor/MR, and whether two of them add or multiply. The wiki's page for this is gone, and its Damage page says it's out of date.
 - **Which on-hit / on-attack effects the daggers really trigger.** The wiki says daggers apply on-hit and on-attack effects, but not whether that includes stack-and-proc effects (Kraken Slayer, Hullbreaker, Heartsteel, Energized items, Dead Man's Plate, Yun Tal's Flurry).
   - **Eric, from playing:** daggers DO trigger Kraken Slayer's proc, Energized items (e.g. Statikk Shiv) and Guinsoo's Phantom hit. We model them that way, and the Practice Tool confirms it.
@@ -98,6 +103,13 @@ validation/    Practice Tool test plan and measurements
 - **Known gap: Swiftmarch reads move speed once, when R is cast.** Move speed gained during the ult (Hexplate, Cosmic Drive...) would add about 1 AP per 20 move speed. Revisit when Hexplate is coded in 5d-5.
 - **During-the-ult passives use one hook, `onHit`, called once per dagger (Step 5d-2):** renamed from `onDaggerHit`, because some items apply on-hit effects at other times too (Dusk and Dawn's repeat, later Guinsoo's Phantom hit). Those call `applyOnHitEffects()`, which runs every item's `onHit` once more.
 - **Each item makes a fresh effect for every simulation (`createEffect`):** Spellblade remembers "already used", and a leftover memory from the previous build would give wrong numbers. A test checks this.
+- **Resist shred from items is reported by each item (`shred(time)`), not written into Katarina's stats (Step 5d-3):**
+  - Each time damage is calculated, the simulation adds every item's shred to Katarina's own pen (`addShred`). Flat amounts add; percentages multiply, like two % pens.
+  - Chose this over letting items edit `attacker.armorShred` because two items could overwrite each other, and the simulation only copies the top layer of the attacker, so a change to the pen numbers one layer down would leak into the next build's simulation.
+  - Debuffs on the dummy (Black Cleaver's armor reduction) count the same way. With one target, it doesn't matter whose side they're on.
+  - `shred` gets the time of the damage, so "only counts after the hit" rules (Bloodletter's, Malignance, Terminus) compare times.
+- **Two more hooks, `beforeDamage` and `afterDamage` (Step 5d-3):** run around every piece of damage, R's or an item's. Black Cleaver needs "before" (R's hit benefits from its own stack); the rest use "after". 0-damage pieces (R's AD part with no bonus AD) don't run them, since no damage was really dealt.
+- **"Same time" = "same frame" = "same hit":** a dagger's magic damage is stored as 2 pieces (base, AP ratio) for the breakdown, but it's one hit, so stack rules check the time to add only 1 stack per dagger.
 - **The 5 Spellblade items share one helper (`src/items/spellblade.ts`)** for "first dagger only, × R's effectiveness"; each item file only says its own damage formula.
 - **Rod of Ages' extra level raises Katarina's stats but not R's rank:** R rank comes from the stage, and 7 / 12 / 17 give the same rank as 6 / 11 / 16 anyway.
 - **Four checklist statuses instead of three:** "to model" was added for passives that matter but aren't coded yet, so "not checked yet" only means nobody has read the item.
@@ -165,7 +177,10 @@ validation/    Practice Tool test plan and measurements
 None right now.
 
 ## Bugs (bug / cause / fix)
-None yet.
+- **Malignance test compared against the wrong "raw" damage (Step 5d-3, caught before commit).**
+  - Bug: the test said dagger 2 did 26.3 damage but expected 28.7.
+  - Cause: the test used a 0 MR dummy for "damage before MR". But Malignance's −10 MR took that dummy to −10 MR, and negative MR *raises* damage, so the "raw" numbers were 9% too high. The item was right; the test was wrong.
+  - Fix: Malignance's tests use a 100 MR dummy only and compare daggers with each other.
 
 ## Item checklist
 Every legendary and boots item in the snapshot, checked in Step 5c against the wiki (patch 26.23).
@@ -215,10 +230,10 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Bandlepipes | checked, irrelevant | Needs slows / immobilizes, gives move speed. |
 | Banshee's Veil | checked, irrelevant | Defensive. |
 | Bastionbreaker | to model | "Shaped Charge": the first ability damage instance deals bonus true damage (40 + 1.5 per lethality for melee), 20 s cooldown. |
-| Black Cleaver | to model | "Carve": physical damage gives armor reduction stacks (6% each, up to 30%). |
+| Black Cleaver | modelled | "Carve": physical damage gives a stack (−6% armor each, up to −30%), one per dagger. R's own hit benefits from its own stack (wiki). `src/items/black-cleaver.ts`. |
 | Blackfire Torch | to model | Burn on ability damage (only the part inside the channel counts) + 4% AP while the dummy burns. |
 | Blade of The Ruined King | modelled | On-hit 9% (melee) of the dummy's current HP, physical (1 HP after the overkill point). `src/items/blade-of-the-ruined-king.ts`. |
-| Bloodletter's Curse | to model | "Vile Decay": magic damage from an ability gives MR reduction stacks (up to 30%). |
+| Bloodletter's Curse | modelled | "Vile Decay": R's magic damage gives a stack (−7.5% MR each, up to −30%), one per dagger, counting from the next hit. `src/items/bloodletters-curse.ts`. |
 | Bloodthirster | checked, irrelevant | Shield. |
 | Chempunk Chainsword | checked, irrelevant | Grievous Wounds; the dummy doesn't heal. |
 | Cosmic Drive | checked, irrelevant | Move speed. |
@@ -259,7 +274,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Locket of the Iron Solari | checked, irrelevant | Active only. |
 | Lord Dominik's Regards | to model | "Giant Slayer": more damage the more max HP the dummy has than Katarina. |
 | Luden's Echo | to model | "Echo": ability damage fires bonus magic damage. Check: with only one enemy, how many of the 6 stacks hit it? |
-| Malignance | to model | "Hatefog": R damage makes a zone that deals magic damage and reduces MR. |
+| Malignance | modelled | "Hatefog": the first dagger makes a zone: (60 + 5% AP) / 4 magic damage every 0.25 s (10 ticks inside the channel) and −10 MR from dagger 2. "Scorn" (ultimate haste) is irrelevant. `src/items/malignance.ts`. |
 | Manamune | checked, irrelevant | AD from mana, but Katarina has no mana. Its AD stat counts. |
 | Maw of Malmortius | checked, irrelevant | Defensive. |
 | Mejai's Soulstealer | checked, irrelevant | Stacks come from kills, so 0 stacks. Its plain AP stat counts. |
@@ -297,7 +312,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Stridebreaker | checked, irrelevant | Cleave hits only other enemies; active doesn't count. |
 | Sundered Sky | checked, irrelevant | Empowers the next *basic attack*. |
 | Sunfire Aegis | to model | "Immolate" aura: magic damage every second near Katarina. |
-| Terminus | to model | "Shadow" (on-hit 30 + 10% bonus AD + 10% AP magic) is modelled in `src/items/terminus.ts`. Still to do in 5d-3: "Juxtaposition" pen stacks. Check: see "Unconfirmed". |
+| Terminus | modelled | "Shadow": on-hit 30 + 10% bonus AD + 10% AP magic. "Juxtaposition": Dark hits (2nd, 4th, 6th on-hit) give +10% armor and magic pen each, up to 30%. `src/items/terminus.ts`. Check: see "Unconfirmed". |
 | The Collector | checked, irrelevant | Execute below 5% HP; under our overkill rule the dummy never dies. Its lethality stat counts. |
 | Thornmail | checked, irrelevant | Reflects damage Katarina takes. Its HP stat counts (Riftmaker). |
 | Titanic Hydra | modelled | "Cleave": on-hit 1% (melee) of Katarina's max HP, physical. `src/items/titanic-hydra.ts`. |

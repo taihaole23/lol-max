@@ -3,12 +3,15 @@
 import type { Item } from "../data/items.ts";
 import type { ItemEffect } from "../simulation/simulate.ts";
 import type { ItemPassive } from "./types.ts";
+import { blackCleaver } from "./black-cleaver.ts";
 import { bladeOfTheRuinedKing } from "./blade-of-the-ruined-king.ts";
+import { bloodlettersCurse } from "./bloodletters-curse.ts";
 import { duskAndDawn } from "./dusk-and-dawn.ts";
 import { essenceReaver } from "./essence-reaver.ts";
 import { guinsoosRageblade } from "./guinsoos-rageblade.ts";
 import { icebornGauntlet } from "./iceborn-gauntlet.ts";
 import { lichBane } from "./lich-bane.ts";
+import { malignance } from "./malignance.ts";
 import { nashorsTooth } from "./nashors-tooth.ts";
 import { overlordsBloodmail } from "./overlords-bloodmail.ts";
 import { rabadonsDeathcap } from "./rabadons-deathcap.ts";
@@ -23,12 +26,15 @@ import { warmogsArmor } from "./warmogs-armor.ts";
 import { witsEnd } from "./wits-end.ts";
 
 export const itemPassives: readonly ItemPassive[] = [
+  blackCleaver,
   bladeOfTheRuinedKing,
+  bloodlettersCurse,
   duskAndDawn,
   essenceReaver,
   guinsoosRageblade,
   icebornGauntlet,
   lichBane,
+  malignance,
   nashorsTooth,
   overlordsBloodmail,
   rabadonsDeathcap,

@@ -1,6 +1,7 @@
 // How armor and magic resist (MR) reduce damage, and how penetration gets around them.
 // "Resist" below means armor or MR: the same rules apply to both.
 import { resistance } from "../data/game-rules.ts";
+import { combinePercent } from "../stats/combine.ts";
 
 // The fraction of damage that gets through. 100 resist → 0.5 (half the damage).
 export function damageMultiplier(resist: number): number {
@@ -30,6 +31,18 @@ export const noShred: ResistShred = {
   percentBonusPenetration: 0,
   flatPenetration: 0,
 };
+
+// Adds one more source of shred (e.g. Black Cleaver's stacks) to what's already there.
+// Flat amounts add up. Percentages multiply, like two % penetrations do (see combinePercent).
+export function addShred(shred: ResistShred, extra: Partial<ResistShred>): ResistShred {
+  return {
+    flatReduction: shred.flatReduction + (extra.flatReduction ?? 0),
+    percentReduction: combinePercent([shred.percentReduction, extra.percentReduction ?? 0]),
+    percentPenetration: combinePercent([shred.percentPenetration, extra.percentPenetration ?? 0]),
+    percentBonusPenetration: combinePercent([shred.percentBonusPenetration, extra.percentBonusPenetration ?? 0]),
+    flatPenetration: shred.flatPenetration + (extra.flatPenetration ?? 0),
+  };
+}
 
 // The resist the target counts as having when the damage lands.
 // baseResist = from the champion and levels, bonusResist = from items.
