@@ -14,11 +14,11 @@ test("addApPercent: % AP bonuses add (130 with Rabadon's → +4% → 134, not 13
   expect(attacker.apPercentBonus).toBeCloseTo(0.34);
 });
 
-test("burn: 10 + 1% AP every 0.5 s, 5 ticks, using the +4% AP", () => {
+test("burn: 10 + 1% AP every 0.5 s, 5 ticks, using the +4% AP, × 0.35 (the Death Lotus bug)", () => {
   const ap = katarinaStats(16, [getItem("Blackfire Torch")]).ap;
   const ticks = run(16, ["Blackfire Torch"]).events.filter((e) => e.source === "Blackfire Torch");
   expect(ticks.map((e) => e.time)).toEqual([0.5, 1, 1.5, 2, 2.5]);
-  for (const tick of ticks) expect(tick.amount).toBeCloseTo(10 + 0.01 * ap * 1.04);
+  for (const tick of ticks) expect(tick.amount).toBeCloseTo((10 + 0.01 * ap * 1.04) * 0.35);
 });
 
 test("+4% AP from dagger 2 on: dagger 1 starts the burn, so it doesn't get it", () => {

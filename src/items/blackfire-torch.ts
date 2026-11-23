@@ -6,6 +6,8 @@
 // "Blackfire": +4% AP while the target burns. The burn lasts 3 s and every dagger refreshes
 //   it, so once dagger 1 starts it, it never ends during the ult.
 //   The 4% ADDS to other % AP (Rabadon's 30% + 4% = 34%), per the wiki.
+// Death Lotus BUG (listed on the wiki, so it's how the game really plays): R's on-hit
+//   effectiveness (25 / 30 / 35%) also shrinks the burn, because a dagger started it.
 //
 // Dagger 1 starts the burn, so dagger 1 itself doesn't get the 4% ("same time = same hit",
 // see NOTES.md). The AP goes up right after dagger 1 finishes, so dagger 2 onward,
@@ -17,6 +19,7 @@ import type { ItemPassive } from "./types.ts";
 
 const data = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Blackfire_Torch", patch: PATCH },
+  bugSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: PATCH },
   burnDamagePerTick: 10,
   burnApRatioPerTick: 0.01,
   burnSecondsBetweenTicks: 0.5,
@@ -32,8 +35,10 @@ export const blackfireTorch: ItemPassive = {
       secondsBetweenTicks: data.burnSecondsBetweenTicks,
       durationSeconds: data.burnSeconds,
       triggeredBy: (damage) => !damage.fromItem, // ability damage = R's own damage
-      tick: (context) =>
-        context.dealDamage(data.burnDamagePerTick + data.burnApRatioPerTick * context.attacker.ap, "magic"),
+      tick: (context) => {
+        const damage = data.burnDamagePerTick + data.burnApRatioPerTick * context.attacker.ap;
+        context.dealDamage(damage * context.onHitEffectiveness, "magic");
+      },
     });
     let apIncreased = false;
 

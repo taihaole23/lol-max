@@ -23,6 +23,7 @@ export type DamageEvent = {
 
 // Katarina's stats that matter for R. Item effects may change these mid-ult.
 export type Attacker = {
+  level: number; // the level her stats use (after Rod of Ages' extra level). Kraken Slayer reads it.
   ap: number; // already includes every % AP bonus below
   // All % AP bonuses added together (Rabadon's 0.3 + Blackfire's 0.04 = 0.34). They ADD to
   // each other (wiki), so an item that adds one mid-ult needs to know the total so far.
@@ -86,8 +87,11 @@ export type ItemEffect = {
   name: string;
   // Runs once when R is cast (time 0), before the first dagger.
   onUltCast?: (context: EffectContext) => void;
+  // Runs once per dagger, like an attack being thrown ("on-attack" effects: Guinsoo's stacks,
+  // Yun Tal, Energize stacks). NOT run again by repeat on-hits (Phantom Hit, Dusk and Dawn).
+  onAttack?: (context: EffectContext) => void;
   // Runs every time on-hit effects are applied: once per dagger, plus any extra
-  // times an item causes (Dusk and Dawn).
+  // times an item causes (Dusk and Dawn, Guinsoo's Phantom Hit).
   onHit?: (context: EffectContext) => void;
   // Run just before / just after any piece of damage lands (R's or an item's).
   // `amount` = the damage dealt, after armor / MR and every multiplier (Stormsurge adds it up).
@@ -191,7 +195,12 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
     dealDamage(time, daggerPhysicalDamage(attacker.bonusAd, attacker.bonusAttackSpeed), "physical", "bonusAdRatio", false);
 
     // ASSUMPTION (to check in the Practice Tool): R's own damage lands first, then
-    // on-hit effects. Only matters for effects that read the dummy's HP (BotRK).
+    // on-attack effects, then on-hit effects. So an on-attack bonus (Guinsoo's attack speed)
+    // only helps the NEXT dagger's damage, and the dummy's HP has already dropped when
+    // on-hit effects read it (BotRK, Kraken Slayer).
+    for (const item of input.items) {
+      item.onAttack?.(contextAt(time, item));
+    }
     applyOnHitEffects(time);
   }
 

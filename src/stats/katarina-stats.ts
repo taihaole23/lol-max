@@ -28,6 +28,7 @@ export function katarinaStats(stageLevel: number, items: Item[]): KatarinaStats 
   const baseAd = statAtLevel(base.attackDamage.base, base.attackDamage.perLevel, level);
 
   const stats: KatarinaStats = {
+    level,
     ap: sumStat(items, "abilityPower"),
     apPercentBonus: 0, // item passives add to it; it's applied to `ap` at the very end
     flatMoveSpeed: base.moveSpeed + sumStat(items, "moveSpeed"),

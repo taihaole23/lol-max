@@ -9,13 +9,17 @@ import { blackCleaver } from "./black-cleaver.ts";
 import { blackfireTorch } from "./blackfire-torch.ts";
 import { bladeOfTheRuinedKing } from "./blade-of-the-ruined-king.ts";
 import { bloodlettersCurse } from "./bloodletters-curse.ts";
+import { deadMansPlate } from "./dead-mans-plate.ts";
 import { duskAndDawn } from "./dusk-and-dawn.ts";
+import { eclipse } from "./eclipse.ts";
 import { essenceReaver } from "./essence-reaver.ts";
 import { experimentalHexplate } from "./experimental-hexplate.ts";
 import { guinsoosRageblade } from "./guinsoos-rageblade.ts";
 import { hollowRadiance } from "./hollow-radiance.ts";
+import { hullbreaker } from "./hullbreaker.ts";
 import { icebornGauntlet } from "./iceborn-gauntlet.ts";
 import { immortalPath } from "./immortal-path.ts";
+import { krakenSlayer } from "./kraken-slayer.ts";
 import { liandrysTorment } from "./liandrys-torment.ts";
 import { lichBane } from "./lich-bane.ts";
 import { lordDominiksRegards } from "./lord-dominiks-regards.ts";
@@ -24,19 +28,24 @@ import { malignance } from "./malignance.ts";
 import { nashorsTooth } from "./nashors-tooth.ts";
 import { overlordsBloodmail } from "./overlords-bloodmail.ts";
 import { rabadonsDeathcap } from "./rabadons-deathcap.ts";
+import { rapidFirecannon } from "./rapid-firecannon.ts";
 import { riftmaker } from "./riftmaker.ts";
 import { rodOfAges } from "./rod-of-ages.ts";
 import { shadowflame } from "./shadowflame.ts";
 import { spearOfShojin } from "./spear-of-shojin.ts";
+import { statikkShiv } from "./statikk-shiv.ts";
 import { steraksGage } from "./steraks-gage.ts";
+import { stormrazor } from "./stormrazor.ts";
 import { stormsurge } from "./stormsurge.ts";
 import { sunfireAegis } from "./sunfire-aegis.ts";
 import { swiftmarch } from "./swiftmarch.ts";
 import { terminus } from "./terminus.ts";
 import { titanicHydra } from "./titanic-hydra.ts";
 import { trinityForce } from "./trinity-force.ts";
+import { voltaicCyclosword } from "./voltaic-cyclosword.ts";
 import { warmogsArmor } from "./warmogs-armor.ts";
 import { witsEnd } from "./wits-end.ts";
+import { yunTalWildarrows } from "./yun-tal-wildarrows.ts";
 import { zekesConvergence } from "./zekes-convergence.ts";
 
 export const itemPassives: readonly ItemPassive[] = [
@@ -46,13 +55,17 @@ export const itemPassives: readonly ItemPassive[] = [
   blackfireTorch,
   bladeOfTheRuinedKing,
   bloodlettersCurse,
+  deadMansPlate,
   duskAndDawn,
+  eclipse,
   essenceReaver,
   experimentalHexplate,
   guinsoosRageblade,
   hollowRadiance,
+  hullbreaker,
   icebornGauntlet,
   immortalPath,
+  krakenSlayer,
   liandrysTorment,
   lichBane,
   lordDominiksRegards,
@@ -61,19 +74,24 @@ export const itemPassives: readonly ItemPassive[] = [
   nashorsTooth,
   overlordsBloodmail,
   rabadonsDeathcap,
+  rapidFirecannon,
   riftmaker,
   rodOfAges,
   shadowflame,
   spearOfShojin,
+  statikkShiv,
   steraksGage,
+  stormrazor,
   stormsurge,
   sunfireAegis,
   swiftmarch,
   terminus,
   titanicHydra,
   trinityForce,
+  voltaicCyclosword,
   warmogsArmor,
   witsEnd,
+  yunTalWildarrows,
   zekesConvergence,
 ];
 

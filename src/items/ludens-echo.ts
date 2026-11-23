@@ -6,11 +6,15 @@
 // Stacks fill up on their own, so all 6 are ready at R cast (Eric's rule), and the first
 // dagger uses them: 75 + 5% AP at 0 s, then 5 × (15 + 1% AP) at 0.25, 0.5, ... 1.25 s.
 // ASSUMPTION: the stacks don't come back during the 2.5 s ult.
+// Death Lotus BUG (listed on the wiki, so it's how the game really plays): R's on-hit
+//   effectiveness (25 / 30 / 35%) also shrinks Luden's damage, because a dagger triggered it.
+//   We apply it to the leftover-stack hits too, since they come from the same trigger.
 import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Luden%27s_Echo", patch: PATCH },
+  bugSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: PATCH },
   stacks: 6,
   baseDamage: 75,
   apRatio: 0.05,
@@ -28,7 +32,7 @@ export const ludensEcho: ItemPassive = {
         if (used || damage.fromItem) return;
         used = true; // set first: the damage below runs afterDamage again
 
-        const fullHit = (ap: number) => data.baseDamage + data.apRatio * ap;
+        const fullHit = (ap: number) => (data.baseDamage + data.apRatio * ap) * context.onHitEffectiveness;
         context.dealDamage(fullHit(context.attacker.ap), "magic");
 
         const leftoverStacks = data.stacks - 1; // one enemy: no extra targets to fire at

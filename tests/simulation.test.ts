@@ -8,6 +8,7 @@ import { fullChannelRawDamage } from "../src/formulas/death-lotus.ts";
 import { noShred } from "../src/formulas/resistance.ts";
 
 const attacker: Attacker = {
+  level: 16,
   ap: 200,
   apPercentBonus: 0,
   flatMoveSpeed: 335,

@@ -24,7 +24,9 @@ These notes are for anyone joining the project.
     - 5d-5 burns, auras and timed effects is split in two:
       - 5d-5a is done: Liandry's burn, Sunfire, Hollow Radiance, Zeke's, Luden's, Bastionbreaker. Unending Despair and Eclipse turned out irrelevant. 13 items left "to model".
       - 5d-5b is done: Blackfire Torch (burn + 4% AP that adds to Rabadon's), Experimental Hexplate (closes the Swiftmarch move speed gap), Stormsurge. 10 items left "to model".
-    - Next is 5d-6 stack-then-proc (Guinsoo's stacks, Kraken, Hullbreaker, Heartsteel, Rapid Firecannon, Statikk, Stormrazor, Voltaic, Dead Man's Plate, Yun Tal)
+      - 5d-5c (fixes from the Death Lotus wiki page) is done: the Death Lotus bug now shrinks Liandry's, Blackfire's and Luden's damage, and Eclipse is modelled (it was "irrelevant").
+    - 5d-6 stack-then-proc is done: Guinsoo's Seething Strike (attack speed + Phantom Hits), Kraken, Hullbreaker, Yun Tal, the Energized items (Rapid Firecannon, Statikk, Stormrazor, Voltaic), Dead Man's Plate. Heartsteel turned out irrelevant. **0 items left "to model": Step 5 is done.**
+- Next is Step 6, the optimizer.
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
@@ -42,7 +44,15 @@ These notes are for anyone joining the project.
 - **Luden's Echo stacks don't come back during the ult,** so it fires once.
 - **Blackfire Torch's +4% AP starts right after dagger 1,** so dagger 1 itself doesn't get it (dagger 1 is what starts the burn).
 - **Stormsurge's 25% counts damage after armor / MR, from every source** (R and items). The strike uses Katarina's AP when it lands, not when it was triggered. In practice it only matters against a low-HP dummy, since 25% must be reached by 0.5 s.
-- **Eclipse never procs from R alone** (we mark it irrelevant): all daggers are one cast instance. Eric hasn't seen it proc either way.
+- **Eclipse procs on dagger 2** (8% of the dummy's max HP). The Death Lotus page says each dagger counts as a separate hit for Eclipse, though Eclipse's own text says "one stack per cast instance". Eric hasn't seen it proc either way.
+- **The Death Lotus bug** (wiki: R's on-hit effectiveness also shrinks Liandry's, Blackfire's and Luden's damage). We model it, including Luden's leftover-stack hits. Check that it's still in the game. The wiki also lists Hextech Alternator and runes (version 2).
+- **Order inside one dagger: R's damage → on-attack effects → on-hit effects.** So Guinsoo's and Yun Tal's attack speed only help the NEXT dagger.
+- **Guinsoo's Phantom Hits:** after daggers 7, 10, 13, at R's 25 / 30 / 35% (Eric doesn't know; old wiki text said 100%). They give Kraken and Hullbreaker stacks, but not Energize stacks.
+- **Kraken Slayer's missing-health bonus grows in a straight line** (the wiki's "0 to 75 by 5" might mean 5% steps).
+- **Hullbreaker procs on every 5th hit** (daggers 5, 10, 15). The wiki's "at maximum stacks, or 4 stacks" is unclear; it could be every 6th hit.
+- **Energized items proc once, on dagger 1:** each dagger gives 6 Energize, not Statikk's 15. Statikk's lightning is not shrunk by R's % (wiki), the others are.
+- **Voltaic Cyclosword fires before R's first damage, unshrunk.** We don't make it fire the OTHER Energized items early (simplification, see `voltaic-cyclosword.ts`).
+- **Daggers use up Dead Man's Plate's Momentum and trigger Yun Tal's Flurry,** like basic attacks.
 - **Spear of Shojin boosts only R's own damage,** not on-hit item damage from the daggers (our assumption; the wiki's "proc damage from your ability" is unclear about on-hit).
 - **Which on-hit / on-attack effects the daggers really trigger.** The wiki says daggers apply on-hit and on-attack effects, but not whether that includes stack-and-proc effects (Kraken Slayer, Hullbreaker, Heartsteel, Energized items, Dead Man's Plate, Yun Tal's Flurry).
   - **Eric, from playing:** daggers DO trigger Kraken Slayer's proc, Energized items (e.g. Statikk Shiv) and Guinsoo's Phantom hit. We model them that way, and the Practice Tool confirms it.
@@ -112,6 +122,11 @@ validation/    Practice Tool test plan and measurements
 - **% AP bonuses are added up in `apPercentBonus` and applied once, at the end (Step 5d-5b):** the wiki says Blackfire's +4% ADDS to Rabadon's 30% (× 1.34, not × 1.3 × 1.04). So Rabadon's no longer multiplies AP itself; it adds 0.3, and `katarinaStats` multiplies AP by (1 + apPercentBonus) last. Blackfire adds its 4% mid-ult with `addApPercent` (`src/stats/ap-percent.ts`), which takes the old % back out first. It's in its own file because putting it in `katarina-stats.ts` would make a circular import (katarina-stats → items → Blackfire → katarina-stats).
 - **Swiftmarch reads move speed from Katarina's stats (`flatMoveSpeed`, `percentMoveSpeed`), not from the item list (Step 5d-5b):** so passives can add move speed first. Experimental Hexplate's Overdrive starts on R cast (time 0, before any dagger) and lasts longer than the ult, so it's a plain stat passive in the "add" step, and Swiftmarch counts its +20%. This closed the old "known gap". Move speed gained *later* in the ult still wouldn't count, but no modelled item gives any.
 - **`afterDamage` also gets the damage amount (Step 5d-5b),** after armor / MR and every multiplier. Stormsurge adds it up. Stormsurge needs no "within 2.5 s" window code: the whole ult is 2.5 s, so all of its damage is inside the window.
+- **We model the Death Lotus bug (Eric, Step 5d-5c):** the wiki lists a bug where R's on-hit effectiveness also shrinks Liandry's, Blackfire's and Luden's damage. Chose to copy the game, bug included, over the "intended" numbers, because the site should match what players see, and the Practice Tool test will measure the real game.
+- **Heartsteel's stacks start at 0 when R is cast (Eric, Step 5d-6):** they build 1 per second near an enemy, which fits the "stacks earned by fighting start at 0" rule. So the 3rd stack comes at 3 s, after the ult, and Heartsteel is irrelevant.
+- **One more hook, `onAttack` (Step 5d-6):** runs once per dagger, between R's damage and on-hit effects. Repeat on-hits (Phantom Hit, Dusk and Dawn) only run `onHit`, as the wiki says Phantom Hits "do not interact with on-attack effects". Guinsoo's stacks, Yun Tal's Flurry and Energize stacks use it.
+- **Katarina's stats include her `level` (Step 5d-6):** Kraken Slayer's damage grows with level. It's the level after Rod of Ages' extra level.
+- **The Energized items share one helper (`src/items/energized.ts`):** each item keeps its own bar, starting full. They all fill and empty the same way, so 2 Energized items both proc on dagger 1, as in the game.
 - **"Right after this hit" = `schedule(0, ...)` (Step 5d-5b):** a 0-second delay runs after everything else already happening at that moment (the rest of the dagger, its on-hit effects). Blackfire uses it so dagger 1 doesn't get the AP it triggers.
 - **During-the-ult passives use one hook, `onHit`, called once per dagger (Step 5d-2):** renamed from `onDaggerHit`, because some items apply on-hit effects at other times too (Dusk and Dawn's repeat, later Guinsoo's Phantom hit). Those call `applyOnHitEffects()`, which runs every item's `onHit` once more.
 - **Each item makes a fresh effect for every simulation (`createEffect`):** Spellblade remembers "already used", and a leftover memory from the previous build would give wrong numbers. A test checks this.
@@ -205,6 +220,10 @@ None right now.
   - Bug: two comments showed "Ã—" instead of "×".
   - Cause: in 5d-2, removing a BOM (a hidden marker PowerShell adds at the start of files) read the file with the wrong text encoding, so "×" turned into two other characters. Only comments were affected.
   - Fix: put the "×" signs back, and searched every file for the same garbling (none left). Lesson: write files with the editor or node, not PowerShell.
+- **Liandry's, Blackfire's and Luden's damage about 3× too high; Eclipse wrongly "irrelevant" (found in Step 5d-6, fixed as 5d-5c).**
+  - Bug: those items were coded at full damage, and Eclipse was marked as never procing from R.
+  - Cause: we only read the item pages. The notes on R's own data page (`Template:Data_Katarina/Death_Lotus`) list a bug where R's on-hit effectiveness also shrinks those 3 items, and say each dagger counts as a separate hit for Eclipse.
+  - Fix: those 3 items now multiply by R's on-hit effectiveness, and Eclipse is modelled. Lesson: for every new effect, also read the ability's own data page notes.
 
 ## Item checklist
 Every legendary and boots item in the snapshot, checked in Step 5c against the wiki (patch 26.23).
@@ -255,7 +274,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Banshee's Veil | checked, irrelevant | Defensive. |
 | Bastionbreaker | modelled | "Shaped Charge": dagger 1 deals 40 + 1.5 per lethality bonus true damage (melee). "Sabotage" needs a takedown: irrelevant. `src/items/bastionbreaker.ts`. |
 | Black Cleaver | modelled | "Carve": physical damage gives a stack (−6% armor each, up to −30%), one per dagger. R's own hit benefits from its own stack (wiki). `src/items/black-cleaver.ts`. |
-| Blackfire Torch | modelled | "Baleful Blaze": R's damage starts a burn, 10 + 1% AP every 0.5 s, refreshed by every dagger (5 ticks inside the ult). "Blackfire": +4% AP while it burns (from dagger 2), added to Rabadon's 30%. `src/items/blackfire-torch.ts`. |
+| Blackfire Torch | modelled | "Baleful Blaze": R's damage starts a burn, 10 + 1% AP every 0.5 s, refreshed by every dagger (5 ticks inside the ult), shrunk by R's % (Death Lotus bug). "Blackfire": +4% AP while it burns (from dagger 2), added to Rabadon's 30%. `src/items/blackfire-torch.ts`. |
 | Blade of The Ruined King | modelled | On-hit 9% (melee) of the dummy's current HP, physical (1 HP after the overkill point). `src/items/blade-of-the-ruined-king.ts`. |
 | Bloodletter's Curse | modelled | "Vile Decay": R's magic damage gives a stack (−7.5% MR each, up to −30%), one per dagger, counting from the next hit. `src/items/bloodletters-curse.ts`. |
 | Bloodthirster | checked, irrelevant | Shield. |
@@ -263,11 +282,11 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Cosmic Drive | checked, irrelevant | Move speed. |
 | Cryptbloom | checked, irrelevant | Needs takedowns. Its pen stat counts. |
 | Dawncore | checked, irrelevant | AP per 100% base mana regen, but manaless champions "do not use nor benefit from mana or mana regeneration" (wiki: Manaless). Its plain AP counts. |
-| Dead Man's Plate | to model | Momentum is full at R cast (from walking). Check: do daggers consume it like a basic attack? |
+| Dead Man's Plate | modelled | Momentum full at R cast, used by dagger 1: 40 + 100% base AD physical on-hit, × R's %. Katarina doesn't move while channeling, so it never refills. `src/items/dead-mans-plate.ts`. |
 | Death's Dance | checked, irrelevant | Defensive. |
 | Dusk and Dawn | modelled | Spellblade, first dagger only: 75% base AD + 10% AP magic, then all on-hit effects once more 0.2 s later. `src/items/dusk-and-dawn.ts`. |
 | Echoes of Helia | checked, irrelevant | Needs healing allies. |
-| Eclipse | checked, irrelevant | Needs 2 stacks from different cast instances within 2 s. All daggers are one cast (1 stack), and proc damage (burns, on-hit) doesn't give stacks (wiki). So it never procs from R alone. On the Practice Tool list. Runes (version 2) may change this. |
+| Eclipse | modelled | "Ever Rising Moon": the Death Lotus page says each dagger counts as a separate hit, so dagger 2 procs it: 8% of the dummy's max HP as physical damage, once (6 s cooldown). Not shrunk by R's %. `src/items/eclipse.ts`. (Was "checked, irrelevant" until Step 5d-5c.) |
 | Edge of Night | checked, irrelevant | Defensive. |
 | Endless Hunger | checked, irrelevant | Needs takedowns. |
 | Essence Reaver | modelled | Spellblade, first dagger only: 125% base AD + 0.5 per 1% crit chance, physical. `src/items/essence-reaver.ts`. |
@@ -276,15 +295,15 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Force of Nature | checked, irrelevant | Defensive. |
 | Frozen Heart | checked, irrelevant | Defensive. |
 | Guardian Angel | checked, irrelevant | Defensive. |
-| Guinsoo's Rageblade | to model | "Wrath" (on-hit 30 magic) is modelled in `src/items/guinsoos-rageblade.ts`. Still to do in 5d-6: "Seething Strike" attack speed stacks and Phantom hits (daggers trigger them: Eric, from playing). |
-| Heartsteel | to model | Stacks build up each second near the dummy (starting at 0), then an on-hit proc. Check: do daggers trigger the proc? Permanent HP stacks start at 0. |
+| Guinsoo's Rageblade | modelled | "Wrath": 30 magic on-hit. "Seething Strike": daggers 1-4 give +8% attack speed each (from the next dagger); Phantom Hits (every on-hit effect again, 0.15 s later, at R's %) after daggers 7, 10, 13. `src/items/guinsoos-rageblade.ts`. |
+| Heartsteel | checked, irrelevant | "Colossal Consumption": 1 stack per second near the dummy, procs at 3. Stacks start at 0 when R is cast (Eric, Step 5d-6), so the 3rd comes at 3 s, after the ult. Permanent HP stacks also start at 0. |
 | Hexoptics C44 | checked, irrelevant | Increases *basic attack* damage only. |
 | Hextech Gunblade | checked, irrelevant | Active only. |
 | Hextech Rocketbelt | checked, irrelevant | Active only. |
 | Hollow Radiance | modelled | "Immolate": 15 + 1% bonus HP magic damage every second (2 ticks inside the ult). "Desolate" needs a kill: irrelevant. `src/items/hollow-radiance.ts`. |
 | Horizon Focus | checked, irrelevant | Needs 600+ range; R's daggers only reach 550. |
 | Hubris | checked, irrelevant | Needs takedowns (starts at 0 stacks). |
-| Hullbreaker | to model | On-hit stacks, proc at max stacks. Check: do daggers count? |
+| Hullbreaker | modelled | "Skipper": every 5th on-hit (daggers 5, 10, 15) deals 120% base AD + 5% of Katarina's max HP physical, × R's %. `src/items/hullbreaker.ts`. |
 | Iceborn Gauntlet | modelled | Spellblade, first dagger only: 150% base AD physical. `src/items/iceborn-gauntlet.ts`. |
 | Immortal Shieldbow | checked, irrelevant | Defensive. |
 | Imperial Mandate | checked, irrelevant | Needs an immobilize; R has none. |
@@ -292,12 +311,12 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Jak'Sho, The Protean | checked, irrelevant | Defensive. |
 | Kaenic Rookern | checked, irrelevant | Defensive. |
 | Knight's Vow | checked, irrelevant | Needs an ally. |
-| Kraken Slayer | to model | On-attack stacks (starting at 0), proc at 2 stacks. Daggers trigger it (Eric, from playing). |
-| Liandry's Torment | modelled | "Torment": burn, 1% of the dummy's max HP every 0.5 s, refreshed by every dagger (5 ticks inside the ult). "Suffering": +2% damage per second in combat, up to 6%, starting at 0 when R is cast. `src/items/liandrys-torment.ts`. |
+| Kraken Slayer | modelled | "Bring It Down": every 3rd on-hit (daggers 3, 6, 9, 12, 15; Phantom Hits add stacks) deals 150-200 physical by level, up to +75% by missing health, × R's %. `src/items/kraken-slayer.ts`. |
+| Liandry's Torment | modelled | "Torment": burn, 1% of the dummy's max HP every 0.5 s, refreshed by every dagger (5 ticks inside the ult), shrunk by R's % (Death Lotus bug). "Suffering": +2% damage per second in combat, up to 6%, starting at 0 when R is cast. `src/items/liandrys-torment.ts`. |
 | Lich Bane | modelled | Spellblade, first dagger only (Eric, from playing): 75% base AD + 45% AP magic. `src/items/lich-bane.ts`. |
 | Locket of the Iron Solari | checked, irrelevant | Active only. |
 | Lord Dominik's Regards | modelled | "Giant Slayer": 1% more damage per 100 of the dummy's BONUS HP (from items), up to 15%. `src/items/lord-dominiks-regards.ts`. |
-| Luden's Echo | modelled | "Echo": 6 stacks, full at R cast, used by dagger 1: 75 + 5% AP, then 5 × (15 + 1% AP) every 0.25 s (one enemy, so every leftover stack hits it). `src/items/ludens-echo.ts`. |
+| Luden's Echo | modelled | "Echo": 6 stacks, full at R cast, used by dagger 1: 75 + 5% AP, then 5 × (15 + 1% AP) every 0.25 s (one enemy, so every leftover stack hits it). All shrunk by R's % (Death Lotus bug). `src/items/ludens-echo.ts`. |
 | Malignance | modelled | "Hatefog": the first dagger makes a zone: (60 + 5% AP) / 4 magic damage every 0.25 s (10 ticks inside the channel) and −10 MR from dagger 2. "Scorn" (ultimate haste) is irrelevant. `src/items/malignance.ts`. |
 | Manamune | checked, irrelevant | AD from mana, but Katarina has no mana. Its AD stat counts. |
 | Maw of Malmortius | checked, irrelevant | Defensive. |
@@ -315,7 +334,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Protoplasm Harness | checked, irrelevant | Defensive. |
 | Rabadon's Deathcap | modelled | "Magical Opus": +30% of ALL AP, including AP from other passives. Other % AP (Blackfire) adds to the 30%. `src/items/rabadons-deathcap.ts`. |
 | Randuin's Omen | checked, irrelevant | Defensive. |
-| Rapid Firecannon | to model | Energized (full at R cast): on-hit 40 magic damage. Daggers trigger Energized (Eric, from playing). |
+| Rapid Firecannon | modelled | Energized (full at R cast, used by dagger 1, never refills during the ult): 40 magic on-hit, × R's %. `src/items/rapid-firecannon.ts`, `src/items/energized.ts`. |
 | Ravenous Hydra | checked, irrelevant | Cleave hits only other enemies. |
 | Redemption | checked, irrelevant | Active only. |
 | Riftmaker | modelled | "Void Infusion": AP = 2% bonus HP. "Void Corruption": +2% damage per second in combat, up to 8%, starting at 0 when R is cast. `src/items/riftmaker.ts`. |
@@ -329,9 +348,9 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Spear of Shojin | modelled | "Focused Will": R's damage gives a stack (max 1 per second per cast), +3% R damage each, counting from the next hit. During R: +3% on daggers 2-8, +6% on 9-15. `src/items/spear-of-shojin.ts`. Check: see "Unconfirmed". |
 | Spirit Visage | checked, irrelevant | Defensive. |
 | Staff of Flowing Water | checked, irrelevant | Needs healing allies. |
-| Statikk Shiv | to model | Energized (full at R cast): chain lightning 60 magic damage on-hit. Daggers trigger Energized (Eric, from playing). |
+| Statikk Shiv | modelled | Energized (dagger 1 only): chain lightning 60 magic, NOT shrunk by R's % (wiki: "not affected by on-hit damage modifiers"). One dummy, so one bounce. `src/items/statikk-shiv.ts`. |
 | Sterak's Gage | modelled | "The Claws that Catch": bonus AD = 50% of base AD, which counts for R. `src/items/steraks-gage.ts`. |
-| Stormrazor | to model | Energized (full at R cast): 100 magic damage on-hit. |
+| Stormrazor | modelled | Energized (dagger 1 only): 100 magic on-hit, × R's %. `src/items/stormrazor.ts`. |
 | Stormsurge | modelled | Deal 25% of the dummy's max HP → lightning strike 2 s later, 125 + 10% AP magic. Only lands inside the ult if triggered by 0.5 s. `src/items/stormsurge.ts`. |
 | Stridebreaker | checked, irrelevant | Cleave hits only other enemies; active doesn't count. |
 | Sundered Sky | checked, irrelevant | Empowers the next *basic attack*. |
@@ -344,11 +363,11 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Umbral Glaive | checked, irrelevant | Needs Katarina unseen; Death Lotus reveals her. |
 | Unending Despair | checked, irrelevant | "Anguish": the first sap comes 4 s after combat starts (R cast), after the 2.5 s ult ends. |
 | Void Staff | checked, irrelevant | No passive. Its 40% magic pen stat counts. |
-| Voltaic Cyclosword | to model | Energized (full at R cast) + "Galvanize": ability damage triggers the Energized hit. |
+| Voltaic Cyclosword | modelled | "Galvanize": R's first damage triggers the Energized effect (before that damage, not shrunk): 8% of the dummy's current HP physical + 15 lethality for the whole ult. `src/items/voltaic-cyclosword.ts`. |
 | Warmog's Armor | modelled | "Warmog's Vitality": +12% of items' plain HP stats (not HP from item passives). Matters with Riftmaker / Overlord's. `src/items/warmogs-armor.ts`. |
 | Winter's Approach | checked, irrelevant | HP from mana, but Katarina has no mana. |
 | Wit's End | modelled | On-hit 45 magic damage. `src/items/wits-end.ts`. |
 | Youmuu's Ghostblade | checked, irrelevant | Move speed; active doesn't count. |
-| Yun Tal Wildarrows | to model | "Flurry": 30% attack speed when launching a basic attack. Check: do daggers trigger it? (Its crit stacks don't matter.) |
+| Yun Tal Wildarrows | modelled | "Flurry": dagger 1 gives +30% attack speed for daggers 2-15. Crit stacks start at 0 and crit doesn't affect R. `src/items/yun-tal-wildarrows.ts`. |
 | Zeke's Convergence | modelled | "Frostfire Tempest": casting R starts a storm: 7.5 magic damage every 0.25 s (10 ticks inside the ult). `src/items/zekes-convergence.ts`. |
 | Zhonya's Hourglass | checked, irrelevant | Active only. |
