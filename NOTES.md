@@ -36,7 +36,9 @@ These notes are for anyone joining the project.
   - 7c (searches on the page) is done: `src/ui/searches.ts` runs the quick search on every change and Optimize on click, `src/ui/progress.ts` makes the progress bar's text. Checked in headless Chrome: the quick search shows up ~0.1-0.3 s after a change, Optimize on Full took ~2.6 s, the thebausffs text appeared, and changing the enemy mid-Optimize cancelled it. No console errors.
   - 7d (breakdowns) is done: `src/ui/breakdown-rows.ts` turns a build's explanation into rows (tested: each breakdown adds up to the total), `src/ui/results-view.ts` draws them, and the top 5 are clickable cards. Checked in headless Chrome in light and dark mode, no console errors.
   - 7e (rules, sources, styling) is done: `src/ui/info-view.ts` (the "How it's calculated" rules and the filtered items), `src/data/sources.ts` (every source link, gathered from the data files). Every item passive now has a required `source` field. Checked in headless Chrome at desktop width and at 375 px (a phone): nothing sticks out sideways, no console errors. **Step 7 is done.**
-- Next is Step 8, the Practice Tool validation.
+- Step 8 (Practice Tool validation) is in progress:
+  - Done: the plan `validation/practice-tool-plan.md` (16 tests), the cases in `tests/practice-tool-cases.ts`, the test `tests/practice-tool.test.ts` (skips cases with no measurement yet), and the dummy's facts in `src/data/practice-tool.ts`.
+  - Waiting on: Eric's in-game measurements.
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
@@ -130,6 +132,10 @@ validation/    Practice Tool test plan and measurements
   - Numbers are rounded to whole damage, so a column can be 1-2 off its total.
 - **The rules text and the sources list are built from the data (Step 7e):** the rules read their numbers (15 daggers, 25 / 30 / 35%, 1 HP, beam width 300) from the data files, and the sources list reads every `source` field. So a patch update can't leave the explanation saying something different from what the math does. A test checks every source is a wiki or Data Dragon link for the current patch, and every item passive is listed.
 - **Footer says it's a fan project, not made or endorsed by Riot (Step 7e):** Riot asks fan projects to say this (their "Legal Jibber Jabber" policy).
+- **Practice Tool tests use the dummy's own damage counter (Step 8):** the wiki says the dummy tracks "total damage", so no adding up numbers by hand. The counter can't go past the dummy's max HP − 1, so every test raises the dummy's HP well above the expected damage (a test checks expected < 80% of its HP).
+  - The dummy starts at 0 armor / MR, so armor / MR added with the cheat counts as bonus; HP above its 1000 counts as bonus HP.
+  - Neutral rune page (checked on each rune's wiki page): Guardian, Demolish, Second Wind, Unflinching + Cash Back, Cosmic Insight; shards ability haste, move speed, tenacity. Not the health shards: Riftmaker turns HP into AP. Move speed only matters for Swiftmarch, which isn't tested.
+  - Plain test items: Zhonya's (only AP) and Bloodthirster (only AD). No item gives only AD or only AP without HP, but HP changes nothing without an HP-scaling item.
 - **Ties rank the cheaper build first, then by name:** so the top 5 never depends on the order the search happened to try builds.
 - **Builds are always listed in the same item order** (legendaries in pool order, then boots): BotRK reads current HP, so item order can change the damage by a hair. With one order, both searches give the exact same number for the same build.
 - **"Item interactions" can be negative:** each item's marginal damage is "with the build minus without that item". When items boost each other (Rabadon's × another AP item), the boost shows up in BOTH items' marginals, so interactions take one copy back out, and the line adds up to the total.
@@ -262,6 +268,10 @@ validation/    Practice Tool test plan and measurements
 None right now.
 
 ## Bugs (bug / cause / fix)
+- **"Slot counts" search test sometimes failed in the full suite (Step 8).**
+  - Bug: passed on its own, failed now and then in `npm test`.
+  - Cause: it runs 3 searches, ~5 s when all 60 test files run at once, and Vitest stops any test after 5 s by default.
+  - Fix: the heavier search tests get a 60 s limit, like the Full test already had.
 - **Dream Maker vanished from Nami's custom item picker (Step 7b, caught in the browser before commit).**
   - Bug: unticking "Use recommended items" on Late Nami showed Echoes of Helia, Ardent Censer and an empty slot.
   - Cause: Dream Maker is a *support* item (`category: "support"`), and the picker only kept `"legendary"` items.

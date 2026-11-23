@@ -48,14 +48,14 @@ test("slot counts and boots follow the item count and the toggles", () => {
   for (const build of findTopBuilds({ ...stagePreset("mid", "off"), target, boots: "off" })) {
     expect(build.items).toHaveLength(2);
   }
-});
+}, 60_000); // 3 searches: ~5 s when the whole suite runs at once, over Vitest's 5 s default
 
 test("a custom item count (the +/- slot buttons): 4 items at level 13", () => {
   const target = presetDummy("tank", "late");
   for (const build of findTopBuilds({ level: 13, rRank: 2, itemCount: 4, target, boots: "tier2" })) {
     expect(legendaries(build)).toHaveLength(4);
   }
-});
+}, 60_000);
 
 test("Full: 5 items + boots with boots on, 6 items with boots off, never more than 6 slots", () => {
   const target = presetDummy("tank", "full");
@@ -91,7 +91,7 @@ test("no build has two items from the same item group, or the same item twice", 
       expect(names.filter((n) => members.includes(n)).length).toBeLessThanOrEqual(1);
     }
   }
-});
+}, 60_000);
 
 test("progress goes up to 1", () => {
   const fractions: number[] = [];
