@@ -1,11 +1,18 @@
-// Riftmaker, "Void Infusion": AP equal to 2% of bonus health.
-// "Void Corruption" (more damage per second in combat) comes in Step 5d-4.
+// Riftmaker.
+// "Void Infusion": AP equal to 2% of bonus health.
+// "Void Corruption": for each second in combat, deal 2% more damage, up to 4 stacks (8%).
+//   During the 2.5 s ult that's 0% → 2% at 1 s → 4% at 2 s. (Its omnivamp at full stacks
+//   doesn't change damage.)
 import { PATCH } from "../data/patch.ts";
+import { inCombatAmpEffect } from "./in-combat-amp.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Riftmaker", patch: PATCH },
   apFromBonusHealth: 0.02,
+  ampPerStack: 0.02,
+  maxStacks: 4,
+  secondsPerStack: 1,
 };
 
 export const riftmaker: ItemPassive = {
@@ -17,4 +24,5 @@ export const riftmaker: ItemPassive = {
       stats.ap += data.apFromBonusHealth * bonusHealth;
     },
   },
+  createEffect: () => inCombatAmpEffect("Riftmaker", data.ampPerStack, data.maxStacks, data.secondsPerStack),
 };

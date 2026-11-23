@@ -48,6 +48,7 @@ test("Sion, Late (level 16), recommended items, worked out by hand", () => {
   //   Titanic Hydra 600 HP; Unending Despair 400 HP, 50 armor.
   const target = dummyStats("sion", 16, recommendedDummyItems("tank", "late"));
   expect(target.hp).toBeCloseTo(655 + 95 * 14.475 + 400 + 600 + 400);
+  expect(target.bonusHp).toBe(400 + 600 + 400);
   expect(target.baseArmor).toBeCloseTo(36 + 4.2 * 14.475);
   expect(target.bonusArmor).toBe(25 + 50);
   expect(target.baseMagicResist).toBeCloseTo(32 + 2.05 * 14.475);

@@ -34,7 +34,8 @@ export type Attacker = {
 };
 
 export type Target = {
-  hp: number;
+  hp: number; // at the start of the ult, so also its maximum HP (the dummy starts full)
+  bonusHp: number; // the part of `hp` that comes from items (Lord Dominik's uses it)
   baseArmor: number;
   bonusArmor: number;
   baseMagicResist: number;
@@ -47,7 +48,8 @@ export type EffectContext = {
   rank: RRank;
   onHitEffectiveness: number; // 0.25 / 0.30 / 0.35 for R rank 1 / 2 / 3
   attacker: Attacker; // may be changed, e.g. attack speed stacks
-  target: Readonly<Target>; // read only: change it through dealDamage
+  target: Readonly<Target>; // read only: change it through dealDamage. `hp` is its CURRENT HP.
+  targetMaxHp: number; // the dummy's HP when the ult started
   // Deal item damage. `raw` is before armor / MR; the simulation reduces it.
   dealDamage: (raw: number, type: DamageType) => void;
   // Run something later, e.g. a burn tick 0.5 s from now.
@@ -82,6 +84,9 @@ export type ItemEffect = {
   afterDamage?: (context: EffectContext, damage: DamageInfo) => void;
   // The shred this item gives for damage landing at `time`. Asked every time damage is calculated.
   shred?: (time: number) => ItemShred;
+  // "Deal X% more damage": what to multiply this piece of damage by (1.04 = 4% more).
+  // Applied after armor / MR. Several items multiply together (wiki, Damage page).
+  damageMultiplier?: (context: EffectContext, damage: DamageInfo) => number;
 };
 
 export type SimulationInput = {
@@ -131,7 +136,10 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
       for (const item of input.items) item.beforeDamage?.(contextAt(time, item), info);
     }
 
-    const amount = raw * multiplierFor(type, time);
+    let amount = raw * multiplierFor(type, time);
+    for (const item of input.items) {
+      if (item.damageMultiplier) amount *= item.damageMultiplier(contextAt(time, item), info);
+    }
     events.push({ time, amount, type, source, fromItem });
     target.hp = hpAfterHit(target.hp, amount);
 
@@ -147,6 +155,7 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
       onHitEffectiveness: r.onHitEffectiveness[input.rank - 1],
       attacker,
       target,
+      targetMaxHp: input.target.hp,
       dealDamage: (raw, type) => dealDamage(time, raw, type, item.name, true),
       schedule: (delaySeconds, run) => {
         const later = time + delaySeconds;

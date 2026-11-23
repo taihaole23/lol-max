@@ -12,6 +12,8 @@ export function dummyStats(championId: ChampionId, level: number, items: Item[])
   const champion = champions[championId];
   return {
     hp: statAtLevel(champion.health.base, champion.health.perLevel, level) + sumStat(items, "health"),
+    // When the user types in an HP number (Step 7), bonus HP = typed HP − the champion's own HP, at least 0.
+    bonusHp: sumStat(items, "health"),
     // Base (champion + levels) and bonus (items) stay separate: penetration treats them differently.
     baseArmor: statAtLevel(champion.armor.base, champion.armor.perLevel, level),
     bonusArmor: sumStat(items, "armor"),

@@ -20,9 +20,8 @@ These notes are for anyone joining the project.
     - 5d-1 stat passives is done: Rabadon's, Riftmaker HP → AP, Warmog's, Overlord's, Sterak's, Rod of Ages, Swiftmarch in `src/items/`, run by `katarina-stats.ts`. Dawncore turned out irrelevant.
     - 5d-2 plain on-hit + Spellblade is done: Nashor's, Wit's End, Guinsoo's 30 magic, Terminus Shadow, BotRK, Titanic Hydra and the 5 Spellblade items. `src/simulation/simulate-build.ts` runs a whole build (stats + effects + simulation). 31 items left "to model".
     - 5d-3 resist shred is done: Black Cleaver, Bloodletter's, Malignance (zone damage + −10 MR), Terminus Juxtaposition. 27 items left "to model".
-    - Next is 5d-4.
-    - 5d-4 damage amps (Immortal Path, Abyssal Mask, Liandry's Suffering, Riftmaker Void Corruption, Lord Dominik's, Shadowflame, Spear of Shojin)
-    - 5d-5 burns, auras and timed effects (Liandry's burn, Blackfire, Sunfire, Hollow Radiance, Unending Despair, Zeke's, Stormsurge, Bastionbreaker, Luden's, Hexplate, Eclipse)
+    - 5d-4 damage amps is done: Immortal Path, Abyssal Mask, Liandry's Suffering, Riftmaker Void Corruption, Lord Dominik's, Shadowflame, Spear of Shojin. 21 items left "to model".
+    - Next is 5d-5 burns, auras and timed effects (Liandry's burn, Blackfire, Sunfire, Hollow Radiance, Unending Despair, Zeke's, Stormsurge, Bastionbreaker, Luden's, Hexplate, Eclipse)
     - 5d-6 stack-then-proc (Guinsoo's stacks, Kraken, Hullbreaker, Heartsteel, Rapid Firecannon, Statikk, Stormrazor, Voltaic, Dead Man's Plate, Yun Tal)
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
@@ -35,7 +34,9 @@ These notes are for anyone joining the project.
 - **Malignance's tick timing.** We assume the first tick lands 0.25 s after the zone appears (12 ticks over 3 s = the wiki's "180 total"), so 10 ticks fall inside the channel. If the zone ticks right away, it's 11.
 - **Bloodletter's Curse stacks only from R's own magic damage,** not from items' on-hit magic damage (our assumption: on-hit damage is item damage, not ability damage).
 - **Black Cleaver: R's hit benefits from its own stack.** The wiki says so (listed as a bug) for non-basic damage. If it's been fixed, dagger N has N − 1 stacks instead of N.
-- **"Deal X% more damage" effects** (damage amplification): whether they apply after armor/MR, and whether two of them add or multiply. The wiki's page for this is gone, and its Damage page says it's out of date.
+- **"Deal X% more damage" effects** (damage amplification): we apply them after armor/MR and multiply them together. Sources: the wiki's Damage page ("percent damage modifiers stack multiplicatively"), Liandry's page (its bonus "stacks multiplicatively with other damage multipliers") and Shadowflame's worked examples. Still worth one Practice Tool check (e.g. Abyssal Mask + Immortal Path).
+- **"Per second in combat" stacks (Liandry's, Riftmaker) come at exactly 1 s and 2 s after R is cast** (our assumption).
+- **Spear of Shojin boosts only R's own damage,** not on-hit item damage from the daggers (our assumption; the wiki's "proc damage from your ability" is unclear about on-hit).
 - **Which on-hit / on-attack effects the daggers really trigger.** The wiki says daggers apply on-hit and on-attack effects, but not whether that includes stack-and-proc effects (Kraken Slayer, Hullbreaker, Heartsteel, Energized items, Dead Man's Plate, Yun Tal's Flurry).
   - **Eric, from playing:** daggers DO trigger Kraken Slayer's proc, Energized items (e.g. Statikk Shiv) and Guinsoo's Phantom hit. We model them that way, and the Practice Tool confirms it.
   - **Eric, from playing:** daggers trigger **Spellblade** (Lich Bane, Trinity Force...), but only on the **first** dagger. It doesn't proc again during the ult.
@@ -109,6 +110,10 @@ validation/    Practice Tool test plan and measurements
   - Debuffs on the dummy (Black Cleaver's armor reduction) count the same way. With one target, it doesn't matter whose side they're on.
   - `shred` gets the time of the damage, so "only counts after the hit" rules (Bloodletter's, Malignance, Terminus) compare times.
 - **Two more hooks, `beforeDamage` and `afterDamage` (Step 5d-3):** run around every piece of damage, R's or an item's. Black Cleaver needs "before" (R's hit benefits from its own stack); the rest use "after". 0-damage pieces (R's AD part with no bonus AD) don't run them, since no damage was really dealt.
+- **"More damage" items use one more hook, `damageMultiplier` (Step 5d-4):** each item returns what to multiply a piece of damage by. The simulation multiplies them all together, after armor / MR.
+- **Amp items have no line of their own in the "by source" breakdown (Eric chose A, Step 5d-4):** they make the base / AP ratio / item lines bigger instead. Their value shows in the marginal damage line (with the item minus without it). Chose this over giving each amp its own line because, when 3 amps multiply together, there's no fair way to say which one caused which part of the extra damage.
+- **The dummy has a `bonusHp` number (Step 5d-4):** the HP from its items, for Lord Dominik's. When the user types in HP (Step 7), bonus HP = typed HP − the champion's own HP at that level, and never below 0. Its max HP is just its starting HP (`targetMaxHp`), for Shadowflame.
+- **Shadowflame checks HP per piece of damage:** R's base and AP ratio pieces of one dagger are one hit in the game, so if the base piece crosses 40%, the AP ratio piece gets the bonus a moment early. That's at most one dagger's AP part per ult, so we accept it.
 - **"Same time" = "same frame" = "same hit":** a dagger's magic damage is stored as 2 pieces (base, AP ratio) for the breakdown, but it's one hit, so stack rules check the time to add only 1 stack per dagger.
 - **The 5 Spellblade items share one helper (`src/items/spellblade.ts`)** for "first dagger only, × R's effectiveness"; each item file only says its own damage formula.
 - **Rod of Ages' extra level raises Katarina's stats but not R's rank:** R rank comes from the stage, and 7 / 12 / 17 give the same rank as 6 / 11 / 16 anyway.
@@ -181,6 +186,10 @@ None right now.
   - Bug: the test said dagger 2 did 26.3 damage but expected 28.7.
   - Cause: the test used a 0 MR dummy for "damage before MR". But Malignance's −10 MR took that dummy to −10 MR, and negative MR *raises* damage, so the "raw" numbers were 9% too high. The item was right; the test was wrong.
   - Fix: Malignance's tests use a 100 MR dummy only and compare daggers with each other.
+- **Garbled "×" signs in `tests/simulation.test.ts` (found in Step 5d-4, already in the 5d-2 commit).**
+  - Bug: two comments showed "Ã—" instead of "×".
+  - Cause: in 5d-2, removing a BOM (a hidden marker PowerShell adds at the start of files) read the file with the wrong text encoding, so "×" turned into two other characters. Only comments were affected.
+  - Fix: put the "×" signs back, and searched every file for the same garbling (none left). Lesson: write files with the editor or node, not PowerShell.
 
 ## Item checklist
 Every legendary and boots item in the snapshot, checked in Step 5c against the wiki (patch 26.23).
@@ -215,14 +224,14 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Chainlaced Crushers | checked, irrelevant | Shield when Katarina takes damage. |
 | Crimson Lucidity | checked, irrelevant | Summoner haste and move speed. |
 | Gunmetal Greaves | checked, irrelevant | No passive. Its stats count. |
-| Immortal Path | to model | "Now and Forever": 4% increased damage while above 50% HP. The dummy never hits back, so it's always on. |
+| Immortal Path | modelled | "Now and Forever": 4% more damage while above 50% HP. The dummy never hits back, so it's always on. `src/items/immortal-path.ts`. |
 | Spellslinger's Shoes | checked, irrelevant | No passive. Its stats count. |
 | Swiftmarch | modelled | "Noxian Fervor": adaptive force = 5% of total move speed (with soft caps), as AD or AP. `src/items/swiftmarch.ts`. |
 
 ### Legendary items
 | Item | Status | Why |
 |---|---|---|
-| Abyssal Mask | to model | "Unmake": the dummy takes 12% more magic damage (after MR). Katarina is next to it. |
+| Abyssal Mask | modelled | "Unmake": the dummy takes 12% more magic damage (after MR) from every source. Katarina is next to it. `src/items/abyssal-mask.ts`. |
 | Actualizer | checked, irrelevant | Active only. |
 | Archangel's Staff | checked, irrelevant | AP from mana, but Katarina has no mana (wiki: resource "None"). Its AP stat counts. |
 | Ardent Censer | checked, irrelevant | Needs healing allies. |
@@ -269,10 +278,10 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Kaenic Rookern | checked, irrelevant | Defensive. |
 | Knight's Vow | checked, irrelevant | Needs an ally. |
 | Kraken Slayer | to model | On-attack stacks (starting at 0), proc at 2 stacks. Daggers trigger it (Eric, from playing). |
-| Liandry's Torment | to model | Burn on ability damage (only inside the channel) + "Suffering": 2% more damage per second in combat, starting at 0 when R is cast. |
+| Liandry's Torment | to model | "Suffering" (+2% damage per second in combat, up to 6%; starts at 0 when R is cast) is modelled in `src/items/liandrys-torment.ts`. Still to do in 5d-5: the "Torment" burn (only the part inside the channel counts). |
 | Lich Bane | modelled | Spellblade, first dagger only (Eric, from playing): 75% base AD + 45% AP magic. `src/items/lich-bane.ts`. |
 | Locket of the Iron Solari | checked, irrelevant | Active only. |
-| Lord Dominik's Regards | to model | "Giant Slayer": more damage the more max HP the dummy has than Katarina. |
+| Lord Dominik's Regards | modelled | "Giant Slayer": 1% more damage per 100 of the dummy's BONUS HP (from items), up to 15%. `src/items/lord-dominiks-regards.ts`. |
 | Luden's Echo | to model | "Echo": ability damage fires bonus magic damage. Check: with only one enemy, how many of the 6 stacks hit it? |
 | Malignance | modelled | "Hatefog": the first dagger makes a zone: (60 + 5% AP) / 4 magic damage every 0.25 s (10 ticks inside the channel) and −10 MR from dagger 2. "Scorn" (ultimate haste) is irrelevant. `src/items/malignance.ts`. |
 | Manamune | checked, irrelevant | AD from mana, but Katarina has no mana. Its AD stat counts. |
@@ -294,15 +303,15 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Rapid Firecannon | to model | Energized (full at R cast): on-hit 40 magic damage. Daggers trigger Energized (Eric, from playing). |
 | Ravenous Hydra | checked, irrelevant | Cleave hits only other enemies. |
 | Redemption | checked, irrelevant | Active only. |
-| Riftmaker | to model | "Void Infusion" (AP = 2% bonus HP) is modelled in `src/items/riftmaker.ts`. Still to do in 5d-4: "Void Corruption", 2% more damage per second in combat, starting at 0 when R is cast. |
+| Riftmaker | modelled | "Void Infusion": AP = 2% bonus HP. "Void Corruption": +2% damage per second in combat, up to 8%, starting at 0 when R is cast. `src/items/riftmaker.ts`. |
 | Rod of Ages | modelled | "Timeless" is full (grows with time): +100 HP, +30 AP, and +1 level for her stats (max 18). The level doesn't change R's rank. `src/items/rod-of-ages.ts`. |
 | Runaan's Hurricane | checked, irrelevant | Ranged champions only; Katarina can't buy it (in `katarinaCannotBuy`). |
 | Rylai's Crystal Scepter | checked, irrelevant | Slow. |
 | Serpent's Fang | checked, irrelevant | Reduces shields; the dummy has none. |
 | Serylda's Grudge | checked, irrelevant | Slow. Its pen stat counts. |
-| Shadowflame | to model | "Cinderbloom": magic and true damage crit for 120% against targets below 40% HP. |
+| Shadowflame | modelled | "Cinderbloom": magic and true damage × 1.2 when the dummy is already below 40% of its max HP. `src/items/shadowflame.ts`. |
 | Shurelya's Battlesong | checked, irrelevant | Active only. |
-| Spear of Shojin | to model | "Focused Will": 3% more ability damage per stack. Check: how many stacks one R cast gives. |
+| Spear of Shojin | modelled | "Focused Will": R's damage gives a stack (max 1 per second per cast), +3% R damage each, counting from the next hit. During R: +3% on daggers 2-8, +6% on 9-15. `src/items/spear-of-shojin.ts`. Check: see "Unconfirmed". |
 | Spirit Visage | checked, irrelevant | Defensive. |
 | Staff of Flowing Water | checked, irrelevant | Needs healing allies. |
 | Statikk Shiv | to model | Energized (full at R cast): chain lightning 60 magic damage on-hit. Daggers trigger Energized (Eric, from playing). |

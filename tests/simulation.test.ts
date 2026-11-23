@@ -18,9 +18,10 @@ const attacker: Attacker = {
   magicShred: noShred,
 };
 
-// 100 armor and 50 MR: physical damage Ã— 0.5, magic damage Ã— 100/150.
+// 100 armor and 50 MR: physical damage × 0.5, magic damage × 100/150.
 const target: Target = {
   hp: 100_000,
+  bonusHp: 0,
   baseArmor: 100,
   bonusArmor: 0,
   baseMagicResist: 50,
@@ -98,7 +99,7 @@ test("attack speed gained mid-ult makes later daggers' physical damage bigger", 
   const { events } = simulateDeathLotus({ rank: 1, attacker, target, items: [stacking] });
   const physical = events.filter((e) => e.type === "physical");
   // First dagger: 0 stacks. Last dagger: 14 stacks = +140% bonus attack speed.
-  // (16% + 50% Ã— 1.4) Ã— 100 bonus AD Ã— 0.5 from armor
+  // (16% + 50% × 1.4) × 100 bonus AD × 0.5 from armor
   expect(physical[0].amount).toBeCloseTo(0.16 * 100 * 0.5);
   expect(physical[14].amount).toBeCloseTo((0.16 + 0.5 * 1.4) * 100 * 0.5);
   // The caller's attacker is not changed by the simulation.
