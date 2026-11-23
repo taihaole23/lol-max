@@ -29,6 +29,18 @@ export const katarina = {
     whenTied: "ap" as "ad" | "ap", // the wiki's champion data says "Magic"
   },
 
+  // Her 4 abilities, in the order the site shows them. `maxRank`: basic abilities go up to 5, R up to 3.
+  // Only R is modelled in version 1; the others are shown as "coming soon".
+  abilities: {
+    source: { url: WIKI_URL, patch: PATCH },
+    list: [
+      { key: "q", name: "Bouncing Blade", maxRank: 5 },
+      { key: "w", name: "Preparation", maxRank: 5 },
+      { key: "e", name: "Shunpo", maxRank: 5 },
+      { key: "r", name: "Death Lotus", maxRank: 3 },
+    ],
+  },
+
   // Death Lotus (R). Lists with 3 entries are by R rank: [rank 1, rank 2, rank 3].
   deathLotus: {
     source: { url: WIKI_URL, patch: PATCH },

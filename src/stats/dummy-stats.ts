@@ -12,7 +12,7 @@ export function dummyStats(championId: ChampionId, level: number, items: Item[])
   const champion = champions[championId];
   return {
     hp: statAtLevel(champion.health.base, champion.health.perLevel, level) + sumStat(items, "health"),
-    // When the user types in an HP number (Step 7), bonus HP = typed HP − the champion's own HP, at least 0.
+    // Typed-in numbers are applied afterwards, by withTypedStats below.
     bonusHp: sumStat(items, "health"),
     // Base (champion + levels) and bonus (items) stay separate: penetration treats them differently.
     baseArmor: statAtLevel(champion.armor.base, champion.armor.perLevel, level),
@@ -20,6 +20,33 @@ export function dummyStats(championId: ChampionId, level: number, items: Item[])
     baseMagicResist: statAtLevel(champion.magicResist.base, champion.magicResist.perLevel, level),
     bonusMagicResist: sumStat(items, "magicResist"),
   };
+}
+
+// Numbers the user typed into the dummy's boxes. `null` = not typed, use the calculated number.
+export type TypedStats = { hp: number | null; armor: number | null; magicResist: number | null };
+
+// Puts typed-in numbers on top of the calculated dummy (Eric, Step 7).
+// The typed number is the new TOTAL. It's split into base and bonus because penetration
+// treats them differently:
+//   - base stays the champion's own value, and bonus = typed − base;
+//   - typed below the champion's base: base = typed, bonus = 0.
+// HP works the same way: bonus HP (for Lord Dominik's) = typed − the champion's own HP, at least 0.
+export function withTypedStats(calculated: Target, typed: TypedStats): Target {
+  const result = { ...calculated };
+  if (typed.hp !== null) {
+    const championHp = calculated.hp - calculated.bonusHp;
+    result.hp = typed.hp;
+    result.bonusHp = Math.max(0, typed.hp - championHp);
+  }
+  if (typed.armor !== null) {
+    result.baseArmor = Math.min(calculated.baseArmor, typed.armor);
+    result.bonusArmor = typed.armor - result.baseArmor;
+  }
+  if (typed.magicResist !== null) {
+    result.baseMagicResist = Math.min(calculated.baseMagicResist, typed.magicResist);
+    result.bonusMagicResist = typed.magicResist - result.baseMagicResist;
+  }
+  return result;
 }
 
 // The "Use recommended items" list for an enemy type and stage: boots + the first N items.

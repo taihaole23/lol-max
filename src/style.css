@@ -1,0 +1,104 @@
+/* Basic styling for Step 7b. Step 7e will polish it.
+   Colours are named once here ("CSS variables") and reused below; dark mode swaps them. */
+:root {
+  --bg: #f6f5f2;
+  --panel: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6b6b70;
+  --border: #d9d7d2;
+  --accent: #b3122e; /* Katarina red */
+  --accent-soft: #f6dde2;
+  --typed: #fff3c4; /* a dummy stat the user typed in */
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141416;
+    --panel: #1e1e22;
+    --text: #ececef;
+    --muted: #9a9aa2;
+    --border: #34343a;
+    --accent: #e0455f;
+    --accent-soft: #3a1c23;
+    --typed: #4a4020;
+  }
+}
+
+body {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 16px;
+  background: var(--bg);
+}
+
+h1 { margin: 0; }
+h2 { margin: 0 0 12px; font-size: 1.1rem; }
+.tagline, .hint { color: var(--muted); }
+.hint { font-size: 0.9rem; }
+.warning { color: var(--accent); font-weight: 600; }
+
+button, input, select {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+button { padding: 6px 10px; cursor: pointer; }
+button:disabled { opacity: 0.35; cursor: not-allowed; }
+button.selected { border-color: var(--accent); background: var(--accent-soft); }
+input[type="number"] { width: 6em; padding: 4px 6px; }
+input.typed { background: var(--typed); }
+.link-button { border: none; background: none; padding: 0; color: var(--accent); text-decoration: underline; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+.field-label { font-size: 0.85rem; color: var(--muted); }
+.check { display: block; margin-bottom: 8px; }
+.button-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Champion and ability pickers */
+.champion-row, .ability-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.champion-card { padding: 10px 16px; font-weight: 600; }
+.champion-card.selected { border-color: var(--accent); background: var(--accent-soft); }
+
+.ability { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.ability-card {
+  display: flex; flex-direction: column; align-items: center;
+  width: 110px; padding: 10px 6px;
+}
+.ability.selected .ability-card { border-color: var(--accent); background: var(--accent-soft); }
+.ability-key { font-size: 1.3rem; font-weight: 700; }
+.ability-name { font-size: 0.8rem; text-align: center; }
+.soon { font-size: 0.7rem; color: var(--muted); }
+
+.rank-boxes { display: flex; gap: 3px; }
+.rank-box { width: 16px; height: 16px; padding: 0; border-radius: 3px; }
+.rank-box.filled { background: var(--accent); border-color: var(--accent); }
+
+/* The optimizer: Katarina, the dummy and the results side by side on wide screens */
+.optimizer { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+.slot-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.slots { display: flex; gap: 6px; flex-wrap: wrap; }
+.slot {
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  border: 1px dashed var(--border); border-radius: 8px;
+  color: var(--muted); font-size: 0.7rem; text-align: center;
+}
+.slot.boots { border-style: dotted; }
+
+.dummy-items { margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px; }
+.dummy-items select { padding: 4px; max-width: 100%; }
+.item-list { margin: 0; padding-left: 20px; }
+.stat-row { display: flex; gap: 12px; flex-wrap: wrap; }

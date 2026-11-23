@@ -77,6 +77,16 @@ export function rRankAtLevel(level: number): RRank {
   throw new Error(`Katarina has no R before level ${rank1} (got level ${level}).`);
 }
 
+// The R ranks Katarina can have at a level: level 8 → [1], level 13 → [1, 2], level 5 → [].
+// The site uses it to decide which rank boxes can be clicked.
+export function allowedRRanks(level: number): RRank[] {
+  const ranks: RRank[] = [];
+  for (const rank of [1, 2, 3] as const) {
+    if (level >= ultimateRanks.levels[rank - 1]) ranks.push(rank);
+  }
+  return ranks;
+}
+
 // Stops impossible game states, like rank 3 R at level 6. The site disables those rank boxes,
 // so this only fires if some code has a bug.
 export function checkRRank(level: number, rank: RRank): void {

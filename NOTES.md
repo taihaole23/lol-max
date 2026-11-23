@@ -32,7 +32,7 @@ These notes are for anyone joining the project.
   - 6b (Web Worker) is done: `worker.ts` runs `runSearch` (search + explain the top 5) in its own thread. The page will call `startSearch`, which returns a Promise and reports progress. `npm run build` bundles the worker as its own file. It gets its first real browser test in Step 7.
 - Step 7 (user interface) is split into 5 parts (Eric reshaped the page in planning, see "Decisions"):
   - 7a (engine: stage becomes a preset) is done: the search takes `level`, `rRank` and `itemCount` (`src/optimizer/setup.ts`) instead of a stage name. `stagePreset()` fills them in from a stage. Impossible setups (rank 3 at level 6, 7 slots) throw.
-  - 7b: page layout (champion and ability pickers with rank boxes, stage presets, level, item slots with +/−, dummy panel).
+  - 7b (page layout) is done: `index.html` (fixed layout), `src/main.ts` (draws the page from the state, reacts to clicks), `src/ui/state.ts` (the page's state + the functions that change it, unit tested), `src/style.css`. Checked in headless Chrome: no console errors.
   - 7c: the quick search on every input change (best 1 item + boots), the Optimize button and the progress bar.
   - 7d: the damage chart, the four breakdowns and the other 4 builds.
   - 7e: rules, filtered items, sources and patch, CSS.
@@ -112,6 +112,10 @@ validation/    Practice Tool test plan and measurements
   - The dummy's custom items: legendaries plus one optional boots, like the recommended lists.
 - **The page as a shell for later champions (Eric, Step 7):** a champion picker (only Katarina) and her 4 ability cards are always on screen, so switching to another ability later is one click. Only R works in version 1; Q, W and E show "coming soon". The math is still Katarina R only.
 - **A quick search on every change, Optimize for the rest (Eric, Step 7):** the best 1 item + boots takes ~15 ms, so it reruns whenever an input changes. Filling every slot takes up to ~3 s, so it waits for the Optimize button. A button instead of auto-running everything, because typing "120" into a box would start 3 searches.
+- **The page is "state + render" (Step 7b):** one object holds everything the user picked (`src/ui/state.ts`). Every click calls a function that returns a new state, then `render()` redraws the page from it. Chose this over changing bits of the page directly in each click handler, because then the page can never disagree with the state, and the state functions can be unit tested without a browser.
+  - Number boxes react to the "change" event (Enter or leaving the box), not every key, so typing "12" never sets level 1 first.
+  - Anything that changes the calculated dummy (enemy type, dummy level, dummy items, a stage) clears typed-in HP / armor / MR, so an old typed number never sits silently on a new dummy. Typed boxes are highlighted, with a "Reset to calculated" link.
+  - The stage button stays highlighted after you edit the level: it shows the last preset used, which also decides the dummy's recommended items.
 - **Ties rank the cheaper build first, then by name:** so the top 5 never depends on the order the search happened to try builds.
 - **Builds are always listed in the same item order** (legendaries in pool order, then boots): BotRK reads current HP, so item order can change the damage by a hair. With one order, both searches give the exact same number for the same build.
 - **"Item interactions" can be negative:** each item's marginal damage is "with the build minus without that item". When items boost each other (Rabadon's × another AP item), the boost shows up in BOTH items' marginals, so interactions take one copy back out, and the line adds up to the total.
@@ -244,6 +248,10 @@ validation/    Practice Tool test plan and measurements
 None right now.
 
 ## Bugs (bug / cause / fix)
+- **Dream Maker vanished from Nami's custom item picker (Step 7b, caught in the browser before commit).**
+  - Bug: unticking "Use recommended items" on Late Nami showed Echoes of Helia, Ardent Censer and an empty slot.
+  - Cause: Dream Maker is a *support* item (`category: "support"`), and the picker only kept `"legendary"` items.
+  - Fix: the dummy picker keeps every non-boots item and lists support items too. A test checks Late Nami's custom list equals her recommended list.
 - **Malignance test compared against the wrong "raw" damage (Step 5d-3, caught before commit).**
   - Bug: the test said dagger 2 did 26.3 damage but expected 28.7.
   - Cause: the test used a 0 MR dummy for "damage before MR". But Malignance's −10 MR took that dummy to −10 MR, and negative MR *raises* damage, so the "raw" numbers were 9% too high. The item was right; the test was wrong.

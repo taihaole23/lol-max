@@ -6,7 +6,88 @@
     <title>lol-max</title>
   </head>
   <body>
-    <div id="app"></div>
+    <!-- The fixed layout. Parts with an id are filled in by src/main.ts. -->
+    <header>
+      <h1>lol-max</h1>
+      <p class="tagline">Which build makes an ability hit the hardest?</p>
+    </header>
+
+    <main>
+      <section aria-label="Champion">
+        <div id="champions" class="champion-row"></div>
+      </section>
+
+      <section aria-label="Abilities">
+        <div id="abilities" class="ability-row"></div>
+      </section>
+
+      <!-- Shown when Q, W or E is selected. -->
+      <section id="coming-soon" class="panel" hidden>
+        <p>This ability isn't modelled yet. Only Death Lotus (R) works in version 1.</p>
+      </section>
+
+      <!-- The Death Lotus optimizer. -->
+      <section id="optimizer" class="optimizer">
+        <div class="panel">
+          <h2 id="attacker-title">Katarina</h2>
+
+          <div class="field">
+            <span class="field-label">Stage preset</span>
+            <div id="stage-buttons" class="button-row"></div>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Level</span>
+            <input id="level" type="number" min="1" max="18" step="1" />
+          </label>
+
+          <label class="check"><input id="boots-on" type="checkbox" /> Boots</label>
+          <label class="check"><input id="mid-quest" type="checkbox" /> Mid quest completed (tier-3 boots)</label>
+
+          <p id="r-locked" class="warning" hidden>Death Lotus unlocks at level 6.</p>
+
+          <div class="field">
+            <span class="field-label">Item slots</span>
+            <div class="slot-row">
+              <div id="item-slots" class="slots"></div>
+              <button id="remove-slot" type="button" aria-label="Remove a slot">−</button>
+              <button id="add-slot" type="button" aria-label="Add a slot">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Target dummy</h2>
+
+          <div class="field">
+            <span class="field-label">Enemy type</span>
+            <div id="enemy-types" class="button-row"></div>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Dummy level</span>
+            <input id="dummy-level" type="number" min="1" max="18" step="1" />
+          </label>
+
+          <label class="check"><input id="use-recommended" type="checkbox" /> Use recommended items</label>
+          <div id="dummy-items" class="dummy-items"></div>
+
+          <div class="stat-row">
+            <label class="field"><span class="field-label">HP</span><input id="dummy-hp" type="number" min="1" /></label>
+            <label class="field"><span class="field-label">Armor</span><input id="dummy-armor" type="number" min="0" /></label>
+            <label class="field"><span class="field-label">MR</span><input id="dummy-magic-resist" type="number" min="0" /></label>
+          </div>
+          <p class="hint">Type a number to override it. <button id="reset-stats" type="button" class="link-button">Reset to calculated</button></p>
+        </div>
+
+        <div class="panel">
+          <h2>Damage</h2>
+          <!-- Filled in by Steps 7c and 7d. -->
+          <p class="hint">The damage chart comes next.</p>
+        </div>
+      </section>
+    </main>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
