@@ -13,7 +13,7 @@ const data = {
 export const warmogsArmor: ItemPassive = {
   name: "Warmog's Armor",
   stats: {
-    step: "addHealth",
+    step: "add",
     apply: (stats, context) => {
       stats.health += data.bonusHealthFromItemHealth * sumStat(context.items, "health");
     },

@@ -29,6 +29,9 @@ export function katarinaStats(stageLevel: number, items: Item[]): KatarinaStats 
 
   const stats: KatarinaStats = {
     ap: sumStat(items, "abilityPower"),
+    apPercentBonus: 0, // item passives add to it; it's applied to `ap` at the very end
+    flatMoveSpeed: base.moveSpeed + sumStat(items, "moveSpeed"),
+    percentMoveSpeed: sumStat(items, "percentMoveSpeed"),
     // AD from levels is BASE AD, so only items count here.
     bonusAd: sumStat(items, "attackDamage"),
     baseAd,
@@ -57,6 +60,9 @@ export function katarinaStats(stageLevel: number, items: Item[]): KatarinaStats 
       if (passive.stats?.step === step) passive.stats.apply(stats, context);
     }
   }
+
+  // % AP bonuses multiply ALL of her AP, including AP from the passives above.
+  stats.ap *= 1 + stats.apPercentBonus;
 
   return stats;
 }

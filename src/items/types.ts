@@ -14,11 +14,12 @@ export type StatContext = {
 
 // Stat passives run in this order, after the plain item stats are added up.
 // Each step can use what the steps before it produced.
-//   1. "addHealth": passives that add HP (Warmog's, Rod of Ages).
-//   2. "convert":   passives that turn one stat into another (Riftmaker HP → AP, Overlord's HP → AD, Sterak's).
-//   3. "adaptive":  adaptive force (Swiftmarch). It picks AD or AP by comparing the stats after step 2.
-//   4. "multiply":  % increases of a stat (Rabadon's +30% AP). Last, so they multiply AP from steps 1-3 too.
-export const statSteps = ["addHealth", "convert", "adaptive", "multiply"] as const;
+//   1. "add":      passives that add a stat (Warmog's and Rod of Ages HP, Hexplate's attack and move speed).
+//   2. "convert":  passives that turn one stat into another (Riftmaker HP → AP, Overlord's HP → AD, Sterak's).
+//   3. "adaptive": adaptive force (Swiftmarch). It picks AD or AP by comparing the stats after step 2.
+//   4. "percent":  % increases of a stat (Rabadon's +30% AP). They add to `apPercentBonus`, which
+//                  katarinaStats applies at the very end, so it multiplies AP from steps 1-3 too.
+export const statSteps = ["add", "convert", "adaptive", "percent"] as const;
 export type StatStep = (typeof statSteps)[number];
 
 export type ItemPassive = {

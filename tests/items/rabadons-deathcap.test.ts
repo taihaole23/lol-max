@@ -12,6 +12,11 @@ test("Rabadon's also multiplies AP from other passives (Riftmaker)", () => {
   expect(stats.ap).toBeCloseTo(269.1);
 });
 
+test("it's stored as a % AP bonus of 0.3, for other % AP bonuses to add to", () => {
+  expect(katarinaStats(6, [getItem("Rabadon's Deathcap")]).apPercentBonus).toBeCloseTo(0.3);
+  expect(katarinaStats(6, []).apPercentBonus).toBe(0);
+});
+
 test("the order of items in the build doesn't matter", () => {
   const a = katarinaStats(6, [getItem("Rabadon's Deathcap"), getItem("Riftmaker")]);
   const b = katarinaStats(6, [getItem("Riftmaker"), getItem("Rabadon's Deathcap")]);

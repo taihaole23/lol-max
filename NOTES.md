@@ -23,8 +23,8 @@ These notes are for anyone joining the project.
     - 5d-4 damage amps is done: Immortal Path, Abyssal Mask, Liandry's Suffering, Riftmaker Void Corruption, Lord Dominik's, Shadowflame, Spear of Shojin. 21 items left "to model".
     - 5d-5 burns, auras and timed effects is split in two:
       - 5d-5a is done: Liandry's burn, Sunfire, Hollow Radiance, Zeke's, Luden's, Bastionbreaker. Unending Despair and Eclipse turned out irrelevant. 13 items left "to model".
-      - Next is 5d-5b, items that change stats during the ult: Blackfire Torch (+4% AP, adds to Rabadon's), Experimental Hexplate (+ fix the Swiftmarch move speed gap), Stormsurge.
-    - 5d-6 stack-then-proc (Guinsoo's stacks, Kraken, Hullbreaker, Heartsteel, Rapid Firecannon, Statikk, Stormrazor, Voltaic, Dead Man's Plate, Yun Tal)
+      - 5d-5b is done: Blackfire Torch (burn + 4% AP that adds to Rabadon's), Experimental Hexplate (closes the Swiftmarch move speed gap), Stormsurge. 10 items left "to model".
+    - Next is 5d-6 stack-then-proc (Guinsoo's stacks, Kraken, Hullbreaker, Heartsteel, Rapid Firecannon, Statikk, Stormrazor, Voltaic, Dead Man's Plate, Yun Tal)
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
@@ -40,6 +40,8 @@ These notes are for anyone joining the project.
 - **"Per second in combat" stacks (Liandry's, Riftmaker) come at exactly 1 s and 2 s after R is cast** (our assumption).
 - **Burns and auras tick for the first time one interval after they start** (Liandry's 0.5 s, Sunfire / Hollow Radiance 1 s, Zeke's 0.25 s), not right away. The safer guess. The wiki says Blackfire's burn *sometimes* ticks right away and calls that a bug.
 - **Luden's Echo stacks don't come back during the ult,** so it fires once.
+- **Blackfire Torch's +4% AP starts right after dagger 1,** so dagger 1 itself doesn't get it (dagger 1 is what starts the burn).
+- **Stormsurge's 25% counts damage after armor / MR, from every source** (R and items). The strike uses Katarina's AP when it lands, not when it was triggered. In practice it only matters against a low-HP dummy, since 25% must be reached by 0.5 s.
 - **Eclipse never procs from R alone** (we mark it irrelevant): all daggers are one cast instance. Eric hasn't seen it proc either way.
 - **Spear of Shojin boosts only R's own damage,** not on-hit item damage from the daggers (our assumption; the wiki's "proc damage from your ability" is unclear about on-hit).
 - **Which on-hit / on-attack effects the daggers really trigger.** The wiki says daggers apply on-hit and on-attack effects, but not whether that includes stack-and-proc effects (Kraken Slayer, Hullbreaker, Heartsteel, Energized items, Dead Man's Plate, Yun Tal's Flurry).
@@ -101,12 +103,16 @@ validation/    Practice Tool test plan and measurements
   - **Katarina is right next to the dummy** (she usually blinks onto her target before ulting). So aura items like Sunfire Aegis reach it, and Horizon Focus (600+ range) never triggers.
 - **Katarina has no mana** (wiki: resource "None"), so mana from items does nothing: Archangel's, Manamune and Winter's Approach passives are irrelevant for her.
 - **Each item file keeps its numbers in a `data` object at the top, with a source and patch (Step 5d):** the same rule as the data files (no magic numbers in formulas), but next to the only code that uses them, so one file tells the whole story of an item.
-- **Stat passives run in four fixed steps (Step 5d-1):** add HP → convert (HP → AP / AD) → adaptive force → multiply (Rabadon's). Why this order, from the wiki:
+- **Stat passives run in four fixed steps (Step 5d-1):** add → convert (HP → AP / AD) → adaptive force → percent (Rabadon's). Why this order, from the wiki:
   - Riftmaker and Overlord's use ALL bonus HP, so HP-adding passives (Warmog's, Rod of Ages) must come first.
   - Adaptive force picks AD or AP by comparing them, and AD / AP from item passives counts, so it comes after the conversions.
   - Rabadon's "stacks recursively" with every AP source, including Riftmaker's and the adaptive AP, so it comes last.
   - The order of items within a step never matters; a test checks this.
-- **Known gap: Swiftmarch reads move speed once, when R is cast.** Move speed gained during the ult (Hexplate, Cosmic Drive...) would add about 1 AP per 20 move speed. Revisit when Hexplate is coded in 5d-5.
+  - Step 5d-5b renamed "addHealth" → "add" (Hexplate adds attack and move speed there) and "multiply" → "percent" (see `apPercentBonus` below).
+- **% AP bonuses are added up in `apPercentBonus` and applied once, at the end (Step 5d-5b):** the wiki says Blackfire's +4% ADDS to Rabadon's 30% (× 1.34, not × 1.3 × 1.04). So Rabadon's no longer multiplies AP itself; it adds 0.3, and `katarinaStats` multiplies AP by (1 + apPercentBonus) last. Blackfire adds its 4% mid-ult with `addApPercent` (`src/stats/ap-percent.ts`), which takes the old % back out first. It's in its own file because putting it in `katarina-stats.ts` would make a circular import (katarina-stats → items → Blackfire → katarina-stats).
+- **Swiftmarch reads move speed from Katarina's stats (`flatMoveSpeed`, `percentMoveSpeed`), not from the item list (Step 5d-5b):** so passives can add move speed first. Experimental Hexplate's Overdrive starts on R cast (time 0, before any dagger) and lasts longer than the ult, so it's a plain stat passive in the "add" step, and Swiftmarch counts its +20%. This closed the old "known gap". Move speed gained *later* in the ult still wouldn't count, but no modelled item gives any.
+- **`afterDamage` also gets the damage amount (Step 5d-5b),** after armor / MR and every multiplier. Stormsurge adds it up. Stormsurge needs no "within 2.5 s" window code: the whole ult is 2.5 s, so all of its damage is inside the window.
+- **"Right after this hit" = `schedule(0, ...)` (Step 5d-5b):** a 0-second delay runs after everything else already happening at that moment (the rest of the dagger, its on-hit effects). Blackfire uses it so dagger 1 doesn't get the AP it triggers.
 - **During-the-ult passives use one hook, `onHit`, called once per dagger (Step 5d-2):** renamed from `onDaggerHit`, because some items apply on-hit effects at other times too (Dusk and Dawn's repeat, later Guinsoo's Phantom hit). Those call `applyOnHitEffects()`, which runs every item's `onHit` once more.
 - **Each item makes a fresh effect for every simulation (`createEffect`):** Spellblade remembers "already used", and a leftover memory from the previous build would give wrong numbers. A test checks this.
 - **Resist shred from items is reported by each item (`shred(time)`), not written into Katarina's stats (Step 5d-3):**
@@ -235,7 +241,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Gunmetal Greaves | checked, irrelevant | No passive. Its stats count. |
 | Immortal Path | modelled | "Now and Forever": 4% more damage while above 50% HP. The dummy never hits back, so it's always on. `src/items/immortal-path.ts`. |
 | Spellslinger's Shoes | checked, irrelevant | No passive. Its stats count. |
-| Swiftmarch | modelled | "Noxian Fervor": adaptive force = 5% of total move speed (with soft caps), as AD or AP. `src/items/swiftmarch.ts`. |
+| Swiftmarch | modelled | "Noxian Fervor": adaptive force = 5% of total move speed (with soft caps, including Hexplate's Overdrive), as AD or AP. `src/items/swiftmarch.ts`. |
 
 ### Legendary items
 | Item | Status | Why |
@@ -249,7 +255,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Banshee's Veil | checked, irrelevant | Defensive. |
 | Bastionbreaker | modelled | "Shaped Charge": dagger 1 deals 40 + 1.5 per lethality bonus true damage (melee). "Sabotage" needs a takedown: irrelevant. `src/items/bastionbreaker.ts`. |
 | Black Cleaver | modelled | "Carve": physical damage gives a stack (−6% armor each, up to −30%), one per dagger. R's own hit benefits from its own stack (wiki). `src/items/black-cleaver.ts`. |
-| Blackfire Torch | to model | Burn on ability damage (only the part inside the channel counts) + 4% AP while the dummy burns. |
+| Blackfire Torch | modelled | "Baleful Blaze": R's damage starts a burn, 10 + 1% AP every 0.5 s, refreshed by every dagger (5 ticks inside the ult). "Blackfire": +4% AP while it burns (from dagger 2), added to Rabadon's 30%. `src/items/blackfire-torch.ts`. |
 | Blade of The Ruined King | modelled | On-hit 9% (melee) of the dummy's current HP, physical (1 HP after the overkill point). `src/items/blade-of-the-ruined-king.ts`. |
 | Bloodletter's Curse | modelled | "Vile Decay": R's magic damage gives a stack (−7.5% MR each, up to −30%), one per dagger, counting from the next hit. `src/items/bloodletters-curse.ts`. |
 | Bloodthirster | checked, irrelevant | Shield. |
@@ -265,7 +271,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Edge of Night | checked, irrelevant | Defensive. |
 | Endless Hunger | checked, irrelevant | Needs takedowns. |
 | Essence Reaver | modelled | Spellblade, first dagger only: 125% base AD + 0.5 per 1% crit chance, physical. `src/items/essence-reaver.ts`. |
-| Experimental Hexplate | to model | "Overdrive": casting R gives 50% bonus attack speed (melee) for 8 s, which raises R's physical part. |
+| Experimental Hexplate | modelled | "Overdrive": casting R gives +50% bonus attack speed (raises R's AD part) and +20% move speed (Swiftmarch counts it) for the whole ult. A stat passive. `src/items/experimental-hexplate.ts`. |
 | Fiendhunter Bolts | checked, irrelevant | Empowers basic attacks after R. |
 | Force of Nature | checked, irrelevant | Defensive. |
 | Frozen Heart | checked, irrelevant | Defensive. |
@@ -307,7 +313,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Phantom Dancer | checked, irrelevant | Ghosting. |
 | Profane Hydra | checked, irrelevant | Cleave hits only *other* enemies; active doesn't count. |
 | Protoplasm Harness | checked, irrelevant | Defensive. |
-| Rabadon's Deathcap | modelled | "Magical Opus": +30% of ALL AP, including AP from other passives. `src/items/rabadons-deathcap.ts`. |
+| Rabadon's Deathcap | modelled | "Magical Opus": +30% of ALL AP, including AP from other passives. Other % AP (Blackfire) adds to the 30%. `src/items/rabadons-deathcap.ts`. |
 | Randuin's Omen | checked, irrelevant | Defensive. |
 | Rapid Firecannon | to model | Energized (full at R cast): on-hit 40 magic damage. Daggers trigger Energized (Eric, from playing). |
 | Ravenous Hydra | checked, irrelevant | Cleave hits only other enemies. |
@@ -326,7 +332,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Statikk Shiv | to model | Energized (full at R cast): chain lightning 60 magic damage on-hit. Daggers trigger Energized (Eric, from playing). |
 | Sterak's Gage | modelled | "The Claws that Catch": bonus AD = 50% of base AD, which counts for R. `src/items/steraks-gage.ts`. |
 | Stormrazor | to model | Energized (full at R cast): 100 magic damage on-hit. |
-| Stormsurge | to model | Deal 25% of the dummy's max HP within 2.5 s → lightning strike 2 s later (may land inside the channel). |
+| Stormsurge | modelled | Deal 25% of the dummy's max HP → lightning strike 2 s later, 125 + 10% AP magic. Only lands inside the ult if triggered by 0.5 s. `src/items/stormsurge.ts`. |
 | Stridebreaker | checked, irrelevant | Cleave hits only other enemies; active doesn't count. |
 | Sundered Sky | checked, irrelevant | Empowers the next *basic attack*. |
 | Sunfire Aegis | modelled | "Immolate": 20 + 1.5% bonus HP magic damage every second (2 ticks inside the ult). `src/items/sunfire-aegis.ts`. |

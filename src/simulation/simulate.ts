@@ -23,7 +23,14 @@ export type DamageEvent = {
 
 // Katarina's stats that matter for R. Item effects may change these mid-ult.
 export type Attacker = {
-  ap: number;
+  ap: number; // already includes every % AP bonus below
+  // All % AP bonuses added together (Rabadon's 0.3 + Blackfire's 0.04 = 0.34). They ADD to
+  // each other (wiki), so an item that adds one mid-ult needs to know the total so far.
+  apPercentBonus: number;
+  // Move speed, only read by Swiftmarch (before the ult). Flat = base + flat bonuses (boots);
+  // percent = all % bonuses added together (0.2 = +20%).
+  flatMoveSpeed: number;
+  percentMoveSpeed: number;
   bonusAd: number;
   baseAd: number; // AD from her level alone (Spellblade uses it)
   health: number; // her maximum health; the dummy never hits back, so she's always full (Titanic Hydra uses it)
@@ -83,8 +90,9 @@ export type ItemEffect = {
   // times an item causes (Dusk and Dawn).
   onHit?: (context: EffectContext) => void;
   // Run just before / just after any piece of damage lands (R's or an item's).
+  // `amount` = the damage dealt, after armor / MR and every multiplier (Stormsurge adds it up).
   beforeDamage?: (context: EffectContext, damage: DamageInfo) => void;
-  afterDamage?: (context: EffectContext, damage: DamageInfo) => void;
+  afterDamage?: (context: EffectContext, damage: DamageInfo, amount: number) => void;
   // The shred this item gives for damage landing at `time`. Asked every time damage is calculated.
   shred?: (time: number) => ItemShred;
   // "Deal X% more damage": what to multiply this piece of damage by (1.04 = 4% more).
@@ -147,7 +155,7 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
     target.hp = hpAfterHit(target.hp, amount);
 
     if (dealt) {
-      for (const item of input.items) item.afterDamage?.(contextAt(time, item), info);
+      for (const item of input.items) item.afterDamage?.(contextAt(time, item), info, amount);
     }
   }
 

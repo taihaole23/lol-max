@@ -15,7 +15,7 @@ export const rodOfAges: ItemPassive = {
   name: "Rod of Ages",
   extraLevels: data.levelsAtFullStacks,
   stats: {
-    step: "addHealth",
+    step: "add",
     apply: (stats) => {
       stats.health += data.healthAtFullStacks;
       stats.ap += data.apAtFullStacks;

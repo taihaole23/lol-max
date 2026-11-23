@@ -28,6 +28,9 @@ export function run(level: number, itemNames: string[], target: Target = easyDum
 // of damage with its ratio (with ÷ without). `alsoUse` = other effects in both runs.
 export const fixedAttacker: Attacker = {
   ap: 100,
+  apPercentBonus: 0,
+  flatMoveSpeed: 335,
+  percentMoveSpeed: 0,
   bonusAd: 50,
   baseAd: 104.32,
   health: 2000,

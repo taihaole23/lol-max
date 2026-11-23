@@ -9,6 +9,9 @@ import { noShred } from "../src/formulas/resistance.ts";
 
 const attacker: Attacker = {
   ap: 200,
+  apPercentBonus: 0,
+  flatMoveSpeed: 335,
+  percentMoveSpeed: 0,
   bonusAd: 100,
   baseAd: 60,
   health: 1000,

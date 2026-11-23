@@ -6,10 +6,12 @@ import type { ItemPassive } from "./types.ts";
 import { abyssalMask } from "./abyssal-mask.ts";
 import { bastionbreaker } from "./bastionbreaker.ts";
 import { blackCleaver } from "./black-cleaver.ts";
+import { blackfireTorch } from "./blackfire-torch.ts";
 import { bladeOfTheRuinedKing } from "./blade-of-the-ruined-king.ts";
 import { bloodlettersCurse } from "./bloodletters-curse.ts";
 import { duskAndDawn } from "./dusk-and-dawn.ts";
 import { essenceReaver } from "./essence-reaver.ts";
+import { experimentalHexplate } from "./experimental-hexplate.ts";
 import { guinsoosRageblade } from "./guinsoos-rageblade.ts";
 import { hollowRadiance } from "./hollow-radiance.ts";
 import { icebornGauntlet } from "./iceborn-gauntlet.ts";
@@ -27,6 +29,7 @@ import { rodOfAges } from "./rod-of-ages.ts";
 import { shadowflame } from "./shadowflame.ts";
 import { spearOfShojin } from "./spear-of-shojin.ts";
 import { steraksGage } from "./steraks-gage.ts";
+import { stormsurge } from "./stormsurge.ts";
 import { sunfireAegis } from "./sunfire-aegis.ts";
 import { swiftmarch } from "./swiftmarch.ts";
 import { terminus } from "./terminus.ts";
@@ -40,10 +43,12 @@ export const itemPassives: readonly ItemPassive[] = [
   abyssalMask,
   bastionbreaker,
   blackCleaver,
+  blackfireTorch,
   bladeOfTheRuinedKing,
   bloodlettersCurse,
   duskAndDawn,
   essenceReaver,
+  experimentalHexplate,
   guinsoosRageblade,
   hollowRadiance,
   icebornGauntlet,
@@ -61,6 +66,7 @@ export const itemPassives: readonly ItemPassive[] = [
   shadowflame,
   spearOfShojin,
   steraksGage,
+  stormsurge,
   sunfireAegis,
   swiftmarch,
   terminus,
