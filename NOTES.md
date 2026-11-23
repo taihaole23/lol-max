@@ -33,7 +33,7 @@ These notes are for anyone joining the project.
 - Step 7 (user interface) is split into 5 parts (Eric reshaped the page in planning, see "Decisions"):
   - 7a (engine: stage becomes a preset) is done: the search takes `level`, `rRank` and `itemCount` (`src/optimizer/setup.ts`) instead of a stage name. `stagePreset()` fills them in from a stage. Impossible setups (rank 3 at level 6, 7 slots) throw.
   - 7b (page layout) is done: `index.html` (fixed layout), `src/main.ts` (draws the page from the state, reacts to clicks), `src/ui/state.ts` (the page's state + the functions that change it, unit tested), `src/style.css`. Checked in headless Chrome: no console errors.
-  - 7c: the quick search on every input change (best 1 item + boots), the Optimize button and the progress bar.
+  - 7c (searches on the page) is done: `src/ui/searches.ts` runs the quick search on every change and Optimize on click, `src/ui/progress.ts` makes the progress bar's text. Checked in headless Chrome: the quick search shows up ~0.1-0.3 s after a change, Optimize on Full took ~2.6 s, the thebausffs text appeared, and changing the enemy mid-Optimize cancelled it. No console errors.
   - 7d: the damage chart, the four breakdowns and the other 4 builds.
   - 7e: rules, filtered items, sources and patch, CSS.
 
@@ -116,6 +116,12 @@ validation/    Practice Tool test plan and measurements
   - Number boxes react to the "change" event (Enter or leaving the box), not every key, so typing "12" never sets level 1 first.
   - Anything that changes the calculated dummy (enemy type, dummy level, dummy items, a stage) clears typed-in HP / armor / MR, so an old typed number never sits silently on a new dummy. Typed boxes are highlighted, with a "Reset to calculated" link.
   - The stage button stays highlighted after you edit the level: it shows the last preset used, which also decides the dummy's recommended items.
+- **Each search result remembers its "key" (Step 7c):** the exact request it answered, as JSON text. The page only shows a result whose key matches the current inputs. Chose this over clearing results on every change because:
+  - "+" then "−" brings the Optimize result straight back, with no new search;
+  - "+" or "−" doesn't rerun the quick search (the 1-item question didn't change);
+  - with 1 slot, the quick question and the full question have the same key, so the quick result IS the answer and Optimize is hidden.
+  - A search whose key no longer matches is cancelled (`cancelSearch` in `start-search.ts`), so changing the dummy mid-Optimize stops the old one.
+- **Search updates redraw only the results part (Step 7c):** progress arrives ~100 times during Optimize; redrawing the whole page each time would reset a number box you were halfway through typing.
 - **Ties rank the cheaper build first, then by name:** so the top 5 never depends on the order the search happened to try builds.
 - **Builds are always listed in the same item order** (legendaries in pool order, then boots): BotRK reads current HP, so item order can change the damage by a hair. With one order, both searches give the exact same number for the same build.
 - **"Item interactions" can be negative:** each item's marginal damage is "with the build minus without that item". When items boost each other (Rabadon's × another AP item), the boost shows up in BOTH items' marginals, so interactions take one copy back out, and the line adds up to the total.

@@ -14,15 +14,23 @@ import { stages, type StageName } from "./data/stages.ts";
 import { maxItemCount } from "./optimizer/setup.ts";
 import { allowedRRanks } from "./stats/katarina-stats.ts";
 import { byId, escapeHtml, readNumber } from "./ui/html.ts";
+import { progressLabel } from "./ui/progress.ts";
+import * as searches from "./ui/searches.ts";
 import * as actions from "./ui/state.ts";
 import type { PageState } from "./ui/state.ts";
 
 let state: PageState = actions.initialState();
 
-// Every change goes through here: work out the new state, then redraw.
+// The two questions the current inputs ask: the quick one (1 item + boots) and the full one.
+const quickRequest = () => actions.searchRequest(state, 1);
+const fullRequest = () => actions.searchRequest(state, state.itemCount);
+
+// Every change goes through here: work out the new state, redraw, and let the searches know.
+// (inputsChanged starts a quick search if the answer is out of date; it redraws when done.)
 function update(change: (old: PageState) => PageState): void {
   state = change(state);
   render();
+  searches.inputsChanged(quickRequest(), fullRequest());
 }
 
 // ---- Labels shown on the page ----
@@ -49,6 +57,7 @@ function render(): void {
   byId("coming-soon").hidden = modelled;
   renderKatarina();
   renderDummy();
+  renderResults();
 }
 
 function renderChampions(): void {
@@ -109,15 +118,62 @@ function renderKatarina(): void {
   midQuest.disabled = !state.bootsOn;
 
   byId("r-locked").hidden = actions.katarinaSetup(state) !== null;
-
-  // The slots: "?" until a search fills them (Step 7c). Boots get their own slot at the end.
-  const slots = [];
-  for (let i = 0; i < state.itemCount; i++) slots.push(`<div class="slot">?</div>`);
-  if (state.bootsOn) slots.push(`<div class="slot boots">${state.midQuest ? "Tier-3 boots" : "Boots"}</div>`);
-  byId("item-slots").innerHTML = slots.join("");
-
   byId<HTMLButtonElement>("remove-slot").disabled = state.itemCount <= 1;
   byId<HTMLButtonElement>("add-slot").disabled = state.itemCount >= maxItemCount(actions.bootsSetting(state));
+}
+
+// The item slots, the Optimize button, the progress bar and the damage total: everything
+// that comes from a search result.
+function renderResults(): void {
+  const full = fullRequest();
+  const shown = searches.shownResult(quickRequest(), full);
+  const best = shown?.result.builds[0];
+  const running = searches.searchStatus.running;
+
+  // Slots: the best build's items, "?" where the quick result doesn't reach yet.
+  const legendaries = best?.items.filter((item) => item.category === "legendary") ?? [];
+  const boots = best?.items.find((item) => item.category === "boots" || item.category === "boots-tier-3");
+  const slot = (name: string | undefined, extraClass: string, placeholder: string) =>
+    name === undefined
+      ? `<div class="slot ${extraClass}">${placeholder}</div>`
+      : `<div class="slot filled ${extraClass}" title="${escapeHtml(name)}">${escapeHtml(name)}</div>`;
+  const slots = [];
+  for (let i = 0; i < state.itemCount; i++) slots.push(slot(legendaries[i]?.name, "", "?"));
+  if (state.bootsOn) slots.push(slot(boots?.name, "boots", state.midQuest ? "Tier-3 boots" : "Boots"));
+  byId("item-slots").innerHTML = slots.join("");
+
+  // Optimize: hidden when there's only 1 slot (the quick result already is the answer).
+  const optimizeButton = byId<HTMLButtonElement>("optimize");
+  optimizeButton.hidden = state.itemCount === 1;
+  optimizeButton.disabled = full === null || running?.kind === "full" || shown?.complete === true;
+
+  // Progress bar, only for Optimize (the quick search is too fast to need one).
+  const showProgress = running?.kind === "full";
+  byId("progress").hidden = !showProgress;
+  if (showProgress) {
+    byId("progress-fill").style.width = `${running.fraction * 100}%`;
+    byId("progress-text").textContent = progressLabel(running.fraction);
+  }
+
+  // Damage total. The chart and breakdowns come in Step 7d.
+  const total = byId("damage-total");
+  const note = byId("damage-note");
+  if (full === null) {
+    total.textContent = "";
+    note.textContent = "Death Lotus unlocks at level 6.";
+  } else if (!best) {
+    total.textContent = "…";
+    note.textContent = "Working it out…";
+  } else {
+    total.textContent = `${Math.round(best.damage).toLocaleString("en-US")} damage`;
+    note.textContent = shown?.complete
+      ? "One full Death Lotus, every dagger hitting the dummy."
+      : "Best first item + boots so far. Press Optimize to fill every slot.";
+  }
+
+  const error = byId("search-error");
+  error.hidden = searches.searchStatus.error === null;
+  error.textContent = searches.searchStatus.error ?? "";
 }
 
 function renderDummy(): void {
@@ -199,6 +255,9 @@ document.addEventListener("click", (event) => {
     update((s) => actions.changeItemCount(s, -1));
   } else if (button.id === "reset-stats") {
     update(actions.clearTypedStats);
+  } else if (button.id === "optimize") {
+    const full = fullRequest();
+    if (full) searches.optimize(full);
   }
 });
 
@@ -241,4 +300,9 @@ byId("dummy-items").addEventListener("change", (event) => {
   }
 });
 
-render();
+// When a search starts, moves the progress bar or finishes, redraw only the results part.
+// (Redrawing the whole page ~100 times during Optimize would wipe out a number half-typed in a box.)
+searches.onSearchChange(renderResults);
+
+// First draw, and the first quick search.
+update((s) => s);

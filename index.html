@@ -54,6 +54,12 @@
               <button id="add-slot" type="button" aria-label="Add a slot">+</button>
             </div>
           </div>
+
+          <button id="optimize" type="button" class="primary">Optimize</button>
+          <div id="progress" class="progress" hidden>
+            <div id="progress-fill" class="progress-fill"></div>
+            <span id="progress-text" class="progress-text"></span>
+          </div>
         </div>
 
         <div class="panel">
@@ -82,8 +88,10 @@
 
         <div class="panel">
           <h2>Damage</h2>
-          <!-- Filled in by Steps 7c and 7d. -->
-          <p class="hint">The damage chart comes next.</p>
+          <!-- The total is filled in by main.ts. The chart and breakdowns come in Step 7d. -->
+          <p id="damage-total" class="damage-total"></p>
+          <p id="damage-note" class="hint"></p>
+          <p id="search-error" class="warning" hidden></p>
         </div>
       </section>
     </main>

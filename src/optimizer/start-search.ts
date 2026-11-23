@@ -13,6 +13,12 @@ export class SearchCancelled extends Error {
 
 let cancelCurrent: (() => void) | undefined;
 
+// Stops the running search, if any (its Promise rejects with SearchCancelled).
+// The page calls this when the inputs change in a way that makes the running search pointless.
+export function cancelSearch(): void {
+  cancelCurrent?.();
+}
+
 export function startSearch(request: SearchRequest, onProgress: (fraction: number) => void): Promise<SearchResult> {
   cancelCurrent?.();
 

@@ -91,12 +91,24 @@ input.typed { background: var(--typed); }
 .slot-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .slots { display: flex; gap: 6px; flex-wrap: wrap; }
 .slot {
-  width: 48px; height: 48px;
+  width: 72px; height: 56px; padding: 2px; word-break: break-word;
   display: grid; place-items: center;
   border: 1px dashed var(--border); border-radius: 8px;
   color: var(--muted); font-size: 0.7rem; text-align: center;
 }
 .slot.boots { border-style: dotted; }
+.slot.filled { border-style: solid; border-color: var(--accent); color: var(--text); background: var(--accent-soft); }
+
+/* Optimize button and progress bar */
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; padding: 8px 18px; }
+.progress {
+  position: relative; height: 26px; margin-top: 10px;
+  border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+}
+.progress-fill { height: 100%; width: 0; background: var(--accent-soft); transition: width 0.1s; }
+.progress-text { position: absolute; inset: 0; display: grid; place-items: center; font-size: 0.85rem; }
+
+.damage-total { font-size: 1.8rem; font-weight: 700; margin: 0 0 4px; }
 
 .dummy-items { margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px; }
 .dummy-items select { padding: 4px; max-width: 100%; }

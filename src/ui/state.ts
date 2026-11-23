@@ -9,6 +9,7 @@ import { getItem } from "../data/items.ts";
 import type { AbilityKey, PlayableChampionId } from "../data/playable-champions.ts";
 import { stages, type StageName } from "../data/stages.ts";
 import type { BootsSetting } from "../optimizer/item-pool.ts";
+import type { SearchRequest } from "../optimizer/messages.ts";
 import { maxItemCount, stagePreset, type KatarinaSetup } from "../optimizer/setup.ts";
 import type { Target } from "../simulation/simulate.ts";
 import { dummyStats, recommendedDummyItems, withTypedStats, type TypedStats } from "../stats/dummy-stats.ts";
@@ -91,6 +92,14 @@ export function calculatedDummy(state: PageState): Target {
 // The dummy the search uses: calculated stats, with typed-in numbers on top.
 export function dummyTarget(state: PageState): Target {
   return withTypedStats(calculatedDummy(state), state.typedDummyStats);
+}
+
+// What to send to the search worker, with `itemCount` legendary slots (1 for the quick search,
+// the user's slot count for Optimize). null when R can't be cast yet.
+export function searchRequest(state: PageState, itemCount: number): SearchRequest | null {
+  const setup = katarinaSetup(state);
+  if (setup === null) return null;
+  return { ...setup, itemCount, target: dummyTarget(state), boots: bootsSetting(state) };
 }
 
 // ---- Changing the state ----
