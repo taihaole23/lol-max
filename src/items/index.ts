@@ -4,17 +4,20 @@ import type { Item } from "../data/items.ts";
 import type { ItemEffect } from "../simulation/simulate.ts";
 import type { ItemPassive } from "./types.ts";
 import { abyssalMask } from "./abyssal-mask.ts";
+import { bastionbreaker } from "./bastionbreaker.ts";
 import { blackCleaver } from "./black-cleaver.ts";
 import { bladeOfTheRuinedKing } from "./blade-of-the-ruined-king.ts";
 import { bloodlettersCurse } from "./bloodletters-curse.ts";
 import { duskAndDawn } from "./dusk-and-dawn.ts";
 import { essenceReaver } from "./essence-reaver.ts";
 import { guinsoosRageblade } from "./guinsoos-rageblade.ts";
+import { hollowRadiance } from "./hollow-radiance.ts";
 import { icebornGauntlet } from "./iceborn-gauntlet.ts";
 import { immortalPath } from "./immortal-path.ts";
 import { liandrysTorment } from "./liandrys-torment.ts";
 import { lichBane } from "./lich-bane.ts";
 import { lordDominiksRegards } from "./lord-dominiks-regards.ts";
+import { ludensEcho } from "./ludens-echo.ts";
 import { malignance } from "./malignance.ts";
 import { nashorsTooth } from "./nashors-tooth.ts";
 import { overlordsBloodmail } from "./overlords-bloodmail.ts";
@@ -24,26 +27,31 @@ import { rodOfAges } from "./rod-of-ages.ts";
 import { shadowflame } from "./shadowflame.ts";
 import { spearOfShojin } from "./spear-of-shojin.ts";
 import { steraksGage } from "./steraks-gage.ts";
+import { sunfireAegis } from "./sunfire-aegis.ts";
 import { swiftmarch } from "./swiftmarch.ts";
 import { terminus } from "./terminus.ts";
 import { titanicHydra } from "./titanic-hydra.ts";
 import { trinityForce } from "./trinity-force.ts";
 import { warmogsArmor } from "./warmogs-armor.ts";
 import { witsEnd } from "./wits-end.ts";
+import { zekesConvergence } from "./zekes-convergence.ts";
 
 export const itemPassives: readonly ItemPassive[] = [
   abyssalMask,
+  bastionbreaker,
   blackCleaver,
   bladeOfTheRuinedKing,
   bloodlettersCurse,
   duskAndDawn,
   essenceReaver,
   guinsoosRageblade,
+  hollowRadiance,
   icebornGauntlet,
   immortalPath,
   liandrysTorment,
   lichBane,
   lordDominiksRegards,
+  ludensEcho,
   malignance,
   nashorsTooth,
   overlordsBloodmail,
@@ -53,12 +61,14 @@ export const itemPassives: readonly ItemPassive[] = [
   shadowflame,
   spearOfShojin,
   steraksGage,
+  sunfireAegis,
   swiftmarch,
   terminus,
   titanicHydra,
   trinityForce,
   warmogsArmor,
   witsEnd,
+  zekesConvergence,
 ];
 
 // The passives of the items in a build, in the same order as the items.

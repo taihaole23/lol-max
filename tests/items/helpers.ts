@@ -26,11 +26,12 @@ export function run(level: number, itemNames: string[], target: Target = easyDum
 // For "more damage" items: runs the same ult with and without the item's effect, with
 // fixed stats (so the item's own AP etc. can't change anything), and returns each piece
 // of damage with its ratio (with ÷ without). `alsoUse` = other effects in both runs.
-const fixedAttacker: Attacker = {
+export const fixedAttacker: Attacker = {
   ap: 100,
   bonusAd: 50,
   baseAd: 104.32,
   health: 2000,
+  baseHealth: 1500,
   critChance: 0,
   bonusAttackSpeed: 0,
   armorShred: noShred,
@@ -41,7 +42,8 @@ export function ampRatios(item: ItemPassive, target: Target = easyDummy, alsoUse
   const others = () => alsoUse.map((p) => p.createEffect!());
   const simulate = (items: ItemEffect[]) => simulateDeathLotus({ rank: 3, attacker: fixedAttacker, target, items }).events;
   const without = simulate(others());
-  const withItem = simulate([...others(), item.createEffect!()]);
+  // The item's own damage (e.g. Liandry's burn) has nothing to pair with, so it's left out.
+  const withItem = simulate([...others(), item.createEffect!()]).filter((e) => e.source !== item.name);
   return withItem.map((event, i) => ({ ...event, ratio: event.amount / without[i].amount }));
 }
 

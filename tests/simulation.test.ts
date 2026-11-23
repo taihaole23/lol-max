@@ -12,6 +12,7 @@ const attacker: Attacker = {
   bonusAd: 100,
   baseAd: 60,
   health: 1000,
+  baseHealth: 1000,
   critChance: 0,
   bonusAttackSpeed: 0,
   armorShred: noShred,

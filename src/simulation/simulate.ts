@@ -27,6 +27,7 @@ export type Attacker = {
   bonusAd: number;
   baseAd: number; // AD from her level alone (Spellblade uses it)
   health: number; // her maximum health; the dummy never hits back, so she's always full (Titanic Hydra uses it)
+  baseHealth: number; // health from her level alone; health − baseHealth = bonus health (Sunfire uses it)
   critChance: number; // a fraction: 0.25 = 25%. R and on-hit can't crit, but Essence Reaver reads it
   bonusAttackSpeed: number; // a fraction: 0.5 = 50%
   armorShred: ResistShred;
@@ -76,6 +77,8 @@ export type ItemShred = {
 // one for every simulation.
 export type ItemEffect = {
   name: string;
+  // Runs once when R is cast (time 0), before the first dagger.
+  onUltCast?: (context: EffectContext) => void;
   // Runs every time on-hit effects are applied: once per dagger, plus any extra
   // times an item causes (Dusk and Dawn).
   onHit?: (context: EffectContext) => void;
@@ -182,6 +185,10 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
     // ASSUMPTION (to check in the Practice Tool): R's own damage lands first, then
     // on-hit effects. Only matters for effects that read the dummy's HP (BotRK).
     applyOnHitEffects(time);
+  }
+
+  for (const item of input.items) {
+    item.onUltCast?.(contextAt(0, item));
   }
 
   for (let i = 0; i < r.daggersPerTarget; i++) {

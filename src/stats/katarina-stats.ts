@@ -36,6 +36,7 @@ export function katarinaStats(stageLevel: number, items: Item[]): KatarinaStats 
     // Attack speed from levels is the exception: it counts as BONUS attack speed.
     bonusAttackSpeed: statAtLevel(0, base.attackSpeed.bonusPerLevel, level) + sumStat(items, "attackSpeed"),
     health: baseHealth + sumStat(items, "health"),
+    baseHealth,
     armorShred: {
       ...noShred,
       percentPenetration: combinePercent(listStat(items, "percentArmorPenetration")),
