@@ -1,52 +1,96 @@
-/* Basic styling for Step 7b. Step 7e will polish it.
-   Colours are named once here ("CSS variables") and reused below; dark mode swaps them. */
+/* Colours are named once here ("CSS variables") and reused below.
+   DARK is the default (Eric). The theme toggle sets data-theme="light" on <html> for light mode. */
 :root {
-  --bg: #f6f5f2;
-  --panel: #ffffff;
-  --text: #1d1d1f;
-  --muted: #6b6b70;
-  --border: #d9d7d2;
-  --accent: #b3122e; /* Katarina red */
-  --accent-soft: #f6dde2;
-  --typed: #fff3c4; /* a dummy stat the user typed in */
-  /* Chart colours: from a colour-blind-checked palette (validated for this panel colour, Step 7d).
+  color-scheme: dark;
+  --bg: #0e1116;
+  --panel: #161a22;
+  --panel-raised: #1d222c;
+  --text: #e7e9ee;
+  --muted: #8d93a3;
+  --border: #272d39;
+  --accent: #e0455f; /* Katarina red */
+  --accent-soft: #3a1c26;
+  --typed: #4a4020; /* a dummy stat the user typed in */
+  /* Chart colours: from a colour-blind-checked palette, validated against --panel in each theme.
      Each colour always means the same thing, and is always next to a written label. */
+  --type-magic: #3987e5;
+  --type-physical: #d95926;
+  --type-true: #199e70;
+  --part-ability: #9085e9;
+  --part-items: #0ca30c;
+  --bar: #3987e5;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --panel-raised: #f0f1f4;
+  --text: #1b1d22;
+  --muted: #646a78;
+  --border: #d9dce3;
+  --accent: #b3122e;
+  --accent-soft: #f6dde2;
+  --typed: #fff3c4;
   --type-magic: #2a78d6;
   --type-physical: #eb6834;
   --type-true: #1baf7a;
   --part-ability: #6250d6;
   --part-items: #008300;
   --bar: #2a78d6;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  color: var(--text);
-  background: var(--bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #141416;
-    --panel: #1e1e22;
-    --text: #ececef;
-    --muted: #9a9aa2;
-    --border: #34343a;
-    --accent: #e0455f;
-    --accent-soft: #3a1c23;
-    --typed: #4a4020;
-    --type-magic: #3987e5;
-    --type-physical: #d95926;
-    --type-true: #199e70;
-    --part-ability: #9085e9;
-    --part-items: #0ca30c;
-    --bar: #3987e5;
-  }
-}
+body { margin: 0; background: var(--bg); min-height: 100vh; display: flex; flex-direction: column; }
+#page { width: 100%; max-width: 1100px; margin: 0 auto; padding: 16px; box-sizing: border-box; flex: 1; }
 
-body {
-  margin: 0 auto;
-  max-width: 1100px;
-  padding: 16px;
-  background: var(--bg);
+/* Top bar: brand, small search, links. Shared by every page. */
+.topbar {
+  display: flex; align-items: center; gap: 16px; padding: 10px 16px;
+  background: var(--panel); border-bottom: 1px solid var(--border);
 }
+.brand { font-weight: 800; font-size: 1.15rem; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+.topbar-search { flex: 1; max-width: 420px; }
+.topbar-links { margin-left: auto; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.topbar-links a { color: var(--muted); text-decoration: none; }
+.topbar-links a:hover { color: var(--text); }
+.theme-toggle { font-size: 0.85rem; padding: 4px 10px; }
+.site-footer { padding: 16px; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+
+/* Home page: title and one long search bar in the middle */
+.hero { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; }
+.hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; letter-spacing: 0.02em; }
+.hero-tagline { color: var(--muted); margin: 0 0 16px; font-size: 1.1rem; }
+#home-search { width: min(100%, 640px); }
+
+/* The champion search bar and its drop-down list */
+.champion-search { position: relative; width: 100%; }
+.champion-search input {
+  width: 100%; box-sizing: border-box; background: var(--panel-raised);
+  border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px;
+}
+.champion-search.large input { padding: 14px 22px; font-size: 1.15rem; }
+.champion-search input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.search-results {
+  position: absolute; z-index: 10; left: 0; right: 0; top: calc(100% + 6px);
+  margin: 0; padding: 6px; list-style: none; text-align: left;
+  max-height: 360px; overflow-y: auto;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+.search-results li { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-radius: 8px; cursor: pointer; }
+.search-results li img { border-radius: 6px; }
+.search-results li.highlighted { background: var(--panel-raised); }
+.search-results li.unavailable .search-name { color: var(--muted); }
+.search-results .soon { margin-left: auto; }
+.search-results .no-match { color: var(--muted); cursor: default; }
+
+/* Champion page header */
+.champion-header { display: flex; align-items: center; gap: 14px; margin: 8px 0 4px; }
+.champion-header h1 { margin: 0; font-size: 2rem; }
+.champion-icon { border-radius: 12px; border: 2px solid var(--border); }
 
 h1 { margin: 0; }
 h2 { margin: 0 0 12px; font-size: 1.1rem; }
@@ -85,14 +129,28 @@ input.typed { background: var(--typed); }
 .champion-card { padding: 10px 16px; font-weight: 600; }
 .champion-card.selected { border-color: var(--accent); background: var(--accent-soft); }
 
-.ability { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.ability-card {
-  display: flex; flex-direction: column; align-items: center;
-  width: 110px; padding: 10px 6px;
+/* Tooltip: any element with data-tip="..." shows that text in a bubble above it on hover
+   (or keyboard focus). Pure CSS: ::after is an extra box the browser draws after the element. */
+[data-tip] { position: relative; }
+[data-tip]:hover::after, [data-tip]:focus-visible::after {
+  content: attr(data-tip);
+  position: absolute; z-index: 20; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+  padding: 4px 8px; border-radius: 6px; white-space: nowrap; pointer-events: none;
+  background: var(--text); color: var(--bg); font-size: 0.8rem; font-weight: 600;
+  line-height: 1.3; /* its own, not inherited: icon wrappers use line-height 0 */
 }
-.ability.selected .ability-card { border-color: var(--accent); background: var(--accent-soft); }
-.ability-key { font-size: 1.3rem; font-weight: 700; }
-.ability-name { font-size: 0.8rem; text-align: center; }
+
+/* Ability icons, with Q/W/E/R in the corner and rank boxes underneath */
+.ability { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.ability-card { padding: 0; border: 2px solid var(--border); border-radius: 10px; line-height: 0; }
+.ability-card img { border-radius: 8px; }
+.ability.selected .ability-card { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.ability.unavailable .ability-card img { filter: grayscale(0.85); opacity: 0.55; }
+.ability-key {
+  position: absolute; right: -6px; bottom: -6px; line-height: 1;
+  padding: 2px 5px; border-radius: 5px; font-size: 0.7rem; font-weight: 800;
+  background: var(--panel-raised); border: 1px solid var(--border);
+}
 .soon { font-size: 0.7rem; color: var(--muted); }
 
 .rank-boxes { display: flex; gap: 3px; }
@@ -103,16 +161,36 @@ input.typed { background: var(--typed); }
 /* Two columns on wide screens (at least 420px each), one column on phones. */
 .optimizer { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
 
-.slot-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.slots { display: flex; gap: 6px; flex-wrap: wrap; }
+/* Item slots: always 6 in one row (no wrapping), then − / +, so nothing ever moves. */
+.slot-row { display: flex; align-items: center; gap: 10px; --slot: 52px; }
+.slots { display: grid; grid-template-columns: repeat(6, var(--slot)); gap: 6px; }
 .slot {
-  width: 72px; height: 56px; padding: 2px; word-break: break-word;
+  width: var(--slot); height: var(--slot); box-sizing: border-box;
   display: grid; place-items: center;
   border: 1px dashed var(--border); border-radius: 8px;
   color: var(--muted); font-size: 0.7rem; text-align: center;
 }
 .slot.boots { border-style: dotted; }
-.slot.filled { border-style: solid; border-color: var(--accent); color: var(--text); background: var(--accent-soft); }
+.slot.filled { border: 1px solid var(--accent); padding: 1px; }
+.slot.filled img { width: 100%; height: 100%; border-radius: 6px; display: block; }
+.slot.off { opacity: 0.25; background: var(--panel-raised); border-style: solid; }
+.slot-buttons { display: flex; gap: 4px; }
+.slot-buttons button { width: 32px; height: 32px; padding: 0; font-size: 1.1rem; }
+.item-icon { display: inline-block; line-height: 0; }
+.item-icon img { border-radius: 6px; }
+.slot .item-icon { width: 100%; height: 100%; }
+
+/* Enemy types: the dummy champion's icon, the type, the champion's name */
+.enemy-card { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 8px; align-items: center; text-align: left; padding: 6px 12px 6px 6px; }
+.enemy-card img { grid-row: 1 / 3; border-radius: 8px; }
+.enemy-type { font-weight: 700; }
+.enemy-champion { font-size: 0.8rem; color: var(--muted); }
+
+/* The dummy's items: a row of icons, or drop-downs each with the chosen item's icon */
+.icon-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.picker-row { display: flex; align-items: center; gap: 8px; }
+.picker-row select { flex: 1; min-width: 0; }
+.icon-placeholder { width: 28px; height: 28px; border: 1px dashed var(--border); border-radius: 6px; flex: none; }
 
 /* Optimize button and progress bar */
 button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; padding: 8px 18px; }
@@ -173,14 +251,19 @@ footer { margin: 24px 0 8px; text-align: center; }
 
 /* Phones: a bit less padding, and long tables scroll inside their box instead of the page */
 @media (max-width: 480px) {
+  /* Top bar: brand and links on the first row, the search bar on its own full-width row */
+  .topbar { flex-wrap: wrap; gap: 8px 12px; }
+  .topbar-search { order: 3; flex-basis: 100%; max-width: none; }
   .panel { padding: 12px; }
   .bar-table { overflow-x: auto; }
-  .ability-row { gap: 6px; }
-  .ability-card { width: 76px; }
-  /* 5 boxes of 12px + gaps = 68px, so they fit under a 76px card and all 4 abilities fit in one row */
+  .ability-row { gap: 10px; }
+  /* 5 boxes of 10px + gaps = 58px, about the width of a 56px ability icon */
   .rank-boxes { gap: 2px; }
-  .rank-box { width: 12px; height: 12px; }
-  .ability-name { font-size: 0.7rem; }
+  .rank-box { width: 10px; height: 10px; }
+  /* 6 slots of 36px + gaps + the buttons = 304px: fits the 319px a 375px-wide phone leaves */
+  .slot-row { --slot: 36px; gap: 8px; }
+  .slots { gap: 4px; }
+  .slot-buttons button { width: 28px; height: 28px; }
   .build-card { grid-template-columns: 2em 4em 1fr; }
 }
 

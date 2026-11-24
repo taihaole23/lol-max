@@ -60,8 +60,13 @@ These notes are for anyone joining the project.
 
 - **Redesign before deploying (Eric, after Step 8):** the page is rebuilt in 4 parts before Step 9.
   - Part 1 (icons) is done: `scripts/update-icons.mjs` (`npm run update-icons 16.23.1`) saves every champion's icon and 4 ability icons, every item icon (`public/icons/`), and the champion list (`src/data/champion-list.26.23.json`). 9.4 MB in total. `tests/icons.test.ts` checks every icon exists.
-  - Part 2: pages (home with a big search bar, champion page, "How it works" page), real web addresses, dark theme with a light toggle.
-  - Part 3: champion page layout (ability icons, fixed 6-slot item row with boots on the left, icons everywhere).
+  - Part 2 (pages) is done:
+    - `src/ui/router.ts` reads the address (`/`, `/about`, `/<champion>`, `/<champion>/<q|w|e|r>`) and changes page without reloading (History API).
+    - Pages are in `src/ui/pages/`: `champion-page.ts` (the optimizer, moved out of `main.ts`) and `simple-pages.ts` (home, How it works, not found).
+    - `src/ui/champion-search.ts` is the search bar (big on home, small in the top bar).
+    - `src/ui/theme.ts` handles the dark default and the light toggle; `vercel.json` makes every address load the site.
+    - Checked on the built site in headless Chrome: every page, typing in the search, Enter, the back button, a remembered light mode on a direct `/katarina/r` load, Ahri's "coming soon" page, a bad address. No console errors.
+  - Part 3 (champion page layout) is done: ability icons with names on hover, a fixed 6-slot item row (boots on the left) with − / + that never move, item icons, enemy types with the dummy champion's icon, the dummy's items as icons. Checked in headless Chrome: the − / + buttons sat at exactly the same screen position after every slot change and boots toggle; fits a 375 px phone. No console errors.
   - Part 4: results as "damage + item icons" rows.
 
 ## Confirmed in the Practice Tool (Step 8, patch 26.23)
@@ -173,6 +178,14 @@ validation/    Practice Tool test plan and measurements
   - Top 5: damage + item icons, names on hover. Rules / filtered items / sources move to their own "How it works" page.
   - Real web addresses (`/katarina/r`, `/about`), not `#` ones (Eric). Needs a Vercel setting so those addresses load the site.
   - Built so a new champion is data only: one champion list, one ability page for any champion and ability, icons from a script.
+- **How the pages are built (redesign part 2):**
+  - Each page draws itself into a FRESH container, and its click listeners hang on that container. Changing page throws the container away, listeners included, so they can't pile up or fire on the wrong page.
+  - The champion page returns a "clean-up" function the router calls on leaving: it stops search results from drawing onto a page that's gone. The page's settings (`state`) live outside the page, so leaving and coming back keeps them.
+  - The ability is part of the address (`/katarina/q`), so a link or a refresh opens the same ability.
+  - Search order: playable champions first, then names starting with what's typed, then A to Z. Matching ignores case and punctuation ("kaisa" finds Kai'Sa).
+  - `vercel.json` sends every address to `index.html` (a "rewrite"). Real files like `/icons/...` are still served as they are; Vercel only uses the rewrite when no file matches. Without it, opening `lol.ericzhong.ca/katarina/r` directly would give a 404.
+- **Hover names are a CSS tooltip (`data-tip="..."`), not the browser's `title`:** the browser's own tooltip shows up late (about a second) and can't be styled. One CSS rule draws it for anything with `data-tip`: abilities, item slots, the dummy's items. Icons also get `alt` text, so screen readers still say the name.
+- **The item row is a grid of exactly 6 columns that never wraps (redesign part 3):** switched-off slots stay as greyed boxes, so the row's width never changes and the − / + buttons beside it never move. On phones the slots shrink (36 px) instead of wrapping onto a second line.
 - **Icons are saved copies from Data Dragon, not loaded from Riot while the site runs:** same rule as item data, so the site can't break or change if Riot's server does. Riot allows fan projects to use them if the site says it's a fan project (it does). All 173 champions' ability icons are saved too (4 MB), so adding a champion needs no icon work.
 - **Ties rank the cheaper build first, then by name:** so the top 5 never depends on the order the search happened to try builds.
 - **Builds are always listed in the same item order** (legendaries in pool order, then boots): BotRK reads current HP, so item order can change the damage by a hair. With one order, both searches give the exact same number for the same build.

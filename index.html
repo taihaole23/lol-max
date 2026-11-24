@@ -4,106 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>lol-max</title>
+    <!-- Light mode remembered from last time: set it before anything is drawn, so there's no
+         flash of dark first. Dark (no attribute) is the default. See src/ui/theme.ts. -->
+    <script>
+      try {
+        if (localStorage.getItem("lol-max-theme") === "light") document.documentElement.dataset.theme = "light";
+      } catch {}
+    </script>
   </head>
   <body>
-    <!-- The fixed layout. Parts with an id are filled in by src/main.ts. -->
-    <header>
-      <h1>lol-max</h1>
-      <p class="tagline">Which build makes an ability hit the hardest? <span id="patch" class="patch"></span></p>
+    <!-- The parts every page shares. The page itself is drawn into #page by src/main.ts. -->
+    <header class="topbar">
+      <a class="brand" href="/">lol-max</a>
+      <div id="topbar-search" class="topbar-search"></div>
+      <nav class="topbar-links">
+        <a href="/about">How it works</a>
+        <button id="theme-toggle" type="button" class="theme-toggle"></button>
+      </nav>
     </header>
 
-    <main>
-      <section aria-label="Champion">
-        <div id="champions" class="champion-row"></div>
-      </section>
+    <main id="page"></main>
 
-      <section aria-label="Abilities">
-        <div id="abilities" class="ability-row"></div>
-      </section>
-
-      <!-- Shown when Q, W or E is selected. -->
-      <section id="coming-soon" class="panel" hidden>
-        <p>This ability isn't modelled yet. Only Death Lotus (R) works in version 1.</p>
-      </section>
-
-      <!-- The Death Lotus optimizer. -->
-      <section id="optimizer" class="optimizer">
-        <div class="panel">
-          <h2 id="attacker-title">Katarina</h2>
-
-          <div class="field">
-            <span class="field-label">Stage preset</span>
-            <div id="stage-buttons" class="button-row"></div>
-          </div>
-
-          <label class="field">
-            <span class="field-label">Level</span>
-            <input id="level" type="number" min="1" max="18" step="1" />
-          </label>
-
-          <label class="check"><input id="boots-on" type="checkbox" /> Boots</label>
-          <label class="check"><input id="mid-quest" type="checkbox" /> Mid quest completed (tier-3 boots)</label>
-
-          <p id="r-locked" class="warning" hidden>Death Lotus unlocks at level 6.</p>
-
-          <div class="field">
-            <span class="field-label">Item slots</span>
-            <div class="slot-row">
-              <div id="item-slots" class="slots"></div>
-              <button id="remove-slot" type="button" aria-label="Remove a slot">−</button>
-              <button id="add-slot" type="button" aria-label="Add a slot">+</button>
-            </div>
-          </div>
-
-          <button id="optimize" type="button" class="primary">Optimize</button>
-          <div id="progress" class="progress" hidden>
-            <div id="progress-fill" class="progress-fill"></div>
-            <span id="progress-text" class="progress-text"></span>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h2>Target dummy</h2>
-
-          <div class="field">
-            <span class="field-label">Enemy type</span>
-            <div id="enemy-types" class="button-row"></div>
-          </div>
-
-          <label class="field">
-            <span class="field-label">Dummy level</span>
-            <input id="dummy-level" type="number" min="1" max="18" step="1" />
-          </label>
-
-          <label class="check"><input id="use-recommended" type="checkbox" /> Use recommended items</label>
-          <div id="dummy-items" class="dummy-items"></div>
-
-          <div class="stat-row">
-            <label class="field"><span class="field-label">HP</span><input id="dummy-hp" type="number" min="1" /></label>
-            <label class="field"><span class="field-label">Armor</span><input id="dummy-armor" type="number" min="0" /></label>
-            <label class="field"><span class="field-label">MR</span><input id="dummy-magic-resist" type="number" min="0" /></label>
-          </div>
-          <p class="hint">Type a number to override it. <button id="reset-stats" type="button" class="link-button">Reset to calculated</button></p>
-        </div>
-
-        <div class="panel results">
-          <h2>Damage</h2>
-          <!-- Everything below is filled in by main.ts from the search result. -->
-          <p id="damage-total" class="damage-total"></p>
-          <p id="damage-note" class="hint"></p>
-          <p id="search-error" class="warning" hidden></p>
-          <div id="top-builds"></div>
-          <div id="breakdown"></div>
-        </div>
-      </section>
-
-      <!-- Filled in once by main.ts (src/ui/info-view.ts). -->
-      <section id="rules" class="panel info"></section>
-      <section id="sources" class="panel info"></section>
-    </main>
-
-    <footer class="hint">
-      lol-max is a fan project, not made or endorsed by Riot Games. League of Legends is a trademark of Riot Games, Inc.
+    <footer class="site-footer">
+      lol-max is a fan project, not made or endorsed by Riot Games. League of Legends and its icons are
+      trademarks of Riot Games, Inc.
     </footer>
 
     <script type="module" src="/src/main.ts"></script>
