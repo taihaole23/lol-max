@@ -56,7 +56,12 @@ These notes are for anyone joining the project.
     - Checked on the HP bar (no counter involved): test 17 left the dummy at **2003** HP. On-hit first predicts 1998, R first 2037.
   - **Result: all 24 counter readings within 0.52%, 21 of them within 0.1%; both HP-bar readings within 0.12%.**
   - **Test 22, a blind prediction:** BotRK + Guinsoo's + Statikk + Yun Tal + Kraken + Shadowflame, level 16, 10,000 HP dummy, 10 resist. Predicted **966** HP left before Eric cast; he measured **970** and **980** (−0.05% / −0.16%). First in-game check of Statikk, Yun Tal, Kraken and Shadowflame. The two tries differ by 10, about the game's own run-to-run variation.
-  - Leftovers (all inside the 1% tolerance, causes unknown): Riftmaker tests 13 and 20 −0.5% (magic only, so not the counter), and 18 (Guinsoo's + BotRK + Terminus, 50 resist) −0.5%.
+  - **Test 23, AD build vs 150 armor:** Gunmetal Greaves, BotRK, Guinsoo's, Lord Dominik's, Yun Tal, Voltaic. Level 18, 8,000 HP dummy, 150 resist.
+    - Eric first compared the counter (5,814) with the site (5,610) and saw ~200 off. 153 of that is the counter's phantom R hit, which is big here because bonus AD and attack speed are high.
+    - On the HP bar: predicted **2,390** HP left before the cast; measured **2,424** (the calculator is +0.6% high).
+    - It was the first test with high armor, so it covers Lord Dominik's % pen and Voltaic's lethality.
+  - Leftovers (all inside the 1% tolerance, causes unknown): Riftmaker tests 13 and 20 −0.5% (magic only, so not the counter), 18 (Guinsoo's + BotRK + Terminus, 50 resist) −0.5%, and 23 +0.6%.
+    - 23 is the only one where we predict too MUCH damage. If a later high-armor test also comes out high, check how Lord Dominik's and Voltaic's lethality combine against armor first.
 
 - **Redesign before deploying (Eric, after Step 8):** the page is rebuilt in 4 parts before Step 9.
   - Part 1 (icons) is done: `scripts/update-icons.mjs` (`npm run update-icons 16.23.1`) saves every champion's icon and 4 ability icons, every item icon (`public/icons/`), and the champion list (`src/data/champion-list.26.23.json`). 9.4 MB in total. `tests/icons.test.ts` checks every icon exists.
@@ -67,6 +72,14 @@ These notes are for anyone joining the project.
     - `src/ui/theme.ts` handles the dark default and the light toggle; `vercel.json` makes every address load the site.
     - Checked on the built site in headless Chrome: every page, typing in the search, Enter, the back button, a remembered light mode on a direct `/katarina/r` load, Ahri's "coming soon" page, a bad address. No console errors.
   - Part 3 (champion page layout) is done: ability icons with names on hover, a fixed 6-slot item row (boots on the left) with − / + that never move, item icons, enemy types with the dummy champion's icon, the dummy's items as icons. Checked in headless Chrome: the − / + buttons sat at exactly the same screen position after every slot change and boots toggle; fits a 375 px phone. No console errors.
+  - **Locks, bans, item cards and a polish pass (Eric, after part 4):**
+    - Click any item slot → the item picker (`src/ui/item-picker.ts`): search and lock an item into that slot, or lock / ban the optimizer's pick. A small × on a result item bans it straight away. Banned items show as chips under the slots (click to allow again).
+    - Locking or banning shows the quick answer and brings back the Optimize button. It used to re-run Optimize by itself; Eric changed that so several changes can be made in a row.
+    - The engine (`src/optimizer/constraints.ts`, `search.ts`): locked items start every build, banned items leave the pool, locked boots are the only boots tried. `constraintProblem()` explains impossible conditions in words ("Void Staff and Terminus can't be built together"), and the picker greys out items that would cause one.
+    - Rich item tooltips (`src/ui/tooltip.ts`, `item-card.ts`): cost, stats, passives / actives, and whether the passive is modelled. The passive text comes from Data Dragon (`effects` in the item snapshot, display only).
+    - New design system in `style.css`: bigger type (17 px), spacing / radius / colour tokens, switches, segmented stage control, a full-width ability bar with 84 px icons, centred champion header.
+    - `npm run test:slow` re-run after the search change (Nov 23, 2026): all 6 passed (~4 min). The beam still matches trying every build on Late, and beam 300 = beam 5,000 on Full, for all 3 enemy types.
+    - Checked in headless Chrome (built site): lock → auto re-optimize with the item in all 5 builds; ban → gone from every build; Terminus greyed out next to a locked Void Staff; clear; light mode; every page fits a 375 px phone. No console errors.
   - Part 4 (results) is done: each top-5 build is one row (rank, damage, item icons with boots first, names on hover), and item lines in "By source" and "What each item adds" show their icon. Checked in headless Chrome, dark, light and phone. **The redesign is done; next is Step 9 (deploy), which Eric does himself.**
 
 ## Confirmed in the Practice Tool (Step 8, patch 26.23)
@@ -76,6 +89,7 @@ These notes are for anyone joining the project.
 - **The Death Lotus bug shrinks Liandry's and Luden's damage** by R's %, and **Luden's fires once** (tests 12, 14, 21 within 0.1%).
 - **On-hit at 25 / 30 / 35% by rank** (Nashor's, tests 9-11, exact).
 - **The dummy's damage counter adds one R physical hit that never happened;** its HP bar is right (test 7b).
+- **An AD build against 150 armor** (Lord Dominik's, Voltaic, BotRK, Guinsoo's, Yun Tal, Gunmetal Greaves; test 23, HP bar within 0.6%).
 - **Statikk Shiv, Yun Tal, Kraken Slayer and Shadowflame together** (test 22, within 0.2%). Not checked one by one, so a small error in one could hide behind another, but none is big.
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
@@ -184,7 +198,15 @@ validation/    Practice Tool test plan and measurements
   - The ability is part of the address (`/katarina/q`), so a link or a refresh opens the same ability.
   - Search order: playable champions first, then names starting with what's typed, then A to Z. Matching ignores case and punctuation ("kaisa" finds Kai'Sa).
   - `vercel.json` sends every address to `index.html` (a "rewrite"). Real files like `/icons/...` are still served as they are; Vercel only uses the rewrite when no file matches. Without it, opening `lol.ericzhong.ca/katarina/r` directly would give a 404.
-- **Hover names are a CSS tooltip (`data-tip="..."`), not the browser's `title`:** the browser's own tooltip shows up late (about a second) and can't be styled. One CSS rule draws it for anything with `data-tip`: abilities, item slots, the dummy's items. Icons also get `alt` text, so screen readers still say the name.
+- **Locks and bans (Eric):**
+  - A lock is tied to a SLOT (lock Zhonya's into slot 2 and it shows in slot 2); the search just treats it as "must include". The other items fill the free slots in order.
+  - The search method is chosen by FREE slots, not all slots: lock 3 of 5 and even Full is an exact every-build search.
+  - A locked item may be one the speed filter removed (Frozen Heart): it's added back to the pool for that search only.
+  - The quick search is "locked items + 1 free item + boots", so it stays fast and is the whole answer when all but one slot is locked.
+  - Nothing re-runs Optimize by itself (Eric, later). At first, changing a lock or ban while a full answer was shown re-ran Optimize automatically. But a few seconds of loading after every click got in the way of making two changes in a row (a lock, then mid quest). Now every change shows the quick answer, and Optimize waits for a click.
+  - The dummy's items use the same 6-slot row and item picker as the build. With "Recommended" on, the slots show the recommended items. Picking a different one switches to custom items, starting from the recommended list. This replaced a column of drop-down menus.
+- **The item tooltip is JavaScript, not CSS (replaced the `::after` tooltip):** a CSS tooltip can only show one line of text; the item card needs an icon, stats and passives. One floating box is reused for the whole site and kept inside the window. Plain `data-tip` text still works through the same box.
+- **Hover names are our own tooltip, not the browser's `title`:** the browser's own tooltip shows up late (about a second) and can't be styled. First a CSS rule (redesign part 3), now `src/ui/tooltip.ts` (see above). Icons also get `alt` text, so screen readers still say the name.
 - **The item row is a grid of exactly 6 columns that never wraps (redesign part 3):** switched-off slots stay as greyed boxes, so the row's width never changes and the − / + buttons beside it never move. On phones the slots shrink (36 px) instead of wrapping onto a second line.
 - **Icons are saved copies from Data Dragon, not loaded from Riot while the site runs:** same rule as item data, so the site can't break or change if Riot's server does. Riot allows fan projects to use them if the site says it's a fan project (it does). All 173 champions' ability icons are saved too (4 MB), so adding a champion needs no icon work.
 - **Ties rank the cheaper build first, then by name:** so the top 5 never depends on the order the search happened to try builds.
@@ -269,6 +291,37 @@ validation/    Practice Tool test plan and measurements
   - The dummy always uses the boots-on counts (boots + 1 / 2 / 3 / 5), because Eric's builds include boots and boots like Steelcaps add real armor.
 - **Item names, not item IDs, in the presets:** names are readable. Step 5 checks every name against the item data.
 - **Sion's permanent HP from his W passive is ignored,** like every champion ability. So a real late-game Sion has more HP than our dummy. Users can type in more HP if they want.
+- **Look and feel (Eric, after the polish pass):** the system font and big rounded corners looked generic.
+  - The font is Rubik, a friendly normal-width font used for everything. It's free under the SIL Open Font License, and the files are saved in `public/fonts/` with the licence, so nothing loads from Google.
+    - Barlow with Barlow Condensed was tried first. Eric found the condensed numbers and the heavy uppercase headings too long and skinny.
+    - IBM Plex Sans was tried next. Eric found it too formal and pointy.
+  - Corners are 2–4 px everywhere. There are no pill or circle shapes, no gradients and no glow.
+  - Damage types use the game's colours: purple for magic and orange for physical (teal for true). A breakdown label is coloured only when its source dealt a single damage type.
+    - To support this, `breakdown()` now also records `typesBySource`.
+    - Ability vs. items moved to blue and pink, so purple only ever means magic.
+    - All the colours passed the colour-blind validator in both themes, and the text colours have at least 4.5:1 contrast.
+  - The top builds show the total cost in gold text with the game's coin icon. The coin comes from Data Dragon 5.5.1, the last version with UI icons, and `update-icons.mjs` saves it.
+- **"Best build for each stat" under the top 5 (Eric asked for "prioritize AP / AD"):**
+  - "Prioritize" is defined as: the best build where every legendary gives that stat. There are three styles: AP, AD and attack speed (`src/optimizer/styles.ts`).
+    - This is easy to explain and to check, and it answers the site's founding question (AD, AP or on-hit Katarina?) even when one style fills the whole top 5.
+    - Rejected: weighting stats with points (any weights would be made up), and "most AP" (it ignores damage).
+  - It runs the same search again, with every legendary that lacks the stat added to the bans.
+    - Boots are untouched: they have their own slot.
+    - The user's locked items stay, even if they lack the stat.
+    - When a style's best build is already in the top 5, its row says "same as #N".
+  - Cost: Full-stage Optimize takes about 5.5 s instead of 3.4 s (measured in Node). The loading bar gives the main search 85% and the three style searches the rest.
+- **Ambience (Eric: "kind of boring"):**
+  - Katarina's splash art sits behind the top of her page, faded and fading out downwards. Riot calls this version "centered"; it's cropped for banners.
+    - Only champions the site supports get one, since each is about 135 KB. `update-icons.mjs` has a `splashChampions` list, and a test checks every playable champion has a splash.
+  - The damage total counts up to its new value (`src/ui/count-up.ts`, 0.35 s). It's skipped when the visitor's system asks for reduced motion.
+- **The casino roll (Eric):** `src/ui/slot-roller.ts`. While Optimize runs, every free item slot flicks through random item icons, with a gold rim.
+  - When the answer arrives, the slots stop left to right, 170 ms apart, each with a small bounce. Only then do the damage total (counting up) and the top 5 change.
+  - Locked slots never roll.
+  - It's decoration only: the answer is already worked out before the first slot stops. It's skipped for reduced motion, and a change made mid-roll cancels it.
+- **The two input panels are balanced:** the dummy's level moved into the stat row (Level, HP, Armor, MR), and the Recommended switch moved beside the dummy's "Items" label.
+  - Before, the dummy panel was ~90 px taller, and the stretched "Your build" panel had a big empty gap.
+  - The stage buttons now fill their box.
+- **Number boxes have big ▲ / ▼ buttons (Eric):** each press changes the number by a useful step (levels 1, HP 100, armor and MR 10) and counts as typing it. The browser's tiny arrows are hidden.
 - **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
 
 ## Things we learned from the data
@@ -319,6 +372,20 @@ validation/    Practice Tool test plan and measurements
 None right now.
 
 ## Bugs (bug / cause / fix)
+- **Rolling item slots looked empty (caught in the browser before Eric saw it).**
+  - Bug: during the casino roll, the item slots showed blank squares. Only the boots slot showed icons.
+  - Cause: Optimize redraws the results ~100 times. Each redraw rebuilt the slots with brand-new pictures that the browser hadn't painted yet, so it kept showing empty frames.
+  - Fix: the slots are only rebuilt when their HTML actually changes. A rolling slot always starts with the same picture, so redraws during a roll change nothing. The roller also only swaps in icons that have finished loading.
+- **Changing any input made the whole page jump (Eric).**
+  - Bug: after every change, the slots, top 5 and breakdowns vanished for a moment and came back. The page shrank by about 770 px, then grew again, which felt like a full page refresh.
+  - Cause: the page only shows a result whose key matches the current inputs. Between a change and its quick answer (~15 ms) there was none, so the results were blanked.
+  - Fix: while a new answer is on its way, the previous one stays on screen. It fades only if the wait lasts longer than 150 ms.
+    - The check is "there's a quick question and no error", not "a search is running", because the page redraws just before the search starts.
+    - Measured frame by frame in the browser: the top 5 never disappear and the scroll position never moves.
+- **Every test file failed with "Vitest failed to find the current suite" when run from Git Bash.**
+  - Bug: `npm test` in Git Bash loaded 0 tests per file, while the same command in PowerShell passed all 292.
+  - Cause: not our code. It's most likely the Git Bash path (`/c/Users/...`) making Vitest load itself twice.
+  - Fix: run the tests from PowerShell, or from VS Code's default terminal.
 - **"Slot counts" search test sometimes failed in the full suite (Step 8).**
   - Bug: passed on its own, failed now and then in `npm test`.
   - Cause: it runs 3 searches, ~5 s when all 60 test files run at once, and Vitest stops any test after 5 s by default.

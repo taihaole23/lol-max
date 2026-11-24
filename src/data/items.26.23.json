@@ -11,7 +11,8 @@
       "stats": {
         "attackSpeed": 0.3,
         "moveSpeed": 45
-      }
+      },
+      "effects": []
     },
     {
       "id": "3009",
@@ -20,7 +21,14 @@
       "gold": 1000,
       "stats": {
         "moveSpeed": 55
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Fleetfooted",
+          "text": "Reduce the effectiveness of Slows by 25%."
+        }
+      ]
     },
     {
       "id": "3008",
@@ -30,7 +38,14 @@
       "stats": {
         "moveSpeed": 45,
         "omnivamp": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Slay",
+          "text": "Gain 0.6% Omnivamp on Champion takedown, stacking up to 10 times."
+        }
+      ]
     },
     {
       "id": "3158",
@@ -40,7 +55,14 @@
       "stats": {
         "abilityHaste": 10,
         "moveSpeed": 45
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Ionian Insight",
+          "text": "Gain 10 Summoner Spell Haste."
+        }
+      ]
     },
     {
       "id": "3111",
@@ -51,7 +73,8 @@
         "magicResist": 20,
         "moveSpeed": 45,
         "tenacity": 0.3
-      }
+      },
+      "effects": []
     },
     {
       "id": "3047",
@@ -61,7 +84,14 @@
       "stats": {
         "armor": 25,
         "moveSpeed": 45
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Plating",
+          "text": "Reduces incoming damage from Attacks by 10%."
+        }
+      ]
     },
     {
       "id": "3020",
@@ -71,7 +101,8 @@
       "stats": {
         "flatMagicPenetration": 12,
         "moveSpeed": 45
-      }
+      },
+      "effects": []
     },
     {
       "id": "3174",
@@ -81,7 +112,19 @@
       "stats": {
         "armor": 35,
         "moveSpeed": 45
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Plating",
+          "text": "Reduces incoming damage from Attacks by 10%."
+        },
+        {
+          "kind": "passive",
+          "name": "Noxian Endurance",
+          "text": "(0s) After taking physical damage from a Champion, gain a physical shield for 5 seconds."
+        }
+      ]
     },
     {
       "id": "3173",
@@ -92,7 +135,14 @@
         "magicResist": 25,
         "moveSpeed": 45,
         "tenacity": 0.3
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Noxian Persistence",
+          "text": "(0s) After taking magic damage from a Champion, gain a magic shield for 5 seconds."
+        }
+      ]
     },
     {
       "id": "3171",
@@ -102,7 +152,19 @@
       "stats": {
         "abilityHaste": 20,
         "moveSpeed": 45
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Ionian Insight",
+          "text": "Gain 20 Summoner Spell Haste."
+        },
+        {
+          "kind": "passive",
+          "name": "Noxian Haste",
+          "text": "Empowering or protecting allies with abilities, dealing damage to enemy Champions with abilities, or casting a Summoner Spell grants Move Speed for 4 seconds. Noxian Haste can only be triggered once per Ability cast."
+        }
+      ]
     },
     {
       "id": "3172",
@@ -113,7 +175,8 @@
         "attackSpeed": 0.45,
         "moveSpeed": 45,
         "lifeSteal": 0.05
-      }
+      },
+      "effects": []
     },
     {
       "id": "3168",
@@ -123,7 +186,19 @@
       "stats": {
         "moveSpeed": 45,
         "omnivamp": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Slay",
+          "text": "Gain 0.6% Omnivamp on Champion takedown, stacking up to 10 times."
+        },
+        {
+          "kind": "passive",
+          "name": "Now and Forever",
+          "text": "While above half Health, deal 4% increased damage. While below half Health, gain 12% increased healing, shielding, and regeneration."
+        }
+      ]
     },
     {
       "id": "3175",
@@ -134,7 +209,8 @@
         "flatMagicPenetration": 20,
         "percentMagicPenetration": 0.08,
         "moveSpeed": 45
-      }
+      },
+      "effects": []
     },
     {
       "id": "3170",
@@ -143,7 +219,19 @@
       "gold": 1000,
       "stats": {
         "moveSpeed": 65
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Fleetfooted",
+          "text": "Reduce the effectiveness of Slows by 25%."
+        },
+        {
+          "kind": "passive",
+          "name": "Noxian Fervor",
+          "text": "Gain 5% of your Move Speed as Adaptive Force."
+        }
+      ]
     },
     {
       "id": "8020",
@@ -154,7 +242,14 @@
         "health": 350,
         "magicResist": 45,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Unmake",
+          "text": "Nearby enemy champions take 12% more magic damage."
+        }
+      ]
     },
     {
       "id": "2522",
@@ -165,7 +260,14 @@
         "abilityPower": 90,
         "mana": 300,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "active",
+          "name": "Mana Made Real",
+          "text": "(0s) For 8 seconds, your mana is Empowered. While Empowered, your spells cost 100% more Mana, you gain increased Ability damage, Shielding, and Healing, and your basic ability cooldowns progress 30% faster."
+        }
+      ]
     },
     {
       "id": "3003",
@@ -176,7 +278,19 @@
         "abilityPower": 70,
         "mana": 600,
         "abilityHaste": 25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Awe",
+          "text": "Gain Ability Power equal to 1% bonus Mana."
+        },
+        {
+          "kind": "passive",
+          "name": "Manaflow",
+          "text": "(8s, max 5 charges) Landing Abilities grants 5 max Mana (doubled vs. champions). Transforms into Seraph's Embrace at 360 max Mana."
+        }
+      ]
     },
     {
       "id": "3504",
@@ -188,7 +302,14 @@
         "healAndShieldPower": 0.1,
         "baseManaRegen": 1.25,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Sanctify",
+          "text": "Healing or Shielding an ally enhances you both for 6 seconds, granting 25% Attack Speed and 20 magic damage On-Hit."
+        }
+      ]
     },
     {
       "id": "6696",
@@ -199,7 +320,14 @@
         "attackDamage": 55,
         "lethality": 18,
         "abilityHaste": 20
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Flux",
+          "text": "When a champion that you damaged within 3 seconds dies, refund some of your Ultimate Ability's total cooldown."
+        }
+      ]
     },
     {
       "id": "2524",
@@ -211,7 +339,14 @@
         "abilityHaste": 15,
         "armor": 20,
         "magicResist": 20
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Fanfare",
+          "text": "Slowing or Immobilizing an enemy champion grants Fanfare for seconds. Fanfare grants you 20 Move Speed. While you have Fanfare, nearby allies, including yourself, gain Attack Speed."
+        }
+      ]
     },
     {
       "id": "3102",
@@ -221,7 +356,14 @@
       "stats": {
         "abilityPower": 105,
         "magicResist": 40
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Annul",
+          "text": "Grants a Spell Shield that blocks the next enemy Ability."
+        }
+      ]
     },
     {
       "id": "2520",
@@ -232,7 +374,19 @@
         "attackDamage": 55,
         "lethality": 18,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Shaped Charge",
+          "text": "(0s) Dealing Ability damage to a Champion or Epic Monster deals an additional true damage."
+        },
+        {
+          "kind": "passive",
+          "name": "Sabotage",
+          "text": "Taking down a champion within 3 seconds of damaging them grants Sabotage for 25000 seconds. While you have Sabotage, your next Attack against an Epic Monster or Turret deals an additional true damage over 3 seconds."
+        }
+      ]
     },
     {
       "id": "3071",
@@ -243,7 +397,19 @@
         "attackDamage": 45,
         "health": 400,
         "abilityHaste": 20
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Carve",
+          "text": "Dealing physical damage to champions reduces the target's Armor by 6% for 6 seconds. (stacks 5 times)."
+        },
+        {
+          "kind": "passive",
+          "name": "Fervor",
+          "text": "Dealing physical damage grants Move Speed for 2 seconds."
+        }
+      ]
     },
     {
       "id": "2503",
@@ -254,7 +420,24 @@
         "abilityPower": 80,
         "mana": 600,
         "abilityHaste": 20
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Baleful Blaze",
+          "text": "Damaging Abilities deals bonus magic damage for 3 seconds."
+        },
+        {
+          "kind": "passive",
+          "name": "Blackfire",
+          "text": "For each enemy champion, epic and large monster affected by your"
+        },
+        {
+          "kind": "passive",
+          "name": "Baleful Blaze",
+          "text": ", gain 4% Ability Power."
+        }
+      ]
     },
     {
       "id": "3153",
@@ -265,7 +448,19 @@
         "attackDamage": 40,
         "attackSpeed": 0.25,
         "lifeSteal": 0.1
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Mist's Edge",
+          "text": "Attacks deal a percentage of enemy's current Health as bonus physical damage On-Hit."
+        },
+        {
+          "kind": "passive",
+          "name": "Clawing Shadows",
+          "text": "Attacking a champion 3 times Slows them by 30% for 1 second."
+        }
+      ]
     },
     {
       "id": "8010",
@@ -276,7 +471,14 @@
         "abilityPower": 65,
         "health": 400,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Vile Decay",
+          "text": "Dealing magic damage with abilities or passives to champions reduces their Magic Resist by 7.5% for 6 seconds. (Stacks 4 times)."
+        }
+      ]
     },
     {
       "id": "3072",
@@ -286,7 +488,14 @@
       "stats": {
         "attackDamage": 80,
         "lifeSteal": 0.15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Ichorshield",
+          "text": "Convert excess healing from your Lifesteal to a Shield."
+        }
+      ]
     },
     {
       "id": "6609",
@@ -297,7 +506,14 @@
         "attackDamage": 45,
         "health": 450,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Hackshorn",
+          "text": "Dealing physical damage applies 40% Wounds to enemy champions for 3 seconds."
+        }
+      ]
     },
     {
       "id": "4629",
@@ -309,7 +525,14 @@
         "health": 350,
         "abilityHaste": 25,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Spelldance",
+          "text": "Dealing magic or true damage to champions grants Move Speed for 4 seconds."
+        }
+      ]
     },
     {
       "id": "3137",
@@ -320,7 +543,14 @@
         "abilityPower": 75,
         "percentMagicPenetration": 0.3,
         "abilityHaste": 20
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Life from Death",
+          "text": "When a champion that you damaged within 3 seconds dies, a nova spreads from their corpse that heals."
+        }
+      ]
     },
     {
       "id": "6621",
@@ -331,7 +561,14 @@
         "abilityPower": 45,
         "healAndShieldPower": 0.16,
         "baseManaRegen": 1
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "First Light",
+          "text": "Gain 2% Heal and Shield Power and 15 Ability Power per 100% Base Mana Regen."
+        }
+      ]
     },
     {
       "id": "3742",
@@ -342,7 +579,19 @@
         "health": 350,
         "armor": 55,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Shipwrecker",
+          "text": "While moving, build up to 20 bonus Move Speed. Your next Attack discharges built up Move Speed to deal bonus physical damage."
+        },
+        {
+          "kind": "passive",
+          "name": "Unsinkable",
+          "text": "Reduce the effectiveness of Slows by 15%."
+        }
+      ]
     },
     {
       "id": "6333",
@@ -353,7 +602,24 @@
         "attackDamage": 60,
         "armor": 50,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Ignore Pain",
+          "text": "A percentage of damage taken is dealt to you over 3 seconds instead."
+        },
+        {
+          "kind": "passive",
+          "name": "Defy",
+          "text": "When a champion that you damaged within 3 seconds dies, cleanse"
+        },
+        {
+          "kind": "passive",
+          "name": "Ignore Pain's",
+          "text": "remaining damage and restore Health over 2 seconds."
+        }
+      ]
     },
     {
       "id": "2510",
@@ -365,7 +631,14 @@
         "abilityPower": 60,
         "abilityHaste": 20,
         "attackSpeed": 0.2
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Spellblade",
+          "text": "(0s) After using an Ability, your next Attack deals bonus magic damage and heals you for On-Hit and then applies On-Hit effects an additional time."
+        }
+      ]
     },
     {
       "id": "6620",
@@ -377,7 +650,19 @@
         "health": 200,
         "abilityHaste": 20,
         "baseManaRegen": 1.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Soul Siphon",
+          "text": "Gain 30% of pre-mitigation damage dealt to champions as Soul Charges. Healing or Shielding an ally consumes all"
+        },
+        {
+          "kind": "passive",
+          "name": "Soul Charges",
+          "text": "to restore Health."
+        }
+      ]
     },
     {
       "id": "6692",
@@ -387,7 +672,14 @@
       "stats": {
         "attackDamage": 60,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Ever Rising Moon",
+          "text": "Hitting a champion with 2 separate Attacks or Abilities within 2 seconds grants you a Shield for 2 seconds."
+        }
+      ]
     },
     {
       "id": "3814",
@@ -398,7 +690,14 @@
         "attackDamage": 50,
         "lethality": 15,
         "health": 250
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Annul",
+          "text": "Grants a Spell Shield that blocks the next enemy Ability."
+        }
+      ]
     },
     {
       "id": "2517",
@@ -409,7 +708,19 @@
         "attackDamage": 65,
         "omnivamp": 0.05,
         "tenacity": 0.2
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Famine",
+          "text": "Gain Ability Haste based on your Bonus AD."
+        },
+        {
+          "kind": "passive",
+          "name": "Feast",
+          "text": "When a champion that you damaged recently dies, gain Omnivamp for a moderate duration."
+        }
+      ]
     },
     {
       "id": "3508",
@@ -420,7 +731,14 @@
         "attackDamage": 50,
         "abilityHaste": 20,
         "critChance": 0.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Spellblade",
+          "text": "After using an Ability, your next Attack deals bonus physical damage and grants Mana On-Hit."
+        }
+      ]
     },
     {
       "id": "3073",
@@ -431,7 +749,19 @@
         "attackDamage": 40,
         "attackSpeed": 0.2,
         "health": 450
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Hexcharged",
+          "text": "Gain 30 Ultimate Ability Haste."
+        },
+        {
+          "kind": "passive",
+          "name": "Overdrive",
+          "text": "After casting your Ultimate, gain % Attack Speed and % Move Speed for 8 seconds."
+        }
+      ]
     },
     {
       "id": "2512",
@@ -442,7 +772,19 @@
         "attackSpeed": 0.45,
         "critChance": 0.25,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Night Vigil",
+          "text": "Gain 30 Ultimate Ability Haste."
+        },
+        {
+          "kind": "passive",
+          "name": "Opening Barrage",
+          "text": "After casting your Ultimate, your next 3 basic attacks gain 50% Attack Speed and Critically Strike for 80% of your normal Critical Strike damage for 8 seconds. If an attack would already Critically Strike, instead it deals 15% bonus true damage."
+        }
+      ]
     },
     {
       "id": "4401",
@@ -453,7 +795,14 @@
         "health": 400,
         "magicResist": 55,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Steadfast",
+          "text": "Gain 70 Magic Resist and 6% bonus Move Speed after taking magic damage from Champions 8 times."
+        }
+      ]
     },
     {
       "id": "3110",
@@ -464,7 +813,14 @@
         "armor": 75,
         "mana": 400,
         "abilityHaste": 20
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Winter's Caress",
+          "text": "Reduce the Attack Speed of nearby champions by 20%."
+        }
+      ]
     },
     {
       "id": "3026",
@@ -474,7 +830,14 @@
       "stats": {
         "attackDamage": 55,
         "armor": 45
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Rebirth",
+          "text": "Upon taking lethal damage, restores 50% base Health and 100% max Mana after 4 seconds of Stasis."
+        }
+      ]
     },
     {
       "id": "3124",
@@ -485,7 +848,19 @@
         "attackDamage": 30,
         "abilityPower": 30,
         "attackSpeed": 0.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Wrath",
+          "text": "Attacks deal 30 bonus magic damage On-Hit."
+        },
+        {
+          "kind": "passive",
+          "name": "Seething Strike",
+          "text": "Attacks grant 8% Attack Speed for 4 seconds. (stacks 4 times). While fully stacked, every third Attack applies On-Hit effects twice."
+        }
+      ]
     },
     {
       "id": "3084",
@@ -495,7 +870,19 @@
       "stats": {
         "health": 900,
         "baseHealthRegen": 1
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Colossal Consumption",
+          "text": "(0s) per target If an enemy champion is nearby for a few seconds, your next Attack against them deals 70 plus 6% of your max Health as bonus physical damage and grants 10% of the damage as max Health."
+        },
+        {
+          "kind": "passive",
+          "name": "Goliath",
+          "text": "For each 1000 max Health, gain 3% increased size, up to 30%."
+        }
+      ]
     },
     {
       "id": "2523",
@@ -505,7 +892,19 @@
       "stats": {
         "attackDamage": 55,
         "critChance": 0.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Magnification",
+          "text": "Deal up to 10% increased damage with Attacks, based on how far away the enemy is (max damage at 500 range)."
+        },
+        {
+          "kind": "passive",
+          "name": "Arcane Aim",
+          "text": "When a champion that you damaged within 3 seconds dies, gain 100 additional attack range for 8 seconds."
+        }
+      ]
     },
     {
       "id": "3146",
@@ -516,7 +915,19 @@
         "abilityPower": 80,
         "attackDamage": 40,
         "omnivamp": 0.1
-      }
+      },
+      "effects": [
+        {
+          "kind": "active",
+          "name": "ACTIVE",
+          "text": "(0s)"
+        },
+        {
+          "kind": "active",
+          "name": "Lightning Bolt",
+          "text": "Shocks the target enemy champion, dealing magic damage and slowing them by 25% for 1.5 seconds."
+        }
+      ]
     },
     {
       "id": "3152",
@@ -527,7 +938,14 @@
         "abilityPower": 60,
         "health": 350,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "active",
+          "name": "Supersonic",
+          "text": "Dash in target direction, unleashing missiles that deal magic damage."
+        }
+      ]
     },
     {
       "id": "6664",
@@ -539,7 +957,19 @@
         "magicResist": 40,
         "abilityHaste": 10,
         "baseHealthRegen": 1
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Immolate",
+          "text": "After taking or dealing damage, deal magic damage per second to nearby enemies for 3 seconds."
+        },
+        {
+          "kind": "passive",
+          "name": "Desolate",
+          "text": "Killing an enemy deals magic damage around them."
+        }
+      ]
     },
     {
       "id": "4628",
@@ -549,7 +979,24 @@
       "stats": {
         "abilityPower": 75,
         "abilityHaste": 25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Hypershot",
+          "text": "Dealing Ability damage to champions at 600 range or greater Reveals them for 6 seconds."
+        },
+        {
+          "kind": "passive",
+          "name": "Focus",
+          "text": "When"
+        },
+        {
+          "kind": "passive",
+          "name": "Hypershot",
+          "text": "is triggered, Reveal all other enemy champions within 1400 range of them for 3 seconds."
+        }
+      ]
     },
     {
       "id": "6697",
@@ -560,7 +1007,14 @@
         "attackDamage": 55,
         "lethality": 18,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Eminence",
+          "text": "When a champion that you damaged within 3 seconds dies, gain Attack Damage plus per champion killed for 90 seconds."
+        }
+      ]
     },
     {
       "id": "3181",
@@ -571,7 +1025,19 @@
         "attackDamage": 40,
         "health": 500,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Skipper",
+          "text": "Every fifth Attack against champions and epic monsters deals bonus physical damage, increased against Structures."
+        },
+        {
+          "kind": "passive",
+          "name": "Boarding Party",
+          "text": "Nearby allied siege and super minions gain Armor and Magic Resist."
+        }
+      ]
     },
     {
       "id": "6662",
@@ -582,7 +1048,14 @@
         "health": 300,
         "armor": 50,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Spellblade",
+          "text": "After using an Ability, your next Attack deals bonus physical damage On-Hit and creates a frost field for 2s that Slows."
+        }
+      ]
     },
     {
       "id": "6673",
@@ -592,7 +1065,14 @@
       "stats": {
         "attackDamage": 55,
         "critChance": 0.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Lifeline",
+          "text": "Taking damage that would reduce your Health below 30% grants a Shield for 3 seconds."
+        }
+      ]
     },
     {
       "id": "4005",
@@ -603,7 +1083,19 @@
         "abilityPower": 60,
         "abilityHaste": 15,
         "baseManaRegen": 1.5
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Control",
+          "text": "Gain 20 Ability Haste for your abilities with Immobilizing effects."
+        },
+        {
+          "kind": "passive",
+          "name": "Command",
+          "text": "On Immobilizing an enemy champion, mark them as 7% Vulnerable for 4 seconds."
+        }
+      ]
     },
     {
       "id": "3031",
@@ -614,7 +1106,8 @@
         "attackDamage": 75,
         "critChance": 0.25,
         "critDamage": 0.3
-      }
+      },
+      "effects": []
     },
     {
       "id": "6665",
@@ -625,7 +1118,14 @@
         "health": 350,
         "armor": 45,
         "magicResist": 45
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Voidborn Resilience",
+          "text": "After 5 seconds of champion combat, increase your bonus Armor and Magic Resist by 30% until end of combat."
+        }
+      ]
     },
     {
       "id": "2504",
@@ -636,7 +1136,14 @@
         "health": 400,
         "magicResist": 80,
         "baseHealthRegen": 1
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Magebane",
+          "text": "After not taking magic damage for 15 seconds, gain a magic shield."
+        }
+      ]
     },
     {
       "id": "3109",
@@ -648,7 +1155,19 @@
         "armor": 40,
         "abilityHaste": 10,
         "baseHealthRegen": 1
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Sacrifice",
+          "text": "While near your Worthy ally, take 14% of the damage they receive and heal for 12% of the damage they deal to champions."
+        },
+        {
+          "kind": "active",
+          "name": "Pledge",
+          "text": "(0s) Designate an ally as Worthy."
+        }
+      ]
     },
     {
       "id": "6672",
@@ -659,7 +1178,14 @@
         "attackDamage": 45,
         "attackSpeed": 0.4,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Bring It Down",
+          "text": "Every third Attack deals bonus physical damage On-Hit, increased based on their missing Health."
+        }
+      ]
     },
     {
       "id": "6653",
@@ -669,7 +1195,19 @@
       "stats": {
         "abilityPower": 60,
         "health": 300
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Torment",
+          "text": "Damaging Abilities burn enemies for 2% max Health magic damage per second for 3 seconds."
+        },
+        {
+          "kind": "passive",
+          "name": "Suffering",
+          "text": "For each second in combat with enemy champions, deal 2% bonus damage, up to 6%."
+        }
+      ]
     },
     {
       "id": "3100",
@@ -680,7 +1218,14 @@
         "abilityPower": 100,
         "percentMoveSpeed": 0.06,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Spellblade",
+          "text": "After using an Ability, your next Attack deals bonus magic damage On-Hit."
+        }
+      ]
     },
     {
       "id": "3190",
@@ -692,7 +1237,14 @@
         "armor": 30,
         "magicResist": 30,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "active",
+          "name": "Devotion",
+          "text": "Grant nearby allies a 290 - 360 Shield that decays over 2.5 seconds."
+        }
+      ]
     },
     {
       "id": "3036",
@@ -703,7 +1255,14 @@
         "attackDamage": 35,
         "percentArmorPenetration": 0.35,
         "critChance": 0.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Giant Slayer",
+          "text": "Deal up to 15% bonus damage against champions based on their bonus Health. Maximum damage bonus reached at 1500 bonus Health."
+        }
+      ]
     },
     {
       "id": "6655",
@@ -714,7 +1273,14 @@
         "abilityPower": 100,
         "mana": 600,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Echo",
+          "text": "Damaging Abilities fire 6 Echoes that deal bonus magic damage to the target and nearby enemies. Remaining Echoes fire on the primary target, dealing 20% damage."
+        }
+      ]
     },
     {
       "id": "3118",
@@ -725,7 +1291,19 @@
         "abilityPower": 90,
         "mana": 600,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Scorn",
+          "text": "Gain 20 Ultimate Ability Haste."
+        },
+        {
+          "kind": "passive",
+          "name": "Hatefog",
+          "text": "Damaging a champion with your Ultimate burns the ground beneath them for 3s, dealing magic damage per second and reducing their Magic Resist."
+        }
+      ]
     },
     {
       "id": "3004",
@@ -736,7 +1314,19 @@
         "attackDamage": 35,
         "mana": 500,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Awe",
+          "text": "Gain bonus Attack Damage."
+        },
+        {
+          "kind": "passive",
+          "name": "Manaflow",
+          "text": "(8s, max 4 charges) Landing Attacks and Abilities grants 3 max Mana (doubled vs. champions). Transforms into Muramana at 360 max Mana."
+        }
+      ]
     },
     {
       "id": "3156",
@@ -747,7 +1337,14 @@
         "attackDamage": 60,
         "abilityHaste": 15,
         "magicResist": 40
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Lifeline",
+          "text": "Taking magic damage that would reduce your Health below 30% grants a magic damage Shield for 3 seconds and 10% Omnivamp until end of combat."
+        }
+      ]
     },
     {
       "id": "3041",
@@ -757,7 +1354,34 @@
       "stats": {
         "abilityPower": 20,
         "health": 100
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Glory",
+          "text": "Takedowns grant"
+        },
+        {
+          "kind": "passive",
+          "name": "Glory",
+          "text": ", up to 25. 10"
+        },
+        {
+          "kind": "passive",
+          "name": "Glory",
+          "text": "is lost on death. Gain 5 Ability Power per"
+        },
+        {
+          "kind": "passive",
+          "name": "Glory",
+          "text": "and 10% Move Speed at 10 or higher"
+        },
+        {
+          "kind": "passive",
+          "name": "Glory",
+          "text": "."
+        }
+      ]
     },
     {
       "id": "3139",
@@ -768,7 +1392,19 @@
         "attackDamage": 50,
         "magicResist": 35,
         "lifeSteal": 0.1
-      }
+      },
+      "effects": [
+        {
+          "kind": "active",
+          "name": "ACTIVE",
+          "text": ""
+        },
+        {
+          "kind": "active",
+          "name": "Quicksilver",
+          "text": "Removes all crowd control debuffs (excluding Airborne) and grants Move Speed."
+        }
+      ]
     },
     {
       "id": "3222",
@@ -780,7 +1416,14 @@
         "baseManaRegen": 1,
         "healAndShieldPower": 0.12,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "active",
+          "name": "Purify",
+          "text": "Remove all crowd control debuffs (excluding Airborne and Suppression) from an ally champion and restore 100 - 250 Health."
+        }
+      ]
     },
     {
       "id": "6617",
@@ -792,7 +1435,14 @@
         "health": 200,
         "abilityHaste": 20,
         "baseManaRegen": 1.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Starlit Grace",
+          "text": "Healing or shielding an ally chains the effect to another ally (excluding yourself), healing 30% or shielding 35% of the original amount."
+        }
+      ]
     },
     {
       "id": "3165",
@@ -803,7 +1453,14 @@
         "abilityPower": 75,
         "health": 350,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Grievous Wounds",
+          "text": "Dealing magic damage to champions applies 40% Wounds for 3 seconds."
+        }
+      ]
     },
     {
       "id": "3033",
@@ -814,7 +1471,14 @@
         "attackDamage": 35,
         "percentArmorPenetration": 0.3,
         "critChance": 0.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Grievous Wounds",
+          "text": "Dealing physical damage applies 40% Wounds to enemy champions for 3 seconds."
+        }
+      ]
     },
     {
       "id": "3115",
@@ -825,7 +1489,14 @@
         "abilityPower": 80,
         "attackSpeed": 0.5,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Icathian Bite",
+          "text": "Attacks deal bonus magic damage On-Hit."
+        }
+      ]
     },
     {
       "id": "6675",
@@ -836,7 +1507,14 @@
         "attackSpeed": 0.4,
         "critChance": 0.25,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Transcendence",
+          "text": "Attacks reduce Basic Ability cooldowns by 15% of their remaining cooldown."
+        }
+      ]
     },
     {
       "id": "2501",
@@ -846,7 +1524,19 @@
       "stats": {
         "attackDamage": 40,
         "health": 550
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Tyranny",
+          "text": "Gain 2.5% of your bonus Health as Attack Damage."
+        },
+        {
+          "kind": "passive",
+          "name": "Retribution",
+          "text": "Gain up to 10% increased Attack Damage based on your percent missing Health."
+        }
+      ]
     },
     {
       "id": "3046",
@@ -857,7 +1547,14 @@
         "attackSpeed": 0.65,
         "critChance": 0.25,
         "percentMoveSpeed": 0.1
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Spectral Waltz",
+          "text": "Become Ghosted."
+        }
+      ]
     },
     {
       "id": "6698",
@@ -868,7 +1565,19 @@
         "attackDamage": 55,
         "lethality": 18,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Cleave",
+          "text": "Attacks deal physical damage to nearby enemies."
+        },
+        {
+          "kind": "active",
+          "name": "Heretical Cleave",
+          "text": "Deal physical damage around you."
+        }
+      ]
     },
     {
       "id": "2525",
@@ -878,7 +1587,14 @@
       "stats": {
         "health": 600,
         "abilityHaste": 20
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Lifeline",
+          "text": "(0s) Taking damage that would reduce your Health below 30% causes you to gain maximum Health for 5 seconds, then heal Health over the duration. While regenerating Health, you gain 15% increased Size, 10% Move Speed, and 25% Tenacity."
+        }
+      ]
     },
     {
       "id": "3089",
@@ -887,7 +1603,14 @@
       "gold": 3500,
       "stats": {
         "abilityPower": 130
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Magical Opus",
+          "text": "Increases your total Ability Power by 30%."
+        }
+      ]
     },
     {
       "id": "3143",
@@ -897,7 +1620,19 @@
       "stats": {
         "health": 350,
         "armor": 75
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Resilience",
+          "text": "Receive 30% less damage from Critical Strikes."
+        },
+        {
+          "kind": "active",
+          "name": "Humility",
+          "text": "Slow nearby enemies by 70% for 2 seconds."
+        }
+      ]
     },
     {
       "id": "3094",
@@ -908,7 +1643,14 @@
         "attackSpeed": 0.35,
         "critChance": 0.25,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Sharpshooter",
+          "text": "Your Energized Attack deals 40 bonus magic damage and gains 35% bonus Attack Range."
+        }
+      ]
     },
     {
       "id": "3074",
@@ -919,7 +1661,19 @@
         "attackDamage": 65,
         "abilityHaste": 15,
         "lifeSteal": 0.12
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Cleave",
+          "text": "Attacks deal physical damage to nearby enemies."
+        },
+        {
+          "kind": "active",
+          "name": "Ravenous Crescent",
+          "text": "Deal physical damage to enemies around you. Your Life Steal applies to this damage."
+        }
+      ]
     },
     {
       "id": "3107",
@@ -931,7 +1685,14 @@
         "abilityHaste": 15,
         "baseManaRegen": 1,
         "healAndShieldPower": 0.1
-      }
+      },
+      "effects": [
+        {
+          "kind": "active",
+          "name": "Intervention",
+          "text": "Restore 150 - 350 Health to allied units and deal 10% max Health true damage to enemy champions after 2.5 seconds."
+        }
+      ]
     },
     {
       "id": "4633",
@@ -942,7 +1703,19 @@
         "abilityPower": 70,
         "health": 350,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Void Corruption",
+          "text": "For each second in combat with enemy champions, deal 2% bonus damage, up to 8%. At maximum strength, gain Omnivamp."
+        },
+        {
+          "kind": "passive",
+          "name": "Void Infusion",
+          "text": "Gain 2% of your bonus Health as Ability Power."
+        }
+      ]
     },
     {
       "id": "6657",
@@ -953,7 +1726,19 @@
         "abilityPower": 45,
         "health": 350,
         "mana": 500
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Timeless",
+          "text": "This item gains 10 Health, 30 Mana and 3 Ability Power every 60 seconds up to 10 times. Upon reaching max stacks, gain a level."
+        },
+        {
+          "kind": "passive",
+          "name": "Eternity",
+          "text": "Taking damage from champions restores 10% of the damage as Mana. Casting an ability heals for 25% of Mana spent."
+        }
+      ]
     },
     {
       "id": "3085",
@@ -964,7 +1749,14 @@
         "attackSpeed": 0.4,
         "critChance": 0.25,
         "percentMoveSpeed": 0.05
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Wind's Fury",
+          "text": "Attacks fire bolts at 2 additional enemies near the target. Each bolt deals physical damage and applies On-Hit effects."
+        }
+      ]
     },
     {
       "id": "3116",
@@ -974,7 +1766,14 @@
       "stats": {
         "abilityPower": 65,
         "health": 400
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Rimefrost",
+          "text": "Damaging Abilities Slow enemies by 30% for 1 second."
+        }
+      ]
     },
     {
       "id": "6695",
@@ -984,7 +1783,19 @@
       "stats": {
         "attackDamage": 55,
         "lethality": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Shield Reaver",
+          "text": "Damaging an enemy champion reduces Shields they gain by % for 3 seconds. If they were not already affected by"
+        },
+        {
+          "kind": "passive",
+          "name": "Shield Reaver",
+          "text": ", reduce Shields on them by %."
+        }
+      ]
     },
     {
       "id": "6694",
@@ -995,7 +1806,14 @@
         "attackDamage": 45,
         "percentArmorPenetration": 0.35,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Bitter Cold",
+          "text": "Damaging Abilities Slow enemies below 50% Health by 30% for 1 second."
+        }
+      ]
     },
     {
       "id": "4645",
@@ -1005,7 +1823,14 @@
       "stats": {
         "abilityPower": 110,
         "flatMagicPenetration": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Cinderbloom",
+          "text": "Magic and true damage Critically Strike enemies below 40% Health, dealing 20% increased damage."
+        }
+      ]
     },
     {
       "id": "2065",
@@ -1017,7 +1842,14 @@
         "abilityHaste": 15,
         "percentMoveSpeed": 0.04,
         "baseManaRegen": 1.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "active",
+          "name": "Inspiring Speech",
+          "text": "Grant nearby allies 30% Move Speed for 4 seconds."
+        }
+      ]
     },
     {
       "id": "3161",
@@ -1027,7 +1859,19 @@
       "stats": {
         "attackDamage": 45,
         "health": 450
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Dragonforce",
+          "text": "Gain 25 Basic Ability Haste."
+        },
+        {
+          "kind": "passive",
+          "name": "Focused Will",
+          "text": "Dealing damage with Abilities increases your Champion's Ability and Passive damage by 3% for 6 seconds. (stacks 4 times)."
+        }
+      ]
     },
     {
       "id": "3065",
@@ -1039,7 +1883,14 @@
         "magicResist": 50,
         "abilityHaste": 10,
         "baseHealthRegen": 1
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Boundless Vitality",
+          "text": "Heals and Shields on you are increased by 25%."
+        }
+      ]
     },
     {
       "id": "6616",
@@ -1051,7 +1902,14 @@
         "healAndShieldPower": 0.1,
         "baseManaRegen": 1.25,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Rapids",
+          "text": "Healing or Shielding an ally grants you both 40 Ability Power and 15 Ability Haste for 6 seconds."
+        }
+      ]
     },
     {
       "id": "3087",
@@ -1063,7 +1921,19 @@
         "abilityPower": 45,
         "attackSpeed": 0.3,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Electrospark",
+          "text": "Your Energized Attacks fire chain lightning, applying On-Hit effects and dealing magic damage to nearby targets."
+        },
+        {
+          "kind": "passive",
+          "name": "Electroshock",
+          "text": "Basic Attacks grant extra Energized stacks."
+        }
+      ]
     },
     {
       "id": "3053",
@@ -1073,7 +1943,19 @@
       "stats": {
         "health": 400,
         "tenacity": 0.2
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "The Claws that Catch",
+          "text": "Gain bonus Attack Damage."
+        },
+        {
+          "kind": "passive",
+          "name": "Lifeline",
+          "text": "Taking damage that would reduce your Health below 30% grants a decaying Shield for 4.5 seconds."
+        }
+      ]
     },
     {
       "id": "3095",
@@ -1084,7 +1966,19 @@
         "attackDamage": 50,
         "attackSpeed": 0.25,
         "critChance": 0.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Energized",
+          "text": "Moving and Attacking generates an Energized Attack."
+        },
+        {
+          "kind": "passive",
+          "name": "Bolt",
+          "text": "Your Energized Attack applies bonus magic damage and grants 45% Movement Speed for 1.5 seconds."
+        }
+      ]
     },
     {
       "id": "4646",
@@ -1095,7 +1989,29 @@
         "abilityPower": 90,
         "flatMagicPenetration": 15,
         "percentMoveSpeed": 0.06
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Stormraider",
+          "text": "Dealing 25% of a champion's maximum Health within 2.5s applies"
+        },
+        {
+          "kind": "passive",
+          "name": "Squall",
+          "text": "to them."
+        },
+        {
+          "kind": "passive",
+          "name": "Squall",
+          "text": "After 2 seconds, deal magic damage. If the target dies before"
+        },
+        {
+          "kind": "passive",
+          "name": "Squall",
+          "text": "triggers, it damages nearby enemies."
+        }
+      ]
     },
     {
       "id": "6631",
@@ -1106,7 +2022,19 @@
         "attackDamage": 40,
         "attackSpeed": 0.25,
         "health": 450
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Cleave",
+          "text": "Attacks deal physical damage to nearby enemies."
+        },
+        {
+          "kind": "active",
+          "name": "Breaking Shockwave",
+          "text": "Deal physical damage and Slow nearby enemies by 35%. Gain 35% decaying Move Speed per champion hit for 3 seconds."
+        }
+      ]
     },
     {
       "id": "6610",
@@ -1117,7 +2045,14 @@
         "attackDamage": 40,
         "health": 400,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Lightshield Strike",
+          "text": "Your first Attack against a champion Critically Strikes and restores Health."
+        }
+      ]
     },
     {
       "id": "3068",
@@ -1128,7 +2063,14 @@
         "health": 350,
         "armor": 50,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Immolate",
+          "text": "After taking or dealing damage, deal magic damage per second to nearby enemies for 3 seconds."
+        }
+      ]
     },
     {
       "id": "3302",
@@ -1138,7 +2080,19 @@
       "stats": {
         "attackDamage": 30,
         "attackSpeed": 0.35
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Shadow",
+          "text": "Attacks deal bonus magic damage On-Hit."
+        },
+        {
+          "kind": "passive",
+          "name": "Juxtaposition",
+          "text": "Alternate between Light and Dark Attacks against champions: Light Attacks grant Armor and Magic Resist for 5s. Dark Attacks grant 10% Armor Penetration and Magic Penetration for 5s."
+        }
+      ]
     },
     {
       "id": "6676",
@@ -1149,7 +2103,19 @@
         "attackDamage": 50,
         "lethality": 10,
         "critChance": 0.25
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Death",
+          "text": "Your damage executes champions that are below 5% Health."
+        },
+        {
+          "kind": "passive",
+          "name": "Taxes",
+          "text": "Champion kills grant 25 bonus gold."
+        }
+      ]
     },
     {
       "id": "3075",
@@ -1159,7 +2125,14 @@
       "stats": {
         "health": 150,
         "armor": 75
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Thorns",
+          "text": "When struck by an Attack, deal magic damage to the attacker and apply 40% Wounds for 3 seconds if they are a champion."
+        }
+      ]
     },
     {
       "id": "3748",
@@ -1169,7 +2142,24 @@
       "stats": {
         "attackDamage": 40,
         "health": 600
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Cleave",
+          "text": "Attacks deal physical damage on-hit and to enemies behind the target."
+        },
+        {
+          "kind": "active",
+          "name": "Titanic Crescent",
+          "text": "Empower your next"
+        },
+        {
+          "kind": "passive",
+          "name": "Cleave",
+          "text": "to deal bonus physical damage On-Hit and deal bonus physical damage to enemies behind the target."
+        }
+      ]
     },
     {
       "id": "3078",
@@ -1181,7 +2171,19 @@
         "attackSpeed": 0.3,
         "health": 333,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Spellblade",
+          "text": "After using an Ability, your next Attack deals bonus physical damage On-Hit."
+        },
+        {
+          "kind": "passive",
+          "name": "Quicken",
+          "text": "Attacking grants 20 Move Speed for 2 seconds."
+        }
+      ]
     },
     {
       "id": "3179",
@@ -1192,7 +2194,19 @@
         "attackDamage": 60,
         "lethality": 18,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Nightstalker",
+          "text": "After being unseen by enemies briefly, your next attack against a champion deals an additional true damage."
+        },
+        {
+          "kind": "passive",
+          "name": "Blackout",
+          "text": "When you are near enemy Stealth Wards and traps, reveal them briefly. While revealing wards, your attacks deal bonus damage to them."
+        }
+      ]
     },
     {
       "id": "2502",
@@ -1203,7 +2217,14 @@
         "health": 400,
         "armor": 50,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Anguish",
+          "text": "Every 4 seconds while in combat with champions, deal magic damage to nearby enemy champions and heal for 250% of the damage dealt."
+        }
+      ]
     },
     {
       "id": "3135",
@@ -1213,7 +2234,8 @@
       "stats": {
         "abilityPower": 95,
         "percentMagicPenetration": 0.4
-      }
+      },
+      "effects": []
     },
     {
       "id": "6699",
@@ -1224,7 +2246,19 @@
         "attackDamage": 55,
         "lethality": 10,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Galvanize",
+          "text": "Damaging an Enemy Champions with an ability triggers Energized if it is ready."
+        },
+        {
+          "kind": "passive",
+          "name": "Firmament",
+          "text": "Your Energized Attack deals % target's Current Health as bonus physical damage and grants you bonus Lethality for 4 seconds."
+        }
+      ]
     },
     {
       "id": "3083",
@@ -1234,7 +2268,19 @@
       "stats": {
         "health": 1000,
         "baseHealthRegen": 1
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Warmog's Heart",
+          "text": "If you have 2000 bonus Health and have not taken damage within 8 seconds, restore Health per second."
+        },
+        {
+          "kind": "passive",
+          "name": "Warmog's Vitality",
+          "text": "Gain bonus Health equal to 12% of your Item Health (0)."
+        }
+      ]
     },
     {
       "id": "3119",
@@ -1245,7 +2291,19 @@
         "health": 550,
         "mana": 500,
         "abilityHaste": 15
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Awe",
+          "text": "Gain Health."
+        },
+        {
+          "kind": "passive",
+          "name": "Manaflow",
+          "text": "(8s, max 4 charges) Landing Attacks and Abilities grant 3 max Mana (doubled vs. champions). Transforms into Fimbulwinter at 360 max Mana."
+        }
+      ]
     },
     {
       "id": "3091",
@@ -1256,7 +2314,14 @@
         "attackSpeed": 0.5,
         "magicResist": 45,
         "tenacity": 0.2
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Fray",
+          "text": "Attacks deal bonus magic damage On-Hit."
+        }
+      ]
     },
     {
       "id": "3142",
@@ -1267,7 +2332,19 @@
         "attackDamage": 55,
         "lethality": 18,
         "percentMoveSpeed": 0.04
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Haunt",
+          "text": "Gain Move Speed while out of combat."
+        },
+        {
+          "kind": "active",
+          "name": "Wraith Step",
+          "text": "Gain Move Speed and Ghosting for seconds."
+        }
+      ]
     },
     {
       "id": "3032",
@@ -1278,7 +2355,19 @@
         "attackDamage": 50,
         "attackSpeed": 0.45,
         "critChance": 0
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Practice Makes Lethal",
+          "text": "On-Attack, gain Critical Strike Chance permanently up to 25%."
+        },
+        {
+          "kind": "passive",
+          "name": "Flurry",
+          "text": "On-Attacking an enemy champion, gain 30% Attack Speed for 6 seconds (30 second cooldown). Attacks reduce this cooldown by 1 second, increased to 2 seconds for Critical Strikes."
+        }
+      ]
     },
     {
       "id": "3050",
@@ -1290,7 +2379,14 @@
         "armor": 25,
         "magicResist": 25,
         "abilityHaste": 10
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Frostfire Tempest",
+          "text": "Casting your Ultimate summons a storm around you for 5 seconds. The storm deals 30 magic damage per second to enemy champions and Slows them by 30%."
+        }
+      ]
     },
     {
       "id": "3157",
@@ -1300,7 +2396,14 @@
       "stats": {
         "abilityPower": 105,
         "armor": 50
-      }
+      },
+      "effects": [
+        {
+          "kind": "active",
+          "name": "Time Stop",
+          "text": "Enter Stasis for 2.5 seconds."
+        }
+      ]
     },
     {
       "id": "3877",
@@ -1312,7 +2415,19 @@
         "baseHealthRegen": 0.75,
         "baseManaRegen": 0.75,
         "goldPer10": 9
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Spellblade",
+          "text": "After using an Ability, your next Attack deals bonus physical damage On-Hit. If the target is a champion, they take increased damage for 4 seconds."
+        },
+        {
+          "kind": "active",
+          "name": "Active",
+          "text": "(4 charges) Places an Invisible Stealth Ward that grants vision."
+        }
+      ]
     },
     {
       "id": "3869",
@@ -1324,7 +2439,19 @@
         "baseHealthRegen": 0.75,
         "baseManaRegen": 0.75,
         "goldPer10": 9
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Blessing of the Mountain",
+          "text": "Reduce incoming champion damage for 2 seconds after taking damage from a champion. When the effect ends, slow nearby enemies by 50% for 1.5 seconds."
+        },
+        {
+          "kind": "active",
+          "name": "Active",
+          "text": "(4 charges) Places an Invisible Stealth Ward that grants vision."
+        }
+      ]
     },
     {
       "id": "3870",
@@ -1336,7 +2463,19 @@
         "baseHealthRegen": 0.75,
         "baseManaRegen": 0.75,
         "goldPer10": 9
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Dream Maker",
+          "text": "Healing or Shielding another ally blows Dream Bubbles to them for 3 seconds. Their next Attack deals bonus magic damage On-Hit and the next damage they take is reduced."
+        },
+        {
+          "kind": "active",
+          "name": "Active",
+          "text": "(4 charges) Places an Invisible Stealth Ward that grants vision."
+        }
+      ]
     },
     {
       "id": "3876",
@@ -1348,7 +2487,19 @@
         "baseHealthRegen": 0.75,
         "baseManaRegen": 0.75,
         "goldPer10": 9
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Going Sledding",
+          "text": "Slowing or Immobilizing an enemy champion near allies restores Health and grants 20% decaying Move Speed for 2.5 seconds to you and a nearby ally."
+        },
+        {
+          "kind": "active",
+          "name": "Active",
+          "text": "(4 charges) Places an Invisible Stealth Ward that grants vision."
+        }
+      ]
     },
     {
       "id": "3871",
@@ -1360,7 +2511,19 @@
         "baseHealthRegen": 0.75,
         "baseManaRegen": 0.75,
         "goldPer10": 9
-      }
+      },
+      "effects": [
+        {
+          "kind": "passive",
+          "name": "Void Explosion",
+          "text": "Dealing Ability damage to a champion causes an explosion that deals magic damage."
+        },
+        {
+          "kind": "active",
+          "name": "Active",
+          "text": "(4 charges) Places an Invisible Stealth Ward that grants vision."
+        }
+      ]
     }
   ]
 }

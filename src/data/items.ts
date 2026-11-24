@@ -16,11 +16,18 @@ export type Item = {
   // e.g. { abilityPower: 95, percentMagicPenetration: 0.4 }. Stats an item doesn't have are left out,
   // which is what `Partial` says: any stat may be missing.
   stats: Partial<Record<string, number>>;
+  // Passives and actives as plain text, for the item tooltip only. The math never reads this:
+  // passives that matter are hand-coded in src/items/.
+  effects: { kind: "passive" | "active"; name: string; text: string }[];
 };
 
 export const itemSource = { url: snapshot.source, patch: snapshot.patch };
 
 export const items = snapshot.items as Item[];
+
+export function getItemById(id: string): Item | undefined {
+  return items.find((i) => i.id === id);
+}
 
 // Looks an item up by its exact name. Throws an error if there's no such item,
 // so a typo is caught right away instead of quietly counting as "no stats".

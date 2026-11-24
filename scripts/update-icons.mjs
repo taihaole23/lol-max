@@ -80,5 +80,20 @@ if (itemSnapshot.ddragonVersion !== ddragonVersion) {
 }
 await inBatches(itemSnapshot.items.map((item) => () => saveFile(`${cdn}/img/item/${item.id}.png`, `public/icons/item/${item.id}.png`)));
 
+// --- Splash art behind the champion page's header: only for champions the site supports, since
+// each is ~135 KB. Keep this list in step with src/data/playable-champions.ts (a test checks).
+// "centered" is Riot's version cropped for wide banners; it has no patch number in its address. ---
+const splashChampions = ["katarina"];
+mkdirSync("public/icons/splash", { recursive: true });
+for (const slug of splashChampions) {
+  const champion = champions.find((c) => c.slug === slug);
+  await saveFile(`https://ddragon.leagueoflegends.com/cdn/img/champion/centered/${champion.ddragonId}_0.jpg`, `public/icons/splash/${slug}.jpg`);
+}
+
+// --- The gold coin shown next to build prices. Data Dragon stopped publishing UI icons after
+// patch 5.x, so this one comes from an old version; it hasn't changed in-game. ---
+mkdirSync("public/icons/ui", { recursive: true });
+await saveFile("https://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/gold.png", "public/icons/ui/gold.png");
+
 console.log(`Saved ${champions.length} champions (icons + 4 ability icons each) and ${itemSnapshot.items.length} item icons.`);
 console.log(`Champion list: ${listFile}`);

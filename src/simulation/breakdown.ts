@@ -6,6 +6,8 @@ export type Breakdown = {
   total: number;
   bySource: Record<string, number>; // "base", "apRatio", "bonusAdRatio", item names
   byType: { magic: number; physical: number; true: number };
+  // The damage types each source dealt (so the page can colour "AP ratio" as magic, etc.).
+  typesBySource: Record<string, DamageEvent["type"][]>;
   ability: number; // the daggers themselves
   items: number; // everything from item effects
 };
@@ -15,6 +17,7 @@ export function breakdown(events: DamageEvent[]): Breakdown {
     total: 0,
     bySource: {},
     byType: { magic: 0, physical: 0, true: 0 },
+    typesBySource: {},
     ability: 0,
     items: 0,
   };
@@ -23,6 +26,8 @@ export function breakdown(events: DamageEvent[]): Breakdown {
     result.total += event.amount;
     result.bySource[event.source] = (result.bySource[event.source] ?? 0) + event.amount;
     result.byType[event.type] += event.amount;
+    const types = (result.typesBySource[event.source] ??= []);
+    if (!types.includes(event.type)) types.push(event.type);
     if (event.fromItem) {
       result.items += event.amount;
     } else {

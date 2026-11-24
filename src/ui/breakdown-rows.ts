@@ -9,7 +9,18 @@ export type Row = {
   damage: number;
   share: number; // damage / total: 0.25 = 25%. Can be negative for "Item interactions".
   item?: Item; // when the row is one item (for its icon); not for "Base damage", "No items"...
+  // The damage type, when the row is exactly one type: the label is coloured to match
+  // (Eric: purple for magic, orange for physical). Mixed or unknown rows stay plain.
+  damageType?: DamageType;
 };
+
+export type DamageType = "magic" | "physical" | "true";
+
+// A source's type, if it dealt only one type of damage.
+function onlyType(b: Breakdown, source: string): DamageType | undefined {
+  const types = b.typesBySource[source] ?? [];
+  return types.length === 1 ? types[0] : undefined;
+}
 
 // The ability's own sources, in a fixed order. Every other source is an item's name.
 const abilitySourceLabels: Record<string, string> = {
@@ -18,8 +29,8 @@ const abilitySourceLabels: Record<string, string> = {
   bonusAdRatio: "Bonus AD ratio",
 };
 
-function row(label: string, damage: number, total: number, item?: Item): Row {
-  return { label, damage, share: total === 0 ? 0 : damage / total, item };
+function row(label: string, damage: number, total: number, item?: Item, damageType?: DamageType): Row {
+  return { label, damage, share: total === 0 ? 0 : damage / total, item, damageType };
 }
 
 // By source: the ability's parts first (base, AP ratio, bonus AD ratio), then each item's
@@ -27,11 +38,13 @@ function row(label: string, damage: number, total: number, item?: Item): Row {
 export function sourceRows(b: Breakdown): Row[] {
   const ability = Object.keys(abilitySourceLabels)
     .filter((source) => (b.bySource[source] ?? 0) !== 0)
-    .map((source) => row(abilitySourceLabels[source], b.bySource[source], b.total));
+    .map((source) => row(abilitySourceLabels[source], b.bySource[source], b.total, undefined, onlyType(b, source)));
   const items = Object.entries(b.bySource)
     .filter(([source, damage]) => !(source in abilitySourceLabels) && damage !== 0)
     .sort(([, a], [, z]) => z - a)
-    .map(([source, damage]) => row(source, damage, b.total, allItems.find((i) => i.name === source)));
+    .map(([source, damage]) =>
+      row(source, damage, b.total, allItems.find((i) => i.name === source), onlyType(b, source)),
+    );
   return [...ability, ...items];
 }
 
@@ -45,7 +58,11 @@ export function marginalRows(e: BuildExplanation): Row[] {
 
 // Magic / physical / true. All three are always listed (0 is useful to know).
 export function typeRows(b: Breakdown): Row[] {
-  return [row("Magic", b.byType.magic, b.total), row("Physical", b.byType.physical, b.total), row("True", b.byType.true, b.total)];
+  return [
+    row("Magic", b.byType.magic, b.total, undefined, "magic"),
+    row("Physical", b.byType.physical, b.total, undefined, "physical"),
+    row("True", b.byType.true, b.total, undefined, "true"),
+  ];
 }
 
 // The daggers themselves vs. everything item effects added.

@@ -79,7 +79,7 @@ export const practiceCases: PracticeCase[] = [
 
   // --- Part 4: coded passives, including the open questions in NOTES.md.
   { id: "12", checks: "Liandry's burn + in-combat amp", level: 11, rRank: 2, items: ["Liandry's Torment"], dummy: plain, measured: [799] },
-  { id: "13", checks: "Riftmaker HP ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ AP with Warmog's", level: 16, rRank: 3, items: ["Riftmaker", "Warmog's Armor"], dummy: { hp: 4000, resist: 0 }, measured: [1044] },
+  { id: "13", checks: "Riftmaker HP → AP with Warmog's", level: 16, rRank: 3, items: ["Riftmaker", "Warmog's Armor"], dummy: { hp: 4000, resist: 0 }, measured: [1044] },
   { id: "14", checks: "Luden's Echo (first dagger)", level: 11, rRank: 2, items: ["Luden's Echo"], dummy: plain, measured: [896] },
   { id: "15", checks: "BotRK (reads the dummy's current HP; R before on-hit?)", level: 11, rRank: 2, items: ["Blade of The Ruined King"], dummy: plain, measured: [1696] },
   { id: "16", checks: "Guinsoo's (do daggers give stacks / Phantom Hits?)", level: 11, rRank: 2, items: ["Guinsoo's Rageblade"], dummy: plain, measured: [1065] },
@@ -112,4 +112,18 @@ export const practiceCases: PracticeCase[] = [
     hpAfter: [970, 980],
   },
   { id: "21", checks: "Rabadon's + Luden's: AP % boosting an item's AP ratio", level: 16, rRank: 3, items: ["Rabadon's Deathcap", "Luden's Echo"], dummy: { hp: 4000, resist: 0 }, measured: [1665] },
+  // --- Part 8: Eric's AD build against a tanky dummy (Nov 23, 2026). First test with high armor
+  // (150), so Lord Dominik's % armor pen and Voltaic's lethality really matter. Energized full
+  // before the ult. The counter (5814) and the HP bar (2424 left) are from two different casts.
+  // Predicted before the HP-bar cast: 2390 left. Measured 2424: the calculator is 34 high (+0.6%).
+  {
+    id: "23",
+    checks: "AD vs 150 armor: Gunmetal Greaves, BotRK, Guinsoo's, Lord Dominik's, Yun Tal, Voltaic",
+    level: 18,
+    rRank: 3,
+    items: ["Gunmetal Greaves", "Blade of The Ruined King", "Guinsoo's Rageblade", "Lord Dominik's Regards", "Yun Tal Wildarrows", "Voltaic Cyclosword"],
+    dummy: { hp: 8000, resist: 150 },
+    measured: [5814],
+    hpAfter: [2424],
+  },
 ];

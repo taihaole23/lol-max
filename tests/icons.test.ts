@@ -9,7 +9,7 @@ import { iconPath } from "../src/ui/icons.ts";
 
 // `import.meta.glob` is a Vite feature: it lists every file matching the pattern (without loading
 // them). Its keys look like "/public/icons/item/3089.png".
-const iconFiles = new Set(Object.keys(import.meta.glob("/public/icons/**/*.png")));
+const iconFiles = new Set(Object.keys(import.meta.glob(["/public/icons/**/*.png", "/public/icons/**/*.jpg"])));
 const exists = (path: string) => iconFiles.has(`/public${path}`);
 
 test("the champion list is for the site's patch, and slugs are unique", () => {
@@ -23,6 +23,10 @@ test("every champion in the search list has an icon and 4 ability icons", () => 
     expect(exists(iconPath.champion(c.slug)), c.name).toBe(true);
     for (const key of ["q", "w", "e", "r"] as const) expect(exists(iconPath.ability(c.slug, key)), `${c.name} ${key}`).toBe(true);
   }
+});
+
+test("every playable champion has splash art (update-icons.mjs's splashChampions list)", () => {
+  for (const slug of Object.keys(playableChampions)) expect(exists(iconPath.splash(slug)), slug).toBe(true);
 });
 
 test("every item in the item snapshot has an icon", () => {

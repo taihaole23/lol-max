@@ -88,6 +88,20 @@ function parseStats(item) {
   return stats;
 }
 
+// The item's passives and actives as plain text, for the site's item tooltip (display only: the
+// math never reads this; passives that matter are hand-coded in src/items/).
+// Description shape: <stats>...</stats> then "<passive>Name</passive><br>text..." per effect.
+function parseEffects(item) {
+  const body = item.description.replace(/<stats>.*?<\/stats>/s, "");
+  const effects = [];
+  const pattern = /<(passive|active)>(.*?)<\/\1>(.*?)(?=<(?:passive|active)>|<\/mainText>|$)/gs;
+  for (const [, kind, name, rest] of body.matchAll(pattern)) {
+    const text = rest.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    effects.push({ kind, name: name.replace(/<[^>]+>/g, "").trim(), text });
+  }
+  return effects;
+}
+
 // Is this item built (directly or further down its recipe) from `targetId`?
 function builtFrom(item, targetId) {
   return (item.from ?? []).some((id) => id === targetId || (all[id] && builtFrom(all[id], targetId)));
@@ -116,7 +130,7 @@ for (const id of ids) {
   const cat = category(item);
   if (!cat) continue;
   seen.add(item.name);
-  items.push({ id, name: item.name, category: cat, gold: item.gold.total, stats: parseStats(item) });
+  items.push({ id, name: item.name, category: cat, gold: item.gold.total, stats: parseStats(item), effects: parseEffects(item) });
 }
 items.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
 

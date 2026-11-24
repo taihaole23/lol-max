@@ -1,10 +1,17 @@
 // Builds the HTML for one build's damage breakdowns and for the top-5 list.
 // The numbers come from breakdown-rows.ts; this file only decides how they look.
-import type { ExplainedBuild } from "../optimizer/messages.ts";
+import type { ExplainedBuild, SearchResult } from "../optimizer/messages.ts";
+import { buildStyles } from "../optimizer/styles.ts";
 import { abilityVsItemRows, marginalRows, sourceRows, typeRows, type Row } from "./breakdown-rows.ts";
 import type { Item } from "../data/items.ts";
 import { escapeHtml } from "./html.ts";
-import { iconPath, itemIconHtml } from "./icons.ts";
+import { goldHtml, itemIconHtml } from "./icons.ts";
+
+// A row's label, coloured by damage type when it has exactly one (purple magic, orange physical).
+function labelHtml(r: Row): string {
+  const text = escapeHtml(r.label);
+  return r.damageType ? `<span class="dmg-${r.damageType}">${text}</span>` : text;
+}
 
 // Whole numbers with thousands separators; a real minus sign for negatives ("−120").
 export function formatDamage(damage: number): string {
@@ -35,7 +42,7 @@ function splitBar(title: string, rows: Row[], colours: string[]): string {
   const legend = rows
     .map(
       (r, i) =>
-        `<li><span class="swatch" style="background:var(${colours[i]})"></span>${escapeHtml(r.label)}` +
+        `<li><span class="swatch" style="background:var(${colours[i]})"></span>${labelHtml(r)}` +
         ` <strong>${formatDamage(r.damage)}</strong> <span class="muted">${formatShare(r.share)}</span></li>`,
     )
     .join("");
@@ -56,7 +63,7 @@ function barTable(title: string, firstColumn: string, rows: Row[], note: string)
       const width = r.damage > 0 ? (r.damage / biggest) * 100 : 0;
       return `
         <tr title="${escapeHtml(r.label)}: ${formatDamage(r.damage)} (${formatShare(r.share)})">
-          <th scope="row"><span class="row-label">${r.item ? `<img src="${iconPath.item(r.item)}" alt="" width="20" height="20" loading="lazy" />` : ""}${escapeHtml(r.label)}</span></th>
+          <th scope="row"><span class="row-label">${r.item ? itemIconHtml(r.item, 22) : ""}${labelHtml(r)}</span></th>
           <td class="bar-cell"><div class="bar" style="width:${width}%"></div></td>
           <td class="number">${formatDamage(r.damage)}</td>
           <td class="number muted">${formatShare(r.share)}</td>
@@ -102,20 +109,56 @@ export function breakdownHtml(build: ExplainedBuild): string {
 const isBoots = (item: Item) => item.category === "boots" || item.category === "boots-tier-3";
 const slotOrder = (items: Item[]) => [...items.filter(isBoots), ...items.filter((item) => !isBoots(item))];
 
-// The top 5, as buttons: rank, damage, then the item icons (names on hover). Clicking one shows
-// it in the slots and the breakdowns. The button's label reads the names out for screen readers.
-export function topBuildsHtml(builds: ExplainedBuild[], selected: number): string {
-  const cards = builds
-    .map((build, i) => {
-      const ordered = slotOrder(build.items);
-      const label = `Build ${i + 1}: ${formatDamage(build.damage)} damage, ${ordered.map((item) => item.name).join(", ")}`;
-      return `
-        <li><button type="button" class="build-card${i === selected ? " selected" : ""}" data-build-index="${i}" aria-label="${escapeHtml(label)}">
-          <span class="build-rank">#${i + 1}</span>
-          <span class="build-damage">${formatDamage(build.damage)}</span>
-          <span class="build-items">${ordered.map((item) => itemIconHtml(item, 36)).join("")}</span>
-        </button></li>`;
+// What the whole build costs (boots included), from each item's shop price.
+export const buildCost = (items: Item[]) => items.reduce((sum, item) => sum + item.gold, 0);
+
+// Every build card has a number (`data-build-index`): 0-4 are the top 5, then one per style.
+// This turns the number back into the build (undefined for a style with no build).
+export function buildAt(result: SearchResult, index: number): ExplainedBuild | undefined {
+  if (index < result.builds.length) return result.builds[index];
+  return result.styles[index - result.builds.length]?.build ?? undefined;
+}
+
+const sameItems = (a: ExplainedBuild, b: ExplainedBuild) =>
+  a.items.length === b.items.length && a.items.every((item) => b.items.some((other) => other.name === item.name));
+
+// One build as a button: rank (or style), damage, item icons (names on hover), cost. Clicking it
+// shows the build in the slots and the breakdowns. The label reads it all out for screen readers.
+function buildCardHtml(build: ExplainedBuild, index: number, selected: number, rank: string, name: string, extra = ""): string {
+  const ordered = slotOrder(build.items);
+  const label =
+    `${name}: ${formatDamage(build.damage)} damage, ${buildCost(build.items).toLocaleString("en-US")} gold, ` +
+    ordered.map((item) => item.name).join(", ");
+  return `
+    <li><button type="button" class="build-card${index === selected ? " selected" : ""}" data-build-index="${index}" aria-label="${escapeHtml(label)}">
+      ${rank}
+      <span class="build-damage">${formatDamage(build.damage)}</span>
+      <span class="build-items">${ordered.map((item) => itemIconHtml(item, 36)).join("")}${extra}</span>
+      ${goldHtml(buildCost(build.items))}
+    </button></li>`;
+}
+
+// The top 5, then the best build of each style (every item gives AP / AD / attack speed).
+export function topBuildsHtml(result: SearchResult, selected: number): string {
+  const top = result.builds
+    .map((build, i) => buildCardHtml(build, i, selected, `<span class="build-rank">#${i + 1}</span>`, `Build ${i + 1}`))
+    .join("");
+
+  const styleCards = result.styles
+    .map(({ style, build }, i) => {
+      const info = buildStyles.find((s) => s.key === style)!;
+      const tag = `<span class="build-rank style-${style}" data-tip="${escapeHtml(`Best build where every item gives ${info.label.toLowerCase()} (boots aside)`)}">${info.short}</span>`;
+      if (!build) {
+        return `<li><div class="build-card empty">${tag}<span class="muted">No ${info.label.toLowerCase()} build fits these slots, locks and bans.</span></div></li>`;
+      }
+      const sameAs = result.builds.findIndex((b) => sameItems(b, build));
+      const note = sameAs >= 0 ? `<span class="same-as">same as #${sameAs + 1}</span>` : "";
+      return buildCardHtml(build, result.builds.length + i, selected, tag, `Best ${info.label.toLowerCase()} build`, note);
     })
     .join("");
-  return `<ol class="top-builds">${cards}</ol>`;
+
+  return `
+    <ol class="top-builds">${top}</ol>
+    <h3 class="styles-title">Best build for each stat <span class="field-hint">Every item gives that stat (boots aside)</span></h3>
+    <ul class="top-builds style-builds">${styleCards}</ul>`;
 }

@@ -10,6 +10,10 @@ import { mountChampionPage } from "./ui/pages/champion-page.ts";
 import { mountAboutPage, mountHomePage, mountNotFoundPage } from "./ui/pages/simple-pages.ts";
 import { paths, startRouter, type Route } from "./ui/router.ts";
 import { applyTheme, currentTheme } from "./ui/theme.ts";
+import { startTooltips } from "./ui/tooltip.ts";
+
+// One floating tooltip for the whole site (item cards, ability names).
+startTooltips();
 
 // ---- Theme toggle (dark by default) ----
 const themeButton = byId<HTMLButtonElement>("theme-toggle");
