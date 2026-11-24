@@ -1,6 +1,6 @@
 import { test, expect } from "vitest";
 import { getItem } from "../../src/data/items.ts";
-import { katarinaStats } from "../../src/stats/katarina-stats.ts";
+import { championStats } from "../../src/stats/champion-stats.ts";
 import { daggerPhysicalDamage } from "../../src/formulas/death-lotus.ts";
 import { run } from "./helpers.ts";
 
@@ -19,7 +19,7 @@ test("Phantom Hits come 0.15 s after daggers 7, 10 and 13", () => {
 });
 
 test("+8% attack speed per dagger, up to 4, each counting from the next dagger", () => {
-  const stats = katarinaStats(16, [getItem("Guinsoo's Rageblade")]);
+  const stats = championStats("katarina", 16, [getItem("Guinsoo's Rageblade")]);
   const physical = run(16, ["Guinsoo's Rageblade"]).events.filter((e) => e.source === "bonusAdRatio");
   physical.forEach((piece, dagger) => {
     const stacks = Math.min(dagger, 4);

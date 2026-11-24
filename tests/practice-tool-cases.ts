@@ -56,7 +56,7 @@ export function practiceTarget(dummy: PracticeCase["dummy"]): Target {
 }
 
 function events(c: PracticeCase) {
-  return simulateBuild(c.level, c.items.map(getItem), practiceTarget(c.dummy), c.rRank).events;
+  return simulateBuild("katarina", c.level, c.items.map(getItem), practiceTarget(c.dummy), c.rRank).events;
 }
 
 // What the calculator says one ult REALLY does in this case (what the HP bar shows).

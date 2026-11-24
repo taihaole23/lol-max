@@ -6,7 +6,7 @@ import { presetDummy } from "../optimizer/helpers.ts";
 
 // A hybrid build, so every kind of row shows up: AP ratio, AD ratio, on-hit, passives, physical and magic.
 const items = ["Nashor's Tooth", "Rabadon's Deathcap", "Blade of The Ruined King", "Sorcerer's Shoes"].map(getItem);
-const e = explainBuild(16, items, presetDummy("bruiser", "late"));
+const e = explainBuild("katarina", 16, items, presetDummy("bruiser", "late"));
 const total = e.breakdown.total;
 const sum = (rows: Row[]) => rows.reduce((s, r) => s + r.damage, 0);
 const shares = (rows: Row[]) => rows.reduce((s, r) => s + r.share, 0);
@@ -44,7 +44,7 @@ test("item rows carry their item (for the icon); the ability's rows and the tota
 });
 
 test("a build with no item effects: ability = 100%, items = 0%", () => {
-  const plain = explainBuild(6, [getItem("Rabadon's Deathcap")], presetDummy("tank", "early"));
+  const plain = explainBuild("katarina", 6, [getItem("Rabadon's Deathcap")], presetDummy("tank", "early"));
   const [ability, itemEffects] = abilityVsItemRows(plain.breakdown);
   expect(ability.share).toBeCloseTo(1);
   expect(itemEffects.damage).toBe(0);

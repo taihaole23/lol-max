@@ -32,6 +32,9 @@ const abilityPages = [
   "Template:Data_Katarina/Bouncing_Blade",
   "Template:Data_Katarina/Shunpo",
   "Template:Data_Katarina/Death_Lotus",
+  "Template:Data_Akali/Five_Point_Strike",
+  "Template:Data_Akali/Shuriken_Flip",
+  "Template:Data_Akali/Perfect_Execution",
 ];
 
 // Big data modules: only the blocks we use are kept, not the whole page.

@@ -5,12 +5,12 @@
 import { dummyPresets, type EnemyType } from "../data/dummy-presets.ts";
 import { championLevels, ultimateRanks } from "../data/game-rules.ts";
 import { getItem, type Item } from "../data/items.ts";
-import { isDamageAbility, playableChampions, type AbilityKey, type PlayableChampionId } from "../data/playable-champions.ts";
+import { isModelled, playableChampions, type AbilityKey, type PlayableChampionId } from "../data/playable-champions.ts";
 import { stages, type StageName } from "../data/stages.ts";
 import type { BootsSetting } from "../optimizer/item-pool.ts";
 import type { SearchRequest } from "../optimizer/messages.ts";
 import { constraintProblem, type BuildConstraints } from "../optimizer/constraints.ts";
-import { maxItemCount, type KatarinaSetup } from "../optimizer/setup.ts";
+import { maxItemCount, type ChampionSetup } from "../optimizer/setup.ts";
 import type { Target } from "../simulation/simulate.ts";
 import { dummyStats, recommendedDummyItems, withTypedStats, type TypedStats } from "../stats/dummy-stats.ts";
 import {
@@ -27,20 +27,20 @@ export type PageState = {
   champion: PlayableChampionId;
   ability: AbilityKey; // the ability card that's selected
   stage: StageName; // the last stage preset clicked
-  level: number; // Katarina's level
+  level: number; // the champion's level
   ranks: AbilityRanks; // 0 = not learned. Always legal for the level (see ability-ranks.ts).
   itemCount: number; // legendary slots; boots get their own slot on top
   bootsOn: boolean;
   midQuest: boolean; // tier-3 boots; only possible with boots on
   enemyType: EnemyType;
   dummyLevel: number;
-  dummyLevelFollowsKatarina: boolean; // true until the user edits the dummy's level
+  dummyLevelFollowsChampion: boolean; // true until the user edits the dummy's level
   useRecommendedItems: boolean;
   // The dummy's items when "Use recommended items" is off. `null` = empty slot.
   // "legendaries" also holds support items (a support dummy like Nami buys one).
   customDummyItems: { legendaries: (string | null)[]; boots: string | null };
   typedDummyStats: TypedStats; // numbers the user typed in; they override the calculated ones
-  // The user's conditions on Katarina's build. locked[i] = the item locked into item slot i
+  // The user's conditions on the build. locked[i] = the item locked into item slot i
   // (null = the optimizer chooses). Banned items are left out of every search.
   locked: (string | null)[];
   lockedBoots: string | null;
@@ -61,7 +61,7 @@ export function initialState(): PageState {
     midQuest: false,
     enemyType: "squishy",
     dummyLevel: 1,
-    dummyLevelFollowsKatarina: true,
+    dummyLevelFollowsChampion: true,
     useRecommendedItems: true,
     customDummyItems: { legendaries: [], boots: null },
     typedDummyStats: noTypedStats,
@@ -79,20 +79,20 @@ export function bootsSetting(state: PageState): BootsSetting {
   return state.midQuest ? "tier3" : "tier2";
 }
 
-// What the search needs from Katarina's side, or null if the selected ability can't be calculated:
-// it deals no damage (W), or it has no points yet (R below level 6, or a rank set to 0).
-export function katarinaSetup(state: PageState): KatarinaSetup | null {
+// What the search needs from the champion's side, or null if the selected ability can't be calculated:
+// it isn't modelled or deals no damage (W), or it has no points yet (R below level 6, or a rank set to 0).
+export function championSetup(state: PageState): ChampionSetup | null {
   const ability = state.ability;
-  if (!isDamageAbility(ability)) return null;
+  if (!isModelled(state.champion, ability)) return null;
   const rank = state.ranks[ability];
   if (rank < 1) return null;
-  return { level: state.level, ability, rank, itemCount: state.itemCount };
+  return { champion: state.champion, level: state.level, ability, rank, itemCount: state.itemCount };
 }
 
 // Why the selected ability can't be calculated, in plain words (null = it can).
 export function abilityProblem(state: PageState): string | null {
-  const ability = playableChampions[state.champion].abilities.find((a) => a.key === state.ability);
-  if (!ability || !isDamageAbility(ability.key)) return null; // W has its own message
+  const ability = playableChampions[state.champion].abilities.list.find((a) => a.key === state.ability);
+  if (!ability || !isModelled(state.champion, ability.key)) return null; // W and "coming soon" have their own message
   if (state.ranks[ability.key] >= 1) return null;
   if (maxRankAtLevel(ability.key, state.level) === 0) {
     return `${ability.name} unlocks at level ${ultimateRanks.levels[0]}.`;
@@ -144,9 +144,9 @@ export function conditionProblem(state: PageState): string | null {
 }
 
 // What to send to the search worker, with `itemCount` legendary slots. null when the ability can't
-// be calculated (katarinaSetup), or when the locks and bans make no sense (the page shows conditionProblem instead).
+// be calculated (championSetup), or when the locks and bans make no sense (the page shows conditionProblem instead).
 export function searchRequest(state: PageState, itemCount: number): SearchRequest | null {
-  const setup = katarinaSetup(state);
+  const setup = championSetup(state);
   if (setup === null || conditionProblem(state) !== null) return null;
   return { ...setup, itemCount, target: dummyTarget(state), boots: bootsSetting(state), constraints: buildConstraints(state) };
 }
@@ -197,18 +197,18 @@ function clampLevel(level: number): number {
   return Math.min(Math.max(Math.round(level), 1), championLevels.max);
 }
 
-// A stage sets the level, the ranks in Katarina's usual skill order (Q, then E, then W; R whenever
-// possible), the item count and the dummy's level.
+// A stage sets the level, the ranks in the champion's usual skill order (Katarina: R whenever possible,
+// then Q, then E, then W), the item count and the dummy's level.
 export function applyStage(state: PageState, stage: StageName): PageState {
   const { level, itemsWithBoots, itemsWithoutBoots } = stages[stage];
   return {
     ...state,
     stage,
     level,
-    ranks: recommendedRanks(level),
+    ranks: recommendedRanks(state.champion, level),
     itemCount: state.bootsOn ? itemsWithBoots : itemsWithoutBoots,
     dummyLevel: stages[stage].level,
-    dummyLevelFollowsKatarina: true,
+    dummyLevelFollowsChampion: true,
     typedDummyStats: noTypedStats,
   };
 }
@@ -217,11 +217,11 @@ export function applyStage(state: PageState, stage: StageName): PageState {
 // points afterwards), so they're always legal: no rank 5 Q at level 6.
 export function setLevel(state: PageState, level: number): PageState {
   const newLevel = clampLevel(level);
-  const follows = state.dummyLevelFollowsKatarina;
+  const follows = state.dummyLevelFollowsChampion;
   return {
     ...state,
     level: newLevel,
-    ranks: recommendedRanks(newLevel),
+    ranks: recommendedRanks(state.champion, newLevel),
     dummyLevel: follows ? newLevel : state.dummyLevel,
     typedDummyStats: follows ? noTypedStats : state.typedDummyStats,
   };
@@ -246,6 +246,13 @@ function rankAfterClick(state: PageState, ability: AbilityKey, rank: number): nu
 
 export function selectAbility(state: PageState, ability: AbilityKey): PageState {
   return { ...state, ability };
+}
+
+// Opening another champion's page keeps every setting, but the ranks follow the new champion's own
+// skill order at the same level (one champion's ranks can be wrong for another's skill order).
+export function selectChampion(state: PageState, champion: PlayableChampionId): PageState {
+  if (champion === state.champion) return state;
+  return { ...state, champion, ranks: recommendedRanks(champion, state.level) };
 }
 
 // Locks only make sense in slots that exist: removing a slot removes its lock.
@@ -316,7 +323,7 @@ export function setEnemyType(state: PageState, enemyType: EnemyType): PageState 
 }
 
 export function setDummyLevel(state: PageState, level: number): PageState {
-  return { ...state, dummyLevel: clampLevel(level), dummyLevelFollowsKatarina: false, typedDummyStats: noTypedStats };
+  return { ...state, dummyLevel: clampLevel(level), dummyLevelFollowsChampion: false, typedDummyStats: noTypedStats };
 }
 
 // Unticking "Use recommended items" starts the custom picker from the recommended list,

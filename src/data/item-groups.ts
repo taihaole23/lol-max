@@ -34,8 +34,9 @@ export const itemGroups = {
   } as Record<string, readonly string[]>,
 };
 
-// Items Katarina can't buy at all. She is melee (wiki: Katarina, "rangetype").
-export const katarinaCannotBuy = {
+// Items a melee champion can't buy at all. Every playable champion is melee (each data file's
+// `rangeType`; a test checks it), so the item pool leaves these out for everyone.
+export const meleeCannotBuy = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Runaan%27s_Hurricane", patch: "26.23" },
   items: ["Runaan's Hurricane"], // "Can only be purchased on ranged champions."
 };

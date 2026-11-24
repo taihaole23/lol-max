@@ -1,7 +1,8 @@
 // Tests for adding up Katarina's and the dummy's stats from level + items.
 import { test, expect } from "vitest";
 import { combinePercent } from "../src/stats/combine.ts";
-import { katarinaStats, rRankAtLevel } from "../src/stats/katarina-stats.ts";
+import { championStats } from "../src/stats/champion-stats.ts";
+import { rRankAtLevel } from "../src/stats/ability-ranks.ts";
 import { dummyStats, recommendedDummyItems } from "../src/stats/dummy-stats.ts";
 import { getItem, items } from "../src/data/items.ts";
 
@@ -12,21 +13,21 @@ test("combinePercent: 40% and 30% make 58%, not 70%", () => {
 });
 
 test("Katarina with no items at level 6: wiki's 10.82% bonus attack speed, nothing else", () => {
-  const stats = katarinaStats(6, []);
+  const stats = championStats("katarina", 6, []);
   expect(stats.ap).toBe(0);
   expect(stats.bonusAd).toBe(0);
   expect(stats.bonusAttackSpeed).toBeCloseTo(0.1082, 4);
 });
 
 test("Void Staff + Sorcerer's Shoes: 95 AP, 40% and 12 flat magic pen", () => {
-  const stats = katarinaStats(11, [getItem("Void Staff"), getItem("Sorcerer's Shoes")]);
+  const stats = championStats("katarina", 11, [getItem("Void Staff"), getItem("Sorcerer's Shoes")]);
   expect(stats.ap).toBe(95);
   expect(stats.magicShred.percentPenetration).toBeCloseTo(0.4);
   expect(stats.magicShred.flatPenetration).toBe(12);
 });
 
 test("Youmuu's lethality becomes flat armor pen; Lord Dominik's gives % armor pen", () => {
-  const stats = katarinaStats(16, [getItem("Youmuu's Ghostblade"), getItem("Lord Dominik's Regards")]);
+  const stats = championStats("katarina", 16, [getItem("Youmuu's Ghostblade"), getItem("Lord Dominik's Regards")]);
   expect(stats.bonusAd).toBe(55 + 35);
   expect(stats.armorShred.flatPenetration).toBe(18);
   expect(stats.armorShred.percentPenetration).toBeCloseTo(0.35);

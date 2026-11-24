@@ -10,6 +10,9 @@ export type Breakdown = {
   typesBySource: Record<string, DamageEvent["type"][]>;
   ability: number; // the ability's own hits (the daggers, for R)
   items: number; // everything from item effects
+  // The ability's own damage per named hit (Akali's E and R: "First cast", "Recast"), in the order
+  // the hits first dealt damage. Empty when the hits have no names (Katarina).
+  byHit: Record<string, number>;
 };
 
 export function breakdown(events: DamageEvent[]): Breakdown {
@@ -20,6 +23,7 @@ export function breakdown(events: DamageEvent[]): Breakdown {
     typesBySource: {},
     ability: 0,
     items: 0,
+    byHit: {},
   };
 
   for (const event of events) {
@@ -32,6 +36,7 @@ export function breakdown(events: DamageEvent[]): Breakdown {
       result.items += event.amount;
     } else {
       result.ability += event.amount;
+      if (event.hitName) result.byHit[event.hitName] = (result.byHit[event.hitName] ?? 0) + event.amount;
     }
   }
 

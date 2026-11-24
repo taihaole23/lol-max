@@ -1,6 +1,6 @@
 import { test, expect } from "vitest";
 import { getItem } from "../../src/data/items.ts";
-import { katarinaStats } from "../../src/stats/katarina-stats.ts";
+import { championStats } from "../../src/stats/champion-stats.ts";
 import { addApPercent } from "../../src/stats/ap-percent.ts";
 import { fixedAttacker, run } from "./helpers.ts";
 
@@ -15,7 +15,7 @@ test("addApPercent: % AP bonuses add (130 with Rabadon's → +4% → 134, not 13
 });
 
 test("burn: 10 + 1% AP right away and every 0.5 s, 6 ticks, × 0.35 (the Death Lotus bug)", () => {
-  const ap = katarinaStats(16, [getItem("Blackfire Torch")]).ap;
+  const ap = championStats("katarina", 16, [getItem("Blackfire Torch")]).ap;
   const ticks = run(16, ["Blackfire Torch"]).events.filter((e) => e.source === "Blackfire Torch");
   expect(ticks.map((e) => e.time)).toEqual([0, 0.5, 1, 1.5, 2, 2.5]);
   // The 0 s tick comes with dagger 1, before the +4% AP; the rest use the +4%.

@@ -5,6 +5,7 @@ import { noShred } from "../../src/formulas/resistance.ts";
 import type { ItemPassive } from "../../src/items/types.ts";
 import { simulateBuild } from "../../src/simulation/simulate-build.ts";
 import { breakdown } from "../../src/simulation/breakdown.ts";
+import type { DamageAbilityKey, PlayableChampionId } from "../../src/data/playable-champions.ts";
 
 // A dummy with no armor or MR, so damage numbers are easy to work out by hand,
 // and so much HP that the overkill rule never kicks in.
@@ -19,7 +20,20 @@ export const easyDummy: Target = {
 
 // Runs one ult with these items (by name) and returns the events and the breakdown.
 export function run(level: number, itemNames: string[], target: Target = easyDummy) {
-  const result = simulateBuild(level, itemNames.map(getItem), target);
+  const result = simulateBuild("katarina", level, itemNames.map(getItem), target);
+  return { ...result, breakdown: breakdown(result.events) };
+}
+
+// Runs any champion's ability (Akali's E, say) with these items. Rank = the highest allowed at
+// level 18 (Q and E 5, R 3) unless given.
+export function runAbility(
+  champion: PlayableChampionId,
+  ability: DamageAbilityKey,
+  itemNames: string[],
+  target: Target = easyDummy,
+  rank = ability === "r" ? 3 : 5,
+) {
+  const result = simulateBuild(champion, 18, itemNames.map(getItem), target, rank, ability);
   return { ...result, breakdown: breakdown(result.events) };
 }
 

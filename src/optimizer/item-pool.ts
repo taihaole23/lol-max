@@ -1,9 +1,9 @@
-// Which items the optimizer may put in Katarina's builds.
+// Which items the optimizer may put in a build (the same for every playable champion: all are melee).
 import { items, type Item } from "../data/items.ts";
-import { katarinaCannotBuy } from "../data/item-groups.ts";
+import { meleeCannotBuy } from "../data/item-groups.ts";
 import { itemPassives } from "../items/index.ts";
 
-// Every plain item stat that our code reads for Katarina (see src/stats/katarina-stats.ts).
+// Every plain item stat that our code reads for a champion (see src/stats/champion-stats.ts).
 // If you make the code read a new stat, add it here, or the filter could wrongly remove an item.
 // (A test checks every removed item really changes nothing.)
 export const statsReadByCode = [
@@ -33,7 +33,7 @@ export type ItemPool = {
 
 // `useFilter: false` is only for the test that checks the filter changes nothing.
 export function legendaryPool(useFilter = true): ItemPool {
-  const buyable = items.filter((item) => item.category === "legendary" && !katarinaCannotBuy.items.includes(item.name));
+  const buyable = items.filter((item) => item.category === "legendary" && !meleeCannotBuy.items.includes(item.name));
   if (!useFilter) return { legendaries: buyable, removedByFilter: [] };
   return {
     legendaries: buyable.filter(canChangeDamage),

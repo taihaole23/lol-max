@@ -6,13 +6,13 @@ import type { Target } from "../simulation/simulate.ts";
 import type { BuildConstraints } from "./constraints.ts";
 import type { BuildExplanation } from "./explain.ts";
 import type { BootsSetting } from "./item-pool.ts";
-import type { KatarinaSetup } from "./setup.ts";
+import type { ChampionSetup } from "./setup.ts";
 import type { StyleKey } from "./styles.ts";
 import type { FoundBuild } from "./top-builds.ts";
 
-// Page → worker: what to search. Level, ability, its rank and item count come from the page's inputs
+// Page → worker: what to search. Champion, level, ability, its rank and item count come from the page's inputs
 // (a stage preset fills them in, and the user can change each one).
-export type SearchRequest = KatarinaSetup & {
+export type SearchRequest = ChampionSetup & {
   target: Target; // the dummy's final stats (presets or typed-in numbers, worked out by the page)
   boots: BootsSetting;
   constraints?: BuildConstraints; // locked and banned items

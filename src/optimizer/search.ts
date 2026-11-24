@@ -15,7 +15,7 @@ import type { Target } from "../simulation/simulate.ts";
 import { constraintProblem, noConstraints, type BuildConstraints } from "./constraints.ts";
 import { canBeBuiltTogether } from "./legal.ts";
 import { bootsPool, legendaryPool, type BootsSetting } from "./item-pool.ts";
-import { checkSetup, type KatarinaSetup } from "./setup.ts";
+import { checkSetup, type ChampionSetup } from "./setup.ts";
 import { keepTop, type FoundBuild } from "./top-builds.ts";
 
 export const searchSettings = {
@@ -25,7 +25,7 @@ export const searchSettings = {
   everyBuildMaxItems: 2,
 };
 
-export type SearchInput = KatarinaSetup & {
+export type SearchInput = ChampionSetup & {
   target: Target;
   boots: BootsSetting;
   constraints?: BuildConstraints; // default: none
@@ -68,7 +68,7 @@ function prepare(input: SearchInput) {
     const sorted = [...indices].sort((a, b) => a - b);
     const items = sorted.map((i) => legendaries[i]);
     if (bootsItem) items.push(bootsItem);
-    const events = simulateBuild(input.level, items, input.target, input.rank, input.ability).events;
+    const events = simulateBuild(input.champion, input.level, items, input.target, input.rank, input.ability).events;
     let damage = 0;
     for (const event of events) damage += event.amount;
     let gold = 0;

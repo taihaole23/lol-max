@@ -1,6 +1,6 @@
 import { test, expect } from "vitest";
 import { getItem } from "../../src/data/items.ts";
-import { katarinaStats } from "../../src/stats/katarina-stats.ts";
+import { championStats } from "../../src/stats/champion-stats.ts";
 import { daggerPhysicalDamage } from "../../src/formulas/death-lotus.ts";
 import { damageMultiplier } from "../../src/formulas/resistance.ts";
 import { easyDummy, run } from "./helpers.ts";
@@ -17,7 +17,7 @@ test("fires once, before R's first damage, for 8% of the dummy's current HP (not
 test("+15 lethality for the whole ult, on top of the item's own lethality", () => {
   // 100 armor dummy. Voltaic's own lethality (from its stats) is already in armorShred.
   const armored = { ...easyDummy, baseArmor: 100 };
-  const stats = katarinaStats(16, [getItem("Voltaic Cyclosword")]);
+  const stats = championStats("katarina", 16, [getItem("Voltaic Cyclosword")]);
   const lethality = stats.armorShred.flatPenetration + 15;
   const raw = daggerPhysicalDamage(stats.bonusAd, stats.bonusAttackSpeed);
   const physical = run(16, ["Voltaic Cyclosword"], armored).events.filter((e) => e.source === "bonusAdRatio");

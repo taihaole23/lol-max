@@ -89,6 +89,20 @@ These notes are for anyone joining the project.
   - New tests: `tests/ability-ranks.test.ts`, `tests/basic-abilities.test.ts`. The filter and beam checks (fast and slow) now run for Q, E and R.
   - To do: add Q and E Practice Tool cases (nothing measured for them yet), and run `npm run check-wiki` to save first copies of the two new ability pages.
 
+- **Akali (started Nov 24, 2026, Eric).** Plan: 1) make the code work for more than one champion, 2) `akali.ts` data, 3) Q and E, 4) R with its missing-health boost, 5) the about page, notes and scope.
+  - Step 1 (more than one champion) is done. Nothing about Katarina's numbers changed: the same 343 tests pass.
+    - `src/data/playable-champions.ts` lists the playable champions. `ChampionKit` is the part of a data file the shared code reads (stats, ability list, skill order, adaptive type, melee/ranged).
+    - `katarinaStats` became `championStats(champion, level, items, ability)` in `src/stats/champion-stats.ts`. `rRankAtLevel` and `allowedRRanks` moved to `ability-ranks.ts`.
+    - Katarina's casts moved to `src/simulation/katarina-abilities.ts`. `abilities.ts` now only picks the right champion's file.
+    - `simulateBuild`, `explainBuild`, `stagePreset` and `recommendedRanks` take the champion first. The search's setup (`ChampionSetup`) has a `champion` field.
+    - Per champion: which abilities are modelled, the "deals no damage" text and the one-line damage rule under the total.
+    - Opening another champion's page keeps the settings, but resets the ranks to that champion's skill order (`selectChampion` in `state.ts`).
+  - Steps 2-5 are done: `src/data/akali.ts`, `src/formulas/perfect-execution.ts` (R2's bonus), `src/simulation/akali-abilities.ts`, the about page, sources and wiki watch list. Decisions are under "Akali" in Decisions.
+    - The simulation now tells each hit which hit it is and the dummy's current HP (`HitInfo`), so R2 can read the dummy's missing health.
+    - New tests: `tests/akali.test.ts`, `tests/items/unending-despair.test.ts`, Akali cases for Eclipse, Malignance and Stormsurge. The filter and beam checks (fast and slow) run for every champion's Q, E and R.
+    - Checked in headless Chrome: /akali/r, /akali/e, /akali/w and /about render, and the optimizer gives results.
+    - To do: Practice Tool cases for Akali (see "Unconfirmed"), and `npm run check-wiki -- --accept` once, to save first copies of her 3 ability pages and her champion data.
+
 ## Confirmed in the Practice Tool (Step 8, patch 26.23)
 - **Within one dagger: on-hit effects → R's own damage → on-attack effects** (HP bar, test 17). Was assumed the other way round.
 - **Burns tick right away, then every interval** (Liandry's, tests 12 and 20). Applied to every ticking effect (Liandry's, Blackfire, Sunfire, Hollow Radiance) at Eric's call; only Liandry's was measured.
@@ -100,6 +114,11 @@ These notes are for anyone joining the project.
 - **Statikk Shiv, Yun Tal, Kraken Slayer and Shadowflame together** (test 22, within 0.2%). Not checked one by one, so a small error in one could hide behind another, but none is big.
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
+- **Akali (nothing measured yet).** Good first cases: R on a 1,000 HP dummy with no items (R2's bonus), and E with Eclipse.
+  - **R2's timing:** we put R2 exactly 2.5 s after R1's hit. The wiki's 2.5 s "static cooldown" may count from R1's cast instead (R1 has a 0.25 s cast time), which would make it ~2.25 s after the hit. It changes which burn ticks land before R2 (its bonus) and the item window.
+  - **R2's bonus uses the dummy's HP just before R2 lands,** and grows evenly up to +200% at 70% missing (the wiki table).
+  - **Eclipse procs on E's recast** (2 casts = 2 stacks), never on R (2.5 s apart, over Eclipse's 2 s).
+  - **Stormsurge counts R1 + R2 together** (exactly 2.5 s apart; we count damage exactly 2.5 s ago as "within 2.5 s").
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
 - **Whether R's 25 / 30 / 35% effectiveness also shrinks Terminus's Juxtaposition stacks** (10% pen per Dark stack), or only on-hit *damage* (our assumption). Neither the wiki nor Eric knows.
   - That daggers *do* give Juxtaposition stacks is confirmed by Eric from playing. The wiki only says "basic attacks on-hit".
@@ -397,6 +416,29 @@ validation/    Practice Tool test plan and measurements
   - The Death Lotus shrinking bug (Liandry's, Blackfire, Luden's × R's on-hit effectiveness) is R only: Q and E get those at full size. It's now its own number, `procEffectiveness`, next to `onHitEffectiveness`.
 - **Burns stop AT their end time (changed with Q and E).** A burn on for 3 s ticking every 0.5 s ticks at 0, 0.5 ... 2.5: 6 ticks, matching the wiki (Liandry's "6% ... over 3 seconds"; Blackfire: first tick, then "the remaining 5 ticks"). Before, a tick exactly at the end also counted (7). It never mattered for R, because every dagger refreshes the burn.
 - **Rank boxes follow the game's rules (replaces "basic ability rank rules are ignored for now").** A box that would break them is greyed out. Clicking the top filled box takes the point back, so points can be moved. Changing the level or picking a stage resets the ranks to the usual skill order.
+- **Akali's recasts (Eric, Nov 24, 2026): she recasts as soon as the game allows.**
+  - E (Shuriken Flip): the first cast and the recast both land at 0 s. The wiki gives no wait before the recast, only a 3 s window to use it.
+  - R (Perfect Execution): R1 at 0 s and R2 at 2.5 s, because the wiki says "Perfect Execution can be recast after a 2.5-second static cooldown". (A static cooldown is a fixed wait that cooldown reduction can't shorten.) Burns ticking during those 2.5 s count toward R2's boost, as they would in a real game.
+  - Chose 2.5 s over "instantly" (Eric's first idea): an instant recast is impossible in the game, and the wait changes R2's damage.
+  - R2's boost is NOT the same for every build. It grows with the dummy's missing health, which depends on R1's damage (AD and AP), item damage before R2, and the dummy's HP. The simulation tracks the dummy's HP after every hit, so the boost is worked out exactly for each build.
+- **Akali's R numbers (Eric, Nov 24, 2026):**
+  - R1 is magic damage. The wiki contradicts itself: the text says physical, the damage table says magic. Eric, from playing: magic.
+  - R2's boost: +2.86% per 1% of the target's missing health, capped at 70% missing health (= +200%). From the wiki's table, sent by Eric as a screenshot. The wiki's page text only says "0% – 200% (based on target's missing health)".
+- **Akali's skill order: R whenever possible, then max Q, then E, then W (Eric).** Levels 1-3 take Q, E, W, like Katarina (our choice; only matters at levels 1-3).
+- **Akali's data (patch 26.23; her numbers last changed in V26.17):**
+  - Base stats from the wiki's champion data module (`Module:ChampionData/data`): HP 600 + 119, armor 23 + 4.7, MR 37 + 2.05, AD 62 + 3.3, attack speed 0.625 + 3.2% per level, move speed 345, melee, adaptive type Physical. Her page's "Special statistics" shows +121 HP per level: that's Arena only.
+  - Q: 45 / 70 / 95 / 120 / 145 + 65% AD + 60% AP, magic. E1: 21 / 42 / 63 / 84 / 105 + 30% AD + 33% AP; E2: 49 / 98 / 147 / 196 / 245 + 70% AD + 77% AP (together = the wiki's total), magic. "AD" = total AD; the wiki writes "bonus AD" for R.
+  - R1: 110 / 220 / 330 + 50% bonus AD + 30% AP, magic. R2: 70 / 140 / 210 + 30% AP, magic, × (1 + bonus).
+  - None of her abilities apply on-hit (wiki: TriggerOnHitEvents "Not Owned"), so no on-hit items and no Spellblade (casting E or R grants it, but it needs an on-hit).
+- **Akali's damage window: 3 s after her LAST hit (Q and E: 3 s; R: 5.5 s).** Chose the one-hit rule (Eric: item effects count "for as long as items need") over Katarina's channel rule, because Akali has no channel. R2 is the last hit, so effects it starts get the same 3 s as a Q.
+- **The per-cast split.** Akali's E and R hits have names ("First cast", "Recast"). The "Ability vs. items" bar then shows one part per cast (new colour `--part-recast`), and R2's bonus is its own "Missing-health bonus" line in "By source".
+- **Akali and the items (every item re-read for her):**
+  - Unending Despair is now modelled: its first sap (4 s) lands inside Akali's R window.
+  - Eclipse counts stacks per hit ("one per cast instance") instead of per moment, and checks the 2 s limit. Katarina is unchanged (one stack per dagger, dagger 2 procs it).
+  - Malignance's −10 MR now ends with its 3 s zone (wiki: "removed as soon as the target loses the Curse"). Katarina's 2.5 s ult never reached 3 s.
+  - Stormsurge's "25% within 2.5 s" is now a rolling window. For Katarina nothing changes: her ult is 2.5 s, and a later trigger can't land its strike inside the 3 s window of Q / E.
+  - Luden's has a 12 s cooldown (wiki), so it can't recharge before R2.
+  - Items that work "on your ultimate" (Malignance, Zeke's, Hexplate) work for Akali's R. Malignance makes one zone (its 3 s per-target cooldown blocks a second one from R2).
 - **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
 
 ## Things we learned from the data
@@ -488,7 +530,7 @@ A test (`tests/item-checklist.test.ts`) fails if an item is missing from these t
 
 **What this checks:** only an item's *passive*. Every item's plain stats (AP, AD, HP, pen…) are already counted by `src/stats/`.
 The question for each item is: does its passive change Death Lotus damage on one dummy during one channel, under our rules (see "Rules for item passives" in Decisions)?
-(Checked for R. With Q and E added, every "modelled" item was re-read for one-hit abilities; see "Q / E details" in Decisions. The "irrelevant" items stay irrelevant: each needs basic attacks, takedowns, slows, allies, mana or other enemies, or (Unending Despair) acts at 4 s, after the 3 s window.)
+(Checked for R. With Q and E added, every "modelled" item was re-read for one-hit abilities; see "Q / E details" in Decisions. With Akali added, every item was re-read for her: no on-hit at all, E's two casts at once, and R's longer window (5.5 s); see "Akali and the items" in Decisions. The "irrelevant" items stay irrelevant: each needs basic attacks or on-hit, takedowns, slows, allies, mana or other enemies. Unending Despair became "modelled" for Akali's R.)
 
 **Statuses:**
 - **modelled**: the passive is coded in `src/items/` and has a test.
@@ -544,7 +586,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Death's Dance | checked, irrelevant | Defensive. |
 | Dusk and Dawn | modelled | Spellblade, first dagger only: 75% base AD + 10% AP magic, then all on-hit effects once more 0.2 s later. `src/items/dusk-and-dawn.ts`. |
 | Echoes of Helia | checked, irrelevant | Needs healing allies. |
-| Eclipse | modelled | "Ever Rising Moon": the Death Lotus page says each dagger counts as a separate hit, so dagger 2 procs it: 8% of the dummy's max HP as physical damage, once (6 s cooldown). Not shrunk by R's %. `src/items/eclipse.ts`. (Was "checked, irrelevant" until Step 5d-5c.) |
+| Eclipse | modelled | "Ever Rising Moon": 2 stacks within 2 s (one per cast instance) deal 8% of the dummy's max HP as physical damage, once (6 s cooldown). Katarina's R: each dagger counts as a separate hit (Death Lotus page), so dagger 2 procs it. Akali's E: first cast + recast are 2 casts, so the recast procs it. Akali's R: R1 and R2 are 2.5 s apart, so never. Not shrunk by R's %. `src/items/eclipse.ts`. (Was "checked, irrelevant" until Step 5d-5c.) |
 | Edge of Night | checked, irrelevant | Defensive. |
 | Endless Hunger | checked, irrelevant | Needs takedowns. |
 | Essence Reaver | modelled | Spellblade, first dagger only: 125% base AD + 0.5 per 1% crit chance, physical. `src/items/essence-reaver.ts`. |
@@ -554,7 +596,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Frozen Heart | checked, irrelevant | Defensive. |
 | Guardian Angel | checked, irrelevant | Defensive. |
 | Guinsoo's Rageblade | modelled | "Wrath": 30 magic on-hit. "Seething Strike": daggers 1-4 give +8% attack speed each (from the next dagger); Phantom Hits (every on-hit effect again, 0.15 s later, at R's %) after daggers 7, 10, 13. `src/items/guinsoos-rageblade.ts`. |
-| Heartsteel | checked, irrelevant | "Colossal Consumption": 1 stack per second near the dummy, procs at 3. Stacks start at 0 when R is cast (Eric, Step 5d-6), so the 3rd comes at 3 s, after the ult. Permanent HP stacks also start at 0. |
+| Heartsteel | checked, irrelevant | "Colossal Consumption": 1 stack per second near the dummy, procs at 3. Stacks start at 0 when R is cast (Eric, Step 5d-6), so the 3rd comes at 3 s, after the ult. Permanent HP stacks also start at 0. Akali: the proc is an empowered basic attack, and her abilities apply no on-hit. |
 | Hexoptics C44 | checked, irrelevant | Increases *basic attack* damage only. |
 | Hextech Gunblade | checked, irrelevant | Active only. |
 | Hextech Rocketbelt | checked, irrelevant | Active only. |
@@ -575,7 +617,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Locket of the Iron Solari | checked, irrelevant | Active only. |
 | Lord Dominik's Regards | modelled | "Giant Slayer": 1% more damage per 100 of the dummy's BONUS HP (from items), up to 15%. `src/items/lord-dominiks-regards.ts`. |
 | Luden's Echo | modelled | "Echo": 6 stacks, full at R cast, used by dagger 1: 75 + 5% AP, then 5 × (15 + 1% AP) every 0.25 s (one enemy, so every leftover stack hits it). All shrunk by R's % (Death Lotus bug). `src/items/ludens-echo.ts`. |
-| Malignance | modelled | "Hatefog": the first dagger makes a zone: (60 + 5% AP) / 4 magic damage every 0.25 s (10 ticks inside the channel) and −10 MR from dagger 2. "Scorn" (ultimate haste) is irrelevant. `src/items/malignance.ts`. |
+| Malignance | modelled | "Hatefog": the first ult hit makes a 3 s zone: (60 + 5% AP) / 4 magic damage every 0.25 s (10 ticks inside Katarina's channel, all 12 for Akali's R) and −10 MR from the next hit until the zone ends. "Scorn" (ultimate haste) is irrelevant. `src/items/malignance.ts`. |
 | Manamune | checked, irrelevant | AD from mana, but Katarina has no mana. Its AD stat counts. |
 | Maw of Malmortius | checked, irrelevant | Defensive. |
 | Mejai's Soulstealer | checked, irrelevant | Stacks come from kills, so 0 stacks. Its plain AP stat counts. |
@@ -609,7 +651,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Statikk Shiv | modelled | Energized (dagger 1 only): chain lightning 60 magic, NOT shrunk by R's % (wiki: "not affected by on-hit damage modifiers"). One dummy, so one bounce. `src/items/statikk-shiv.ts`. |
 | Sterak's Gage | modelled | "The Claws that Catch": bonus AD = 50% of base AD, which counts for R. `src/items/steraks-gage.ts`. |
 | Stormrazor | modelled | Energized (dagger 1 only): 100 magic on-hit, × R's %. `src/items/stormrazor.ts`. |
-| Stormsurge | modelled | Deal 25% of the dummy's max HP → lightning strike 2 s later, 125 + 10% AP magic. Only lands inside the ult if triggered by 0.5 s. `src/items/stormsurge.ts`. |
+| Stormsurge | modelled | Deal 25% of the dummy's max HP within a rolling 2.5 s → lightning strike 2 s later, 125 + 10% AP magic. Inside Katarina's ult only if triggered by 0.5 s; Akali's R1 + R2 (2.5 s apart) count together. `src/items/stormsurge.ts`. |
 | Stridebreaker | checked, irrelevant | Cleave hits only other enemies; active doesn't count. |
 | Sundered Sky | checked, irrelevant | Empowers the next *basic attack*. |
 | Sunfire Aegis | modelled | "Immolate": 20 + 1.5% bonus HP magic damage every second (2 ticks inside the ult). `src/items/sunfire-aegis.ts`. |
@@ -619,7 +661,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Titanic Hydra | modelled | "Cleave": on-hit 1% (melee) of Katarina's max HP, physical. `src/items/titanic-hydra.ts`. |
 | Trinity Force | modelled | Spellblade, first dagger only: 200% base AD physical. `src/items/trinity-force.ts`. |
 | Umbral Glaive | checked, irrelevant | Needs Katarina unseen; Death Lotus reveals her. |
-| Unending Despair | checked, irrelevant | "Anguish": the first sap comes 4 s after combat starts (R cast), after the 2.5 s ult ends. |
+| Unending Despair | modelled | "Anguish": every 4 s after combat starts, 3% bonus HP as magic damage. Only Akali's R reaches 4 s (R2 at 2.5 s + 3 s of item effects); Katarina's 2.5 s ult and every one-hit ability end first. `src/items/unending-despair.ts`. (Was "checked, irrelevant" until Akali.) |
 | Void Staff | checked, irrelevant | No passive. Its 40% magic pen stat counts. |
 | Voltaic Cyclosword | modelled | "Galvanize": R's first damage triggers the Energized effect (before that damage, not shrunk): 8% of the dummy's current HP physical + 15 lethality for the whole ult. `src/items/voltaic-cyclosword.ts`. |
 | Warmog's Armor | modelled | "Warmog's Vitality": +12% of items' plain HP stats (not HP from item passives). Matters with Riftmaker / Overlord's. `src/items/warmogs-armor.ts`. |

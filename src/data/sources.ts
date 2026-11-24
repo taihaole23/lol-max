@@ -4,8 +4,9 @@
 import { championListSource, skinTierSource } from "./champion-list.ts";
 import { champions } from "./champions.ts";
 import * as gameRules from "./game-rules.ts";
-import { itemGroups, katarinaCannotBuy } from "./item-groups.ts";
+import { itemGroups, meleeCannotBuy } from "./item-groups.ts";
 import { itemSource } from "./items.ts";
+import { akali } from "./akali.ts";
 import { katarina } from "./katarina.ts";
 import { itemPassives } from "../items/index.ts";
 
@@ -30,6 +31,19 @@ export const sourceGroups: SourceGroup[] = [
       named("Katarina", katarina.shunpo.source),
       named("Katarina", katarina.abilities.source),
       named("Katarina", katarina.adaptiveType.source),
+      named("Katarina", katarina.rangeType.source),
+    ]),
+  },
+  {
+    title: "Akali",
+    sources: unique([
+      named("Akali: stats, abilities", akali.baseStats.source),
+      named("Akali", akali.abilities.source),
+      named("Akali", akali.adaptiveType.source),
+      named("Akali", akali.rangeType.source),
+      named("Five Point Strike (Q)", akali.fivePointStrike.source),
+      named("Shuriken Flip (E)", akali.shurikenFlip.source),
+      named("Perfect Execution (R)", akali.perfectExecution.source),
     ]),
   },
   {
@@ -58,7 +72,7 @@ export const sourceGroups: SourceGroup[] = [
       named("Champion list, abilities, icons and splash art (Riot's Data Dragon, saved copies)", championListSource),
       named("Skin tiers, to pick each champion's splash art (CommunityDragon)", skinTierSource),
       named("Item groups (\"only one of these\" rules)", itemGroups.source),
-      named("Melee-only items", katarinaCannotBuy.source),
+      named("Ranged-only items (melee champions can't buy them)", meleeCannotBuy.source),
     ],
   },
   {

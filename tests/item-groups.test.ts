@@ -1,20 +1,27 @@
 // Checks the item group data and the "can these two be built together?" rule.
 import { test, expect } from "vitest";
-import { itemGroups, katarinaCannotBuy } from "../src/data/item-groups.ts";
+import { itemGroups, meleeCannotBuy } from "../src/data/item-groups.ts";
 import { getItem } from "../src/data/items.ts";
 import { PATCH } from "../src/data/patch.ts";
+import { playableChampions } from "../src/data/playable-champions.ts";
 import { canBeBuiltTogether } from "../src/optimizer/legal.ts";
 
 test("the group data is for the site's patch", () => {
   expect(itemGroups.source.patch).toBe(PATCH);
-  expect(katarinaCannotBuy.source.patch).toBe(PATCH);
+  expect(meleeCannotBuy.source.patch).toBe(PATCH);
 });
 
 test("every item in a group exists in the snapshot", () => {
   for (const members of Object.values(itemGroups.groups)) {
     for (const name of members) getItem(name); // throws on a typo
   }
-  for (const name of katarinaCannotBuy.items) getItem(name);
+  for (const name of meleeCannotBuy.items) getItem(name);
+});
+
+// The item pool leaves out ranged-only items for everyone, which is only right if every playable
+// champion is melee. A ranged champion would need the pool to depend on the champion.
+test("every playable champion is melee", () => {
+  for (const champion of Object.values(playableChampions)) expect(champion.rangeType.type, champion.name).toBe("melee");
 });
 
 test("no item is listed twice in the same group", () => {

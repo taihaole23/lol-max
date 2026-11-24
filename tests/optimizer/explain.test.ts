@@ -3,7 +3,7 @@ import { getItem } from "../../src/data/items.ts";
 import { explainBuild } from "../../src/optimizer/explain.ts";
 import { easyDummy } from "../items/helpers.ts";
 
-const explain = (names: string[]) => explainBuild(16, names.map(getItem), easyDummy);
+const explain = (names: string[]) => explainBuild("katarina", 16, names.map(getItem), easyDummy);
 
 test("no items + every marginal + interactions = the total", () => {
   const e = explain(["Rabadon's Deathcap", "Riftmaker", "Nashor's Tooth", "Sorcerer's Shoes"]);

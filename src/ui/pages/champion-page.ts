@@ -11,15 +11,13 @@ import { champions } from "../../data/champions.ts";
 import { dummyPresets, type EnemyType } from "../../data/dummy-presets.ts";
 import { inventory } from "../../data/game-rules.ts";
 import { getItem, items, type Item } from "../../data/items.ts";
-import { katarina } from "../../data/katarina.ts";
-import { simulationRules } from "../../data/game-rules.ts";
 import {
-  isDamageAbility,
+  isModelled,
+  isPlayableChampion,
   modelledAbilities,
   noDamageAbilities,
   playableChampions,
   type AbilityKey,
-  type PlayableChampionId,
 } from "../../data/playable-champions.ts";
 import { stages, type StageName } from "../../data/stages.ts";
 import { lockableLegendaries } from "../../optimizer/constraints.ts";
@@ -27,7 +25,7 @@ import { bootsPool } from "../../optimizer/item-pool.ts";
 import { canBeBuiltTogether } from "../../optimizer/legal.ts";
 import type { SearchResult } from "../../optimizer/messages.ts";
 import { maxItemCount } from "../../optimizer/setup.ts";
-import { isPlayable } from "../champion-search.ts";
+import { damageRule } from "../../simulation/abilities.ts";
 import { byId, escapeHtml, readNumber } from "../html.ts";
 import { iconPath, itemIconHtml } from "../icons.ts";
 import { closeItemPicker, openItemPicker } from "../item-picker.ts";
@@ -250,17 +248,18 @@ function comingSoonHtml(slug: string, name: string, abilityKey: AbilityKey | nul
 // ---- Drawing the page ----
 
 // The selected ability's name and data ("Death Lotus").
-const selectedAbility = () => playableChampions[state.champion].abilities.find((a) => a.key === state.ability)!;
+const selectedAbility = () => playableChampions[state.champion].abilities.list.find((a) => a.key === state.ability)!;
 
 // What the panel says for an ability that can't be calculated.
 function notCalculatedHtml(): string {
   const ability = selectedAbility();
-  if (noDamageAbilities[state.champion].includes(ability.key)) {
+  const noDamageReason = noDamageAbilities[state.champion][ability.key];
+  if (noDamageReason) {
+    const others = modelledAbilities[state.champion].map((key) => key.toUpperCase());
     return `
       <h2>${escapeHtml(ability.name)} deals no damage</h2>
-      <p>It only throws a dagger into the air and gives Katarina move speed. The damage comes later, from her
-        passive, when she picks the dagger up, and the site doesn't model daggers on the ground.
-        Pick Q, E or R to see their best builds.</p>`;
+      <p>${escapeHtml(noDamageReason)}
+        Pick ${others.slice(0, -1).join(", ")} or ${others.at(-1)} to see their best builds.</p>`;
   }
   return `
     <h2>Coming soon</h2>
@@ -269,7 +268,7 @@ function notCalculatedHtml(): string {
 
 function render(): void {
   renderAbilities();
-  const modelled = isDamageAbility(state.ability);
+  const modelled = isModelled(state.champion, state.ability);
   byId("optimizer").hidden = !modelled;
   byId("coming-soon").hidden = modelled;
   if (!modelled) byId("coming-soon").innerHTML = notCalculatedHtml();
@@ -280,9 +279,9 @@ function render(): void {
 
 function renderAbilities(): void {
   const champion = playableChampions[state.champion];
-  byId("champ-sub").textContent = abilitySub(champion.abilities.find((a) => a.key === state.ability));
+  byId("champ-sub").textContent = abilitySub(champion.abilities.list.find((a) => a.key === state.ability));
 
-  byId("abilities").innerHTML = champion.abilities
+  byId("abilities").innerHTML = champion.abilities.list
     .map((ability) => {
       const rank = state.ranks[ability.key];
 
@@ -298,8 +297,8 @@ function renderAbilities(): void {
         );
       }
 
-      const modelled = isDamageAbility(ability.key);
-      const note = noDamageAbilities[state.champion].includes(ability.key) ? "no damage" : "coming soon";
+      const modelled = isModelled(state.champion, ability.key);
+      const note = noDamageAbilities[state.champion][ability.key] ? "no damage" : "coming soon";
       return abilityCardHtml(state.champion, ability, ability.key === state.ability, modelled, pips.join(""), note);
     })
     .join("");
@@ -466,7 +465,7 @@ function renderResults(): void {
   const note = byId("damage-note");
   const problem = actions.conditionProblem(state);
   note.classList.toggle("is-problem", problem !== null);
-  if (actions.katarinaSetup(state) === null) {
+  if (actions.championSetup(state) === null) {
     showText(total, "—");
     note.textContent = actions.abilityProblem(state) ?? "";
   } else if (problem) {
@@ -492,8 +491,8 @@ function renderResults(): void {
 
 // The one-line rule under the damage total, for the selected ability.
 function whatDamageMeans(): string {
-  if (state.ability === "r") return `One full ult, all ${katarina.deathLotus.daggersPerTarget} daggers on the dummy.`;
-  return `One hit, plus item effects up to ${simulationRules.oneHitWindowSeconds} s after it.`;
+  const setup = actions.championSetup(state);
+  return setup ? damageRule(setup.champion, setup.ability) : "";
 }
 
 function renderDummy(): void {
@@ -637,7 +636,7 @@ function currentBest(): { items: Item[] } | undefined {
 // away when you leave the page, so they go with it.
 export function mountChampionPage(root: HTMLElement, slug: string, ability: AbilityKey | null, navigate: (path: string) => void): () => void {
   const name = championList.find((c) => c.slug === slug)?.name ?? slug;
-  if (!isPlayable(slug)) {
+  if (!isPlayableChampion(slug)) {
     root.innerHTML = comingSoonHtml(slug, name, ability);
     // Clicking an ability changes the address (/aatrox/q), which redraws this page with it picked.
     root.addEventListener("click", (event) => {
@@ -647,10 +646,10 @@ export function mountChampionPage(root: HTMLElement, slug: string, ability: Abil
     return () => {};
   }
 
-  const champion = slug as PlayableChampionId;
-  // /katarina with no ability opens Death Lotus, the ability the site started with.
+  const champion = slug;
+  // /katarina with no ability opens R (Death Lotus, the ability the site started with).
   const modelled = modelledAbilities[champion];
-  state = { ...state, champion, ability: ability ?? (modelled.includes("r") ? "r" : modelled[0]) };
+  state = actions.selectAbility(actions.selectChampion(state, champion), ability ?? (modelled.includes("r") ? "r" : modelled[0]));
   root.innerHTML = pageHtml(slug, name);
   lastSlotsHtml = ""; // fresh, empty slots: the first render must draw them
   // Every legendary and boots the casino roll can flash through (loaded now, so it never blinks).

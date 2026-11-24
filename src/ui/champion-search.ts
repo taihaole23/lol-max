@@ -5,11 +5,9 @@
 //
 // Keyboard: ↓ / ↑ move through the list, Enter opens the highlighted champion, Escape closes it.
 import { championList, type ChampionListEntry } from "../data/champion-list.ts";
-import { playableChampions } from "../data/playable-champions.ts";
+import { isPlayableChampion } from "../data/playable-champions.ts";
 import { escapeHtml } from "./html.ts";
 import { iconPath } from "./icons.ts";
-
-export const isPlayable = (slug: string) => slug in playableChampions;
 
 // Lowercase letters and digits only, so "kai sa", "kaisa" and "Kai'Sa" all match.
 const simplify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -18,7 +16,7 @@ const simplify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]/g, "");
 // Order: playable champions first, then names that START with the text, then A to Z.
 export function matchChampions(query: string): ChampionListEntry[] {
   const typed = simplify(query);
-  const rank = (c: ChampionListEntry) => (isPlayable(c.slug) ? 0 : 2) + (simplify(c.name).startsWith(typed) ? 0 : 1);
+  const rank = (c: ChampionListEntry) => (isPlayableChampion(c.slug) ? 0 : 2) + (simplify(c.name).startsWith(typed) ? 0 : 1);
   return championList
     .filter((c) => simplify(c.name).includes(typed))
     .sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name));
@@ -42,10 +40,10 @@ export function mountChampionSearch(container: HTMLElement, size: "large" | "sma
   function draw(): void {
     list.innerHTML = matches
       .map((c, i) => {
-        const soon = isPlayable(c.slug) ? "" : `<span class="soon">coming soon</span>`;
+        const soon = isPlayableChampion(c.slug) ? "" : `<span class="soon">coming soon</span>`;
         return `
           <li id="${id}-option-${i}" role="option" data-slug="${c.slug}" aria-selected="${i === highlighted}"
-            class="${i === highlighted ? "highlighted" : ""} ${isPlayable(c.slug) ? "" : "unavailable"}">
+            class="${i === highlighted ? "highlighted" : ""} ${isPlayableChampion(c.slug) ? "" : "unavailable"}">
             <img src="${iconPath.champion(c.slug)}" alt="" width="32" height="32" loading="lazy" />
             <span class="search-name">${escapeHtml(c.name)}</span>${soon}
           </li>`;

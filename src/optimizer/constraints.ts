@@ -12,7 +12,7 @@ export type BuildConstraints = {
 
 export const noConstraints: BuildConstraints = { required: [], requiredBoots: null, banned: [] };
 
-// Every legendary Katarina can buy, INCLUDING ones the speed filter leaves out of the search:
+// Every legendary a (melee) champion can buy, INCLUDING ones the speed filter leaves out of the search:
 // a user may still lock Frozen Heart in on purpose.
 export const lockableLegendaries = () => legendaryPool(false).legendaries;
 
@@ -25,7 +25,7 @@ export function constraintProblem(c: BuildConstraints, boots: BootsSetting, item
   if (new Set(c.required).size !== c.required.length) return "The same item is locked in twice.";
   if (c.required.length > itemCount) return `${c.required.length} items are locked in, but there are only ${itemCount} item slots.`;
   for (const name of c.required) {
-    if (!allowed.has(name)) return `${name} isn't a completed item Katarina can buy.`;
+    if (!allowed.has(name)) return `${name} isn't a completed item a melee champion can buy.`;
     if (banned.has(name)) return `${name} is both locked in and banned.`;
   }
   for (let a = 0; a < c.required.length; a++) {

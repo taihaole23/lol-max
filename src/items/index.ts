@@ -1,5 +1,5 @@
 // Every hand-coded item passive. Items that aren't here have no passive that changes
-// Death Lotus damage (or aren't coded yet; see the item checklist in NOTES.md).
+// any modelled ability's damage (or aren't coded yet; see the item checklist in NOTES.md).
 import type { Item } from "../data/items.ts";
 import type { ItemEffect } from "../simulation/simulate.ts";
 import type { ItemPassive } from "./types.ts";
@@ -42,6 +42,7 @@ import { swiftmarch } from "./swiftmarch.ts";
 import { terminus } from "./terminus.ts";
 import { titanicHydra } from "./titanic-hydra.ts";
 import { trinityForce } from "./trinity-force.ts";
+import { unendingDespair } from "./unending-despair.ts";
 import { voltaicCyclosword } from "./voltaic-cyclosword.ts";
 import { warmogsArmor } from "./warmogs-armor.ts";
 import { witsEnd } from "./wits-end.ts";
@@ -88,6 +89,7 @@ export const itemPassives: readonly ItemPassive[] = [
   terminus,
   titanicHydra,
   trinityForce,
+  unendingDespair,
   voltaicCyclosword,
   warmogsArmor,
   witsEnd,

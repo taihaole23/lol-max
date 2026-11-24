@@ -6,6 +6,12 @@ const WIKI_URL = "https://wiki.leagueoflegends.com/en-us/Katarina/LoL";
 export const katarina = {
   name: "Katarina",
 
+  // Melee champions can't buy ranged-only items (src/data/item-groups.ts, meleeCannotBuy).
+  rangeType: {
+    source: { url: WIKI_URL, patch: "26.23" },
+    type: "melee" as const, // wiki: "rangetype"
+  },
+
   // Stats at level 1 ("base") and how much they grow each level ("perLevel").
   // Growth is not added evenly per level; the exact formula is coded in Step 3.
   baseStats: {

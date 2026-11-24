@@ -40,7 +40,7 @@ test("every champion has splash art, and 4 abilities (Q W E R) with a name and r
 test("a calculated champion's ability names agree with the champion list", () => {
   for (const [slug, champion] of Object.entries(playableChampions)) {
     const listed = championList.find((c) => c.slug === slug)!.abilities;
-    expect(champion.abilities.map((a) => [a.key, a.name, a.maxRank])).toEqual(listed.map((a) => [a.key, a.name, a.maxRank]));
+    expect(champion.abilities.list.map((a) => [a.key, a.name, a.maxRank])).toEqual(listed.map((a) => [a.key, a.name, a.maxRank]));
   }
 });
 

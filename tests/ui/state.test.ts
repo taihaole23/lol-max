@@ -4,7 +4,7 @@ import { test, expect } from "vitest";
 import { dummyPresets } from "../../src/data/dummy-presets.ts";
 import { getItem } from "../../src/data/items.ts";
 import { dummyStats, withTypedStats } from "../../src/stats/dummy-stats.ts";
-import { allowedRRanks } from "../../src/stats/katarina-stats.ts";
+import { allowedRRanks } from "../../src/stats/ability-ranks.ts";
 import * as s from "../../src/ui/state.ts";
 
 test("allowedRRanks: the game's 6 / 11 / 16 rule", () => {
@@ -19,14 +19,14 @@ test("allowedRRanks: the game's 6 / 11 / 16 rule", () => {
 
 test("the page starts on the Early preset: level 6, R rank 1, 1 item + boots", () => {
   const state = s.initialState();
-  expect(s.katarinaSetup(state)).toEqual({ level: 6, ability: "r", rank: 1, itemCount: 1 });
+  expect(s.championSetup(state)).toEqual({ champion: "katarina", level: 6, ability: "r", rank: 1, itemCount: 1 });
   expect(s.bootsSetting(state)).toBe("tier2");
   expect(state.ability).toBe("r");
 });
 
 test("a stage preset fills in level, ranks, item count and the dummy's level", () => {
   const state = s.applyStage(s.initialState(), "late");
-  expect(s.katarinaSetup(state)).toEqual({ level: 16, ability: "r", rank: 3, itemCount: 3 });
+  expect(s.championSetup(state)).toEqual({ champion: "katarina", level: 16, ability: "r", rank: 3, itemCount: 3 });
   expect(state.ranks).toEqual({ q: 5, w: 3, e: 5, r: 3 });
   expect(state.dummyLevel).toBe(16);
 });
@@ -39,9 +39,9 @@ test("stage presets follow the usual skill order: Early never maxes W", () => {
 
 test("Q and E use their own rank; W can't be calculated", () => {
   const state = s.initialState(); // level 6: Q 3, E 1
-  expect(s.katarinaSetup(s.selectAbility(state, "q"))).toEqual({ level: 6, ability: "q", rank: 3, itemCount: 1 });
-  expect(s.katarinaSetup(s.selectAbility(state, "e"))).toEqual({ level: 6, ability: "e", rank: 1, itemCount: 1 });
-  expect(s.katarinaSetup(s.selectAbility(state, "w"))).toBeNull();
+  expect(s.championSetup(s.selectAbility(state, "q"))).toEqual({ champion: "katarina", level: 6, ability: "q", rank: 3, itemCount: 1 });
+  expect(s.championSetup(s.selectAbility(state, "e"))).toEqual({ champion: "katarina", level: 6, ability: "e", rank: 1, itemCount: 1 });
+  expect(s.championSetup(s.selectAbility(state, "w"))).toBeNull();
   expect(s.abilityProblem(s.selectAbility(state, "w"))).toBeNull(); // W shows its own "no damage" panel
 });
 
@@ -50,7 +50,7 @@ test("an ability with no points can't be calculated, and says why", () => {
   expect(s.abilityProblem(level4)).toBe("Death Lotus unlocks at level 6.");
   const noE = s.selectAbility(s.setRank(level4, "e", 1), "e"); // clicking E's only point takes it back
   expect(noE.ranks.e).toBe(0);
-  expect(s.katarinaSetup(noE)).toBeNull();
+  expect(s.championSetup(noE)).toBeNull();
   expect(s.abilityProblem(noE)).toBe("Put a point in Shunpo to calculate it.");
 });
 
@@ -62,7 +62,7 @@ test("changing the level sets the ranks to the skill order, so R is at the highe
   expect(state.ranks.r).toBe(2);
   state = s.setLevel(state, 4);
   expect(state.ranks.r).toBe(0);
-  expect(s.katarinaSetup(state)).toBeNull(); // no R yet: nothing to search
+  expect(s.championSetup(state)).toBeNull(); // no R yet: nothing to search
 });
 
 test("levels are kept between 1 and 18, and rounded", () => {

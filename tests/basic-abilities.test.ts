@@ -6,17 +6,17 @@ import { runSearch } from "../src/optimizer/run-search.ts";
 import { breakdown } from "../src/simulation/breakdown.ts";
 import { simulateBuild } from "../src/simulation/simulate-build.ts";
 import type { DamageEvent } from "../src/simulation/simulate.ts";
-import { katarinaStats } from "../src/stats/katarina-stats.ts";
+import { championStats } from "../src/stats/champion-stats.ts";
 import { baseAdAtLevel16, easyDummy } from "./items/helpers.ts";
 import { presetInput } from "./optimizer/helpers.ts";
 
 // One cast at level 16 (Q and E rank 5) with these items, on the easy dummy (no armor or MR, huge HP).
 function cast(ability: DamageAbilityKey, itemNames: string[] = [], rank = 5) {
-  const result = simulateBuild(16, itemNames.map(getItem), easyDummy, rank, ability);
+  const result = simulateBuild("katarina", 16, itemNames.map(getItem), easyDummy, rank, ability);
   return { events: result.events, breakdown: breakdown(result.events) };
 }
 const from = (events: DamageEvent[], source: string) => events.filter((e) => e.source === source);
-const apWith = (ability: DamageAbilityKey, itemNames: string[]) => katarinaStats(16, itemNames.map(getItem), ability).ap;
+const apWith = (ability: DamageAbilityKey, itemNames: string[]) => championStats("katarina", 16, itemNames.map(getItem), ability).ap;
 
 // ---- Their own damage ----
 
@@ -44,9 +44,9 @@ test("E: 20 / 30 / 40 / 50 / 60 + 40% TOTAL AD + 25% AP, all magic", () => {
 });
 
 test("an impossible rank is refused: Q 4 at level 6, E 0", () => {
-  expect(() => simulateBuild(6, [], easyDummy, 4, "q")).toThrow();
-  expect(() => simulateBuild(6, [], easyDummy, 3, "q")).not.toThrow();
-  expect(() => simulateBuild(16, [], easyDummy, 0, "e")).toThrow();
+  expect(() => simulateBuild("katarina", 6, [], easyDummy, 4, "q")).toThrow();
+  expect(() => simulateBuild("katarina", 6, [], easyDummy, 3, "q")).not.toThrow();
+  expect(() => simulateBuild("katarina", 16, [], easyDummy, 0, "e")).toThrow();
 });
 
 // ---- On-hit ----
@@ -104,7 +104,7 @@ test("Blackfire after E: 6 ticks of 10 + 1% AP, full size", () => {
   expect(ticks).toHaveLength(6);
   // The first tick comes before Blackfire's +4% AP; later ticks get it.
   const items = [getItem("Blackfire Torch")];
-  const stats = katarinaStats(16, items, "e");
+  const stats = championStats("katarina", 16, items, "e");
   const apBefore = stats.ap;
   const apAfter = (apBefore / (1 + stats.apPercentBonus)) * (1 + stats.apPercentBonus + 0.04);
   expect(ticks[0].amount).toBeCloseTo(10 + 0.01 * apBefore);
@@ -138,8 +138,8 @@ test("Malignance and Zeke's only work with R", () => {
 
 test("Experimental Hexplate's Overdrive (+50% attack speed) only switches on for R", () => {
   const hexplate = [getItem("Experimental Hexplate")];
-  const r = katarinaStats(16, hexplate, "r").bonusAttackSpeed;
-  const q = katarinaStats(16, hexplate, "q").bonusAttackSpeed;
+  const r = championStats("katarina", 16, hexplate, "r").bonusAttackSpeed;
+  const q = championStats("katarina", 16, hexplate, "q").bonusAttackSpeed;
   expect(r - q).toBeCloseTo(0.5);
 });
 
@@ -161,7 +161,7 @@ test("the optimizer works for Q and E, and each build's breakdown matches its da
 test("Q, E and R are different questions: the same build deals different damage", () => {
   const items = [getItem("Luden's Echo")];
   const damage = (ability: DamageAbilityKey, rank: number) =>
-    breakdown(simulateBuild(16, items, easyDummy, rank, ability).events).total;
+    breakdown(simulateBuild("katarina", 16, items, easyDummy, rank, ability).events).total;
   const all = [damage("q", 5), damage("e", 5), damage("r", 3)];
   expect(new Set(all).size).toBe(3);
 });

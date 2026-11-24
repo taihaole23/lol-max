@@ -28,18 +28,18 @@ test("ranks must be whole numbers from 0 up", () => {
 });
 
 test("the usual skill order: R whenever possible, then max Q, then E, then W", () => {
-  expect(recommendedRanks(1)).toEqual({ q: 1, w: 0, e: 0, r: 0 });
-  expect(recommendedRanks(3)).toEqual({ q: 1, w: 1, e: 1, r: 0 });
-  expect(recommendedRanks(6)).toEqual({ q: 3, w: 1, e: 1, r: 1 });
-  expect(recommendedRanks(8)).toEqual({ q: 4, w: 1, e: 2, r: 1 }); // Q 5 must wait for level 9
-  expect(recommendedRanks(11)).toEqual({ q: 5, w: 1, e: 3, r: 2 });
-  expect(recommendedRanks(16)).toEqual({ q: 5, w: 3, e: 5, r: 3 });
-  expect(recommendedRanks(18)).toEqual({ q: 5, w: 5, e: 5, r: 3 });
+  expect(recommendedRanks("katarina", 1)).toEqual({ q: 1, w: 0, e: 0, r: 0 });
+  expect(recommendedRanks("katarina", 3)).toEqual({ q: 1, w: 1, e: 1, r: 0 });
+  expect(recommendedRanks("katarina", 6)).toEqual({ q: 3, w: 1, e: 1, r: 1 });
+  expect(recommendedRanks("katarina", 8)).toEqual({ q: 4, w: 1, e: 2, r: 1 }); // Q 5 must wait for level 9
+  expect(recommendedRanks("katarina", 11)).toEqual({ q: 5, w: 1, e: 3, r: 2 });
+  expect(recommendedRanks("katarina", 16)).toEqual({ q: 5, w: 3, e: 5, r: 3 });
+  expect(recommendedRanks("katarina", 18)).toEqual({ q: 5, w: 5, e: 5, r: 3 });
 });
 
 test("the skill order is legal at every level and spends every point", () => {
   for (let level = 1; level <= 18; level++) {
-    const ranks = recommendedRanks(level);
+    const ranks = recommendedRanks("katarina", level);
     expect(ranksAreLegal(level, ranks), `level ${level}`).toBe(true);
     expect(ranks.q + ranks.w + ranks.e + ranks.r, `level ${level}`).toBe(level);
   }

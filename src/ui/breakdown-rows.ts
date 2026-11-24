@@ -26,8 +26,9 @@ function onlyType(b: Breakdown, source: string): DamageType | undefined {
 const abilitySourceLabels: Record<string, string> = {
   base: "Base damage",
   apRatio: "AP ratio",
-  adRatio: "AD ratio", // Shunpo (E): total AD
-  bonusAdRatio: "Bonus AD ratio", // Death Lotus (R)
+  adRatio: "AD ratio", // total AD: Shunpo (E), Akali's Q and E
+  bonusAdRatio: "Bonus AD ratio", // Death Lotus (R), Akali's R1
+  missingHealth: "Missing-health bonus", // Akali's R2: the extra from the dummy's missing health
 };
 
 function row(label: string, damage: number, total: number, item?: Item, damageType?: DamageType): Row {
@@ -66,7 +67,10 @@ export function typeRows(b: Breakdown): Row[] {
   ];
 }
 
-// The ability's own hits vs. everything item effects added.
+// The ability's own hits vs. everything item effects added. An ability with named hits (Akali's
+// E and R) gets one line per hit ("First cast", "Recast") instead of one "Ability" line.
 export function abilityVsItemRows(b: Breakdown): Row[] {
-  return [row("Ability", b.ability, b.total), row("Item effects", b.items, b.total)];
+  const hits = Object.entries(b.byHit);
+  const abilityRows = hits.length > 0 ? hits.map(([name, damage]) => row(name, damage, b.total)) : [row("Ability", b.ability, b.total)];
+  return [...abilityRows, row("Item effects", b.items, b.total)];
 }

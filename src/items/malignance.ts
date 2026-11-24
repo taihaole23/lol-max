@@ -41,8 +41,11 @@ export const malignance: ItemPassive = {
           });
         }
       },
+      // The -10 MR lasts while the Curse does (wiki: "removed as soon as the target loses the
+      // Curse"), i.e. while the dummy stands in the 3 s zone. Katarina's 2.5 s ult never got past it;
+      // Akali's R (R2 at 2.5 s, items counted to 5.5 s) does.
       shred: (time) => {
-        if (zoneTime === undefined || time <= zoneTime) return {};
+        if (zoneTime === undefined || time <= zoneTime || time > zoneTime + data.zoneSeconds) return {};
         return { magic: { flatReduction: data.flatMrReduction } };
       },
     };

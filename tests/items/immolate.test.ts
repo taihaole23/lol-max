@@ -1,11 +1,11 @@
 // Sunfire Aegis and Hollow Radiance ("Immolate").
 import { test, expect } from "vitest";
 import { getItem } from "../../src/data/items.ts";
-import { katarinaStats } from "../../src/stats/katarina-stats.ts";
+import { championStats } from "../../src/stats/champion-stats.ts";
 import { run } from "./helpers.ts";
 
 function immolate(name: string) {
-  const stats = katarinaStats(16, [getItem(name)]);
+  const stats = championStats("katarina", 16, [getItem(name)]);
   const bonusHealth = stats.health - stats.baseHealth;
   const ticks = run(16, [name]).events.filter((e) => e.source === name);
   return { bonusHealth, ticks };

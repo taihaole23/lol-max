@@ -39,6 +39,7 @@
   --type-physical: #de7418;
   --type-true: #2fa58a;
   --part-ability: #3987e5;
+  --part-recast: #e0b43a; /* Akali's recasts (E2, R2): gold, unlike every other chart colour */
   --part-items: #d65a9a;
   --bar: #3987e5;
   /* The same damage types as TEXT colours (lighter, so words stay readable: 4.5:1 or more). */
@@ -92,6 +93,7 @@
   --type-physical: #d2650e;
   --type-true: #1c9a7d;
   --part-ability: #2a78d6;
+  --part-recast: #a87e0b;
   --part-items: #c2407f;
   --bar: #2a78d6;
   --text-magic: #6d32cf;

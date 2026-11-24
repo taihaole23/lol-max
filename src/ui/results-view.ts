@@ -4,6 +4,7 @@ import type { ExplainedBuild, SearchResult } from "../optimizer/messages.ts";
 import { buildStyles } from "../optimizer/styles.ts";
 import { abilityVsItemRows, marginalRows, sourceRows, typeRows, type Row } from "./breakdown-rows.ts";
 import type { Item } from "../data/items.ts";
+import type { Breakdown } from "../simulation/breakdown.ts";
 import { escapeHtml } from "./html.ts";
 import { goldHtml, itemIconHtml } from "./icons.ts";
 
@@ -82,19 +83,27 @@ function barTable(title: string, firstColumn: string, rows: Row[], note: string)
     </div>`;
 }
 
+// Ability vs. items: one colour per ability line (one, or one per named hit), then the items' colour.
+function abilitySplit(b: Breakdown): string {
+  const rows = abilityVsItemRows(b);
+  const abilityColours = ["--part-ability", "--part-recast"];
+  const colours = [...abilityColours.slice(0, rows.length - 1), "--part-items"];
+  return splitBar("Ability vs. items", rows, colours);
+}
+
 export function breakdownHtml(build: ExplainedBuild): string {
   const e = build.explanation;
   return `
     <div class="splits">
       ${splitBar("Damage type", typeRows(e.breakdown), ["--type-magic", "--type-physical", "--type-true"])}
-      ${splitBar("Ability vs. items", abilityVsItemRows(e.breakdown), ["--part-ability", "--part-items"])}
+      ${abilitySplit(e.breakdown)}
     </div>
     <div class="bar-tables">
       ${barTable(
         "By source",
         "Source",
         sourceRows(e.breakdown),
-        "Where each point of damage came from. Item names cover their on-hit effects and passives (on-hit at R's reduced effectiveness).",
+        "Where each point of damage came from. Item names cover their on-hit effects and passives (Katarina's R applies on-hit at reduced effectiveness).",
       )}
       ${barTable(
         "What each item adds",

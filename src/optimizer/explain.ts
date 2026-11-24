@@ -1,6 +1,6 @@
 // Everything the site shows for one build: the breakdowns, and how much each item adds.
 import type { Item } from "../data/items.ts";
-import type { DamageAbilityKey } from "../data/playable-champions.ts";
+import type { DamageAbilityKey, PlayableChampionId } from "../data/playable-champions.ts";
 import { breakdown, type Breakdown } from "../simulation/breakdown.ts";
 import { simulateBuild } from "../simulation/simulate-build.ts";
 import type { Target } from "../simulation/simulate.ts";
@@ -16,11 +16,18 @@ export type BuildExplanation = {
   interactions: number;
 };
 
-// `rank` and `ability` default like simulateBuild's (Death Lotus at the highest rank the level allows).
-export function explainBuild(level: number, items: Item[], target: Target, rank?: number, ability?: DamageAbilityKey): BuildExplanation {
-  const totalOf = (build: Item[]) => breakdown(simulateBuild(level, build, target, rank, ability).events).total;
+// `rank` and `ability` default like simulateBuild's (R at the highest rank the level allows).
+export function explainBuild(
+  champion: PlayableChampionId,
+  level: number,
+  items: Item[],
+  target: Target,
+  rank?: number,
+  ability?: DamageAbilityKey,
+): BuildExplanation {
+  const totalOf = (build: Item[]) => breakdown(simulateBuild(champion, level, build, target, rank, ability).events).total;
 
-  const result = breakdown(simulateBuild(level, items, target, rank, ability).events);
+  const result = breakdown(simulateBuild(champion, level, items, target, rank, ability).events);
   const noItemsDamage = totalOf([]);
   const marginal = items.map((item) => ({
     item,

@@ -7,7 +7,7 @@
 //
 // E: casting E grants Spellblade and E's own hit uses it, at full strength (E's on-hit is 100%).
 // Eric, from playing. Q: never, because Q applies no on-hit effects.
-// (`context.spellbladeReady`, set in abilities.ts.)
+// (`context.spellbladeReady`, set in each champion's abilities file.)
 //
 // ASSUMPTION (to check in the Practice Tool): the Spellblade hit is reduced by R's
 // 25 / 30 / 35% on-hit effectiveness, because the wiki calls it on-hit damage.

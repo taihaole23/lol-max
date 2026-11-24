@@ -1,7 +1,7 @@
 import { test, expect } from "vitest";
 import { getItem } from "../../src/data/items.ts";
-import { katarinaStats } from "../../src/stats/katarina-stats.ts";
-import { run, easyDummy } from "./helpers.ts";
+import { championStats } from "../../src/stats/champion-stats.ts";
+import { run, runAbility, easyDummy } from "./helpers.ts";
 
 const mrDummy = { ...easyDummy, baseMagicResist: 100 };
 
@@ -18,7 +18,7 @@ test("10 ticks land inside the channel: every 0.25 s from 0.25 s to 2.5 s", () =
 });
 
 test("each tick: (60 + 5% AP) / 4 magic damage, with the dummy at 90 MR", () => {
-  const ap = katarinaStats(16, [getItem("Malignance")]).ap;
+  const ap = championStats("katarina", 16, [getItem("Malignance")]).ap;
   for (const tick of ticks()) {
     expect(tick.type).toBe("magic");
     expect(tick.amount).toBeCloseTo(((60 + 0.05 * ap) / 4) * (100 / 190));
@@ -35,4 +35,20 @@ test("-10 MR, but not for the first dagger (wiki)", () => {
 test("every simulation makes its own zone", () => {
   ticks();
   expect(ticks()).toHaveLength(10);
+});
+
+// Akali's R: the zone appears with R1 at 0 s and lasts 3 s. R2 (2.5 s) is inside it; Unending
+// Despair's sap (4 s) comes after it, when the -10 MR is gone ("removed as soon as the target loses
+// the Curse", wiki).
+test("Akali R: 12 ticks (the whole zone), R2 gets -10 MR, damage after the zone ends doesn't", () => {
+  const result = runAbility("akali", "r", ["Malignance", "Unending Despair"], mrDummy);
+  expect(result.events.filter((e) => e.source === "Malignance")).toHaveLength(12);
+
+  const r2Base = result.events.find((e) => e.source === "base" && e.time === 2.5)!;
+  expect(r2Base.amount).toBeCloseTo(210 * (100 / 190));
+
+  const stats = championStats("akali", 18, [getItem("Malignance"), getItem("Unending Despair")]);
+  const sap = result.events.find((e) => e.source === "Unending Despair")!;
+  expect(sap.time).toBe(4);
+  expect(sap.amount).toBeCloseTo(0.03 * (stats.health - stats.baseHealth) * (100 / 200));
 });

@@ -2,7 +2,7 @@
 // The wiki says it "stacks recursively" with other AP sources: it multiplies ALL of
 // Katarina's AP, including AP from other passives (Riftmaker, Swiftmarch...).
 // Other % AP bonuses (Blackfire Torch) ADD to its 30% instead of multiplying with it,
-// so it doesn't multiply AP itself: it adds to `apPercentBonus`, and katarinaStats
+// so it doesn't multiply AP itself: it adds to `apPercentBonus`, and championStats
 // multiplies AP by (1 + apPercentBonus) at the very end.
 import type { ItemPassive } from "./types.ts";
 

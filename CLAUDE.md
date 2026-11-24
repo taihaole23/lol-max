@@ -12,6 +12,11 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   - **W (Preparation)** deals no damage by itself, so its page says "deals no damage" (Eric's choice). Daggers on the ground (her passive) aren't modelled.
   - Q and E are one hit on the dummy. Item effects the hit starts count "for as long as items need" (Eric), cut off 3 s after the hit (the longest burn; Sunfire's aura keeps itself going forever, so it needs a cut-off). Show this rule on the site.
   - Ranks follow the game's rules: basic abilities reach rank 1-5 at levels 1/3/5/7/9, R at 6/11/16, and all ranks add up to at most the level. Presets and level changes use Katarina's usual skill order (R whenever possible, then max Q, then E, then W), so Early never maxes W (Eric).
+- **Akali's Q, E and R** (Eric, Nov 2026). W (Twilight Shroud) "deals no damage"; her passive (Assassin's Mark) isn't modelled.
+  - She recasts as soon as the game allows: E1 + E2 both land at 0 s; R1 at 0 s, R2 at 2.5 s (the wiki's static cooldown). The E page counts E1 + E2, the R page R1 + R2.
+  - R1 is magic (Eric). R2 is boosted by +2.86% per 1% of the dummy's missing health, up to +200% at 70% missing (wiki table), using the dummy's HP at the moment R2 hits.
+  - Skill order: R whenever possible, then max Q, then E, then W.
+  - Item effects count until 3 s after her last hit (Q and E: 3 s, R: 5.5 s), the one-hit rule. Show this on the site.
 - For R: "Damage" = total damage dealt to ONE target dummy during ONE full ult channel (all daggers hit),
   including on-hit / on-attack effects and item effects triggered during the channel.
   Effects that deal damage AFTER the channel ends (burns, DoTs) are counted only for the part inside the channel window. Show this rule on the site.

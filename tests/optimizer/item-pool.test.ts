@@ -5,7 +5,7 @@ import { simulateBuild } from "../../src/simulation/simulate-build.ts";
 import { easyDummy } from "../items/helpers.ts";
 
 const total = (level: number, names: string[], extra: string[] = []) =>
-  simulateBuild(level, [...names, ...extra].map(getItem), easyDummy).events.reduce((sum, e) => sum + e.amount, 0);
+  simulateBuild("katarina", level, [...names, ...extra].map(getItem), easyDummy).events.reduce((sum, e) => sum + e.amount, 0);
 
 test("the filter removes only Frozen Heart (patch 26.23)", () => {
   expect(legendaryPool().removedByFilter.map((i) => i.name)).toEqual(["Frozen Heart"]);

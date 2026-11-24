@@ -13,7 +13,7 @@ test("Early: the best build is the best of every legendary × every boots, worke
   let best = 0;
   for (const item of legendaryPool().legendaries) {
     for (const boots of bootsPool("tier2")) {
-      const damage = simulateBuild(6, [item, boots], target).events.reduce((sum, e) => sum + e.amount, 0);
+      const damage = simulateBuild("katarina", 6, [item, boots], target).events.reduce((sum, e) => sum + e.amount, 0);
       best = Math.max(best, damage);
     }
   }
@@ -28,15 +28,15 @@ test("returns 5 builds, best first", () => {
 });
 
 test("stage presets: level, highest R rank and item count", () => {
-  expect(stagePreset("early", "tier2")).toEqual({ level: 6, ability: "r", rank: 1, itemCount: 1 });
-  expect(stagePreset("mid", "off")).toEqual({ level: 11, ability: "r", rank: 2, itemCount: 2 });
-  expect(stagePreset("full", "tier2")).toEqual({ level: 18, ability: "r", rank: 3, itemCount: 5 });
-  expect(stagePreset("full", "off")).toEqual({ level: 18, ability: "r", rank: 3, itemCount: 6 });
+  expect(stagePreset("katarina", "early", "tier2")).toEqual({ champion: "katarina", level: 6, ability: "r", rank: 1, itemCount: 1 });
+  expect(stagePreset("katarina", "mid", "off")).toEqual({ champion: "katarina", level: 11, ability: "r", rank: 2, itemCount: 2 });
+  expect(stagePreset("katarina", "full", "tier2")).toEqual({ champion: "katarina", level: 18, ability: "r", rank: 3, itemCount: 5 });
+  expect(stagePreset("katarina", "full", "off")).toEqual({ champion: "katarina", level: 18, ability: "r", rank: 3, itemCount: 6 });
 });
 
 test("slot counts and boots follow the item count and the toggles", () => {
   const target = presetDummy("squishy", "late");
-  const late = stagePreset("late", "tier2");
+  const late = stagePreset("katarina", "late", "tier2");
 
   for (const build of findTopBuilds({ ...late, target, boots: "tier2" })) {
     expect(legendaries(build)).toHaveLength(late.itemCount);
@@ -45,14 +45,14 @@ test("slot counts and boots follow the item count and the toggles", () => {
   for (const build of findTopBuilds({ ...late, target, boots: "tier3" })) {
     expect(build.items.filter((i) => i.category === "boots-tier-3")).toHaveLength(1);
   }
-  for (const build of findTopBuilds({ ...stagePreset("mid", "off"), target, boots: "off" })) {
+  for (const build of findTopBuilds({ ...stagePreset("katarina", "mid", "off"), target, boots: "off" })) {
     expect(build.items).toHaveLength(2);
   }
 }, 60_000); // 3 searches: ~5 s when the whole suite runs at once, over Vitest's 5 s default
 
 test("a custom item count (the +/- slot buttons): 4 items at level 13", () => {
   const target = presetDummy("tank", "late");
-  for (const build of findTopBuilds({ level: 13, ability: "r", rank: 2, itemCount: 4, target, boots: "tier2" })) {
+  for (const build of findTopBuilds({ champion: "katarina", level: 13, ability: "r", rank: 2, itemCount: 4, target, boots: "tier2" })) {
     expect(legendaries(build)).toHaveLength(4);
   }
 }, 60_000);
@@ -60,7 +60,7 @@ test("a custom item count (the +/- slot buttons): 4 items at level 13", () => {
 test("Full: 5 items + boots with boots on, 6 items with boots off, never more than 6 slots", () => {
   const target = presetDummy("tank", "full");
   for (const build of findTopBuilds(presetInput("tank", "full"))) expect(build.items).toHaveLength(6);
-  for (const build of findTopBuilds({ ...stagePreset("full", "off"), target, boots: "off" })) {
+  for (const build of findTopBuilds({ ...stagePreset("katarina", "full", "off"), target, boots: "off" })) {
     expect(build.items).toHaveLength(6);
     expect(build.items.every((i) => i.category === "legendary")).toBe(true);
   }

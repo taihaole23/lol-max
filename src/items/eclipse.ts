@@ -1,19 +1,23 @@
 // Eclipse, "Ever Rising Moon": applying 2 stacks to a champion within 2 s deals bonus physical
-// damage equal to 8% (melee) of the target's MAXIMUM health (6 s cooldown, so once per ult).
+// damage equal to 8% (melee) of the target's MAXIMUM health (6 s cooldown, so once per cast).
 // The shield doesn't matter.
 //
-// Normally it's one stack per cast instance, and the whole ult is one cast. But the Death Lotus
-// page says "each dagger counts as a separate hit for ... Eclipse". So dagger 1 gives a stack,
-// and dagger 2 gives the second one and procs it.
+// Stacks: "up to one per cast instance". So each HIT of the ability gives one stack (its pieces
+// of damage, base + AP ratio..., are one hit):
+//   - Katarina's R: the Death Lotus page says "each dagger counts as a separate hit for ... Eclipse".
+//     Dagger 1 gives a stack, dagger 2 gives the second one and procs it.
+//   - Akali's E: the first cast and the recast are 2 casts, so 2 stacks: the recast procs it.
+//   - Akali's R: R1 and R2 are 2.5 s apart, more than 2 s, so it never procs.
 // It's not on-hit damage, so R's on-hit effectiveness doesn't shrink it.
-// ASSUMPTION: only R's own daggers give stacks here. (Item damage can too, per the wiki, but
-//   with daggers every 0.166 s, dagger 2 comes before anything else could matter.)
+// ASSUMPTION: only the ability's own hits give stacks here. (Item damage over time can too, per
+//   the wiki, but "proc damage" can't, and most item damage is proc damage.)
 import type { ItemPassive } from "./types.ts";
 
 const data = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Eclipse", patch: "26.23" },
   daggerSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: "26.23" },
   stacksToProc: 2,
+  stackWindowSeconds: 2,
   meleeMaxHealthDamage: 0.08,
 };
 
@@ -21,16 +25,16 @@ export const eclipse: ItemPassive = {
   name: "Eclipse",
   source: data.source,
   createEffect: () => {
-    const stackTimes: number[] = [];
+    const stacks: { hitIndex: number; time: number }[] = [];
     let used = false;
     return {
       name: "Eclipse",
       afterDamage: (context, damage) => {
-        if (used || damage.fromItem) return;
-        // One stack per dagger: a dagger's pieces all share its time ("same time = same hit").
-        if (stackTimes.includes(context.time)) return;
-        stackTimes.push(context.time);
-        if (stackTimes.length < data.stacksToProc) return;
+        if (used || damage.fromItem || damage.hitIndex === undefined) return;
+        if (stacks.some((s) => s.hitIndex === damage.hitIndex)) return; // this hit already gave its stack
+        stacks.push({ hitIndex: damage.hitIndex, time: context.time });
+        const recent = stacks.filter((s) => context.time - s.time <= data.stackWindowSeconds);
+        if (recent.length < data.stacksToProc) return;
         used = true;
         context.dealDamage(data.meleeMaxHealthDamage * context.targetMaxHp, "physical");
       },

@@ -3,14 +3,14 @@
 // It keeps a to-do list of things that will happen, each at a time in seconds
 // (a dagger, a burn tick, a delayed hit...). It always runs the earliest one next.
 // Anything that would happen after the ability's damage window is thrown away
-// (Death Lotus: the channel window rule; Q and E: 3 s after the hit).
+// (Death Lotus: the channel window rule; other abilities: 3 s after their last hit).
 //
 // What each ability does (its hits, their damage, on-hit or not) is described as data in
-// abilities.ts, so this file works the same for every ability.
+// each champion's abilities file, so this file works the same for every ability.
 import type { DamageAbilityKey } from "../data/playable-champions.ts";
 import type { RRank } from "../formulas/death-lotus.ts";
 import { addShred, damageMultiplier, effectiveResist, type ResistShred } from "../formulas/resistance.ts";
-import { deathLotusCast } from "./abilities.ts";
+import { deathLotusCast } from "./katarina-abilities.ts";
 import { hpAfterHit } from "./hp.ts";
 
 export type DamageType = "magic" | "physical" | "true";
@@ -20,20 +20,33 @@ export type DamageEvent = {
   time: number; // seconds after the channel starts
   amount: number; // after armor / MR
   type: DamageType;
-  source: string; // "base", "apRatio", "adRatio", "bonusAdRatio", or an item's name
+  source: string; // "base", "apRatio", "adRatio", "bonusAdRatio", "missingHealth", or an item's name
   fromItem: boolean; // true = item effect, false = the ability itself
+  hitName?: string; // the ability's own damage only, when its hits have names ("First cast", "Recast")
 };
 
 // One piece of an ability hit's own damage, before armor / MR.
 export type DamagePart = { raw: number; type: DamageType; source: string };
 
-// Everything the simulation needs to know about the ability being cast (built in abilities.ts).
+// What a hit's damage may depend on besides the champion's stats: which hit it is, and the dummy's
+// HP the moment it lands (before its own damage). Akali's R2 grows with the dummy's missing health.
+export type HitInfo = {
+  index: number; // 0 = the first hit in hitTimes
+  targetHp: number;
+  targetMaxHp: number;
+};
+
+// Everything the simulation needs to know about the ability being cast (built in each champion's
+// abilities file, e.g. katarina-abilities.ts).
 export type AbilityCast = {
   key: DamageAbilityKey;
   hitTimes: number[]; // when each hit lands, in seconds after the cast
+  // Optional names, one per hit (Akali's E and R: "First cast", "Recast"). The site then splits the
+  // ability's damage by hit. Without names (Katarina's daggers), it shows one "Ability" line.
+  hitNames?: string[];
   windowSeconds: number; // damage landing after this is thrown away
-  // The hit's own damage, worked out with Katarina's stats AT THAT MOMENT (items can change them mid-ult).
-  hitDamage: (attacker: Attacker) => DamagePart[];
+  // The hit's own damage, worked out with the champion's stats AT THAT MOMENT (items can change them mid-ult).
+  hitDamage: (attacker: Attacker, hit: HitInfo) => DamagePart[];
   appliesOnHit: boolean;
   appliesOnAttack: boolean;
   onHitEffectiveness: number; // on-hit damage is multiplied by this (R: 0.25 / 0.30 / 0.35)
@@ -44,7 +57,7 @@ export type AbilityCast = {
   spellbladeReadyForHits: boolean;
 };
 
-// Katarina's stats that matter for her abilities. Item effects may change these mid-ult.
+// The champion's stats that matter for their abilities. Item effects may change these mid-ult.
 export type Attacker = {
   level: number; // the level her stats use (after Rod of Ages' extra level). Kraken Slayer reads it.
   ap: number; // already includes every % AP bonus below
@@ -96,9 +109,12 @@ export type EffectContext = {
 export type DamageInfo = {
   type: DamageType;
   fromItem: boolean; // false = the ability's own damage (ability damage)
+  // The ability's own damage only: which hit it belongs to (0 = the first in hitTimes). Each hit is
+  // its own cast instance for Eclipse (Akali's E1 and E2 land together but are 2 casts).
+  hitIndex?: number;
 };
 
-// Shred an item gives right now, on top of Katarina's own penetration.
+// Shred an item gives right now, on top of the champion's own penetration.
 // Debuffs on the dummy (Black Cleaver's armor reduction) go here too: with one
 // target, it makes no difference whose side they're counted on.
 export type ItemShred = {
@@ -159,7 +175,7 @@ export function simulateCast(input: CastInput): SimulationResult {
   const events: DamageEvent[] = [];
   const todo: ToDo[] = [];
 
-  // Katarina's own shred plus what every item gives at this moment.
+  // The champion's own shred plus what every item gives at this moment.
   function shredAt(time: number, resist: "armor" | "magic"): ResistShred {
     let shred = resist === "armor" ? attacker.armorShred : attacker.magicShred;
     for (const item of input.items) {
@@ -177,9 +193,10 @@ export function simulateCast(input: CastInput): SimulationResult {
     return damageMultiplier(effectiveResist(target.baseMagicResist, target.bonusMagicResist, shredAt(time, "magic")));
   }
 
-  function dealDamage(time: number, raw: number, type: DamageType, source: string, fromItem: boolean): void {
+  // `hitIndex` is only given for the ability's own damage.
+  function dealDamage(time: number, raw: number, type: DamageType, source: string, fromItem: boolean, hitIndex?: number): void {
     // 0 damage (e.g. R's AD part with no bonus AD) isn't really dealt, so it can't add stacks.
-    const info: DamageInfo = { type, fromItem };
+    const info: DamageInfo = { type, fromItem, hitIndex };
     const dealt = raw > 0;
     if (dealt) {
       for (const item of input.items) item.beforeDamage?.(contextAt(time, item), info);
@@ -189,7 +206,8 @@ export function simulateCast(input: CastInput): SimulationResult {
     for (const item of input.items) {
       if (item.damageMultiplier) amount *= item.damageMultiplier(contextAt(time, item), info);
     }
-    events.push({ time, amount, type, source, fromItem });
+    const hitName = hitIndex === undefined ? undefined : cast.hitNames?.[hitIndex];
+    events.push({ time, amount, type, source, fromItem, ...(hitName ? { hitName } : {}) });
     target.hp = hpAfterHit(target.hp, amount);
 
     if (dealt) {
@@ -230,13 +248,15 @@ export function simulateCast(input: CastInput): SimulationResult {
   // Evidence: Guinsoo's + BotRK left the dummy at 2003 HP; "on-hit first" predicts 1998,
   // "R's damage first" (our first guess) predicts 2037. Guinsoo's-only tests fit step 3 as is.
   // ASSUMPTION: Shunpo (E) uses the same order. Abilities that don't apply on-hit / on-attack skip those steps.
-  function landHit(time: number): void {
+  function landHit(time: number, index: number): void {
     if (cast.appliesOnHit) applyOnHitEffects(time);
 
     // Each part is dealt as its own piece, so the breakdown can show "base", "AP ratio"...
     // separately. Armor / MR reduce every piece of one type by the same share.
-    for (const part of cast.hitDamage(attacker)) {
-      dealDamage(time, part.raw, part.type, part.source, false);
+    // All parts are worked out first, from the dummy's HP before this hit (Akali's R2).
+    const parts = cast.hitDamage(attacker, { index, targetHp: target.hp, targetMaxHp: input.target.hp });
+    for (const part of parts) {
+      dealDamage(time, part.raw, part.type, part.source, false, index);
     }
 
     if (cast.appliesOnAttack) {
@@ -250,9 +270,9 @@ export function simulateCast(input: CastInput): SimulationResult {
     item.onCast?.(contextAt(0, item));
   }
 
-  for (const time of cast.hitTimes) {
-    todo.push({ time, run: () => landHit(time) });
-  }
+  cast.hitTimes.forEach((time, index) => {
+    todo.push({ time, run: () => landHit(time, index) });
+  });
 
   while (todo.length > 0) {
     // Find the earliest thing to do. On a tie, the one added first goes first.

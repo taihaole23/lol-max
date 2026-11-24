@@ -20,10 +20,10 @@ test("paths and parseRoute agree", () => {
   expect(parseRoute(paths.about)).toEqual({ page: "about" });
 });
 
-test("search: empty shows every champion, Katarina (playable) first", () => {
+test("search: empty shows every champion, the playable ones first (A to Z)", () => {
   const all = matchChampions("");
   expect(all.length).toBeGreaterThan(150);
-  expect(all[0].slug).toBe("katarina");
+  expect(all.slice(0, 2).map((c) => c.slug)).toEqual(["akali", "katarina"]);
 });
 
 test("search narrows as you type, ignoring case and punctuation", () => {
@@ -33,8 +33,11 @@ test("search narrows as you type, ignoring case and punctuation", () => {
   expect(matchChampions("zzzz")).toEqual([]);
 });
 
-test("search: names that start with the text come before names that only contain it", () => {
-  const names = matchChampions("ka").map((c) => c.name);
+test("search: playable champions first, then names that start with the text before names that only contain it", () => {
+  const all = matchChampions("ka");
+  // Akali only CONTAINS "ka", but she's playable, so she comes right after Katarina.
+  expect(all.slice(0, 2).map((c) => c.slug)).toEqual(["katarina", "akali"]);
+  const names = all.slice(2).map((c) => c.name);
   const firstContainsOnly = names.findIndex((n) => !n.toLowerCase().startsWith("ka"));
   const lastStartsWith = names.map((n) => n.toLowerCase().startsWith("ka")).lastIndexOf(true);
   expect(firstContainsOnly === -1 || lastStartsWith < firstContainsOnly).toBe(true);
