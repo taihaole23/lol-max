@@ -27,9 +27,11 @@ export function countTo(element: HTMLElement, to: number): void {
 }
 
 // When the box shows something that isn't a number ("—", "…"), forget the old value, so the next
-// number appears straight away instead of counting from a stale one.
+// number appears straight away instead of counting from a stale one. It also forgets the layout
+// (the big total's "no crit / crit" spans are gone once the text replaces them).
 export function showText(element: HTMLElement, text: string): void {
   cancelAnimationFrame(running.get(element) ?? 0);
   delete element.dataset.value;
+  delete element.dataset.layout;
   element.textContent = text;
 }

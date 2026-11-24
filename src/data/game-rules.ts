@@ -52,9 +52,12 @@ export const inventory = {
 };
 
 // Critical strike chance can't go above 100%.
+// A critical strike deals 200% of the normal damage by default ("It would later be reverted to 200%
+// again in V26.01"). Crit damage items (Infinity Edge +30%) ADD to the 200%.
 export const criticalStrike = {
   source: { url: WIKI + "Critical_strike", patch: "26.23" },
   maxChance: 1,
+  baseDamage: 2,
 };
 
 // Adaptive force gives bonus AD or AP, whichever of the two is higher (wiki: Adaptive force).

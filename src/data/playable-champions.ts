@@ -3,6 +3,7 @@
 // code that models the abilities (src/simulation/abilities.ts).
 import { akali } from "./akali.ts";
 import { katarina } from "./katarina.ts";
+import { yone } from "./yone.ts";
 
 // Every champion has these 4 ability keys.
 export type AbilityKey = "q" | "w" | "e" | "r";
@@ -30,6 +31,13 @@ export type ChampionKit = {
   };
   // The usual skill order (see ability-ranks.ts, recommendedRanks).
   skillOrder: { start: readonly AbilityKey[]; priority: readonly AbilityKey[] };
+  // Only champions whose passive changes critical strikes (Yone). See championStats.
+  critPassive?: {
+    source: { url: string; patch: string };
+    critChanceMultiplier: number; // item crit chance × this (then capped at 100%)
+    bonusAdPerExcessCrit: number; // bonus AD per 100% crit chance over the cap
+    critDamageModifier: number; // his crits deal this share of the usual crit damage
+  };
 };
 
 // `satisfies` checks each entry has every ChampionKit field, without forgetting the exact
@@ -37,20 +45,24 @@ export type ChampionKit = {
 export const playableChampions = {
   katarina,
   akali,
+  yone,
 } satisfies Record<string, ChampionKit>;
 
-// "katarina" | "akali"
+// "katarina" | "akali" | "yone"
 export type PlayableChampionId = keyof typeof playableChampions;
 
 export const isPlayableChampion = (slug: string): slug is PlayableChampionId => slug in playableChampions;
 
-// The abilities whose damage the site can work out, and what the type is called in the code.
-export const damageAbilities = ["q", "e", "r"] as const;
+// The abilities whose damage the site can work out for at least one champion, and what the type is
+// called in the code. Which ones each champion has is in `modelledAbilities` (Yone's W deals damage,
+// Katarina's and Akali's don't).
+export const damageAbilities = ["q", "w", "e", "r"] as const;
 export type DamageAbilityKey = (typeof damageAbilities)[number];
 
 export const modelledAbilities: Record<PlayableChampionId, readonly DamageAbilityKey[]> = {
-  katarina: damageAbilities,
-  akali: damageAbilities,
+  katarina: ["q", "e", "r"],
+  akali: ["q", "e", "r"],
+  yone: ["q", "w", "r"],
 };
 
 // Abilities that deal no damage by themselves, with the reason the page shows instead of "coming soon".
@@ -64,6 +76,11 @@ export const noDamageAbilities: Record<PlayableChampionId, Partial<Record<Abilit
     w:
       "It only drops a shroud that makes Akali invisible and gives her energy and move speed. " +
       "Her passive's empowered attack isn't modelled either.",
+  },
+  yone: {
+    e:
+      "Soul Unbound deals no damage by itself. When it ends, it repeats part of the damage Yone dealt during " +
+      "it, so its damage depends on a whole combo, and the site calculates one ability at a time.",
   },
 };
 

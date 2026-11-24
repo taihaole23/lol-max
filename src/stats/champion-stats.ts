@@ -1,7 +1,7 @@
 // A playable champion's stats for a level and a list of items, in the shape the simulation takes.
 import { championLevels, criticalStrike } from "../data/game-rules.ts";
 import type { Item } from "../data/items.ts";
-import { playableChampions, type DamageAbilityKey, type PlayableChampionId } from "../data/playable-champions.ts";
+import { playableChampions, type ChampionKit, type DamageAbilityKey, type PlayableChampionId } from "../data/playable-champions.ts";
 import { passivesFor } from "../items/index.ts";
 import { statSteps } from "../items/types.ts";
 import { statAtLevel } from "../formulas/stats.ts";
@@ -21,7 +21,7 @@ export function championStats(
   items: Item[],
   ability: DamageAbilityKey = "r",
 ): ChampionStats {
-  const kit = playableChampions[champion];
+  const kit: ChampionKit = playableChampions[champion];
   const base = kit.baseStats;
   const passives = passivesFor(items);
 
@@ -43,6 +43,8 @@ export function championStats(
     bonusAd: sumStat(items, "attackDamage"),
     baseAd,
     critChance: Math.min(sumStat(items, "critChance"), criticalStrike.maxChance),
+    critDamage: criticalStrike.baseDamage + sumStat(items, "critDamage"), // 2 + Infinity Edge's 0.3
+    critDamageModifier: 1,
     // Attack speed from levels is the exception: it counts as BONUS attack speed.
     bonusAttackSpeed: statAtLevel(0, base.attackSpeed.bonusPerLevel, level) + sumStat(items, "attackSpeed"),
     health: baseHealth + sumStat(items, "health"),
@@ -59,6 +61,10 @@ export function championStats(
     },
   };
 
+  // A champion passive that changes crits (Yone) runs before the item passives, so its bonus AD
+  // counts for them (Swiftmarch's adaptive force compares AD with AP).
+  if (kit.critPassive) applyCritPassive(stats, sumStat(items, "critChance"), kit.critPassive);
+
   // Stat-changing item passives run now, after the plain stats are added up,
   // one step at a time in the order of `statSteps` (see src/items/types.ts).
   const context = { level, baseHealth, baseAd, items, ability, adaptiveWhenTied: kit.adaptiveType.whenTied };
@@ -72,4 +78,18 @@ export function championStats(
   stats.ap *= 1 + stats.apPercentBonus;
 
   return stats;
+}
+
+// Yone's Way of the Hunter: item crit chance × 2, capped at 100%; every 1% over the cap gives
+// 0.5 bonus AD; his crits deal 95% of the usual crit damage.
+// e.g. 75% crit from items → 150% → 100% crit chance and +25 bonus AD.
+function applyCritPassive(
+  stats: ChampionStats,
+  itemCritChance: number,
+  passive: NonNullable<ChampionKit["critPassive"]>,
+): void {
+  const doubled = itemCritChance * passive.critChanceMultiplier;
+  stats.critChance = Math.min(doubled, criticalStrike.maxChance);
+  stats.bonusAd += passive.bonusAdPerExcessCrit * Math.max(0, doubled - criticalStrike.maxChance);
+  stats.critDamageModifier = passive.critDamageModifier;
 }

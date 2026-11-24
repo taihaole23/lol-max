@@ -23,7 +23,7 @@ test("paths and parseRoute agree", () => {
 test("search: empty shows every champion, the playable ones first (A to Z)", () => {
   const all = matchChampions("");
   expect(all.length).toBeGreaterThan(150);
-  expect(all.slice(0, 2).map((c) => c.slug)).toEqual(["akali", "katarina"]);
+  expect(all.slice(0, 3).map((c) => c.slug)).toEqual(["akali", "katarina", "yone"]);
 });
 
 test("search narrows as you type, ignoring case and punctuation", () => {

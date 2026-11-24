@@ -26,8 +26,10 @@ function onlyType(b: Breakdown, source: string): DamageType | undefined {
 const abilitySourceLabels: Record<string, string> = {
   base: "Base damage",
   apRatio: "AP ratio",
-  adRatio: "AD ratio", // total AD: Shunpo (E), Akali's Q and E
-  bonusAdRatio: "Bonus AD ratio", // Death Lotus (R), Akali's R1
+  adRatio: "AD ratio", // total AD: Shunpo (E), Akali's Q and E, Yone's Q
+  bonusAdRatio: "Bonus AD ratio", // Death Lotus (R), Akali's R1, Yone's R
+  maxHealth: "Max-health damage", // Yone's W: a share of the dummy's maximum health
+  crit: "Critical strike", // Yone's Q: what a crit adds (the breakdowns show the peak, a crit)
   missingHealth: "Missing-health bonus", // Akali's R2: the extra from the dummy's missing health
 };
 

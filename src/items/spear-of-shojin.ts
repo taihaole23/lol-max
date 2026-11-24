@@ -9,6 +9,7 @@
 // is unclear about on-hit, and leaving it out is the safer guess.
 import type { ItemPassive } from "./types.ts";
 
+// Yone's Q is basic damage, not ability damage, so it doesn't trigger this (`damage.abilityDamage`).
 const data = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Spear_of_Shojin", patch: "26.23" },
   ampPerStack: 0.03,
@@ -26,12 +27,12 @@ export const spearOfShojin: ItemPassive = {
       name: "Spear of Shojin",
       // Only stacks from earlier hits count.
       damageMultiplier: (context, damage) => {
-        if (damage.fromItem) return 1;
+        if (!damage.abilityDamage) return 1;
         const stacks = stackTimes.filter((t) => t < context.time).length;
         return 1 + stacks * data.ampPerStack;
       },
       afterDamage: (context, damage) => {
-        if (damage.fromItem || stackTimes.length >= data.maxStacks) return;
+        if (!damage.abilityDamage || stackTimes.length >= data.maxStacks) return;
         const last = stackTimes[stackTimes.length - 1];
         if (last === undefined || context.time >= last + data.secondsBetweenStacks) {
           stackTimes.push(context.time);

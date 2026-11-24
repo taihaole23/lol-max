@@ -86,6 +86,7 @@ export function akaliCastFor(ability: DamageAbilityKey, rank: number): AbilityCa
       castNames,
     );
   }
+  if (ability !== "r") throw new Error(`Akali's ${ability.toUpperCase()} deals no damage by itself.`);
   return akaliCast(
     "r",
     [0, r.recastSeconds],

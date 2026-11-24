@@ -23,7 +23,7 @@ import { stages, type StageName } from "../../data/stages.ts";
 import { lockableLegendaries } from "../../optimizer/constraints.ts";
 import { bootsPool } from "../../optimizer/item-pool.ts";
 import { canBeBuiltTogether } from "../../optimizer/legal.ts";
-import type { SearchResult } from "../../optimizer/messages.ts";
+import type { ExplainedBuild, SearchResult } from "../../optimizer/messages.ts";
 import { maxItemCount } from "../../optimizer/setup.ts";
 import { damageRule } from "../../simulation/abilities.ts";
 import { byId, escapeHtml, readNumber } from "../html.ts";
@@ -31,7 +31,7 @@ import { iconPath, itemIconHtml } from "../icons.ts";
 import { closeItemPicker, openItemPicker } from "../item-picker.ts";
 import { progressLabel } from "../progress.ts";
 import { countTo, showText } from "../count-up.ts";
-import { breakdownHtml, buildAt, topBuildsHtml } from "../results-view.ts";
+import { alwaysCrits, neverCrits, breakdownHtml, buildAt, topBuildsHtml } from "../results-view.ts";
 import { paths } from "../router.ts";
 import * as searches from "../searches.ts";
 import { landGapMs, rollingAllowed, rollingSlotHtml, setRollPools, startRolling, stopRolling } from "../slot-roller.ts";
@@ -478,7 +478,7 @@ function renderResults(): void {
     showText(total, "…");
     note.textContent = "Working it out…";
   } else {
-    countTo(total, best.damage); // counts up from the old number
+    showTotal(total, best); // counts up from the old number
     note.textContent = shown?.complete ? whatDamageMeans() : "Best first item + boots so far. Optimize fills every slot.";
   }
   byId("top-builds").innerHTML = shown && shown.result.builds.length ? topBuildsHtml(shown.result, selectedBuild.index) : "";
@@ -487,6 +487,30 @@ function renderResults(): void {
   const error = byId("search-error");
   error.hidden = searches.searchStatus.error === null;
   error.textContent = searches.searchStatus.error ?? "";
+}
+
+// The big damage number. For an ability that can crit (Yone's Q) it's two numbers, "no crit / crit",
+// each in its own colour and counting up on its own (Eric didn't want the average up here).
+// At 100% crit chance Q always crits, so only the red crit number is shown; at 0% it can never
+// crit, so only the plain no-crit number is shown (Eric).
+// Three layouts: "plain" (one number), "pair" (no crit / crit) and "crit" (crit only). When the
+// layout changes, the box is emptied and rebuilt; otherwise the numbers just count to their new value.
+function showTotal(total: HTMLElement, build: ExplainedBuild): void {
+  const crit = build.explanation.crit;
+  // At 0% crit chance build.damage is the no-crit number (the peak), so "plain" shows it.
+  const layout = !crit || neverCrits(crit) ? "plain" : alwaysCrits(crit) ? "crit" : "pair";
+  if (total.dataset.layout !== layout) {
+    showText(total, ""); // forget the old number(s), so nothing counts from a different layout
+    total.dataset.layout = layout;
+    if (layout === "pair") {
+      total.innerHTML = `<span class="no-crit" title="No crit"></span><span class="crit-slash">/</span><span class="crit" title="Crit"></span>`;
+    } else if (layout === "crit") {
+      total.innerHTML = `<span class="crit" title="Crit (100% crit chance)"></span>`;
+    }
+  }
+  if (!crit || layout === "plain") return countTo(total, build.damage);
+  if (layout === "pair") countTo(total.querySelector<HTMLElement>(".no-crit")!, crit.noCrit);
+  countTo(total.querySelector<HTMLElement>(".crit")!, crit.crit);
 }
 
 // The one-line rule under the damage total, for the selected ability.

@@ -81,7 +81,8 @@ export function shunpoCast(rank: number): AbilityCast {
 export function katarinaCast(ability: DamageAbilityKey, rank: number): AbilityCast {
   if (ability === "q") return bouncingBladeCast(rank);
   if (ability === "e") return shunpoCast(rank);
-  return deathLotusCast(rank as RRank);
+  if (ability === "r") return deathLotusCast(rank as RRank);
+  throw new Error(`Katarina's ${ability.toUpperCase()} deals no damage by itself.`);
 }
 
 // The one-line rule the page shows under the damage total.

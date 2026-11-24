@@ -35,6 +35,10 @@ const abilityPages = [
   "Template:Data_Akali/Five_Point_Strike",
   "Template:Data_Akali/Shuriken_Flip",
   "Template:Data_Akali/Perfect_Execution",
+  "Template:Data_Yone/Way_of_the_Hunter",
+  "Template:Data_Yone/Mortal_Steel",
+  "Template:Data_Yone/Spirit_Cleave",
+  "Template:Data_Yone/Fate_Sealed",
 ];
 
 // Big data modules: only the blocks we use are kept, not the whole page.

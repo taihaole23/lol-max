@@ -14,6 +14,7 @@
 // Dagger 1 starts the burn, so dagger 1 itself doesn't get the 4% ("same time = same hit",
 // see NOTES.md). The AP goes up right after dagger 1 finishes, so dagger 2 onward,
 // the burn ticks and other AP-based item damage all get it.
+// Yone's Q is basic damage, not ability damage, so it doesn't trigger this (`damage.abilityDamage`).
 import { addApPercent } from "../stats/ap-percent.ts";
 import { tickingEffect } from "./ticking.ts";
 import type { ItemPassive } from "./types.ts";
@@ -36,7 +37,7 @@ export const blackfireTorch: ItemPassive = {
       name: "Blackfire Torch",
       secondsBetweenTicks: data.burnSecondsBetweenTicks,
       durationSeconds: data.burnSeconds,
-      triggeredBy: (damage) => !damage.fromItem, // ability damage = R's own damage
+      triggeredBy: (damage) => damage.abilityDamage,
       tick: (context) => {
         const damage = data.burnDamagePerTick + data.burnApRatioPerTick * context.attacker.ap;
         context.dealDamage(damage * context.procEffectiveness, "magic");
@@ -48,7 +49,7 @@ export const blackfireTorch: ItemPassive = {
       name: "Blackfire Torch",
       afterDamage: (context, damage, amount) => {
         burn.afterDamage!(context, damage, amount);
-        if (apIncreased || damage.fromItem) return;
+        if (apIncreased || !damage.abilityDamage) return;
         apIncreased = true;
         // A 0-second delay runs it after everything else happening at this moment (the rest of dagger 1).
         context.schedule(0, (later) => addApPercent(later.attacker, data.apIncreaseWhileBurning));

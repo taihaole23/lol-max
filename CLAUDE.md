@@ -17,6 +17,12 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   - R1 is magic (Eric). R2 is boosted by +2.86% per 1% of the dummy's missing health, up to +200% at 70% missing (wiki table), using the dummy's HP at the moment R2 hits.
   - Skill order: R whenever possible, then max Q, then E, then W.
   - Item effects count until 3 s after her last hit (Q and E: 3 s, R: 5.5 s), the one-hit rule. Show this on the site.
+- **Yone's Q, W and R** (Eric, Nov 2026). E (Soul Unbound) "deals no damage by itself" (it repeats damage dealt during it, so it needs a combo).
+  - Q, W and R are one hit each; item effects count until 3 s after it (the one-hit rule).
+  - Q can crit. The big total and every build card show two numbers, "no crit / crit", with the crit one in red (Eric: no average up there). At 100% crit chance only the crit number is shown, and at 0% only the no-crit number (it can never crit) (Eric). The ranking and the breakdowns use the peak: the crit whenever crit chance is above 0%, otherwise the no-crit damage (Eric, replaced the average).
+  - His passive: item crit chance × 2 (max 100%), 0.5 bonus AD per 1% over 100%, crits deal 95%. Base crit damage is 200% (wiki, since V26.01).
+  - Q is basic damage on its target (applies on-hit, on-attack and Spellblade at 100%), so items that need ability damage don't trigger from it. R applies no on-hit (Eric).
+  - Skill order: R whenever possible, then max Q, then W, then E (Eric).
 - For R: "Damage" = total damage dealt to ONE target dummy during ONE full ult channel (all daggers hit),
   including on-hit / on-attack effects and item effects triggered during the channel.
   Effects that deal damage AFTER the channel ends (burns, DoTs) are counted only for the part inside the channel window. Show this rule on the site.
@@ -45,7 +51,7 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
 - Every input is editable (Eric, Step 7). A stage is a preset that fills in Katarina's level, R rank and item count, and the dummy's level and items.
   - Every rank must be legal for the level (R 6-10: rank 1, 11-15: up to 2, 16+: up to 3; Q/W/E rank n needs level 2n−1; total ≤ level).
   - Item slots: 1 to 6 legendaries with boots off, 1 to 5 with boots on.
-- The page shows a champion picker (only Katarina) and her 4 abilities with rank boxes. Q, E and R work; W says it deals no damage.
+- The page shows a champion picker (playable: Katarina, Akali, Yone) and the champion's 4 abilities with rank boxes. Modelled abilities work; the others say "deals no damage" or "coming soon".
 - Preset game stages:
 
   | Stage | Level | Items with boots on | Items with boots off |

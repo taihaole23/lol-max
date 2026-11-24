@@ -7,6 +7,7 @@
 // Death Lotus BUG (listed on the wiki, so it's how the game really plays): R's on-hit
 //   effectiveness (25 / 30 / 35%) also shrinks the burn, because a dagger started it.
 //   (`procEffectiveness`: 1 for Q and E, so their burns are full size: 6 ticks = 6% max health.)
+// Yone's Q is basic damage, not ability damage, so it doesn't trigger this (`damage.abilityDamage`).
 import { inCombatAmpEffect } from "./in-combat-amp.ts";
 import { tickingEffect } from "./ticking.ts";
 import type { ItemPassive } from "./types.ts";
@@ -32,7 +33,7 @@ export const liandrysTorment: ItemPassive = {
       name: "Liandry's Torment",
       secondsBetweenTicks: data.burnSecondsBetweenTicks,
       durationSeconds: data.burnSeconds,
-      triggeredBy: (damage) => !damage.fromItem, // ability damage = R's own damage
+      triggeredBy: (damage) => damage.abilityDamage,
       tick: (context) =>
         context.dealDamage(data.burnMaxHealthPerTick * context.targetMaxHp * context.procEffectiveness, "magic"),
     }),

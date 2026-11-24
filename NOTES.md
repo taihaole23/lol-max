@@ -103,6 +103,13 @@ These notes are for anyone joining the project.
     - Checked in headless Chrome: /akali/r, /akali/e, /akali/w and /about render, and the optimizer gives results.
     - To do: Practice Tool cases for Akali (see "Unconfirmed"), and `npm run check-wiki -- --accept` once, to save first copies of her 3 ability pages and her champion data.
 
+- **Yone (Nov 24, 2026, Eric).** Q (Mortal Steel), W (Spirit Cleave) and R (Fate Sealed) are calculated; E (Soul Unbound) "deals no damage by itself". Decisions are under "Yone" in Decisions.
+  - `src/data/yone.ts` (data), `src/simulation/yone-abilities.ts` (his casts). His passive's crit rules are in `championStats` (`critPassive` in the data file).
+  - New for every champion: an ability can crit (`abilityCanCrit`), W can deal damage (`modelledAbilities` per champion), and a hit can be basic damage instead of ability damage (`basicDamage` on the cast, `abilityDamage` on each piece of damage).
+  - Katarina's and Akali's numbers didn't change: the same 370 tests pass.
+  - New tests: `tests/yone.test.ts` (data, passive, each ability, the crit average, basic damage vs. items). The filter and beam checks (fast and slow) now also run for Yone's Q, W and R.
+  - To do: Practice Tool cases for Yone (see "Unconfirmed"), and `npm run check-wiki -- --accept` once, to save first copies of his 4 ability pages and his champion data.
+
 ## Confirmed in the Practice Tool (Step 8, patch 26.23)
 - **Within one dagger: on-hit effects → R's own damage → on-attack effects** (HP bar, test 17). Was assumed the other way round.
 - **Burns tick right away, then every interval** (Liandry's, tests 12 and 20). Applied to every ticking effect (Liandry's, Blackfire, Sunfire, Hollow Radiance) at Eric's call; only Liandry's was measured.
@@ -119,6 +126,12 @@ These notes are for anyone joining the project.
   - **R2's bonus uses the dummy's HP just before R2 lands,** and grows evenly up to +200% at 70% missing (the wiki table).
   - **Eclipse procs on E's recast** (2 casts = 2 stacks), never on R (2.5 s apart, over Eclipse's 2 s).
   - **Stormsurge counts R1 + R2 together** (exactly 2.5 s apart; we count damage exactly 2.5 s ago as "within 2.5 s").
+- **Yone (nothing measured yet).** Good first cases: Q with 2 crit items (always crits: 125 + 199.5% AD), W on a 3,000 HP dummy, and Q with Trinity Force.
+  - **Q uses Spellblade, at full strength, all physical.** The wiki's passive notes say Mortal Steel applies Spellblade (they list a bug about its damage type), but not whether the cast grants it before its own hit. We assume yes, like Katarina's E.
+  - **Q is basic damage on the first target,** so Liandry's, Blackfire, Luden's, Spear of Shojin and Bastionbreaker don't trigger from it (wiki: "will not apply spell effects to the first target"). Voltaic's Energized proc comes from Q's on-hit instead (before Q's damage).
+  - **Black Cleaver:** Q's stack goes on after Q (basic damage), so Q doesn't benefit from it. W and R benefit from their own stack, like every ability hit.
+  - **R applies no on-hit effects** (Eric; the wiki doesn't say it does).
+  - **Shadowflame's 120% on Yone's magic damage** isn't reduced by his 95% crit modifier (we assume the modifier is only for his own crits).
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
 - **Whether R's 25 / 30 / 35% effectiveness also shrinks Terminus's Juxtaposition stacks** (10% pen per Dark stack), or only on-hit *damage* (our assumption). Neither the wiki nor Eric knows.
   - That daggers *do* give Juxtaposition stacks is confirmed by Eric from playing. The wiki only says "basic attacks on-hit".
@@ -439,6 +452,33 @@ validation/    Practice Tool test plan and measurements
   - Stormsurge's "25% within 2.5 s" is now a rolling window. For Katarina nothing changes: her ult is 2.5 s, and a later trigger can't land its strike inside the 3 s window of Q / E.
   - Luden's has a 12 s cooldown (wiki), so it can't recharge before R2.
   - Items that work "on your ultimate" (Malignance, Zeke's, Hexplate) work for Akali's R. Malignance makes one zone (its 3 s per-target cooldown blocks a second one from R2).
+- **Yone's Q crits: show two numbers, rank by the average (Eric, Nov 24, 2026).** Chose this over "always crits" (wrong for builds without crit) and "average only" (hides the swing). The page shows Q's total without a crit and with a crit; the top 5's order and every breakdown use the average.
+  - **Update (Eric, same day): no average as the headline.** The big total and each build card now show "no crit / crit", the crit number in red (`--text-crit`), like crit damage in the game. The average still ranks builds (more crit chance = more crits) and is named once in the line above the breakdowns.
+  - At 100% crit chance only the red crit number is shown: Q always crits, so "no crit" can't happen (Eric). The big total remembers its layout (`data-layout`: one number, the pair, or crit only) and rebuilds itself when it changes; `showText` forgets the layout.
+  - ~~How: the cast is simulated twice (no crit, crit) and every piece of damage is mixed by the crit chance.~~ Replaced by the next update.
+  - **Update (Eric, same day): rank by the peak, not the average.** Chose "peak" because the site is about the biggest number a build can hit. A build with any crit chance is scored (and broken down) by its crit; at 0% crit chance by its no-crit cast, since it can never crit. `simulateBuild` now runs the crit cast when crit chance > 0 and the normal cast otherwise; `critTotals` still gives both numbers for the card. Trade-off: a build with a little crit chance scores the same as one with 100%, so crit items rank higher than under the average.
+  - At 0% crit chance the page shows one plain number (no red crit number, no slash), like the other abilities.
+- **Build cards: the damage column grows to fit (bug / cause / fix, Nov 24, 2026).** Bug: Yone's "no crit / crit" numbers ran into the item icons. Cause: the damage column was a fixed 1.5 × icon width, made for one number. Fix: the columns now belong to the list (`.top-builds`), and each card borrows them with CSS `subgrid`, so the damage column is as wide as the widest number in the list while the icons still line up from card to card. A `<wbr>` after the slash lets a narrow phone wrap the pair. Then 16 px still looked cramped (Eric), so `.build-damage` got `padding-right: var(--s4)`: 32 px after the widest number (not on phones, where the icons have their own row).
+- **Every test file fails with "Vitest failed to find the current suite" (bug / cause / fix, Nov 24, 2026).** Cause: Windows drive-letter case. VS Code's terminal can start in `c:\...` (lowercase), and Vitest then loads itself twice (once as `c:`, once as `C:`). Fix: `cd C:\Users\...\lol-max` (capital C) before `npm test`. The code isn't the problem.
+  - The crit's extra is its own "Critical strike" line in "By source".
+  - Only Q's AD part grows on a crit (wiki: 25 / 50 / ... + 199.5% AD = 105% × 200% × 0.95).
+- **Base crit damage is 200%** (`criticalStrike.baseDamage`): the wiki's Critical strike page says it went back from 175% to 200% in V26.01. Infinity Edge's +30% is a plain item stat (`critDamage`, now read by the code).
+- **Yone's passive is a stat rule** in `championStats`, run before item passives: item crit × 2 (max 100%), 0.5 bonus AD per 1% over 100%, crits at 95%. It's in the data file as `critPassive`, so another champion with a crit passive is data-only.
+- **Yone's E shows "deals no damage by itself" (Eric).** Soul Unbound repeats 25-35% of the damage dealt during it, so its damage depends on a whole combo. A combo page could come later.
+- **Yone's skill order: R whenever possible, then max Q, then W, then E (Eric).** Levels 1-3 take Q, W, E.
+- **Yone's R applies no on-hit effects (Eric).**
+- **Yone's data (patch 26.23; his numbers last changed in V26.21):**
+  - HP growth is 105 per level (the wiki's champion data module). His page's "Special statistics" box shows 115: that's Arena (+10).
+  - R has 3 ranks, 200 / 400 / 600 total (the damage table and tooltip). The same page's parameter list shows 5 values (200 / 300 / 400 / 500 / 600), a leftover; every ultimate has 3 ranks.
+  - W: physical lands first; R: magic lands first (wiki notes). The order matters for Black Cleaver and Shadowflame.
+- **Basic damage vs. ability damage (new with Yone).** Yone's Q is basic damage on its first target. Each piece of damage now says whether it's ability damage (`abilityDamage`), and items whose wiki text says "ability damage" check that instead of "not from an item": Liandry's, Blackfire, Luden's, Spear of Shojin, Bastionbreaker, Voltaic (Galvanize). For Katarina and Akali every hit is ability damage, so nothing changed for them.
+- **Yone and the items (every crit or basic-attack item re-read for him):**
+  - Infinity Edge: no passive, but its +30% crit damage stat now counts (Yone's Q crits).
+  - Essence Reaver reads Yone's doubled crit chance (capped at 100%).
+  - Hexoptics C44 raises basic damage by distance (1% per 50 units). Yone stands right next to the dummy, so 0%.
+  - Sundered Sky, Fiendhunter Bolts, Navori, Yun Tal's crit stacks: they need basic attacks. Q isn't a basic attack (it's basic *damage*).
+  - Unending Despair: his window is 3 s, before its first sap at 4 s.
+  - Items "on your ultimate" (Malignance, Zeke's, Hexplate) work for his R.
 - **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
 
 ## Things we learned from the data
@@ -530,7 +570,7 @@ A test (`tests/item-checklist.test.ts`) fails if an item is missing from these t
 
 **What this checks:** only an item's *passive*. Every item's plain stats (AP, AD, HP, pen…) are already counted by `src/stats/`.
 The question for each item is: does its passive change Death Lotus damage on one dummy during one channel, under our rules (see "Rules for item passives" in Decisions)?
-(Checked for R. With Q and E added, every "modelled" item was re-read for one-hit abilities; see "Q / E details" in Decisions. With Akali added, every item was re-read for her: no on-hit at all, E's two casts at once, and R's longer window (5.5 s); see "Akali and the items" in Decisions. The "irrelevant" items stay irrelevant: each needs basic attacks or on-hit, takedowns, slows, allies, mana or other enemies. Unending Despair became "modelled" for Akali's R.)
+(Checked for R. With Q and E added, every "modelled" item was re-read for one-hit abilities; see "Q / E details" in Decisions. With Akali added, every item was re-read for her: no on-hit at all, E's two casts at once, and R's longer window (5.5 s); see "Akali and the items" in Decisions. The "irrelevant" items stay irrelevant: each needs basic attacks or on-hit, takedowns, slows, allies, mana or other enemies. Unending Despair became "modelled" for Akali's R. With Yone added, every crit or basic-attack item was re-read: see "Yone and the items" in Decisions.)
 
 **Statuses:**
 - **modelled**: the passive is coded in `src/items/` and has a test.
@@ -572,9 +612,9 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Axiom Arc | checked, irrelevant | Needs takedowns. |
 | Bandlepipes | checked, irrelevant | Needs slows / immobilizes, gives move speed. |
 | Banshee's Veil | checked, irrelevant | Defensive. |
-| Bastionbreaker | modelled | "Shaped Charge": dagger 1 deals 40 + 1.5 per lethality bonus true damage (melee). "Sabotage" needs a takedown: irrelevant. `src/items/bastionbreaker.ts`. |
-| Black Cleaver | modelled | "Carve": physical damage gives a stack (−6% armor each, up to −30%), one per dagger. R's own hit benefits from its own stack (wiki). `src/items/black-cleaver.ts`. |
-| Blackfire Torch | modelled | "Baleful Blaze": R's damage starts a burn, 10 + 1% AP every 0.5 s, refreshed by every dagger (5 ticks inside the ult), shrunk by R's % (Death Lotus bug). "Blackfire": +4% AP while it burns (from dagger 2), added to Rabadon's 30%. `src/items/blackfire-torch.ts`. |
+| Bastionbreaker | modelled | "Shaped Charge": dagger 1 deals 40 + 1.5 per lethality bonus true damage (melee). "Sabotage" needs a takedown: irrelevant. `src/items/bastionbreaker.ts`. Not triggered by Yone's Q (basic damage). |
+| Black Cleaver | modelled | "Carve": physical damage gives a stack (−6% armor each, up to −30%), one per dagger. R's own hit benefits from its own stack (wiki); Yone's Q (basic damage) only helps later hits. `src/items/black-cleaver.ts`. |
+| Blackfire Torch | modelled | "Baleful Blaze": R's damage starts a burn, 10 + 1% AP every 0.5 s, refreshed by every dagger (5 ticks inside the ult), shrunk by R's % (Death Lotus bug). "Blackfire": +4% AP while it burns (from dagger 2), added to Rabadon's 30%. `src/items/blackfire-torch.ts`. Not triggered by Yone's Q (basic damage). |
 | Blade of The Ruined King | modelled | On-hit 9% (melee) of the dummy's current HP, physical (1 HP after the overkill point). `src/items/blade-of-the-ruined-king.ts`. |
 | Bloodletter's Curse | modelled | "Vile Decay": R's magic damage gives a stack (−7.5% MR each, up to −30%), one per dagger, counting from the next hit. `src/items/bloodletters-curse.ts`. |
 | Bloodthirster | checked, irrelevant | Shield. |
@@ -589,7 +629,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Eclipse | modelled | "Ever Rising Moon": 2 stacks within 2 s (one per cast instance) deal 8% of the dummy's max HP as physical damage, once (6 s cooldown). Katarina's R: each dagger counts as a separate hit (Death Lotus page), so dagger 2 procs it. Akali's E: first cast + recast are 2 casts, so the recast procs it. Akali's R: R1 and R2 are 2.5 s apart, so never. Not shrunk by R's %. `src/items/eclipse.ts`. (Was "checked, irrelevant" until Step 5d-5c.) |
 | Edge of Night | checked, irrelevant | Defensive. |
 | Endless Hunger | checked, irrelevant | Needs takedowns. |
-| Essence Reaver | modelled | Spellblade, first dagger only: 125% base AD + 0.5 per 1% crit chance, physical. `src/items/essence-reaver.ts`. |
+| Essence Reaver | modelled | Spellblade, first dagger only: 125% base AD + 0.5 per 1% crit chance, physical. Yone's crit chance is doubled by his passive. `src/items/essence-reaver.ts`. |
 | Experimental Hexplate | modelled | "Overdrive": casting R gives +50% bonus attack speed (raises R's AD part) and +20% move speed (Swiftmarch counts it) for the whole ult. A stat passive. `src/items/experimental-hexplate.ts`. |
 | Fiendhunter Bolts | checked, irrelevant | Empowers basic attacks after R. |
 | Force of Nature | checked, irrelevant | Defensive. |
@@ -597,7 +637,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Guardian Angel | checked, irrelevant | Defensive. |
 | Guinsoo's Rageblade | modelled | "Wrath": 30 magic on-hit. "Seething Strike": daggers 1-4 give +8% attack speed each (from the next dagger); Phantom Hits (every on-hit effect again, 0.15 s later, at R's %) after daggers 7, 10, 13. `src/items/guinsoos-rageblade.ts`. |
 | Heartsteel | checked, irrelevant | "Colossal Consumption": 1 stack per second near the dummy, procs at 3. Stacks start at 0 when R is cast (Eric, Step 5d-6), so the 3rd comes at 3 s, after the ult. Permanent HP stacks also start at 0. Akali: the proc is an empowered basic attack, and her abilities apply no on-hit. |
-| Hexoptics C44 | checked, irrelevant | Increases *basic attack* damage only. |
+| Hexoptics C44 | checked, irrelevant | Increases basic damage by distance (1% per 50 units). Yone's Q is basic damage, but he stands right next to the dummy: 0%. |
 | Hextech Gunblade | checked, irrelevant | Active only. |
 | Hextech Rocketbelt | checked, irrelevant | Active only. |
 | Hollow Radiance | modelled | "Immolate": 15 + 1% bonus HP magic damage every second (2 ticks inside the ult). "Desolate" needs a kill: irrelevant. `src/items/hollow-radiance.ts`. |
@@ -607,16 +647,16 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Iceborn Gauntlet | modelled | Spellblade, first dagger only: 150% base AD physical. `src/items/iceborn-gauntlet.ts`. |
 | Immortal Shieldbow | checked, irrelevant | Defensive. |
 | Imperial Mandate | checked, irrelevant | Needs an immobilize; R has none. |
-| Infinity Edge | checked, irrelevant | No passive. Crit stats do nothing: abilities and on-hit can't crit. |
+| Infinity Edge | checked, irrelevant | No passive. Its +30% crit damage stat counts for Yone's Q (the only ability that can crit). |
 | Jak'Sho, The Protean | checked, irrelevant | Defensive. |
 | Kaenic Rookern | checked, irrelevant | Defensive. |
 | Knight's Vow | checked, irrelevant | Needs an ally. |
 | Kraken Slayer | modelled | "Bring It Down": every 3rd on-hit (daggers 3, 6, 9, 12, 15; Phantom Hits add stacks) deals 150-200 physical by level, up to +75% by missing health, × R's %. `src/items/kraken-slayer.ts`. |
-| Liandry's Torment | modelled | "Torment": burn, 1% of the dummy's max HP every 0.5 s, refreshed by every dagger (5 ticks inside the ult), shrunk by R's % (Death Lotus bug). "Suffering": +2% damage per second in combat, up to 6%, starting at 0 when R is cast. `src/items/liandrys-torment.ts`. |
+| Liandry's Torment | modelled | "Torment": burn, 1% of the dummy's max HP every 0.5 s, refreshed by every dagger (5 ticks inside the ult), shrunk by R's % (Death Lotus bug). "Suffering": +2% damage per second in combat, up to 6%, starting at 0 when R is cast. `src/items/liandrys-torment.ts`. Not triggered by Yone's Q (basic damage). |
 | Lich Bane | modelled | Spellblade, first dagger only (Eric, from playing): 75% base AD + 45% AP magic. `src/items/lich-bane.ts`. |
 | Locket of the Iron Solari | checked, irrelevant | Active only. |
 | Lord Dominik's Regards | modelled | "Giant Slayer": 1% more damage per 100 of the dummy's BONUS HP (from items), up to 15%. `src/items/lord-dominiks-regards.ts`. |
-| Luden's Echo | modelled | "Echo": 6 stacks, full at R cast, used by dagger 1: 75 + 5% AP, then 5 × (15 + 1% AP) every 0.25 s (one enemy, so every leftover stack hits it). All shrunk by R's % (Death Lotus bug). `src/items/ludens-echo.ts`. |
+| Luden's Echo | modelled | "Echo": 6 stacks, full at R cast, used by dagger 1: 75 + 5% AP, then 5 × (15 + 1% AP) every 0.25 s (one enemy, so every leftover stack hits it). All shrunk by R's % (Death Lotus bug). `src/items/ludens-echo.ts`. Not triggered by Yone's Q (basic damage). |
 | Malignance | modelled | "Hatefog": the first ult hit makes a 3 s zone: (60 + 5% AP) / 4 magic damage every 0.25 s (10 ticks inside Katarina's channel, all 12 for Akali's R) and −10 MR from the next hit until the zone ends. "Scorn" (ultimate haste) is irrelevant. `src/items/malignance.ts`. |
 | Manamune | checked, irrelevant | AD from mana, but Katarina has no mana. Its AD stat counts. |
 | Maw of Malmortius | checked, irrelevant | Defensive. |
@@ -627,7 +667,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Morellonomicon | checked, irrelevant | Grievous Wounds; the dummy doesn't heal. |
 | Mortal Reminder | checked, irrelevant | Grievous Wounds. Its armor pen stat counts. |
 | Nashor's Tooth | modelled | On-hit 15 + 15% AP magic damage. `src/items/nashors-tooth.ts`. |
-| Navori Flickerblade | checked, irrelevant | Lowers cooldowns of basic abilities. |
+| Navori Flickerblade | checked, irrelevant | Lowers cooldowns of basic abilities. Its crit chance stat counts for Yone. |
 | Overlord's Bloodmail | modelled | "Tyranny": bonus AD = 2.5% bonus HP. "Retribution" is 0 at full HP. `src/items/overlords-bloodmail.ts`. |
 | Phantom Dancer | checked, irrelevant | Ghosting. |
 | Profane Hydra | checked, irrelevant | Cleave hits only *other* enemies; active doesn't count. |
@@ -645,7 +685,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Serylda's Grudge | checked, irrelevant | Slow. Its pen stat counts. |
 | Shadowflame | modelled | "Cinderbloom": magic and true damage × 1.2 when the dummy is already below 40% of its max HP. `src/items/shadowflame.ts`. |
 | Shurelya's Battlesong | checked, irrelevant | Active only. |
-| Spear of Shojin | modelled | "Focused Will": R's damage gives a stack (max 1 per second per cast), +3% R damage each, counting from the next hit. During R: +3% on daggers 2-8, +6% on 9-15. `src/items/spear-of-shojin.ts`. Check: see "Unconfirmed". |
+| Spear of Shojin | modelled | "Focused Will": R's damage gives a stack (max 1 per second per cast), +3% R damage each, counting from the next hit. During R: +3% on daggers 2-8, +6% on 9-15. `src/items/spear-of-shojin.ts`. Check: see "Unconfirmed". Not triggered by Yone's Q (basic damage). |
 | Spirit Visage | checked, irrelevant | Defensive. |
 | Staff of Flowing Water | checked, irrelevant | Needs healing allies. |
 | Statikk Shiv | modelled | Energized (dagger 1 only): chain lightning 60 magic, NOT shrunk by R's % (wiki: "not affected by on-hit damage modifiers"). One dummy, so one bounce. `src/items/statikk-shiv.ts`. |
@@ -653,7 +693,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Stormrazor | modelled | Energized (dagger 1 only): 100 magic on-hit, × R's %. `src/items/stormrazor.ts`. |
 | Stormsurge | modelled | Deal 25% of the dummy's max HP within a rolling 2.5 s → lightning strike 2 s later, 125 + 10% AP magic. Inside Katarina's ult only if triggered by 0.5 s; Akali's R1 + R2 (2.5 s apart) count together. `src/items/stormsurge.ts`. |
 | Stridebreaker | checked, irrelevant | Cleave hits only other enemies; active doesn't count. |
-| Sundered Sky | checked, irrelevant | Empowers the next *basic attack*. |
+| Sundered Sky | checked, irrelevant | Empowers the next *basic attack*. Yone's Q is basic damage, not a basic attack. |
 | Sunfire Aegis | modelled | "Immolate": 20 + 1.5% bonus HP magic damage every second (2 ticks inside the ult). `src/items/sunfire-aegis.ts`. |
 | Terminus | modelled | "Shadow": on-hit 30 + 10% bonus AD + 10% AP magic. "Juxtaposition": Dark hits (2nd, 4th, 6th on-hit) give +10% armor and magic pen each, up to 30%. `src/items/terminus.ts`. Check: see "Unconfirmed". |
 | The Collector | checked, irrelevant | Execute below 5% HP; under our overkill rule the dummy never dies. Its lethality stat counts. |
@@ -663,7 +703,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Umbral Glaive | checked, irrelevant | Needs Katarina unseen; Death Lotus reveals her. |
 | Unending Despair | modelled | "Anguish": every 4 s after combat starts, 3% bonus HP as magic damage. Only Akali's R reaches 4 s (R2 at 2.5 s + 3 s of item effects); Katarina's 2.5 s ult and every one-hit ability end first. `src/items/unending-despair.ts`. (Was "checked, irrelevant" until Akali.) |
 | Void Staff | checked, irrelevant | No passive. Its 40% magic pen stat counts. |
-| Voltaic Cyclosword | modelled | "Galvanize": R's first damage triggers the Energized effect (before that damage, not shrunk): 8% of the dummy's current HP physical + 15 lethality for the whole ult. `src/items/voltaic-cyclosword.ts`. |
+| Voltaic Cyclosword | modelled | "Galvanize": R's first damage triggers the Energized effect (before that damage, not shrunk): 8% of the dummy's current HP physical + 15 lethality for the whole ult. Yone's Q (basic damage) procs it through its on-hit instead. `src/items/voltaic-cyclosword.ts`. |
 | Warmog's Armor | modelled | "Warmog's Vitality": +12% of items' plain HP stats (not HP from item passives). Matters with Riftmaker / Overlord's. `src/items/warmogs-armor.ts`. |
 | Winter's Approach | checked, irrelevant | HP from mana, but Katarina has no mana. |
 | Wit's End | modelled | On-hit 45 magic damage. `src/items/wits-end.ts`. |

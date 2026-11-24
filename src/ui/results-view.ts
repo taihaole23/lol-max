@@ -5,6 +5,7 @@ import { buildStyles } from "../optimizer/styles.ts";
 import { abilityVsItemRows, marginalRows, sourceRows, typeRows, type Row } from "./breakdown-rows.ts";
 import type { Item } from "../data/items.ts";
 import type { Breakdown } from "../simulation/breakdown.ts";
+import type { CritTotals } from "../simulation/simulate-build.ts";
 import { escapeHtml } from "./html.ts";
 import { goldHtml, itemIconHtml } from "./icons.ts";
 
@@ -91,9 +92,47 @@ function abilitySplit(b: Breakdown): string {
   return splitBar("Ability vs. items", rows, colours);
 }
 
+export const alwaysCrits = (crit: CritTotals) => crit.chance >= 1;
+// 0% crit chance: Q can never crit, so the crit number would never happen (Eric).
+export const neverCrits = (crit: CritTotals) => crit.chance <= 0;
+
+// For an ability that can crit (Yone's Q): "no crit / crit", each in its own colour (Eric).
+// Used on the build cards; the big total builds the same two spans itself so it can count up.
+export function critPairHtml(crit: CritTotals): string {
+  // 100% crit chance: Q always crits, so the no-crit number would never happen (Eric).
+  if (alwaysCrits(crit)) return `<span class="crit" title="Crit (100% crit chance)">${formatDamage(crit.crit)}</span>`;
+  if (neverCrits(crit)) return formatDamage(crit.noCrit);
+  return (
+    `<span class="no-crit" title="No crit">${formatDamage(crit.noCrit)}</span>` +
+    // <wbr> = "may break the line here": a narrow phone puts the crit number under the other one
+    // instead of pushing the card wider than the screen.
+    `<span class="crit-slash">/</span><wbr>` +
+    `<span class="crit" title="Crit">${formatDamage(crit.crit)}</span>`
+  );
+}
+
+// The key for the two colours, above the breakdowns. Builds are ranked by their peak (the crit,
+// if the build can crit at all), and the breakdowns show that peak (Eric).
+function critHtml(crit: CritTotals): string {
+  const chance = `${Math.round(crit.chance * 100)}%`;
+  if (alwaysCrits(crit)) {
+    return `<p class="crit-totals">100% crit chance: Q always crits, for <strong class="crit">${formatDamage(crit.crit)}</strong>.</p>`;
+  }
+  if (neverCrits(crit)) {
+    return `<p class="crit-totals">0% crit chance: Q can't crit, so it deals <strong>${formatDamage(crit.noCrit)}</strong>.</p>`;
+  }
+  return `
+    <p class="crit-totals">
+      <strong class="no-crit">${formatDamage(crit.noCrit)}</strong> without a crit,
+      <strong class="crit">${formatDamage(crit.crit)}</strong> with a crit (${chance} crit chance).
+      Builds are ranked by the crit, and the breakdowns below show the crit.
+    </p>`;
+}
+
 export function breakdownHtml(build: ExplainedBuild): string {
   const e = build.explanation;
   return `
+    ${e.crit ? critHtml(e.crit) : ""}
     <div class="splits">
       ${splitBar("Damage type", typeRows(e.breakdown), ["--type-magic", "--type-physical", "--type-true"])}
       ${abilitySplit(e.breakdown)}
@@ -137,13 +176,19 @@ const sameItems = (a: ExplainedBuild, b: ExplainedBuild) =>
 // below only tells the browser the picture's size before the CSS loads: keep the two the same.
 function buildCardHtml(build: ExplainedBuild, index: number, selected: number, rank: string, name: string, extra = ""): string {
   const ordered = slotOrder(build.items);
+  const crit = build.explanation.crit;
+  const damageText = !crit || neverCrits(crit)
+    ? `${formatDamage(build.damage)} damage`
+    : alwaysCrits(crit)
+    ? `${formatDamage(crit.crit)} damage, always a crit`
+    : `${formatDamage(crit.noCrit)} damage without a crit, ${formatDamage(crit.crit)} with a crit`;
   const label =
-    `${name}: ${formatDamage(build.damage)} damage, ${buildCost(build.items).toLocaleString("en-US")} gold, ` +
+    `${name}: ${damageText}, ${buildCost(build.items).toLocaleString("en-US")} gold, ` +
     ordered.map((item) => item.name).join(", ");
   return `
     <li><button type="button" class="build-card${index === selected ? " selected" : ""}" data-build-index="${index}" aria-label="${escapeHtml(label)}">
       ${rank}
-      <span class="build-damage">${formatDamage(build.damage)}</span>
+      <span class="build-damage">${crit ? critPairHtml(crit) : formatDamage(build.damage)}</span>
       <span class="build-items">${ordered.map((item) => itemIconHtml(item, 72)).join("")}${extra}</span>
       ${goldHtml(buildCost(build.items))}
     </button></li>`;

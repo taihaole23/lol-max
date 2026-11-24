@@ -51,6 +51,8 @@ export const fixedAttacker: Attacker = {
   health: 2000,
   baseHealth: 1500,
   critChance: 0,
+  critDamage: 2,
+  critDamageModifier: 1,
   bonusAttackSpeed: 0,
   armorShred: noShred,
   magicShred: noShred,

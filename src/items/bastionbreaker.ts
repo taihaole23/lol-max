@@ -2,6 +2,7 @@
 // true damage: 40 + 1.5 per lethality (melee values). Its cooldown is far longer than the
 // ult, so only the first dagger gets it. It's not on-hit, so R's 25 / 30 / 35% doesn't apply.
 // ("Sabotage" needs a takedown, and the dummy never dies.)
+// Yone's Q is basic damage, not ability damage, so it doesn't trigger this (`damage.abilityDamage`).
 import type { ItemPassive } from "./types.ts";
 
 const data = {
@@ -18,7 +19,7 @@ export const bastionbreaker: ItemPassive = {
     return {
       name: "Bastionbreaker",
       afterDamage: (context, damage) => {
-        if (used || damage.fromItem) return;
+        if (used || !damage.abilityDamage) return;
         used = true;
         // Lethality is Katarina's flat armor penetration.
         const lethality = context.attacker.armorShred.flatPenetration;

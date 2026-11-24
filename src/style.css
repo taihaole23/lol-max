@@ -47,6 +47,8 @@
   --text-physical: #f0943e;
   --text-true: #4cc9a6;
   --text-gold: #e2b85a;
+  /* Yone's Q crits: the crit number is red, like crit damage in the game; no crit is plain text. */
+  --text-crit: #ff6b57;
 
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
   /* Small, square-ish corners everywhere (Eric: the big rounded corners looked generic). */
@@ -100,6 +102,7 @@
   --text-physical: #b5530a;
   --text-true: #12805f;
   --text-gold: #8a6510;
+  --text-crit: #c42a1a;
 }
 
 /* ---------- Fonts (files in public/fonts/, licence in public/fonts/OFL.txt) ---------- */
@@ -439,20 +442,29 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 .damage-note { color: var(--muted); max-width: 420px; text-align: right; }
 .damage-note.is-problem { color: var(--warning); font-weight: 600; }
 
-.top-builds { list-style: none; padding: 0; margin: 0 0 var(--s6); display: grid; gap: var(--s2); }
 /* A build card is sized from ONE number: --icon, the item icons' size (Eric). Everything else
    follows it: the gap between icons, the rank, the damage, the gold and its coin, and the columns
    that hold them. Change --icon and the whole card scales. Phones set a smaller --icon further down;
    max(...) keeps the text from getting smaller than it used to be. Keep --icon equal to the size
-   in results-view.ts (buildCardHtml). */
-.build-card {
+   in results-view.ts (buildCardHtml).
+   The columns belong to the LIST, and every card borrows them ("subgrid"): so the damage column
+   can grow to fit the widest number in the list (Yone's "no crit / crit" pair is twice as wide as
+   one number, and used to run into the icons), while the icons still line up from card to card. */
+.top-builds {
   --icon: 72px;
-  width: 100%; display: grid; grid-template-columns: calc(var(--icon) * 0.55) calc(var(--icon) * 1.5) 1fr auto; gap: var(--s3);
+  list-style: none; padding: 0; margin: 0 0 var(--s6); display: grid; row-gap: var(--s2); column-gap: var(--s4);
+  grid-template-columns: calc(var(--icon) * 0.55) minmax(calc(var(--icon) * 1.5), max-content) 1fr auto;
+}
+.top-builds > li { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; }
+.build-card {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid;
   text-align: left; align-items: center; padding: var(--s2) var(--s4); border-radius: var(--r);
 }
 .build-card.selected { border-color: var(--accent); background: var(--accent-soft); }
 .build-rank { color: var(--faint); font-weight: 600; font-size: max(1rem, calc(var(--icon) * 0.25)); }
-.build-damage { font-weight: 600; font-size: max(1.2rem, calc(var(--icon) * 0.33)); font-variant-numeric: tabular-nums; }
+/* padding-right: breathing room before the icons (Eric: 16 px "looked off"). With the column gap
+   that's 32 px after the widest number in the list; shorter numbers get more. */
+.build-damage { padding-right: var(--s4); font-weight: 600; font-size: max(1.2rem, calc(var(--icon) * 0.33)); font-variant-numeric: tabular-nums; }
 /* A gold amount, as in the game: the coin icon, then the number in gold */
 .gold-amount { --coin: 18px; display: inline-flex; align-items: center; gap: max(4px, calc(var(--coin) / 8)); color: var(--text-gold); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
 /* The coin picture (public/icons/ui/gold.png) is 32×32, but the coins only fill its top-left corner:
@@ -480,6 +492,14 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 .build-card.empty { cursor: default; background: var(--panel-raised); border: 1px solid var(--border); }
 .build-card.empty .muted { grid-column: 2 / -1; }
 .same-as { align-self: center; margin-left: var(--s2); font-size: 0.8rem; color: var(--faint); }
+
+/* Crit totals (Yone's Q): damage without and with a crit, above the breakdowns */
+/* Crit damage (Yone's Q): two numbers, "no crit / crit", in the big total and on each build card */
+.no-crit { color: var(--text); }
+.crit { color: var(--text-crit); }
+.crit-slash { color: var(--faint); font-weight: 400; margin: 0 0.15em; }
+.crit-totals { margin: 0 0 var(--s6); font-size: 0.95rem; color: var(--muted); }
+.crit-totals strong { font-weight: 600; }
 
 /* Split bars (damage type, ability vs. items): parts separated by a 2px gap, rounded ends */
 .splits, .bar-tables { display: grid; gap: var(--s6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); margin-bottom: var(--s6); }
@@ -597,10 +617,11 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
   .stat-row { gap: var(--s2); grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .results-head { flex-direction: column; align-items: flex-start; }
   .damage-note { text-align: left; }
-  .build-card { grid-template-columns: 2em 1fr auto; }
+  .top-builds { grid-template-columns: 2em 1fr auto; column-gap: var(--s3); }
   .build-items { grid-column: 1 / -1; }
+  .build-damage { padding-right: 0; } /* the icons are on their own row here */
   /* 7 icons (6 items + boots) at full size don't fit a phone's width: 40 px keeps them on one row. */
-  .build-card { --icon: 40px; }
+  .top-builds { --icon: 40px; }
   .build-card .gold-amount { grid-row: 1; grid-column: 3; }
   .bar-table { overflow-x: auto; }
   /* No room for the bars on a phone: they squeezed item names onto 3 lines. The numbers and

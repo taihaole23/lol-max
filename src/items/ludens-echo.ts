@@ -10,6 +10,7 @@
 //   effectiveness (25 / 30 / 35%) also shrinks Luden's damage, because a dagger triggered it.
 //   We apply it to the leftover-stack hits too, since they come from the same trigger.
 //   (`procEffectiveness`: 1 for Q and E.)
+// Yone's Q is basic damage, not ability damage, so it doesn't trigger this (`damage.abilityDamage`).
 import type { ItemPassive } from "./types.ts";
 
 const data = {
@@ -30,7 +31,7 @@ export const ludensEcho: ItemPassive = {
     return {
       name: "Luden's Echo",
       afterDamage: (context, damage) => {
-        if (used || damage.fromItem) return;
+        if (used || !damage.abilityDamage) return;
         used = true; // set first: the damage below runs afterDamage again
 
         const fullHit = (ap: number) => (data.baseDamage + data.apRatio * ap) * context.procEffectiveness;

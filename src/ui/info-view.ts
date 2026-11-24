@@ -4,6 +4,7 @@
 import { simulationRules } from "../data/game-rules.ts";
 import { akali } from "../data/akali.ts";
 import { katarina } from "../data/katarina.ts";
+import { yone } from "../data/yone.ts";
 import { PATCH } from "../data/patch.ts";
 import { sourceGroups } from "../data/sources.ts";
 import { legendaryPool } from "../optimizer/item-pool.ts";
@@ -13,6 +14,7 @@ import { escapeHtml } from "./html.ts";
 const r = katarina.deathLotus;
 const e = katarina.shunpo;
 const akaliR = akali.perfectExecution;
+const yonePassive = yone.critPassive;
 const percents = (list: readonly number[]) => list.map((x) => `${Math.round(x * 100)}`).join(" / ") + "%";
 
 export function rulesHtml(): string {
@@ -56,6 +58,28 @@ export function rulesHtml(): string {
         never proc.</li>
     </ul>
 
+    <h3>What "damage" means: Yone</h3>
+    <ul>
+      <li><strong>Mortal Steel (Q), Spirit Cleave (W) and Fate Sealed (R), one hit each:</strong> item effects the
+        hit starts count until ${simulationRules.oneHitWindowSeconds} s after it, the same rule as Katarina's Q and E.</li>
+      <li><strong>Q can critically strike.</strong> The page shows two numbers, "no crit / crit"
+        (the crit one in red); at 100% crit chance Q always crits, so only the crit number is shown, and at 0% it can
+        never crit, so only the no-crit number is shown. Builds are ranked by their peak: the crit whenever the build
+        has any crit chance, otherwise the no-crit damage. The breakdowns show that peak.
+        Only Q's AD part grows on a crit.</li>
+      <li><strong>His passive:</strong> crit chance from items counts ${yonePassive.critChanceMultiplier}× (up to 100%),
+        every 1% over 100% gives ${yonePassive.bonusAdPerExcessCrit / 100} bonus AD, and his crits deal
+        ${Math.round(yonePassive.critDamageModifier * 100)}% of the usual crit damage. His mixed-damage basic
+        attacks aren't modelled.</li>
+      <li><strong>Q is basic damage:</strong> it applies on-hit and on-attack effects (and Spellblade) at full
+        strength, but item effects that need <em>ability</em> damage (Liandry's, Blackfire, Luden's, Spear of
+        Shojin, Bastionbreaker) don't trigger from it. Voltaic Cyclosword procs through Q's on-hit instead.</li>
+      <li><strong>W</strong> deals equal parts physical and magic damage based on the dummy's maximum health.
+        <strong>R</strong> deals equal parts magic and physical damage. Neither applies on-hit effects.</li>
+      <li><strong>Soul Unbound (E)</strong> deals no damage by itself: it repeats part of the damage dealt during
+        it, so it depends on a whole combo, and the site calculates one ability at a time.</li>
+    </ul>
+
     <h3>Rules for every champion</h3>
     <ul>
       <li><strong>Overkill rule:</strong> the dummy never dies. Once a hit would kill it, it stays at
@@ -63,7 +87,8 @@ export function rulesHtml(): string {
         target's HP then see ${simulationRules.minimumHp} HP.</li>
       <li><strong>Ranks follow the game's rules:</strong> Q, W and E can reach rank 1 to 5 at levels 1, 3, 5, 7
         and 9, R reaches rank 1 to 3 at levels 6, 11 and 16, and all ranks together can't be more than the level.
-        The stage presets level both champions the usual way: R whenever possible, then max Q, then E, then W.</li>
+        The stage presets level each champion the usual way: R whenever possible, then max Q, then E, then W
+        (Yone: then W, then E).</li>
       <li><strong>No runes</strong> (planned for version 2).</li>
     </ul>
 

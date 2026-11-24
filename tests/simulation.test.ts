@@ -18,6 +18,8 @@ const attacker: Attacker = {
   health: 1000,
   baseHealth: 1000,
   critChance: 0,
+  critDamage: 2,
+  critDamageModifier: 1,
   bonusAttackSpeed: 0,
   armorShred: noShred,
   magicShred: noShred,

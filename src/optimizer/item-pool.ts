@@ -10,7 +10,8 @@ export const statsReadByCode = [
   "abilityPower",
   "attackDamage",
   "attackSpeed",
-  "critChance",
+  "critChance", // Yone's Q crits (and his passive turns extra crit into AD); Essence Reaver
+  "critDamage", // Infinity Edge: bigger crits on Yone's Q
   "health", // Riftmaker turns HP into AP, so every HP item counts
   "lethality",
   "percentArmorPenetration",

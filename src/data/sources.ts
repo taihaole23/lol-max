@@ -8,6 +8,7 @@ import { itemGroups, meleeCannotBuy } from "./item-groups.ts";
 import { itemSource } from "./items.ts";
 import { akali } from "./akali.ts";
 import { katarina } from "./katarina.ts";
+import { yone } from "./yone.ts";
 import { itemPassives } from "../items/index.ts";
 
 export type Source = { label: string; url: string; patch: string };
@@ -44,6 +45,19 @@ export const sourceGroups: SourceGroup[] = [
       named("Five Point Strike (Q)", akali.fivePointStrike.source),
       named("Shuriken Flip (E)", akali.shurikenFlip.source),
       named("Perfect Execution (R)", akali.perfectExecution.source),
+    ]),
+  },
+  {
+    title: "Yone",
+    sources: unique([
+      named("Yone: stats, abilities", yone.baseStats.source),
+      named("Yone", yone.abilities.source),
+      named("Yone", yone.adaptiveType.source),
+      named("Yone", yone.rangeType.source),
+      named("Way of the Hunter (passive: crits)", yone.critPassive.source),
+      named("Mortal Steel (Q)", yone.mortalSteel.source),
+      named("Spirit Cleave (W)", yone.spiritCleave.source),
+      named("Fate Sealed (R)", yone.fateSealed.source),
     ]),
   },
   {

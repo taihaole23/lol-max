@@ -2,7 +2,7 @@
 import type { Item } from "../data/items.ts";
 import type { DamageAbilityKey, PlayableChampionId } from "../data/playable-champions.ts";
 import { breakdown, type Breakdown } from "../simulation/breakdown.ts";
-import { simulateBuild } from "../simulation/simulate-build.ts";
+import { critTotals, simulateBuild, type CritTotals } from "../simulation/simulate-build.ts";
 import type { Target } from "../simulation/simulate.ts";
 
 export type BuildExplanation = {
@@ -14,6 +14,9 @@ export type BuildExplanation = {
   // Items that boost each other (Rabadon's × another AP item) make it NEGATIVE: the boost
   // is in both items' marginals, so it was counted twice, and this takes one copy back out.
   interactions: number;
+  // Only for an ability that can crit (Yone's Q): the total without and with a crit. Everything
+  // above is the peak: the crit if the crit chance is above 0, otherwise the no-crit cast.
+  crit?: CritTotals;
 };
 
 // `rank` and `ability` default like simulateBuild's (R at the highest rank the level allows).
@@ -35,10 +38,13 @@ export function explainBuild(
   }));
   const sumOfMarginals = marginal.reduce((sum, m) => sum + m.damage, 0);
 
+  const crit = critTotals(champion, level, items, target, rank, ability);
+
   return {
     breakdown: result,
     noItemsDamage,
     marginal,
     interactions: result.total - noItemsDamage - sumOfMarginals,
+    ...(crit ? { crit } : {}),
   };
 }

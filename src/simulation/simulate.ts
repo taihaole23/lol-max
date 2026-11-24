@@ -55,6 +55,9 @@ export type AbilityCast = {
   procEffectiveness: number;
   // True if the cast grants Spellblade before its own hits land, so its first on-hit uses it (R).
   spellbladeReadyForHits: boolean;
+  // True if the hits are BASIC damage, not ability damage (Yone's Q on its first target). Item
+  // effects that need ability damage (Liandry's, Luden's, Shojin...) then ignore them. Default false.
+  basicDamage?: boolean;
 };
 
 // The champion's stats that matter for their abilities. Item effects may change these mid-ult.
@@ -72,7 +75,11 @@ export type Attacker = {
   baseAd: number; // AD from her level alone (Spellblade uses it; Shunpo's ratio is on base + bonus AD)
   health: number; // her maximum health; the dummy never hits back, so she's always full (Titanic Hydra uses it)
   baseHealth: number; // health from her level alone; health − baseHealth = bonus health (Sunfire uses it)
-  critChance: number; // a fraction: 0.25 = 25%. R and on-hit can't crit, but Essence Reaver reads it
+  critChance: number; // a fraction: 0.25 = 25%. Only Yone's Q can crit; Essence Reaver reads it too
+  // A crit deals critDamage × critDamageModifier times the normal damage: 2 + Infinity Edge's 0.3,
+  // and × 0.95 for Yone (his passive). The modifier is 1 for everyone else.
+  critDamage: number;
+  critDamageModifier: number;
   bonusAttackSpeed: number; // a fraction: 0.5 = 50%
   armorShred: ResistShred;
   magicShred: ResistShred;
@@ -94,6 +101,7 @@ export type EffectContext = {
   onHitEffectiveness: number; // R: 0.25 / 0.30 / 0.35 for rank 1 / 2 / 3. E: 1.
   procEffectiveness: number; // the Death Lotus bug for Liandry's, Blackfire, Luden's (see AbilityCast)
   spellbladeReady: boolean; // false = this cast's hits can't use Spellblade (see AbilityCast)
+  basicDamage: boolean; // true = the cast's own hits are basic damage, not ability damage (see AbilityCast)
   attacker: Attacker; // may be changed, e.g. attack speed stacks
   target: Readonly<Target>; // read only: change it through dealDamage. `hp` is its CURRENT HP.
   targetMaxHp: number; // the dummy's HP when the ult started
@@ -108,7 +116,10 @@ export type EffectContext = {
 // What an item effect is told about a piece of damage (before its amount is known).
 export type DamageInfo = {
   type: DamageType;
-  fromItem: boolean; // false = the ability's own damage (ability damage)
+  fromItem: boolean; // false = the ability's own damage
+  // The ability's own damage AND it counts as ability damage (true for every hit except Yone's Q,
+  // which is basic damage). Items that say "dealing ability damage" check this, not `fromItem`.
+  abilityDamage: boolean;
   // The ability's own damage only: which hit it belongs to (0 = the first in hitTimes). Each hit is
   // its own cast instance for Eclipse (Akali's E1 and E2 land together but are 2 casts).
   hitIndex?: number;
@@ -196,7 +207,7 @@ export function simulateCast(input: CastInput): SimulationResult {
   // `hitIndex` is only given for the ability's own damage.
   function dealDamage(time: number, raw: number, type: DamageType, source: string, fromItem: boolean, hitIndex?: number): void {
     // 0 damage (e.g. R's AD part with no bonus AD) isn't really dealt, so it can't add stacks.
-    const info: DamageInfo = { type, fromItem, hitIndex };
+    const info: DamageInfo = { type, fromItem, abilityDamage: !fromItem && !cast.basicDamage, hitIndex };
     const dealt = raw > 0;
     if (dealt) {
       for (const item of input.items) item.beforeDamage?.(contextAt(time, item), info);
@@ -222,6 +233,7 @@ export function simulateCast(input: CastInput): SimulationResult {
       onHitEffectiveness: cast.onHitEffectiveness,
       procEffectiveness: cast.procEffectiveness,
       spellbladeReady: cast.spellbladeReadyForHits,
+      basicDamage: cast.basicDamage ?? false,
       attacker,
       target,
       targetMaxHp: input.target.hp,
