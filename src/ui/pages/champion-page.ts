@@ -26,6 +26,8 @@ import { canBeBuiltTogether } from "../../optimizer/legal.ts";
 import type { ExplainedBuild, SearchResult } from "../../optimizer/messages.ts";
 import { maxItemCount } from "../../optimizer/setup.ts";
 import { damageRule } from "../../simulation/abilities.ts";
+import { panelStatInfo, panelStats, type PanelStat } from "../../stats/stat-panel.ts";
+import { statIconHtml } from "../stat-icons.ts";
 import { byId, escapeHtml, readNumber } from "../html.ts";
 import { iconPath, itemIconHtml } from "../icons.ts";
 import { closeItemPicker, openItemPicker } from "../item-picker.ts";
@@ -87,6 +89,32 @@ const numberBoxHtml = (id: string, name: string, stepSize: number, limits: strin
       <button type="button" tabindex="-1" data-step-for="${id}" data-step-by="-1" aria-label="${name} down ${stepSize}">▼</button>
     </span>
   </span>`;
+
+// One tile per stat in panelStatInfo: its icon and name, a Max button that switches maximizing it
+// on or off (aria-pressed tells screen readers it's a toggle), and its minimum (crit chance typed
+// in %, "100"). `--stat` gives the tile its colour (style.css). It's a <div>, not a <label>: a label
+// would send clicks on the name to the Max button, so the number box gets its own aria-label.
+const minStatBoxesHtml = () =>
+  panelStatInfo
+    .map(
+      (info) => `
+      <div id="tile-${info.key}" class="stat-tile" style="--stat: var(--stat-${info.key})">
+        <div class="stat-tile-head">
+          <span class="stat-icon">${statIconHtml(info.key)}</span>
+          <span class="stat-name" title="${info.label}">${info.short}${info.unit ? ` <span class="stat-unit">${info.unit}</span>` : ""}</span>
+          <button type="button" class="max-toggle" data-maximize="${info.key}" aria-pressed="false" aria-label="Maximize ${info.label}" title="Maximize ${info.label}">Max</button>
+        </div>
+        ${numberBoxHtml(`min-${info.key}`, `Minimum ${info.label}`, info.step, `min="0" aria-label="Minimum ${info.label}"`)}
+      </div>`,
+    )
+    .join("");
+
+// A stat value in the box's unit, rounded for showing: crit 1 → 100, attack speed 1.234 → 1.23.
+function shownStat(stat: PanelStat, value: number): string {
+  const info = panelStatInfo.find((s) => s.key === stat)!;
+  const shown = value * info.shownAs;
+  return stat === "attackSpeed" ? shown.toFixed(2) : String(Math.round(shown));
+}
 
 // ---- The page's HTML (filled in by the render functions below) ----
 
@@ -177,6 +205,15 @@ function pageHtml(slug: string, name: string): string {
           </div>
           <div id="conditions" class="conditions"></div>
         </div>
+
+        <!-- Minimum stats: only builds that reach every number typed here (state.minStats). -->
+        <details id="min-stats" class="min-stats">
+          <summary><span class="field-label">Stats</span> <span id="min-stats-count" class="field-hint"></span></summary>
+          <p class="field-hint">Type a minimum to only show builds with at least that much (totals, as in the game's stat panel). The grey numbers are the build shown.</p>
+          <p class="field-hint">Max ranks builds by that stat instead of damage. With several, the build whose weakest one is closest to its best wins.</p>
+          <div class="stat-row min-stat-row">${minStatBoxesHtml()}</div>
+          <p class="field-hint"><button id="clear-min-stats" type="button" class="link-button">Clear minimums and Max</button></p>
+        </details>
 
         <div class="optimize-row">
           <button id="optimize" type="button" class="primary">Optimize</button>
@@ -326,6 +363,42 @@ function renderSetup(): void {
   byId<HTMLButtonElement>("remove-slot").disabled = state.itemCount <= 1;
   byId<HTMLButtonElement>("add-slot").disabled = state.itemCount >= maxItemCount(actions.bootsSetting(state));
   renderConditions();
+  renderMinStats();
+}
+
+// The minimum stat boxes: the typed number, or empty. The count shows even while the box is closed.
+function renderMinStats(): void {
+  const set = Object.keys(state.minStats).length;
+  const maxed = state.maximize.length;
+  const parts = [set ? `${set} minimum${set > 1 ? "s" : ""}` : "", maxed ? `maximizing ${maxed}` : ""].filter(Boolean);
+  byId("min-stats-count").textContent = parts.join(" · ");
+  if (set || maxed) byId<HTMLDetailsElement>("min-stats").open = true; // never hide a rule that's in force
+  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-maximize]")) {
+    const on = state.maximize.includes(button.dataset.maximize as PanelStat);
+    button.classList.toggle("selected", on);
+    button.setAttribute("aria-pressed", String(on));
+  }
+  // A tile glows in its colour while it's doing something (a minimum or Max).
+  for (const info of panelStatInfo) {
+    const tile = byId(`tile-${info.key}`);
+    tile.classList.toggle("has-min", state.minStats[info.key] !== undefined);
+    tile.classList.toggle("is-max", state.maximize.includes(info.key));
+  }
+  for (const info of panelStatInfo) {
+    const input = byId<HTMLInputElement>(`min-${info.key}`);
+    const min = state.minStats[info.key];
+    input.value = min === undefined ? "" : shownStat(info.key, min);
+    input.classList.toggle("typed", min !== undefined);
+  }
+}
+
+// The grey hint in each empty minimum box: the stat of the build being shown, so you can see
+// how far a build is from a number before typing it.
+function renderMinStatHints(items: Item[] | undefined): void {
+  const stats = items ? panelStats(state.champion, state.level, items, state.ability) : null;
+  for (const info of panelStatInfo) {
+    byId<HTMLInputElement>(`min-${info.key}`).placeholder = stats ? shownStat(info.key, stats[info.key]) : "";
+  }
 }
 
 // The ban list under the slots, and a way to clear every lock and ban.
@@ -473,16 +546,21 @@ function renderResults(): void {
     note.textContent = problem;
   } else if (shown && shown.result.builds.length === 0) {
     showText(total, "—");
-    note.textContent = "No build fits these locks and bans. Try unbanning an item.";
+    note.textContent =
+      Object.keys(state.minStats).length > 0
+        ? "No build reaches these minimum stats with these locks and bans. Try lowering a minimum."
+        : "No build fits these locks and bans. Try unbanning an item.";
   } else if (!best) {
     showText(total, "…");
     note.textContent = "Working it out…";
   } else {
     showTotal(total, best); // counts up from the old number
-    note.textContent = shown?.complete ? whatDamageMeans() : "Best first item + boots so far. Optimize fills every slot.";
+    const ranking = maximizeNote();
+    note.textContent = (shown?.complete ? whatDamageMeans() : "Best first item + boots so far. Optimize fills every slot.") + ranking;
   }
   byId("top-builds").innerHTML = shown && shown.result.builds.length ? topBuildsHtml(shown.result, selectedBuild.index) : "";
   byId("breakdown").innerHTML = best ? breakdownHtml(best) : "";
+  renderMinStatHints(best?.items);
 
   const error = byId("search-error");
   error.hidden = searches.searchStatus.error === null;
@@ -514,6 +592,14 @@ function showTotal(total: HTMLElement, build: ExplainedBuild): void {
 }
 
 // The one-line rule under the damage total, for the selected ability.
+// With Max on, the top 5 aren't sorted by damage, so the note says what they're sorted by.
+function maximizeNote(): string {
+  if (state.maximize.length === 0) return "";
+  const labels = state.maximize.map((stat) => panelStatInfo.find((s) => s.key === stat)!.label);
+  if (labels.length === 1) return ` Ranked by ${labels[0]}, then damage.`;
+  return ` Ranked by ${labels.join(" + ")} (balanced: the weakest share of its best counts), then damage.`;
+}
+
 function whatDamageMeans(): string {
   const setup = actions.championSetup(state);
   return setup ? damageRule(setup.champion, setup.ability) : "";
@@ -704,6 +790,10 @@ export function mountChampionPage(root: HTMLElement, slug: string, ability: Abil
       update((s) => actions.unbanItem(s, data.unban!));
     } else if (button.id === "clear-conditions") {
       update(actions.clearConditions);
+    } else if (button.id === "clear-min-stats") {
+      update(actions.clearMinStats);
+    } else if (data.maximize) {
+      update((s) => actions.toggleMaximize(s, data.maximize as PanelStat));
     } else if (data.rankOf) {
       update((s) => actions.setRank(s, data.rankOf as AbilityKey, Number(data.rank)));
     } else if (data.ability) {
@@ -743,6 +833,15 @@ export function mountChampionPage(root: HTMLElement, slug: string, ability: Abil
   for (const [id, stat] of Object.entries(statBoxes)) {
     byId<HTMLInputElement>(id).addEventListener("change", (event) => {
       update((s) => actions.setTypedStat(s, stat, readNumber(event.target as HTMLInputElement)));
+    });
+  }
+
+  // A minimum stat box: the typed number in the box's unit (crit in %), stored as the stat's own
+  // value (crit as a fraction). Empty = no minimum.
+  for (const info of panelStatInfo) {
+    byId<HTMLInputElement>(`min-${info.key}`).addEventListener("change", (event) => {
+      const value = readNumber(event.target as HTMLInputElement);
+      update((s) => actions.setMinStat(s, info.key, value === null ? null : value / info.shownAs));
     });
   }
 

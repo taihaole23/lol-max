@@ -79,6 +79,13 @@ export const moveSpeed = {
   secondCapKeeps: 0.5,
 };
 
+// Attack speed can't go above 2.5 attacks per second (most champions, including every playable one).
+// Only the "minimum stats" boxes read it (stat-panel.ts), for the attack speed the stat panel shows.
+export const attackSpeed = {
+  source: { url: WIKI + "Attack_speed", patch: "26.23" },
+  cap: 2.5,
+};
+
 // Our own rules for the simulation, not Riot's (see CLAUDE.md), so no wiki source.
 export const simulationRules = {
   // Overkill rule: the dummy never dies. Its HP stops here, and later hits still count in full.

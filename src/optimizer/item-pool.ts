@@ -22,9 +22,11 @@ export const statsReadByCode = [
 ];
 
 // The item filter: an item is kept if it has a hand-coded passive or any stat our code reads.
-export function canChangeDamage(item: Item): boolean {
+// `extraStats`: stats the user set a minimum for (armor...). Items that give one are kept too:
+// they add no damage, but they can be what gets a build to the minimum.
+export function canChangeDamage(item: Item, extraStats: readonly string[] = []): boolean {
   if (itemPassives.some((passive) => passive.name === item.name)) return true;
-  return statsReadByCode.some((stat) => (item.stats[stat] ?? 0) !== 0);
+  return [...statsReadByCode, ...extraStats].some((stat) => (item.stats[stat] ?? 0) !== 0);
 }
 
 export type ItemPool = {
@@ -33,12 +35,13 @@ export type ItemPool = {
 };
 
 // `useFilter: false` is only for the test that checks the filter changes nothing.
-export function legendaryPool(useFilter = true): ItemPool {
+// `extraStats`: see canChangeDamage.
+export function legendaryPool(useFilter = true, extraStats: readonly string[] = []): ItemPool {
   const buyable = items.filter((item) => item.category === "legendary" && !meleeCannotBuy.items.includes(item.name));
   if (!useFilter) return { legendaries: buyable, removedByFilter: [] };
   return {
-    legendaries: buyable.filter(canChangeDamage),
-    removedByFilter: buyable.filter((item) => !canChangeDamage(item)),
+    legendaries: buyable.filter((item) => canChangeDamage(item, extraStats)),
+    removedByFilter: buyable.filter((item) => !canChangeDamage(item, extraStats)),
   };
 }
 

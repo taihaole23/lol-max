@@ -479,6 +479,27 @@ validation/    Practice Tool test plan and measurements
   - Sundered Sky, Fiendhunter Bolts, Navori, Yun Tal's crit stacks: they need basic attacks. Q isn't a basic attack (it's basic *damage*).
   - Unending Despair: his window is 3 s, before its first sap at 4 s.
   - Items "on your ultimate" (Malignance, Zeke's, Hexplate) work for his R.
+- **Minimum stats (Eric, Nov 2026).** A fold-out "Minimum stats" box under the item slots: HP, armor, MR, AD, AP, attack speed, crit chance, ability haste, move speed. Only builds that reach every number typed in are shown.
+  - Chose TOTAL stats, as the in-game stat panel shows them (Eric), over "from items only": that's the number players know. `src/stats/stat-panel.ts` works them out from `championStats`, so passives that change a stat count (Rabadon's, Riftmaker, Yone's crit × 2). Armor, MR and ability haste aren't used by the simulation, so they're base stats + plain item stats. Attack speed stops at the 2.5 cap.
+  - The best-per-stat cards follow the minimums too (Eric).
+  - The quick search (1 free item) ignores minimums, because one item rarely reaches them; it would show "no build" before you even click Optimize. With 1 slot the quick search is the whole build, so then it follows them.
+  - Every-build search: builds that miss a minimum are skipped before they're simulated (cheaper too).
+  - Beam search, two changes:
+    - A partial build is dropped when even a best case can't reach a minimum (fill the free slots with the items that raise that stat the most, ignoring item groups). The best case is a guess (items that boost each other can beat it).
+    - Besides its 300 most damaging partial builds, the beam keeps the 300 closest to the minimums (see the bug below). Full with 300 AP + 300 AD: ~4.2 s instead of ~3.4 s with no minimums.
+    - Slow tests, 4 minimum setups: Late's beam = every build, and Full's beam of 300 = a beam of 5,000.
+  - A stat with a minimum keeps its items in the search even if the speed filter would remove them (Frozen Heart for armor).
+- **Maximize (Eric, Nov 2026).** A Max button next to each stat box; several can be on at once.
+  - With Max on, builds are ranked by those stats instead of damage, and damage breaks ties.
+  - Several stats: chose "balanced" (Eric) over "add the shares up" (one huge stat could make up for a weak one) and "first one clicked wins" (the second stat would almost never matter). Each stat counts as a share of its PEAK, the most any build reaches with the same locks, bans and minimums. A build's score is its weakest share.
+  - The peaks come from the same search run on one stat with no damage simulation (`peakOf` in search.ts), so they cost little: Full with Max AP + AD took ~4.6 s vs ~3.4 s without.
+  - The score is rounded to 9 decimals so builds that are really equal (100% crit) tie and damage decides.
+  - `FoundBuild.score`: ranking uses it when present, otherwise damage (top-builds.ts). Without Max nothing changes.
+  - Slow tests, 3 Max setups: Late's beam = every build, Full's beam of 300 = a beam of 5,000.
+- **Stat tiles look (Eric: the boxes looked "blocky, rigid, static").** Each stat is a small tile tinted in its own colour (`--stat-*` in style.css, a darker set for the light theme), with a hand-drawn icon (`src/ui/stat-icons.ts`).
+  - Chose our own SVG icons over Riot's stat icons: nothing new to download or keep up to date, and they take the tile's colour.
+  - Hover lifts the tile and tilts the icon. A tile with a minimum or Max on glows, and switching Max on pops the icon. Everything stays still for people whose system asks for reduced motion.
+  - Short names on the tiles (MR, AS, Crit, Haste, MS) because the long ones were cut off; the full name is the tooltip.
 - **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
 
 ## Things we learned from the data
@@ -529,6 +550,10 @@ validation/    Practice Tool test plan and measurements
 None right now.
 
 ## Bugs (bug / cause / fix)
+- **Minimum stats: the beam missed builds (caught by the new slow test).**
+  - Bug: Katarina R, Late, 200 AP + 200 AD: the beam found 3 builds, trying every build found 5. At Full with 300 AP + 300 AD it found 1.
+  - Cause: the beam kept its 300 most damaging partial builds. With minimums, most of those (mostly AD, say) pass the best-case check but can never reach both minimums, so the partial builds that could were pushed out.
+  - Fix: with minimums the beam keeps a second group of 300, the partial builds closest to the minimums. First tried an exact check with 1 slot left instead: it fixed Late but made Full 4× slower (~1 million stat calculations) and still missed builds there.
 - **Rolling item slots looked empty (caught in the browser before Eric saw it).**
   - Bug: during the casino roll, the item slots showed blank squares. Only the boots slot showed icons.
   - Cause: Optimize redraws the results ~100 times. Each redraw rebuilt the slots with brand-new pictures that the browser hadn't painted yet, so it kept showing empty frames.

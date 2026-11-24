@@ -116,6 +116,15 @@ export function rulesHtml(): string {
         item at a time and keeps the best ${searchSettings.beamWidth} part-builds at each step: trying every
         build would take hours. Tests check it: with 3 items it finds the same top 5 as trying every build, and
         with 5 items + boots it finds the same top 5 as a much wider search (5,000 part-builds).</li>
+      <li><strong>Minimum stats:</strong> only builds that reach every minimum you type are shown, top 5 and
+        best-per-stat alike. The numbers are totals, as in the game's stat panel: base stats at your level + items
+        + item passives that change stats (Rabadon's +30% AP, Yone's doubled crit chance). Armor, magic resist and
+        ability haste count base stats and plain item stats only. Before you click Optimize, the quick answer (one
+        item + boots) ignores the minimums: they're for the finished build.</li>
+      <li><strong>Max:</strong> ranks builds by that stat instead of damage; damage breaks ties (so "Max crit"
+        on Yone ranks every 100%-crit build by damage). With several, each stat is measured as a share of the most
+        it can reach with your locks, bans and minimums, and the build whose WEAKEST share is highest wins: 75% of
+        the best AP and 70% of the best AD beats 100% AP and 20% AD.</li>
     </ul>
 
     <h3>How items are credited</h3>

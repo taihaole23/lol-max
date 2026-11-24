@@ -66,3 +66,35 @@ test("arrangeSlots: locked items stay in their slot, the rest fill the free ones
   // Before any result: only the locked item shows.
   expect(s.arrangeSlots(state, undefined).items.map((c) => c?.item.name ?? null)).toEqual([null, "Zhonya's Hourglass", null]);
 });
+
+// ---- Minimum stats ----
+
+test("a typed minimum goes into the search; an empty box removes it", () => {
+  let state = s.setMinStat(late(), "abilityPower", 150);
+  state = s.setMinStat(state, "attackDamage", 150);
+  expect(s.fullSearchRequest(state)?.constraints?.minStats).toEqual({ abilityPower: 150, attackDamage: 150 });
+  state = s.setMinStat(state, "abilityPower", null);
+  expect(state.minStats).toEqual({ attackDamage: 150 });
+  expect(s.clearMinStats(state).minStats).toEqual({});
+});
+
+test("the quick search (1 free item) ignores minimums: they're for the finished build", () => {
+  const state = s.setMinStat(late(), "abilityPower", 300);
+  expect(s.quickSearchRequest(state)?.constraints?.minStats).toEqual({});
+  // ...unless the quick search IS the whole build (1 slot).
+  const oneSlot = s.setMinStat(s.applyStage(s.initialState(), "early"), "abilityPower", 300);
+  expect(s.quickSearchRequest(oneSlot)?.constraints?.minStats).toEqual({ abilityPower: 300 });
+});
+
+test("a negative minimum is a problem the page shows", () => {
+  expect(s.conditionProblem(s.setMinStat(late(), "armor", -1))).toMatch(/Armor/);
+});
+
+test("Max buttons switch on and off, several at once, and go into the search", () => {
+  let state = s.toggleMaximize(late(), "abilityPower");
+  state = s.toggleMaximize(state, "attackDamage");
+  expect(s.fullSearchRequest(state)?.constraints?.maximize).toEqual(["abilityPower", "attackDamage"]);
+  state = s.toggleMaximize(state, "abilityPower");
+  expect(state.maximize).toEqual(["attackDamage"]);
+  expect(s.clearMinStats(state).maximize).toEqual([]);
+});

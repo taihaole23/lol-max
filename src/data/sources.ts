@@ -73,6 +73,7 @@ export const sourceGroups: SourceGroup[] = [
       named("Critical strike", gameRules.criticalStrike.source),
       named("Adaptive force", gameRules.adaptiveForce.source),
       named("Move speed", gameRules.moveSpeed.source),
+      named("Attack speed", gameRules.attackSpeed.source),
     ]),
   },
   {

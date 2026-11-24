@@ -5,11 +5,19 @@ export type FoundBuild = {
   items: Item[]; // legendaries in item-pool order, then boots (if any)
   damage: number; // total damage of one cast
   gold: number; // total cost, used to break ties
+  // What the build is ranked by, when it isn't damage: the "Maximize" score (search.ts), or one
+  // stat while the search looks for that stat's peak. Left out = ranked by damage.
+  score?: number;
 };
 
-// True if build `a` should rank above build `b`: more damage wins; on a tie, the cheaper build;
-// on a tie again, the names in alphabetical order, so the result never depends on search order.
+// What a build is ranked by first: its score if it has one, otherwise its damage.
+const rankValue = (build: FoundBuild) => build.score ?? build.damage;
+
+// True if build `a` should rank above build `b`: a higher score (or more damage, with no score)
+// wins; on a tie, more damage; then the cheaper build; then the names in alphabetical order, so
+// the result never depends on search order.
 export function ranksAbove(a: FoundBuild, b: FoundBuild): boolean {
+  if (rankValue(a) !== rankValue(b)) return rankValue(a) > rankValue(b);
   if (a.damage !== b.damage) return a.damage > b.damage;
   if (a.gold !== b.gold) return a.gold < b.gold;
   return buildKey(a) < buildKey(b);

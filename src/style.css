@@ -49,6 +49,17 @@
   --text-gold: #e2b85a;
   /* Yone's Q crits: the crit number is red, like crit damage in the game; no crit is plain text. */
   --text-crit: #ff6b57;
+  /* Stat tiles (minimums and Max): one colour per stat, close to the game's own. */
+  --stat-health: #3fbf6f;
+  --stat-armor: #e8a838;
+  --stat-magicResist: #5b9cf0;
+  --stat-attackDamage: #f07c2a;
+  --stat-abilityPower: #b07cff;
+  --stat-attackSpeed: #e3c13b;
+  --stat-critChance: #ff6b57;
+  --stat-abilityHaste: #4fc3e0;
+  --stat-moveSpeed: #9bd44a;
+  --on-stat: #0a0d13; /* text on a filled stat colour (a Max button that's on) */
 
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
   /* Small, square-ish corners everywhere (Eric: the big rounded corners looked generic). */
@@ -103,6 +114,16 @@
   --text-true: #12805f;
   --text-gold: #8a6510;
   --text-crit: #c42a1a;
+  --stat-health: #1d8a4a;
+  --stat-armor: #a8720a;
+  --stat-magicResist: #2a6fd0;
+  --stat-attackDamage: #c25a0c;
+  --stat-abilityPower: #7d3fe0;
+  --stat-attackSpeed: #94780a;
+  --stat-critChance: #c42a1a;
+  --stat-abilityHaste: #127a96;
+  --stat-moveSpeed: #4f8a12;
+  --on-stat: #fff;
 }
 
 /* ---------- Fonts (files in public/fonts/, licence in public/fonts/OFL.txt) ---------- */
@@ -629,4 +650,63 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
   .bar-table .bar-cell, .bar-table thead th:nth-child(2) { display: none; }
   /* The item picker becomes a sheet at the bottom of the screen */
   .item-picker { position: fixed; left: 0 !important; right: 0; top: auto !important; bottom: 0; width: 100%; border-radius: var(--r-lg) var(--r-lg) 0 0; max-height: 80vh; overflow-y: auto; }
+}
+
+/* ---------- Stats: minimums and Max (a fold-out box under the item slots) ---------- */
+.min-stats { margin-bottom: var(--s4); }
+.min-stats summary { cursor: pointer; padding: var(--s1) 0; }
+.min-stats summary .field-label { display: inline; }
+.min-stat-row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s2); margin-top: var(--s3); }
+.min-stat-row input::placeholder { color: var(--faint); }
+
+/* One stat: a tile tinted in its own colour (--stat, set on the tile). It lifts a little on hover,
+   and glows while it has a minimum or Max on, so you can see at a glance what's in force. */
+.stat-tile {
+  display: flex; flex-direction: column; gap: var(--s2); min-width: 0;
+  padding: var(--s2);
+  background: color-mix(in srgb, var(--stat) 7%, var(--panel-raised));
+  border: 1px solid color-mix(in srgb, var(--stat) 18%, var(--border));
+  border-radius: var(--r);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.stat-tile:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--stat) 50%, var(--border)); }
+.stat-tile.has-min, .stat-tile.is-max {
+  border-color: var(--stat);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--stat) 30%, transparent), 0 6px 20px color-mix(in srgb, var(--stat) 22%, transparent);
+}
+.stat-tile-head { display: flex; align-items: center; gap: var(--s2); min-width: 0; }
+.stat-icon {
+  flex: none; display: grid; place-items: center; width: 26px; height: 26px;
+  color: var(--stat); background: color-mix(in srgb, var(--stat) 18%, transparent); border-radius: var(--r-sm);
+}
+/* A springy curve: the icon overshoots a little and settles, so it feels alive. */
+.stat-icon svg { transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.stat-tile:hover .stat-icon svg { transform: rotate(-10deg) scale(1.15); }
+.stat-tile.is-max .stat-icon { animation: stat-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes stat-pop { 0% { transform: scale(0.8); } 60% { transform: scale(1.2); } 100% { transform: scale(1); } }
+.stat-name { flex: 1; min-width: 0; font-size: 0.8rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stat-unit { font-weight: 400; color: var(--faint); }
+/* The number box inside a tile: a little shorter, on the plain panel colour so it stands out. */
+.stat-tile input[type="number"] { height: 34px; background: var(--panel); }
+.stat-tile .stepper-buttons button { width: 32px; height: 17px; background: var(--panel); }
+/* A typed minimum is highlighted in the tile's own colour (elsewhere typed numbers are gold). */
+.stat-tile input.typed { border-color: var(--stat); background: color-mix(in srgb, var(--stat) 12%, var(--panel)); }
+
+/* Max: outlined in the stat's colour; filled with it while on. */
+.max-toggle {
+  flex: none; height: 22px; padding: 0 var(--s2);
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); background: transparent; border-color: color-mix(in srgb, var(--stat) 35%, var(--border));
+}
+.max-toggle:hover:not(:disabled) { color: var(--stat); border-color: var(--stat); background: color-mix(in srgb, var(--stat) 12%, transparent); }
+.max-toggle.selected, .max-toggle.selected:hover:not(:disabled) { color: var(--on-stat); background: var(--stat); border-color: var(--stat); }
+
+@media (max-width: 600px) {
+  .min-stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* People who ask their system for less motion get no lifting, tilting or popping. */
+@media (prefers-reduced-motion: reduce) {
+  .stat-tile, .stat-icon svg { transition: none; }
+  .stat-tile:hover, .stat-tile:hover .stat-icon svg { transform: none; }
+  .stat-tile.is-max .stat-icon { animation: none; }
 }

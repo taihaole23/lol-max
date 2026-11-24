@@ -5,6 +5,7 @@ import { explainBuild } from "./explain.ts";
 import { legendaryPool } from "./item-pool.ts";
 import type { ExplainedBuild, SearchRequest, SearchResult } from "./messages.ts";
 import { findTopBuilds } from "./search.ts";
+import { itemStatsFor } from "../stats/stat-panel.ts";
 import { buildStyles, styleConstraints } from "./styles.ts";
 import type { FoundBuild } from "./top-builds.ts";
 
@@ -43,5 +44,5 @@ export function runSearch(request: SearchRequest, onProgress: (fraction: number)
   });
   report(1);
 
-  return { builds: builds.map(explain), styles, removedByFilter: legendaryPool().removedByFilter };
+  return { builds: builds.map(explain), styles, removedByFilter: legendaryPool(true, itemStatsFor(request.constraints?.minStats ?? {})).removedByFilter };
 }

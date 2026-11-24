@@ -34,6 +34,8 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
     - A slow test checks that Late's beam top 5 equals the every-combination top 5 for each enemy type.
     - A slow test checks that Full's top 5 is the same with a beam of 300 and of 5,000.
 - Under the top 5 (Eric, after the redesign): the best build for each stat (AP, AD, attack speed), meaning the best build where every legendary gives that stat. Locked items stay, and boots can be anything.
+- Minimum stats (Eric, Nov 2026): optional boxes for HP, armor, MR, AD, AP, attack speed, crit chance, ability haste and move speed. Only builds that reach every minimum are shown (top 5 and best-per-stat). Stats are TOTALS, as in the in-game stat panel. Show this rule on the site.
+- Maximize (Eric, Nov 2026): a Max toggle per stat, several at once. Builds are ranked by those stats instead of damage, damage breaks ties. Several stats are "balanced": each as a share of its peak (the most any build reaches with the same conditions); the weakest share is the score.
 - Each build shows these breakdowns:
   - By source: base, AP ratio, AD ratio, on-hit at the R rank's effectiveness, and each item passive.
   - Each item's marginal damage: damage with the item minus damage without it. The leftover is shown as an "item interactions" line.

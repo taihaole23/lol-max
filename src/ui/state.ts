@@ -12,6 +12,7 @@ import type { SearchRequest } from "../optimizer/messages.ts";
 import { constraintProblem, type BuildConstraints } from "../optimizer/constraints.ts";
 import { maxItemCount, type ChampionSetup } from "../optimizer/setup.ts";
 import type { Target } from "../simulation/simulate.ts";
+import type { MinStats, PanelStat } from "../stats/stat-panel.ts";
 import { dummyStats, recommendedDummyItems, withTypedStats, type TypedStats } from "../stats/dummy-stats.ts";
 import {
   maxRankAtLevel,
@@ -45,6 +46,10 @@ export type PageState = {
   locked: (string | null)[];
   lockedBoots: string | null;
   banned: string[];
+  // "Minimum stats": e.g. { abilityPower: 150 }. Only stats with a number typed in are listed.
+  minStats: MinStats;
+  // "Maximize": stats to rank builds by instead of damage, in the order they were switched on.
+  maximize: PanelStat[];
 };
 
 const noTypedStats: TypedStats = { hp: null, armor: null, magicResist: null };
@@ -68,6 +73,8 @@ export function initialState(): PageState {
     locked: [],
     lockedBoots: null,
     banned: [],
+    minStats: {},
+    maximize: [],
   };
   return applyStage(blank, "early");
 }
@@ -135,6 +142,8 @@ export function buildConstraints(state: PageState): BuildConstraints {
     required: state.locked.slice(0, state.itemCount).filter((name): name is string => name !== null),
     requiredBoots: state.bootsOn ? state.lockedBoots : null,
     banned: state.banned,
+    minStats: state.minStats,
+    maximize: state.maximize,
   };
 }
 
@@ -153,9 +162,13 @@ export function searchRequest(state: PageState, itemCount: number): SearchReques
 
 // The quick search: the locked items plus ONE free item, and boots. Always fast, and it's the
 // whole answer when every slot but one is locked.
+// Minimum stats are for the FINISHED build, so a quick search that leaves slots empty ignores them
+// (one item rarely reaches 150 AP and 150 AD). Optimize then follows them.
 export function quickSearchRequest(state: PageState): SearchRequest | null {
   const quickCount = Math.min(state.itemCount, buildConstraints(state).required.length + 1);
-  return searchRequest(state, quickCount);
+  const request = searchRequest(state, quickCount);
+  if (request === null || quickCount === state.itemCount) return request;
+  return { ...request, constraints: { ...request.constraints!, minStats: {} } };
 }
 
 export function fullSearchRequest(state: PageState): SearchRequest | null {
@@ -316,6 +329,25 @@ export function unbanItem(state: PageState, name: string): PageState {
 
 export function clearConditions(state: PageState): PageState {
   return { ...state, locked: [], lockedBoots: null, banned: [] };
+}
+
+// Typing in a minimum stat box. `null` (an empty box) = no minimum for that stat.
+export function setMinStat(state: PageState, stat: PanelStat, value: number | null): PageState {
+  const minStats = { ...state.minStats };
+  if (value === null) delete minStats[stat];
+  else minStats[stat] = value;
+  return { ...state, minStats };
+}
+
+// Clears the minimums and the Maximize switches (the "Clear" link under the stat boxes).
+export function clearMinStats(state: PageState): PageState {
+  return { ...state, minStats: {}, maximize: [] };
+}
+
+// A stat's Max button: switches maximizing that stat on or off. Several can be on at once.
+export function toggleMaximize(state: PageState, stat: PanelStat): PageState {
+  const on = state.maximize.includes(stat);
+  return { ...state, maximize: on ? state.maximize.filter((s) => s !== stat) : [...state.maximize, stat] };
 }
 
 export function setEnemyType(state: PageState, enemyType: EnemyType): PageState {
