@@ -11,18 +11,18 @@ function immolate(name: string) {
   return { bonusHealth, ticks };
 }
 
-test("Sunfire: 20 + 1.5% bonus HP, magic, at 1 s and 2 s", () => {
+test("Sunfire: 20 + 1.5% bonus HP, magic, at 0, 1 and 2 s", () => {
   const { bonusHealth, ticks } = immolate("Sunfire Aegis");
-  expect(ticks.map((e) => e.time)).toEqual([1, 2]);
+  expect(ticks.map((e) => e.time)).toEqual([0, 1, 2]);
   for (const tick of ticks) {
     expect(tick.type).toBe("magic");
     expect(tick.amount).toBeCloseTo(20 + 0.015 * bonusHealth);
   }
 });
 
-test("Hollow Radiance: 15 + 1% bonus HP, at 1 s and 2 s", () => {
+test("Hollow Radiance: 15 + 1% bonus HP, at 0, 1 and 2 s", () => {
   const { bonusHealth, ticks } = immolate("Hollow Radiance");
-  expect(ticks.map((e) => e.time)).toEqual([1, 2]);
+  expect(ticks.map((e) => e.time)).toEqual([0, 1, 2]);
   for (const tick of ticks) expect(tick.amount).toBeCloseTo(15 + 0.01 * bonusHealth);
 });
 

@@ -95,9 +95,10 @@ test("on-hit damage is scaled by the R rank's effectiveness (25 / 30 / 35%)", ()
 
 test("attack speed gained mid-ult makes later daggers' physical damage bigger", () => {
   // Fake item: every dagger gives +10% bonus attack speed, AFTER that dagger hits.
+  // On-attack, like Guinsoo's stacks: on-attack runs after R's damage (on-hit runs before it).
   const stacking: ItemEffect = {
     name: "Fake Stacks",
-    onHit: (context) => {
+    onAttack: (context) => {
       context.attacker.bonusAttackSpeed += 0.1;
     },
   };

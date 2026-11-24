@@ -17,8 +17,8 @@ function ticksFor(triggeredBy: (damage: { fromItem: boolean; type: string }) => 
   return result.events.filter((e) => e.source === "test").map((e) => e.time);
 }
 
-test("refreshed by every dagger: ticks every 0.5 s for the whole ult, first tick at 0.5 s", () => {
-  expect(ticksFor((d) => !d.fromItem, 3)).toEqual([0.5, 1, 1.5, 2, 2.5]);
+test("refreshed by every dagger: first tick right away, then every 0.5 s for the whole ult", () => {
+  expect(ticksFor((d) => !d.fromItem, 3)).toEqual([0, 0.5, 1, 1.5, 2, 2.5]);
 });
 
 test("runs out when nothing refreshes it", () => {
@@ -28,6 +28,6 @@ test("runs out when nothing refreshes it", () => {
     first = false;
     return result;
   };
-  // Turned on at 0 s for 1 s: ticks at 0.5 and 1.0, then it's off.
-  expect(ticksFor(onlyFirstHit, 1)).toEqual([0.5, 1]);
+  // Turned on at 0 s for 1 s: ticks at 0, 0.5 and 1.0, then it's off.
+  expect(ticksFor(onlyFirstHit, 1)).toEqual([0, 0.5, 1]);
 });

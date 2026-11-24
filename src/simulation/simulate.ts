@@ -187,21 +187,24 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
     }
   }
 
+  // The order inside one dagger, MEASURED in the Practice Tool (Step 8, patch 26.23):
+  //   1. on-hit effects (they read the dummy's HP BEFORE this dagger's damage: BotRK, Kraken),
+  //   2. R's own damage,
+  //   3. on-attack effects (so Guinsoo's attack speed only helps the NEXT dagger).
+  // Evidence: Guinsoo's + BotRK left the dummy at 2003 HP; "on-hit first" predicts 1998,
+  // "R's damage first" (our first guess) predicts 2037. Guinsoo's-only tests fit step 3 as is.
   function throwDagger(time: number): void {
+    applyOnHitEffects(time);
+
     // The magic part is dealt as two pieces, so the breakdown can show "base" and
     // "AP ratio" separately. MR reduces both by the same share.
     dealDamage(time, r.magicBaseDamage[input.rank - 1], "magic", "base", false);
     dealDamage(time, r.magicApRatio * attacker.ap, "magic", "apRatio", false);
     dealDamage(time, daggerPhysicalDamage(attacker.bonusAd, attacker.bonusAttackSpeed), "physical", "bonusAdRatio", false);
 
-    // ASSUMPTION (to check in the Practice Tool): R's own damage lands first, then
-    // on-attack effects, then on-hit effects. So an on-attack bonus (Guinsoo's attack speed)
-    // only helps the NEXT dagger's damage, and the dummy's HP has already dropped when
-    // on-hit effects read it (BotRK, Kraken Slayer).
     for (const item of input.items) {
       item.onAttack?.(contextAt(time, item));
     }
-    applyOnHitEffects(time);
   }
 
   for (const item of input.items) {

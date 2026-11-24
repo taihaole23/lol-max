@@ -5,8 +5,10 @@
 // `durationSeconds` more (a refresh). While it's on, it ticks every `secondsBetweenTicks`.
 // Ticks after the channel ends are thrown away by the simulation (channel window rule).
 //
-// ASSUMPTION (to check in the Practice Tool): the first tick comes one interval after the
-// effect turns on, not right away. That's the safer guess (fewer ticks inside the ult).
+// The first tick comes RIGHT AWAY when the effect turns on, then one every interval.
+// Measured in the Practice Tool (Step 8, patch 26.23): Liandry's alone and Liandry's + Riftmaker
+// were both ~1 tick higher than "first tick after one interval" predicted. Eric asked to apply it
+// to every ticking effect (burns and Immolate auras alike).
 import type { DamageInfo, EffectContext, ItemEffect } from "../simulation/simulate.ts";
 
 export function tickingEffect(options: {
@@ -35,8 +37,13 @@ export function tickingEffect(options: {
     afterDamage: (context, damage) => {
       if (!options.triggeredBy(damage)) return;
       const alreadyOn = endsAt !== undefined;
+      // Set BEFORE the first tick: that tick's own damage comes back here (Immolate is triggered
+      // by any damage) and must only refresh the timer, not start a second chain of ticks.
       endsAt = context.time + options.durationSeconds;
-      if (!alreadyOn) bookNextTick(context);
+      if (!alreadyOn) {
+        options.tick(context);
+        bookNextTick(context);
+      }
     },
   };
 }

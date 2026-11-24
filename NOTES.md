@@ -42,12 +42,33 @@ These notes are for anyone joining the project.
   - **Off:** 7 Bloodthirster +22, 12 Liandry's +10, 15 BotRK +34, 16 Guinsoo's +13. `npm test` fails on these 4 until they're explained; that's on purpose.
     - Liandry's: +9.6 ≈ one more burn tick (each is ~9.2), so the burn probably ticks once right away. Matches Eric's feeling in game.
     - 7, 15, 16 are the only tests with bonus AD. No single change (attack speed growth, the physical ratio, the ratio per attack speed, flat extra AD) fits all three, so they likely have separate causes. Round 2 (7a, 7b, 7c) narrows down test 7.
-  - Round 2 (tests 7a-7c and 17-21, items together) is in the plan, waiting on measurements.
+  - **Fixed after round 1 (Eric's call): burns and auras tick right away.** `ticking.ts` now ticks once when the effect turns on, then every interval. Liandry's (test 12) went from +9.6 to +0.6. Applies to Liandry's, Blackfire, Sunfire and Hollow Radiance.
+  - Round 2 measured (same day, one ult each): 7a +17, 7b +29, 7c +17, 17 +85 (+2.1%), 18 +65, 19 +21, 20 −6, 21 exact. Stats panel at level 16 with Bloodthirster: 184 AD, 0.919 attack speed, exactly the calculator's.
+  - **Finding 1: the dummy's damage COUNTER over-reports by one R physical hit. The calculator was right.**
+    - All four plain-AD tests (levels 6, 11, 16; Bloodthirster and Death's Dance) read ×1.067 (= 16/15) on R's physical part. First guess: the game deals more physical than the wiki says. That was WRONG.
+    - Eric recorded test 7b and played it back: 15 physical numbers of 28 (wiki: 28.66) and 15 magic of 50, exactly the wiki. The counter still said 1209 (calculator 1180).
+    - The dummy's HP bar after the ult: **1821 of 3000 → 1179 lost**, which is the calculator's 1180. So the counter adds ~29 (one physical hit) that never happened.
+    - Lesson: **read the dummy's HP bar, not its counter,** for anything with physical damage. Magic-only tests are exact on the counter.
+    - Modelling the counter as "real damage + R's first physical hit" fits every AD test within 0.1%.
+    - So `tests/practice-tool.test.ts` compares counter readings with "real + one R physical hit" (`counterExtraRPhysicalHits` in `src/data/practice-tool.ts`), and HP-bar readings (`hpAfter`) with the real damage.
+  - **Finding 2 (confirmed, now the model): on-hit effects land BEFORE R's own damage in a dagger** (our first guess was the opposite). Order in `simulate.ts`: on-hit → R's damage → on-attack.
+    - With the counter correction, "R first" left BotRK tests 15 and 17 at +1.1% (fail); "on-hit first" gave 0.0% / +0.1%.
+    - Checked on the HP bar (no counter involved): test 17 left the dummy at **2003** HP. On-hit first predicts 1998, R first 2037.
+  - **Result: all 24 counter readings within 0.52%, 21 of them within 0.1%; both HP-bar readings within 0.12%.**
+  - **Test 22, a blind prediction:** BotRK + Guinsoo's + Statikk + Yun Tal + Kraken + Shadowflame, level 16, 10,000 HP dummy, 10 resist. Predicted **966** HP left before Eric cast; he measured **970** and **980** (−0.05% / −0.16%). First in-game check of Statikk, Yun Tal, Kraken and Shadowflame. The two tries differ by 10, about the game's own run-to-run variation.
+  - Leftovers (all inside the 1% tolerance, causes unknown): Riftmaker tests 13 and 20 −0.5% (magic only, so not the counter), and 18 (Guinsoo's + BotRK + Terminus, 50 resist) −0.5%.
+
+## Confirmed in the Practice Tool (Step 8, patch 26.23)
+- **Within one dagger: on-hit effects → R's own damage → on-attack effects** (HP bar, test 17). Was assumed the other way round.
+- **Burns tick right away, then every interval** (Liandry's, tests 12 and 20). Applied to every ticking effect (Liandry's, Blackfire, Sunfire, Hollow Radiance) at Eric's call; only Liandry's was measured.
+- **Daggers give Guinsoo's stacks, and Phantom Hits come after daggers 7, 10, 13 at R's reduced %** (tests 16, 19 within 0.1%).
+- **The Death Lotus bug shrinks Liandry's and Luden's damage** by R's %, and **Luden's fires once** (tests 12, 14, 21 within 0.1%).
+- **On-hit at 25 / 30 / 35% by rank** (Nashor's, tests 9-11, exact).
+- **The dummy's damage counter adds one R physical hit that never happened;** its HP bar is right (test 7b).
+- **Statikk Shiv, Yun Tal, Kraken Slayer and Shadowflame together** (test 22, within 0.2%). Not checked one by one, so a small error in one could hide behind another, but none is big.
 
 ## Unconfirmed: to check in the Practice Tool (Step 8)
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
-- **Whether daggers give Guinsoo's Rageblade stacks** (Seething Strike and Phantom). Daggers trigger "on-attack" effects, but the wiki never says they count for Guinsoo's. Eric, from playing: they trigger the Phantom hit.
-- **Within one dagger, R's own damage lands before on-hit effects** (our assumption). Only matters for BotRK, which reads the dummy's current HP.
 - **Whether R's 25 / 30 / 35% effectiveness also shrinks Terminus's Juxtaposition stacks** (10% pen per Dark stack), or only on-hit *damage* (our assumption). Neither the wiki nor Eric knows.
   - That daggers *do* give Juxtaposition stacks is confirmed by Eric from playing. The wiki only says "basic attacks on-hit".
   - **Whether the first Juxtaposition hit is Light or Dark.** We assume Light (Dark = 2nd, 4th, 6th hit), the safer guess.
@@ -56,14 +77,12 @@ These notes are for anyone joining the project.
 - **Black Cleaver: R's hit benefits from its own stack.** The wiki says so (listed as a bug) for non-basic damage. If it's been fixed, dagger N has N − 1 stacks instead of N.
 - **"Deal X% more damage" effects** (damage amplification): we apply them after armor/MR and multiply them together. Sources: the wiki's Damage page ("percent damage modifiers stack multiplicatively"), Liandry's page (its bonus "stacks multiplicatively with other damage multipliers") and Shadowflame's worked examples. Still worth one Practice Tool check (e.g. Abyssal Mask + Immortal Path).
 - **"Per second in combat" stacks (Liandry's, Riftmaker) come at exactly 1 s and 2 s after R is cast** (our assumption).
-- **Burns and auras tick for the first time one interval after they start** (Liandry's 0.5 s, Sunfire / Hollow Radiance 1 s, Zeke's 0.25 s), not right away. The safer guess. The wiki says Blackfire's burn *sometimes* ticks right away and calls that a bug.
-- **Luden's Echo stacks don't come back during the ult,** so it fires once.
+- **Sunfire, Hollow Radiance and Blackfire tick right away like Liandry's** (applied, but only Liandry's was measured). Zeke's has its own timing (first tick 0.25 s in), unchanged and unmeasured.
 - **Blackfire Torch's +4% AP starts right after dagger 1,** so dagger 1 itself doesn't get it (dagger 1 is what starts the burn).
 - **Stormsurge's 25% counts damage after armor / MR, from every source** (R and items). The strike uses Katarina's AP when it lands, not when it was triggered. In practice it only matters against a low-HP dummy, since 25% must be reached by 0.5 s.
 - **Eclipse procs on dagger 2** (8% of the dummy's max HP). The Death Lotus page says each dagger counts as a separate hit for Eclipse, though Eclipse's own text says "one stack per cast instance". Eric hasn't seen it proc either way.
-- **The Death Lotus bug** (wiki: R's on-hit effectiveness also shrinks Liandry's, Blackfire's and Luden's damage). We model it, including Luden's leftover-stack hits. Check that it's still in the game. The wiki also lists Hextech Alternator and runes (version 2).
-- **Order inside one dagger: R's damage → on-attack effects → on-hit effects.** So Guinsoo's and Yun Tal's attack speed only help the NEXT dagger.
-- **Guinsoo's Phantom Hits:** after daggers 7, 10, 13, at R's 25 / 30 / 35% (Eric doesn't know; old wiki text said 100%). They give Kraken and Hullbreaker stacks, but not Energize stacks.
+- **The Death Lotus bug on Blackfire** (confirmed for Liandry's and Luden's, not measured for Blackfire). The wiki also lists Hextech Alternator and runes (version 2).
+- **Guinsoo's Phantom Hits give Kraken and Hullbreaker stacks, but not Energize stacks** (their timing and size are confirmed).
 - **Kraken Slayer's missing-health bonus grows in a straight line** (the wiki's "0 to 75 by 5" might mean 5% steps).
 - **Hullbreaker procs on every 5th hit** (daggers 5, 10, 15). The wiki's "at maximum stacks, or 4 stacks" is unclear; it could be every 6th hit.
 - **Energized items proc once, on dagger 1:** each dagger gives 6 Energize, not Statikk's 15. Statikk's lightning is not shrunk by R's % (wiki), the others are.

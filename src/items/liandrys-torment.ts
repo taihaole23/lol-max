@@ -1,7 +1,7 @@
 // Liandry's Torment.
 // "Torment": ability damage burns the target: 1% of its MAXIMUM health as magic damage
 //   every 0.5 s for 3 s. Every dagger refreshes the burn, so it keeps going all ult:
-//   ticks at 0.5, 1.0, 1.5, 2.0 and 2.5 s (see ticking.ts for the first-tick assumption).
+//   ticks at 0, 0.5, 1.0, 1.5, 2.0 and 2.5 s (first tick right away: measured, see ticking.ts).
 // "Suffering": for each second in combat, deal 2% more damage, up to 3 stacks (6%).
 //   During the 2.5 s ult that's 0% → 2% at 1 s → 4% at 2 s. It boosts the burn too.
 // Death Lotus BUG (listed on the wiki, so it's how the game really plays): R's on-hit

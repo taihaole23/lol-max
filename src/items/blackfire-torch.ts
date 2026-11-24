@@ -1,8 +1,9 @@
 // Blackfire Torch.
 // "Baleful Blaze": ability damage burns the target: 10 + 1% AP magic damage every 0.5 s
-//   for 3 s. Every dagger refreshes it, like Liandry's burn: ticks at 0.5, 1.0 ... 2.5 s.
-//   (The wiki mentions a bug where the first tick sometimes lands with the triggering hit.
-//   We use the shared "first tick one interval later" assumption; see ticking.ts.)
+//   for 3 s. Every dagger refreshes it, like Liandry's burn: ticks at 0, 0.5, 1.0 ... 2.5 s.
+//   (The first tick lands with the triggering hit: measured for Liandry's in the Practice Tool,
+//   and the wiki mentions it for Blackfire too. See ticking.ts.)
+//   The 0 s tick comes before the +4% AP below, so only the later ticks get it.
 // "Blackfire": +4% AP while the target burns. The burn lasts 3 s and every dagger refreshes
 //   it, so once dagger 1 starts it, it never ends during the ult.
 //   The 4% ADDS to other % AP (Rabadon's 30% + 4% = 34%), per the wiki.

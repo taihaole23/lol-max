@@ -1,7 +1,7 @@
 // Shared code for "Immolate" (Sunfire Aegis, Hollow Radiance; they're in the same item group,
 // so a build has at most one). Dealing damage turns it on for 3 s, and its own damage keeps
 // it on. While on, it deals magic damage every second to enemies next to Katarina:
-// base + a share of her BONUS health. During the ult: ticks at 1 s and 2 s (see ticking.ts).
+// base + a share of her BONUS health. During the ult: ticks at 0, 1 and 2 s (see ticking.ts).
 import { tickingEffect } from "./ticking.ts";
 import type { ItemEffect } from "../simulation/simulate.ts";
 

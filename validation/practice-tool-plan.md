@@ -40,6 +40,9 @@ Avoid the health shards: Riftmaker turns HP into AP (test 13). Avoid adaptive an
 5. Walk right next to the dummy and press **R**. Don't move until the ult ends.
 6. Read the dummy's **total damage** right away: it clears 3 s after the last hit.
    Tip: press **F12** for a screenshot the moment the ult ends.
+   **Better (learned in round 2):** click the dummy first, record the ult, and read its **HP** right
+   after the last dagger. The total damage counter adds one of R's physical hits that never happened;
+   the HP bar is exact. Put HP readings in `hpAfter` in `tests/practice-tool-cases.ts`.
 7. Do it **twice** and write down both numbers.
 
 **Changing the dummy's resistances:** Ctrl+Shift+G adds 10 (Ctrl+Shift+H removes 10). Tests 4 and 8 need
@@ -87,7 +90,7 @@ Same setup as before. Raise the dummy's HP where the table says (Ctrl+Shift+T, +
 | 7a | 6 | 1 | Bloodthirster | 3000 / 0 | Test 7 at low level | 632 | |
 | 7c | 11 | 2 | Death's Dance | 3000 / 0 | Is it Bloodthirster itself? | 815 | |
 | 7b | 16 | 3 | Bloodthirster | 3000 / 0 | Test 7 at high level | 1180 | |
-| 17 | 16 | 3 | Guinsoo's + BotRK | **6000** / 0 | Phantom Hits repeat BotRK | 3525 | |
+| 17 | 16 | 3 | Guinsoo's + BotRK | **6000** / 0 | Phantom Hits repeat BotRK | 3963 (first listed as 3525: that was for 5000 HP) | |
 | 18 | 16 | 3 | Guinsoo's + BotRK + Terminus | **5000** / **50** | All three together | 3252 | |
 | 19 | 16 | 3 | Nashor's + Guinsoo's | **4000** / 0 | On-hit Katarina | 1841 | |
 | 20 | 16 | 3 | Liandry's + Riftmaker | **4000** / 0 | Two % boosts together | 1262 | |

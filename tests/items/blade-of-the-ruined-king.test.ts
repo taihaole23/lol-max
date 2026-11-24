@@ -3,13 +3,16 @@ import { run, easyDummy } from "./helpers.ts";
 
 const name = "Blade of The Ruined King";
 
-test("9% of the dummy's CURRENT health, read after that dagger's own damage", () => {
+test("9% of the dummy's CURRENT health, read BEFORE that dagger's own damage", () => {
+  // On-hit lands before R's own damage (measured in the Practice Tool, Step 8).
   const dummy = { ...easyDummy, hp: 10_000 };
   const { events } = run(16, [name], dummy);
-  // The first dagger's R damage (base, AP ratio, AD ratio) lands first, then BotRK.
-  const firstDaggerDamage = events[0].amount + events[1].amount + events[2].amount;
-  expect(events[3].source).toBe(name);
-  expect(events[3].amount).toBeCloseTo(0.09 * (10_000 - firstDaggerDamage) * 0.35);
+  expect(events[0].source).toBe(name); // dagger 1: BotRK first, at full health
+  expect(events[0].amount).toBeCloseTo(0.09 * 10_000 * 0.35);
+  // Dagger 2's BotRK reads the health left after all of dagger 1 (BotRK + R's 3 pieces).
+  const dagger1 = events.slice(0, 4).reduce((sum, e) => sum + e.amount, 0);
+  expect(events[4].source).toBe(name);
+  expect(events[4].amount).toBeCloseTo(0.09 * (10_000 - dagger1) * 0.35);
 });
 
 test("later daggers deal less, because the dummy has less health", () => {

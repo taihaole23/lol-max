@@ -17,4 +17,13 @@ export const practiceDummy = {
   // damage counter under-reports any ult that would kill it. Tests keep the expected damage below
   // this share of its HP, to stay clear of that.
   safeShareOfHp: 0.8,
+  // Tests read only off the HP bar don't need that room for the counter: the dummy just has to
+  // stay clearly above 1 HP, so its HP bar still shows the real damage.
+  hpBarSafeShareOfHp: 0.95,
+  // MEASURED (Step 8, patch 26.23), not on the wiki: the "total damage" counter shows one of
+  // R's physical hits MORE than the dummy really took. Test 7b (Bloodthirster): 15 physical hits of
+  // 28 and 15 magic of 50 on screen, HP bar 3000 → 1821 (1179 lost, calculator 1180), but the
+  // counter said 1209. Magic-only tests are exact on the counter. So with physical damage, the
+  // HP bar is the reliable reading; counter readings are compared with this added on.
+  counterExtraRPhysicalHits: 1,
 };
