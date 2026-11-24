@@ -187,8 +187,8 @@ body:has(.page-champion) .topbar::before {
 .topbar-links { margin-left: auto; display: flex; align-items: center; gap: var(--s4); white-space: nowrap; }
 .topbar-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
 .topbar-links a:hover { color: var(--text); }
-/* The theme switch: just a sun or moon icon (Eric), square, the icon in the text colour. */
-.theme-toggle { width: 36px; height: 36px; padding: 0; display: grid; place-items: center; color: var(--muted); }
+/* The theme switch: just a sun or moon icon (Eric), round (Eric), the icon in the text colour. */
+.theme-toggle { width: 36px; height: 36px; padding: 0; border-radius: 50%; display: grid; place-items: center; color: var(--muted); }
 .theme-toggle:hover:not(:disabled) { color: var(--text); }
 .theme-toggle svg { width: 18px; height: 18px; }
 .site-footer { padding: var(--s5) var(--s4); text-align: center; color: var(--faint); font-size: 0.8rem; border-top: 1px solid var(--border); }
