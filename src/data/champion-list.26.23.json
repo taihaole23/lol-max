@@ -1,0 +1,872 @@
+{
+  "source": "https://ddragon.leagueoflegends.com/cdn/16.23.1/data/en_US/champion.json",
+  "ddragonVersion": "16.23.1",
+  "patch": "26.23",
+  "champions": [
+    {
+      "slug": "aatrox",
+      "name": "Aatrox",
+      "ddragonId": "Aatrox"
+    },
+    {
+      "slug": "ahri",
+      "name": "Ahri",
+      "ddragonId": "Ahri"
+    },
+    {
+      "slug": "akali",
+      "name": "Akali",
+      "ddragonId": "Akali"
+    },
+    {
+      "slug": "akshan",
+      "name": "Akshan",
+      "ddragonId": "Akshan"
+    },
+    {
+      "slug": "alistar",
+      "name": "Alistar",
+      "ddragonId": "Alistar"
+    },
+    {
+      "slug": "ambessa",
+      "name": "Ambessa",
+      "ddragonId": "Ambessa"
+    },
+    {
+      "slug": "amumu",
+      "name": "Amumu",
+      "ddragonId": "Amumu"
+    },
+    {
+      "slug": "anivia",
+      "name": "Anivia",
+      "ddragonId": "Anivia"
+    },
+    {
+      "slug": "annie",
+      "name": "Annie",
+      "ddragonId": "Annie"
+    },
+    {
+      "slug": "aphelios",
+      "name": "Aphelios",
+      "ddragonId": "Aphelios"
+    },
+    {
+      "slug": "ashe",
+      "name": "Ashe",
+      "ddragonId": "Ashe"
+    },
+    {
+      "slug": "aurelionsol",
+      "name": "Aurelion Sol",
+      "ddragonId": "AurelionSol"
+    },
+    {
+      "slug": "aurora",
+      "name": "Aurora",
+      "ddragonId": "Aurora"
+    },
+    {
+      "slug": "azir",
+      "name": "Azir",
+      "ddragonId": "Azir"
+    },
+    {
+      "slug": "bard",
+      "name": "Bard",
+      "ddragonId": "Bard"
+    },
+    {
+      "slug": "belveth",
+      "name": "Bel'Veth",
+      "ddragonId": "Belveth"
+    },
+    {
+      "slug": "blitzcrank",
+      "name": "Blitzcrank",
+      "ddragonId": "Blitzcrank"
+    },
+    {
+      "slug": "brand",
+      "name": "Brand",
+      "ddragonId": "Brand"
+    },
+    {
+      "slug": "braum",
+      "name": "Braum",
+      "ddragonId": "Braum"
+    },
+    {
+      "slug": "briar",
+      "name": "Briar",
+      "ddragonId": "Briar"
+    },
+    {
+      "slug": "caitlyn",
+      "name": "Caitlyn",
+      "ddragonId": "Caitlyn"
+    },
+    {
+      "slug": "camille",
+      "name": "Camille",
+      "ddragonId": "Camille"
+    },
+    {
+      "slug": "cassiopeia",
+      "name": "Cassiopeia",
+      "ddragonId": "Cassiopeia"
+    },
+    {
+      "slug": "chogath",
+      "name": "Cho'Gath",
+      "ddragonId": "Chogath"
+    },
+    {
+      "slug": "corki",
+      "name": "Corki",
+      "ddragonId": "Corki"
+    },
+    {
+      "slug": "darius",
+      "name": "Darius",
+      "ddragonId": "Darius"
+    },
+    {
+      "slug": "diana",
+      "name": "Diana",
+      "ddragonId": "Diana"
+    },
+    {
+      "slug": "drmundo",
+      "name": "Dr. Mundo",
+      "ddragonId": "DrMundo"
+    },
+    {
+      "slug": "draven",
+      "name": "Draven",
+      "ddragonId": "Draven"
+    },
+    {
+      "slug": "ekko",
+      "name": "Ekko",
+      "ddragonId": "Ekko"
+    },
+    {
+      "slug": "elise",
+      "name": "Elise",
+      "ddragonId": "Elise"
+    },
+    {
+      "slug": "evelynn",
+      "name": "Evelynn",
+      "ddragonId": "Evelynn"
+    },
+    {
+      "slug": "ezreal",
+      "name": "Ezreal",
+      "ddragonId": "Ezreal"
+    },
+    {
+      "slug": "fiddlesticks",
+      "name": "Fiddlesticks",
+      "ddragonId": "Fiddlesticks"
+    },
+    {
+      "slug": "fiora",
+      "name": "Fiora",
+      "ddragonId": "Fiora"
+    },
+    {
+      "slug": "fizz",
+      "name": "Fizz",
+      "ddragonId": "Fizz"
+    },
+    {
+      "slug": "galio",
+      "name": "Galio",
+      "ddragonId": "Galio"
+    },
+    {
+      "slug": "gangplank",
+      "name": "Gangplank",
+      "ddragonId": "Gangplank"
+    },
+    {
+      "slug": "garen",
+      "name": "Garen",
+      "ddragonId": "Garen"
+    },
+    {
+      "slug": "gnar",
+      "name": "Gnar",
+      "ddragonId": "Gnar"
+    },
+    {
+      "slug": "gragas",
+      "name": "Gragas",
+      "ddragonId": "Gragas"
+    },
+    {
+      "slug": "graves",
+      "name": "Graves",
+      "ddragonId": "Graves"
+    },
+    {
+      "slug": "gwen",
+      "name": "Gwen",
+      "ddragonId": "Gwen"
+    },
+    {
+      "slug": "hecarim",
+      "name": "Hecarim",
+      "ddragonId": "Hecarim"
+    },
+    {
+      "slug": "heimerdinger",
+      "name": "Heimerdinger",
+      "ddragonId": "Heimerdinger"
+    },
+    {
+      "slug": "hwei",
+      "name": "Hwei",
+      "ddragonId": "Hwei"
+    },
+    {
+      "slug": "illaoi",
+      "name": "Illaoi",
+      "ddragonId": "Illaoi"
+    },
+    {
+      "slug": "irelia",
+      "name": "Irelia",
+      "ddragonId": "Irelia"
+    },
+    {
+      "slug": "ivern",
+      "name": "Ivern",
+      "ddragonId": "Ivern"
+    },
+    {
+      "slug": "janna",
+      "name": "Janna",
+      "ddragonId": "Janna"
+    },
+    {
+      "slug": "jarvaniv",
+      "name": "Jarvan IV",
+      "ddragonId": "JarvanIV"
+    },
+    {
+      "slug": "jax",
+      "name": "Jax",
+      "ddragonId": "Jax"
+    },
+    {
+      "slug": "jayce",
+      "name": "Jayce",
+      "ddragonId": "Jayce"
+    },
+    {
+      "slug": "jhin",
+      "name": "Jhin",
+      "ddragonId": "Jhin"
+    },
+    {
+      "slug": "jinx",
+      "name": "Jinx",
+      "ddragonId": "Jinx"
+    },
+    {
+      "slug": "ksante",
+      "name": "K'Sante",
+      "ddragonId": "KSante"
+    },
+    {
+      "slug": "kaisa",
+      "name": "Kai'Sa",
+      "ddragonId": "Kaisa"
+    },
+    {
+      "slug": "kalista",
+      "name": "Kalista",
+      "ddragonId": "Kalista"
+    },
+    {
+      "slug": "karma",
+      "name": "Karma",
+      "ddragonId": "Karma"
+    },
+    {
+      "slug": "karthus",
+      "name": "Karthus",
+      "ddragonId": "Karthus"
+    },
+    {
+      "slug": "kassadin",
+      "name": "Kassadin",
+      "ddragonId": "Kassadin"
+    },
+    {
+      "slug": "katarina",
+      "name": "Katarina",
+      "ddragonId": "Katarina"
+    },
+    {
+      "slug": "kayle",
+      "name": "Kayle",
+      "ddragonId": "Kayle"
+    },
+    {
+      "slug": "kayn",
+      "name": "Kayn",
+      "ddragonId": "Kayn"
+    },
+    {
+      "slug": "kennen",
+      "name": "Kennen",
+      "ddragonId": "Kennen"
+    },
+    {
+      "slug": "khazix",
+      "name": "Kha'Zix",
+      "ddragonId": "Khazix"
+    },
+    {
+      "slug": "kindred",
+      "name": "Kindred",
+      "ddragonId": "Kindred"
+    },
+    {
+      "slug": "kled",
+      "name": "Kled",
+      "ddragonId": "Kled"
+    },
+    {
+      "slug": "kogmaw",
+      "name": "Kog'Maw",
+      "ddragonId": "KogMaw"
+    },
+    {
+      "slug": "leblanc",
+      "name": "LeBlanc",
+      "ddragonId": "Leblanc"
+    },
+    {
+      "slug": "leesin",
+      "name": "Lee Sin",
+      "ddragonId": "LeeSin"
+    },
+    {
+      "slug": "leona",
+      "name": "Leona",
+      "ddragonId": "Leona"
+    },
+    {
+      "slug": "lillia",
+      "name": "Lillia",
+      "ddragonId": "Lillia"
+    },
+    {
+      "slug": "lissandra",
+      "name": "Lissandra",
+      "ddragonId": "Lissandra"
+    },
+    {
+      "slug": "locke",
+      "name": "Locke",
+      "ddragonId": "Locke"
+    },
+    {
+      "slug": "lucian",
+      "name": "Lucian",
+      "ddragonId": "Lucian"
+    },
+    {
+      "slug": "lulu",
+      "name": "Lulu",
+      "ddragonId": "Lulu"
+    },
+    {
+      "slug": "lux",
+      "name": "Lux",
+      "ddragonId": "Lux"
+    },
+    {
+      "slug": "malphite",
+      "name": "Malphite",
+      "ddragonId": "Malphite"
+    },
+    {
+      "slug": "malzahar",
+      "name": "Malzahar",
+      "ddragonId": "Malzahar"
+    },
+    {
+      "slug": "maokai",
+      "name": "Maokai",
+      "ddragonId": "Maokai"
+    },
+    {
+      "slug": "masteryi",
+      "name": "Master Yi",
+      "ddragonId": "MasterYi"
+    },
+    {
+      "slug": "mel",
+      "name": "Mel",
+      "ddragonId": "Mel"
+    },
+    {
+      "slug": "milio",
+      "name": "Milio",
+      "ddragonId": "Milio"
+    },
+    {
+      "slug": "missfortune",
+      "name": "Miss Fortune",
+      "ddragonId": "MissFortune"
+    },
+    {
+      "slug": "mordekaiser",
+      "name": "Mordekaiser",
+      "ddragonId": "Mordekaiser"
+    },
+    {
+      "slug": "morgana",
+      "name": "Morgana",
+      "ddragonId": "Morgana"
+    },
+    {
+      "slug": "naafiri",
+      "name": "Naafiri",
+      "ddragonId": "Naafiri"
+    },
+    {
+      "slug": "nami",
+      "name": "Nami",
+      "ddragonId": "Nami"
+    },
+    {
+      "slug": "nasus",
+      "name": "Nasus",
+      "ddragonId": "Nasus"
+    },
+    {
+      "slug": "nautilus",
+      "name": "Nautilus",
+      "ddragonId": "Nautilus"
+    },
+    {
+      "slug": "neeko",
+      "name": "Neeko",
+      "ddragonId": "Neeko"
+    },
+    {
+      "slug": "nidalee",
+      "name": "Nidalee",
+      "ddragonId": "Nidalee"
+    },
+    {
+      "slug": "nilah",
+      "name": "Nilah",
+      "ddragonId": "Nilah"
+    },
+    {
+      "slug": "nocturne",
+      "name": "Nocturne",
+      "ddragonId": "Nocturne"
+    },
+    {
+      "slug": "nunuwillump",
+      "name": "Nunu & Willump",
+      "ddragonId": "Nunu"
+    },
+    {
+      "slug": "olaf",
+      "name": "Olaf",
+      "ddragonId": "Olaf"
+    },
+    {
+      "slug": "orianna",
+      "name": "Orianna",
+      "ddragonId": "Orianna"
+    },
+    {
+      "slug": "ornn",
+      "name": "Ornn",
+      "ddragonId": "Ornn"
+    },
+    {
+      "slug": "pantheon",
+      "name": "Pantheon",
+      "ddragonId": "Pantheon"
+    },
+    {
+      "slug": "poppy",
+      "name": "Poppy",
+      "ddragonId": "Poppy"
+    },
+    {
+      "slug": "pyke",
+      "name": "Pyke",
+      "ddragonId": "Pyke"
+    },
+    {
+      "slug": "qiyana",
+      "name": "Qiyana",
+      "ddragonId": "Qiyana"
+    },
+    {
+      "slug": "quinn",
+      "name": "Quinn",
+      "ddragonId": "Quinn"
+    },
+    {
+      "slug": "rakan",
+      "name": "Rakan",
+      "ddragonId": "Rakan"
+    },
+    {
+      "slug": "rammus",
+      "name": "Rammus",
+      "ddragonId": "Rammus"
+    },
+    {
+      "slug": "reksai",
+      "name": "Rek'Sai",
+      "ddragonId": "RekSai"
+    },
+    {
+      "slug": "rell",
+      "name": "Rell",
+      "ddragonId": "Rell"
+    },
+    {
+      "slug": "renataglasc",
+      "name": "Renata Glasc",
+      "ddragonId": "Renata"
+    },
+    {
+      "slug": "renekton",
+      "name": "Renekton",
+      "ddragonId": "Renekton"
+    },
+    {
+      "slug": "rengar",
+      "name": "Rengar",
+      "ddragonId": "Rengar"
+    },
+    {
+      "slug": "riven",
+      "name": "Riven",
+      "ddragonId": "Riven"
+    },
+    {
+      "slug": "rumble",
+      "name": "Rumble",
+      "ddragonId": "Rumble"
+    },
+    {
+      "slug": "ryze",
+      "name": "Ryze",
+      "ddragonId": "Ryze"
+    },
+    {
+      "slug": "samira",
+      "name": "Samira",
+      "ddragonId": "Samira"
+    },
+    {
+      "slug": "sejuani",
+      "name": "Sejuani",
+      "ddragonId": "Sejuani"
+    },
+    {
+      "slug": "senna",
+      "name": "Senna",
+      "ddragonId": "Senna"
+    },
+    {
+      "slug": "seraphine",
+      "name": "Seraphine",
+      "ddragonId": "Seraphine"
+    },
+    {
+      "slug": "sett",
+      "name": "Sett",
+      "ddragonId": "Sett"
+    },
+    {
+      "slug": "shaco",
+      "name": "Shaco",
+      "ddragonId": "Shaco"
+    },
+    {
+      "slug": "shen",
+      "name": "Shen",
+      "ddragonId": "Shen"
+    },
+    {
+      "slug": "shyvana",
+      "name": "Shyvana",
+      "ddragonId": "Shyvana"
+    },
+    {
+      "slug": "singed",
+      "name": "Singed",
+      "ddragonId": "Singed"
+    },
+    {
+      "slug": "sion",
+      "name": "Sion",
+      "ddragonId": "Sion"
+    },
+    {
+      "slug": "sivir",
+      "name": "Sivir",
+      "ddragonId": "Sivir"
+    },
+    {
+      "slug": "skarner",
+      "name": "Skarner",
+      "ddragonId": "Skarner"
+    },
+    {
+      "slug": "smolder",
+      "name": "Smolder",
+      "ddragonId": "Smolder"
+    },
+    {
+      "slug": "sona",
+      "name": "Sona",
+      "ddragonId": "Sona"
+    },
+    {
+      "slug": "soraka",
+      "name": "Soraka",
+      "ddragonId": "Soraka"
+    },
+    {
+      "slug": "swain",
+      "name": "Swain",
+      "ddragonId": "Swain"
+    },
+    {
+      "slug": "sylas",
+      "name": "Sylas",
+      "ddragonId": "Sylas"
+    },
+    {
+      "slug": "syndra",
+      "name": "Syndra",
+      "ddragonId": "Syndra"
+    },
+    {
+      "slug": "tahmkench",
+      "name": "Tahm Kench",
+      "ddragonId": "TahmKench"
+    },
+    {
+      "slug": "taliyah",
+      "name": "Taliyah",
+      "ddragonId": "Taliyah"
+    },
+    {
+      "slug": "talon",
+      "name": "Talon",
+      "ddragonId": "Talon"
+    },
+    {
+      "slug": "taric",
+      "name": "Taric",
+      "ddragonId": "Taric"
+    },
+    {
+      "slug": "teemo",
+      "name": "Teemo",
+      "ddragonId": "Teemo"
+    },
+    {
+      "slug": "thresh",
+      "name": "Thresh",
+      "ddragonId": "Thresh"
+    },
+    {
+      "slug": "tristana",
+      "name": "Tristana",
+      "ddragonId": "Tristana"
+    },
+    {
+      "slug": "trundle",
+      "name": "Trundle",
+      "ddragonId": "Trundle"
+    },
+    {
+      "slug": "tryndamere",
+      "name": "Tryndamere",
+      "ddragonId": "Tryndamere"
+    },
+    {
+      "slug": "twistedfate",
+      "name": "Twisted Fate",
+      "ddragonId": "TwistedFate"
+    },
+    {
+      "slug": "twitch",
+      "name": "Twitch",
+      "ddragonId": "Twitch"
+    },
+    {
+      "slug": "udyr",
+      "name": "Udyr",
+      "ddragonId": "Udyr"
+    },
+    {
+      "slug": "urgot",
+      "name": "Urgot",
+      "ddragonId": "Urgot"
+    },
+    {
+      "slug": "varus",
+      "name": "Varus",
+      "ddragonId": "Varus"
+    },
+    {
+      "slug": "vayne",
+      "name": "Vayne",
+      "ddragonId": "Vayne"
+    },
+    {
+      "slug": "veigar",
+      "name": "Veigar",
+      "ddragonId": "Veigar"
+    },
+    {
+      "slug": "velkoz",
+      "name": "Vel'Koz",
+      "ddragonId": "Velkoz"
+    },
+    {
+      "slug": "vex",
+      "name": "Vex",
+      "ddragonId": "Vex"
+    },
+    {
+      "slug": "vi",
+      "name": "Vi",
+      "ddragonId": "Vi"
+    },
+    {
+      "slug": "viego",
+      "name": "Viego",
+      "ddragonId": "Viego"
+    },
+    {
+      "slug": "viktor",
+      "name": "Viktor",
+      "ddragonId": "Viktor"
+    },
+    {
+      "slug": "vladimir",
+      "name": "Vladimir",
+      "ddragonId": "Vladimir"
+    },
+    {
+      "slug": "volibear",
+      "name": "Volibear",
+      "ddragonId": "Volibear"
+    },
+    {
+      "slug": "warwick",
+      "name": "Warwick",
+      "ddragonId": "Warwick"
+    },
+    {
+      "slug": "wukong",
+      "name": "Wukong",
+      "ddragonId": "MonkeyKing"
+    },
+    {
+      "slug": "xayah",
+      "name": "Xayah",
+      "ddragonId": "Xayah"
+    },
+    {
+      "slug": "xerath",
+      "name": "Xerath",
+      "ddragonId": "Xerath"
+    },
+    {
+      "slug": "xinzhao",
+      "name": "Xin Zhao",
+      "ddragonId": "XinZhao"
+    },
+    {
+      "slug": "yasuo",
+      "name": "Yasuo",
+      "ddragonId": "Yasuo"
+    },
+    {
+      "slug": "yone",
+      "name": "Yone",
+      "ddragonId": "Yone"
+    },
+    {
+      "slug": "yorick",
+      "name": "Yorick",
+      "ddragonId": "Yorick"
+    },
+    {
+      "slug": "yunara",
+      "name": "Yunara",
+      "ddragonId": "Yunara"
+    },
+    {
+      "slug": "yuumi",
+      "name": "Yuumi",
+      "ddragonId": "Yuumi"
+    },
+    {
+      "slug": "zaahen",
+      "name": "Zaahen",
+      "ddragonId": "Zaahen"
+    },
+    {
+      "slug": "zac",
+      "name": "Zac",
+      "ddragonId": "Zac"
+    },
+    {
+      "slug": "zed",
+      "name": "Zed",
+      "ddragonId": "Zed"
+    },
+    {
+      "slug": "zeri",
+      "name": "Zeri",
+      "ddragonId": "Zeri"
+    },
+    {
+      "slug": "ziggs",
+      "name": "Ziggs",
+      "ddragonId": "Ziggs"
+    },
+    {
+      "slug": "zilean",
+      "name": "Zilean",
+      "ddragonId": "Zilean"
+    },
+    {
+      "slug": "zoe",
+      "name": "Zoe",
+      "ddragonId": "Zoe"
+    },
+    {
+      "slug": "zyra",
+      "name": "Zyra",
+      "ddragonId": "Zyra"
+    }
+  ]
+}

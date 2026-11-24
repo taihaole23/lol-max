@@ -58,6 +58,12 @@ These notes are for anyone joining the project.
   - **Test 22, a blind prediction:** BotRK + Guinsoo's + Statikk + Yun Tal + Kraken + Shadowflame, level 16, 10,000 HP dummy, 10 resist. Predicted **966** HP left before Eric cast; he measured **970** and **980** (−0.05% / −0.16%). First in-game check of Statikk, Yun Tal, Kraken and Shadowflame. The two tries differ by 10, about the game's own run-to-run variation.
   - Leftovers (all inside the 1% tolerance, causes unknown): Riftmaker tests 13 and 20 −0.5% (magic only, so not the counter), and 18 (Guinsoo's + BotRK + Terminus, 50 resist) −0.5%.
 
+- **Redesign before deploying (Eric, after Step 8):** the page is rebuilt in 4 parts before Step 9.
+  - Part 1 (icons) is done: `scripts/update-icons.mjs` (`npm run update-icons 16.23.1`) saves every champion's icon and 4 ability icons, every item icon (`public/icons/`), and the champion list (`src/data/champion-list.26.23.json`). 9.4 MB in total. `tests/icons.test.ts` checks every icon exists.
+  - Part 2: pages (home with a big search bar, champion page, "How it works" page), real web addresses, dark theme with a light toggle.
+  - Part 3: champion page layout (ability icons, fixed 6-slot item row with boots on the left, icons everywhere).
+  - Part 4: results as "damage + item icons" rows.
+
 ## Confirmed in the Practice Tool (Step 8, patch 26.23)
 - **Within one dagger: on-hit effects → R's own damage → on-attack effects** (HP bar, test 17). Was assumed the other way round.
 - **Burns tick right away, then every interval** (Liandry's, tests 12 and 20). Applied to every ticking effect (Liandry's, Blackfire, Sunfire, Hollow Radiance) at Eric's call; only Liandry's was measured.
@@ -159,6 +165,15 @@ validation/    Practice Tool test plan and measurements
   - The dummy starts at 0 armor / MR, so armor / MR added with the cheat counts as bonus; HP above its 1000 counts as bonus HP.
   - Neutral rune page (checked on each rune's wiki page): Guardian, Demolish, Second Wind, Unflinching + Cash Back, Cosmic Insight; shards ability haste, move speed, tenacity. Not the health shards: Riftmaker turns HP into AP. Move speed only matters for Swiftmarch, which isn't tested.
   - Plain test items: Zhonya's (only AP) and Bloodthirster (only AD). No item gives only AD or only AP without HP, but HP changes nothing without an HP-scaling item.
+- **The redesign (Eric, after Step 8):**
+  - Dark theme by default, with a light toggle. A dark stats-site look of our own (not a copy of any other site).
+  - Home page = title + a long search bar. The search lists EVERY champion (Eric) and narrows as you type; champions the site can't calculate yet are marked "coming soon". Then the champion page has a smaller search bar at the top to switch.
+  - Ability icons with the name on hover. Enemy types show the dummy champion's own icon (Eric: Nami / Illaoi / Sion), since that's what the dummy is.
+  - Item slots: a FIXED row of 6, boots always on the far left, +/− never move. Switched-off slots stay in place, greyed out.
+  - Top 5: damage + item icons, names on hover. Rules / filtered items / sources move to their own "How it works" page.
+  - Real web addresses (`/katarina/r`, `/about`), not `#` ones (Eric). Needs a Vercel setting so those addresses load the site.
+  - Built so a new champion is data only: one champion list, one ability page for any champion and ability, icons from a script.
+- **Icons are saved copies from Data Dragon, not loaded from Riot while the site runs:** same rule as item data, so the site can't break or change if Riot's server does. Riot allows fan projects to use them if the site says it's a fan project (it does). All 173 champions' ability icons are saved too (4 MB), so adding a champion needs no icon work.
 - **Ties rank the cheaper build first, then by name:** so the top 5 never depends on the order the search happened to try builds.
 - **Builds are always listed in the same item order** (legendaries in pool order, then boots): BotRK reads current HP, so item order can change the damage by a hair. With one order, both searches give the exact same number for the same build.
 - **"Item interactions" can be negative:** each item's marginal damage is "with the build minus without that item". When items boost each other (Rabadon's × another AP item), the boost shows up in BOTH items' marginals, so interactions take one copy back out, and the line adds up to the total.

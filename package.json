@@ -10,7 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:slow": "vitest run tests/optimizer/search.slow.test.ts",
-    "update-items": "node scripts/update-items.mjs"
+    "update-items": "node scripts/update-items.mjs",
+    "update-icons": "node scripts/update-icons.mjs"
   },
   "devDependencies": {
     "typescript": "~7.0.2",
