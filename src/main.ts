@@ -12,6 +12,10 @@ import { mountAboutPage, mountHomePage, mountNotFoundPage } from "./ui/pages/sim
 import { paths, startRouter, type Route } from "./ui/router.ts";
 import { applyTheme, currentTheme } from "./ui/theme.ts";
 import { startTooltips } from "./ui/tooltip.ts";
+import { inject } from '@vercel/analytics';
+
+//vercel analytics
+inject();
 
 // One floating tooltip for the whole site (item cards, ability names).
 startTooltips();
