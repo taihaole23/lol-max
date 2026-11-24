@@ -26,6 +26,19 @@ export const ultimateRanks = {
   levels: [6, 11, 16],
 };
 
+// The champion levels at which a basic ability (Q, W, E) can reach rank 1, 2, 3, 4, 5.
+// So at level 6 a basic ability can be at most rank 3.
+export const basicAbilityRanks = {
+  source: { url: WIKI + "Champion_ability", patch: "26.23" },
+  levels: [1, 3, 5, 7, 9],
+};
+
+// A champion gets one skill point per level, so the ranks of all 4 abilities add up to at most the level.
+export const skillPoints = {
+  source: { url: WIKI + "Champion_ability", patch: "26.23" },
+  perLevel: 1,
+};
+
 // The highest champion level. Rod of Ages' extra level can't go past it.
 export const championLevels = {
   source: { url: WIKI + "Experience_(champion)", patch: "26.23" },
@@ -67,4 +80,10 @@ export const moveSpeed = {
 export const simulationRules = {
   // Overkill rule: the dummy never dies. Its HP stops here, and later hits still count in full.
   minimumHp: 1,
+  // Damage window for one-hit abilities (Q, E), in seconds after the hit (Eric: count item effects
+  // "for as long as items need"). Every modelled effect one hit can start is over by then: burns
+  // (Liandry's, Blackfire) last 3 s, Luden's leftovers 1.25 s, Stormsurge's strike 2 s.
+  // The exception is Immolate (Sunfire, Hollow Radiance): the wiki says its own damage keeps it
+  // burning forever, so it needs a cut-off, and this is it.
+  oneHitWindowSeconds: 3,
 };

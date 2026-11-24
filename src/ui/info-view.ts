@@ -10,6 +10,7 @@ import { searchSettings } from "../optimizer/search.ts";
 import { escapeHtml } from "./html.ts";
 
 const r = katarina.deathLotus;
+const e = katarina.shunpo;
 const percents = (list: readonly number[]) => list.map((x) => `${Math.round(x * 100)}`).join(" / ") + "%";
 
 export function rulesHtml(): string {
@@ -19,24 +20,36 @@ export function rulesHtml(): string {
 
     <h3>What "damage" means</h3>
     <ul>
-      <li><strong>One full channel, one target:</strong> all ${r.daggersPerTarget} daggers of one Death Lotus
-        (${r.channelSeconds} s) hit one target dummy.</li>
-      <li><strong>Channel window:</strong> on-hit, on-attack and item effects triggered during the channel count.
+      <li><strong>Death Lotus (R), one full channel, one target:</strong> all ${r.daggersPerTarget} daggers of one
+        Death Lotus (${r.channelSeconds} s) hit one target dummy.</li>
+      <li><strong>Channel window (R):</strong> on-hit, on-attack and item effects triggered during the channel count.
         Burns and other damage over time only count for the part that lands before the channel ends.</li>
+      <li><strong>Bouncing Blade (Q) and Shunpo (E), one hit:</strong> one cast hits the dummy once (with one
+        target, Q has nothing to bounce to). Item effects the hit starts count until they end, up to
+        ${simulationRules.oneHitWindowSeconds} s after the hit. Every modelled burn is over by then; Sunfire's and
+        Hollow Radiance's aura keeps itself going forever, so it's cut off there.</li>
+      <li><strong>Preparation (W)</strong> deals no damage by itself, so it isn't calculated. Daggers on the ground
+        (her passive) aren't modelled, so Q and E don't count picking one up either.</li>
       <li><strong>Overkill rule:</strong> the dummy never dies. Once a hit would kill it, it stays at
         ${simulationRules.minimumHp} HP and every later hit still counts in full. Effects that depend on the
         target's HP then see ${simulationRules.minimumHp} HP.</li>
-      <li><strong>On-hit:</strong> each dagger applies on-hit and on-attack effects at ${percents(r.onHitEffectiveness)}
-        of their damage, by R rank.</li>
+      <li><strong>On-hit:</strong> each R dagger applies on-hit and on-attack effects at ${percents(r.onHitEffectiveness)}
+        of their damage, by R rank. Shunpo (E) applies on-hit effects at ${percents([e.onHitEffectiveness])}.
+        Bouncing Blade (Q) applies none.</li>
+      <li><strong>Ranks follow the game's rules:</strong> Q, W and E can reach rank 1 to 5 at levels 1, 3, 5, 7
+        and 9, R reaches rank 1 to 3 at levels 6, 11 and 16, and all ranks together can't be more than the level.
+        The stage presets level Katarina the usual way: R whenever possible, then max Q, then E, then W.</li>
       <li><strong>No runes</strong> (planned for version 2).</li>
     </ul>
 
     <h3>Item passives</h3>
     <ul>
       <li>Item actives don't count.</li>
-      <li>Combat starts when R is cast, with Katarina standing right next to the dummy.</li>
+      <li>Combat starts when R is cast, or when Q or E hits, with Katarina standing right next to the dummy.</li>
+      <li>Items that work on your ultimate (Malignance, Zeke's Convergence, Experimental Hexplate) only count for R.
+        Spellblade only counts for R: Q applies no on-hit effects, and Shunpo's hit lands before E grants it.</li>
       <li>Stacks that fill up on their own (Rod of Ages, Energized, Dead Man's Plate) are full when R is cast.
-        Stacks earned by fighting (in-combat stacks, Mejai's) start at 0 and may build up during the ult.</li>
+        Stacks earned by fighting (in-combat stacks, Mejai's) start at 0 and may build up during the cast.</li>
       <li>A few timings the wiki doesn't state (like exactly when the first dagger lands) are our best guess
         until they're measured in the game's Practice Tool.</li>
     </ul>
@@ -70,7 +83,7 @@ export function rulesHtml(): string {
     </ul>
 
     <h3>Items left out of the search</h3>
-    <p>These items can't change Death Lotus's damage: nothing in the calculation reads any of their stats,
+    <p>These items can't change Katarina's damage: nothing in the calculation reads any of their stats,
       and they have no passive that deals or boosts damage. Leaving them out makes the search faster
       without changing any result (a test checks this).</p>
     <p>${removed.length > 0 ? removed.join(", ") : "None."}</p>`;

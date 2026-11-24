@@ -1,4 +1,4 @@
-// The optimizer: finds the builds that make one Death Lotus deal the most damage.
+// The optimizer: finds the builds that make one cast of an ability (Q, E or R) deal the most damage.
 //
 // Two ways to search (see NOTES.md, "Decisions"):
 // - every build: tries every legal combination. Used when at most 2 slots are free to choose.
@@ -68,7 +68,7 @@ function prepare(input: SearchInput) {
     const sorted = [...indices].sort((a, b) => a - b);
     const items = sorted.map((i) => legendaries[i]);
     if (bootsItem) items.push(bootsItem);
-    const events = simulateBuild(input.level, items, input.target, input.rRank).events;
+    const events = simulateBuild(input.level, items, input.target, input.rank, input.ability).events;
     let damage = 0;
     for (const event of events) damage += event.amount;
     let gold = 0;

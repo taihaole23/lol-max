@@ -67,7 +67,7 @@ export function itemCardHtml(item: Item, note?: string): string {
   const status = modelled
     ? `<p class="card-status modelled">Passive modelled in the calculator</p>`
     : item.effects.some((e) => e.kind === "passive")
-      ? `<p class="card-status">Passive doesn't change Death Lotus damage: stats only</p>`
+      ? `<p class="card-status">Passive doesn't change Katarina's damage: stats only</p>`
       : "";
 
   return `

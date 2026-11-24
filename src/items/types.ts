@@ -1,6 +1,7 @@
 // The shape every hand-coded item passive follows. One file per item in this folder,
 // listed in index.ts.
 import type { Item } from "../data/items.ts";
+import type { DamageAbilityKey } from "../data/playable-champions.ts";
 import type { KatarinaStats } from "../stats/katarina-stats.ts";
 import type { ItemEffect } from "../simulation/simulate.ts";
 
@@ -10,6 +11,7 @@ export type StatContext = {
   baseHealth: number; // health from her level alone, so bonus health = health − baseHealth
   baseAd: number; // AD from her level alone
   items: readonly Item[]; // the whole build, for passives that read plain item stats (Warmog's)
+  ability: DamageAbilityKey; // the ability being cast (Hexplate only switches on for R)
 };
 
 // Stat passives run in this order, after the plain item stats are added up.

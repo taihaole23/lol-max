@@ -2,6 +2,7 @@
 import { katarina } from "../data/katarina.ts";
 import { championLevels, criticalStrike, ultimateRanks } from "../data/game-rules.ts";
 import type { Item } from "../data/items.ts";
+import type { DamageAbilityKey } from "../data/playable-champions.ts";
 import { passivesFor } from "../items/index.ts";
 import { statSteps } from "../items/types.ts";
 import { statAtLevel } from "../formulas/stats.ts";
@@ -15,7 +16,8 @@ import { listStat, sumStat } from "./sum-items.ts";
 // `chosenLevel` is the level the user picked; Rod of Ages may raise the level her stats use.
 export type KatarinaStats = Attacker;
 
-export function katarinaStats(chosenLevel: number, items: Item[]): KatarinaStats {
+// `ability` = the ability being cast. A few passives only switch on for one (Hexplate: casting R).
+export function katarinaStats(chosenLevel: number, items: Item[], ability: DamageAbilityKey = "r"): KatarinaStats {
   const base = katarina.baseStats;
   const passives = passivesFor(items);
 
@@ -55,7 +57,7 @@ export function katarinaStats(chosenLevel: number, items: Item[]): KatarinaStats
 
   // Stat-changing item passives run now, after the plain stats are added up,
   // one step at a time in the order of `statSteps` (see src/items/types.ts).
-  const context = { level, baseHealth, baseAd, items };
+  const context = { level, baseHealth, baseAd, items, ability };
   for (const step of statSteps) {
     for (const passive of passives) {
       if (passive.stats?.step === step) passive.stats.apply(stats, context);

@@ -13,7 +13,20 @@ export type PlayableChampionId = keyof typeof playableChampions;
 // "q" | "w" | "e" | "r"
 export type AbilityKey = (typeof katarina.abilities.list)[number]["key"];
 
-// The abilities whose damage the site can work out. Version 1: Katarina's R only.
-export const modelledAbilities: Record<PlayableChampionId, AbilityKey[]> = {
-  katarina: ["r"],
+// The abilities whose damage the site can work out, and what the type is called in the code.
+export const damageAbilities = ["q", "e", "r"] as const;
+export type DamageAbilityKey = (typeof damageAbilities)[number];
+
+export const modelledAbilities: Record<PlayableChampionId, readonly DamageAbilityKey[]> = {
+  katarina: damageAbilities,
 };
+
+// Abilities that deal no damage by themselves (Katarina's W only drops a dagger). Their page says so
+// instead of "coming soon".
+export const noDamageAbilities: Record<PlayableChampionId, readonly AbilityKey[]> = {
+  katarina: ["w"],
+};
+
+export function isDamageAbility(key: AbilityKey): key is DamageAbilityKey {
+  return (damageAbilities as readonly string[]).includes(key);
+}

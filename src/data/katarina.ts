@@ -29,7 +29,7 @@ export const katarina = {
   },
 
   // Her 4 abilities, in the order the site shows them. `maxRank`: basic abilities go up to 5, R up to 3.
-  // Only R is modelled in version 1; the others are shown as "coming soon".
+  // Q, E and R are calculated. W (Preparation) deals no damage by itself, so it has no numbers here.
   abilities: {
     source: { url: WIKI_URL, patch: "26.23" },
     list: [
@@ -63,5 +63,38 @@ export const katarina = {
 
     // Each dagger applies on-hit and on-attack effects at this fraction of their damage.
     onHitEffectiveness: [0.25, 0.3, 0.35],
+  },
+
+  // Bouncing Blade (Q). Lists with 5 entries are by Q rank: [rank 1, ..., rank 5].
+  // It bounces to up to 2 more enemies, but there's only one dummy, so it hits once.
+  // The wiki lists no on-hit effects for it, so it applies none.
+  bouncingBlade: {
+    source: { url: WIKI_URL, patch: "26.23" },
+    magicBaseDamage: [80, 115, 150, 185, 220],
+    magicApRatio: 0.4,
+  },
+
+  // Shunpo (E). Lists with 5 entries are by E rank.
+  // One hit of magic damage that applies on-hit effects (at full strength: the wiki gives no
+  // smaller number, unlike Death Lotus's 25 / 30 / 35%).
+  shunpo: {
+    source: { url: WIKI_URL, patch: "26.23" },
+    magicBaseDamage: [20, 30, 40, 50, 60],
+    // "40% AD": the wiki writes "bonus AD" when it means bonus, so this is TOTAL AD (base + bonus).
+    magicAdRatio: 0.4,
+    magicApRatio: 0.25,
+    onHitEffectiveness: 1,
+    // Wiki: "Shunpo's effects occur before the cast time". Spellblade is granted by casting an
+    // ability, so E's own hit lands before E grants it, and can't use it.
+    spellbladeReadyForItsHit: false,
+  },
+
+  // The order she levels her abilities, used by the stage presets and when the level changes.
+  // Not game data: it's the usual Katarina order (Eric asked the presets to follow the recommended
+  // build path). Levels 1-3 take one point each in `start`; after that each level goes to the
+  // first ability in `priority` that can still be ranked up: R whenever possible, then max Q, then E, then W.
+  skillOrder: {
+    start: ["q", "e", "w"],
+    priority: ["r", "q", "e", "w"],
   },
 } as const;

@@ -5,6 +5,7 @@
 // - The attack speed raises R's AD part (its AD ratio grows with bonus attack speed).
 // - The move speed only matters for Swiftmarch.
 // "Hexcharged" (ultimate haste) doesn't change damage.
+// For Q and E there's no R cast, so Overdrive is off (only the item's plain stats count).
 import type { ItemPassive } from "./types.ts";
 
 const data = {
@@ -18,7 +19,8 @@ export const experimentalHexplate: ItemPassive = {
   source: data.source,
   stats: {
     step: "add",
-    apply: (stats) => {
+    apply: (stats, context) => {
+      if (context.ability !== "r") return;
       stats.bonusAttackSpeed += data.meleeBonusAttackSpeed;
       stats.percentMoveSpeed += data.meleePercentMoveSpeed;
     },

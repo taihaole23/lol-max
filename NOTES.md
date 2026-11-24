@@ -82,6 +82,13 @@ These notes are for anyone joining the project.
     - Checked in headless Chrome (built site): lock → auto re-optimize with the item in all 5 builds; ban → gone from every build; Terminus greyed out next to a locked Void Staff; clear; light mode; every page fits a 375 px phone. No console errors.
   - Part 4 (results) is done: each top-5 build is one row (rank, damage, item icons with boots first, names on hover), and item lines in "By source" and "What each item adds" show their icon. Checked in headless Chrome, dark, light and phone. **The redesign is done; next is Step 9 (deploy), which Eric does himself.**
 
+- **Q and E added (Nov 24, 2026, Eric).** Katarina's Bouncing Blade (Q) and Shunpo (E) can be optimized like R; W shows "deals no damage".
+  - The simulation no longer knows about Death Lotus: `src/simulation/abilities.ts` describes each ability as data (`AbilityCast`: when its hits land, their damage, on-hit or not, its damage window), and `simulateCast` in `simulate.ts` runs any of them. `simulateDeathLotus` is kept as a short wrapper so the old tests still work.
+  - Proof R didn't change: every existing test passed unchanged after the refactor, including the Practice Tool measurements.
+  - Rank rules and the skill order: `src/stats/ability-ranks.ts`. The search takes `ability` + `rank` instead of `rRank`.
+  - New tests: `tests/ability-ranks.test.ts`, `tests/basic-abilities.test.ts`. The filter and beam checks (fast and slow) now run for Q, E and R.
+  - To do: add Q and E Practice Tool cases (nothing measured for them yet), and run `npm run check-wiki` to save first copies of the two new ability pages.
+
 ## Confirmed in the Practice Tool (Step 8, patch 26.23)
 - **Within one dagger: on-hit effects → R's own damage → on-attack effects** (HP bar, test 17). Was assumed the other way round.
 - **Burns tick right away, then every interval** (Liandry's, tests 12 and 20). Applied to every ticking effect (Liandry's, Blackfire, Sunfire, Hollow Radiance) at Eric's call; only Liandry's was measured.
@@ -376,6 +383,20 @@ validation/    Practice Tool test plan and measurements
     - The test fails only while `stillValidOnPatch` is behind the site's patch, meaning nobody has checked yet.
     - Out-of-date cases are skipped, not compared: an old measurement can't prove new numbers right or wrong.
     - Trade-off: if a patch changes Katarina herself, every case is out of date and the site has no in-game check until something is re-measured. Cases 1-3 (no items) take ~2 minutes and restore a basic one.
+- **Q and E: one hit, items count for up to 3 s after it (Eric: "for as long as items need").**
+  - Chose a fixed 3 s cut-off over "until every effect ends" because Immolate (Sunfire, Hollow Radiance) never ends: the wiki says its own damage keeps it burning "infinitely". 3 s is the longest effect one hit starts (Liandry's and Blackfire burns), so everything else is counted in full. Sunfire gets ticks at 0, 1, 2 and 3 s.
+  - Time 0 is the moment the hit lands, and combat starts then. Q's 0.25 s cast time and flight come before that, but nothing happens during them, so they change nothing.
+  - Q bounces to up to 2 more enemies; with one dummy it hits once.
+- **W (Preparation) shows "deals no damage" instead of modelling the dagger pickup (Eric).** W itself has no damage on the wiki; the damage is her passive (Voracity) when she picks a dagger up. Daggers on the ground aren't modelled anywhere, so Q and E don't count a pickup either.
+- **Q / E details from the wiki (patch 26.23, `Template:Data_Katarina/...`):**
+  - Q: 80 / 115 / 150 / 185 / 220 + 40% AP magic. The wiki lists no on-hit effects, so it applies none.
+  - E: 20 / 30 / 40 / 50 / 60 + 40% AD + 25% AP magic, applies on-hit. "AD" = total AD (the wiki writes "bonus AD" when it means bonus). On-hit at full strength: the wiki gives no smaller number.
+  - E and Spellblade: "Shunpo's effects occur before the cast time", and Spellblade is granted by casting, so E's own hit can't use it. Spellblade only counts for R.
+  - ASSUMPTION: E's hit runs in the same order as a dagger (on-hit first, then its own damage). The wiki doesn't say whether E applies on-attack effects; with a single hit it would change nothing anyway.
+  - Items that work on the ULTIMATE only count for R: Malignance's zone, Zeke's storm, Experimental Hexplate's Overdrive.
+  - The Death Lotus shrinking bug (Liandry's, Blackfire, Luden's × R's on-hit effectiveness) is R only: Q and E get those at full size. It's now its own number, `procEffectiveness`, next to `onHitEffectiveness`.
+- **Burns stop AT their end time (changed with Q and E).** A burn on for 3 s ticking every 0.5 s ticks at 0, 0.5 ... 2.5: 6 ticks, matching the wiki (Liandry's "6% ... over 3 seconds"; Blackfire: first tick, then "the remaining 5 ticks"). Before, a tick exactly at the end also counted (7). It never mattered for R, because every dagger refreshes the burn.
+- **Rank boxes follow the game's rules (replaces "basic ability rank rules are ignored for now").** A box that would break them is greyed out. Clicking the top filled box takes the point back, so points can be moved. Changing the level or picking a stage resets the ranks to the usual skill order.
 - **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
 
 ## Things we learned from the data
@@ -467,6 +488,7 @@ A test (`tests/item-checklist.test.ts`) fails if an item is missing from these t
 
 **What this checks:** only an item's *passive*. Every item's plain stats (AP, AD, HP, pen…) are already counted by `src/stats/`.
 The question for each item is: does its passive change Death Lotus damage on one dummy during one channel, under our rules (see "Rules for item passives" in Decisions)?
+(Checked for R. With Q and E added, every "modelled" item was re-read for one-hit abilities; see "Q / E details" in Decisions. The "irrelevant" items stay irrelevant: each needs basic attacks, takedowns, slows, allies, mana or other enemies, or (Unending Despair) acts at 4 s, after the 3 s window.)
 
 **Statuses:**
 - **modelled**: the passive is coded in `src/items/` and has a test.

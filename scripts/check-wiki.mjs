@@ -28,7 +28,11 @@ const USER_AGENT = "lol-max-patch-check (static site, run by hand on patch day)"
 
 // The wiki pages with the numbers of each ability the site calculates. When a new ability is
 // modelled, add its page here: Template:Data_<Champion>/<Ability name>.
-const abilityPages = ["Template:Data_Katarina/Death_Lotus"];
+const abilityPages = [
+  "Template:Data_Katarina/Bouncing_Blade",
+  "Template:Data_Katarina/Shunpo",
+  "Template:Data_Katarina/Death_Lotus",
+];
 
 // Big data modules: only the blocks we use are kept, not the whole page.
 const CHAMPION_DATA = "Module:ChampionData/data";

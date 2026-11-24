@@ -18,7 +18,8 @@ export const zekesConvergence: ItemPassive = {
   source: data.source,
   createEffect: () => ({
     name: "Zeke's Convergence",
-    onUltCast: (context) => {
+    onCast: (context) => {
+      if (context.ability !== "r") return; // only casting the ULTIMATE summons the storm
       const ticks = data.stormSeconds * data.ticksPerSecond;
       for (let i = 1; i <= ticks; i++) {
         context.schedule(i / data.ticksPerSecond, (later) => {

@@ -3,7 +3,7 @@ import type { Item } from "../data/items.ts";
 
 export type FoundBuild = {
   items: Item[]; // legendaries in item-pool order, then boots (if any)
-  damage: number; // total damage of one ult
+  damage: number; // total damage of one cast
   gold: number; // total cost, used to break ties
 };
 

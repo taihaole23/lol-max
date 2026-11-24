@@ -1,14 +1,17 @@
-// Simulates one full Death Lotus channel against one target, one event at a time.
+// Simulates one cast of an ability against one target, one event at a time.
 //
 // It keeps a to-do list of things that will happen, each at a time in seconds
 // (a dagger, a burn tick, a delayed hit...). It always runs the earliest one next.
-// Anything that would happen after the channel ends is thrown away (the channel window rule).
-import { katarina } from "../data/katarina.ts";
-import { daggerPhysicalDamage, type RRank } from "../formulas/death-lotus.ts";
+// Anything that would happen after the ability's damage window is thrown away
+// (Death Lotus: the channel window rule; Q and E: 3 s after the hit).
+//
+// What each ability does (its hits, their damage, on-hit or not) is described as data in
+// abilities.ts, so this file works the same for every ability.
+import type { DamageAbilityKey } from "../data/playable-champions.ts";
+import type { RRank } from "../formulas/death-lotus.ts";
 import { addShred, damageMultiplier, effectiveResist, type ResistShred } from "../formulas/resistance.ts";
+import { deathLotusCast } from "./abilities.ts";
 import { hpAfterHit } from "./hp.ts";
-
-const r = katarina.deathLotus;
 
 export type DamageType = "magic" | "physical" | "true";
 
@@ -17,11 +20,31 @@ export type DamageEvent = {
   time: number; // seconds after the channel starts
   amount: number; // after armor / MR
   type: DamageType;
-  source: string; // "base", "apRatio", "bonusAdRatio", or an item's name
+  source: string; // "base", "apRatio", "adRatio", "bonusAdRatio", or an item's name
   fromItem: boolean; // true = item effect, false = the ability itself
 };
 
-// Katarina's stats that matter for R. Item effects may change these mid-ult.
+// One piece of an ability hit's own damage, before armor / MR.
+export type DamagePart = { raw: number; type: DamageType; source: string };
+
+// Everything the simulation needs to know about the ability being cast (built in abilities.ts).
+export type AbilityCast = {
+  key: DamageAbilityKey;
+  hitTimes: number[]; // when each hit lands, in seconds after the cast
+  windowSeconds: number; // damage landing after this is thrown away
+  // The hit's own damage, worked out with Katarina's stats AT THAT MOMENT (items can change them mid-ult).
+  hitDamage: (attacker: Attacker) => DamagePart[];
+  appliesOnHit: boolean;
+  appliesOnAttack: boolean;
+  onHitEffectiveness: number; // on-hit damage is multiplied by this (R: 0.25 / 0.30 / 0.35)
+  // Death Lotus BUG (wiki): its on-hit effectiveness also shrinks Liandry's, Blackfire's and
+  // Luden's damage. 1 for every other ability.
+  procEffectiveness: number;
+  // True if the cast grants Spellblade before its own hits land, so its first on-hit uses it (R).
+  spellbladeReadyForHits: boolean;
+};
+
+// Katarina's stats that matter for her abilities. Item effects may change these mid-ult.
 export type Attacker = {
   level: number; // the level her stats use (after Rod of Ages' extra level). Kraken Slayer reads it.
   ap: number; // already includes every % AP bonus below
@@ -33,7 +56,7 @@ export type Attacker = {
   flatMoveSpeed: number;
   percentMoveSpeed: number;
   bonusAd: number;
-  baseAd: number; // AD from her level alone (Spellblade uses it)
+  baseAd: number; // AD from her level alone (Spellblade uses it; Shunpo's ratio is on base + bonus AD)
   health: number; // her maximum health; the dummy never hits back, so she's always full (Titanic Hydra uses it)
   baseHealth: number; // health from her level alone; health − baseHealth = bonus health (Sunfire uses it)
   critChance: number; // a fraction: 0.25 = 25%. R and on-hit can't crit, but Essence Reaver reads it
@@ -54,8 +77,10 @@ export type Target = {
 // What an item effect gets to see and do when something happens.
 export type EffectContext = {
   time: number;
-  rank: RRank;
-  onHitEffectiveness: number; // 0.25 / 0.30 / 0.35 for R rank 1 / 2 / 3
+  ability: DamageAbilityKey; // the ability being cast ("r" = Death Lotus)
+  onHitEffectiveness: number; // R: 0.25 / 0.30 / 0.35 for rank 1 / 2 / 3. E: 1.
+  procEffectiveness: number; // the Death Lotus bug for Liandry's, Blackfire, Luden's (see AbilityCast)
+  spellbladeReady: boolean; // false = this cast's hits can't use Spellblade (see AbilityCast)
   attacker: Attacker; // may be changed, e.g. attack speed stacks
   target: Readonly<Target>; // read only: change it through dealDamage. `hp` is its CURRENT HP.
   targetMaxHp: number; // the dummy's HP when the ult started
@@ -70,7 +95,7 @@ export type EffectContext = {
 // What an item effect is told about a piece of damage (before its amount is known).
 export type DamageInfo = {
   type: DamageType;
-  fromItem: boolean; // false = R's own damage (ability damage)
+  fromItem: boolean; // false = the ability's own damage (ability damage)
 };
 
 // Shred an item gives right now, on top of Katarina's own penetration.
@@ -85,15 +110,15 @@ export type ItemShred = {
 // one for every simulation.
 export type ItemEffect = {
   name: string;
-  // Runs once when R is cast (time 0), before the first dagger.
-  onUltCast?: (context: EffectContext) => void;
+  // Runs once when the ability is cast (time 0), before its first hit. `context.ability` says which.
+  onCast?: (context: EffectContext) => void;
   // Runs once per dagger, like an attack being thrown ("on-attack" effects: Guinsoo's stacks,
   // Yun Tal, Energize stacks). NOT run again by repeat on-hits (Phantom Hit, Dusk and Dawn).
   onAttack?: (context: EffectContext) => void;
   // Runs every time on-hit effects are applied: once per dagger, plus any extra
   // times an item causes (Dusk and Dawn, Guinsoo's Phantom Hit).
   onHit?: (context: EffectContext) => void;
-  // Run just before / just after any piece of damage lands (R's or an item's).
+  // Run just before / just after any piece of damage lands (the ability's or an item's).
   // `amount` = the damage dealt, after armor / MR and every multiplier (Stormsurge adds it up).
   beforeDamage?: (context: EffectContext, damage: DamageInfo) => void;
   afterDamage?: (context: EffectContext, damage: DamageInfo, amount: number) => void;
@@ -104,6 +129,14 @@ export type ItemEffect = {
   damageMultiplier?: (context: EffectContext, damage: DamageInfo) => number;
 };
 
+export type CastInput = {
+  cast: AbilityCast;
+  attacker: Attacker;
+  target: Target;
+  items: ItemEffect[];
+};
+
+// The older shape, for Death Lotus only (most tests use it).
 export type SimulationInput = {
   rank: RRank;
   attacker: Attacker;
@@ -118,7 +151,8 @@ export type SimulationResult = {
 
 type ToDo = { time: number; run: () => void };
 
-export function simulateDeathLotus(input: SimulationInput): SimulationResult {
+export function simulateCast(input: CastInput): SimulationResult {
+  const cast = input.cast;
   // Copies, so that changes during the ult don't leak out to the caller.
   const attacker = { ...input.attacker };
   const target = { ...input.target };
@@ -166,8 +200,10 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
   function contextAt(time: number, item: ItemEffect): EffectContext {
     return {
       time,
-      rank: input.rank,
-      onHitEffectiveness: r.onHitEffectiveness[input.rank - 1],
+      ability: cast.key,
+      onHitEffectiveness: cast.onHitEffectiveness,
+      procEffectiveness: cast.procEffectiveness,
+      spellbladeReady: cast.spellbladeReadyForHits,
       attacker,
       target,
       targetMaxHp: input.target.hp,
@@ -187,33 +223,35 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
     }
   }
 
-  // The order inside one dagger, MEASURED in the Practice Tool (Step 8, patch 26.23):
+  // The order inside one hit, MEASURED for Death Lotus daggers in the Practice Tool (Step 8, patch 26.23):
   //   1. on-hit effects (they read the dummy's HP BEFORE this dagger's damage: BotRK, Kraken),
-  //   2. R's own damage,
+  //   2. the ability's own damage,
   //   3. on-attack effects (so Guinsoo's attack speed only helps the NEXT dagger).
   // Evidence: Guinsoo's + BotRK left the dummy at 2003 HP; "on-hit first" predicts 1998,
   // "R's damage first" (our first guess) predicts 2037. Guinsoo's-only tests fit step 3 as is.
-  function throwDagger(time: number): void {
-    applyOnHitEffects(time);
+  // ASSUMPTION: Shunpo (E) uses the same order. Abilities that don't apply on-hit / on-attack skip those steps.
+  function landHit(time: number): void {
+    if (cast.appliesOnHit) applyOnHitEffects(time);
 
-    // The magic part is dealt as two pieces, so the breakdown can show "base" and
-    // "AP ratio" separately. MR reduces both by the same share.
-    dealDamage(time, r.magicBaseDamage[input.rank - 1], "magic", "base", false);
-    dealDamage(time, r.magicApRatio * attacker.ap, "magic", "apRatio", false);
-    dealDamage(time, daggerPhysicalDamage(attacker.bonusAd, attacker.bonusAttackSpeed), "physical", "bonusAdRatio", false);
+    // Each part is dealt as its own piece, so the breakdown can show "base", "AP ratio"...
+    // separately. Armor / MR reduce every piece of one type by the same share.
+    for (const part of cast.hitDamage(attacker)) {
+      dealDamage(time, part.raw, part.type, part.source, false);
+    }
 
-    for (const item of input.items) {
-      item.onAttack?.(contextAt(time, item));
+    if (cast.appliesOnAttack) {
+      for (const item of input.items) {
+        item.onAttack?.(contextAt(time, item));
+      }
     }
   }
 
   for (const item of input.items) {
-    item.onUltCast?.(contextAt(0, item));
+    item.onCast?.(contextAt(0, item));
   }
 
-  for (let i = 0; i < r.daggersPerTarget; i++) {
-    const time = r.firstDaggerSeconds + i * r.secondsBetweenDaggers;
-    todo.push({ time, run: () => throwDagger(time) });
+  for (const time of cast.hitTimes) {
+    todo.push({ time, run: () => landHit(time) });
   }
 
   while (todo.length > 0) {
@@ -223,10 +261,16 @@ export function simulateDeathLotus(input: SimulationInput): SimulationResult {
       if (todo[i].time < todo[next].time) next = i;
     }
     const [action] = todo.splice(next, 1);
-    if (action.time <= r.channelSeconds) {
+    if (action.time <= cast.windowSeconds) {
       action.run();
     }
   }
 
   return { events, targetHpAtEnd: target.hp };
+}
+
+// One Death Lotus. Kept for the tests written before Q and E existed.
+export function simulateDeathLotus(input: SimulationInput): SimulationResult {
+  const { rank, ...rest } = input;
+  return simulateCast({ ...rest, cast: deathLotusCast(rank) });
 }

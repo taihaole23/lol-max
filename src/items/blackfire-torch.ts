@@ -9,6 +9,7 @@
 //   The 4% ADDS to other % AP (Rabadon's 30% + 4% = 34%), per the wiki.
 // Death Lotus BUG (listed on the wiki, so it's how the game really plays): R's on-hit
 //   effectiveness (25 / 30 / 35%) also shrinks the burn, because a dagger started it.
+//   (`procEffectiveness`: 1 for Q and E, so their burns are full size.)
 //
 // Dagger 1 starts the burn, so dagger 1 itself doesn't get the 4% ("same time = same hit",
 // see NOTES.md). The AP goes up right after dagger 1 finishes, so dagger 2 onward,
@@ -38,7 +39,7 @@ export const blackfireTorch: ItemPassive = {
       triggeredBy: (damage) => !damage.fromItem, // ability damage = R's own damage
       tick: (context) => {
         const damage = data.burnDamagePerTick + data.burnApRatioPerTick * context.attacker.ap;
-        context.dealDamage(damage * context.onHitEffectiveness, "magic");
+        context.dealDamage(damage * context.procEffectiveness, "magic");
       },
     });
     let apIncreased = false;

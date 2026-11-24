@@ -18,7 +18,7 @@ test("returns 5 builds, each with an explanation that adds up to its damage", ()
 
 test("the explanation uses the chosen R rank, not the highest one", () => {
   // Level 16 allows rank 3; ask for rank 1. The explanation must match the search's damage.
-  const result = runSearch({ ...presetInput("tank", "late"), rRank: 1 });
+  const result = runSearch({ ...presetInput("tank", "late"), rank: 1 });
   for (const build of result.builds) expect(build.explanation.breakdown.total).toBeCloseTo(build.damage);
 });
 

@@ -3,12 +3,16 @@
 //
 // Some damage turns the effect on (`triggeredBy`), and every new trigger keeps it on for
 // `durationSeconds` more (a refresh). While it's on, it ticks every `secondsBetweenTicks`.
-// Ticks after the channel ends are thrown away by the simulation (channel window rule).
+// Ticks after the ability's damage window are thrown away by the simulation (channel window rule).
 //
 // The first tick comes RIGHT AWAY when the effect turns on, then one every interval.
 // Measured in the Practice Tool (Step 8, patch 26.23): Liandry's alone and Liandry's + Riftmaker
 // were both ~1 tick higher than "first tick after one interval" predicted. Eric asked to apply it
 // to every ticking effect (burns and Immolate auras alike).
+//
+// The effect stops AT its end time: a 3 s burn ticking every 0.5 s ticks at 0, 0.5 ... 2.5 s, which is
+// the wiki's "6 ticks" (Blackfire: first tick, then "the remaining 5 ticks"). That only matters for Q
+// and E: during R every dagger refreshes the effect, so it never runs out inside the channel.
 import type { DamageInfo, EffectContext, ItemEffect } from "../simulation/simulate.ts";
 
 export function tickingEffect(options: {
@@ -23,7 +27,7 @@ export function tickingEffect(options: {
   // Books the next tick. Each tick books the one after it, until the effect runs out.
   function bookNextTick(context: EffectContext): void {
     context.schedule(options.secondsBetweenTicks, (later) => {
-      if (endsAt === undefined || later.time > endsAt) {
+      if (endsAt === undefined || later.time >= endsAt) {
         endsAt = undefined; // ran out: no more refreshes came in time
         return;
       }

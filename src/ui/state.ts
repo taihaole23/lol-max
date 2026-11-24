@@ -3,24 +3,32 @@
 // touches the page. main.ts calls them when a button is clicked and then redraws the page.
 // Keeping them apart from the page means the tests can check them without a browser.
 import { dummyPresets, type EnemyType } from "../data/dummy-presets.ts";
-import { championLevels } from "../data/game-rules.ts";
+import { championLevels, ultimateRanks } from "../data/game-rules.ts";
 import { getItem, type Item } from "../data/items.ts";
-import type { AbilityKey, PlayableChampionId } from "../data/playable-champions.ts";
+import { isDamageAbility, playableChampions, type AbilityKey, type PlayableChampionId } from "../data/playable-champions.ts";
 import { stages, type StageName } from "../data/stages.ts";
 import type { BootsSetting } from "../optimizer/item-pool.ts";
 import type { SearchRequest } from "../optimizer/messages.ts";
 import { constraintProblem, type BuildConstraints } from "../optimizer/constraints.ts";
-import { maxItemCount, stagePreset, type KatarinaSetup } from "../optimizer/setup.ts";
+import { maxItemCount, type KatarinaSetup } from "../optimizer/setup.ts";
 import type { Target } from "../simulation/simulate.ts";
 import { dummyStats, recommendedDummyItems, withTypedStats, type TypedStats } from "../stats/dummy-stats.ts";
-import { allowedRRanks } from "../stats/katarina-stats.ts";
+import {
+  maxRankAtLevel,
+  noRanks,
+  pointsSpent,
+  ranksAreLegal,
+  recommendedRanks,
+  skillPointsAtLevel,
+  type AbilityRanks,
+} from "../stats/ability-ranks.ts";
 
 export type PageState = {
   champion: PlayableChampionId;
   ability: AbilityKey; // the ability card that's selected
   stage: StageName; // the last stage preset clicked
   level: number; // Katarina's level
-  ranks: Record<AbilityKey, number>; // 0 = not learned. Only R's rank is used (and checked) in version 1.
+  ranks: AbilityRanks; // 0 = not learned. Always legal for the level (see ability-ranks.ts).
   itemCount: number; // legendary slots; boots get their own slot on top
   bootsOn: boolean;
   midQuest: boolean; // tier-3 boots; only possible with boots on
@@ -47,7 +55,7 @@ export function initialState(): PageState {
     ability: "r",
     stage: "early",
     level: 1,
-    ranks: { q: 0, w: 0, e: 0, r: 0 },
+    ranks: noRanks,
     itemCount: 1,
     bootsOn: true,
     midQuest: false,
@@ -71,11 +79,30 @@ export function bootsSetting(state: PageState): BootsSetting {
   return state.midQuest ? "tier3" : "tier2";
 }
 
-// What the search needs from Katarina's side, or null if R can't be cast (below level 6).
+// What the search needs from Katarina's side, or null if the selected ability can't be calculated:
+// it deals no damage (W), or it has no points yet (R below level 6, or a rank set to 0).
 export function katarinaSetup(state: PageState): KatarinaSetup | null {
-  const rank = state.ranks.r;
-  if (rank !== 1 && rank !== 2 && rank !== 3) return null;
-  return { level: state.level, rRank: rank, itemCount: state.itemCount };
+  const ability = state.ability;
+  if (!isDamageAbility(ability)) return null;
+  const rank = state.ranks[ability];
+  if (rank < 1) return null;
+  return { level: state.level, ability, rank, itemCount: state.itemCount };
+}
+
+// Why the selected ability can't be calculated, in plain words (null = it can).
+export function abilityProblem(state: PageState): string | null {
+  const ability = playableChampions[state.champion].abilities.find((a) => a.key === state.ability);
+  if (!ability || !isDamageAbility(ability.key)) return null; // W has its own message
+  if (state.ranks[ability.key] >= 1) return null;
+  if (maxRankAtLevel(ability.key, state.level) === 0) {
+    return `${ability.name} unlocks at level ${ultimateRanks.levels[0]}.`;
+  }
+  return `Put a point in ${ability.name} to calculate it.`;
+}
+
+// Skill points used out of the ones available ("9 / 11 skill points"), for the setup summary.
+export function skillPointsText(state: PageState): string {
+  return `${pointsSpent(state.ranks)} / ${skillPointsAtLevel(state.level)} skill points`;
 }
 
 // How many legendary items the dummy's custom picker shows: the same as its recommended list.
@@ -116,8 +143,8 @@ export function conditionProblem(state: PageState): string | null {
   return constraintProblem(buildConstraints(state), bootsSetting(state), state.itemCount);
 }
 
-// What to send to the search worker, with `itemCount` legendary slots. null when R can't be cast
-// yet, or when the locks and bans make no sense (the page shows conditionProblem instead).
+// What to send to the search worker, with `itemCount` legendary slots. null when the ability can't
+// be calculated (katarinaSetup), or when the locks and bans make no sense (the page shows conditionProblem instead).
 export function searchRequest(state: PageState, itemCount: number): SearchRequest | null {
   const setup = katarinaSetup(state);
   if (setup === null || conditionProblem(state) !== null) return null;
@@ -170,43 +197,51 @@ function clampLevel(level: number): number {
   return Math.min(Math.max(Math.round(level), 1), championLevels.max);
 }
 
-// The highest R rank the level allows, or 0 below level 6.
-function highestRRank(level: number): number {
-  return allowedRRanks(level).at(-1) ?? 0;
-}
-
+// A stage sets the level, the ranks in Katarina's usual skill order (Q, then E, then W; R whenever
+// possible), the item count and the dummy's level.
 export function applyStage(state: PageState, stage: StageName): PageState {
-  const preset = stagePreset(stage, bootsSetting(state));
+  const { level, itemsWithBoots, itemsWithoutBoots } = stages[stage];
   return {
     ...state,
     stage,
-    level: preset.level,
-    ranks: { ...state.ranks, r: preset.rRank },
-    itemCount: preset.itemCount,
+    level,
+    ranks: recommendedRanks(level),
+    itemCount: state.bootsOn ? itemsWithBoots : itemsWithoutBoots,
     dummyLevel: stages[stage].level,
     dummyLevelFollowsKatarina: true,
     typedDummyStats: noTypedStats,
   };
 }
 
-// A new level also sets R to the highest rank it allows (the user can lower it afterwards).
+// A new level also resets the ranks to the usual skill order at that level (the user can move
+// points afterwards), so they're always legal: no rank 5 Q at level 6.
 export function setLevel(state: PageState, level: number): PageState {
   const newLevel = clampLevel(level);
   const follows = state.dummyLevelFollowsKatarina;
   return {
     ...state,
     level: newLevel,
-    ranks: { ...state.ranks, r: highestRRank(newLevel) },
+    ranks: recommendedRanks(newLevel),
     dummyLevel: follows ? newLevel : state.dummyLevel,
     typedDummyStats: follows ? noTypedStats : state.typedDummyStats,
   };
 }
 
-// Clicking a rank box. R only accepts ranks the level allows; basic abilities accept any rank
-// (their level rules are ignored for now, and nothing uses their rank yet).
+// Clicking rank box `rank` of an ability. Clicking the highest filled box takes that point back
+// (so points can be moved to another ability); any other box sets the rank to it.
+// A click that would break the level rules (rank too high for the level, or more points than
+// the level gives) is ignored. The page also greys those boxes out (rankAllowed).
 export function setRank(state: PageState, ability: AbilityKey, rank: number): PageState {
-  if (ability === "r" && !allowedRRanks(state.level).some((allowed) => allowed === rank)) return state;
-  return { ...state, ranks: { ...state.ranks, [ability]: rank } };
+  if (!rankAllowed(state, ability, rank)) return state;
+  return { ...state, ranks: { ...state.ranks, [ability]: rankAfterClick(state, ability, rank) } };
+}
+
+export function rankAllowed(state: PageState, ability: AbilityKey, rank: number): boolean {
+  return ranksAreLegal(state.level, { ...state.ranks, [ability]: rankAfterClick(state, ability, rank) });
+}
+
+function rankAfterClick(state: PageState, ability: AbilityKey, rank: number): number {
+  return rank === state.ranks[ability] ? rank - 1 : rank;
 }
 
 export function selectAbility(state: PageState, ability: AbilityKey): PageState {

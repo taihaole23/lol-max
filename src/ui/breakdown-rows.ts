@@ -26,14 +26,15 @@ function onlyType(b: Breakdown, source: string): DamageType | undefined {
 const abilitySourceLabels: Record<string, string> = {
   base: "Base damage",
   apRatio: "AP ratio",
-  bonusAdRatio: "Bonus AD ratio",
+  adRatio: "AD ratio", // Shunpo (E): total AD
+  bonusAdRatio: "Bonus AD ratio", // Death Lotus (R)
 };
 
 function row(label: string, damage: number, total: number, item?: Item, damageType?: DamageType): Row {
   return { label, damage, share: total === 0 ? 0 : damage / total, item, damageType };
 }
 
-// By source: the ability's parts first (base, AP ratio, bonus AD ratio), then each item's
+// By source: the ability's parts first (base, AP ratio, AD ratios), then each item's
 // effects (on-hit, passives, burns...) from biggest to smallest. Sources that did 0 are left out.
 export function sourceRows(b: Breakdown): Row[] {
   const ability = Object.keys(abilitySourceLabels)
@@ -65,7 +66,7 @@ export function typeRows(b: Breakdown): Row[] {
   ];
 }
 
-// The daggers themselves vs. everything item effects added.
+// The ability's own hits vs. everything item effects added.
 export function abilityVsItemRows(b: Breakdown): Row[] {
-  return [row("Ability (daggers)", b.ability, b.total), row("Item effects", b.items, b.total)];
+  return [row("Ability", b.ability, b.total), row("Item effects", b.items, b.total)];
 }

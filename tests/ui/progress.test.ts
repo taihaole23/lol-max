@@ -31,9 +31,10 @@ test("search keys: with 1 slot, the quick question IS the full question", () => 
   expect(keyOf(s.searchRequest(early, 1))).toBe(keyOf(s.searchRequest(early, early.itemCount)));
 });
 
-test("search keys: picking another ability or a Q rank doesn't change the question", () => {
-  const state = s.initialState();
+test("search keys: another ability is another question; another ability's rank isn't", () => {
+  const state = s.initialState(); // R selected
   const key = keyOf(s.searchRequest(state, 1));
-  expect(keyOf(s.searchRequest(s.selectAbility(state, "q"), 1))).toBe(key);
-  expect(keyOf(s.searchRequest(s.setRank(state, "q", 3), 1))).toBe(key);
+  expect(keyOf(s.searchRequest(s.selectAbility(state, "q"), 1))).not.toBe(key);
+  expect(keyOf(s.searchRequest(s.setRank(state, "q", 3), 1))).toBe(key); // Q 3 → 2 doesn't change R
+  expect(s.searchRequest(s.selectAbility(state, "w"), 1)).toBeNull(); // W deals no damage
 });

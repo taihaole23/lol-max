@@ -344,6 +344,8 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 
 /* ---------- Champion page: the two input panels and results ---------- */
 .workbench { display: grid; gap: var(--s5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); }
+/* The display rule above beats the `hidden` attribute, so hidden has to be restated (W and "coming soon" pages). */
+.workbench[hidden] { display: none; }
 .panel.results { grid-column: 1 / -1; }
 
 /* Item slots: always 6 in one row (never wrapping), then − / +, so nothing ever moves. */

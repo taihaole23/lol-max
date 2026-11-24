@@ -4,11 +4,11 @@ import type { DamageEvent } from "./simulate.ts";
 
 export type Breakdown = {
   total: number;
-  bySource: Record<string, number>; // "base", "apRatio", "bonusAdRatio", item names
+  bySource: Record<string, number>; // "base", "apRatio", "adRatio", "bonusAdRatio", item names
   byType: { magic: number; physical: number; true: number };
   // The damage types each source dealt (so the page can colour "AP ratio" as magic, etc.).
   typesBySource: Record<string, DamageEvent["type"][]>;
-  ability: number; // the daggers themselves
+  ability: number; // the ability's own hits (the daggers, for R)
   items: number; // everything from item effects
 };
 

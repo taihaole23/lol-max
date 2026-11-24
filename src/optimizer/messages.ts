@@ -10,7 +10,7 @@ import type { KatarinaSetup } from "./setup.ts";
 import type { StyleKey } from "./styles.ts";
 import type { FoundBuild } from "./top-builds.ts";
 
-// Page → worker: what to search. Level, R rank and item count come from the page's inputs
+// Page → worker: what to search. Level, ability, its rank and item count come from the page's inputs
 // (a stage preset fills them in, and the user can change each one).
 export type SearchRequest = KatarinaSetup & {
   target: Target; // the dummy's final stats (presets or typed-in numbers, worked out by the page)

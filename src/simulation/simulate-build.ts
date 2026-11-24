@@ -1,19 +1,27 @@
-// Simulates one ult for a whole build: Katarina's level, R rank and items → her stats and
-// item effects → the dagger-by-dagger simulation. The optimizer (Step 6) calls this for every build.
+// Simulates one cast for a whole build: Katarina's level, the ability and its rank, and the items
+// → her stats and item effects → the hit-by-hit simulation. The optimizer calls this for every build.
 import type { Item } from "../data/items.ts";
-import type { RRank } from "../formulas/death-lotus.ts";
+import type { DamageAbilityKey } from "../data/playable-champions.ts";
 import { effectsFor } from "../items/index.ts";
-import { checkRRank, katarinaStats, rRankAtLevel } from "../stats/katarina-stats.ts";
-import { simulateDeathLotus, type SimulationResult, type Target } from "./simulate.ts";
+import { checkAbilityRank } from "../stats/ability-ranks.ts";
+import { katarinaStats, rRankAtLevel } from "../stats/katarina-stats.ts";
+import { abilityCast } from "./abilities.ts";
+import { simulateCast, type SimulationResult, type Target } from "./simulate.ts";
 
-// `rank` is a default parameter: leave it out and it's the highest rank the level allows.
-// The site always passes the rank the user picked.
-export function simulateBuild(level: number, items: Item[], target: Target, rank: RRank = rRankAtLevel(level)): SimulationResult {
-  checkRRank(level, rank);
-  return simulateDeathLotus({
-    // R's rank comes from Katarina's own level, not Rod of Ages' extra level.
-    rank,
-    attacker: katarinaStats(level, items),
+// `rank` and `ability` are default parameters: leave them out and it's Death Lotus at the highest
+// rank the level allows. The site always passes the ability and rank the user picked.
+export function simulateBuild(
+  level: number,
+  items: Item[],
+  target: Target,
+  rank: number = rRankAtLevel(level),
+  ability: DamageAbilityKey = "r",
+): SimulationResult {
+  // The rank comes from Katarina's own level, not Rod of Ages' extra level.
+  checkAbilityRank(level, ability, rank);
+  return simulateCast({
+    cast: abilityCast(ability, rank),
+    attacker: katarinaStats(level, items, ability),
     target,
     items: effectsFor(items),
   });

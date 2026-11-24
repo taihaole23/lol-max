@@ -6,6 +6,7 @@
 //   During the 2.5 s ult that's 0% → 2% at 1 s → 4% at 2 s. It boosts the burn too.
 // Death Lotus BUG (listed on the wiki, so it's how the game really plays): R's on-hit
 //   effectiveness (25 / 30 / 35%) also shrinks the burn, because a dagger started it.
+//   (`procEffectiveness`: 1 for Q and E, so their burns are full size: 6 ticks = 6% max health.)
 import { inCombatAmpEffect } from "./in-combat-amp.ts";
 import { tickingEffect } from "./ticking.ts";
 import type { ItemPassive } from "./types.ts";
@@ -33,7 +34,7 @@ export const liandrysTorment: ItemPassive = {
       durationSeconds: data.burnSeconds,
       triggeredBy: (damage) => !damage.fromItem, // ability damage = R's own damage
       tick: (context) =>
-        context.dealDamage(data.burnMaxHealthPerTick * context.targetMaxHp * context.onHitEffectiveness, "magic"),
+        context.dealDamage(data.burnMaxHealthPerTick * context.targetMaxHp * context.procEffectiveness, "magic"),
     }),
   }),
 };

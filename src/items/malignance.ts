@@ -29,7 +29,8 @@ export const malignance: ItemPassive = {
     return {
       name: "Malignance",
       afterDamage: (context, damage) => {
-        if (damage.fromItem || zoneTime !== undefined) return;
+        // Only the ULTIMATE's damage makes the zone: Q and E never do.
+        if (damage.fromItem || zoneTime !== undefined || context.ability !== "r") return;
         zoneTime = context.time;
 
         const ticks = data.zoneSeconds * data.ticksPerSecond;

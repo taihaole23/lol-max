@@ -1,5 +1,6 @@
 // Shared setup for the optimizer tests. Not a test file itself.
 import { dummyPresets, type EnemyType } from "../../src/data/dummy-presets.ts";
+import { damageAbilities, type DamageAbilityKey } from "../../src/data/playable-champions.ts";
 import { stages, type StageName } from "../../src/data/stages.ts";
 import { dummyStats, recommendedDummyItems } from "../../src/stats/dummy-stats.ts";
 import type { BootsSetting } from "../../src/optimizer/item-pool.ts";
@@ -12,10 +13,13 @@ export function presetDummy(enemyType: EnemyType, stage: StageName) {
 }
 
 // A whole search input as the site would send it after clicking a stage preset:
-// Katarina's level / R rank / item count from the preset, and the preset dummy.
-export function presetInput(enemyType: EnemyType, stage: StageName, boots: BootsSetting = "tier2") {
-  return { ...stagePreset(stage, boots), target: presetDummy(enemyType, stage), boots };
+// Katarina's level / the ability's rank / item count from the preset, and the preset dummy.
+export function presetInput(enemyType: EnemyType, stage: StageName, boots: BootsSetting = "tier2", ability: DamageAbilityKey = "r") {
+  return { ...stagePreset(stage, boots, ability), target: presetDummy(enemyType, stage), boots };
 }
+
+// Q, E and R: the search checks run for each.
+export const abilities = damageAbilities;
 
 export const enemyTypes = Object.keys(dummyPresets) as EnemyType[];
 

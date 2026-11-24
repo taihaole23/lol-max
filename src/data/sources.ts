@@ -24,8 +24,10 @@ export const sourceGroups: SourceGroup[] = [
   {
     title: "Katarina",
     sources: unique([
-      named("Katarina: stats, abilities, Death Lotus", katarina.baseStats.source),
+      named("Katarina: stats, abilities, Death Lotus, Bouncing Blade, Shunpo", katarina.baseStats.source),
       named("Katarina", katarina.deathLotus.source),
+      named("Katarina", katarina.bouncingBlade.source),
+      named("Katarina", katarina.shunpo.source),
       named("Katarina", katarina.abilities.source),
       named("Katarina", katarina.adaptiveType.source),
     ]),
@@ -35,7 +37,9 @@ export const sourceGroups: SourceGroup[] = [
     sources: unique([
       named("Stat growth per level", gameRules.statGrowth.source),
       named("Armor and magic resist", gameRules.resistance.source),
-      named("Ultimate ranks by level", gameRules.ultimateRanks.source),
+      named("Ability ranks by level and skill points", gameRules.ultimateRanks.source),
+      named("Ability ranks by level and skill points", gameRules.basicAbilityRanks.source),
+      named("Ability ranks by level and skill points", gameRules.skillPoints.source),
       named("Level cap", gameRules.championLevels.source),
       named("Item slots", gameRules.inventory.source),
       named("Critical strike", gameRules.criticalStrike.source),

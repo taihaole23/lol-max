@@ -28,6 +28,7 @@ test("runs out when nothing refreshes it", () => {
     first = false;
     return result;
   };
-  // Turned on at 0 s for 1 s: ticks at 0, 0.5 and 1.0, then it's off.
-  expect(ticksFor(onlyFirstHit, 1)).toEqual([0, 0.5, 1]);
+  // Turned on at 0 s for 1 s: ticks at 0 and 0.5, then it's off AT 1.0 s (no tick there).
+  // That's how a 3 s burn gets the wiki's 6 ticks (0, 0.5 ... 2.5), not 7.
+  expect(ticksFor(onlyFirstHit, 1)).toEqual([0, 0.5]);
 });

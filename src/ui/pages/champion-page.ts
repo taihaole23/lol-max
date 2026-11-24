@@ -11,14 +11,22 @@ import { champions } from "../../data/champions.ts";
 import { dummyPresets, type EnemyType } from "../../data/dummy-presets.ts";
 import { inventory } from "../../data/game-rules.ts";
 import { getItem, items, type Item } from "../../data/items.ts";
-import { modelledAbilities, playableChampions, type AbilityKey, type PlayableChampionId } from "../../data/playable-champions.ts";
+import { katarina } from "../../data/katarina.ts";
+import { simulationRules } from "../../data/game-rules.ts";
+import {
+  isDamageAbility,
+  modelledAbilities,
+  noDamageAbilities,
+  playableChampions,
+  type AbilityKey,
+  type PlayableChampionId,
+} from "../../data/playable-champions.ts";
 import { stages, type StageName } from "../../data/stages.ts";
 import { lockableLegendaries } from "../../optimizer/constraints.ts";
 import { bootsPool } from "../../optimizer/item-pool.ts";
 import { canBeBuiltTogether } from "../../optimizer/legal.ts";
 import type { SearchResult } from "../../optimizer/messages.ts";
 import { maxItemCount } from "../../optimizer/setup.ts";
-import { allowedRRanks } from "../../stats/katarina-stats.ts";
 import { isPlayable } from "../champion-search.ts";
 import { byId, escapeHtml, readNumber } from "../html.ts";
 import { iconPath, itemIconHtml } from "../icons.ts";
@@ -105,8 +113,16 @@ type AbilityInfo = { key: AbilityKey; name: string; maxRank: number };
 
 // One ability in the ability bar: big icon with its key, name on hover, rank boxes underneath.
 // Used by every champion page; `pips` are the rank boxes (buttons where ranks can be changed).
-function abilityCardHtml(slug: string, ability: AbilityInfo, selected: boolean, modelled: boolean, pips: string): string {
-  const tip = modelled ? ability.name : `${ability.name} · coming soon`;
+// `note` is added to the name on hover when the ability can't be calculated ("coming soon", "no damage").
+function abilityCardHtml(
+  slug: string,
+  ability: AbilityInfo,
+  selected: boolean,
+  modelled: boolean,
+  pips: string,
+  note = "coming soon",
+): string {
+  const tip = modelled ? ability.name : `${ability.name} · ${note}`;
   return `
     <div class="ability${selected ? " selected" : ""}${modelled ? "" : " unavailable"}">
       <button type="button" class="ability-icon" data-ability="${ability.key}" data-tip="${escapeHtml(tip)}"
@@ -126,11 +142,8 @@ function pageHtml(slug: string, name: string): string {
 
     <nav id="abilities" class="ability-bar" aria-label="Abilities"></nav>
 
-    <!-- Shown when an ability that isn't modelled yet is selected. -->
-    <section id="coming-soon" class="panel empty-state" hidden>
-      <h2>Coming soon</h2>
-      <p>This ability isn't modelled yet. Death Lotus (R) is the one the site calculates today.</p>
-    </section>
+    <!-- Shown when an ability that can't be calculated is selected (filled in by render). -->
+    <section id="coming-soon" class="panel empty-state" hidden></section>
 
     <section id="optimizer" class="workbench">
       <div class="panel">
@@ -152,7 +165,7 @@ function pageHtml(slug: string, name: string): string {
           ${switchHtml("mid-quest", "Mid quest done (tier-3 boots)")}
         </div>
 
-        <p id="r-locked" class="notice" hidden>Death Lotus unlocks at level 6.</p>
+        <p id="ability-locked" class="notice" hidden></p>
 
         <div class="field">
           <span class="field-label">Items <span class="field-hint">Click a slot to lock or ban an item</span></span>
@@ -202,7 +215,7 @@ function pageHtml(slug: string, name: string): string {
       <div class="panel results">
         <header class="results-head">
           <div>
-            <span class="field-label">Death Lotus damage</span>
+            <span id="damage-label" class="field-label"></span>
             <p id="damage-total" class="damage-total"></p>
           </div>
           <p id="damage-note" class="damage-note"></p>
@@ -236,11 +249,30 @@ function comingSoonHtml(slug: string, name: string, abilityKey: AbilityKey | nul
 
 // ---- Drawing the page ----
 
+// The selected ability's name and data ("Death Lotus").
+const selectedAbility = () => playableChampions[state.champion].abilities.find((a) => a.key === state.ability)!;
+
+// What the panel says for an ability that can't be calculated.
+function notCalculatedHtml(): string {
+  const ability = selectedAbility();
+  if (noDamageAbilities[state.champion].includes(ability.key)) {
+    return `
+      <h2>${escapeHtml(ability.name)} deals no damage</h2>
+      <p>It only throws a dagger into the air and gives Katarina move speed. The damage comes later, from her
+        passive, when she picks the dagger up, and the site doesn't model daggers on the ground.
+        Pick Q, E or R to see their best builds.</p>`;
+  }
+  return `
+    <h2>Coming soon</h2>
+    <p>This ability isn't modelled yet.</p>`;
+}
+
 function render(): void {
   renderAbilities();
-  const modelled = modelledAbilities[state.champion].includes(state.ability);
+  const modelled = isDamageAbility(state.ability);
   byId("optimizer").hidden = !modelled;
   byId("coming-soon").hidden = modelled;
+  if (!modelled) byId("coming-soon").innerHTML = notCalculatedHtml();
   renderSetup();
   renderDummy();
   renderResults();
@@ -254,25 +286,27 @@ function renderAbilities(): void {
     .map((ability) => {
       const rank = state.ranks[ability.key];
 
-      // One pip per rank. Filled = ranks you have. R's pips above what the level allows are disabled.
+      // One pip per rank. Filled = ranks you have. A pip is disabled if clicking it would break the
+      // level rules: a rank too high for the level, or more skill points than the level gives.
       const pips = [];
       for (let pip = 1; pip <= ability.maxRank; pip++) {
         const filled = pip <= rank ? " filled" : "";
-        const allowed = ability.key !== "r" || allowedRRanks(state.level).some((r) => r === pip);
+        const allowed = actions.rankAllowed(state, ability.key, pip);
         pips.push(
           `<button type="button" class="rank-pip${filled}" data-rank-of="${ability.key}" data-rank="${pip}"` +
             ` aria-label="${escapeHtml(ability.name)} rank ${pip}"${allowed ? "" : " disabled"}></button>`,
         );
       }
 
-      const modelled = modelledAbilities[state.champion].includes(ability.key);
-      return abilityCardHtml(state.champion, ability, ability.key === state.ability, modelled, pips.join(""));
+      const modelled = isDamageAbility(ability.key);
+      const note = noDamageAbilities[state.champion].includes(ability.key) ? "no damage" : "coming soon";
+      return abilityCardHtml(state.champion, ability, ability.key === state.ability, modelled, pips.join(""), note);
     })
     .join("");
 }
 
 function renderSetup(): void {
-  byId("setup-summary").textContent = `Level ${state.level} · R rank ${state.ranks.r || "—"}`;
+  byId("setup-summary").textContent = `Level ${state.level} · ${actions.skillPointsText(state)}`;
 
   byId("stage-buttons").innerHTML = (Object.keys(stages) as StageName[])
     .map((stage) => {
@@ -287,7 +321,9 @@ function renderSetup(): void {
   midQuest.checked = state.midQuest;
   midQuest.disabled = !state.bootsOn;
 
-  byId("r-locked").hidden = actions.katarinaSetup(state) !== null;
+  const problem = actions.abilityProblem(state);
+  byId("ability-locked").hidden = problem === null;
+  byId("ability-locked").textContent = problem ?? "";
   byId<HTMLButtonElement>("remove-slot").disabled = state.itemCount <= 1;
   byId<HTMLButtonElement>("add-slot").disabled = state.itemCount >= maxItemCount(actions.bootsSetting(state));
   renderConditions();
@@ -425,13 +461,14 @@ function renderResults(): void {
   }
 
   // Damage total, the top 5 and the breakdowns of the selected build.
+  byId("damage-label").textContent = `${selectedAbility().name} damage`;
   const total = byId("damage-total");
   const note = byId("damage-note");
   const problem = actions.conditionProblem(state);
   note.classList.toggle("is-problem", problem !== null);
   if (actions.katarinaSetup(state) === null) {
     showText(total, "—");
-    note.textContent = "Death Lotus unlocks at level 6.";
+    note.textContent = actions.abilityProblem(state) ?? "";
   } else if (problem) {
     showText(total, "—");
     note.textContent = problem;
@@ -443,9 +480,7 @@ function renderResults(): void {
     note.textContent = "Working it out…";
   } else {
     countTo(total, best.damage); // counts up from the old number
-    note.textContent = shown?.complete
-      ? "One full ult, all 15 daggers on the dummy."
-      : "Best first item + boots so far. Optimize fills every slot.";
+    note.textContent = shown?.complete ? whatDamageMeans() : "Best first item + boots so far. Optimize fills every slot.";
   }
   byId("top-builds").innerHTML = shown && shown.result.builds.length ? topBuildsHtml(shown.result, selectedBuild.index) : "";
   byId("breakdown").innerHTML = best ? breakdownHtml(best) : "";
@@ -453,6 +488,12 @@ function renderResults(): void {
   const error = byId("search-error");
   error.hidden = searches.searchStatus.error === null;
   error.textContent = searches.searchStatus.error ?? "";
+}
+
+// The one-line rule under the damage total, for the selected ability.
+function whatDamageMeans(): string {
+  if (state.ability === "r") return `One full ult, all ${katarina.deathLotus.daggersPerTarget} daggers on the dummy.`;
+  return `One hit, plus item effects up to ${simulationRules.oneHitWindowSeconds} s after it.`;
 }
 
 function renderDummy(): void {
@@ -607,7 +648,9 @@ export function mountChampionPage(root: HTMLElement, slug: string, ability: Abil
   }
 
   const champion = slug as PlayableChampionId;
-  state = { ...state, champion, ability: ability ?? modelledAbilities[champion][0] };
+  // /katarina with no ability opens Death Lotus, the ability the site started with.
+  const modelled = modelledAbilities[champion];
+  state = { ...state, champion, ability: ability ?? (modelled.includes("r") ? "r" : modelled[0]) };
   root.innerHTML = pageHtml(slug, name);
   lastSlotsHtml = ""; // fresh, empty slots: the first render must draw them
   // Every legendary and boots the casino roll can flash through (loaded now, so it never blinks).

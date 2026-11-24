@@ -8,8 +8,11 @@ It's for fun ("dopamine maxing"), but the math must be correct. A wrong number k
 The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons are in `NOTES.md`.
 
 ## Version 1 scope (do not expand without asking)
-- One ability only: **Katarina R (Death Lotus)**.
-- "Damage" = total damage dealt to ONE target dummy during ONE full ult channel (all daggers hit),
+- Katarina's **R (Death Lotus)**, **Q (Bouncing Blade)** and **E (Shunpo)** (Eric added Q / W / E, Nov 2026).
+  - **W (Preparation)** deals no damage by itself, so its page says "deals no damage" (Eric's choice). Daggers on the ground (her passive) aren't modelled.
+  - Q and E are one hit on the dummy. Item effects the hit starts count "for as long as items need" (Eric), cut off 3 s after the hit (the longest burn; Sunfire's aura keeps itself going forever, so it needs a cut-off). Show this rule on the site.
+  - Ranks follow the game's rules: basic abilities reach rank 1-5 at levels 1/3/5/7/9, R at 6/11/16, and all ranks add up to at most the level. Presets and level changes use Katarina's usual skill order (R whenever possible, then max Q, then E, then W), so Early never maxes W (Eric).
+- For R: "Damage" = total damage dealt to ONE target dummy during ONE full ult channel (all daggers hit),
   including on-hit / on-attack effects and item effects triggered during the channel.
   Effects that deal damage AFTER the channel ends (burns, DoTs) are counted only for the part inside the channel window. Show this rule on the site.
 - Overkill rule: the dummy never dies. It stays at 1 HP and the remaining hits still count in full. Show this rule on the site.
@@ -35,9 +38,9 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   - A "mid quest completed" toggle, which needs boots on, switches the choice to tier-3 boots.
   - The extra boots slot from the bot-lane role quest is ignored.
 - Every input is editable (Eric, Step 7). A stage is a preset that fills in Katarina's level, R rank and item count, and the dummy's level and items.
-  - R rank must be legal for the level (6-10: rank 1, 11-15: up to 2, 16+: up to 3).
+  - Every rank must be legal for the level (R 6-10: rank 1, 11-15: up to 2, 16+: up to 3; Q/W/E rank n needs level 2n−1; total ≤ level).
   - Item slots: 1 to 6 legendaries with boots off, 1 to 5 with boots on.
-- The page shows a champion picker (only Katarina) and her 4 abilities with rank boxes. Only R works in version 1; Q, W and E say "coming soon". This is a shell for later, not a scope change.
+- The page shows a champion picker (only Katarina) and her 4 abilities with rank boxes. Q, E and R work; W says it deals no damage.
 - Preset game stages:
 
   | Stage | Level | Items with boots on | Items with boots off |

@@ -26,7 +26,7 @@ export function runSearch(request: SearchRequest, onProgress: (fraction: number)
   };
   const explain = (build: FoundBuild): ExplainedBuild => ({
     ...build,
-    explanation: explainBuild(request.level, build.items, request.target, request.rRank),
+    explanation: explainBuild(request.level, build.items, request.target, request.rank, request.ability),
   });
 
   const builds = findTopBuilds({ ...request, onProgress: (f) => report(f * mainSearchShare) });

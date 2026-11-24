@@ -9,6 +9,7 @@
 // Death Lotus BUG (listed on the wiki, so it's how the game really plays): R's on-hit
 //   effectiveness (25 / 30 / 35%) also shrinks Luden's damage, because a dagger triggered it.
 //   We apply it to the leftover-stack hits too, since they come from the same trigger.
+//   (`procEffectiveness`: 1 for Q and E.)
 import type { ItemPassive } from "./types.ts";
 
 const data = {
@@ -32,7 +33,7 @@ export const ludensEcho: ItemPassive = {
         if (used || damage.fromItem) return;
         used = true; // set first: the damage below runs afterDamage again
 
-        const fullHit = (ap: number) => (data.baseDamage + data.apRatio * ap) * context.onHitEffectiveness;
+        const fullHit = (ap: number) => (data.baseDamage + data.apRatio * ap) * context.procEffectiveness;
         context.dealDamage(fullHit(context.attacker.ap), "magic");
 
         const leftoverStacks = data.stacks - 1; // one enemy: no extra targets to fire at

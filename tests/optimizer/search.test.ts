@@ -28,10 +28,10 @@ test("returns 5 builds, best first", () => {
 });
 
 test("stage presets: level, highest R rank and item count", () => {
-  expect(stagePreset("early", "tier2")).toEqual({ level: 6, rRank: 1, itemCount: 1 });
-  expect(stagePreset("mid", "off")).toEqual({ level: 11, rRank: 2, itemCount: 2 });
-  expect(stagePreset("full", "tier2")).toEqual({ level: 18, rRank: 3, itemCount: 5 });
-  expect(stagePreset("full", "off")).toEqual({ level: 18, rRank: 3, itemCount: 6 });
+  expect(stagePreset("early", "tier2")).toEqual({ level: 6, ability: "r", rank: 1, itemCount: 1 });
+  expect(stagePreset("mid", "off")).toEqual({ level: 11, ability: "r", rank: 2, itemCount: 2 });
+  expect(stagePreset("full", "tier2")).toEqual({ level: 18, ability: "r", rank: 3, itemCount: 5 });
+  expect(stagePreset("full", "off")).toEqual({ level: 18, ability: "r", rank: 3, itemCount: 6 });
 });
 
 test("slot counts and boots follow the item count and the toggles", () => {
@@ -52,7 +52,7 @@ test("slot counts and boots follow the item count and the toggles", () => {
 
 test("a custom item count (the +/- slot buttons): 4 items at level 13", () => {
   const target = presetDummy("tank", "late");
-  for (const build of findTopBuilds({ level: 13, rRank: 2, itemCount: 4, target, boots: "tier2" })) {
+  for (const build of findTopBuilds({ level: 13, ability: "r", rank: 2, itemCount: 4, target, boots: "tier2" })) {
     expect(legendaries(build)).toHaveLength(4);
   }
 }, 60_000);
@@ -69,14 +69,14 @@ test("Full: 5 items + boots with boots on, 6 items with boots off, never more th
 test("a lower R rank deals less damage (level 16, 1 item + boots)", () => {
   const input = { ...presetInput("tank", "late"), itemCount: 1 }; // level 16 → rank 3 by default
   const rank3 = findTopBuilds(input);
-  const rank1 = findTopBuilds({ ...input, rRank: 1 });
+  const rank1 = findTopBuilds({ ...input, rank: 1 });
   expect(rank1[0].damage).toBeLessThan(rank3[0].damage);
 });
 
 test("impossible setups are refused", () => {
   const input = presetInput("tank", "early");
-  expect(() => findTopBuilds({ ...input, rRank: 2 })).toThrow(); // rank 2 needs level 11
-  expect(() => findTopBuilds({ ...input, level: 10, rRank: 2 })).toThrow(); // level 10 is still rank 1
+  expect(() => findTopBuilds({ ...input, rank: 2 })).toThrow(); // rank 2 needs level 11
+  expect(() => findTopBuilds({ ...input, level: 10, rank: 2 })).toThrow(); // level 10 is still rank 1
   expect(() => findTopBuilds({ ...input, level: 5 })).toThrow(); // no R before level 6
   expect(() => findTopBuilds({ ...input, level: 19 })).toThrow();
   expect(() => findTopBuilds({ ...input, itemCount: 0 })).toThrow();

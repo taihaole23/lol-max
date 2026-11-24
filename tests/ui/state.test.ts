@@ -19,18 +19,42 @@ test("allowedRRanks: the game's 6 / 11 / 16 rule", () => {
 
 test("the page starts on the Early preset: level 6, R rank 1, 1 item + boots", () => {
   const state = s.initialState();
-  expect(s.katarinaSetup(state)).toEqual({ level: 6, rRank: 1, itemCount: 1 });
+  expect(s.katarinaSetup(state)).toEqual({ level: 6, ability: "r", rank: 1, itemCount: 1 });
   expect(s.bootsSetting(state)).toBe("tier2");
   expect(state.ability).toBe("r");
 });
 
-test("a stage preset fills in level, R rank, item count and the dummy's level", () => {
+test("a stage preset fills in level, ranks, item count and the dummy's level", () => {
   const state = s.applyStage(s.initialState(), "late");
-  expect(s.katarinaSetup(state)).toEqual({ level: 16, rRank: 3, itemCount: 3 });
+  expect(s.katarinaSetup(state)).toEqual({ level: 16, ability: "r", rank: 3, itemCount: 3 });
+  expect(state.ranks).toEqual({ q: 5, w: 3, e: 5, r: 3 });
   expect(state.dummyLevel).toBe(16);
 });
 
-test("changing the level sets R to the highest legal rank", () => {
+test("stage presets follow the usual skill order: Early never maxes W", () => {
+  expect(s.applyStage(s.initialState(), "early").ranks).toEqual({ q: 3, w: 1, e: 1, r: 1 });
+  expect(s.applyStage(s.initialState(), "mid").ranks).toEqual({ q: 5, w: 1, e: 3, r: 2 });
+  expect(s.applyStage(s.initialState(), "full").ranks).toEqual({ q: 5, w: 5, e: 5, r: 3 });
+});
+
+test("Q and E use their own rank; W can't be calculated", () => {
+  const state = s.initialState(); // level 6: Q 3, E 1
+  expect(s.katarinaSetup(s.selectAbility(state, "q"))).toEqual({ level: 6, ability: "q", rank: 3, itemCount: 1 });
+  expect(s.katarinaSetup(s.selectAbility(state, "e"))).toEqual({ level: 6, ability: "e", rank: 1, itemCount: 1 });
+  expect(s.katarinaSetup(s.selectAbility(state, "w"))).toBeNull();
+  expect(s.abilityProblem(s.selectAbility(state, "w"))).toBeNull(); // W shows its own "no damage" panel
+});
+
+test("an ability with no points can't be calculated, and says why", () => {
+  const level4 = s.setLevel(s.initialState(), 4); // Q 2, E 1, W 1, no R
+  expect(s.abilityProblem(level4)).toBe("Death Lotus unlocks at level 6.");
+  const noE = s.selectAbility(s.setRank(level4, "e", 1), "e"); // clicking E's only point takes it back
+  expect(noE.ranks.e).toBe(0);
+  expect(s.katarinaSetup(noE)).toBeNull();
+  expect(s.abilityProblem(noE)).toBe("Put a point in Shunpo to calculate it.");
+});
+
+test("changing the level sets the ranks to the skill order, so R is at the highest legal rank", () => {
   let state = s.applyStage(s.initialState(), "full"); // level 18, rank 3
   state = s.setLevel(state, 10);
   expect(state.ranks.r).toBe(1); // 10 is still rank 1 only
@@ -48,12 +72,24 @@ test("levels are kept between 1 and 18, and rounded", () => {
   expect(s.setLevel(state, 12.6).level).toBe(13);
 });
 
-test("R rank boxes: a lower rank is fine, an illegal one is ignored", () => {
+test("rank boxes: a lower rank is fine, an illegal one is ignored", () => {
   const late = s.applyStage(s.initialState(), "late"); // level 16
   expect(s.setRank(late, "r", 1).ranks.r).toBe(1);
-  const early = s.initialState(); // level 6
-  expect(s.setRank(early, "r", 2).ranks.r).toBe(1); // unchanged
-  expect(s.setRank(early, "q", 5).ranks.q).toBe(5); // basic abilities: no rules yet
+  const early = s.initialState(); // level 6: Q 3, W 1, E 1, R 1 (all 6 points spent)
+  expect(s.setRank(early, "r", 2).ranks.r).toBe(1); // unchanged: R 2 needs level 11
+  expect(s.setRank(early, "q", 5).ranks.q).toBe(3); // unchanged: Q 5 needs level 9
+  expect(s.setRank(early, "e", 2).ranks.e).toBe(1); // unchanged: no skill point left
+  expect(s.rankAllowed(early, "e", 2)).toBe(false);
+});
+
+test("rank boxes: clicking the top filled box frees a point that can go elsewhere", () => {
+  let state = s.initialState(); // level 6: Q 3, W 1, E 1, R 1
+  state = s.setRank(state, "q", 3); // Q 3 → 2
+  expect(state.ranks.q).toBe(2);
+  expect(s.skillPointsText(state)).toBe("5 / 6 skill points");
+  state = s.setRank(state, "e", 2); // the free point goes to E
+  expect(state.ranks).toEqual({ q: 2, w: 1, e: 2, r: 1 });
+  expect(s.skillPointsText(state)).toBe("6 / 6 skill points");
 });
 
 test("the dummy's level follows Katarina's until the user edits it", () => {
