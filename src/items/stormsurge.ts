@@ -9,11 +9,10 @@
 // low-HP dummy.
 // ASSUMPTION: the 25% counts damage after armor / MR ("damage dealt") from every source,
 //   R's and items'. The strike uses Katarina's AP at the moment it lands.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Stormsurge", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Stormsurge", patch: "26.23" },
   maxHealthToTrigger: 0.25,
   secondsUntilStrike: 2,
   strikeDamage: 125,

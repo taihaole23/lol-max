@@ -1,0 +1,186 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Navori Flickerblade;Phantom Dancer;Runaan's Hurricane;Fiendhunter Bolts;Statikk Shiv;Kraken Slayer;Yun Tal Wildarrows;Stormrazor;Hexoptics C44
+|background =
+|notes =
+{{Energized info}}
+* {{sbc|Sharpshooter}} deals {{tip|proc damage}}, and thus will not trigger [[spell effects]].
+* {{sbc|Sharpshooter}} is not blocked by {{tip|spell shield}}.
+* {{sbc|Sharpshooter's}} on-hit damage is not tied to the attack empowered by its increased range.
+* The maximum range cap of 150 is reached at a minimum of {{sti|attack range|{{ap|150/0.35|round=2}} attack range}}.
+* {{sbc|Sharpshooter's}} range increase stacks additively with other sources of attack range and interacts with effects that scale with the stat.
+** Effects that grant fixed attack range will not interact with {{sbc|Sharpshooter's}} range increase.
+* '''Rapid Firecannon''' is an {{tip|Energized}} effect and will stack with other sources of it.
+** ''Energized'' effects will apply their on-hit damage to [[structure]]s.
+* The movement speed stat only increases flat movement speed, and will not interact with other percentage increases.
+|strategy =
+* {{iis|Rapid Firecannon}} passive extended range allows for a user to attack outside of their normal basic attack range for a single attack when the effect is fully charged.
+** This is useful in situations where it would be dangerous for the user to attack within the range that they normally would; the user can attack from a safe distance.
+* {{iis|Rapid Firecannon}} attack can be used in conjunction with other empowered attacks, especially those that apply {{tip|crowd control}}.
+* {{ii|Rapid Firecannon}} can be purchased as an alternative to {{ii|Phantom Dancer}} in situations where the increased range serves greater value over the increased attack speed.
+|oldicons =
+|trivia =
+* {{Univ|Pentakill|Pentakill's}} second volume, [[Pentakill II: Grasp of the Undying]], named its ninth track after this item.
+[[File:Bilgewater Crest icon.png|link=Bilgewater#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Rapid Firecannon energized attack gained VFX.png|Fully Energized VFX
+Rapid Firecannon ready VFX.png|Energized Attack Ready VFX
+Rapid Firecannon screenshot.png|Energized Attack Hit VFX
+Rapid Firecannon range screenshot.png|Sharpshooter Attack Range Indicator
+</gallery>
+|sfx =
+;Energized
+* {{sm2|Rapidfire Cannon passive SFX 4.ogg}} Rapid Firecannon Energized Ready SFX
+* {{sm2|Energized passive SFX.ogg}} Energized Ready SFX (with {{ii|Statikk Shiv}})
+
+;Energized Attack
+* {{sm2|Rapidfire Cannon passive SFX.ogg}} Sharpshooter Attack Hit SFX
+* {{sm2|Rapidfire Cannon passive SFX 2.ogg}} Sharpshooter Attack Hit SFX
+* {{sm2|Rapidfire Cannon passive SFX 3.ogg}} Sharpshooter Attack Hit SFX
+* {{sm2|Rapidfire Cannon passive SFX 5.ogg}} Sharpshooter Attack Hit SFX
+* {{sm2|Rapidfire Cannon passive SFX 6.ogg}} Sharpshooter Attack Hit SFX
+|revisions =
+|patchhistory =
+;[[V26.11]]
+* {{sbc|Bug Fix:}} Fixed a bug where it wouldn't trigger from ability damage until it was triggered by an attack at least once.
+
+;[[V26.10]]
+* {{sbc|Bug Fix:}} Fixed a bug where the range indicator would briefly linger after being triggered by {{ii|Voltaic Cyclosword}}.
+
+;[[V14.19]]
+* Total cost increased to {{g|2650}} from {{g|2600}}.
+** Combine cost increased to {{g|850}} from {{g|700}}.
+* Movement speed reduced to 4% from 7%.
+* Sharpshooter damage reduced to 40 from 60.
+
+;[[V14.12]]
+* Combine cost increased to {{g|700}} from {{g|600}}.
+** Total cost unchanged.
+
+;[[V14.10]]
+* {{sbc|New Recipe:}} {{ii|Zeal}} + {{ii|Scout's Slingshot}} + {{g|600}} = {{g|2600}}.
+** {{sbc|Old Recipe:}} {{ii|Long Sword}} + {{ii|Zeal}} + {{ii|Kircheis Shard}} + {{g|850}} = {{g|3000}}.
+* Attack damage reduced to 0 from 30.
+* Attack speed increased to 35% from 20%.
+* Critical strike chance increased to 25% from 20%.
+
+;[[V14.4]]
+* Now has the search keyword "gun".
+
+;[[V14.1]]
+* Attack speed increased to 20% from 15%.
+
+;[[V13.12]]
+* Energized damage reduced to 60 at all levels from {{pp|60;70 to 140 for 8|1;11 to 18}}.
+
+;[[V13.10]]
+* {{sbc|New Recipe:}} {{ii|Long Sword}} + {{ii|Zeal}} + {{ii|Kircheis Shard}} + {{g|850}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Zeal}} + {{ii|Kircheis Shard}} + {{g|750}} = {{g|2500}}.
+* Now grants 30 attack damage.
+* Attack speed reduced to 15% from 35%.
+* Energized damage changed to {{pp|60;70 to 140 for 8|1;11 to 18}} from 120 at all levels.
+
+;[[V11.23]]
+* {{sbc|New Effect:}} Tooltip now tracks how many times extra range was utilized.
+
+;[[V11.10]]
+* {{sbc|Bug Fix:}} Fixed a bug where champions with less than {{fd|428.6}} attack range would gain up-to 54% bonus attack range via recursion instead of the expected 35%.
+
+;[[V10.25]]
+* Total cost reduced to {{g|2500}} from {{g|2700}}.
+** Combine cost reduced to {{g|750}} from {{g|800}}.
+
+;[[V10.24]]
+* Updated icon.
+
+;[[V10.23]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Zeal}} + {{ii|Kircheis Shard}} + {{g|800}} = {{g|2700}}.
+** {{sbc|Stats:}} 35% attack speed, 20% critical strike chance, 7% movement speed.
+** {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+** {{sbc|Unique Passive - Sharpshooter:}} When fully {{tip|Energized}}, your next basic attack deals {{as|120 '''bonus''' magic damage on-hit}}. Energized attacks gain 35% '''bonus''' range (+150 range maximum).
+** Limited to 1 '''Rapid Firecannon'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Kircheis Shard}} + {{ii|Zeal}} + {{g|500}} = {{g|2600}}.
+** {{sbc|Stats:}} 30% attack speed, 25% critical strike chance, 7% movement speed.
+** {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+** {{sbc|Unique Passive - Sharpshooter:}} When fully {{tip|Energized}}, your next basic attack deals {{as|120 '''bonus''' magic damage on-hit}}. Energized attacks gain 35% '''bonus''' range (+150 range maximum).
+
+;[[V10.11]]
+* Bonus movement speed increased to 7% from 5%.
+
+;[[V9.23]]
+* Combine cost reduced to {{g|500}} from {{g|800}}.
+* Energized stacks per attack reduced to 6 from 12.
+* Energized stacks per movement increased to (1 for every 25 units) from (1 for every 30 units).
+* {{sbc|New Effect:}} Energized effects now also work on structures.
+* Energized damage changed to 120 at all levels from {{pp|60;60;60;60;60 to 140|round=ceil}}.
+* {{sbc|Removed:}} Energized attacks no longer charge 25% faster and function on structures.
+* {{sbc|New Effect:}} Damage from other Energized effects now stacks.
+* Unique Energized bonus magic damage and bonus attack range is now named {{sbc|Sharpshooter}}.
+** {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+** {{sbc|Unique Passive - Sharpshooter:}} When fully {{tip|Energized}}, your next basic attack deals {{as|120 '''bonus''' magic damage on-hit}}. Energized attacks gain 35% '''bonus''' range (+150 range maximum).
+** {{sbc|Previous Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100. When fully {{tip|Energized}}, your next basic attack deals {{as|{{pp|60;60;60;60;60 to 140|round=ceil}} '''bonus''' magic damage on-hit}}.
+** {{sbc|Previous Passive:}} Energized attacks gain 35% '''bonus''' range (+150 range maximum), charge 25% faster, and function on structures.
+
+;[[V9.4]]
+* Two passive effects (unnamed and {{sbc|Firecannon}}) changed to {{sbc|Energized}} and a unique passive.
+** {{sbc|Unique Passive - Energized:}} Moving and attacking will make an attack {{tip|Energized}}. Your {{tip|Energized}} attacks deal {{pp|60;60;60;60;60 to 140|round=ceil}} '''bonus''' magic damage on hit.
+** {{sbc|Unique Passive:}} {{tip|Energized}} attacks gain 35% '''bonus''' range (+150 range maximum), charge 25% faster, and function on structures.
+
+;[[V9.3]]
+* Total cost reduced to {{g|2600}} from {{g|2800}}.
+** Combine cost increased to {{g|800}} from {{g|700}}.
+* Critical strike chance reduced to 25% from 30%.
+
+;[[V8.15]]
+* Total cost reduced to {{g|2800}} from {{g|2900}}.
+** Combine cost reduced to {{g|700}} from {{g|800}}.
+
+;[[V8.11]]
+* Total cost increased to {{g|2900}} from {{g|2600}}.
+** Combine cost increased to {{g|800}} from {{g|600}}.
+
+;[[V8.6]]
+* Firecannon damage increased to {{pp|60;60;60;60;60 to 140|round=ceil}} from {{pp|50;50;50;50;50;50 to 120|round=ceil}}.
+
+;[[V7.9]]
+* Combine cost increased to {{g|600}} from {{g|550}}.
+* Energized attack bonus damage reduced to {{pp|50;50;50;50;50;50 to 120|round=ceil}} from {{pp|50;50;50;50;50 to 160|round=ceil}}.
+* {{sbc|New Effect:}} Basic attacks becomes Energized 25% faster.
+
+;[[V6.21]]
+* {{sbc|Bug Fix:}} Audio for the empowered attack proc no longer plays through Fog of War.
+
+;[[V6.3]]
+* Movement speed reduced to 5% from 7%.
+* Bonus damage reduced to {{pp|50;50;50;50;50 to 160|round=ceil}} from {{pp|50;50;50;50;50 to 200|round=ceil}}.
+
+;[[V6.2]]
+* {{sbc|Bug Fix}}: Fixed a bug where champions would run into ''normal'' attack range, even when they had an empowered attack range from {{ii|Rapid Firecannon}}.
+
+;[[V6.1]]
+* Movement speed reduced to 7% from 8%.
+
+;[[V5.24]]'''
+* Total cost increased to {{g|2600}} from {{g|2500}}.
+* Bonus damage to target from Rapid Firecannon and Statikk Shiv no longer stack.
+
+;[[V5.22]] Added
+* {{ii|Rapid Firecannon}}:
+** Recipe: {{ii|Kircheis Shard}} + {{ii|Zeal}} + {{g|550}} = {{g|2500}}
+** +30% attack speed.
+** +8% movement speed.
+** +30% critical strike chance.
+** Passive - Energize: Moving and using basic attacks Energize you. When fully Energized, gain Firecannon.
+** Unique passive - Firecannon: Your next basic attack gains 35% increased range, up to a maximum of +150 range and deals {{pp|50;50;50;50;50 to 200|round=ceil}} bonus on-hit magic damage. Firecannon can be used on structures.
+}}
+
+
+[[de:Schnellfeuer-Geschütz]]
+[[pl:Ognista Armata]]
+[[ru:Скорострельная пушка]]
+[[Category:Items with passive abilities]]

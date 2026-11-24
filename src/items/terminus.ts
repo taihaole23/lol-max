@@ -9,11 +9,10 @@
 // ASSUMPTION (to check in the Practice Tool): the first hit is Light, so Dark hits are the
 // 2nd, 4th and 6th. The wiki doesn't say; Light first is the safer guess (less damage).
 // A Dark stack counts for damage after that hit, not for the hit's own on-hit damage.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Terminus", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Terminus", patch: "26.23" },
   baseDamage: 30,
   bonusAdRatio: 0.1,
   apRatio: 0.1,

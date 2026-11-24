@@ -1,0 +1,32 @@
+["Kraken Slayer"] = {
+        ["id"]                  = 6672,
+        ["nickname"]            = {"Kraken Slayer"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 45,
+            ["as"]              = 40,
+            ["ms"]              = 4,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Bring It Down",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks {{rd|[[on-hit]]|[[on-attack]]}} grant a stack for 4 seconds, up to 2 stacks. At 2 stacks, the next basic attack consumes all stacks to deal {{as|{{rd|150 + 5*(x-1) for 13|0.8*(150 + 5*(x-1)) for 13|levels=1;9 to 20|pp=true}} '''bonus''' physical damage|physical damage}} on-hit, increased by {{pp|0 to 75 by 5|0 to 100|key=%|color=health|type=target's '''missing''' health|key1=%}}, for up to {{as|{{rd|1.75*(150 + 5*(x-1)) for 13|0.8*1.75*(150 + 5*(x-1)) for 13|levels=1;9 to 20|pp=true}} '''bonus''' physical damage|physical damage}}.",
+                ["description2"] = "''Abilities that do not trigger on-attack effects, will always grant stacks on-hit.''",
+
+            },
+        },
+        ["recipe"]              = {"Rectrix", "Hearthbound Axe", "Recurve Bow"},
+        ["buy"]                 = 3000,
+    },

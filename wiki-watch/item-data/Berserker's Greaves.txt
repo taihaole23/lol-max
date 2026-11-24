@@ -1,0 +1,18 @@
+["Berserker's Greaves"] = {
+        ["id"]                  = 3006,
+        ["nickname"]            = {"boots", "zerker"},
+        ["tier"]                = 2,
+        ["type"]                = {"Boots"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["stats"] = {
+            ["as"]              = 30,
+            ["msflat"]          = 45,
+        },
+        ["recipe"]              = {"Boots", "Dagger", "Dagger"},
+        ["buy"]                 = 1100,
+    },

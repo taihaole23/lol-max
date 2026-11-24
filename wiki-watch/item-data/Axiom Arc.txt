@@ -1,0 +1,28 @@
+["Axiom Arc"] = {
+        ["id"]                  = 6696,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 55,
+            ["ah"]              = 20,
+            ["lethality"]       = 18,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Flux",
+                ["unique"]      = true,
+                ["description"] = "Scoring a {{tip|takedown}} against an enemy champion within 3 seconds of damaging them refunds 10% {{as|(+ {{fd|0.25}}% per 1 Lethality)}} of your ultimate ability's '''total''' cooldown.",
+            },
+        },
+        ["recipe"]              = {"The Brutalizer", "Caulfield's Warhammer"},
+        ["buy"]                 = 2750,
+    },

@@ -1,0 +1,187 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems =Dusk and Dawn;Nashor's Tooth;Iceborn Gauntlet;Trinity Force;Essence Reaver;Stormsurge;Cosmic Drive;Hextech Gunblade;Hextech Rocketbelt;Mejai's Soulstealer
+|background =
+|notes =
+* '''Lich Bane's''' {{sbc|Spellblade}} grants {{as|attack speed}} to its user as long as its buff persists, even if its attack does not consume the buff.
+{{Spellblade info}}
+|strategy =
+* In comparison to other {{sbc|Spellblade}} items, {{ii|Lich Bane}} is a more appropriate choice for magic damage dealers that also use basic attacks.
+** Champions that are hybrid, both physical and magic damage focused, may prefer {{ii|Lich Bane}} over {{ii|Trinity Force}} as it scales much better due to also having a scaling with ability power.
+* {{iis|Lich Bane}} scaling with ability power separates it from {{ii|Trinity Force}} as it does not necessarily need to be utilized by champions with high base attack damage to deal the most bonus damage. This does not mean champions with that luxury should not build it, as it does also scale with base attack damage.
+|trivia =
+* {{iis|Lich Bane|variant=old}} previous icon appears to be an orange recolor of an [[alpha items|alpha item]] with unknown effects called {{cci|Zeal_and_Sheen_item.png||Zeal and Sheen}}.
+*The current icon appears to be a [[Petricite Tree|petricite]] blade releasing stored magic.
+[[File:Blessed Isles Crest icon.png|link=Blessed Isles|100px|center]]
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Lich Bane screenshot.png|Item VFX
+Lich Bane old screenshot.png|Old Item VFX
+</gallery>
+|revisions =
+|patchhistory =
+;[[V26.10]]
+* Movement speed increased to 6% from 4%.
+* Spellblade AP ratio increased to {{as|45% AP}} from {{as|40% AP}}.
+
+;[[V25.15]]
+* {{sbc|Bug Fix:}} Spellblade primed VFX and buff icon on the HUD are no longer incorrectly removed when attacking a plant.
+** ''[This did not affect gameplay: the buff itself would not be consumed, and would last for the proper duration.]''
+
+;[[V25.10]]
+* {{sbc|New Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Blasting Wand}} + {{g|250}} = {{g|2900}}.
+** {{sbc|Old Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Needlessly Large Rod}} + {{g|200}} = {{g|3200}}.
+* Ability power reduced to 100 from 115.
+
+;[[V14.19]]
+* {{sbc|New Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Needlessly Large Rod}} + {{g|200}} = {{g|3200}}.
+** {{sbc|Old Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Hextech Alternator}} + {{g|250}} = {{g|3100}}.
+* Ability power increased to 115 from 100.
+* Ability haste reduced to 10 from 15.
+* Movement speed reduced to 4% from 8%.
+* Spellblade AP ratio reduced to {{as|40% AP}} from {{as|45% AP}}.
+
+;[[V14.5]]
+* Spellblade AP ratio reduced to {{as|45% AP}} from {{as|50% AP}}.
+
+;[[V14.3]]
+* Combine cost increased to {{g|250}} from {{g|150}}.
+** Total cost unchanged.
+* Spellblade base AD ratio reduced to {{as|75% '''base''' AD}} from {{as|100%|AD}}.
+
+;[[V14.2]]
+* {{sbc|Bug Fix:}} Now is properly displayed in the ability haste section of the shop.
+
+;[[V14.1]]
+* {{sbc|New Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Hextech Alternator}} + {{g|150}} = {{g|3100}}.
+** {{sbc|Old Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Fiendish Codex}} + {{g|550}} = {{g|3000}}.
+* Ability power increased to 100 from 85.
+* Spellblade attack damage ratio increased to {{as|100% '''base''' AD}} from {{as|75%|AD}}.
+* {{sbc|New Effect:}} Now grants {{as|50% '''bonus''' attack speed}} while ''Spellblade'' is active.
+* Now limits the user to 1 {{sbc|Spellblade}} item.
+
+;[[V13.9]]
+* Ability power increased to 85 from 75.
+
+;[[V12.2]]
+* {{sbc|New Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Fiendish Codex}} + {{g|550}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Blasting Wand}} + {{g|600}} = {{g|3000}}.
+* Ability haste increased to 15 from 0.
+* Spellblade base AD ratio reduced to {{as|75% '''base''' AD}} from {{as|150%|AD}}.
+* Spellblade AP ratio increased to {{as|50% AP}} from {{as|40% AP}}.
+* Spellblade cooldown reduced to {{fd|1.5}} seconds from {{fd|2.5}}.
+
+;[[V11.13]]
+* Bonus movement speed reduced to 8% from 10%.
+* Ability power increased to 75 from 70.
+
+;[[V11.3]]
+* Ability power reduced to 70 from 80.
+
+;[[V10.24]]
+* Updated icon.
+* AP ratio reduced to {{as|40% AP}} from {{as|50% AP}}.
+
+;[[V10.23#November 12th Hotfix|V10.23]] - November 12th Hotfix
+* AP ratio reduced to {{as|50% AP}} from {{as|60% AP}}.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Blasting Wand}} + {{g|600}} = {{g|3000}}.
+** {{sbc|Stats:}} 80 ability power, 10% movement speed.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, your next basic attack within 10 seconds deals {{as|150% '''base''' AD}} {{as|(+ 60% AP)}} {{as|'''bonus''' magic damage on-hit}} ({{fd|2.5}} second cooldown).
+** Limited to 1 '''Lich Bane'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Blasting Wand}} + {{g|450}} = {{g|3200}}.
+** {{sbc|Stats:}} 80 ability power, 7% movement speed, 250 mana, 10% cooldown reduction.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, your next basic attack within 10 seconds deals {{as|75% '''base''' AD}} {{as|(+ 50% AP)}} {{as|'''bonus''' magic damage on-hit}} ({{fd|1.5}} second cooldown).
+
+;[[V8.14]]
+* Spellblade VFX updated.
+
+;[[V5.22]]
+* {{sbc|New Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{ii|Blasting Wand}} + {{g|450}} = {{g|3200}}
+** {{sbc|Old Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{g|950}} = {{g|3000}}
+* Now grants 10% cooldown reduction.
+* Movement speed increased to 7% from 5%.
+
+;[[V5.2]]
+* Combine cost increased to {{g|950}} from {{g|850}}.
+** Total cost unchanged.
+
+;[[V4.13]]
+* Now correctly lists the Spellblade passive as having a {{fd|1.5}} second cooldown.
+
+;[[V4.5]]
+* {{sbc|New Recipe:}} {{ii|Sheen}} + {{ii|Aether Wisp}} + {{g|850}} = {{g|3000}}
+** {{sbc|Old Recipe:}} {{ii|Sheen}} + {{ii|Blasting Wand}} + {{g|940}} = {{g|3000}}
+
+;[[V4.4]]
+* Spellblade base damage changed to {{as|75% base AD}} from 50.
+* Spellblade AP scaling reduced to {{as|50% AP}} from {{as|75% AP}}.
+
+;[[V3.04]]
+* Combine cost increased to {{g|940}} from {{g|880}}.
+** Total cost unchanged.
+
+;[[V1.0.0.152]]
+* {{sbc|New Recipe:}} {{ii|Sheen}} + {{ii|Blasting Wand}} + {{g|880}} = {{g|3000}}
+** {{sbc|Old Recipe:}} {{ii|Null-Magic Mantle}} + {{ii|Sheen}} + {{ii|Blasting Wand}} + {{g|950}} = {{g|3470?}}
+* No longer grants magic resistance.
+* Mana reduced to 250 from 350.
+* Movement speed reduced to 5% from 7%.
+* Passive's on-hit magic damage changed to 50 + 75% AP magic damage from 100% AP physical damage.
+* Particle effects have been updated.
+
+;[[V1.0.0.146]]
+* Now displays its cooldown on the item itself rather than with a buff.
+
+;[[V1.0.0.110]]
+* Fixed a bug where the cost was inadvertently increased and the mana gain lowered.
+
+;[[V1.0.0.100]]
+* "Reservoir" system has been removed. Lich Bane will now strictly respect the cooldown time between procs. The cooldown has been reduced to 2 second delays between procs from 3 seconds.
+
+;[[V0.8.22.115]]
+* Now has an internal cooldown of 3 seconds (but now works with all spells including {{ai|Lay Waste|Karthus}} and {{ai|Hate Spike|Evelynn}}).
+
+;[[V0.8.21.110]]
+* Fixed tooltip.
+
+;[[June 26, 2009 Patch]]
+* {{sbc|New Recipe:}} {{ii|Null-Magic Mantle}} + {{ii|Sheen}} + {{ii|Blasting Wand}} + {{g|950}} = {{g|3465?}}
+** {{sbc|Old Recipe:}} {{ii|Amplifying Tome}} + {{ii|Sheen}} + {{ii|Blasting Wand}} + {{g|710}} = {{g|?}}
+* Movement speed reduced to 7% from 8%.
+* Ability power reduced to 80 from 100.
+* Magic resistance increased to 32 from 0.
+
+;[[June 19, 2009 Patch]]
+* Ability power reduced to 100 from 110.
+* Movement speed reduced to 8% from 10%.
+
+;[[May 29, 2009 Patch]]
+* Unique effect no longer stacks with {{iis|Sheen}} effect.
+
+;[[May 15, 2009 Patch]]
+* Passive now unable to crit.
+
+;[[May 9, 2009 Patch]] Added
+* {{ii|Lich Bane}}: High tier legendary Ability Power / Mana item (which uses Sheen) with Unique passive: 100% chance when an ability is used that your next physical attack deals +Ability Power bonus damage.
+** Recipe: {{ii|Amplifying Tome}} + {{ii|Sheen}} + {{ii|Blasting Wand}} + {{g|710}} = {{g|?}}
+** +110 ability power
+** +10% movement speed
+** +350 mana
+** {{sbc|Unique passive:}} 100% chance when an ability is used that your next physical attack deals +Ability Power bonus damage.
+}}
+
+
+[[cs:Lich Bane]]
+[[de:Fluch des Lichs]]
+[[es:Maldición del Liche]]
+[[fr:Fléau de Liche]]
+[[pl:Zmora Licza]]
+[[ru:Гроза Личей]]
+[[zh:巫妖之祸]]
+[[Category:Items with passive abilities]]

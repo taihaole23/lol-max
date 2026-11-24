@@ -1,0 +1,28 @@
+["Bloodthirster"] = {
+        ["id"]                  = 3072,
+        ["nickname"]            = {"bt", "healsword"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 80,
+            ["lifesteal"]       = 15,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Ichorshield",
+                ["unique"]      = true,
+                ["description"] = "Convert the {{tip|healing}} received from {{sti|life steal}} in excess of {{as|'''maximum''' health}} into a {{tip|shield}} for up to {{pp|165 + (315-165)/10*(x-1)|1;9 to 20 by 1|formula=165 base, then +15 per level starting from level 9.}}, which lasts until destroyed.",
+            },
+        },
+        ["recipe"]              = {"B. F. Sword", "Pickaxe", "Vampiric Scepter"},
+        ["buy"]                 = 3400,
+    },

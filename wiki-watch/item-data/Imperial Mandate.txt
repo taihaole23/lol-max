@@ -1,0 +1,34 @@
+["Imperial Mandate"] = {
+        ["id"]                  = 4005,
+        ["nickname"]            = {"banner of command", "flag"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 15,
+            ["ap"]              = 60,
+            ["mp5"]             = 150,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Control",
+                ["unique"]      = true,
+                ["description"] = "Abilities with {{tip|immobilize|immobilizing}} effects have their cooldown reduced equivalent to {{as|20 ability haste}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Command",
+                ["unique"]      = true,
+                ["description"] = "{{tip|Immobilize|Immobilizing}} an enemy champion marks them as ''Vulnerable'' for 4 seconds, increasing the damage they take from all sources by 7%. Subsequent immobilizes against a target extend the duration of the effect.",
+            },
+        },
+        ["recipe"]              = {"Amplifying Tome", "Bandleglass Mirror", "Amplifying Tome"},
+        ["buy"]                 = 2400,
+    },

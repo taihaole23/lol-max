@@ -1,0 +1,31 @@
+["Cryptbloom"] = {
+        ["id"]                  = 3137,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Blight",
+        ["caption"]             = "\"From death, life.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 75,
+            ["ah"]              = 20,
+            ["mpen"]            = 30,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Life From Death",
+                ["unique"]      = true,
+                ["description"] = "Scoring a {{tip|takedown}} against an enemy champion while alive and within 3 seconds of damaging them summons a nova that radiates from the location of their death over {{fd|1.75}} seconds, {{tip|heal|healing}} you and allied champions hit for 100 {{as|(+ 20% AP)}}.",
+                ["cd"]          = "60",
+            },
+		},
+        ["recipe"]              = {"Blighting Jewel", "Fiendish Codex", "Fiendish Codex"},
+        ["buy"]                 = 3000,
+    },

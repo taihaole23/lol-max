@@ -1,0 +1,189 @@
+: ''For the removed [[item]], see {{ii|Abyssal Scepter}}.''
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Infernal Mask}}.''
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Force of Nature;Spirit Visage;Hollow Radiance;Kaenic Rookern;Bloodletter's Curse;Void Staff;Cryptbloom;Frozen Heart
+|notes =
+* The visual indicator of the reduction lasts up to 60 seconds, despite the debuff lasting indefinitely against champions as long as they are within {{sbc|Unmake's}} aura.{{bug}}
+|strategy =
+|trivia =
+[[File:Shadow Isles Crest icon.png|link=Shadow Isles|100px|center]]
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Abyssal Mask penetration indicator.png|Old Magic Resistance reduced indicator
+Abyssal Mask passive indicator.png|Old Damage Amplified indicator
+Abyssal Mask screenshot.png|Old Aura VFX
+</gallery>
+|patchhistory =
+;[[V25.08]]
+* {{sbc|Bug Fix:}} No longer is displayed under the Ability Power filter in the shop.
+
+;[[V25.04]]
+* Magic resistance reduced to 45 from 50.
+
+;[[V25.S1.1]]
+* Health increased to 350 from 300.
+* Magic resistance increased to 50 from 45.
+* {{sbc|Unique Passive - Unmake:}}
+** {{sbc|New Effect:}} Enemy champions within {{tt|700 units|center to edge}} of you become cursed, causing them to receive {{as|12% increased magic damage|magic damage}} from all sources.
+** {{sbc|Old Effect:}} Enemy champions within {{tt|700 units|center to edge}} of you become cursed, {{as|reducing their magic resistance by 30%|magic penetration}}.
+* No longer limits the user to 1 {{sbc|Blight}} item.
+* Now limits the user to 1 '''Abyssal Mask'''.
+
+;[[V14.19]]
+* Total cost increased to {{g|2650}} from {{g|2500}}.
+** Combine cost increased to {{g|1000}} from {{g|800}}.
+* Ability haste increased to 15 from 10.
+* Magic resistance reduced to 45 from 50.
+* {{sbc|Removed:}} Unmake no longer grants {{as|10 magic resistance}} per cursed enemy.
+
+;[[V14.15]]
+* Total cost increased to {{g|2500}} from {{g|2300}}.
+** Combine cost increased to {{g|800}} from {{g|600}}.
+* Unmake magic resistance reduction increased to 30% from 20%.
+* Unmake radius increased to 700 units from 600.
+
+;[[V14.10]]
+* Total cost reduced to {{g|2300}} from {{g|2400}}.
+** Combine cost reduced to {{g|600}} from {{g|700}}.
+* Magic resistance reduced to 50 from 60.
+* Unmake radius increased to 600 from 550.
+* Unmake magic resistance reduction changed to {{as|20%|magic penetration}} from {{as|5|magic penetration}} {{as|(+ {{fd|1.2}}% of user's '''bonus''' health)}}, capped at a reduction of 25.
+* Unmake bonus magic resistance per enemy increased to 10 from 9.
+* Now limits the user to 1 {{sbc|Blight}} item.
+
+;[[V13.11]]
+* {{sbc|Bug Fix:}} No longer causes enemy champions' {{ii|Rod of Ages}} to not function properly.
+
+;[[V13.10]]
+* {{sbc|New Recipe:}} {{ii|Kindlegem}} + {{ii|Negatron Cloak}} + {{g|700}} = {{g|2400}}.
+** {{sbc|Old Recipe:}} {{ii|Catalyst of Aeons}} + {{ii|Spectre's Cowl}} + {{g|450}} = {{g|3000}}.
+* {{sbc|New Stats:}} 300 health, 60 magic resistance, 10 ability haste.
+** {{sbc|Old Stats:}} 550 health, 300 mana, 40 magic resistance, 10 ability haste.
+* Limited to 1 '''Abyssal Mask''' instead of 1 {{sbc|Eternity}} item.
+* {{sbc|Removed Unique Passive - Eternity:}} Restore {{as|mana}} equal to 7% of {{tt|pre-mitigation damage|Damage calculated before modifiers}} taken from champions, and {{tip|heal}} for an amount equal to {{as|25% of mana spent}}, up to 20 per cast. Toggled abilities can only heal for up to 20 per second.
+
+;[[V13.7]]
+* Combine cost reduced to {{g|450}} from {{g|650}}.
+** Total cost unchanged.
+* Health increased to 550 from 500.
+
+;[[V13.1]]
+* Mana restored reduced to 7% pre-mitigation damage taken from 8%.
+* Heal increased to 25% of mana spent from 20%.
+* Heal cap increased to 20 from 15.
+
+;[[V12.22]]
+* Updated icon.
+* {{sbc|New Recipe:}} {{ii|Catalyst of Aeons}} + {{ii|Spectre's Cowl}} + {{g|650}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Kindlegem}} + {{ii|Spectre's Cowl}} + {{g|650}} = {{g|2700}}.
+* Health increased to 500 from 450.
+* Mana increased to 300 from 0.
+* Magic resistance increased to 40 from 35.
+* {{sbc|New Unique Passive - Eternity:}} Restore {{as|mana}} equal to 8% of {{tt|pre-mitigation damage|Damage calculated before modifiers}} taken from champions, and {{as|health}} equal to {{as|20% of mana spent}}, up to {{as|15 health}} per cast. Toggled abilities can only heal for up to {{as|15|health}} per second.
+* Limited to 1 {{sbc|Eternity}} item.
+
+;[[V12.11]]
+* Magic resistance increased to 35 from 30.
+* Bonus magic resistance per cursed champion increased to 9 from 7.
+
+;[[V12.7]]
+* Unmake health ratio increased to {{as|{{fd|1.2}}% '''bonus''' health}} from {{as|1%|health}}.
+* Unmake maximum magic resistance reduction increased to 25 from 20.
+
+;[[V11.23]]
+* {{sbc|New Recipe:}} {{ii|Kindlegem}} + {{ii|Spectre's Cowl}} + {{g|650}} = {{g|2700}}.
+** {{sbc|Old Recipe:}} {{ii|Giant's Belt}} + {{ii|Negatron Cloak}} + {{g|900}} = {{g|2700}}.
+* Health increased to 450 from 400.
+* Magic resistance reduced to 30 from 60.
+* Ability haste increased to 10 from 0.
+* {{sbc|Unique Passive - Unmake:}}
+** {{sbc|New Effect:}} Nearby enemy champions become cursed, reducing their {{as|magic resistance by 5}} {{as|(+ 1% '''bonus''' health)}}, capped at a reduction of {{as|20 magic resistance}}. Gain {{as|7 '''bonus''' magic resistance}} per cursed enemy. Champions can only be afflicted by one curse at a time, prioritizing the most potent curse.
+** {{sbc|Old Effect:}} {{tip|immobilize|Immobilizing}} enemy champions increases the damage they take by 15% for 5 seconds.
+
+;[[V11.14]]
+* {{sbc|Bug Fix:}} Debuff icon now properly displays in the buff bar.
+
+;[[V11.10]]
+* Health increased to 400 from 350.
+* Unmake bonus damage increased to 15% from 10%.
+* Unmake duration increased to 5 seconds from 4.
+
+;[[V10.24]]
+* Updated icon.
+
+;[[V10.23]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Giant's Belt}} + {{ii|Negatron Cloak}} + {{g|900}} = {{g|2700}}.
+** {{sbc|Stats:}} 350 health, 60 magic resistance.
+** {{sbc|Unique Passive - Unmake:}} {{tip|Immobilize|Immobilizing}} an enemy champion increases the damage they take by 10% for 4 seconds.
+** Limited to 1 '''Abyssal Mask'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Catalyst of Aeons}} + {{ii|Negatron Cloak}} + {{g|1180}} = {{g|3000}}.
+** {{sbc|Stats:}} 350 health, 55 magic resistance, 10% cooldown reduction, 300 mana.
+** {{sbc|Unique Passive - Eternity:}} Restore {{as|mana}} equal to 15% of damage taken from champions. Restore {{as|health}} equal to 20% of mana spent, up to 25 health per cast, while toggle abilities can heal for up to 25 per second.
+** {{sbc|Unique Aura:}} Nearby enemy champions take {{as|15% more magic damage|magic damage}} ({{tt|325|edge to center}} range).
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Infernal Mask}}.
+*** {{sbc|Stats:}} 750 health, 100 magic resistance, 10% cooldown reduction, 300 mana.
+
+;[[V9.8]]
+* {{ii|Infernal Mask}} magic resistance increased to 100 from 90.
+* {{ii|Infernal Mask}} health increased to 750 from 550.
+
+;[[V9.1]]
+* {{ii|Infernal Mask}}
+** Total cost reduced to {{g|3000}} from {{g|4000}}.
+*** Combine cost reduced to {{g|0}} from {{g|1000}}.
+** Can now only be obtained if {{ci|Ornn}} forges the item (for himself or for another ally).
+
+;[[V8.9]]
+* Total cost increased to {{g|3000}} from {{g|2900}}.
+** Combine cost increased to {{g|1180}} from {{g|1080}}.
+* {{ii|Infernal Mask}} total cost increased to {{g|4000}} from {{g|3900}}.
+
+;[[V8.7]]
+* Aura range type changed to ''edge to center'' from {{tip|cr|center to center}}.
+
+;[[V8.6]]
+* Aura range reduced to {{tip|cr|325}} from {{tip|er|700}}.
+* Aura bonus magic damage increased to 15% from 10%.
+* {{sbc|Bug Fix:}} No longer counts as a spell for the purposes of {{ri|Electrocute|Electrocute's}} or {{ri|Phase Rush|Phase Rush's}} 3 unique spell requirement.
+
+;[[V7.17]]
+* Added to recipe from {{ii|Infernal Mask}}. ''Only available while {{ci|Ornn}} is on your team.''
+
+;[[V7.13]]
+* {{sbc|New Recipe:}} {{ii|Catalyst of Aeons}} + {{ii|Negatron Cloak}} + {{g|1080}} = {{g|2900}}
+** {{sbc|Old Recipe:}} {{ii|Spectre's Cowl}} + {{ii|Negatron Cloak}} + {{g|880}} = {{g|2800}}
+* Base health regeneration reduced to 0% from 100%.
+* Health increased to 350 from 300.
+* Mana increased to 300 from 0.
+* Magic resistance reduced to 55 from 65.
+* {{sbc|New Unique Passive - Eternity:}} 15% of damage taken from champions is gained as mana. Spending mana restores 20% of mana spent as health, up to 25 per cast (toggle spells heal for up to 25 per second).
+
+;[[V7.12]]
+* {{sbc|Bug Fix:}} Aura range indicator now represents the actual range.
+
+;[[V7.11]]
+* Renamed to {{ii|Abyssal Mask}} from {{ii|Abyssal Scepter}}.
+* Item icon updated.
+* {{ii|Abyssal Mask}}
+** {{sbc|Recipe:}} {{ii|Spectre's Cowl}} + {{ii|Negatron Cloak}} + {{g|880}} = {{g|2800}}
+** +300 health
+** +65 magic resist
+** +100% base health regeneration
+** +10% cooldown reduction
+** {{sbc|Unique Aura:}} Nearby enemy champions take 10% more magic damage (500 range)
+}}
+
+[[Category:Season 2017 item release]]
+
+[[cs:Abyssal Scepter]]
+[[de:Höllenmaske]]
+[[es:Cetro Abisal]]
+[[fr:Masque Abyssal]]
+[[pl:Berło Otchłani]]
+[[ru:Маска пустоты]]
+[[zh:深渊面具]]
+[[Category:Items with passive abilities]]

@@ -9,6 +9,9 @@ dist/
 .env.*
 .claude/settings.local.json
 
+# The patch-day report (scripts/patch-day.mjs): only useful on the day, rewritten each time
+patch-report.md
+
 # Log files
 *.log
 npm-debug.log*

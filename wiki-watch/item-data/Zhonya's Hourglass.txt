@@ -1,0 +1,30 @@
+["Zhonya's Hourglass"] = {
+        ["id"]                  = 3157,
+        ["nickname"]            = {"zhg", "zonyas", "zhonyas", "Witchcap", "Wooglets"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Stasis",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 105,
+            ["armor"]           = 50,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Time Stop",
+                ["unique"]      = true,
+                ["description"] = "Put yourself in {{tip|stasis (buff)|stasis}} for {{fd|2.5}} seconds, rendering you {{tip|untargetable}} and {{tip|invulnerable}} for the duration but also unable to move, declare [[basic attack]]s, cast [[champion ability|abilities]], use [[summoner spell]]s, or [[active ability items|activate items]].",
+                ["cd"]          = "120",
+            },
+        },
+        ["recipe"]              = {"Needlessly Large Rod", "Seeker's Armguard"},
+        ["buy"]                 = 3250,
+    },

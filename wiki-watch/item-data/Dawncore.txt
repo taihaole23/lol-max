@@ -1,0 +1,30 @@
+["Dawncore"] = {
+        ["id"]                  = 6621,
+        ["nickname"]            = {"dawncore"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["caption"]             = "\"All the power in the world came from the stars—or so it is said.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 45,
+            ["hsp"]             = 16,
+            ["mp5"]             = 100,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "First Light",
+                ["unique"]      = true,
+                ["description"] = "Gain {{as|2% heal and shield power|hsp}} and {{as|15 ability power}} for every additional {{as|100% '''base''' mana regeneration}}.",
+            },
+		},
+        ["recipe"]              = {"Blasting Wand", "Forbidden Idol", "Forbidden Idol"},
+        ["buy"]                 = 2500,
+    },

@@ -1,5 +1,4 @@
 // Shop rules that decide which items can be in the same build.
-import { PATCH } from "./patch.ts";
 
 // Item groups: a build may hold at most ONE item from each group.
 // Example: Void Staff and Terminus are both "Blight", so they can't be built together.
@@ -17,7 +16,7 @@ import { PATCH } from "./patch.ts";
 // both "Energized") CAN be built together, as in the real shop. Their passive just
 // doesn't stack; that's handled where the passive is coded (Step 5d).
 export const itemGroups = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Module:ItemData/data", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Module:ItemData/data", patch: "26.23" },
   groups: {
     Annul: ["Banshee's Veil", "Edge of Night"],
     Blight: ["Bloodletter's Curse", "Cryptbloom", "Terminus", "Void Staff"],
@@ -37,6 +36,6 @@ export const itemGroups = {
 
 // Items Katarina can't buy at all. She is melee (wiki: Katarina, "rangetype").
 export const katarinaCannotBuy = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Runaan%27s_Hurricane", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Runaan%27s_Hurricane", patch: "26.23" },
   items: ["Runaan's Hurricane"], // "Can only be purchased on ranged champions."
 };

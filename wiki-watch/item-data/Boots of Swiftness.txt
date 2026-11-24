@@ -1,0 +1,24 @@
+["Boots of Swiftness"] = {
+        ["id"]                  = 3009,
+        ["nickname"]            = {"swifties"},
+        ["tier"]                = 2,
+        ["type"]                = {"Boots"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["stats"] = {
+            ["msflat"]          = 55,
+        },
+        ["effects"] = {
+        	["pass"] = {
+        		["name"]        = "Fleetfooted",
+        		["unique"]      = true,
+        		["description"] = "Gain 25% [[slow resist]].",
+        	},
+        },
+        ["recipe"]              = {"Boots"},
+        ["buy"]                 = 1000,
+    },

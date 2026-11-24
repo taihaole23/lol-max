@@ -1,0 +1,29 @@
+["Kaenic Rookern"] = {
+        ["id"]                  = 2504,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["caption"]             = "\"Destiny is shaped through cunning, sweat, and steel. Magic violates this principle no longer.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 400,
+            ["mr"]              = 80,
+            ["hp5"]             = 100,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Magebane",
+                ["unique"]      = true,
+                ["description"] = "After not taking {{as|magic damage}} for 15 seconds, gain a {{tip|shield}} that absorbs {{as|magic damage}} equal to {{as|15% of '''maximum''' health}} until destroyed.",
+            },
+		},
+        ["recipe"]              = {"Spectre's Cowl", "Negatron Cloak"},
+        ["buy"]                 = 2900,
+    },

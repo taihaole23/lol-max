@@ -6,14 +6,13 @@
 //   During the 2.5 s ult that's 0% → 2% at 1 s → 4% at 2 s. It boosts the burn too.
 // Death Lotus BUG (listed on the wiki, so it's how the game really plays): R's on-hit
 //   effectiveness (25 / 30 / 35%) also shrinks the burn, because a dagger started it.
-import { PATCH } from "../data/patch.ts";
 import { inCombatAmpEffect } from "./in-combat-amp.ts";
 import { tickingEffect } from "./ticking.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Liandry%27s_Torment", patch: PATCH },
-  bugSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Liandry%27s_Torment", patch: "26.23" },
+  bugSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: "26.23" },
   burnMaxHealthPerTick: 0.01,
   burnSecondsBetweenTicks: 0.5,
   burnSeconds: 3,

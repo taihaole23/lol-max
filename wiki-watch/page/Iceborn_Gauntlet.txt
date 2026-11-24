@@ -1,0 +1,212 @@
+: ''For its predecessor, see {{ii|Frostfire Gauntlet}}.''
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} items, see {{ii|Frozen Fist}} and {{ii|Rimeforged Grasp}}.''
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Lich Bane;Trinity Force;Essence Reaver;Dusk and Dawn;Randuin's Omen;Unending Despair;Frozen Heart
+|background =
+|notes =
+{{Spellblade info}}
+* The {{tip|slow}} applies as a separate {{tip|cast instance}}.<!--based on Imperial Mandate interaction-->
+|strategy =
+|oldicons =
+|trivia =
+* {{ii|Iceborn Gauntlet}} was originally named ''Frozen Fist'', and is still sometimes referred to as such.
+** The {{ai|Master Craftsman|Ornn}} version of the item references this.
+* '''Iceborn Gauntlet''' refers to the Freljordians who were given power by the Frozen [[Watcher]]s. These people were called [[Iceborn]], with their leader {{ci|Lissandra}}.
+* On June 12th, 2020, the Preseason 2021 Gameplay Plans<ref>[https://na.leagueoflegends.com/en-us/news/dev/preseason-2021-gameplay-plans/ Preseason 2021 Gameplay Plans]</ref> revealed a [[File:Iceborn Gauntlet WR item old HD.png|30px]] redrawn version of the item icon.
+[[File:Freljord Crest icon.png|link=Freljord#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Iceborn Gauntlet spellblade VFX.png|Spellblade VFX
+Frostfire Gauntlet frost field item screenshot.png|Frost Field VFX
+Iceborn Gauntlet screenshot.png|Old Spellblade VFX
+Iceborn Gauntlet old screenshot.png|Old Spellblade VFX
+Iceborn Gauntlet Icy Zone screenshot.png|Old Frost Field VFX
+</gallery>
+|sfx =
+;Zone Spawned
+* {{sm2|Frostfire Gauntlet passive SFX.ogg}} Passive SFX
+* {{sm2|Frostfire Gauntlet passive SFX 2.ogg}} Passive SFX
+* {{sm2|Frostfire Gauntlet passive SFX 3.ogg}} Passive SFX
+|revisions =
+<tabber>Hide=
+|-|V10.22 version=
+{{Infobox item
+|disp_name = Iceborn Gauntlet
+|sub_name  = V10.22
+|icon      = Iceborn Gauntlet item old
+|armor     = 65
+|cdr       = 20
+|mana      = 500
+|pass      = {{Unique|Spellblade|After using an [[Champion ability|ability]], your next basic attack within 10 seconds deals {{as|100% '''base''' AD}} {{as|'''bonus''' physical damage}} on-hit ({{fd|1.5}} second cooldown).}}
+|pass2     = {{Unique|Icy Zone|Triggering ''Spellblade'' deals {{as|100% '''base''' AD}} {{as|physical damage}} to enemies surrounding the target and creates an icy zone for 2 seconds, which {{tip|slow|slows}} enemies within by 30%. The zone has a radius of 180 {{as|(+ 55% '''bonus''' armor)}} units.}}
+|recipeold =
+{{Recipe
+|result = Iceborn Gauntlet
+|variant= old
+|total  = 2700
+|cost   = 750
+|t1     = {{Recipe
+  |result = Sheen
+  |variant= old
+  |total  = 1050
+  |cost   = 700
+  |t1     = {{Recipe/item|Sapphire Crystal|350|variant=old}}
+}}
+|t2     = {{Recipe
+  |result = Glacial Shroud
+  |total  = 900
+  |cost   = 250
+  |t1     = {{Recipe/item|Sapphire Crystal|350|variant=old}}
+  |t2     = {{Recipe/item|Cloth Armor|300|variant=old2}}
+}}
+}}
+|buy       = 2700
+|sell      = 1890
+|code      = 3025
+}}
+* {{ii|Frozen Fist|variant=old}} stats: 125 armor, 20% cooldown reduction, 700 mana. Item ID: 3387.
+</tabber>
+|patchhistory =
+;[[V25.15]]
+* {{sbc|Bug Fix:}} Spellblade primed VFX and buff icon on the HUD are no longer incorrectly removed when attacking a plant.
+** ''[This did not affect gameplay: the buff itself would not be consumed, and would last for the proper duration.]''
+
+;[[V14.19]]
+* Total cost increased to {{g|2900}} from {{g|2600}}.
+** Combine cost increased to {{g|800}} from {{g|500}}.
+* Spellblade damage increased to {{as|150% '''base''' AD}} from {{as|100%|ad}}.
+* Spellblade slow increased to {{rd|25%|{{fd|12.5}}%}} from {{rd|15%|{{fd|7.5%}}}}.
+* {{sbc|Removed:}} Spellblade slow no longer scales with {{as|{{rd|{{fd|0.4}}%|{{fd|0.2}}%}} per 100 '''maximum''' health|health}}.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Frozen Fist}}.
+
+;[[V14.3]]
+* Combine cost increased to {{g|500}} from {{g|400}}.
+** Total cost unchanged.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Ruby Crystal}} + {{ii|Chain Vest}} + {{g|400}} = {{g|2600}}.
+** {{sbc|Stats:}} 300 health, 50 armor, 15 ability haste.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, your next basic attack within 10 seconds deals {{as|100% '''base''' AD}} {{as|'''bonus''' physical damage}} on-hit and creates a 300 radius frost field for 2 seconds. Enemies within the field are slowed by {{rd|15%|{{fd|7.5}}%}} {{as|(+ {{rd|{{fd|0.4}}%|{{fd|0.2}}%}} per 100 '''maximum''' health)}}  ({{fd|1.5}} second cooldown, begins after using the empowered attack).
+** Limited to 1 {{sbc|Spellblade}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Frozen Fist}}.
+*** {{sbc|Stats:}} 400 health, 60 armor, 25 ability haste.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Kindlegem}} + {{ii|Chain Vest}} + {{g|700}} = {{g|3000}}.
+** {{sbc|Stats:}} 400 health, 50 armor, 20 ability haste.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, your next basic attack within 10 seconds deals {{as|100% '''base''' AD}} {{as|'''bonus''' physical damage}} on-hit and creates a 300 radius frost field for {{fd|2.5}} seconds. Enemies within the field are slowed by {{rd|15%|{{fd|7.5}}%}} {{as|(+ {{rd|{{fd|0.4}}%|{{fd|0.2}}%}} per 100 '''maximum''' health)}}. Your primary target is slowed for double the amount and has their damage against you reduced by 10% for {{fd|2.5}} seconds ({{fd|1.5}} second cooldown, begins after using the empowered attack).
+** {{sbc|Mythic Passive:}} Empowers each of your other Legendary items with {{as|50 '''bonus''' health}}, 5% {{tip|tenacity}} and 5% {{tip|slow resist|slow resistance}}.
+** Limited to 1 {{sbc|Mythic}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Frozen Fist}}.
+*** {{sbc|Stats:}} 550 health, 70 armor, 25 ability haste.
+
+;[[V13.7]]
+* {{sbc|Bug Fix:}} Empowered attack buff is now properly shown on the buff bar.
+
+;[[V13.3]]
+* {{sbc|Bug Fix:}} Now properly reduces damage dealt to shields.
+
+;[[V13.1]]
+* {{sbc|Bug Fix:}} No longer displays two separate buffs in the HUD.
+
+;[[V12.23]]
+* {{sbc|Bug Fix:}} Non-champion enemies now properly receive the enhanced effects as the primary target of the Spellblade effect.
+
+;[[V12.22]] - Re-added
+* Updated icon.
+* ''Replaces {{ii|Frostfire Gauntlet}}.''
+* {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Kindlegem}} + {{ii|Chain Vest}} + {{g|700}} = {{g|3000}}.
+* {{sbc|Stats:}} 400 health, 50 armor, 20 ability haste.
+* {{sbc|Unique Passive - Spellblade:}} After using an [[champion ability|ability]], your next basic attack within 10 seconds deals {{as|100% '''base''' AD}} {{as|'''bonus''' physical damage}} [[on-hit]] and creates a 300 radius frost field for {{fd|2.5}} seconds. Enemies within the field are slowed by {{rd|15%|{{fd|7.5}}%}} {{as|(+ {{rd|{{fd|0.4}}%|{{fd|0.2}}%}} per 100 '''maximum''' health)}}. Your primary target is slowed for double the amount and has their damage against you reduced by 10% for {{fd|2.5}} seconds ({{fd|1.5}} second cooldown).
+* {{sbc|Mythic Passive:}} Empowers other Legendary items with {{as|50 '''bonus''' health}}, 5% tenacity, and 5% slow resistance.
+* Limited to 1 {{sbc|Mythic}} item.
+* {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Frozen Fist}}.
+** {{sbc|Stats:}} 550 health, 70 armor, 25 ability haste.
+
+;[[V10.23]] - Removed
+* Removed from the game.
+* ''Replaced by {{ii|Frostfire Gauntlet}}.''
+
+;[[V9.8]]
+* {{ii|Frozen Fist}} armor increased to 125 from 95.
+
+;[[V9.1]]
+* Added to recipe from {{ii|Frozen Fist}}. ''Can only be forged by {{ci|Ornn}}.''
+
+;[[V8.14]]
+* Spellblade VFX updated.
+
+;[[V7.12]]
+* Combine cost increased to {{g|750}} from {{g|650}}.
+** Total cost unchanged.
+
+;[[V6.8]]
+* {{sbc|Unique Passive - Spellblade:}}
+** AD ratio reduced to {{as|100% base AD}} from {{as|125% base AD}}.
+
+;[[V6.4]]
+* {{sbc|Icy Zone}}
+** Base radius reduced to 180 from 190.
+** Radius armor ratio increased to {{as|55% armor}} from {{as|45%|armor}}.
+** {{sbc|New Effect:}} {{tip|Slow}} no longer lingers after leaving the area-of-effect.
+
+;[[V5.22]]
+* Total cost reduced to {{g|2700}} from {{g|2850}}.
+** Combine cost unchanged.
+* Ability power reduced to 0 from 30.
+* Armor increased to 65 from 60.
+* Cooldown reduction increased to 20% from 10%.
+* Slow zone radius changed to 190 + {{as|45% armor}} from 210 for ranged champions and 285 for melee champions.
+
+;[[V4.15]]
+* Other Spellblade effects that deal more damage (Trinity Force) now correctly use their Unique passive instead of this one. The AoE field is still applied.
+
+;[[V4.13]]
+* Now correctly lists the Spellblade passive as having a {{fd|1.5}} second cooldown.
+
+;[[V4.5]]
+* Total cost reduced to {{g|2900}} from {{g|3250}}.
+** Combine cost increased to {{g|750}} from {{g|700}}.
+* Armor reduced to 60 from 70.
+
+;[[V3.04]]
+* Combine cost increased to {{g|700}} from {{g|640}}.
+* Armor increased to 70 from 60.
+* Ability power reduced to 30 from 40.
+
+;[[V3.02]]
+* Total cost reduced to {{g|3250}} from {{g|3400}}.
+** Combine cost unchanged.
+* Cooldown reduction reduced to 10% from 15%.
+* Slow field radius for ranged champions reduced to 210 from 275.
+* Slow field radius for melee champions increased to 285 from 275.
+* Fixed a bug where the slow field was lasting longer than intended.
+* Fixed a bug where the slow was not being applied immediately.
+
+;[[V1.0.0.154]]
+* Duration of slow field reduced to 2 seconds from 3.
+* Slow percentage reduced to 30% from 35%.
+* Slowing field now displays team color rings.
+
+;[[V1.0.0.152]] Added
+* Recipe: {{ii|Sheen}} + {{ii|Glacial Shroud}} + {{g|640}} = {{g|3400}}
+* +40 ability power
+* +500 mana
+* +60 armor
+* +15% cooldown reduction
+* {{sbc|Unique Passive &ndash; {{nie|Spellblade}}:}} After using an ability, your next basic attack deals bonus physical damage equal to 125% of your base attack damage to surrounding enemies and creates a field with 275 radius for 3 seconds that slows enemies inside by 35%. 3 seconds cooldown.
+}}
+
+
+[[cs:Iceborn Gauntlet]]
+[[de:Eisgeborenen-Handschuhe]]
+[[es:Guantelete del Hijo del Hielo]]
+[[fr:Gantelet Givrant]]
+[[pl:Lodowa Rękawica]]
+[[ru:Хладорожденная рукавица]]
+[[zh:冰脉护手]]

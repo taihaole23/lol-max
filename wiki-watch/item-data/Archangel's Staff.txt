@@ -1,0 +1,39 @@
+["Archangel's Staff"] = {
+        ["id"]                  = 3003,
+        ["nickname"]            = {"aa", "seraph's embrace", "tear"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Manaflow",
+        ["itemlimit2"]          = "Lifeline",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 70,
+            ["ah"]              = 25,
+            ["mana"]            = 600,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Awe",
+                ["unique"]      = true,
+                ["description"] = "Grants {{as|ability power}} equal to {{as|1% '''bonus''' mana}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Manaflow",
+                ["unique"]      = true,
+                ["description"] = "Grants a charge every 8 seconds, up to 5 charges. Affecting an enemy or ally with an [[champion ability|ability]] consumes a charge to grant {{as|5 '''bonus''' mana}}, increased to {{as|10|mana}} if they are a champion, up to a '''maximum''' of {{as|360 '''bonus''' mana}}.",
+            },
+            ["pass3"] = {
+                ["description"] = "Transforms into {{ii|Seraph's Embrace}} at {{as|360 '''bonus''' mana}}.",
+            },
+        },
+        ["recipe"]              = {"Tear of the Goddess", "Lost Chapter", "Fiendish Codex"},
+        ["buy"]                 = 2900,
+    },

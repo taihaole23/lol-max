@@ -1,0 +1,19 @@
+["Mercury's Treads"] = {
+        ["id"]                  = 3111,
+        ["nickname"]            = {"boots", "mercs"},
+        ["tier"]                = 2,
+        ["type"]                = {"Boots"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["stats"] = {
+            ["mr"]              = 20,
+            ["msflat"]          = 45,
+            ["tenacity"]        = 30,
+        },
+        ["recipe"]              = {"Boots", "Null-Magic Mantle"},
+        ["buy"]                 = 1250,
+    },

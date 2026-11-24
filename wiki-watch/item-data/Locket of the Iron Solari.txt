@@ -1,0 +1,32 @@
+["Locket of the Iron Solari"] = {
+        ["id"]                  = 3190,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["limit"]               = "''Devotion's'' shield strength is reduced by 75% if the target was affected by another ''Devotion'' in the last 20 seconds.",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+        	["tank"]			= true,
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 10,
+            ["armor"]           = 30,
+            ["hp"]              = 200,
+            ["mr"]              = 30,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Devotion",
+                ["unique"]      = true,
+                ["description"] = "Grants you and allied champions within {{tip|cr|icononly=true}} 850 units a {{tip|shield}} for {{pp|290 to 360 for 11|1;9 to 18|type=target's level}} that decays over {{fd|2.5}} seconds.",
+                ["cd"]          = "90",
+            },
+        },
+        ["recipe"]              = {"Kindlegem", "Cloth Armor", "Null-Magic Mantle"},
+        ["buy"]                 = 2200,
+    },

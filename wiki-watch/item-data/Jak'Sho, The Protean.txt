@@ -1,0 +1,30 @@
+["Jak'Sho, The Protean"] = {
+        ["id"]                  = 6665,
+        ["nickname"]            = {"Jak'Sho, The Protean"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["caption"]             = "\"He has been called many things. A carapace helm. A second skin. A living tomb...\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+        	["tank"]            = true,
+        },
+        ["stats"] = {
+            ["armor"]           = 45,
+            ["mr"]              = 45,
+            ["hp"]              = 350,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Voidborn Resilience",
+                ["unique"]      = true,
+                ["description"] = "Gain a stack for each second [[Combat status|in combat]] with enemy champions, stacking up to 5 times. At '''maximum''' stacks, increase your {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} by 30% until the end of combat.",
+            },
+        },
+        ["recipe"]              = {"Giant's Belt", "Chain Vest", "Negatron Cloak"},
+        ["buy"]                 = 3200,
+    },

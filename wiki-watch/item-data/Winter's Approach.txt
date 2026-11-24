@@ -1,0 +1,38 @@
+["Winter's Approach"] = {
+        ["id"]                  = 3119,
+        ["nickname"]            = {"Fimbulwinter", "tear"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Manaflow",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 550,
+            ["ah"]              = 15,
+            ["mana"]            = 500,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Awe",
+                ["unique"]      = true,
+                ["description"] = "Grants {{as|'''bonus''' health}} equal to {{as|15% '''bonus''' mana}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Manaflow",
+                ["unique"]      = true,
+                ["description"] = "Grants a charge every 8 seconds, up to 4 charges. Consumes a charge [[on-hit]] and whenever affecting an enemy or ally with an [[champion ability|ability]] to grant {{as|3 '''bonus''' mana}}, increased to {{as|6|mana}} for champion targets, up to a '''maximum''' of {{as|360 '''bonus''' mana}}.",
+            },
+            ["pass3"] = {
+                ["description"] = "Transforms into {{ii|Fimbulwinter}} at {{as|360 '''bonus''' mana}}.",
+            },
+        },
+        ["recipe"]              = {"Tear of the Goddess", "Giant's Belt", "Kindlegem"},
+        ["buy"]                 = 2400,
+    },

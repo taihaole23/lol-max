@@ -1,0 +1,29 @@
+["Bandlepipes"] = {
+        ["id"]                  = 2524,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 200,
+            ["armor"]           = 20,
+            ["mr"]              = 20,
+            ["ah"]              = 15,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Fanfare",
+                ["unique"]      = true,
+                ["description"] = "{{tip|Slow|Slowing}} or {{tip|immobilize|immobilizing}} an enemy champion empowers you with ''Fanfare'' for {{rd|8|4}} seconds, granting you {{as|20 '''bonus''' movement speed}}. While empowered, you and nearby allied champions also gain {{as|{{rd|30|20}}% '''bonus''' attack speed}}.",
+            },
+		},
+        ["recipe"]              = {"Kindlegem", "Cloth Armor", "Null-Magic Mantle"},
+        ["buy"]                 = 2300,
+    },

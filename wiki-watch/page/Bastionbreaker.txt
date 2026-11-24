@@ -1,0 +1,46 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems =Edge of Night;Axiom Arc;Hubris;Voltaic Cyclosword;Youmuu's Ghostblade;The Collector;Serpent's Fang;Profane Hydra;Umbral Glaive
+|background =
+|notes =
+* {{sbc|Shaped Charge}} deals {{tip|proc damage}}, and thus will not trigger {{tip|spell effects}}.
+* {{sbc|Shaped Charge}} is blocked by {{tip|spell shield}}.
+* {{sbc|Sabotage}} deals damage in {{fd|0.25}}-second intervals.
+* Instances of {{sbc|Sabotage}} do not stack. Subsequent applications will immediately apply all outstanding damage for the previous instance.
+* {{sbc|Sabotage's}} empowered attack lasts indefinitely once gained, but is still removed upon death like most buffs.
+|strategy =
+|oldicons =
+|trivia =
+* Bastionbreaker's codename in development was ''Assassin Item''.<ref>[https://www.leagueoflegends.com/en-us/news/dev/dev-2026-season-one-gameplay-preview/ /dev: 2026 Season One Gameplay Preview]</ref>
+* This item is a black powder device used by {{fi|Noxus}}.<ref>[https://xcancel.com/Kindlejack/status/1995570595610947721 Kindlejack on X:] "Bolts are Demacian silver, Bastionbreaker is Noxian utilising their vaunted black powder, Actualizer was a request for something Zilean might keep in his wizard tower."</ref>
+[[File:Noxus Crest icon.png|link=Universe:Noxus|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Bastionbreaker passive damage trigger VFX.png|Passive Trigger VFX
+Bastionbreaker passive granted VFX.png|Passive Granted VFX
+Bastionbreaker passive attack ready VFX.png|Attack Ready VFX
+Bastionbreaker tower damage VFX.png|Passive Tower Damage VFX
+</gallery>
+|revisions =
+|patchhistory =
+;[[V26.21]]
+* Lethality reduced to 18 from 22.
+* Shaped Charge base damage reduced to {{rd|40|20}} from {{rd|50|25}}.
+* Sabotage duration increased to 25000 seconds from 90.
+
+;[[V26.15]]
+* Total cost reduced to {{g|3000}} from {{g|3200}}.
+** Combine cost reduced to {{g|663}} from {{g|863}}.
+* Shaped Charge base damage increased to {{rd|50|25}} from {{rd|30|15}}.
+
+;[[V26.01]] - Added
+* {{sbc|Recipe:}} {{ii|The Brutalizer}} + {{ii|Serrated Dirk}} + {{g|863}} = {{g|3200}}.
+* {{sbc|Stats:}} 55 attack damage, 22 lethality, 15 ability haste.
+* {{sbc|Unique Passive - Shaped Charge:}} Abilities deal {{as|{{rd|30|15}} {{as|(+ {{rd|{{fd|1.5}}|{{fd|0.75}}}} per 1 lethality)}} '''bonus''' true damage}} to champions and epic monsters (20 second cooldown).
+* {{sbc|Unique Passive - Sabotage:}} Taking down a champion within 3 seconds of damaging them grants ''Sabotage'' for 90 seconds. While you have ''Sabotage'', your next basic attack against an epic monster or turret deals {{as|{{rd|300|240}} {{as|(+ {{rd|25|20}} per 1 lethality)}} '''bonus''' true damage}} over 3 seconds.
+* Limited to 1 '''Bastionbreaker'''.
+}}
+
+[[Category:2026 Annual Cycle item release]]

@@ -1,0 +1,159 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Enmity of the Masses}}.''
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Actualizer;Archangel's Staff;Blackfire Torch;Luden's Echo;Rod of Ages
+|background =
+|notes =
+* {{sbc|Hatefog}} deals {{tip|proc damage}} and is tagged as {{tip|persistent damage|periodic}} and {{tip|area damage|area of effect}} without applying {{tip|spell effects}}.
+* {{sbc|Hatefog}} is not blocked by {{tip|spell shield}}.
+* {{sbc|Hatefog}} does not trigger from [[Damage#0_Damage_Instances|0 damage instances]] nor against {{tip|invulnerable}} champions.
+* {{sbc|Hatefog}} is an [[auto-targeted]] effect.
+* {{sbc|Hatefog's}} magic resistance reduction does not linger and is removed as soon as the target loses the ''Curse'' debuff.
+* Assuming a target has not been afflicted by ''Curse'', the first instance of magic damage from an ultimate ability does not benefit from {{sbc|Hatefog's}} magic resistance reduction.
+* {{sbc|Hatefog}} will trigger on each instance of ultimate ability damage dealt (see list below for special interactions).
+** The zone can only be created against the same target once every 3 seconds. This timer starts as soon as the zone is spawned.
+*** Ultimate ability damage against champions already inside of a zone will instead refresh the timer on it, but only if the damaged champion is the "owner" of that zone.
+** Enemies can only be ''Cursed'' by one zone at a time; they can only be damaged and have their magic resistance reduced by one zone.
+** {{sbc|Hatefog}} will not create a zone against enemies that are already ''Cursed'' by one.
+*** If multiple targets are close to one another and are damaged at the same time, {{sbc|Hatefog}} will create a zone underneath the first champion damaged which is based on {{tt|champion spawn order|Order in which champions are spawned in the game; Hatefog will prioritize the first enemy champion spawned}}.
+** Each scorch zone has its own radius relative to the amount of damage dealt for each instance.
+** The zone deals a tick of damage instantly to enemies surrounding the primary target.
+<br>
+Click "Show" to view the list for special interactions with certain ultimate abilities and {{sbc|Hatefog}}:
+<tabber>
+Hide=
+|-|Show=
+{{column|1|
+* {{cai|World Ender|Aatrox}} cannot trigger it.
+* {{cai|Unbreakable Will|Alistar}} cannot trigger it.
+* {{cai|Summon: Tibbers|Annie}} can trigger it through the summoning, area burn, and basic attacks, whenever possible.
+* {{cai|Tempered Fate|Bard}} cannot trigger it.
+* {{cai|Certain Death|Briar}} will only trigger it in the area of her landing.
+* {{cai|The Hextech Ultimatum|Camille}} cannot trigger it.
+* {{cai|Maximum Dosage|Dr. Mundo}} cannot trigger it.
+* {{cis|Elise}} {{ai|Spider Form / Human Form|Elise}} will not trigger it in spite of ''Spiderling'' damage.
+* {{cai|Grand Challenge|Fiora}} cannot trigger it.
+* {{cis|Heimerdinger}} ({{ai|UPGRADE!!!|Heimerdinger|Upgraded}}) {{ai|H-28Q Apex Turret|Heimerdinger}}, {{ai|Hextech Rocket Swarm|Heimerdinger}} and {{ai|CH-3X Lightning Grenade|Heimerdinger}} can trigger it on every damage instance, whenever possible.
+* {{cai|Leap of Faith|Illaoi}} initial damage can trigger it but any {{ai|Prophet of an Elder God|Illaoi|tentacles}} originating from this ability will not.
+* {{cis|Ivern}} {{ai|Daisy!|Ivern|Daisy}} can trigger it on both the normal basic attacks and on her third empowered attack for all enemies hit.
+* {{cai|Monsoon|Janna}} cannot trigger it.
+* {{ci|Jayce}} cannot trigger it in either form.
+* {{cai|All Out|K'Sante}} applies at inconsistent time (potentially depends on the stat update tick that his ultimate damage triggers on).
+* {{cai|Killer Instinct|Kai'Sa}} cannot trigger it.
+* {{ci|Karma}} will trigger it on {{ai|Mantra|Karma}}-empowered damaging abilities ({{ai|Soulflare|Karma}} and {{ai|Renewal|Karma}}).
+* {{cai|Void Assault|Kha'Zix}} cannot trigger it.
+* {{cai|Lamb's Respite|Kindred}} cannot trigger it.
+* {{cai|Lilting Lullaby|Lillia}} will only trigger it upon the target being woken up, and as such any {{tip|cleanse|cleansing effects}} will also prevent the potential application of Hatefog.
+* {{cai|Wild Growth|Lulu}} cannot trigger it.
+* {{cai|Highlander|Master Yi}} cannot trigger it.
+* {{cai|Breath of Life|Milio}} cannot trigger it.
+* {{cai|Realm of Death|Mordekaiser}} cannot trigger it.
+* {{ci|Nidalee}} cannot trigger it in either form.
+* {{cai|Ragnarok|Olaf}} cannot trigger it.
+* {{cai|Death from Below|Pyke}} will only trigger on a champion that is alive at the moment of blinking and dealing damage (whether or not they are executed subsequently by Pyke himself).
+* {{cai|Hostile Takeover|Renata}} cannot trigger it.
+* {{cai|Thrill of the Hunt|Rengar}} cannot trigger it.
+* {{cai|Blade of the Exile|Riven}} cannot trigger it by itself but only through a successful {{ai|Wind Slash|Riven}}.
+* {{cai|Realm Warp|Ryze}} cannot trigger it.
+* {{cis|Shaco}} clone from {{ai|Hallucinate|Shaco}} will trigger it from its basic attacks, the explosion, and the mini-boxes' basic attacks.
+* {{cai|Stand United|Shen}} cannot trigger it.
+* {{cai|Insanity Potion|Singed}} cannot trigger it.
+* {{cai|On the Hunt|Sivir}} cannot trigger it.
+* {{cai|Wish|Soraka}} cannot trigger it.
+* {{cai|Hijack|Sylas}} follows the game rules of all other ultimate abilities. Stealing his own ultimate from an enemy Sylas cannot trigger it.
+* {{cai|Devour|Tahm Kench}} cannot trigger it by itself but through a successful {{ai|Regurgitate|Tahm Kench}}.
+* {{cai|Weaver's Wall|Taliyah}} cannot trigger it.
+* {{cai|Cosmic Radiance|Taric}} cannot trigger it.
+* {{cis|Twisted Fate}} {{ai|Destiny|Twisted Fate}} and {{ai|Gate|Twisted Fate}} cannot trigger it.
+* {{cai|Undying Rage|Tryndamere}} cannot trigger it.
+* {{cis|Twitch}} bolts from {{ai|Spray and Pray|Twitch}} can trigger it.
+* {{ci|Udyr}} will trigger it on {{ai|Bridge Between|Udyr|Awakened}} {{ai|Wilding Claw|Udyr}} and {{ai|Wingborne Storm|Udyr}}.
+* {{cai|Fear Beyond Death|Urgot}} and {{ai|Fear Beyond Death 2|Urgot|Mercy}} can trigger it.
+* {{cai|Final Hour|Vayne}} cannot trigger it.
+* {{cai|Shadow Surge|Vex}} can trigger it on the both the initial cast and the recast, whenever possible.
+* {{cai|Heartbreaker|Viego}} can trigger it on both the primary target and secondary targets.
+* {{cai|Infinite Duress|Warwick}} can trigger it.
+* {{cai|Eulogy of the Isles|Yorick}} can trigger it only on the Maiden's attacks. The bonus damage dealt by Yorick attacking the Maiden's target as well as any the spawned Mist Walkers' damage cannot.
+* {{cai|Arc of Ruin|Yunara}} can trigger it.
+* {{cai|Lightning Crash|Zeri}} will only trigger it on the initial explosion.
+* {{cai|Chronoshift|Zilean}} cannot trigger it.
+* {{cai|Portal Jump|Zoe}} cannot trigger it.
+* {{cis|Zyra}} enraged plants due to {{ai|Stranglethorns|Zyra}} will not trigger it. Of course, the growth itself can trigger it on every damage instance, whenever possible.
+}}
+</tabber>
+|strategy =
+|oldicons =
+|trivia =
+* Malignance is a product of Glasc Industries.<ref>[https://twitter.com/Kindlejack/status/1733260663739584540 Kindlejack on Malignance]</ref>
+[[File:Zaun Crest icon.png|link=Zaun|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Malignance spread VFX.png|Trigger VFX
+Malignance scorch zone VFX.png|Zone VFX
+</gallery>
+|sfx =
+;Zone Lingering
+* {{sm2|Malignance zone effect SFX.ogg}} Passive SFX
+* {{sm2|Malignance zone effect SFX 2.ogg}} Passive SFX
+* {{sm2|Malignance zone effect SFX 4.ogg}} Passive SFX
+* {{sm2|Malignance zone effect SFX 3.ogg}} Passive SFX
+
+;Zone Ends
+* {{sm2|Malignance zone end SFX.ogg}} Passive SFX
+|revisions =
+|patchhistory =
+;[[V25.10]]
+* Ability power increased to 90 from 85.
+
+;[[V25.S1.1]]
+* {{sbc|Bug Fix:}} Pet damage now correctly activates Hatefog.
+
+;[[V14.19]]
+* {{sbc|New Recipe:}} {{ii|Lost Chapter}} + {{ii|Blasting Wand}} + {{g|650}} = {{g|2700}}.
+** {{sbc|Old Recipe:}} {{ii|Lost Chapter}} + {{ii|Fiendish Codex}} + {{g|600}} = {{g|2700}}.
+* Ability power increased to 85 from 80.
+* Ability haste reduced to 15 from 25.
+
+;[[V14.14]]
+* {{sbc|Bug Fix:}} Fixed a bug that caused the passive to activate when {{cai|Frozen Tomb|Lissandra}} was blocked by a spellshield.
+
+;[[V14.11]]
+* {{sbc|Bug Fix:}} ''Hatefog'' no longer continues to deal its damage to epic monsters after a zone affecting them has expired.
+* Can no longer be upgraded to {{ii|Enmity of the Masses}}.
+
+;[[V14.8]]
+* {{sbc|New Effect:}} Spells tagged as basic attacks now trigger Hatefog.
+** {{note|1}} This affects {{cai|Spray and Pray|Twitch}} bolts, {{cai|Hallucinate|Shaco}} clone basic attacks, {{cai|Heartbreaker|Viego}} primary target strike, and {{cai|Infinite Duress|Warwick}}. {{cai|R|Rengar}} will also sometimes trigger it, while sometimes it may not.
+* {{sbc|Undocumented - Estimated:}} {{tip|Execute|Executes}} can now also trigger Hatefog (i.e {{cai|R|Draven}}, {{cai|R|Pyke}}, {{cai|R|Syndra}}, {{cai|Fear Beyond Death 2|Urgot|Mercy}}).
+
+;[[V14.4]]
+* Ability haste increased to 25 from 20.
+* {{ii|Enmity of the Masses}} ability haste increased to 35 from 30.
+* {{sbc|Bug Fix:}} No longer displays a blank debuff in the enemy's HUD if Hatefog was applied to them with a damage over time ultimate.
+* {{sbc|Undocumented:}} Tooltip now specifies that basic attack damage cannot trigger Hatefog.<ref>Reddit — [https://www.reddit.com/r/leagueoflegends/comments/1aknyqf/comment/kp93nag/ Riot Endstep on Malignance interactions]</ref>
+
+;[[V14.3]]
+* Total cost reduced to {{g|2700}} from {{g|2800}}.
+** Combine cost reduced to {{g|600}} from {{g|700}}.
+* Hatefog AP ratio per tick reduced to {{as|{{fd|1.25}}% AP}} from {{as|{{fd|1.5}}% AP}}.
+* Hatefog magic resistance shred changed to 10 at all levels from {{pp|6 to 12|type=your level}}.
+* {{sbc|Bug Fix:}} {{ii|Enmity of the Masses}} now properly inherits Malignance's damage dealt to champions tracker.
+* {{sbc|Bug Fix:}} ''Hatefog's'' damage is now properly tagged as proc and no longer counts toward effects such as {{ri|Electrocute}} and {{iis|Eclipse}} ''Ever Rising Moon''.
+
+;[[V14.2]]
+* {{sbc|Bug Fix:}} No longer grants more ultimate haste than intended for some champions.
+
+;[[V14.1]] - Added
+* {{sbc|Recipe:}} {{ii|Lost Chapter}} + {{ii|Fiendish Codex}} + {{g|700}} = {{g|2800}}.
+* {{sbc|Stats:}} 80 ability power, 20 ability haste, 600 mana.
+* {{sbc|Unique Passive - Scorn:}} Gain 20 ultimate haste.
+* {{sbc|Unique Passive - Hatefog:}} Damaging an enemy with your ultimate ability creates a {{pp|type=damage instance|250 to 550|0 to 822.88|formula=250 + 2^(damage dealt/100)|round=2}} radius scorched zone beneath them for 3 seconds, dealing{{ft|{{as|60|magic damage}} {{as|(+ 6% AP)}} {{as|magic damage}} every second|{{as|{{ap|60*3}}|magic damage}} {{as|(+ {{ap|6*3}}% AP)}} {{as|'''total''' magic damage}} over the duration}}and reducing their {{as|magic resistance}} by {{as|{{pp|6 to 12}}|magic resistance}} while within.
+* Limited to 1 '''Malignance'''.
+* {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Enmity of the Masses}}.
+** {{sbc|Stats:}} 110 ability power, 30 ability haste, 800 mana.
+}}
+
+[[Category:Season 2024 item release]]
+[[ru:Пагубность]]

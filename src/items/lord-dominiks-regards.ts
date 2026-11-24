@@ -1,11 +1,10 @@
 // Lord Dominik's Regards, "Giant Slayer": deal 1% more damage per 100 of the target's
 // BONUS health (health from items), up to 15% at 1500 bonus health. Every damage type.
 // (Older versions compared max health with yours; the wiki has the current rule.)
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Lord_Dominik%27s_Regards", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Lord_Dominik%27s_Regards", patch: "26.23" },
   ampPerHundredBonusHealth: 0.01,
   maxAmp: 0.15,
 };

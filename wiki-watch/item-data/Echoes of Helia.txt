@@ -1,0 +1,31 @@
+["Echoes of Helia"] = {
+        ["id"]                  = 6620,
+        ["nickname"]            = {"spooky cup"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["caption"]             = "\"If you listen closely, you can still hear the bustle of the city over the screams.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 20,
+            ["ap"]              = 35,
+            ["hp"]              = 200,
+            ["mp5"]             = 125,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Soul Siphon",
+                ["unique"]      = true,
+                ["description"] = "Gain 30% of {{tt|pre-mitigation damage|Damage calculated before modifiers}} dealt to champions as ''Soul Charges'', up to {{pp|80 to 250|tooltipSize=20}}. {{tip|Healing}} or {{tip|shielding}} an allied champion ''(excluding yourself)'' consumes all charges to heal them equal to the consumed amount.",
+            },
+        },
+        ["recipe"]              = {"Kindlegem", "Bandleglass Mirror"},
+        ["buy"]                 = 2200,
+    },

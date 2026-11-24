@@ -1,0 +1,35 @@
+["Malignance"] = {
+        ["id"]                  = 3118,
+        ["nickname"]            = {"burn"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+            ["ability haste"]   = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 90,
+            ["ah"]              = 15,
+            ["mana"]            = 600,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Scorn",
+                ["unique"]      = true,
+                ["description"] = "Gain 20 [[Haste#Ultimate haste|ultimate haste]].",
+            },
+            ["pass2"] = {
+                ["name"]        = "Hatefog",
+                ["unique"]      = true,
+                ["description"] = "Dealing non-{{tip|proc damage}} or {{tip|pet damage}} to enemy champions with your [[champion ability|ultimate ability]] creates a {{pp|type=ultimate's damage instance|251;251.8;253.1;255.5;259.8;267.3;280.7;304.2;345.9;419.7;550|0 to 823|formula=250 + 2^(damage dealt/100)}} radius scorched zone beneath them for 3 seconds, applying a ''Curse'' to enemies within that deals {{ft|{{as|{{ap|60/4}}|magic damage}} {{as|(+ {{ap|5/4}}% AP)}} {{as|magic damage}} every {{fd|0.25}} seconds|{{as|{{ap|60*3}}|magic damage}} {{as|(+ {{ap|5*3}}% AP)}} {{as|'''total''' magic damage}} over the duration}} and reduces their {{as|magic resistance by 10}} (3 second cooldown per target, starts on zone creation).",
+            },
+		},
+        ["recipe"]              = {"Lost Chapter", "Blasting Wand"},
+        ["buy"]                 = 2700,
+    },

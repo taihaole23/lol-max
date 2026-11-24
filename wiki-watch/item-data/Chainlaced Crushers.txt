@@ -1,0 +1,29 @@
+["Chainlaced Crushers"] = {
+        ["id"]                  = 3173,
+        ["nickname"]            = {"boots"},
+        ["tier"]                = 3,
+        ["type"]                = {"Boots"},
+        ["req"]                 = "Requires completion of the {{tip|Midlane Quest}} to obtain. Once the quest is completed, {{ii|Mercury's Treads}} is upgraded into this item for free. If {{ii|Mercury's Treads}} is in the inventory at the time of quest completion, it is automatically upgraded into these boots.",
+        ["caption"]             = "\"Noxus and magic have a vast, varied history…\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = false,
+            ["nb"]              = false,
+            ["ar"]              = false,
+        },
+        ["stats"] = {
+            ["mr"]              = 25,
+            ["msflat"]          = 45,
+            ["tenacity"]        = "=>Mercury's Treads",
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Noxian Persistence",
+                ["unique"]      = true,
+                ["description"] = "Taking {{as|magic damage}} from champions grants you a {{tip|shield}} that absorbs {{pp|100 to 200|color=md}} {{as|(+ 8% '''bonus''' health)}} {{as|magic damage}} for 5 seconds.",
+                ["cd"]          = "15",
+            },
+        },
+        ["recipe"]              = {"Mercury's Treads"},
+        ["buy"]                 = "=>Mercury's Treads",
+    },

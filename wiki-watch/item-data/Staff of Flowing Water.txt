@@ -1,0 +1,30 @@
+["Staff of Flowing Water"] = {
+        ["id"]                  = 6616,
+        ["nickname"]            = {"nami"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 35,
+            ["ah"]              = 10,
+            ["mp5"]             = 125,
+            ["hsp"]             = 10,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Rapids",
+                ["unique"]      = true,
+                ["description"] = "{{tip|Heal|Healing}} or {{tip|shield|shielding}} allied champions (''excluding yourself'') grants you and them {{as|40 ability power}} and {{as|15 ability haste}} for 6 seconds.",
+            },
+        },
+        ["recipe"]              = {"Fiendish Codex", "Forbidden Idol"},
+        ["buy"]                 = 2250,
+    },

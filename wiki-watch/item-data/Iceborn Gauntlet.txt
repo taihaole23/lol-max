@@ -1,0 +1,33 @@
+["Iceborn Gauntlet"] = {
+        ["id"]                  = 6662,
+        ["nickname"]            = {"Spellblade", "ibg", "frostfire", "frozen", "frozen gauntlet"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Spellblade",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+        	["fighter"]         = true,
+        	["tank"]            = true,
+        	["onhit effects"]   = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 15,
+            ["armor"]           = 50,
+            ["hp"]              = 300,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Spellblade",
+                ["unique"]      = true,
+                ["description"] = "After using an [[champion ability|ability]], your next basic attack within 10 seconds deals {{as|150% '''base''' AD}} {{as|'''bonus''' physical damage}} [[on-hit]] and creates a 300 radius frost field for 2 seconds. Enemies within the field are slowed by {{rd|25%|{{ap|25*0.5}}%}} ({{fd|1.5}} second cooldown, starts after using the empowered attack).",
+            },
+        },
+        ["recipe"]              = {"Sheen", "Ruby Crystal", "Chain Vest"},
+        ["buy"]                 = 2900,
+    },

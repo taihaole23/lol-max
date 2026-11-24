@@ -1,0 +1,147 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Mortal Reminder;Serylda's Grudge;Black Cleaver;Terminus
+|background =
+|notes =
+|strategy =
+|oldicons =
+|trivia =
+* The item was named after user [https://www.op.gg/summoners/euw/Lord%20Dominik-001 Lord Dominik], who was known as one of the community lead of the CIS fan-site.
+* Before [[V10.23]], this item was the same as {{ii|Last Whisper|image=Last Whisper item old2.png}} before being reworked on patch [[V5.22]]. The only difference is that it was {{g|500}} gold more expensive.
+* The item's icon is reused for the removed [[Teamfight Tactics]] item {{TFT Item|Repeating Crossbow}}.
+* This item was featured in [[Katarina: Issue 4]].
+[[File:Noxus Crest icon.png|link=Noxus|100px|center]]
+|quotes =
+|media =
+|revisions =
+|patchhistory =
+;[[V26.01]]
+* Total cost increased to {{g|3300}} from {{g|3100}}.
+** Combine cost increased to {{g|550}} from {{g|350}}.
+* Armor penetration reduced to 35% from 40%.
+* {{sbc|New Unique Passive - Giant Slayer:}} Deal {{pp|0 to 15 for 16|0 to 1500|key=%|type=target's '''bonus''' health|formula=1% per 100 bonus health, up to a maximum of 15% at 1500 bonus health.|color=health}} increased damage against enemy champions.
+
+;[[V25.S1.2]]
+* Total cost increased to {{g|3100}} from {{g|3000}}.
+** Combine cost increased to {{g|350}} from {{g|250}}.
+* Armor penetration increased to 40% from 35%.
+
+;[[V14.19]]
+* Combine cost increased to {{g|250}} from {{g|150}}.
+** Total cost unchanged.
+* Attack damage reduced to 35 from 45.
+
+;[[V14.15]]
+* Armor penetration reduced to 35% from 40%
+
+;[[V14.12]]
+* {{sbc|New Recipe:}} {{ii|Last Whisper}} + {{ii|Noonquiver}} + {{g|150}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Last Whisper}} + {{ii|Cloak of Agility}} + {{g|950}} = {{g|3000}}.
+
+;[[V14.10]]
+* Attack damage increased to 45 from 40.
+* Armor penetration increased to 40% from 35%.
+* Critical strike chance increased to 25% from 20%.
+* {{sbc|Removed Unique Passive - Giant Slayer:}} Deal {{pp|type='''maximum''' health difference|color=health|key=%|0 to 15 for 11|0 to 2000|formula=0.75% per 100 greater '''maximum''' health}} '''bonus''' damage against enemy champions with greater {{as|'''maximum''' health}} than you.
+
+;[[V14.6]]
+* Armor penetration increased to 35% from 30%.
+
+;[[V14.1]]
+* Attack damage increased to 40 from 35.
+* Giant Slayer bonus damage reduced to {{pp|type='''maximum''' health difference|color=health|key=%|0 to 15 for 11|0 to 2000|formula=0.75% per 100 greater '''maximum''' health}} from {{pp|type='''maximum''' health difference|color=health|key=%|0 to 22 for 11|0 to 2500|formula=0.88% per 100 greater '''maximum''' health}}.
+* No longer limits the user to 1 {{sbc|Last Whisper}} item.
+* Now limits the user to 1 {{sbc|Fatality}} item.
+
+;[[V13.20]]
+* Bonus damage reduced to {{pp|type='''maximum''' health difference|color=health|key=%|0 to 22 for 11|0 to 2500|formula=0.88% per 100 greater '''maximum''' health}} from {{pp|type='''maximum''' health difference|color=health|key=%|0 to 25 for 11|0 to 2500|formula=1% per 100 greater '''maximum''' health|showtype=false}}.
+* {{sbc|Bug Fix:}} Now properly amplifies damage dealt even if it was mitigated by shields.
+* {{sbc|Bug Fix:}} Life steal now properly benefits from the bonus damage.
+
+;[[V13.10]]
+* {{sbc|New Effect:}} Giant Slayer now deals {{pp|type='''maximum''' health difference|color=health|key=%|0 to 25 for 11|0 to 2500|formula=1% per 100 greater '''maximum''' health}} '''bonus''' damage against enemy champions with greater {{as|'''maximum''' health}} than you, instead of just {{as|physical damage}}.
+
+;[[V13.1b]]
+* Attack damage increased to 35 from 30.
+
+;[[V12.23#December 14th Hotfix|V12.23]] - December 14th Hotfix
+* Bonus damage increased to {{pp|type=health difference|color=health|key=%|0 to 25 for 11|0 to 2500|formula=1% per 100 greater '''maximum''' health}} (maximum reached at 2500 health difference) from {{pp|type=health difference|color=health|key=%|0 to 15 for 11|0 to 2000|formula=0.75% per 100 greater '''maximum''' health}} (maximum reached at 2000 health difference).
+
+;[[V12.22]]
+* Updated icon.
+
+;[[V12.10]]
+* Armor penetration reduced to 30% from 35%.
+
+;[[V11.23]]
+* {{sbc|Bug Fix:}} Giant Slayer no longer affects non-champions.
+* {{sbc|New Effect:}} Tooltip now tracks bonus damage from Giant's Slayer.
+
+;[[V11.7]]
+* Total cost increased to {{g|3000}} from {{g|2900}}.
+** Combine cost increased to {{g|950}} from {{g|850}}.
+* Attack damage reduced to 30 from 35.
+
+;[[V11.3]]
+* Armor penetration increased to 35% from 25%.
+
+;[[V10.25]]
+* Attack damage increased to 35 from 30.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Last Whisper}} + {{ii|Cloak of Agility}} + {{g|850}} = {{g|2900}}.
+** {{sbc|Stats:}} 30 attack damage, 20% critical strike chance, 25% armor penetration.
+** {{sbc|Unique Passive - Giant Slayer:}} Deal {{pp|type=health difference|color=health|key=%|0 to 15 for 11|0 to 2000|formula=0.75% per 100 greater '''maximum''' health}} {{as|'''bonus''' physical damage|physical damage}} against enemy champions.
+** Limited to 1 {{sbc|Last Whisper}} item.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Last Whisper}} + {{ii|Pickaxe}} + {{g|475}} = {{g|2800}}.
+** {{sbc|Stats:}} 45 attack damage.
+** {{sbc|Unique Passive - Last Whisper:}} +35% '''total''' armor penetration.
+
+;[[V9.3]]
+* Combine cost reduced to {{g|475}} from {{g|625}}.
+** Total cost unchanged.
+* Attack damage increased to 45 from 40.
+
+;[[V8.11]]
+* {{sbc|New Recipe:}} {{ii|Last Whisper}} + {{ii|Pickaxe}} + {{g|625}} = {{g|2800}}.
+** {{sbc|Old Recipe:}} {{ii|Giant Slayer}} + {{ii|Last Whisper}} + {{g|300}} = {{g|2600}}.
+* Attack damage reduced to 40 from 50.
+* Armor penetration changed to 35% '''total''' armor from 35% '''bonus''' armor.
+* {{sbc|Removed Unique Passive - Giant Slayer:}} Grants {{as|{{pp|type=health difference|0%;2%;4%;6%;8%;10%;12%;14%;16%;18%;20%|0;200;400;600;800;1000;1200;1400;1600;1800;2000|formula=2% per 200 health difference. ''This is capped at 2000 health difference.''}}|health}} '''bonus''' physical damage against enemy champions with {{as|'''greater maximum''' health}} than you.
+
+;[[V7.24b]]
+* Giant Slayer passive reduced to +2% damage per 200 health difference from +2% damage per 100 health difference.
+** ''Reaches +20% bonus damage at 2000 health difference from 1000.''
+
+;[[V7.9]]
+* Total cost reduced to {{g|2600}} from {{g|2700}}.
+** Combine cost reduced to {{g|300}} from {{g|400}}.
+* Bonus armor penetration reduced to 35% from 45%.
+* Giant Slayer bonus damage increased to +2% damage per {{as|100 health difference}} (+20% maximum) from +{{fd|1.5}}% damage per {{as|100 health difference}} (+15% maximum).
+
+;[[V7.4]]
+* Giant Slayer passive reduced to +{{fd|1.5}}% damage per 100 health difference from +{{fd|1.5}}% damage per 50 health difference.
+** ''Reaches +15% bonus damage at 1000 health difference from 500.''
+
+;[[V6.12]]
+* Attack damage increased to 50 from 40.
+
+;[[V6.1]]
+* Bonus armor penetration increased to 45% from 40%.
+
+;[[V5.22]] Added
+* {{sbc|Recipe:}} {{ii|Giant Slayer}} + {{ii|Last Whisper}} + {{g|400}} = {{g|2700}}.
+* {{sbc|Stats:}} 40 attack damage.
+* {{sbc|Unique Passive – Giant Slayer}}: Grants up to +15% physical damage against enemy champions with greater maximum health than you (+{{fd|1.5}}% damage per {{as|50 health difference}}, maxing at {{as|500 health difference}}).
+* {{sbc|Unique Passive – Last Whisper}}: +40% bonus armor penetration.
+}}
+
+
+[[pl:Pozdrowienia Lorda Dominika]]
+[[ru:Поклон лорда Доминика]]
+[[de:Lord Dominiks Grüße]]
+[[Category:Items with passive abilities]]

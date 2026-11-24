@@ -1,0 +1,167 @@
+: ''For the skins alternate universe, see [[Eclipse (Universe)]].''
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Syzygy}}.''
+{{Item info
+|univ_page = *none*
+|goldvalue =
+|goldefficiency =
+|similaritems = Immortal Shieldbow;Maw of Malmortius;Blade of the Ruined King;Endless Hunger;Death's Dance;Sundered Sky
+|notes =
+* {{sbc|Ever Rising Moon}} deals {{tip|proc damage}}, and thus will not trigger {{tip|spell effects}}.<!--tested with cheap shot-->
+* {{sbc|Ever Rising Moon's}} damage is affected by {{tip|on-hit}} modifiers.{{bug|2}}
+* {{sbc|Ever Rising Moon's}} damage by itself is not blocked by {{tip|spell shield}}.
+** The damage is blocked if the effect that applied the second stack was blocked by a spell shield.
+* Stacks of {{sbc|Ever Rising Moon}} are generated before the damage instances that cause them.
+* {{tip|Blind}}, {{tip|Cripple}}, {{tip|Drowsy}}, {{tip|Kinematics}}, {{tip|Nearsight}}, and {{tip|Stasis}} do not count as valid crowd control for triggering stacks of {{sbc|Ever Rising Moon}}.
+* Effects that deal {{tip|proc damage}} do not trigger a stack of {{sbc|Ever Rising Moon}} unless it is also tagged as {{tip|pet damage}}.
+** Such effects can still trigger a stack if they apply a debuff (i.e {{ii|Black Cleaver}}).
+* {{sbc|Ever Rising Moon}} will deal its bonus damage to the closest enemy champion if multiple champions are hit at the same time.
+* {{cais|R|Ambessa}} is special cased to apply a stack from {{sbc|Ever Rising Moon}} for the suppression application and the damage dealt.
+* {{cai|Razor Shuriken|Zed}} and {{ai|Shadow Slash|Zed}}, when used together with {{ai|Living Shadow|Zed|Shadows}}, are special cased to apply a stack from {{sbc|Ever Rising Moon}} for each tick of damage.
+|strategy =
+|trivia =
+* ''Syzygy'' was chosen as a name with the reasoning that "Fantasy should teach people cool new words.".<ref>AzuBK. (2020, December 15). ''[https://www.reddit.com/r/leagueoflegends/comments/kdsz4x/today_i_learned_what_a_syzygy_was/gfyzvkf/?context=3 Today I learned what a Syzygy was]'' (Comment). Reddit.</ref>
+* {{ii|Eclipse}} has the same stack trigger conditions as {{ri|Electrocute}} and {{ri|Phase Rush}}.
+[[File:Mount Targon Crest icon.png|link=Mount Targon#Trivia|100px|center]]
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Eclipse trigger item screenshot.png|Trigger VFX
+Eclipse passive item screenshot.png|Shield VFX
+Eclipse item screenshot.png|Item VFX
+</gallery>
+|sfx =
+;Passive Ready
+* {{sm2|Eclipse passive SFX 4.ogg}} Passive SFX
+
+;Passive Triggered
+* {{sm2|Eclipse passive SFX.ogg}} Shield Activate SFX
+* {{sm2|Eclipse passive SFX 3.ogg}} Shield Activate SFX
+
+;Passive Ends
+* {{sm2|Eclipse passive SFX 2.ogg}} Shield End SFX
+|revisions =
+|patchhistory =
+;[[V26.16]]
+* Ever Rising Moon damage increased to {{as|{{rd|8%|5%}} of target's '''maximum''' health|hp}} from {{as|{{rd|6%|4%}}|hp}}.
+* Ever Rising Moon base shield reduced to {{rd|150|75}} from {{rd|160|80}}.
+
+;[[V14.19]]
+* Total cost increased to {{g|2900}} from {{g|2800}}.
+** Combine cost increased to {{g|625}} from {{g|475}}.
+* Attack damage reduced to 60 from 70.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Syzygy}}.
+
+;[[V14.9]]
+* Ever Rising Moon damage reduced to {{as|{{rd|6%|4%}} of target's '''maximum''' health|hp}} from {{as|{{rd|8%|4%}}|hp}}.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Caulfield's Warhammer}} + {{ii|Pickaxe}} + {{ii|Long Sword}} + {{g|475}} = {{g|2800}}.
+** {{sbc|Stats:}} 70 attack damage, 15 ability haste.
+** {{sbc|Unique Passive - Ever Rising Moon:}} Hitting an enemy champion with 2 separate attacks or abilities within 2 seconds deals {{as|'''bonus''' physical damage}} equal to {{as|{{rd|8%|4%}} of target's '''maximum''' health}} and grants you a {{tip|shield}} for {{rd|160|80}} {{as|(+ {{rd|40%|20%}} '''bonus''' AD)}} for 2 seconds (6 second cooldown).
+** Limited to 1 '''Eclipse'''.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Syzygy}}.
+*** {{sbc|Stats:}} 90 attack damage, 25 ability haste.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Serrated Dirk}} + {{ii|Caulfield's Warhammer}} + {{g|900}} = {{g|3100}}.
+** {{sbc|Stats:}} 60 attack damage, 15 ability haste, 12 lethality.
+** {{sbc|Unique Passive - Ever Rising Moon:}} Hitting an enemy champion with 2 separate attacks or abilities within {{fd|1.5}} seconds deals {{as|'''bonus''' physical damage}} equal to {{as|{{rd|6%|3%}} of target's '''maximum''' health}} and grants you {{as|15% '''bonus''' movement speed}} and a {{tip|shield}} for {{rd|160|80}} {{as|(+ {{rd|35%|{{fd|17.5}}%}} '''bonus''' AD)}} for 2 seconds ({{rd|6|12}} second cooldown).
+** {{sbc|Mythic Passive:}} Empowers each of your other Legendary items with {{as|4% armor penetration}} and {{as|5 '''bonus''' movement speed}}.
+** Limited to 1 {{sbc|Mythic}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Syzygy}}.
+*** {{sbc|Stats:}} 80 attack damage, 20 ability haste, 20 lethality.
+
+;[[V13.4]]
+* {{sbc|Bug Fix:}} Ever Rising Moon VFX no longer plays even after the item was sold.
+
+;[[V13.1b]]
+* {{sbc|New Recipe:}} {{ii|Serrated Dirk}} + {{ii|Caulfield's Warhammer}} + {{g|900}} = {{g|3100}}.
+** {{sbc|Old Recipe:}} {{ii|Serrated Dirk}} + {{ii|Long Sword}} + {{ii|Vampiric Scepter}} + {{g|750}} = {{g|3100}}.
+* Ability haste increased to 15 from 0.
+* Omnivamp reduced to 0% from 7%.
+* Ever Rising Moon cooldown reduced to {{rd|6|12}} seconds from {{rd|8|16}}.
+* {{ii|Syzygy}} ability haste increased to 20 from 0.
+* {{ii|Syzygy}} omnivamp reduced to 0% from 8%.
+
+;[[V12.19]]
+* Attack damage increased to 60 from 55.
+* Lethality reduced to 12 from 18.
+* {{ii|Syzygy}} attack damage increased to 80 from 75.
+* {{ii|Syzygy}} lethality reduced to 20 from 26.
+
+;[[V12.14]]
+* {{sbc|Bug Fix:}} Damage dealt tracker now properly tracks damage.
+
+;[[V12.13#July 13th Hotfix|V12.13]] - July 13th Hotfix
+* {{sbc|Bug Fix:}} Boots no longer override bonus movement speed gained from mythic passives if they are placed in an item slot lower than the Mythic item.
+
+;[[V12.13]]
+* Ever Rising Moon damage on {{tip|ranged}} champions reduced to {{as|3% of target's '''maximum''' health}} from {{as|6%|health}}.
+* {{sbc|New Effect:}} Mythic passive now also grants 5 '''bonus''' movement speed.
+
+;[[V12.10]]
+* Omnivamp reduced to 7% from 8%.
+* Base shield reduced to {{rd|160|80}} from {{rd|180|90}}.
+* Shield AD ratio reduced to {{as|{{rd|35%|{{fd|17.5}}%}}|AD}} {{as|'''bonus''' AD}} from {{as|{{rd|40%|20%}} '''bonus''' AD}}.
+* {{ii|Syzygy}} omnivamp reduced to 8% from 10%.
+
+;[[V12.2]]
+* {{sbc|Bug Fix:}} Fixed a bug where triggering {{ri|Glacial Augment}} would incorrectly count toward triggering Ever Rising Moon.
+
+;[[V12.1]]
+* Ever Rising Moon cooldown for {{tip|melee}} champions increased to 8 seconds from 6.
+
+;[[V11.23]]
+* Total cost reduced to {{g|3100}} from {{g|3200}}.
+** Combine cost reduced to {{g|750}} from {{g|850}}.
+* Ever Rising Moon cooldown for {{tip|melee}} champions reduced to 6 seconds from 8.
+
+;[[V11.22]]
+* {{sbc|Undocumented/Bug Fix:}} {{iis|Syzygy}} base shield strength and duration are now 180 (melee) and 2 seconds, instead of 0.1 and 0.1 seconds.
+
+;[[V11.19]]
+* {{sbc|Bug Fix:}} Ever Rising Moon's omnivamp no longer applies to damage dealt to champion summoned objects such as {{ai|Noxious Trap|Teemo}} and {{ai|Powder Keg|Gangplank}}.
+
+;[[V11.6]]
+* {{sbc|Bug Fix:}} {{iis|Syzygy}} Ever Rising Moon now properly goes on cooldown if the user is basic attacking while owning {{ii|Black Cleaver}}.
+
+;[[V11.3]]
+* Omnivamp reduced to 8% from 10%.
+* Base shield increased to 180 from 150.
+* Base shield on {{tip|ranged}} champions increased to 90 from 75.
+* {{ii|Syzygy}} omnivamp reduced to 10% from 12%.
+* {{sbc|Bug Fix:}} Omnivamp now properly applies to damage dealt even after being upgraded to {{ii|Syzygy}}.
+
+;[[V11.1]]
+* {{sbc|Bug Fix:}} Passive cooldown no longer ignores item haste granted from {{ri|Ingenious Hunter}}.
+* {{sbc|Undocumented:}} {{ii|Syzygy}} no longer unintentionally has 12% {{stil|life steal}} and 12% {{stil|spell vamp}} in addition to its [[omnivamp]].
+
+;[[V10.25]]
+* Base shield on {{tip|ranged}} champions reduced to 75 from 100.
+* Shield bonus AD ratio on {{tip|ranged}} champions reduced to {{as|20% '''bonus''' AD}} from {{as|30%|AD}}.
+* {{sbc|Bug Fix:}} Champions' health bars will now accurately reflect the shield health even after activating the passive while another shield is active.
+
+;[[V10.24]]
+* Updated icon.
+* Cooldown increased to {{rd|8|16}} seconds from {{rd|6|12}}.
+
+;[[V10.23#November 12th Hotfix|V10.23]] - November 12th Hotfix
+* Bonus physical damage reduced to {{as|6% of target's '''maximum''' health}} from {{as|8%|health}}.
+* Bonus movement speed reduced to 15% from 30%.
+
+;[[V10.23]] - Added
+* {{sbc|Recipe:}} {{ii|Serrated Dirk}} + {{ii|Long Sword}} + {{ii|Vampiric Scepter}} + {{g|850}} = {{g|3200}}.
+* {{sbc|Stats:}} 55 attack damage, 18 lethality, 10% omnivamp.
+* {{sbc|Unique Passive - Ever Rising Moon:}} Hitting a champion with 2 separate attacks or abilities within {{fd|1.5}} seconds deals {{as|'''bonus''' physical damage}} equal to {{as|8% of their '''maximum''' health}} and grants you {{as|30% '''bonus''' movement speed}} and a {{rd|150|100}} {{as|(+ {{rd|40%|30%}} '''bonus''' AD)}} {{tip|shield}} for 2 seconds ({{rd|6|12}} second cooldown).
+* {{sbc|Mythic Passive:}} Empowers your other Legendary items with {{as|4% armor penetration}}.
+* Limited to 1 {{sbc|Mythic}} item.
+* {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Syzygy}}.
+** {{sbc|Stats:}} 75 attack damage, 26 lethality, 12% omnivamp.
+}}
+
+
+[[Category:Season 2021 item release]]
+[[Category:Items with passive abilities]]
+
+[[ru:Затмение]]

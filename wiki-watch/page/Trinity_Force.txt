@@ -1,0 +1,261 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} items, see {{ii|Infinity Force}} and {{ii|Trinity Fusion}}.''
+{{Item info
+|goldvalue =
+{{gold value|Quicken Gold Value|nolink=}}
+* 20 [[movement speed]] = {{g|{{#vardefineecho:quicken|{{#expr:{{#var:msflat}}*20}}}}}}
+** '''Total Gold Value ''' = {{g|{{#vardefineecho:quickentotal|{{#expr:{{#var:total}}+{{#var:quicken}}}}}}}}
+|goldefficiency =
+* While {{sbc|Quicken}} is active, {{ii|Trinity Force}} becomes {{gec|Trinity Force|{{#var:quickentotal}}}} gold efficient.
+|similaritems = Black Cleaver;Essence Reaver;Iceborn Gauntlet;Dusk and Dawn;Lich Bane;Experimental Hexplate;Stridebreaker;Hullbreaker;Sterak's Gage;Spear of Shojin;Sundered Sky;Titanic Hydra;Overlord's Bloodmail
+|notes =
+{{Spellblade info}}
+|strategy =
+|trivia =
+* '''Trinity Force''' features the most champion statistics on one item.
+* {{sbc|Spellblade's}} highest possible damage is {{tt|{{fd|{{#expr:{{Highest lowest stats|ad|lvl=18|sortby=top|size=1|get=stat}}*2}}}}|{{Highest lowest stats|ad|lvl=18|sortby=top|size=1|get=stat}}{{times}}2}}. This can be achieved by {{Highest lowest stats|ad|lvl=18|sortby=top|size=1|get=champ}}, who has {{as|{{fd|{{Highest lowest stats|ad|lvl=18|sortby=top|size=1|get=stat}}}} '''base''' attack damage}} at level 18.
+* The name and icon of '''Trinity Force''' are inspired by ''The Legend of Zelda's'' [https://zeldawiki.wiki/wiki/Triforce Triforce].
+* '''Trinity Force''' can be found by typing in the item search:
+** 'tons of damage', which references [[David 'Phreak' Turley]]'s catchphrase in [[Champion Spotlight]]s as well as the meme around it.
+*** The "''Recommended Items''" section of the item [[shop]] (before the [[Season 2021|Preseason 2021]] update) also displayed "''Tons of Damage''" as the description for '''Trinity Force''' when shown as a recommended item for a champion.
+** 'triforce', referencing {{w|Legend of Zelda}}.
+** '3333', the item's price has remained {{g|3333}} since [[V10.23]], referencing the "trinity" element of the item.
+* The swords in the original icon resemble {{ii|Sheen}} with the two swords of {{ii|Zeal}}, which were part of its build path.
+* The blades in the icon ([[V10.23]]) resemble {{cis|Irelia}} blades, which are fragments of an Ionian Crest.
+
+[[File:Ionia Crest icon.png|link=Ionia#Trivia|100px|center]]
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Trinity Force item screenshot.png|Attack Ready VFX
+Trinity Force ms item screenshot.png|Movement Speed VFX
+Trinity Force ms 2 item screenshot.png|Old Maximum Stacks VFX
+Trinity Force screenshot.png|Old Item VFX
+Phage screenshot.png|Old Item VFX
+</gallery>
+|sfx =
+;Bonus Movement Speed
+* {{sm2|Trinity Force passive SFX.ogg}} Passive Buff Activate SFX
+* {{sm2|Trinity Force passive SFX 2.ogg}} Passive Buff Activate SFX
+
+;Reaching Maximum Stacks (Old)
+* {{sm2|Trinity Force passive SFX 3.ogg}} Passive SFX
+|revisions =
+|patchhistory =
+;[[V25.15]]
+* {{sbc|Bug Fix:}} Spellblade primed VFX and buff icon on the HUD are no longer incorrectly removed when attacking a plant.
+** ''[This did not affect gameplay: the buff itself would not be consumed, and would last for the proper duration.]''
+
+;[[V14.19]]
+* Combine cost increased to {{g|133}} from {{g|33}}.
+** Total cost unchanged.
+* Health increased to 333 from 300.
+* Attack damage reduced to 36 from 45.
+* Attack speed reduced to 30% from 33%.
+* Ability haste reduced to 15 from 20.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Infinity Force}}.
+
+;[[V14.10]]
+* Combine cost reduced to {{g|33}} from {{g|183}}.
+** Total cost unchanged.
+
+;[[V14.6]]
+* Combine cost increased to {{g|183}} from {{g|133}}.
+** Total cost unchanged.
+
+;[[V14.3]]
+* Combine cost increased to {{g|133}} from {{g|33}}.
+** Total cost unchanged.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Phage}} + {{ii|Hearthbound Axe}} + {{g|33}} = {{g|3333}}.
+** {{sbc|Stats:}} 300 health, 45 attack damage, 33% attack speed, 20 ability haste.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, your next basic attack within 10 seconds deals {{as|200% '''base''' AD}} {{as|'''bonus''' physical damage}} on-hit ({{fd|1.5}} second cooldown, begins after using the empowered attack).
+** {{sbc|Unique Passive - Quicken:}} Basic attacks on-hit grant {{as|20 '''bonus''' movement speed}} for 2 seconds.
+** Limited to 1 {{sbc|Spellblade}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Infinity Force}}.
+*** {{sbc|Stats:}} 400 health, 55 attack damage, 43% attack speed, 25 ability haste.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Hearthbound Axe}} + {{ii|Kindlegem}} + {{g|733}} = {{g|3333}}.
+** {{sbc|Stats:}} 300 health, 40 attack damage, 33% attack speed, 20 ability haste.
+** {{sbc|Unique Passive - Threefold Strike:}} Basic attacks grant {{as|20 '''bonus''' movement speed}} for 5 seconds and, if the target is a champion or a structure, increase {{as|'''base''' attack damage by 6%}} for the same duration, stacking up to 3 times for a {{as|18% increase|attack damage}}. Stacks expire by one every {{fd|0.5}} seconds when the duration ends.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, your next basic attack within 10 seconds deals {{as|200% '''base''' AD}} {{as|'''bonus''' physical damage}} on-hit ({{fd|1.5}} second cooldown, begins after using the empowered attack).
+** {{sbc|Mythic Passive:}} Empowers each of your other Legendary items with {{as|3 '''bonus''' attack damage}}, {{as|3 ability haste}}, and {{as|3 '''bonus''' movement speed}}.
+** Limited to 1 {{sbc|Mythic}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Infinity Force}}.
+*** {{sbc|Stats:}} 400 health, 50 attack damage, 43% attack speed, 25 ability haste.
+
+;[[V13.15]]
+* {{sbc|Bug Fix:}} Now grants the correct amount of movement speed even under certain conditions.
+
+;[[V13.14]]
+* Attack speed reduced to 33% from 35%
+* Number of stacks reduced to 3 from 5.
+* Threefold Strike base attack damage per stack increased to {{as|6% '''base''' AD}} from {{as|4%|AD}}.
+** Threefold Strike maximum base attack damage reduced to {{as|18% '''base''' AD}} from {{as|20%|AD}}.
+* {{ii|Infinity Force}} attack speed reduced to 43% from 45%
+
+;[[V13.10]]
+* Attack damage increased to 40 from 35.
+* Attack speed increased to 35% from 30%.
+* Threefold Strike duration increased to 5 seconds from 3.
+* {{ii|Infinity Force}} attack damage increased to 50 from 45.
+* {{ii|Infinity Force}} attack speed increased to 45% from 40%.
+
+;[[V12.3]]
+* Combine cost increased to {{g|833}} from {{g|733}}.
+** Total cost unchanged.
+* Health increased to 300 from 200.
+* Threefold Strike base attack damage per stack reduced to {{as|4% '''base''' AD}} from {{as|6%|AD}}.
+** Threefold Strike maximum base attack damage reduced to {{as|20% '''base''' AD}} from {{as|30%|AD}}.
+* {{ii|Infinity Force}} health increased to 400 from 300.
+
+;[[V11.13]]
+* Attack damage increased to 35 from 30.
+* Threefold Strike bonus movement speed reduced to 20 from 25.
+* {{ii|Infinity Force}} attack damage increased to 45 from 40.
+
+;[[V11.9]]
+* {{sbc|Bug Fix:}} Now grants {{ci|Kai'Sa}} the appropriate amount of stats for her {{ai|Second Skin|Kai'Sa|Evolutions}}.
+
+;[[V11.7#March 31st Hotfix|V11.7]] - March 31st Hotfix
+* {{sbc|Bug Fix:}} Fixed a bug where it's mythic passive would not grant bonus movement if it is placed to the right of your boots in your inventory.
+
+;[[V11.7]]
+* Attack damage increased to 30 from 25.
+* Attack speed reduced to 30% from 35%.
+* {{sbc|New Effect:}} Basic attacks against structures now increases {{as|'''base''' attack damage}} by 6% for 3 seconds, stacking up to 5 times for a 30% increase.
+* Mythic passive changed to {{as|3 '''bonus''' attack damage}}, 3 ability haste and {{as|3 '''bonus''' movement speed}} from {{as|10% '''bonus''' attack speed}}.
+* {{ii|Infinity Force}} attack damage increased to 40 from 35.
+* {{ii|Infinity Force}} attack speed reduced to 40% from 45%.
+
+;[[V11.1]]
+* Attack damage reduced to 25 from 35.
+* Ability haste increased to 20 from 10.
+* {{ii|Infinity Force}} attack damage reduced to 35 from 45.
+* {{ii|Infinity Force}} ability haste increased to 25 from 15.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Hearthbound Axe}} + {{ii|Kindlegem}} + {{g|733}} = {{g|3333}}.
+** {{sbc|Stats:}} 35 attack damage, 35% attack speed, 200 health, 10 ability haste.
+** {{sbc|Unique Passive - Threefold Strike:}} Basic attacks grant {{as|25 '''bonus''' movement speed}} for 3 seconds. If the target is a champion also increases {{as|'''base''' attack damage by 6%}} for the same duration, stacking up to 5 times for a {{as|30% increase|attack damage}}.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, deal {{as|200% '''base''' AD}} {{as|'''bonus''' physical damage}} on-hit ({{fd|1.5}} second cooldown).
+** {{sbc|Mythic Passive:}} Empowers your other Legendary items with {{as|10% '''bonus''' attack speed}}.
+** Limited to 1 {{sbc|Mythic}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Infinity Force}}.
+*** {{sbc|Stats:}} 45 attack damage, 45% attack speed, 300 health, 15 ability haste.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Stinger}} + {{ii|Sheen}} + {{ii|Phage}} + {{g|333}} = {{g|3733}}.
+** {{sbc|Stats:}} 25 attack damage, 40% attack speed, 250 health, 20% cooldown reduction, 5% movement speed, 250 mana.
+** {{sbc|Unique Passive - Rage:}} Basic attacks (on-hit) grant {{as|+{{rd|20|10}} flat movement speed}} for 2 seconds. Killing a unit grants {{as|+{{rd|60|30}} flat movement speed}} instead.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, your next basic attack within 10 seconds deals {{as|200% '''base''' AD}} {{as|'''bonus''' physical damage on-hit}} ({{fd|1.5}} second cooldown).
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Trinity Fusion}}.
+*** {{sbc|Stats:}} 35 attack damage, 50% attack speed, 350 health, 20% cooldown reduction, 8% movement speed, 350 mana.
+
+;[[V9.1]]
+* {{ii|Trinity Fusion}}
+** Total cost reduced to {{g|3733}} from {{g|4733}}.
+*** Combine cost reduced to {{g|0}} from {{g|1000}}.
+** Can now only be obtained if {{ci|Ornn}} forges the item (for himself or for another ally).
+
+;[[V8.14]]
+* Spellblade VFX updated.
+
+;[[V7.17]]
+* Added to recipe from {{ii|Trinity Fusion}}. ''Only available while {{ci|Ornn}} is on your team.''
+
+;[[V6.11]]
+* {{sbc|New recipe:}} {{ii|Stinger}} + {{ii|Sheen}} + {{ii|Phage}} + {{g|333}}{{equals}}{{g|3733}}.
+** {{sbc|Old recipe:}} {{ii|Sheen}} + {{ii|Phage}} + {{ii|Zeal}} + {{g|200}}{{equals}}{{g|3800}}.
+* Bonus attack speed increased to 40% from 15%.
+* Cooldown reduction increased to 20% from 10%.
+* {{sbc|Removed:}} +20% critical strike chance.
+
+;[[V5.24]]
+* Combine cost reduced to {{g|200}} from {{g|300}}.
+
+;[[V5.22]]
+* Combine cost increased to {{g|300}} from {{g|78}}.
+** Total cost increased to {{g|3800}} from {{g|3703}}.
+* Now grants 10% cooldown reduction.
+* Ability power removed.
+* Attack damage reduced to 25 from 30.
+* Attack speed reduced to 15% from 30%.
+* Critical strike chance increased to 20% from 10%.
+* Movement speed reduced to 5% from 8%.
+* Mana increased to 250 from 200.
+
+;[[V4.13]]
+* Now correctly lists the Spellblade passive as having a {{fd|1.5}} second cooldown.
+
+;[[V3.14]]
+* Item cost reduced to {{g|3703}} from {{g|3728}}.
+
+;[[V3.12]]
+* Item cost increased to {{g|3728}} from {{g|3628}}.
+* {{sbc|Unique Passive – Rage:}} movement speed bonus now halved for ranged champions.
+
+;[[V3.10a]]
+* {{sbc|Unique Passive - Icy}} removed.
+* New {{sbc|Unique Passive - Rage:}} basic attacks grant 20 movement speed for 2 seconds on hit. Minion, monster, and champion kills grant 60 movement speed for 2 seconds.
+* Spellblade damage increased to 200% base attack damage from 150%.
+* Total cost reduced to {{g|3628}} from {{g|3843}}.
+
+;[[V3.04]]
+* Item cost reduced to {{g|3843}} from {{g|3903}}.
+
+;[[V3.01]]
+* Item cost reduced to {{g|3903}} from {{g|4200}}.
+** Combine cost reduced to {{g|3}} from {{g|300}}.
+
+;[[V1.0.0.152]]
+* Item cost increased to {{g|4200}} from {{g|4070}}.
+* Critical strike chance reduced to 10% from 15%.
+* Slow reduced to 30% from 35% for melee attacks and reduced to 20% from 25% for ranged attacks.
+* Mana reduced to 200 from 250.
+* Movement speed reduced to 8% from 12%.
+
+;[[V1.0.0.150]]
+* Slow for ranged attacks reduced to 25% from 35%.
+
+;[[V1.0.0.146]]
+* Now displays its cooldown on the item itself rather than with a buff.
+
+;[[V1.0.0.104]]
+* Damage increased to 30 from 20.
+* Attack speed increased to 30% from 25%.
+* Critical strike increased to 15% from 12%.
+* Health reduced to 250 from 300.
+* Mana reduced to 250 from 300.
+
+;[[V1.0.0.101]]
+* Spellblade damage increased to to 150% from 130%.
+
+;[[V1.0.0.100]]
+* "Reservoir" system has been removed. These items will now strictly respect the cooldown time between procs. The cooldown has been reduced to 2 second delays between procs from 3 seconds.
+
+;[[V1.0.0.97]]
+* Fixed a bug with '''Trinity Force''' that was causing the proc on spell cast to do less damage than intended.
+
+;[[V1.0.0.75]]
+* Slow reduced to 35% from 50%.
+* Spellcast effect reduced to 130% of base damage from 150%.
+
+;[[V0.9.25.21]] Added
+* Stats: Damage / Ability Power / Attack Speed / Crit / Move Speed / Health / Mana.
+* Chance on hit to slow the target.
+* Spell casts cause the next attack to deal bonus damage.
+}}
+
+
+[[cs:Trinity Force]]
+[[de:Stärke der Dreieinigkeit]]
+[[es:Fuerza de la Trinidad]]
+[[fr:Force de la Trinité]]
+[[pl:Moc Trójcy]]
+[[ru:Тройственный Союз]]
+[[zh:三相之力]]
+[[Category:Items with passive abilities]]

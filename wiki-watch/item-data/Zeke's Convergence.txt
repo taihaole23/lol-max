@@ -1,0 +1,36 @@
+["Zeke's Convergence"] = {
+        ["id"]                  = 3050,
+        ["nickname"]            = {"haroldandkumar"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 10,
+            ["armor"]           = 25,
+            ["mr"]				= 25,
+            ["hp"]              = 300,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Cryocombustion",
+                ["unique"]      = true,
+                ["description"] = "Gain 15 [[Haste#Ultimate haste|ultimate haste]].",
+            },
+            ["pass2"] = {
+                ["name"]        = "Frostfire Tempest",
+                ["unique"]      = true,
+                ["description"] = "Upon casting your [[ultimate ability]], and once an enemy champion is within ''Frostfire Tempest's'' radius or after 5 seconds otherwise, you summon a storm of flame and ice around you for 5 seconds. The storm deals{{ft|{{as|{{ap|30/4}} magic damage}} every {{fd|0.25}} seconds|{{as|{{ap|30*5}} '''total''' magic damage}} over the duration}}to enemy champions and monsters within a {{tip|cr|icononly=true}} 350 radius and {{tip|slow|slows}} them by 30% (45 second cooldown, starts on ultimate cast).",
+            },
+        },
+        ["recipe"]              = {"Kindlegem", "Cloth Armor", "Null-Magic Mantle"},
+        ["buy"]                 = 2200,
+    },

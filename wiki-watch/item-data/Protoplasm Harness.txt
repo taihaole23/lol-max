@@ -1,0 +1,29 @@
+["Protoplasm Harness"] = {
+        ["id"]                  = 2525,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Lifeline",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+        	["tank"]            = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 20,
+            ["hp"]              = 600,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Lifeline",
+                ["unique"]      = true,
+                ["description"] = "If you would take damage that would reduce you below {{as|30% of your '''maximum''' health}}, you first gain {{as|{{pp|100 to 300|tooltipSize=20}} '''bonus''' health}} for 5 seconds and {{tip|heal}} yourself for {{pp|100 to 400|tooltipSize=20|color=heal}} {{as|(+ 175% '''bonus''' armor)}} {{as|(+ 175% '''bonus''' magic resistance)}} over the same duration, during which you also gain 15% increased [[size]], {{as|10% '''bonus''' movement speed}}, and 25% {{tip|tenacity}}.",
+                ["cd"]          = 90,
+            },
+        },
+        ["recipe"]              = {"Kindlegem", "Giant's Belt"},
+        ["buy"]                 = 2600,
+    },

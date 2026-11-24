@@ -1,0 +1,30 @@
+["Phantom Dancer"] = {
+        ["id"]                  = 3046,
+        ["nickname"]            = {"pd"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+            ["movement"]		= true,
+        },
+        ["stats"] = {
+            ["as"]              = 65,
+            ["crit"]            = 25,
+            ["ms"]              = 10,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Spectral Waltz",
+                ["unique"]      = true,
+                ["description"] = "Become permanently {{tip|ghosted}}.",
+            },
+        },
+        ["recipe"]              = {"Dagger", "Zeal", "Dagger"},
+        ["buy"]                 = 2650,
+    },

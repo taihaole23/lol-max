@@ -11,9 +11,13 @@
     "test:watch": "vitest",
     "test:slow": "vitest run tests/optimizer/search.slow.test.ts",
     "update-items": "node scripts/update-items.mjs",
-    "update-icons": "node scripts/update-icons.mjs"
+    "update-icons": "node scripts/update-icons.mjs",
+    "patch-day": "node scripts/patch-day.mjs",
+    "check-wiki": "node scripts/check-wiki.mjs",
+    "patch-diff": "node scripts/patch-diff.mjs"
   },
   "devDependencies": {
+    "jpeg-js": "^0.4.4",
     "typescript": "~7.0.2",
     "vite": "^8.3.6",
     "vitest": "^5.1.1"

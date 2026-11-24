@@ -1,0 +1,78 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Sunfire Aegis;Kaenic Rookern;Force of Nature;Spirit Visage;Abyssal Mask;Warmog's Armor;Heartsteel
+|background =
+|notes =
+* {{sbc|Immolate}} deals {{tip|proc damage}} and is tagged as {{tip|persistent damage|periodic}} and {{tip|area damage|area of effect}} without applying {{tip|spell effects}}.
+* {{sbc|Immolate}} will trigger from its own damage, burning infinitely so long and there is an enemy in range.
+* {{sbc|Desolate}} deals {{tip|proc damage}} and is tagged as {{tip|area damage|area of effect}} without applying {{tip|spell effects}}.
+* {{sbc|Immolate}} and {{sbc|Desolate}} are {{tip|auto-targeted}} effects.
+* {{sbc|Immolate}} deals {{as|{{ap|15*1.25}}|magic damage}} {{as|(+ {{ap|1*1.25}}% '''bonus''' health)}} {{as|magic damage}} per tick against {{tip|minions}} and {{tip|monsters}}.
+* The aura increases if the user increases in {{tip|size}}, but is not impacted by their '''base''' size.
+** The aura cannot get reduced below the base radius by negative size modifiers.
+* Because the aura effect must reach an enemy's center to damage them, some melee champions will not apply the effect at their maximum attack range against champions or {{tip|monsters}} with a large enough collision radius (for example the {{ui|Dragon}} or {{ui|Rift Herald}}).
+|strategy =
+|oldicons =
+|trivia =
+[[File:Void Crest icon.png|link=Icathia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Hollow Radiance passive ready VFX.png|Inactive VFX
+Hollow Radiance passive triggered VFX.png|Trigger VFX
+Hollow Radiance passive active VFX.png|Activated VFX
+Hollow Radiance explosion VFX.png|Explosion VFX
+</gallery>
+|sfx =
+;Immolate Triggered
+* {{sm2|Hollow Radiance passive triggered SFX.ogg}} Passive SFX
+
+;Immolate Active
+* {{sm2|Hollow Radiance passive active SFX.ogg}} Passive SFX
+
+;Desolate Triggered
+* {{sm2|Hollow Radiance passive kill SFX.ogg}} Passive SFX
+* {{sm2|Hollow Radiance passive kill SFX 2.ogg}} Passive SFX
+
+;Immolate Expired
+* {{sm2|Hollow Radiance passive end SFX.ogg}} Passive SFX
+|revisions =
+|patchhistory =
+;[[V26.20]]
+* {{sbc|Bug Fix:}} Immolate aura range now always properly scale with bonus size.
+
+;Unknown Patch - likely after [[V26.08]]
+* {{sbc|Undocumented / Bug:}} Immolate area of effect size no longer scales with '''bonus''' champion size.
+
+;[[V25.19]]
+* Immolate description in the tooltip now notes the minion and monster damage modifiers separately.
+
+;[[V14.19]]
+* Health reduced to 400 from 450.
+* Immolate base damage per second increased to 15 from 10.
+* Immolate health ratio per second reduced to {{as|1% '''bonus''' health}} from {{as|{{fd|1.75}}%|hp}}.
+* {{sbc|New Effect:}} Immolate now deals 125% damage to monsters.
+* Desolate base damage increased to 30 from 20.
+* Desolate health ratio reduced to {{as|2% '''bonus''' health}} from {{as|{{fd|3.5}}%|hp}}.
+
+;[[V14.10]]
+* Combine cost increased to {{g|650}} from {{g|550}}.
+** Total cost unchanged.
+* Health reduced to 450 from 600.
+* Ability haste increased to 10 from 0.
+
+;[[V14.4]]
+* {{sbc|Bug Fix:}} Now tracks the burn damage and the on-kill damage separately.
+
+;[[V14.1]] - Added
+* {{sbc|Recipe:}} {{ii|Bami's Cinder}} + {{ii|Spectre's Cowl}} + {{g|550}} = {{g|2800}}.
+* {{sbc|Stats:}} 600 health, 40 magic resistance, 100% base health regeneration.
+* {{sbc|Unique Passive - Immolate:}} Taking or dealing damage activates this passive for 3 seconds. Deal {{as|10 {{as|(+ {{fd|1.75}}% '''bonus''' health)}} magic damage|magic damage}} every second to enemies within {{tip|cr|icononly=true}} 325 (+ 100% '''bonus''' size) units, with the damage being increased by 25% against minions. This executes minions that would be killed by one more tick of damage. Taking or dealing damage refreshes the duration of this effect.
+* {{sbc|Unique Passive - Desolate:}} Killing a {{tt|non-champion unit|Excluding wards and structures.}} causes an eruption around their death location that deals{{ft|{{as|{{ap|10*2}} {{as|(+ {{ap|1.75*2}}% '''bonus''' health)}} magic damage|magic damage}}|200% of ''Immolate's'' damage}}to enemies within 350 units. Scoring a {{tip|takedown}} against an enemy champion within 3 seconds of damaging them causes a larger eruption that deals{{ft|{{as|{{ap|10*4}} {{as|(+ {{ap|1.75*4}}% '''bonus''' health)}} magic damage|magic damage}}|400% of ''Immolate's'' damage}}to enemies within 500 units.
+* Limited to 1 {{sbc|Immolate}} item.
+* {{sbc|Caption:}} "A relic of Icathia, remade."
+}}
+
+[[Category:Season 2024 item release]]
+[[ru:Сияние пустоты]]

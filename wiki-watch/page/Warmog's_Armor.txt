@@ -1,0 +1,226 @@
+{{Item info
+|goldvalue =
+{{gold value|Warmog's Vitality Gold Value (from base stats)|nolink=}}
+* {{fd|{{#expr:{{cid|Warmog's Armor|hp}}*{{#vardefineecho:hptohp|0.12}}}}}} [[health]] = {{g|{{#expr:{{cid|Warmog's Armor|hp}}*{{#var:hptohp}}*{{#var:hp}} round 2}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:total|{{#expr:{{#var:total}}+{{cid|Warmog's Armor|hp}}*{{#var:hptohp}}*{{#var:hp}} round 2}}}}}}
+{{gold value|Warmog's Vitality Gold Value per 100 bonus health from other items|nolink=}}
+* {{#expr:{{#var:hptohp}}*100}} [[health]] = {{g|{{#vardefineecho:perhp|{{#expr:{{#var:hp}}*{{#var:hptohp}}*100 round 2}}}}}}
+{{gold value|Warmog's Heart Gold Value at {{#vardefineecho:heartthreshold|2000}} bonus health|nolink=}}
+* {{#expr:{{#var:heartthreshold}}*{{#vardefineecho:hptohp5|0.15}}}} [[health regeneration]] = {{g|{{#expr:{{#var:hp5flat}}*({{#var:heartthreshold}}*{{#var:hptohp5}})}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:heart2000|{{#expr:{{#var:total}}+{{#var:hp5flat}}*({{#var:heartthreshold}}*{{#var:hptohp5}})}}}}}}
+{{gold value|Warmog's Heart Gold Value per 100 bonus health|nolink=}}
+* {{#expr:100*{{#var:hptohp5}}}} [[health regeneration]] = {{g|{{#vardefineecho:heartper100|{{#expr:{{#var:hp5flat}}*(100*{{#var:hptohp5}})}}}}}}
+|goldefficiency =
+* {{iis|Warmog's Armor}} gold efficiency due to {{sbc|Warmog's Vitality}} is increased by {{gec|Warmog's Armor|+{{#var:perhp}}}} for every {{as|100 '''bonus''' health}} from other items.
+* While {{sbc|Warmog's Heart}} is active, {{iis|Warmog's Armor}} gold efficiency is increased to at least {{gec|Warmog's Armor|{{#var:heart2000}}}}.
+** This is further increased by {{gec|Warmog's Armor|+{{#var:heartper100}}}} for every {{as|100 '''bonus''' health}} obtained from other sources.
+|similaritems = Heartsteel;Protoplasm Harness;Force of Nature;Hollow Radiance;Kaenic Rookern;Spirit Visage;Winter's Approach
+|background = The living armor protected the greatest troll warrior in the entire realm during the bloodiest and most devastating battles of the Rune Wars. Deep within the dark woods of Crystone the living armor waits to protect its next owner. A word of warning required before seeking out Warmog... it will protect you for a time, but when it grows tired of you, who will protect you from it?
+|notes =
+* {{sbc|Warmog's Vitality}} does not amplify temporary {{as|'''bonus''' health}} gained from {{iis|Solstice Sleigh}} {{nie|Going Sledding}} and {{iis|Sundered Sky}} {{nie|Lightshield Strike}}.
+* {{sbc|Warmog's Vitality}} grants {{as|{{fd|{{#expr:({{cid|Warmog's Armor|hp}}*{{#var:hptohp}})}}}} health}} by itself.
+** With '''Warmog's Armor's''' health stat this totals to {{as|{{fd|{{#expr:{{cid|Warmog's Armor|hp}}+({{cid|Warmog's Armor|hp}}*{{#var:hptohp}})}}}}|hp}}.
+* {{sbc|Warmog's Vitality}} does not count {{as|'''bonus''' health}} gained by item passives.
+* '''Any''' of the following amounts of {{as|'''bonus''' health}}, from other sources, is required to activate {{sbc|Warmog's Heart}}:
+** {{as|{{#expr:{{#var:heartthreshold}}-({{cid|Warmog's Armor|hp}}+{{cid|Warmog's Armor|hp}}*{{#var:hptohp}})}} '''bonus''' health}}.
+** {{as|{{#expr:({{#var:heartthreshold}})/(1+{{#var:hptohp}})-{{cid|Warmog's Armor|hp}} round 0}} '''bonus''' health '''from items'''}}.
+** {{pp|{{#expr:({{#var:heartthreshold}} - 20)/(1+{{#var:hptohp}})-{{cid|Warmog's Armor|hp}} round 0}} to {{#expr:({{#var:heartthreshold}} - 360)/(1+{{#var:hptohp}})-{{cid|Warmog's Armor|hp}} round 0}}|color=health}} {{as|'''bonus''' health '''from items'''}} with ''' double scaling health''' [[Rune#Shards|shards]].
+|strategy =
+|oldicons =
+|trivia =
+* The previous unique passive used to belong to the removed item {{ii|Force of Nature}}.
+* Self-inflicted damage and the [[Nexus Obelisk]] will not disable the Unique passive.
+** At roughly 40,000 maximum health, the health regeneration from this item's passive alone is enough to withstand the [[Nexus Obelisk]] indefinitely, since it will stay active despite the constant damage, and heal it back at the same rate.
+* According to [[Mark 'Scruffy' Yetter]], the item is from {{fi|Bandle City}}.<ref>[https://twitter.com/MarkYetter/status/1307025626180669441 Mark Yetter on Warmogs]</ref>
+[[File:Bandle City Crest icon.png|link=Bandle City#Trivia|100px|center]]
+|quotes =
+|media =
+|revisions =
+|patchhistory =
+;[[V25.06]]
+* Total cost reduced to {{g|3100}} from {{g|3300}}.
+** Combine cost reduced to {{g|500}} from {{g|700}}.
+* Warmog's Vitality bonus health increased to {{as|12% '''bonus''' health from items}} from {{as|10%|health}}.
+
+;[[V25.S1.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Giant's Belt}} + {{ii|Giant's Belt}} + {{ii|Crystalline Bracer}} + {{g|700}} = {{g|3300}}.
+** {{sbc|Stats:}} 1000 health, 100% base health regeneration.
+** {{sbc|Unique Passive - Warmog's Heart:}} This passive activates if you have at least {{as|2000 '''bonus''' health}}. {{stil|Health regeneration|Regenerate}}{{ft|{{as|{{fd|1.5}}% '''maximum''' health}} every {{fd|0.5}} seconds|{{as|15% '''maximum''' health}} every 5 seconds}}if damage has not been taken in the last 8 seconds (3 seconds for damage from non-champions).
+** {{sbc|Unique Passive - Warmog's Vitality:}} Gain {{as|'''bonus''' health}} equal to {{as|10% '''bonus''' health '''from items'''}}.
+** Limited to 1 '''Warmog's Armor'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Giant's Belt}} + {{ii|Winged Moonplate}} + {{ii|Crystalline Bracer}} + {{g|800}} = {{g|3300}}.
+** {{sbc|Stats:}} 1000 health, 100% base health regeneration, 4% movement speed.
+** {{sbc|Unique Passive - Warmog's Heart:}} This passive activates if you have at least {{as|1500 '''bonus''' health}}. {{stil|Health regeneration|Regenerate}}{{ft|{{as|{{fd|2.5}}% '''maximum''' health}} every {{fd|0.5}} seconds|{{as|25% '''maximum''' health}} every 5 seconds}}and gain {{as|10% '''bonus''' movement speed}} if damage has not been taken in the last 6 seconds (3 seconds for damage from non-champions).
+** Limited to 1 '''Warmog's Armor'''.
+
+;[[V14.19]]
+* Movement speed reduced to 4% from 5%.
+* Warmog's Heart bonus movement speed reduced to 4% from 5%.
+
+;[[V14.17]]
+* Total cost increased to {{g|3300}} from {{g|3100}}.
+** Combine cost increased to {{g|800}} from {{g|600}}.
+* Warmog's Heart bonus movement speed reduced to 5% from 10%.
+
+;[[V14.14]]
+* Warmog's Heart health threshold increased to {{as|1500 '''bonus''' health}} from {{as|1300|hp}}.
+
+;[[V14.10]]
+* Health increased to 1000 from 750.
+* Base health regeneration reduced to 100% from 200%.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Giant's Belt}} + {{ii|Winged Moonplate}} + {{ii|Crystalline Bracer}} + {{g|600}} = {{g|3100}}
+** {{sbc|Stats:}} 750 health, 200% base health regeneration, 5% movement speed.
+** {{sbc|Unique Passive - Warmog's Heart:}} This passive activates if you have at least {{as|1300 '''bonus''' health}}. {{stil|Health regeneration|Regenerate}}{{ft|{{as|{{fd|2.5}}% '''maximum''' health}} every {{fd|0.5}} seconds|{{as|25% '''maximum''' health}} every 5 seconds}}and gain {{as|10% '''bonus''' movement speed}} if damage has not been taken in the last 6 seconds (3 seconds for damage from non-champions).
+** Limited to 1 '''Warmog's Armor'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Giant's Belt}} + {{ii|Crystalline Bracer}} + {{ii|Kindlegem}} + {{g|500}} = {{g|3000}}.
+** {{sbc|Stats:}} 800 health, 200% base health regeneration, 10 ability haste.
+** {{sbc|Unique Passive - Warmog's Heart:}} This passive activates if you have at least {{as|1100 '''bonus''' health}}. {{stil|Health regeneration|Regenerate}}{{ft|{{as|{{fd|2.5}}% '''maximum''' health}} every {{fd|0.5}} seconds|{{as|25% '''maximum''' health}} every 5 seconds}}if damage has not been taken in the last 6 seconds (3 seconds for damage from non-champions).
+** Limited to 1 '''Warmog's Armor'''.
+
+;[[V12.4]]
+* Combine cost reduced to {{g|500}} from {{g|650}}.
+** Total cost unchanged.
+
+;[[V11.13]]
+* ARAM champion damage cooldown increased to 8 seconds from 6.
+* ARAM non-champion damage cooldown increased to 4 seconds from 3.
+
+;[[V11.11]]
+* Warmog's Heart health threshold changed to {{as|1100 '''bonus''' health}} from {{as|3000 '''maximum''' health}}.
+
+;[[V10.24]]
+* Updated icon.
+
+;[[V10.23]]
+* Howling Abyss only:
+** Warmog's Heart healing per second changed to {{as|5% of '''maximum''' health}} from {{as|5% of '''missing''' health}}.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Giant's Belt}} + {{ii|Kindlegem}} + {{ii|Crystalline Bracer}} + {{g|650}} = {{g|3000}}.
+** {{sbc|Stats:}} 800 health, 200% base health regeneration, 10 ability haste.
+** {{sbc|Unique Passive - Warmog's Heart:}} If you have at least {{as|3000 '''maximum''' health}}, regenerates {{as|5% '''maximum''' health}} every second if you haven't taken damage from champions in 6 seconds (3 seconds for damage from non-champions).
+** Limited to 1 '''Warmog's Armor'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Giant's Belt}} + {{ii|Kindlegem}} + {{ii|Crystalline Bracer}} + {{g|400}} = {{g|2850}}.
+** {{sbc|Stats:}} 800 health, 200% base health regeneration.
+** {{sbc|Unique:}} +10% cooldown reduction.
+** {{sbc|Passive:}} Grants {{sbc|Warmog's Heart}} if you have at least {{as|3000 '''maximum''' health}}.
+** {{sbc|Unique Passive -  Warmog's Heart:}} Regenerate {{as|{{fd|2.5}}% '''maximum''' health}} every half-second if damage has not been taken in the last 6 seconds (3 seconds for damage from minions).
+
+;[[V8.12]] - End of the ''Curse of the Drowned'' event (June 18th, 2018)
+* Now again available on the [[Howling Abyss]].
+
+;[[V8.11]] - Start of the ''Curse of the Drowned'' event
+* Removed from [[Howling Abyss]].
+
+;[[V8.5]]
+* Warmog's Heart health threshold increased to 3000 from 2750.
+
+;[[V7.9]]
+* Warmog's Heart health requirement reduced to 2750 from 3000.
+* Warmog's Heart health regeneration per second increased to {{as|5% '''maximum''' health}} from {{as|3% '''maximum''' health}}.
+* Undamaged cooldown reduced to 6 seconds from 8.
+* {{sbc|New Effect:}} Warmog's Heart now has a reduced 3 second cooldown when taking damage from minions and monsters.
+
+;[[V6.14]]
+* Added to the [[Twisted Treeline]].
+
+;[[V6.9]]
+* {{sbc|New Recipe:}} {{ii|Giant's Belt}}{{plus}}{{ii|Kindlegem}}{{plus}}{{ii|Crystalline Bracer}}{{plus}}{{g|400}}{{equals}}{{g|2850}}
+** {{sbc|Old Recipe:}} {{ii|Crystalline Bracer}}{{plus}}{{ii|Giant's Belt}}{{plus}}{{ii|Crystalline Bracer}}{{plus}}{{g|550}}{{equals}}{{g|2850}}
+* Health reduced to 800 from 850.
+* Now grants 10% cooldown reduction.
+
+;[[V5.22]]
+* Total cost increased to {{g|2850}} from {{g|2750}}.
+* Health increased to 850 from 800.
+
+;[[V5.16]]
+* Now grants 200% base health regeneration.
+* Passive removed.
+* {{sbc|New Effect:}} You gain ''Warmog's Heart'' once your maximum health exceeds 3000.
+* {{sbc|New Passive - Warmog's Heart:}} If you have not taken damage in the last 8 seconds, you will restore {{as|3% of your maximum health}} '''every second'''.
+* Item cost increased to {{g|2750}} from {{g|2500}}.
+* Combine cost increased to {{g|550}} from {{g|300}}.
+
+;[[V5.8]]
+* Available on Howling Abyss.
+
+;[[V4.20]]
+* Recipe changed: {{ii|Giant's Belt}} + {{ii|Crystalline Bracer}} + {{ii|Crystalline Bracer}} + {{g|300}}
+* Item cost reduced to {{g|2500}} from {{g|2830}}
+* Health reduced to 800 from 1000
+* Unique passive - Restores 1% of maximum health every 5 seconds. Health restore increases to 3% of maximum health if damage hasn't been taken within 8 seconds.
+
+;[[V4.3]]
+* Combine cost increased to {{g|1070}} from {{g|995}}.
+
+;[[V3.6]]
+* {{ii|Warmog's Armor}} is no longer available in Howling Abyss (The Proving Grounds).
+
+;[[V3.03]]
+* Passive Health Regen reduced to 1% of maximum Health per 5 seconds from {{fd|1.5%}}.
+
+;[[V3.01]]
+* Recipe changed: {{ii|Giant's Belt}} + {{ii|Ruby Crystal}} + {{ii|Rejuvenation Bead}} + {{ii|Rejuvenation Bead}} + {{g|995}}
+* Total cost increased to {{g|2830}} from {{g|2650}}.
+
+;[[V1.0.0.152]] Rework
+* Recipe: {{ii|Giant's Belt}} + {{ii|Ruby Crystal}} + {{ii|Rejuvenation Bead}}
+* Item cost: {{g|2650}}
+* Combine cost: {{g|995}}
+* +1000 health
+* NEW Unique Passive: Restores {{fd|1.5%}} of your maximum health every 5 seconds.
+* This item no longer gains health and health regen per unit kill.
+
+;[[V1.0.0.131#Hotfixes|December 21, 2011 Hotfix]]
+* Fixed a bug where {{ii|Warmog's Armor}} would go beyond 350 bonus health on assists.
+
+;[[V1.0.0.131]]
+* Passive health gain cap reduced to 350 from 450.
+* Passive health regeneration per 5 seconds reduced to 10 from 15.
+* Health gain per kill or assist reduced to 35 from 45, minion kill reduced to {{fd|3.5}} from {{fd|4.5}}.
+* Health regeneration per 5 seconds gain per kill or assist reduced to 1 from {{fd|1.5}}, minion kill reduced to {{fd|0.1}} from {{fd|0.15}}.
+
+;[[V1.0.0.129]]
+* No longer purchasable in the Dominion game mode.
+
+;[[V1.0.0.108]]
+* Tooltip will now show the current stats on its passive.
+
+;[[V1.0.0.103]]
+* Combine cost reduced to {{g|980}} from {{g|1100}}.
+* Health increased to 920 from 770.
+* Passive changed to: Permanently gain {{fd|4.5}} health and {{fd|0.15}} health regeneration per 5 seconds per minion kill. Champion kills and assists grant 45 health and {{fd|1.5}} health regeneration per 5 seconds. Bonuses cap at +450 health, and +15 health Regen per 5.
+
+;[[V0.9.25.21]]
+* Health reduced to 850 from 900.
+
+;[[V0.9.22.16]]
+* Recipe cost increased to {{g|1100}} from {{g|1075}}.
+
+;[[May 15, 2009 Patch]]
+* Maximum health stack increased to 500 from 400.
+* Health regeneration per 5 seconds cap increased to {{fd|62.5}} from 50.
+
+;[[April 18, 2009 Patch]]
+* Recipe cost increased to {{g|1025}} from {{g|765}}
+* Total cost increased to {{g|3000}} from {{g|2740}}
+* Added a cap for bonus health / regen of +400 Health, and 50 Health regeneration per 5.
+* Health gain per kill modified to 4 from 5 (to 40 from 25 on champions), and regeneration per kill modified to {{fd|0.1}} from {{fd|0.05}} (to 1 from {{fd|0.5}} for champions).
+}}
+
+
+[[cs:Warmog's Armor]]
+[[de:Warmogs Rüstung]]
+[[es:Armadura de Warmog]]
+[[fr:Warmog, l'Armure Vivante]]
+[[pl:Plemienna Zbroja]]
+[[pt-br:Armadura de Warmog]]
+[[zh:狂徒铠甲]]
+[[Category:Items with passive abilities]]

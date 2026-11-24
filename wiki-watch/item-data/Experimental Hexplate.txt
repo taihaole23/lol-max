@@ -1,0 +1,36 @@
+["Experimental Hexplate"] = {
+        ["id"]                  = 3073,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["caption"]             = "\"Crowd control can be messy work.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["ability haste"]   = true,
+            ["movement"]        = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 450,
+            ["ad"]              = 40,
+            ["as"]              = 20,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Hexcharged",
+                ["unique"]      = true,
+                ["description"] = "Gain 30 [[Haste#Ultimate haste|ultimate haste]].",
+            },
+            ["pass2"] = {
+                ["name"]        = "Overdrive",
+                ["unique"]      = true,
+                ["description"] = "Upon casting your ultimate ability, enter ''Overdrive'' to gain {{as|{{rd|50%|25%}} '''bonus''' attack speed}} and {{as|{{rd|20%|10%}} '''bonus''' movement speed}} for 8 seconds (30 second cooldown, starts on ultimate cast).",
+            },
+		},
+        ["recipe"]              = {"Tunneler", "Phage", "Dagger"},
+        ["buy"]                 = 3000,
+    },

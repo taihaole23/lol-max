@@ -1,0 +1,306 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Shojin's Resolve}}.''
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Black Cleaver;Titanic Hydra;Sterak's Gage;Sundered Sky;Endless Hunger;Stridebreaker;Experimental Hexplate;Trinity Force;Hullbreaker;Overlord's Bloodmail
+|background =
+|notes =
+* {{sbc|Focused Will}} grants stacks from damage dealt by pets, unless the pets were summoned by an innate [[champion ability|ability]].
+* {{sbc|Focused Will}} stacks do not amplify the triggering ability's damage. The first ability hit will not benefit from any stack, the second will benefit from one stack, and so on.
+* Damage tagged as {{tip|basic damage|basic}} in addition to other damage tags will still be amplified by {{sbc|Focused Will}}.
+* If {{cai|Darkness Rise|Mordekaiser}} is activated through either {{ai|Obliterate|Mordekaiser}} or {{ai|Death's Grasp|Mordekaiser}}, it is considered sourced from the ability and will grant {{sbc|Focused Will}} stacks.{{bug}}
+<!--{{safesubst:unexpected|desc=
+-->* {{cais|Q|Udyr}} ''Stance'' applies 1 stack while the temporary buff is ticking, but it applies 2 stacks while the permanent buff remains after the temporary one has run out. {{bug}}<!--|affectedEffects=Spear of Shojin; Udyr Q|estimatedPatchOrigin=V14.5|
+}}--><!--patch based on shojin. missing link-->
+{{safesubst:unexpected|desc=
+* These abilities are special cased to grant {{sbc|Focused Will}} stacks {{bug|2}}:
+** {{cai|W|Jax}}, which is considered {{tip|basic attack}} sourced and doesn't usually interact with effects that require an ''ability source''.
+** {{cai|I|Rengar}}, which is not {{tip|ability damage}}. [https://github.com/ArdaSenyurek/Rengar-Bugs/issues/77]
+** {{cai|Q|Skarner}}, which is not {{tip|ability damage}}. {{supNote|Added on V26.01}}
+** {{cai|Echoing Flames|Urgot}}, which is an innate.|affectedEffects=Spear of Shojin; Jax W; Rengar I; Skarner Q; Urgot I|estimatedPatchOrigin=V26.01|<!--added automatically-->wikiUploadTimestamp=1776168006|<!--added automatically-->pagename=Spear of Shojin
+}}
+*** {{note|2}} Otherwise he would never be able to get 4 stacks or maintain them.<!--riot norak said this allegedly-->
+* These abilities are special cased to '''not''' grant {{sbc|Focused Will}} stacks {{bug|2}}:
+** {{cai|Spider Queen|Elise|Spiderlings}}, which by default act as non-passive sourced. {{supNote|Special cased in V25.S1.3}}
+* These abilities originate from the same {{tip|cast instance}} as the basic attack and will '''not''' grant stacks.
+** {{cais|W|Fizz}} {{tip|persistent damage}}
+*** If the active empowered attack is used, then the [[DoT]] will be considered sourced from the ability and grant the stacks.
+* These effects do not deal {{tip|ability damage}}, {{tip|pet damage}}, or {{tip|proc damage}}, and will not be amped.
+** {{cai|Crescendum|Aphelios}} '''additional''' damage, {{cai|W|Malphite}} '''additional''' target damage and cone.{{bug|2}}
+* {{sbc|Focused Will}} stacks amplify {{iis|Dead Man's Plate}} {{nies|Shipwrecker}} damage.{{bug|1|other item effects do not interact with focused will}}
+|strategy =
+|oldicons =
+|trivia =
+* This item is a reference to the [[Shojin Monastery]] and the [[Shojin Order]] of [[Ionia]].
+* {{sbc|Awakened Dragon}} might have been a reference to {{ci|Lee Sin}} since he has the ability to channel the "''dragon’s spirit''" and he arrived at the Shojin Monastery at a young age.
+* The name {{sbc|Dragonforce}} may potentially be referencing {{w|DragonForce}}.
+* '''Spear of Shojin''' was first introduced on the PBE for the patch [[V8.12]], but was delayed multiple times, until it was released with [[Nexus Blitz]].
+* The {{sbc|Awakened Dragon}} passive was previously on {{ii|Essence Reaver}} before patch [[V9.3]].
+{{Superimpose
+  | base_style = margin:auto
+  | base_link = Shojin_Order
+  | base = Spear of Shojin Dragon Heart.png
+  | base_width = 200px
+  | float = Ionia Crest icon.png
+  | float_width = 100px
+  | link = Ionia#Trivia
+  | x = 50
+  | y = 50
+}}
+|quotes =
+|media =
+|revisions =
+<tabber>Hide=
+|-|Revisions=
+{|
+|style="vertical-align:top;"|{{Infobox item
+|disp_name = Spear of Shojin
+|sub_name  = V9.1
+|icon      = Spear of Shojin item old2
+|altmaps   = [[Nexus Blitz|Nexus Blitz (Beta)]]
+|health    = 200
+|ad        = 60
+|cdr       = 10
+|pass      = {{Unique|Reduces damage from champion attacks and abilities by 20 {{as|(+ 10% '''bonus''' AD)}}, capped at 70.}}
+|pass2     = {{Unique|While within 500-units of at least 3 enemy champions, basic attack to gain {{sbc|Dragon Heart}} (90 second cooldown).}}
+|pass3     = {{Unique|Dragon Heart|For 6 seconds, blocks 200% more damage, for a total of 60 {{as|(+ 30% '''bonus''' AD)}}. The duration refreshes on {{tip|takedown|takedowns}}.}}
+|menu1a    = Attack
+|menu1b    = Damage
+|menu2a    = Magic
+|menu2b    = Cooldown Reduction
+|menu3a    = Defense
+|menu3b    = Health
+|recipeold = {{Recipe
+ |result = Spear of Shojin
+ |variant= old2
+ |total  = 2900
+ |cost   = 800
+ |t1     = {{Recipe/item|B. F. Sword|1300|variant = old}}
+ |t2     = {{Recipe
+  |result = Kindlegem
+  |variant= old
+  |total  = 800
+  |cost   = 400
+  |t1     = {{Recipe/item|Ruby Crystal|400|variant = old2}}
+  }}
+ }}
+|buy       = 2900
+|comb      = 800
+|sell      = 2030
+|code      = 3161
+}}
+|style="vertical-align:top;"|{{Infobox item
+|disp_name = Spear of Shojin
+|sub_name  = V9.24
+|icon      = Spear of Shojin item old2
+|maps      = H
+|health    = 250
+|ad        = 60
+|cdr       = 20
+|pass      = {{Unique|After casting your ultimate, your next basic attack [[on-hit]] within 10 seconds grants {{sbc|Awakened Dragon}} for 6 seconds (30 second cooldown).}}
+|pass2     = {{Unique|Awakened Dragon|Gain {{as|50% '''bonus''' attack speed}}, and basic attacks refund 20% of your '''remaining''' basic abilities cooldowns [[on-attack]]. Abilities that trigger on-hit effects refund the cooldown on-hit.}}
+|menu1a    = Attack
+|menu1b    = Damage
+|menu2a    = Magic
+|menu2b    = Cooldown Reduction
+|menu3a    = Defense
+|menu3b    = Health
+|recipeold = {{Recipe
+ |result = Spear of Shojin
+ |variant= old2
+ |total  = 3400
+ |cost   = 950
+ |t1     = {{Recipe/item|B. F. Sword|1300|variant = old}}
+ |t2     = {{Recipe
+  |result = Kindlegem
+  |variant= old
+  |total  = 800
+  |cost   = 400
+  |t1     = {{Recipe/item|Ruby Crystal|400|variant = old2}}
+  }}
+ |t3     = {{Recipe/item|Long Sword|350|variant = old2}}
+ }}
+|buy       = 3400
+|comb      = 950
+|sell      = 2380
+|code      = 3161
+}}
+|style="vertical-align:top;"|{{Infobox item
+|disp_name = Spear of Shojin
+|sub_name  = V10.17
+|icon      = Spear of Shojin item old2
+|altmaps   = [[Temple of Lily and Lotus]]
+|health    = 200
+|ad        = 65
+|cdr       = 10
+|pass      = {{Unique|Reduces incoming damage from enemy champion attacks and abilities by 10 {{as|(+ 15% '''bonus''' AD)}}, capped at 300.}}
+|pass2     = {{Unique|While within 500 units of at least 3 enemy champions, basic attack to gain ''Dragon Heart'' (90 second cooldown).}}
+|pass3     = {{Unique|Dragon Heart|For 8 seconds, the damage reduction is increased by 300%, for a total of 40 {{as|(+ 60% '''bonus''' AD)}}. {{tip|takedown|Takedowns}} refresh the duration.}}
+|menu1a    = Attack
+|menu1b    = Damage
+|menu2a    = Magic
+|menu2b    = Cooldown Reduction
+|menu3a    = Defense
+|menu3b    = Health
+|recipeold = {{Recipe
+ |result = Spear of Shojin
+ |variant= old2
+ |total  = 3000
+ |cost   = 900
+ |t1     = {{Recipe/item|B. F. Sword|1300|variant = old}}
+ |t2     = {{Recipe
+  |result = Kindlegem
+  |variant= old
+  |total  = 800
+  |cost   = 400
+  |t1     = {{Recipe/item|Ruby Crystal|400|variant = old2}}
+  }}
+ }}
+|buy       = 3000
+|comb      = 900
+|sell      = 2100
+|code      = 3161
+}}
+|}
+</tabber>
+|patchhistory =
+;[[V25.S1.1]]
+* {{sbc|Bug Fix:}} Pets not sourced from champion innates now properly grant stacks of Focused Will.
+
+;[[V14.24]]
+* {{sbc|Bug Fix:}} Pets not sourced from champion innates now properly benefit from Focused Will.
+
+;[[V14.20]]
+* {{sbc|Removed:}} Proc damage no longer counts toward stacking Focused Will.
+
+;[[V14.19]]
+* {{sbc|New Recipe:}} {{ii|Pickaxe}} + {{ii|Tunneler}} + {{ii|Ruby Crystal}} + {{g|675}} = {{g|3100}}.
+** {{sbc|Old Recipe:}} {{ii|Kindlegem}} + {{ii|Caulfield's Warhammer}} + {{ii|Pickaxe}} + {{g|325}} = {{g|3100}}.
+* Health increased to 450 from 300.
+* Attack damage reduced to 45 from 55.
+* Ability haste reduced to 0 from 20.
+* Dragonforce basic ability haste increased to 25 from 15.
+
+;[[V14.17]]
+* {{sbc|Bug Fix:}} Basic ability haste from Dragonforce is now properly granted.
+
+;[[V14.16]]
+* {{sbc|Bug Fix:}} Item damage effects no longer grant stacks and no longer benefit from the bonus damage.
+** {{sbc|Note:}} Rune damage effects also no longer grant stacks and are not amped. Focused Will now only stacks and amps from an {{tip|ability}} {{tip|cast instance}}.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Shojin's Resolve}}.
+
+;[[V14.9]]
+* {{sbc|New Effect:}} Focused Will can now only gain 1 stack per unique ability cast per second.
+
+;[[V14.7]]
+* {{sbc|Bug Fix:}} Focused Will now properly amplifies passive ability damage.
+
+;[[V14.5]]
+* {{sbc|New Effect:}} Abilities can now only grant 1 stack per cast, up to 1 per second for damage over time effects.
+* {{sbc|New Effect:}} Empowered attacks granted by abilities and dealing {{tip|ability damage}} now grant a stack on-damage and benefit from the damage amplification.
+* {{sbc|Bug Fix:}} Damage dealt by champion passives no longer incorrectly grant stacks.
+
+;[[V14.4]]
+* {{sbc|Bug Fix:}} Tooltip no longer incorrectly displays a ranged modifier where the damage amplifier was {{fd|1.5}}% per stack for ranged champions, but the actual value was the melee value of 3%.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Kindlegem}} + {{ii|Caulfield's Warhammer}} + {{ii|Pickaxe}} + {{g|325}} = {{g|3100}}.
+** {{sbc|Stats:}} 300 health, 55 attack damage, 20 ability haste.
+** {{sbc|Unique Passive - Dragonforce:}} Gain {{as|15 basic ability haste|haste}}.
+*** {{sbc|Bug Fix:}} No longer also applies to some ultimate abilities.
+** {{sbc|Unique Passive - Focused Will:}} Dealing ability damage grants a stack for 6 seconds, up to 4 stacks. For each stack, your damaging abilities deal 3% increased damage, up to a '''maximum''' of 12% increased damage at 4 stacks.
+** Limited to 1 '''Spear of Shojin'''.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Shojin's Resolve}}.
+*** {{sbc|Stats:}} 500 health, 65 attack damage, 25 ability haste.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Kindlegem}} + {{ii|Caulfield's Warhammer}} + {{ii|Pickaxe}} + {{g|525}} = {{g|3300}}.
+** {{sbc|Stats:}} 500 health, 55 attack damage, 20 ability haste.
+** {{sbc|Unique Passive - Dragonforce:}} Gain {{rd|16 {{as|(+ 4% '''bonus''' AD)}}|12 {{as|(+ 3% '''bonus''' AD)}}}} basic ability haste, reduced{{ft|by 50%|to {{rd|8 {{as|(+ 2% '''bonus''' AD)}}|6 {{as|(+ {{fd|1.5}}% '''bonus''' AD)}}}}}}for {{tip|immobilize|immobilizing}} spells.
+** {{sbc|Unique Passive - Exigency:}} Gain up to {{rd|{{as|15%|ms}}|{{as|10%|ms}}}} {{as|'''bonus''' movement speed}} based on {{as|'''missing''' health}}, capped at {{as|67% '''missing''' health}}.
+** Limited to 1 '''Spear of Shojin'''.
+
+;[[V13.18]]
+* Attack damage reduced to 55 from 60.
+
+;[[V13.17]]
+* {{sbc|New Recipe:}} {{ii|Caulfield's Warhammer}} + {{ii|Pickaxe}} + {{ii|Kindlegem}} + {{g|525}} = {{g|3300}}.
+** {{sbc|Old Recipe:}} {{ii|Caulfield's Warhammer}} + {{ii|B. F. Sword}} + {{ii|Kindlegem}} + {{g|100}} = {{g|3300}}.
+* Attack damage reduced to 60 from 65.
+* Health increased to 500 from 350.
+* Dragonforce base basic ability haste increased to {{rd|16|12}} from {{rd|8|6}}.
+* Dragonforce bonus AD ratio reduced to {{as|{{rd|4%|3%}} '''bonus''' AD}} from {{as|{{rd|8|6}}%|AD}}.
+
+;[[V13.14]]
+* Total cost reduced to {{g|3300}} from {{g|3400}}.
+** Combine cost reduced to {{g|100}} from {{g|200}}.
+* Health increased to 350 from 300.
+* {{sbc|Bug Fix:}} Dragonforce no longer also grants ultimate ability haste to some champions.
+
+;[[V12.22]] - Re-added
+* Updated icon.
+* {{sbc|Recipe:}} {{ii|Caulfield's Warhammer}} + {{ii|B. F. Sword}} + {{ii|Kindlegem}} + {{g|200}} = {{g|3400}}.
+* {{sbc|Stats:}} 65 attack damage, 300 health, 20 ability haste.
+* {{sbc|Unique Passive - Dragonforce:}} Gain {{rd|8 {{as|(+ 8% '''bonus''' AD)}}|6 {{as|(+ 6% '''bonus''' AD)}}}} basic ability haste, reduced{{ft|by 50%|to {{rd|4 {{as|(+ 4% '''bonus''' AD)}}|3 {{as|(+ 3% '''bonus''' AD)}}}}}}for {{tip|immobilize|immobilizing}} spells.
+* {{sbc|Unique Passive - Exigency:}} Gain up to {{rd|{{as|15%|ms}}|{{as|10%|ms}}}} {{as|'''bonus''' movement speed}} based on {{as|'''missing''' health}}, capped at {{as|33% '''missing''' health}}.
+* Limited to 1 {{sbc|Ability Haste Capstone}} item.
+
+;[[V10.17]] - Removed
+* Removed from the game on August 24th, 2020 (11:59 PM PDT) since [[Nexus Blitz]] is no longer available.
+
+;[[V10.15]] - Re-added
+* Available on [[Nexus Blitz]] on July 22nd, 2020 (11:59 PM PDT).
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Kindlegem}} + {{g|900}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Kindlegem}} + {{ii|Long Sword}} + {{g|950}} = {{g|3400}}.
+* {{sbc|New Stats:}}
+** 65 attack damage, 10% cooldown reduction, 200 health.
+** {{sbc|Unique Passive:}} Reduces damage from champion attacks and abilities by 10 {{as|(+ 15% '''bonus''' AD)}}, capped at 300.
+** {{sbc|Unique Passive:}} While within 500-units of at least 3 enemy champions, basic attack to gain {{sbc|Dragon Heart}} (90 second cooldown).
+** {{sbc|Unique Passive - Dragon Heart:}} For 8 seconds, blocks 300% more damage, for a total of 40 {{as|(+ 60% '''bonus''' AD)}}. The duration refreshes on {{tip|takedown|takedowns}}.
+* {{sbc|Old Stats:}}
+**  60 attack damage, 20% cooldown reduction, 250 health.
+** {{sbc|Unique Passive:}} After casting your ultimate, your next basic attack on-attack within 10 seconds grants {{sbc|Awakened Dragon}} for 6 seconds (30 second cooldown).
+** {{sbc|Unique Passive - Awakened Dragon:}} Gain 50% '''bonus''' attack speed, and basic attacks refund 20% of your '''remaining''' basic abilities cooldowns on-attack.
+
+;[[V9.24]] - Removed
+* Removed from the [[Howling Abyss]], thus removed from the game.
+
+;[[V9.23]]
+* Removed from [[Summoner's Rift]]. ''Still available on the [[Howling Abyss]].''
+
+;[[V9.3]] - Re-added
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Kindlegem}} + {{ii|Long Sword}} + {{g|950}} = {{g|3400}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Kindlegem}} + {{g|800}} = {{g|2900}}.
+* Now available on all maps.
+* {{sbc|New Stats:}}
+** 60 attack damage, 20% cooldown reduction, 250 health.
+** {{sbc|Unique Passive:}} After casting your ultimate, your next basic attack on-attack within 10 seconds grants {{sbc|Awakened Dragon}} for 6 seconds (30 second cooldown).
+** {{sbc|Unique Passive - Awakened Dragon:}} Gain 50% '''bonus''' attack speed, and basic attacks refund 20% of your '''remaining''' basic abilities cooldowns on-attack.
+* {{sbc|Old Stats:}}
+** 60 attack damage, 10% cooldown reduction, 200 health.
+** {{sbc|Unique Passive:}} Reduces damage from champion attacks and abilities by 20 {{as|(+ 10% '''bonus''' AD)}}, capped at 70.
+** {{sbc|Unique Passive:}} While within 500-units of at least 3 enemy champions, basic attack to gain {{sbc|Dragon Heart}} (90 second cooldown).
+** {{sbc|Unique Passive - Dragon Heart:}} For 6 seconds, blocks 200% more damage, for a total of 60 {{as|(+ 30% '''bonus''' AD)}}. The duration refreshes on {{tip|takedown|takedowns}}.
+
+;[[V9.1]] - Removed
+* Removed from the game on January 21st, 2019 since [[Nexus Blitz]] is no longer available.
+
+;[[V8.18]]
+* Available in the featured game mode [[Odyssey: Extraction]].
+
+;[[V8.16]] - Added
+* {{sbc|Availability:}} [[Nexus Blitz]].
+* {{sbc|Recipe:}} {{ii|B. F. Sword}} + {{ii|Kindlegem}} + {{g|800}} = {{g|2900}}.
+* {{sbc|Stats:}} 60 attack damage, 200 health, 10% cooldown reduction.
+* {{sbc|Unique Passive:}} Reduces damage from champion attacks and abilities by 20 {{as|(+ 10% '''bonus''' AD)}}, capped at 70.
+** The flat damage reduction occurs before armor and magic resistance is applied. It is as 30% as effective against damage over time.
+* {{sbc|Unique Passive:}} While within 500-units of at least 3 enemy champions, basic attack to gain {{sbc|Dragon Heart}} (90 second cooldown).
+* {{sbc|Dragon Heart:}} For 6 seconds, blocks 200% more damage, for a total of 60 {{as|(+ 30% '''bonus''' AD)}}. The duration refreshes on {{tip|takedown|takedowns}}.
+}}
+
+
+[[ru:Копье Седзина]]
+[[de:Speer von Shojin]]
+[[Category:Season 2018 item release]]

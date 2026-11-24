@@ -1,0 +1,36 @@
+["Rapid Firecannon"] = {
+        ["id"]                  = 3094,
+        ["nickname"]            = {"canon", "gun", "rapidfire", "rfc"},
+        ["tags"]                = {"HasOnHit", "HasOnAttack"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+            ["movement"]		= true,
+        },
+        ["stats"] = {
+            ["as"]              = 35,
+            ["crit"]            = 25,
+            ["ms"]              = 4,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Energized",
+                ["unique"]      = true,
+                ["description"] = "Moving and basic attacking generates ''Energize'' stacks, up to 100.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Sharpshooter",
+                ["unique"]      = true,
+                ["description"] = "When fully {{tip|Energized}}, your next basic attack deals {{as|40 '''bonus''' magic damage}} [[on-hit]]. ''Energized'' attacks gain 35% '''bonus''' range, capped at 150.",
+            },
+        },
+        ["recipe"]              = {"Zeal", "Scout's Slingshot"},
+        ["buy"]                 = 2650,
+    },

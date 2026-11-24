@@ -1,0 +1,34 @@
+["Randuin's Omen"] = {
+        ["id"]                  = 3143,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["armor"]           = 75,
+            ["hp"]              = 350,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Humility",
+                ["unique"]      = true,
+                ["description"] = "Unleash a shockwave around you that {{tip|slow|slows}} nearby enemies by 70% for 2 seconds.",
+                ["range"]       = "{{tip|cr|icononly=true}} 500",
+                ["cd"]          = "90",
+            },
+            ["pass"] = {
+                ["name"]        = "Resilience",
+                ["unique"]      = true,
+                ["description"] = "Reduces incoming damage from {{tip|critical strike|critical strikes}} by 30%.",
+            },
+        },
+        ["recipe"]              = {"Warden's Mail", "Giant's Belt"},
+        ["buy"]                 = 2700,
+    },

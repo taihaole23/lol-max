@@ -1,0 +1,21 @@
+["Spellslinger's Shoes"] = {
+        ["id"]                  = 3175,
+        ["nickname"]            = {"boots"},
+        ["tier"]                = 3,
+        ["type"]                = {"Boots"},
+        ["req"]                 = "Requires completion of the {{tip|Midlane Quest}} to obtain. Once the quest is completed, {{ii|Sorcerer's Shoes}} is upgraded into this item for free. If {{ii|Sorcerer's Shoes}} is in the inventory at the time of quest completion, it is automatically upgraded into these boots.",
+        ["caption"]             = "\"A calculated step. Infinite misdirections.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = false,
+            ["nb"]              = false,
+            ["ar"]              = false,
+        },
+        ["stats"] = {
+            ["msflat"]          = 45,
+            ["mpenflat"]        = 20,
+            ["mpen"]            = 8,
+        },
+        ["recipe"]              = {"Sorcerer's Shoes"},
+        ["buy"]                 = "=>Sorcerer's Shoes",
+    },

@@ -1,0 +1,90 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|T.U.R.B.O.}}.''
+{{Item info
+|goldvalue =
+{{gold value|Overdrive Gold Value|nolink=}}
+* {{rd|50%|25%}} [[attack speed]] = {{rd|{{g|{{#vardefineecho:experimentalhexplateasmelee|{{#expr:{{#var:as}}*50}}}}}}|{{g|{{#vardefineecho:experimentalhexplateasranged|{{#expr:{{#var:as}}*25}}}}}}}}
+* {{rd|20%|10%}} [[movement speed]] = {{rd|{{g|{{#vardefineecho:experimentalhexplatemsmelee|{{#expr:{{#var:ms}}*20}}}}}}|{{g|{{#vardefineecho:experimentalhexplatemsranged|{{#expr:{{#var:ms}}*10}}}}}}}}
+** '''Total Gold Value''' = {{rd|{{g|{{#vardefineecho:experimentalhexplatemelee|{{#expr:{{#var:total}}+{{#var:experimentalhexplateasmelee}}+{{#var:experimentalhexplatemsmelee}}}}}}}}|{{g|{{#vardefineecho:experimentalhexplateranged|{{#expr:{{#var:total}}+{{#var:experimentalhexplateasranged}}+{{#var:experimentalhexplatemsranged}}}}}}}}}}
+|goldefficiency =
+* {{ii|Experimental Hexplate}} becomes {{rd|{{gec|Experimental Hexplate|{{#var:experimentalhexplatemelee}}}}|{{gec|Experimental Hexplate|{{#var:experimentalhexplateranged}}}}}} gold efficient while {{sbc|Overdrive}} is active.
+|goldvalue2 =
+{{gold value|Overdrive Gold Value|nolink=}}
+* 50% [[attack speed]] = {{g|{{#expr:{{#var:as}}*50}}}}
+* 20% [[movement speed]] = {{g|{{#expr:{{#var:ms}}*20}}}}
+*** '''Total Gold Value''' = {{g|{{#vardefineecho:asms|{{#expr:{{#var:ms}}*20+{{#var:as}}*50}}}}+{{#expr:{{#var:total}}}}}}
+|goldefficiency2=
+* {{ii|T.U.R.B.O.}} becomes {{gec|T.U.R.B.O.|{{#expr:{{#var:total}}+({{#var:asms}}}}}} gold efficient while {{sbc|Overdrive}} is active.
+|similaritems = Stridebreaker;Black Cleaver;Hullbreaker;Spear of Shojin;Sterak's Gage;Sundered Sky;Titanic Hydra;Trinity Force;Overlord's Bloodmail;Fiendhunter Bolts;Zeke's Convergence
+|background =
+|notes =
+{{Ultimate cast item info}}
+|strategy =
+|oldicons =
+|trivia =
+* This item used to be called '''Nitro Hexaegis''', from which the passives ''Hexcharged'' and ''Overdrive'' and the {{ai|Living Forge|Ornn|Masterwork upgrade}} '''T.U.R.B.O.''' derive their theme. The in-game files confirm this, and it is unknown why the name was changed.<ref>LeagueOfLegends.com — [https://www.leagueoflegends.com/en-us/news/game-updates/2024-gameplay-preview/ 2024 Gameplay Preview]. ''Retrieved 19 Jan 2024 12:00 UTC''</ref>
+[[File:Piltover Crest icon.png|link=Piltover|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Experimental Hexplate triggered VFX.png|Overdrive Cast VFX
+Experimental Hexplate electricity VFX.png|Overdrive Active VFX (1)
+Experimental Hexplate activated VFX.png|Overdrive Active VFX (2)
+</gallery>
+|sfx =
+;Overdrive Triggered
+* {{sm2|Experimental Hexplate passive triggered SFX.ogg}} Passive SFX
+
+;Overdrive Active
+* {{sm2|Experimental Hexplate passive effect SFX.ogg}} Passive SFX
+|revisions =
+|patchhistory =
+;[[V26.20]]
+* Overdrive bonus attack speed for {{tip|ranged}} champions reduced to 25% from 35%.
+* Overdrive bonus movement speed for {{tip|ranged}} champions reduced to 10% from 14%.
+
+;[[V26.11]]
+* Overdrive bonus attack speed for {{tip|ranged}} champions reduced to 35% from 50%.
+* Overdrive bonus movement speed for {{tip|ranged}} champions reduced to 14% from 20%.
+
+;[[V25.16]]
+* Overdrive attack speed increased to 50% from 30%.
+* Overdrive movement speed increased to 20% from 15%.
+
+;[[V14.19]]
+* {{sbc|New Recipe:}} {{ii|Tunneler}} + {{ii|Phage}} + {{ii|Dagger}} + {{g|500}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Tunneler}} + {{ii|Hearthbound Axe}} + {{g|550}} = {{g|3000}}.
+* Health increased to 450 from 300.
+* Attack damage reduced to 40 from 55.
+* Attack speed reduced to 20% from 25%.
+<!-- Missing Phage passive probably?-->
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|T.U.R.B.O.}}.
+
+;[[V14.10]]
+* Combine cost reduced to {{g|550}} from {{g|700}}.
+** Total cost unchanged.
+
+;[[V14.2]]
+* {{sbc|New Recipe:}} {{ii|Tunneler}} + {{ii|Hearthbound Axe}} + {{g|700}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Tunneler}} + {{ii|Noonquiver}} + {{g|600}} = {{g|3000}}.
+* Attack speed increased to 25% from 20%.
+* Overdrive attack speed reduced to 30% from 35%.
+* {{ii|T.U.R.B.O.}} attack speed increased to 35% from 30%.
+* {{sbc|Bug Fix:}} No longer is incorrectly displayed in the armor penetration section of the shop.
+* {{sbc|Bug Fix:}} No longer grants more ultimate haste than intended for some champions.
+* {{sbc|Bug Fix:}} Item icon for {{ii|T.U.R.B.O.}} is now properly displayed even if the passive is on cooldown.
+
+;[[V14.1]] - Added
+* {{sbc|Recipe:}} {{ii|Tunneler}} + {{ii|Noonquiver}} + {{g|600}} = {{g|3000}}.
+* {{sbc|Stats:}} 300 health, 55 attack damage, 20% attack speed.
+* {{sbc|Unique Passive - Hexcharged:}} Gain 30 ultimate haste.
+* {{sbc|Unique Passive - Overdrive:}} Upon casting your ultimate ability, enter ''Overdrive'' to gain {{as|35% '''bonus''' attack speed}} and {{as|15% '''bonus''' movement speed}} for 8 seconds (30 second cooldown, starts on cast).
+* Limited to 1 '''Experimental Hexplate'''.
+* {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|T.U.R.B.O.}}.
+** {{sbc|Stats:}} 450 health, 65 attack damage, 30% attack speed.
+* {{sbc|Caption:}} "Crowd control can be messy work."
+}}
+
+[[Category:Season 2024 item release]]
+[[ru:Экспериментальная хекстековая броня]]

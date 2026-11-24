@@ -1,0 +1,28 @@
+["Unending Despair"] = {
+        ["id"]                  = 2502,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 400,
+            ["armor"]           = 50,
+            ["ah"]              = 15,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Anguish",
+                ["unique"]      = true,
+                ["description"] = "Every 4 seconds after entering combat with champions, sap all enemy champions around you within {{tip|cr|icononly=true}} 650 units to deal {{as|magic damage}} equal to {{as|3% of your '''bonus''' health}} to them and {{tip|heal}} yourself equal to 250% of the {{tt|post-mitigation|Damage calculated after modifiers}} damage dealt.",
+            },
+		},
+        ["recipe"]              = {"Chain Vest", "Kindlegem", "Ruby Crystal"},
+        ["buy"]                 = 2800,
+    },

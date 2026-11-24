@@ -1,0 +1,170 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems =Liandry's Torment;Archangel's Staff;Luden's Echo;Malignance;Actualizer;Rod of Ages;Riftmaker
+|background =
+|notes =
+* {{sbc|Baleful Blaze}} can be stacked on a target when applied by multiple users, though not refreshing the debuff for all subsequent sources at a time.
+* {{sbc|Baleful Blaze}} deals {{tip|proc damage}} and is tagged as {{tip|persistent damage|periodic}} without applying {{tip|spell effects}}.
+* {{sbc|Baleful Blaze}} itself is not blocked by {{tip|spell shield}}.
+* {{sbc|Baleful Blaze's}} first tick of damage is sometimes applied on the same damage instance as the ability that triggered the burn.{{bug}}
+** The remaining 5 ticks are applied every {{fd|0.5}} seconds over the next {{fd|2.5}} seconds as normal.
+* {{sbc|Blackfire's}} multiplier {{tip|stacks additively}} with other sources of {{as|% ability power}} such as {{bi|Infernal Might}} and {{iis|Rabadon's Deathcap}} {{nie|Magical Opus}}.
+|strategy =
+|oldicons =
+|trivia =
+* '''Blackfire Torch's''' passive effect is similar to that of {{ii|Liandry's Torment}}.
+** {{ii|Liandry's Torment}} however did not exist at the time of when '''Blackfire Torch''' was added.
+*** On [[V3.10]], {{ii|Liandry's Torment}} was enabled on the [[Twisted Treeline (League of Legends)|Twisted Treeline]] and [[Crystal Scar (League of Legends)|Crystal Scar]], replacing '''Blackfire Torch's''' original functionality.
+* '''Blackfire Torch''' was revamped in [[V3.10]] as sort of a lesser version of {{ii|Deathfire Grasp}}, which was disabled on the Twisted Treeline and Crystal Scar on the same patch. '''Blackfire Torch''' was {{g|450}} cheaper at the time with lower stats to compensate, and also had a damage over time effect instead of a high damage burst effect.
+* The visual and sound effects of '''Blackfire Torch's''' old active was the same as {{iis|Deathfire Grasp}} except the VFX was recolored to green.
+* Bots were able to purchase this item even though it was removed from the game. This was later fixed at some point after the removal.<ref>[https://www.youtube.com/watch?v=6mwH2nEFx6c Bots using the item, recorded on V6.9]</ref>
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Blackfire Torch burn VFX.png|Burn VFX
+Blackfire Torch screenshot.png|Old VFX
+</gallery>
+|sfx =
+;Passive Triggered
+* {{sm2|Liandry's Anguish passive SFX.ogg}} Passive SFX
+* {{sm2|Liandry's Anguish passive SFX 2.ogg}} Passive SFX
+* {{sm2|Liandry's Anguish passive SFX 3.ogg}} Passive SFX
+|revisions =
+<tabber>
+Hide=
+|-|Season 2015 version=
+{{Infobox item
+|disp_name = Blackfire Torch
+|sub_name  = V5.2
+|icon      = Blackfire Torch item old
+|ap        = 80
+|cdr       = 10
+|act       = {{Unique|Burns the target enemy champion for 4 seconds, dealing {{as|magic damage}} equal to {{as|20% of their '''maximum''' health}} over the duration and increasing all subsequent {{as|magic damage}} taken by them by 20% (90 second cooldown).}}
+|menu1a    = Magic
+|menu1b    = Ability Power
+|menu2a    = Magic
+|menu2b    = Cooldown Reduction
+|recipeold = {{Recipe
+ |result = Blackfire Torch
+ |variant= old
+ |total  = 2650
+ |cost   = 970
+ |t1     = {{Recipe/item|Blasting Wand|860|variant=old}}
+ |t2     = {{Recipe
+  |result = Fiendish Codex
+  |variant= old
+  |total  = 820
+  |cost   = 385
+  |t1     = {{Recipe/item|Amplifying Tome|435|variant=old}}
+  }}
+ }}
+ |buy    = 2650
+ |comb   = 970
+ |sell   = 1855
+ |code   = 3188
+}}
+</tabber>
+|patchhistory =
+;[[V14.19]]
+* Ability haste reduced to 20 from 25.
+* Ability power reduced to 80 from 90.
+* Baleful Blaze base damage per tick increased to {{ap|20/2}} from {{ap|15/2}}.
+** Total base damage increased to {{ap|20*3}} from {{ap|15*3}}.
+* Baleful Blaze AP ratio per tick reduced to {{as|{{ap|2/2}}% AP}} from {{as|{{ap|3/2}}% AP}}.
+** Total damage AP ratio reduced to {{as|{{ap|2*3}}% AP}} from {{as|{{ap|3*3}}% AP}}.
+
+;[[V14.11]]
+* Now has the search keyword "burn".
+* {{sbc|Bug Fix:}} ''Baleful Blaze's'' damage is no longer able to incorrectly grant stacks of {{iis|Spear of Shojin}} ''Focused Will'', if both items are owned.
+
+;[[V14.10#May 16th Hotfix|V14.10]] - May 16th Hotfix
+* Base damage per tick reduced to {{fd|7.5}} from 10.
+** Total base damage reduced to 45 from 60.
+* AP ratio per tick reduced to {{as|{{fd|1.5% AP}}}} from {{as|2% AP}}.
+** Total AP ratio reduced to {{as|9% AP}} from {{as|12% AP}}.
+
+;[[V14.10]] - Re-added
+* Updated icon.
+* {{sbc|Recipe:}} {{ii|Lost Chapter}} + {{ii|Fated Ashes}} + {{g|700}} = {{g|2800}}.
+* {{sbc|Stats:}} 90 ability power, 25 ability haste, 600 mana.
+* {{sbc|Unique Passive - Baleful Blaze:}} Dealing ability damage burns enemies, causing them to take {{as|10 magic damage}} {{as|(+ 2% AP)}} every {{fd|0.5}} seconds over 3 seconds, for a total of {{as|60|magic damage}} {{as|(+ 12% AP)}}. Against monsters, the burn deals {{as|10 '''bonus''' magic damage}} per tick, dealing a total of {{as|20 magic damage}} {{as|(+ 2% AP)}} per tick for up to {{as|120|magic damage}} {{as|(+ 12% AP)}}.
+* {{sbc|Unique Passive - Blackfire:}} For each champion, epic monster, and large monster afflicted with ''Baleful Blaze's'' burn, increase your {{as|ability power}} by 4%.
+* {{sbc|Caption:}} "The Black Mist needs a flame of equal pitch."
+* Limited to 1 '''Blackfire Torch'''.
+
+;[[V5.2]]
+* Removed from Twisted Treeline and Crystal Scar, and game.
+
+;[[V4.13]]
+* Active cooldown increased to 90 seconds from 60.
+
+;[[V4.6]]
+* Movement speed removed.
+
+;[[V4.1]]
+* Movement speed reduced to 5% from 10%.
+
+;[[V3.13]]
+* Total cost increased to {{g|2650}} from {{g|2400}}.
+** Recipe cost increased to {{g|970}} from {{g|720}}.
+* Now grants 10% movement speed.
+* Active debuff duration reduced to 4 seconds from 6.
+
+;[[V3.10]]
+* {{sbc|New Recipe:}} {{ii|Blasting Wand}} + {{ii|Fiendish Codex}} + 720g = 2400g.
+* Cooldown reduction reduced to 10% from 20%.
+* {{sbc|Removed Unique Passive:}} Burning DoT.
+* {{sbc|Unique Active}}: Deals 20% of target champion's maximum Health in magic damage over 6 seconds and increases all subsequent magic damage taken by the target by 20% (60 second cooldown)
+
+;[[V3.01]]
+* Total cost reduced to 3770g from 3950g.
+** Combine cost
+* No longer grants any mana regen.
+
+;[[V1.0.0.154]]
+* {{sbc|New Recipe:}} {{ii|Kage's Lucky Pick}} + {{ii|Fiendish Codex}} + {{ii|Haunting Guise}} + {{g|700}} = {{g|3950}}
+** {{sbc|Old Recipe:}} {{ii|Kage's Lucky Pick}} + {{ii|Haunting Guise}} + {{g|700}} = {{g|2950}}
+* Ability power increased to 80 from 70.
+* Cooldown reduction increased to 20% from 10%.
+* Now grants 10 mana regeneration per 5 seconds.
+
+;[[V1.0.0.153]]
+* Fixed a tooltip inconsistency with the cooldown reduction value.
+
+;[[V1.0.0.152]]
+* Cooldown reduction reduced to 10% from 15% (undocumented).
+* Magic penetration reduced to 15 from 20.
+* Maximum charges reduced to 18 from 25.
+* Burn duration reduced to 2 seconds from 3..
+* Delay between charge gains increased to {{fd|1.5}} seconds from 1.
+* Increased the burn amount to {{fd|1.75%}} of max health per second from {{fd|1.67%}}.
+* Fixed a bug that caused the first tick of burn to not consume a charge.
+
+;[[V1.0.0.151]]
+* {{sbc|New Recipe:}} {{ii|Kage's Lucky Pick}} + {{ii|Haunting Guise}} + {{g|700}} = {{g|2950}}
+** {{sbc|Old Recipe:}} {{ii|Kage's Lucky Pick}} + {{ii|Catalyst the Protector}} + {{g|800}} = {{g|2890}}
+* Ability power increased to 70 from 50.
+* Health reduced to 250 from 300.
+* {{sbc|Removed:}} +350 mana
+* {{sbc|Unique Passive}}: +15% cooldown reduction
+* {{sbc|Unique Passive}}: +20 magic penetration
+* {{sbc|Unique Passive}}: Your spells burn for an additional 5% of the target champion's maximum Health in magic damage over 3 seconds. Each second burned consumes a charge. One charge is generated each second.
+* Now available on Twisted Treeline and Crystal Scar.
+
+;[[V1.0.0.150]] Added
+* Recipe: {{ii|Kage's Lucky Pick}} + {{ii|Catalyst the Protector}} + {{g|800}} = {{g|2890}}
+* +50 ability power
+* +300 health
+* +350 mana
+* {{sbc|Unique Passive}}: Your spells burn for an additional 5% of the target's current Health in magic damage over 3 seconds (effect halved for AoE and damage over time).
+}}
+
+
+[[cs:Blackfire Torch]]
+[[de:Schwarzfeuer-Fackel]]
+[[es:Antorcha de Fuegoscuro]]
+[[fr:Torche Noire]]
+[[pl:Pochodnia Mrocznego Ognia]]
+[[ru:Blackfire Torch]]
+[[zh:黯炎火炬]]

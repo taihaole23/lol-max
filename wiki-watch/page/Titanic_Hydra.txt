@@ -1,0 +1,163 @@
+{{Item info
+|goldvalue =
+{{gold value|Cleave Gold Value (from base stats)|nolink=}}
+* {{rd|{{fd|{{#vardefineecho:baseohdmgmelee|{{#expr:{{cid|Titanic Hydra|hp}}*{{#vardefineecho:hppercenttoohdmgmelee|0.01}}}}}}}}|{{fd|{{#vardefineecho:baseohdmgranged|{{#expr:{{cid|Titanic Hydra|hp}}*{{#vardefineecho:hppercenttoohdmgranged|0.005}}}}}}}}}} [[on-hit]] [[physical damage]] = {{rd|{{g|{{#expr:{{#var:ohdmg}}*{{#var:baseohdmgmelee}} round 2}}}}|{{g|{{#expr:{{#var:ohdmg}}*{{#var:baseohdmgranged}} round 2}}}}}}
+** '''Total Gold Value''' = {{rd|{{g|{{#expr:{{#var:total}}+{{cid|Titanic Hydra|hp}}*{{#var:hppercenttoohdmgmelee}}*{{#var:ohdmg}} round 2}}}}|{{g|{{#expr:{{#var:total}}+{{cid|Titanic Hydra|hp}}*{{#var:hppercenttoohdmgranged}}*{{#var:ohdmg}} round 2}}}}}}
+{{gold value|Cleave Gold Value per 100 Health from outside sources|nolink=}}
+* {{rd|{{fd|{{#expr:{{#var:hppercenttoohdmgmelee}}*100}}}}|{{fd|{{#expr:{{#var:hppercenttoohdmgranged}}*100}}}}}} [[on-hit]] [[physical damage]] (from Cleave) = {{rd|{{g|{{#vardefineecho:perhpmelee|{{#expr:{{#var:ohdmg}}*{{#var:hppercenttoohdmgmelee}}*100 round 2}}}}}}|{{g|{{#vardefineecho:perhpranged|{{#expr:{{#var:ohdmg}}*{{#var:hppercenttoohdmgranged}}*100 round 2}}}}}}}}
+|goldefficiency =
+* {{iis|Titanic Hydra}} gold efficiency due to {{sbc|Cleave}} is increased by {{rd|{{gec|Titanic Hydra|+{{#var:perhpmelee}}}}|{{gec|Titanic Hydra|+{{#var:perhpranged}}}}}} for every {{as|100 '''maximum''' health}} from all sources, including '''base''' health and '''Titanic Hydra's''' health. <!-- Made clarification because on-hit damage doesn't add to the base stats' efficiency since it's range split -->
+|similaritems = Ravenous Hydra;Profane Hydra;Spear of Shojin;Sterak's Gage;Sundered Sky;Hullbreaker;Experimental Hexplate;Black Cleaver;Trinity Force;Stridebreaker;Overlord's Bloodmail
+|background =
+|notes =
+* {{sbc|Cleave}} deals {{tip|proc damage}} and is tagged as {{tip|area damage|area of effect}} without applying {{tip|spell effects}}.
+* {{sbc|Cleave}} strikes all targets in the cone simultaneously, and is not a {{tip|projectile}}.
+* {{sbc|Cleave's}} on-hit damage benefits from {{stil|life steal}}.
+** The damage dealt by the area of effect cone does not.
+* {{sbc|Cleave's}} on-hit damage will apply to [[structures]] but its cone will not trigger while attacking them.
+* {{sbc|Cleave}} will trigger even if the basic attack does not deal damage, such as if the target is {{tip|invulnerable}}.
+* A single attack can cause a maximum of 10 {{sbc|Cleave}} splashes.
+|strategy =
+* {{ii|Titanic Hydra}} can empower attacks to deal damage to multiple enemies at once with its passive.
+* {{ii|Titanic Hydra}} is highly valuable on champions that focus on scaling through health.
+|oldicons =
+|trivia =
+* Like its predecessor {{ii|Atma's Impaler}}, {{ii|Titanic Hydra}} can be combined with items such as {{ii|Sterak's Gage}} and {{ii|Warmog's Armor}} to increase both damage and survivability.
+* Along with {{ii|Profane Hydra}} and {{ii|Ravenous Hydra}}, Titanic Hydra borrows its namesake from the {{w|Lernaean Hydra|Hydra}}, a many-headed beast.
+** They also build from {{ii|Tiamat}}, which shares its name with the [http://www.dandwiki.com/wiki/Tiamat_(3.5e_Deity) five headed dragon goddess] in the {{w|Dungeons & Dragons}} {{w|Tabletop role-playing game|tabletop RPG}}.
+[[File:Noxus Crest icon.png|link=Noxus#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Titanic Hydra cleave VFX.png|Cleave VFX
+Titanic Hydra crescent VFX.png|Crescent VFX
+Titanic Hydra Cleave screenshot.png|Old Cleave VFX
+Titanic Hydra screenshot.png|Old Empowered Attack VFX
+Titanic Hydra 2 screenshot.png|Old Crescent VFX
+</gallery>
+|sfx =
+;Attack Activated
+* {{sm2|Titanic Hydra activated SFX 2.ogg}} Active SFX
+* {{sm2|Titanic Hydra activated SFX 3.ogg}} Active SFX
+* {{sm2|Titanic Hydra activated SFX 4.ogg}} Active SFX
+* {{sm2|Titanic Hydra activated SFX.ogg}} Active SFX
+
+;Attack Ready
+* {{sm2|Titanic Hydra attack ready SFX 2.ogg}} Active SFX
+* {{sm2|Titanic Hydra attack ready SFX.ogg}} Active SFX
+
+;Attack Expired
+* {{sm2|Titanic Hydra active attack expire SFX.ogg}} Active SFX
+|revisions =
+|patchhistory =
+;[[V26.21]]
+* {{sbc|Bug Fix:}} Fixed a bug where Titanic Crescent's cooldown timer would not be displayed after use.
+
+;[[V25.14]]
+* {{sbc|New Effect:}} A single attack can now cause a maximum of 10 ''Cleave'' splashes, instead of an unlimited number of them.
+
+;[[V25.S1.3]]
+* {{sbc|Bug Fix:}} If Titanic Hydra is sold while Titanic Crescent is activated and another item is equipped in its slot, no longer indefinitely disables that inventory slot.
+
+;[[V14.22]]
+* {{sbc|Bug Fix:}} Titanic Crescent now properly counts as an attack reset for {{ri|Hail of Blades}}.
+
+;[[V14.19]]
+* {{sbc|New Recipe:}} {{ii|Tiamat}} + {{ii|Tunneler}} + {{ii|Giant's Belt}} + {{g|50}} = {{g|3300}}.
+** {{sbc|Old Recipe:}} {{ii|Tiamat}} + {{ii|Tunneler}} + {{ii|Ruby Crystal}} + {{g|550}} = {{g|3300}}.
+* Health increased to 600 from 550.
+* Attack damage reduced to 40 from 50.
+* Cleave on-hit damage reduced to {{as|{{rd|1%|{{fd|0.5}}%}} '''maximum''' health|hp}} from {{as|{{rd|{{fd|1.5}}%|{{fd|0.75}}%}}|hp}}.
+
+;[[V14.6]]
+* Combine cost reduced to {{g|550}} from {{g|600}}.
+** Total cost unchanged.
+
+;[[V14.3]]
+* Health increased to 550 from 500.
+* Titanic Crescent primary target damage reduced to {{as|{{rd|4%|2%}} '''maximum''' health}} from {{as|{{rd|6%|3%}}|health}}.
+
+;[[V14.1#January 12th Hotfix|V14.1]] - January 12th Hotfix
+* Attack damage reduced to 50 from 55.
+* Health reduced to 500 from 550.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Tiamat}} + {{ii|Tunneler}} + {{ii|Ruby Crystal}} + {{g|600}} = {{g|3300}}.
+** {{sbc|Stats:}} 550 health, 55 attack damage.
+** {{sbc|Unique Passive - Cleave:}} Basic attacks on-hit deal {{as|{{rd|{{fd|1.5}}%|{{fd|0.75}}%}} '''maximum''' health|hp}} {{as|'''bonus''' physical damage}} to the target and {{as|{{rd|3%|{{fd|1.5}}%}} '''maximum''' health|hp}} {{as|physical damage}} to other enemies in a cone in the direction of the target.
+** {{sbc|Unique Active - Titanic Crescent:}} Your next basic attack within 10 seconds empowers {{sbc|Cleave}} to deal {{as|{{rd|6%|3%}} '''maximum''' health|hp}} {{as|'''bonus''' physical damage}} to the target and {{as|{{rd|9%|{{fd|4.5}}%}} '''maximum''' health|hp}} {{as|physical damage}} to secondary targets. ''Titanic Crescent'' resets the basic attack timer.
+** Limited to 1 {{sbc|Cleave}} item.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Tiamat}} + {{ii|Ruby Crystal}} + {{ii|Giant's Belt}} + {{g|800}} = {{g|3300}}.
+** {{sbc|Stats:}} 500 health, 30 attack damage.
+** {{sbc|Unique Passive - Cleave:}} Basic attacks on-hit deal {{as|{{rd|4|3}} {{as|(+ {{rd|{{fd|1.5}}%|{{fd|1.125}}%}} '''maximum''' health)}} '''bonus''' physical damage|physical damage}} to the target and {{as|{{rd|40|30}} {{as|(+ {{rd|3%|{{fd|2.25}}%}} '''maximum''' health)}} physical damage|physical damage}} to other enemies in a cone in the direction of the target.
+** {{sbc|Unique Passive - Colossus:}} Gain {{as|'''bonus''' attack damage}} equal to {{as|2% of '''bonus''' health}}.
+** Limited to 1 {{sbc|Hydra}} item.
+
+;[[V11.18]]
+* {{sbc|Removed:}} Cleave's cone damage no longer triggers against structures. ''On-hit damage still applies.''
+** The tooltip now also mentions this.
+
+;[[V11.8]]
+* Colossus bonus attack damage changed to {{as|2% '''bonus''' health}} from {{as|1% '''maximum''' health}}.
+
+;[[V10.24]]
+* Updated icon.
+
+;[[V10.23]]
+* Now purchaseable on {{tip|ranged}} champions.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Tiamat}} + {{ii|Ruby Crystal}} + {{ii|Giant's Belt}} + {{g|800}} = {{g|3300}}.
+** {{sbc|Stats:}} 500 health, 30 attack damage.
+** {{sbc|Unique Passive - Colossus:}} Gain {{as|'''bonus''' attack damage}} equal to {{as|1% of '''maximum''' health}}.
+** {{sbc|Unique Passive - Cleave:}} Basic attacks deal {{as|{{rd|4|3}} {{as|(+ {{rd|{{fd|1.5}}%|{{fd|1.125}}%}} '''maximum''' health)}} '''bonus''' physical damage|physical damage}} on-hit to your target and {{as|{{rd|40|30}} {{as|(+ {{rd|3%|{{fd|2.25}}%}} '''maximum''' health)}} '''bonus''' physical damage|physical damage}} to other enemies in a cone on-hit. ''Cleave's'' damage also applies to structures.
+** Limited to 1 {{sbc|Hydra}} item.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Tiamat}} + {{ii|Ruby Crystal}} + {{ii|Jaurim's Fist}} + {{g|575}} = {{g|3500}}.
+** {{sbc|Stats:}} 450 health, 40 attack damage, 100% base health regeneration.
+** {{sbc|Unique Passive - Cleave:}} Basic attacks deal {{as|5 {{as|(+ {{fd|1.5}}% '''maximum''' health)}} '''bonus''' physical damage on-hit|physical damage}}. Additionally, basic attacks also deal {{as|40 {{as|(+ 3% '''maximum''' health)}} physical damage|physical damage}} {{tt|in a cone|700 range}} to units behind the target.
+** {{sbc|Unique Active - Crescent:}} On your next basic attack, {{sbc|Cleave}} will instead deal {{as|40 {{as|(+ 10% '''maximum''' health)}} physical damage|physical damage}} to all targets and has a larger cone (20 second cooldown). {{sbc|Crescent}} resets your basic attack timer.
+
+;[[V10.5]]
+* Cleave on-hit health ratio increased to {{as|{{fd|1.5}}% '''maximum''' health}} from {{as|1%|health}}.
+* Cleave cone health ratio increased to {{as|3% '''maximum''' health}} from {{as|{{fd|2.5}}%|health}}.
+
+;[[V9.11]]
+* {{sbc|Bug Fix:}} ''Cleave's'' on-hit damage can no longer damage towers. Note: It can still deal damage when using ''Crescent''.
+
+;[[V8.24b]]
+* Combine cost reduced to {{g|575}} from {{g|700}}. ''Total cost unchanged.''
+
+;[[V7.24b]]
+* Attack damage increased to 40 from 35.
+
+;[[V6.6]]
+* Attack damage reduced to 35 from 50.
+
+;[[V6.4]]
+* {{sbc|Removed:}} Can no longer be swapped with {{ii|Ravenous Hydra}} for free.
+
+;[[V6.1]]
+* Combine cost reduced to {{g|700}} from {{g|750}}.
+** Item cost reduced to {{g|3500}} from {{g|3600}}.
+
+;[[V5.22]]
+* {{sbc|New Recipe:}} {{ii|Tiamat}} + {{ii|Ruby Crystal}} + {{ii|Jaurim's Fist}} + {{g|910}} = {{g|3600}}.
+** {{sbc|Old Recipe:}} {{ii|Tiamat}} + {{ii|Giant's Belt}} + {{g|400}} = {{g|3300}}
+* Health increased to 450 from 400.
+* {{sbc|Removed:}} Can no longer be purchased by ranged champions.
+* {{sbc|New Effect:}} You can now freely exchange {{ii|Ravenous Hydra}} and {{ii|Titanic Hydra}}.
+
+;[[V5.16]] - Added
+* {{ii|Titanic Hydra}}
+** {{sbc|Recipe:}} {{ii|Tiamat}} + {{ii|Giant's Belt}} + {{g|400}} = {{g|3300}}
+** Stats: +400 health, +50 attack damage, +100% base health regeneration
+** {{sbc|Unique Passive - Cleave:}} Basic attacks deal 5 {{as|(+ 1% of your '''maximum''' health)}} bonus physical damage on-hit and 40 {{as|(+ {{fd|2.5}}% of your '''maximum''' health)}} physical damage to other enemies in a cone behind the target (385 range).
+** {{sbc|Unique Active - Crescent:}} On your next basic attack, Cleave deals 40 {{as|(+ 10% of your '''maximum''' health)}} physical damage to all targets in a larger cone. Damage does not stack with Cleave (20 second cooldown). {{sbc|Crescent}} resets your autoattack timer.
+}}
+
+
+[[de:Titanische Hydra]]
+[[fr:Hydre Titanesque]]
+[[pl:Kolosalna Hydra]]

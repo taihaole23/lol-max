@@ -1,0 +1,95 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Cryptbloom;Void Staff;Liandry's Torment;Morellonomicon;Abyssal Mask;Black Cleaver
+|background =
+|notes =
+* {{sbc|Vile Decay}} by itself is not blocked by {{tip|spell shield}}.
+* [[Innate]] champion abilities that deal magic damage will also apply {{sbc|Vile Decay}}, including those that deal the damage type through basic attacks such as {{cai|I|Orianna}}, {{cai|I|Yone}}, and {{cai|I|Yunara}}.
+* The first instance of {{as|magic damage}} dealt does not benefit from {{sbc|Vile Decay's}} magic resistance reduction.
+** The damage dealt is calculated first, and then the magic reduction debuff is applied afterwards.
+** This means that every instance of {{as|magic damage}} dealt benefits only from the magic resistance reduction of the previous stacks.
+|strategy =
+|oldicons =
+|trivia =
+[[File:Bilgewater Crest icon.png|link=Bilgewater#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Magic resistance reduction indicator.png|Passive indicator
+</gallery>
+|revisions =
+|patchhistory =
+;[[V26.01]]
+* Updated icon.
+
+;[[V25.10]]
+* Health increased to 400 from 350.
+* Ability power increased to 65 from 60.
+* Vile Decay magic resistance reduction per stack increased to {{fd|7.5}}% from 5%.
+* Vile Decay maximum stacks reduced to 4 from 6.
+
+;[[V25.08]]
+* {{sbc|Bug Fix:}} If Vile Decay has been applied on an enemy that has equipped {{ii|Death's Dance}}, {{iis|Bloodsong}} ''Expose Weakness'' no longer causes Ignore Pain to unintentionally store additional damage to them from receiving magic damage, based on the magic resistance they have lost.
+
+;[[V25.S1.2]]
+* {{sbc|Bug Fix:}} Per-target cooldown is now tracked by unique player instead of by champion name.
+
+;[[V25.S1.1]] - Re-added
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Haunting Guise}} + {{ii|Fiendish Codex}} + {{g|750}} = {{g|2900}}.
+** {{sbc|Stats:}} 60 ability power, 350 health, 15 ability haste.
+** {{sbc|Unique Passive - Vile Decay:}} Dealing {{as|magic damage}} to an enemy champion with your innate ability or abilities applies a stack to them for 6 seconds, stacking up to 6 times and up to 1 per basic attack or ability per cast instance every {{fd|0.3}} seconds. Each stack inflicts {{as|5% magic resistance reduction}}, up to {{as|30%|mr}} at 6 stacks.
+** Limited to 1 {{sbc|Blight}} item.
+* {{sbc|Old:}}
+** {{sbc|Stats:}} 60 ability power, 10 ability haste, 30 armor, 30 magic resistance.
+** {{sbc|Unique Passive - Vile Decay:}} Dealing {{as|magic damage}} to an enemy champion applies a stack to them for 6 seconds, stacking up to 6 times. Each stack inflicts {{as|5% magic resistance reduction}}, up to {{as|30%|mr}} at 6 stacks. Damaging basic attacks and spells can only apply a stack once every 2 seconds.
+** Limited to 1 '''Bloodletter's Curse'''.
+
+;[[V14.19]] - Removed
+* Removed from the game on September 24th, 2024 since [[Arena]] is no longer available.
+
+;[[V14.16]]
+* Now limits the user to 1 {{sbc|Blight}} item.
+
+;[[V14.9]] - Re-added
+* Available on [[Arena]] on May 1st, 2024.
+* Ability haste reduced to 10 from 15.
+* Ability power reduced to 60 from 70.
+
+;[[V14.1]] - Removed
+* Removed from the game on January 8th, 2024 since [[Arena]] is no longer available.
+
+;[[V13.24]] - Re-added
+* Available on [[Arena]] on December 7th, 2023.
+
+;[[V13.16]] - Removed
+* Removed from the game on August 28th, 2023 (11:59 PM PST) since [[Arena]] is no longer available.
+
+;[[V13.14]] - Re-added
+* Renamed ''Bloodletter's Curse'' from ''Bloodletter's Veil''.
+* Available on [[Arena]] on July 20th, 2023 (1 PM PST).
+* {{sbc|Cost:}} {{g|3000}}.
+* {{sbc|Stats:}} 70 ability power, 30 armor, 30 magic resistance, 15 ability haste.
+* {{sbc|Unique Passive - Vile Decay:}} Dealing {{as|magic damage}} to an enemy champion applies a stack to them for 6 seconds, stacking up to 6 times. Each stack inflicts {{as|5% magic resistance reduction}}, up to {{as|30%|mr}} at 6 stacks. Damaging basic attacks and spells can only apply a stack once every 2 seconds.
+
+;[[V8.17]] - Removed
+* Removed from the game.
+
+;[[V8.16]] - Re-added
+* Re-added back to the game because of the experimental game mode [[Nexus Blitz]].
+
+;[[V8.12]] - End of the ''Curse of the Drowned'' event (June 18th, 2018)
+* Removed from the game.
+
+;[[V8.11]] - Added
+* {{sbc|Recipe:}} {{ii|Oblivion Orb}} + {{ii|Blasting Wand}} + {{g|650}} = {{g|3000}}.
+* {{sbc|Stats:}} +75 ability power and +350 health.
+* {{sbc|Unique Passive - Touch of Death:}} +15 magic penetration.
+* {{sbc|Unique Passive:}} After hitting an enemy champion with a damaging ability, gain a {{tip|spell shield}} for 2 seconds that blocks 1 incoming spell (30 second cooldown).
+* {{sbc|Availability:}} [[Howling Abyss]].
+}}
+
+
+[[de:Schleier des Aderlassers]]
+[[Category:Season 2018 item release]]

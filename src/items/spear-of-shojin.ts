@@ -7,11 +7,10 @@
 // ASSUMPTION (to check in the Practice Tool): the bonus only applies to R's own damage,
 // not to on-hit item damage the daggers apply. The wiki's "proc damage from your ability"
 // is unclear about on-hit, and leaving it out is the safer guess.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Spear_of_Shojin", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Spear_of_Shojin", patch: "26.23" },
   ampPerStack: 0.03,
   maxStacks: 4,
   secondsBetweenStacks: 1, // per cast instance

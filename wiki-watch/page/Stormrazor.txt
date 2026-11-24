@@ -1,0 +1,224 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Yun Tal Wildarrows;Kraken Slayer;Statikk Shiv;Essence Reaver;Hexoptics C44;The Collector;Infinity Edge;Rapid Firecannon
+|background =
+|notes =
+{{Energized info}}
+* {{sbc|Bolt}} deals {{tip|proc damage}}, and thus will not trigger [[spell effects]].
+* {{sbc|Bolt}} is not blocked by {{tip|spell shield}}.
+* {{sbc|Bolt}} will not be consumed against {{tip|wards}} or [[jungle plants]].
+* {{sbc|Bolt}} is an {{tip|Energized}} effect and will stack with other sources of it.
+** ''Energized'' effects will apply their on-hit damage to [[structure]]s.
+*** {{sbc|Bolt's}} on-hit damage does not apply to inhibitors nor the Nexus.{{bug}}
+|strategy =
+|oldicons =
+|trivia =
+* The removed passive '''Storm's Edge''' was called '''Wind Blade''' in development.
+* Stomrazor is also {{cis|Yasuo}} legendary weapon in [[Ruined King]].
+[[File:Ionia Crest icon.png|link=Ionia#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Stormrazor user fully Enerrgized VFX.png|Fully Energized VFX
+Stormrazor screenshot.png|Energized Attack VFX
+Stormrazor Energized movement speed VFX.png|Bonus Movement Speed VFX
+</gallery>
+|sfx =
+;Energized
+* {{sm2|Energized passive SFX.ogg}} Energized Ready SFX (with {{ii|Statikk Shiv}} and {{ii|Rapid Firecannon}})
+
+;Energized Attack
+* {{sm2|Stormrazor passive SFX.ogg}} Bolt Attack Hit SFX
+* {{sm2|Stormrazor passive SFX 2.ogg}} Bolt Attack Hit SFX
+* {{sm2|Stormrazor passive SFX 3.ogg}} Bolt Attack Hit SFX
+* {{sm2|Stormrazor passive SFX 4.ogg}} Bolt Attack Hit SFX
+|revisions =
+|patchhistory =
+;[[V26.17]]
+* Attack speed increased to 25% from 20%.
+
+;[[V26.11]]
+* {{sbc|Bug Fix:}} Fixed a bug where it wouldn't trigger from ability damage until it was triggered by an attack at least once.
+
+;[[V26.01]] - Re-added
+* Re-added to {{tip|Summoner's Rift}}.
+* {{sbc|Recipe:}} {{ii|B. F. Sword}} + {{ii|Cloak of Agility}} + {{ii|Scout's Slingshot}} + {{g|700}} = {{g|3200}}.
+* {{sbc|Stats:}} 50 attack damage, 20% attack speed, 25% critical strike chance.
+* {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+* {{sbc|Unique Passive - Bolt:}} When fully {{tip|Energized}}, your next basic attack deals {{as|100 '''bonus''' magic damage}} [[on-hit]] and grants you {{as|45% '''bonus''' movement speed}} for {{fd|1.5}} seconds.
+* Limited to 1 '''Stormrazor'''.
+
+;[[V25.13]] - Re-added
+* Available on [[Arena]].
+
+;[[V25.10]] - Removed
+* Removed from the game on May 14th, 2025 since [[Arena]] is no longer available.
+
+;[[V25.05]] - Re-added
+* Available on [[Arena]].
+* Bolt damage reduced to 100 from 200.
+* Bolt bonus movement speed reduced to 45% from 50%.
+
+;[[V14.19]] - Removed
+* Removed from the game on September 24th, 2024 since [[Arena]] is no longer available.
+
+;[[V14.16]]
+* {{sbc|Bug Fix:}} Bolt's damage is now correctly tagged as item damage for the purposes of effects such as the Vulnerability augment.
+
+;[[V14.10]] - Removed
+* Removed from Summoner's Rift and Howling Abyss.
+* Critical strike chance increased to 25% from 20%.
+
+;[[V14.3]]
+* Bolt base damage increased to 100 from 90.
+* {{sbc|Removed:}} Bolt damage no longer scales with {{as|25% AD}}.
+* Bolt bonus movement speed duration increased to {{fd|1.5}} seconds from 1.
+
+;[[V14.1]]
+* Total cost increased to {{g|3100}} from {{g|3000}}.
+** Combine cost increased to {{g|500}} from {{g|400}}.
+* Attack damage increased to 60 from 55.
+* {{sbc|New {{ai|Living Forge|Ornn|Masterwork}} item:}} {{ii|Eye of the Storm}}.
+** {{sbc|Stats:}} 80 attack damage, 25% attack speed, 20% critical strike chance.
+
+;[[V13.20]]
+* {{sbc|Bug Fix:}} {{cai|Spirit's Refuge|Shen}} now properly blocks the on-hit damage of Bolt.
+
+;[[V13.18]]
+* Attack damage increased to 55 from 50.
+
+;[[V13.13]]
+* Base damage increased to 90 from 15.
+* AD ratio reduced to {{as|25% AD}} from {{as|60% AD}}.
+* {{sbc|Removed:}} No longer scales with {{as|50% AP}}.
+
+;[[V13.11]]
+* Attack damage reduced to 50 from 55.
+* Base damage reduced to 15 from 25.
+* AD ratio reduced to {{as|60% AD}} from {{as|65% AD}}.
+
+;[[V13.10]]
+* {{sbc|New Recipe:}} {{ii|Noonquiver}} + {{ii|Cloak of Agility}} + {{ii|Kircheis Shard}} + {{g|400}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Cloak of Agility}} + {{ii|Kircheis Shard}} + {{g|100}} = {{g|2700}}.
+* Attack damage increased to 55 from 45.
+* {{sbc|New Unique Passive - Bolt:}} When fully {{tip|Energized}}, your next basic attack deals {{as|25|magic damage}} {{as|(+ 65% AD)}} {{as|(+ 50% AP)}} {{as|'''bonus''' magic damage}} and grants {{as|45% '''bonus''' movement speed}} for 1 second.
+* {{sbc|Removed Unique Passive - Paralyze:}} When fully {{tip|Energized}}, your next basic attack deals {{as|120 '''bonus''' magic damage}} [[on-hit]]. ''Energized'' effects {{tip|slow}} by 75% for {{fd|0.5}} seconds.
+
+;[[V12.23#December 14th Hotfix|V12.23]] - December 14th Hotfix
+* Attack damage increased to 45 from 40.
+
+;[[V11.23]]
+* {{sbc|New Effect:}} Tooltip now tracks champions slowed by Paralyze.
+
+;[[V10.23]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|B. F. Sword}} + {{ii|Cloak of Agility}} + {{ii|Kircheis Shard}} + {{g|100}} = {{g|2700}}.
+** {{sbc|Stats:}} 40 attack damage, 15% attack speed, 20% critical strike chance.
+** {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+** {{sbc|Unique Passive - Paralyze:}} When fully {{tip|Energized}}, your next basic attack deals {{as|120 '''bonus''' magic damage on-hit}}. Energized effects {{tip|slow}} by 75% for {{fd|0.5}} seconds.
+** Limited to 1 '''Stormrazor'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|B. F. Sword}} + {{ii|Cloak of Agility}} + {{ii|Kircheis Shard}} + {{g|400}} = {{g|3200}}.
+** {{sbc|Stats:}} 50 attack damage, 15% attack speed, 25% critical strike chance.
+** {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+** {{sbc|Unique Passive - Paralyze:}} When fully {{tip|Energized}}, your next basic attack deals {{as|120 '''bonus''' magic damage on-hit}}. Energized effects {{tip|slow}} by 75% for {{fd|0.5}} seconds.
+
+;[[V10.2]]
+* Attack damage reduced to 50 from 55.
+* {{sbc|Bug Fix:}} Energized VFX no longer can be seen within Fog of War.
+
+;[[V9.23]]
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Cloak of Agility}} + {{ii|Kircheis Shard}} + {{g|400}} = {{g|3200}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Long Sword}} + {{ii|Kircheis Shard}} + {{g|850}} = {{g|3100}}.
+* Energized stacks per attack reduced to 6 from 12.
+* Energized stacks per movement increased to (1 for every 25 units) from (1 for every 30 units).
+* {{sbc|New Effect:}} Energized effects now also work on structures.
+* Attack damage reduced to 55 from 60.
+* Critical strike chance increased to 25% from 0%.
+* Attack speed reduced to 15% from 30%.
+* Energized damage increased to 120 from 50.
+* {{sbc|Removed:}} No longer increases Energized effects by 35%.
+* {{sbc|New Effect:}} Damage from other Energized effects now stacks.
+* Slow strength increased to 75% from 40%.
+* Slow duration reduced to {{fd|0.5}} seconds from {{fd|1.5}}.
+* {{sbc|Removed:}} Slow no longer decays over the duration.
+* Unique Energized bonus magic damage and slow is now named {{sbc|Paralyze}}.
+** {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+** {{sbc|Unique Passive - Paralyze:}} When fully {{tip|Energized}}, your next basic attack deals {{as|120 '''bonus''' magic damage on-hit}}. Energized effects {{tip|slow}} by 75% for {{fd|0.5}} seconds.
+** {{sbc|Previous Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100. When fully {{tip|Energized}}, your next basic attack deals {{as|50 '''bonus''' magic damage on-hit}}.
+** {{sbc|Previous Passive:}} Energized effects have all of their respective effects increased by 35% and also {{tip|slow}} for 40% decaying over {{fd|1.5}} seconds.
+
+;[[V9.8]]
+* {{tip|Energized}} amplification increased to 35% from 30%.
+* Slow decay duration increased to {{fd|1.5}} seconds from 1.
+
+;[[V9.5]]
+* Attack damage increased to 60 from 55.
+* Attack speed increased to 30% from 25%.
+
+;[[V9.4]]
+* Three passive effects (unnamed 1 and {{sbc|Storm}}, and unnamed 2) changed to {{sbc|Energized}} and a unique passive.
+** {{sbc|Unique Passive - Energized:}} Moving and attacking will make an attack {{tip|Energized}}. Your {{tip|Energized}} attacks deal 50 '''bonus''' magic damage on hit.
+** {{sbc|Unique Passive:}} {{tip|Energized}} effects have all of their respective effects increased by 30% and also {{tip|slow}} for 40% decaying over 1 second.
+
+;[[V9.3]]
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Long Sword}} + {{ii|Kircheis Shard}} + {{g|850}} = {{g|3100}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Long Sword}} + {{ii|Long Sword}} + {{ii|Dagger}} + {{g|500}} = {{g|2800}}.
+* {{sbc|New Stats:}}
+** 55 attack damage, 25% attack speed.
+** {{sbc|Passive:}} Moving and attacking generates ''Energize'' stacks, up to 100. When fully ''{{tip|Energized}}'', your next basic attack gains {{sbc|Storm}}.
+** {{sbc|Unique Passive - Storm:}} Your next basic attack deals 50 '''bonus''' magic damage on-hit.
+** {{sbc|Unique Passive:}} Your ''{{tip|Energized}}'' effects have all of their respective effects increased by 30% and also {{tip|slow}} for 40% decaying over 1 second.
+*** Effects known to be increased so far:
+**** All Energized attacks damage (including Stormrazor's).
+**** Rapid Firecannon's bonus range and bonus range cap
+**** Statikk Shiv's number of bounces (increases to 7 bounces).
+**** Each Statikk Shiv's bounces applies the slow.
+**** Fleet Footwork heal and movement speed.
+**** Does '''not''' affect the bonus charge generation from Rapid Firecannon.
+* {{sbc|Old Stats:}}
+** 60 attack damage, 35% attack speed.
+** {{sbc|Unique Passive:}} If you haven't cast your basic attack for {{pp|type='''bonus''' attack speed|color=attack speed|300/(100+25*(x-1));...;0|key1=%|0 to 200 for 9;...;∞|formula=300/(100 + % bonus attack speed)}} seconds, gain {{sbc|Storm's Edge}}.
+** {{sbc|Unique Passive - Storm's Edge:}} Your next basic attack critically strikes for {{pp|type=critical strike chance|color=critical strike chance|key=%|140;160 to 200 for 5|key1=%|0;10 to 30|formula=140% + 2% per 1% critical strike chance. ''This is capped at 200% damage at 30% critical strike chance.''}} damage and grants 20% '''bonus''' movement speed for {{fd|0.75}} seconds.
+
+;[[V8.17]]
+* Storm's Edge base damage reduced to 140% from 160%.
+* Storm's Edge increased damage percent reduced to {{fd|0.5}}% critical strike chance from {{fd|0.75}}%.
+** Formula changed to {{pp|type=critical strike chance|color=critical strike chance|140%;150%;160%;170%;180%;190%;200%|0%;5%;10%;15%;20%;25%;30%|formula=140% + 1% per 0.5% critical strike chance. ''This is capped at 200% damage at 30% critical strike chance.''}} from {{pp|type=critical strike chance|color=critical strike chance|160%;166.67%;173.33%;180%;186.67%;193.33%;200%|0%;5%;10%;15%;20%;25%;30%|formula=160% + 1% per 0.75% critical strike chance. ''This is capped at 200% damage at 30% critical strike chance.''}}.
+* Attack speed increased to 35% from 25%.
+* Attack damage reduced to 60 from 65.
+
+;[[V8.15]]
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Long Sword}} + {{ii|Long Sword}} + {{ii|Dagger}} + {{g|500}} = {{g|2800}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Pickaxe}} + {{ii|Dagger}} + {{ii|Dagger}} + {{g|425}} = {{g|3200}}.
+* Attack damage reduced to 65 from 75.
+* Attack speed reduced to 25% from 30%.
+* {{sbc|Bug Fix:}} No longer incorrectly gives movement speed on every crit if the '''Stormrazor''' crit activated {{ri|Conqueror}}.
+
+;[[V8.13#July 3rd Hotfix|V8.13]] - July 3rd Hotfix
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Pickaxe}} + {{ii|Dagger}} + {{ii|Dagger}} + {{g|425}} = {{g|3200}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Pickaxe}} + {{ii|Dagger}} + {{g|725}} = {{g|3200}}.
+* Increased damage percent reduced to {{fd|0.75}}% critical strike chance from {{fd|1.5}}%. ''Reaches 200% damage at 30% critical strike chance instead of 60%.''
+** Formula changed to {{pp|type=critical strike chance|color=critical strike chance|160%;166.67%;173.33%;180%;186.67%;193.33%;200%|0%;5%;10%;15%;20%;25%;30%|formula=160% + 1% per 0.75% critical strike chance. ''This is capped at 200% damage at 30% critical strike chance.''}} from {{pp|type=critical strike chance|color=critical strike chance|160%;165%;170%;175%;180%;185%;190%;195%;200%|0%;7.5%;15%;22.5%;30%;37.5%;45%;52.5%;60%|formula=160% + 1% per 1.5% critical strike chance. ''This is capped at 200% damage at 60% critical strike chance.''}}.
+
+;[[V8.12#June 18th Hotfix|V8.12]] - June 18th Hotfix
+* Attack damage increased to 75 from 70.
+* Storm's Edge bonus movement speed increased to 20% from 10%.
+* Storm's Edge bonus movement speed duration reduced to {{fd|0.75}} seconds from {{fd|1.75}}.
+
+;[[V8.12]]
+* {{sbc|Bug Fix:}} No longer reduces {{cis|Jhin}} fourth shot damage from {{ai|Whisper|Jhin}}.
+* {{sbc|Bug Fix:}} Now gives the movement speed on guaranteed critical strikes (e.g {{cai|Bladework|Fiora}}, {{cai|Backstab|Shaco}}).
+
+;[[V8.11]] - Added
+* {{sbc|Recipe:}} {{ii|B. F. Sword}} + {{ii|Pickaxe}} + {{ii|Dagger}} + {{g|725}} = {{g|3200}}.
+* {{sbc|Stats:}} +70 attack damage and +30% attack speed.
+* {{sbc|Unique Passive:}} If you haven't basic attacked for {{pp|type='''bonus''' attack speed|color=attack speed|2.31;1.87;1.58;1.36;1.12;1.07;0.97;0.88;0.81;0.75;0.70;0.65;0.61;0.58;0.55;0.52;0.49;...;0.38|30%;60%;90%;120%;150%;180%;210%;240%;270%;300%;330%;360%;390%;420%;450%;480%;510%;...;700%}} seconds, gain {{sbc|Storm's Edge}}.
+* {{sbc|Storm's Edge:}} Your next basic attack critically strikes for {{pp|type=critical strike chance|color=critical strike chance|160%;165%;170%;175%;180%;185%;190%;195%;200%|0%;7.5%;15%;22.5%;30%;37.5%;45%;52.5%;60%|formula=160% + 1% per 1.5% critical strike chance. ''This is capped at 200% damage at 60% critical strike chance.''}} damage and grants 10% '''bonus''' movement speed for {{fd|1.75}} seconds.
+}}
+
+
+[[de:Sturmschneide]]
+[[Category:Season 2018 item release]]
+[[Category:Items with passive abilities]]

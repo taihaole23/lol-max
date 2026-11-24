@@ -1,872 +1,5544 @@
 {
   "source": "https://ddragon.leagueoflegends.com/cdn/16.23.1/data/en_US/champion.json",
+  "skinTierSource": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/skins.json",
   "ddragonVersion": "16.23.1",
   "patch": "26.23",
   "champions": [
     {
       "slug": "aatrox",
       "name": "Aatrox",
-      "ddragonId": "Aatrox"
+      "ddragonId": "Aatrox",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "The Darkin Blade",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Infernal Chains",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Umbral Dash",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "World Ender",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige DRX Aatrox",
+        "num": 31
+      },
+      "splashColor": "#4264c1"
     },
     {
       "slug": "ahri",
       "name": "Ahri",
-      "ddragonId": "Ahri"
+      "ddragonId": "Ahri",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Orb of Deception",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Fox-Fire",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Charm",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Spirit Rush",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Risen Legend Ahri",
+        "num": 85
+      },
+      "splashColor": "#ca503c"
     },
     {
       "slug": "akali",
       "name": "Akali",
-      "ddragonId": "Akali"
+      "ddragonId": "Akali",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Five Point Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Twilight Shroud",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Shuriken Flip",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Perfect Execution",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "K/DA FIRESTARTER Ignition Akali",
+        "num": 102
+      },
+      "splashColor": "#b82646"
     },
     {
       "slug": "akshan",
       "name": "Akshan",
-      "ddragonId": "Akshan"
+      "ddragonId": "Akshan",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Avengerang",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Going Rogue",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Heroic Swing",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Comeuppance",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "High Noon Akshan",
+        "num": 21
+      },
+      "splashColor": "#ba6743"
     },
     {
       "slug": "alistar",
       "name": "Alistar",
-      "ddragonId": "Alistar"
+      "ddragonId": "Alistar",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Pulverize",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Headbutt",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Trample",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Unbreakable Will",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Alistar",
+        "num": 19
+      },
+      "splashColor": "#5dc0d7"
     },
     {
       "slug": "ambessa",
       "name": "Ambessa",
-      "ddragonId": "Ambessa"
+      "ddragonId": "Ambessa",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Cunning Sweep / Sundering Slam",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Repudiation",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Lacerate",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Public Execution",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Chosen of the Wolf Ambessa",
+        "num": 1
+      },
+      "splashColor": "#b01f17"
     },
     {
       "slug": "amumu",
       "name": "Amumu",
-      "ddragonId": "Amumu"
+      "ddragonId": "Amumu",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Bandage Toss",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Despair",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Tantrum",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Curse of the Sad Mummy",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Amumu",
+        "num": 23
+      },
+      "splashColor": "#ac7243"
     },
     {
       "slug": "anivia",
       "name": "Anivia",
-      "ddragonId": "Anivia"
+      "ddragonId": "Anivia",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Flash Frost",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Crystallize",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Frostbite",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Glacial Storm",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Blackfrost Anivia",
+        "num": 5
+      },
+      "splashColor": "#288ec9"
     },
     {
       "slug": "annie",
       "name": "Annie",
-      "ddragonId": "Annie"
+      "ddragonId": "Annie",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Disintegrate",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Incinerate",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Molten Shield",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Summon: Tibbers",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Annie-Versary",
+        "num": 12
+      },
+      "splashColor": "#982435"
     },
     {
       "slug": "aphelios",
       "name": "Aphelios",
-      "ddragonId": "Aphelios"
+      "ddragonId": "Aphelios",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Weapon Abilites",
+          "maxRank": 6
+        },
+        {
+          "key": "w",
+          "name": "Phase",
+          "maxRank": 6
+        },
+        {
+          "key": "e",
+          "name": "Weapon Queue System",
+          "maxRank": 6
+        },
+        {
+          "key": "r",
+          "name": "Moonlight Vigil",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Spirit Blossom Springs Aphelios",
+        "num": 40
+      },
+      "splashColor": "#51d2dd"
     },
     {
       "slug": "ashe",
       "name": "Ashe",
-      "ddragonId": "Ashe"
+      "ddragonId": "Ashe",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Ranger's Focus",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Volley",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Hawkshot",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Enchanted Crystal Arrow",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Crystalis Motus Ashe",
+        "num": 65
+      },
+      "splashColor": "#a22836"
     },
     {
       "slug": "aurelionsol",
       "name": "Aurelion Sol",
-      "ddragonId": "AurelionSol"
+      "ddragonId": "AurelionSol",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Breath of Light",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Astral Flight",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Singularity",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Falling Star / The Skies Descend",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Divine Architect Porcelain Aurelion Sol",
+        "num": 38
+      },
+      "splashColor": "#b57e59"
     },
     {
       "slug": "aurora",
       "name": "Aurora",
-      "ddragonId": "Aurora"
+      "ddragonId": "Aurora",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Twofold Hex",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Across the Veil",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "The Weirding",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Between Worlds",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Broken Covenant Aurora",
+        "num": 20
+      },
+      "splashColor": "#afdf6f"
     },
     {
       "slug": "azir",
       "name": "Azir",
-      "ddragonId": "Azir"
+      "ddragonId": "Azir",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Conquering Sands",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Arise!",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Shifting Sands",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Emperor's Divide",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Attorney Azir",
+        "num": 19
+      },
+      "splashColor": "#b66130"
     },
     {
       "slug": "bard",
       "name": "Bard",
-      "ddragonId": "Bard"
+      "ddragonId": "Bard",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Cosmic Binding",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Caretaker's Shrine",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Magical Journey",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Tempered Fate",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Spirit Blossom Bard",
+        "num": 37
+      },
+      "splashColor": "#6a3cae"
     },
     {
       "slug": "belveth",
       "name": "Bel'Veth",
-      "ddragonId": "Belveth"
+      "ddragonId": "Belveth",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Void Surge",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Above and Below",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Royal Maelstrom",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Endless Banquet",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Faerie Court Bel'Veth",
+        "num": 29
+      },
+      "splashColor": "#b05e36"
     },
     {
       "slug": "blitzcrank",
       "name": "Blitzcrank",
-      "ddragonId": "Blitzcrank"
+      "ddragonId": "Blitzcrank",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Rocket Grab",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Overdrive",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Power Fist",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Static Field",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Space Groove Blitz & Crank",
+        "num": 29
+      },
+      "splashColor": "#9b4120"
     },
     {
       "slug": "brand",
       "name": "Brand",
-      "ddragonId": "Brand"
+      "ddragonId": "Brand",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Sear",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Pillar of Flame",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Conflagration",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Pyroclasm",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Debonair Brand",
+        "num": 22
+      },
+      "splashColor": "#bf8f47"
     },
     {
       "slug": "braum",
       "name": "Braum",
-      "ddragonId": "Braum"
+      "ddragonId": "Braum",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Winter's Bite",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Stand Behind Me",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Unbreakable",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Glacial Fissure",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Grill Master Braum",
+        "num": 42
+      },
+      "splashColor": "#c76b3b"
     },
     {
       "slug": "briar",
       "name": "Briar",
-      "ddragonId": "Briar"
+      "ddragonId": "Briar",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Head Rush",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Blood Frenzy / Snack Attack",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Chilling Scream",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Certain Death",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Battle Academia Briar",
+        "num": 20
+      },
+      "splashColor": "#4686b6"
     },
     {
       "slug": "caitlyn",
       "name": "Caitlyn",
-      "ddragonId": "Caitlyn"
+      "ddragonId": "Caitlyn",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Piltover Peacemaker",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Yordle Snap Trap",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "90 Caliber Net",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Ace in the Hole",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Arcane Commander Caitlyn",
+        "num": 51
+      },
+      "splashColor": "#b07752"
     },
     {
       "slug": "camille",
       "name": "Camille",
-      "ddragonId": "Camille"
+      "ddragonId": "Camille",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Precision Protocol",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Tactical Sweep",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Hookshot",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "The Hextech Ultimatum",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Winterblessed Camille",
+        "num": 32
+      },
+      "splashColor": "#357599"
     },
     {
       "slug": "cassiopeia",
       "name": "Cassiopeia",
-      "ddragonId": "Cassiopeia"
+      "ddragonId": "Cassiopeia",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Noxious Blast",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Miasma",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Twin Fang",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Petrifying Gaze",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Mythmaker Cassiopeia",
+        "num": 38
+      },
+      "splashColor": "#4d7da0"
     },
     {
       "slug": "chogath",
       "name": "Cho'Gath",
-      "ddragonId": "Chogath"
+      "ddragonId": "Chogath",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Rupture",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Feral Scream",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Vorpal Spikes",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Feast",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Dark Star Cho'Gath",
+        "num": 7
+      },
+      "splashColor": "#d83f7c"
     },
     {
       "slug": "corki",
       "name": "Corki",
-      "ddragonId": "Corki"
+      "ddragonId": "Corki",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Phosphorus Bomb",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Valkyrie",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Gatling Gun",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Missile Barrage",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Red Baron Corki",
+        "num": 3
+      },
+      "splashColor": "#b67a24"
     },
     {
       "slug": "darius",
       "name": "Darius",
-      "ddragonId": "Darius"
+      "ddragonId": "Darius",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Decimate",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Crippling Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Apprehend",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Noxian Guillotine",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Triumphant General Darius",
+        "num": 65
+      },
+      "splashColor": "#c9634e"
     },
     {
       "slug": "diana",
       "name": "Diana",
-      "ddragonId": "Diana"
+      "ddragonId": "Diana",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Crescent Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Pale Cascade",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Lunar Rush",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Moonfall",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Eclipse Eternal Aspect Diana",
+        "num": 77
+      },
+      "splashColor": "#ca5b57"
     },
     {
       "slug": "drmundo",
       "name": "Dr. Mundo",
-      "ddragonId": "DrMundo"
+      "ddragonId": "DrMundo",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Infected Bonesaw",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Heart Zapper",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Blunt Force Trauma",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Maximum Dosage",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Corporate Mundo",
+        "num": 3
+      },
+      "splashColor": "#496ca2"
     },
     {
       "slug": "draven",
       "name": "Draven",
-      "ddragonId": "Draven"
+      "ddragonId": "Draven",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Spinning Axe",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Blood Rush",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Stand Aside",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Whirling Death",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Primetime Draven",
+        "num": 3
+      },
+      "splashColor": "#af3046"
     },
     {
       "slug": "ekko",
       "name": "Ekko",
-      "ddragonId": "Ekko"
+      "ddragonId": "Ekko",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Timewinder",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Parallel Convergence",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Phase Dive",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Chronobreak",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige True Damage Know My Name Ekko",
+        "num": 59
+      },
+      "splashColor": "#4bb0ce"
     },
     {
       "slug": "elise",
       "name": "Elise",
-      "ddragonId": "Elise"
+      "ddragonId": "Elise",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Neurotoxin / Venomous Bite",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Volatile Spiderling / Skittering Frenzy",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Cocoon / Rappel",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Spider Form",
+          "maxRank": 4
+        }
+      ],
+      "splash": {
+        "skin": "Coven Elise",
+        "num": 24
+      },
+      "splashColor": null
     },
     {
       "slug": "evelynn",
       "name": "Evelynn",
-      "ddragonId": "Evelynn"
+      "ddragonId": "Evelynn",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Hate Spike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Allure",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Whiplash",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Last Caress",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "K/DA Hitmaker Evelynn",
+        "num": 66
+      },
+      "splashColor": "#2860b2"
     },
     {
       "slug": "ezreal",
       "name": "Ezreal",
-      "ddragonId": "Ezreal"
+      "ddragonId": "Ezreal",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Mystic Shot",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Essence Flux",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Arcane Shift",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Trueshot Barrage",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Pulsefire Ezreal",
+        "num": 5
+      },
+      "splashColor": "#3679ad"
     },
     {
       "slug": "fiddlesticks",
       "name": "Fiddlesticks",
-      "ddragonId": "Fiddlesticks"
+      "ddragonId": "Fiddlesticks",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Terrify",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Bountiful Harvest",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Reap",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Crowstorm",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Surprise Party Fiddlesticks",
+        "num": 6
+      },
+      "splashColor": "#9d3950"
     },
     {
       "slug": "fiora",
       "name": "Fiora",
-      "ddragonId": "Fiora"
+      "ddragonId": "Fiora",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Lunge",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Riposte",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Bladework",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Grand Challenge",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Lunar Beast Fiora",
+        "num": 51
+      },
+      "splashColor": "#d08856"
     },
     {
       "slug": "fizz",
       "name": "Fizz",
-      "ddragonId": "Fizz"
+      "ddragonId": "Fizz",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Urchin Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Seastone Trident",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Playful / Trickster",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Chum the Waters",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Fuzz Fizz (2022)",
+        "num": 25
+      },
+      "splashColor": "#af7f36"
     },
     {
       "slug": "galio",
       "name": "Galio",
-      "ddragonId": "Galio"
+      "ddragonId": "Galio",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Winds of War",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Shield of Durand",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Justice Punch",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Hero's Entrance",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Aegis Frame Galio",
+        "num": 40
+      },
+      "splashColor": "#417cc8"
     },
     {
       "slug": "gangplank",
       "name": "Gangplank",
-      "ddragonId": "Gangplank"
+      "ddragonId": "Gangplank",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Parrrley",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Remove Scurvy",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Powder Keg",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Cannon Barrage",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "PROJECT: Gangplank",
+        "num": 33
+      },
+      "splashColor": "#bb3d58"
     },
     {
       "slug": "garen",
       "name": "Garen",
-      "ddragonId": "Garen"
+      "ddragonId": "Garen",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Decisive Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Courage",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Judgment",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Demacian Justice",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Fallen God-King Garen",
+        "num": 44
+      },
+      "splashColor": "#b8434a"
     },
     {
       "slug": "gnar",
       "name": "Gnar",
-      "ddragonId": "Gnar"
+      "ddragonId": "Gnar",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Boomerang Throw / Boulder Toss",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Hyper / Wallop",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Hop / Crunch",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "GNAR!",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "T1 Gnar",
+        "num": 41
+      },
+      "splashColor": "#d6393f"
     },
     {
       "slug": "gragas",
       "name": "Gragas",
-      "ddragonId": "Gragas"
+      "ddragonId": "Gragas",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Barrel Roll",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Drunken Rage",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Body Slam",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Explosive Cask",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Music Fan Gragas",
+        "num": 39
+      },
+      "splashColor": "#b67952"
     },
     {
       "slug": "graves",
       "name": "Graves",
-      "ddragonId": "Graves"
+      "ddragonId": "Graves",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "End of the Line",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Smoke Screen",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Quickdraw",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Collateral Damage",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Sentinel Graves",
+        "num": 35
+      },
+      "splashColor": "#af7b50"
     },
     {
       "slug": "gwen",
       "name": "Gwen",
-      "ddragonId": "Gwen"
+      "ddragonId": "Gwen",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Snip Snip!",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Hallowed Mist",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Skip 'n Slash",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Needlework",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Faerie Court Gwen",
+        "num": 48
+      },
+      "splashColor": "#3183b4"
     },
     {
       "slug": "hecarim",
       "name": "Hecarim",
-      "ddragonId": "Hecarim"
+      "ddragonId": "Hecarim",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Rampage",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Spirit of Dread",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Devastating Charge",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Onslaught of Shadows",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Lancer Zero Hecarim",
+        "num": 7
+      },
+      "splashColor": "#c29f65"
     },
     {
       "slug": "heimerdinger",
       "name": "Heimerdinger",
-      "ddragonId": "Heimerdinger"
+      "ddragonId": "Heimerdinger",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "H-28 G Evolution Turret",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Hextech Micro-Rockets",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "CH-2 Electron Storm Grenade",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "UPGRADE!!!",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Dragon Trainer Heimerdinger",
+        "num": 6
+      },
+      "splashColor": "#c26046"
     },
     {
       "slug": "hwei",
       "name": "Hwei",
-      "ddragonId": "Hwei"
+      "ddragonId": "Hwei",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Subject: Disaster",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Subject: Serenity",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Subject: Torment",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Spiraling Despair",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Sinful Shores Hwei",
+        "num": 21
+      },
+      "splashColor": "#3a7cd3"
     },
     {
       "slug": "illaoi",
       "name": "Illaoi",
-      "ddragonId": "Illaoi"
+      "ddragonId": "Illaoi",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Tentacle Smash",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Harsh Lesson",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Test of Spirit",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Leap of Faith",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Pasta Maker Illaoi",
+        "num": 37
+      },
+      "splashColor": "#b34e2f"
     },
     {
       "slug": "irelia",
       "name": "Irelia",
-      "ddragonId": "Irelia"
+      "ddragonId": "Irelia",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Bladesurge",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Defiant Dance",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Flawless Duet",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Vanguard's Edge",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige PROJECT: Irelia (2022)",
+        "num": 36
+      },
+      "splashColor": "#a06636"
     },
     {
       "slug": "ivern",
       "name": "Ivern",
-      "ddragonId": "Ivern"
+      "ddragonId": "Ivern",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Rootcaller",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Brushmaker",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Triggerseed",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Daisy!",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Rain Shepherd Ivern",
+        "num": 31
+      },
+      "splashColor": "#75a016"
     },
     {
       "slug": "janna",
       "name": "Janna",
-      "ddragonId": "Janna"
+      "ddragonId": "Janna",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Howling Gale",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Zephyr",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Eye Of The Storm",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Monsoon",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Cyber Halo Janna",
+        "num": 46
+      },
+      "splashColor": "#7b9fdd"
     },
     {
       "slug": "jarvaniv",
       "name": "Jarvan IV",
-      "ddragonId": "JarvanIV"
+      "ddragonId": "JarvanIV",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Dragon Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Golden Aegis",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Demacian Standard",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Cataclysm",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Visions of the Fallen Jarvan IV",
+        "num": 54
+      },
+      "splashColor": "#96273e"
     },
     {
       "slug": "jax",
       "name": "Jax",
-      "ddragonId": "Jax"
+      "ddragonId": "Jax",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Leap Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Empower",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Counter Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Grandmaster-at-Arms",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Magma Chamber Jax",
+        "num": 42
+      },
+      "splashColor": "#e75b30"
     },
     {
       "slug": "jayce",
       "name": "Jayce",
-      "ddragonId": "Jayce"
+      "ddragonId": "Jayce",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "To the Skies! / Shock Blast",
+          "maxRank": 6
+        },
+        {
+          "key": "w",
+          "name": "Lightning Field / Hyper Charge",
+          "maxRank": 6
+        },
+        {
+          "key": "e",
+          "name": "Thundering Blow / Acceleration Gate",
+          "maxRank": 6
+        },
+        {
+          "key": "r",
+          "name": "Mercury Cannon / Mercury Hammer",
+          "maxRank": 1
+        }
+      ],
+      "splash": {
+        "skin": "Prestige T1 Jayce",
+        "num": 36
+      },
+      "splashColor": "#c99964"
     },
     {
       "slug": "jhin",
       "name": "Jhin",
-      "ddragonId": "Jhin"
+      "ddragonId": "Jhin",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Dancing Grenade",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Deadly Flourish",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Captive Audience",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Curtain Call",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Dark Cosmic Erasure Jhin",
+        "num": 37
+      },
+      "splashColor": "#ac4552"
     },
     {
       "slug": "jinx",
       "name": "Jinx",
-      "ddragonId": "Jinx"
+      "ddragonId": "Jinx",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Switcheroo!",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Zap!",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Flame Chompers!",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Super Mega Death Rocket!",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Arcane Fractured Jinx",
+        "num": 60
+      },
+      "splashColor": "#af26d1"
     },
     {
       "slug": "ksante",
       "name": "K'Sante",
-      "ddragonId": "KSante"
+      "ddragonId": "KSante",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Ntofo Strikes",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Path Maker",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Footwork",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "All Out",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Empyrean K'Sante",
+        "num": 2
+      },
+      "splashColor": "#bf5fb6"
     },
     {
       "slug": "kaisa",
       "name": "Kai'Sa",
-      "ddragonId": "Kaisa"
+      "ddragonId": "Kaisa",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Icathian Rain",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Void Seeker",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Supercharge",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Killer Instinct",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Risen Legend Kai'Sa",
+        "num": 70
+      },
+      "splashColor": "#c0845b"
     },
     {
       "slug": "kalista",
       "name": "Kalista",
-      "ddragonId": "Kalista"
+      "ddragonId": "Kalista",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Pierce",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Sentinel",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Rend",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Fate's Call",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Dawnbringer Kalista",
+        "num": 24
+      },
+      "splashColor": "#66a4d4"
     },
     {
       "slug": "karma",
       "name": "Karma",
-      "ddragonId": "Karma"
+      "ddragonId": "Karma",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Inner Flame",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Focused Resolve",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Inspire",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Mantra",
+          "maxRank": 4
+        }
+      ],
+      "splash": {
+        "skin": "Dawnbringer Karma",
+        "num": 19
+      },
+      "splashColor": "#d19e67"
     },
     {
       "slug": "karthus",
       "name": "Karthus",
-      "ddragonId": "Karthus"
+      "ddragonId": "Karthus",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Lay Waste",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Wall of Pain",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Defile",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Requiem",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Arcana Karthus",
+        "num": 35
+      },
+      "splashColor": "#d64842"
     },
     {
       "slug": "kassadin",
       "name": "Kassadin",
-      "ddragonId": "Kassadin"
+      "ddragonId": "Kassadin",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Null Sphere",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Nether Blade",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Force Pulse",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Riftwalk",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Kassadin",
+        "num": 14
+      },
+      "splashColor": "#2263b9"
     },
     {
       "slug": "katarina",
       "name": "Katarina",
-      "ddragonId": "Katarina"
+      "ddragonId": "Katarina",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Bouncing Blade",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Preparation",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Shunpo",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Death Lotus",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Battle Queen Katarina",
+        "num": 29
+      },
+      "splashColor": "#9a2546"
     },
     {
       "slug": "kayle",
       "name": "Kayle",
-      "ddragonId": "Kayle"
+      "ddragonId": "Kayle",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Radiant Blast",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Celestial Blessing",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Starfire Spellblade",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Divine Judgment",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Empyrean Kayle",
+        "num": 67
+      },
+      "splashColor": "#c23d68"
     },
     {
       "slug": "kayn",
       "name": "Kayn",
-      "ddragonId": "Kayn"
+      "ddragonId": "Kayn",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Reaping Slash",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Blade's Reach",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Shadow Step",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Umbral Trespass",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Nightbringer Kayn",
+        "num": 9
+      },
+      "splashColor": "#c98b5e"
     },
     {
       "slug": "kennen",
       "name": "Kennen",
-      "ddragonId": "Kennen"
+      "ddragonId": "Kennen",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Thundering Shuriken",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Electrical Surge",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Lightning Rush",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Slicing Maelstrom",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Astronaut Kennen",
+        "num": 25
+      },
+      "splashColor": "#27c49f"
     },
     {
       "slug": "khazix",
       "name": "Kha'Zix",
-      "ddragonId": "Khazix"
+      "ddragonId": "Khazix",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Taste Their Fear",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Void Spike",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Leap",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Void Assault",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Crystalis Indomitus Kha'Zix",
+        "num": 79
+      },
+      "splashColor": "#692fb8"
     },
     {
       "slug": "kindred",
       "name": "Kindred",
-      "ddragonId": "Kindred"
+      "ddragonId": "Kindred",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Dance of Arrows",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Wolf's Frenzy",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Mounting Dread",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Lamb's Respite",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Porcelain Kindred",
+        "num": 33
+      },
+      "splashColor": "#4b64aa"
     },
     {
       "slug": "kled",
       "name": "Kled",
-      "ddragonId": "Kled"
+      "ddragonId": "Kled",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Bear Trap on a Rope",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Violent Tendencies",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Jousting",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Chaaaaaaaarge!!!",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Kibble-Head Kled",
+        "num": 18
+      },
+      "splashColor": "#df9948"
     },
     {
       "slug": "kogmaw",
       "name": "Kog'Maw",
-      "ddragonId": "KogMaw"
+      "ddragonId": "KogMaw",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Caustic Spittle",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Bio-Arcane Barrage",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Void Ooze",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Living Artillery",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Classic Baron Kog'Maw",
+        "num": 65
+      },
+      "splashColor": "#d04ec9"
     },
     {
       "slug": "leblanc",
       "name": "LeBlanc",
-      "ddragonId": "Leblanc"
+      "ddragonId": "Leblanc",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Sigil of Malice",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Distortion",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Ethereal Chains",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Mimic",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Sinful Shores LeBlanc",
+        "num": 59
+      },
+      "splashColor": "#2984b5"
     },
     {
       "slug": "leesin",
       "name": "Lee Sin",
-      "ddragonId": "LeeSin"
+      "ddragonId": "LeeSin",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Sonic Wave / Resonating Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Safeguard / Iron Will",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Tempest / Cripple",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Dragon's Rage",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Divine Heavenscale Lee Sin",
+        "num": 52
+      },
+      "splashColor": "#b95a3e"
     },
     {
       "slug": "leona",
       "name": "Leona",
-      "ddragonId": "Leona"
+      "ddragonId": "Leona",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Shield of Daybreak",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Eclipse",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Zenith Blade",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Solar Flare",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Battle Lion Leona",
+        "num": 53
+      },
+      "splashColor": "#2f85be"
     },
     {
       "slug": "lillia",
       "name": "Lillia",
-      "ddragonId": "Lillia"
+      "ddragonId": "Lillia",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Blooming Blows",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Watch Out! Eep!",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Swirlseed",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Lilting Lullaby",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Petals of Spring Lillia",
+        "num": 46
+      },
+      "splashColor": null
     },
     {
       "slug": "lissandra",
       "name": "Lissandra",
-      "ddragonId": "Lissandra"
+      "ddragonId": "Lissandra",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Ice Shard",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Ring of Frost",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Glacial Path",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Frozen Tomb",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Porcelain Lissandra",
+        "num": 33
+      },
+      "splashColor": "#415fbd"
     },
     {
       "slug": "locke",
       "name": "Locke",
-      "ddragonId": "Locke"
+      "ddragonId": "Locke",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Ritual Nails",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Soul Ignition",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Ashen Pursuit",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Purgatory",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "High Noon Locke",
+        "num": 1
+      },
+      "splashColor": "#cb7052"
     },
     {
       "slug": "lucian",
       "name": "Lucian",
-      "ddragonId": "Lucian"
+      "ddragonId": "Lucian",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Piercing Light",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Ardent Blaze",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Relentless Pursuit",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "The Culling",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Sunken Shadows Lucian",
+        "num": 72
+      },
+      "splashColor": "#367997"
     },
     {
       "slug": "lulu",
       "name": "Lulu",
-      "ddragonId": "Lulu"
+      "ddragonId": "Lulu",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Glitterlance",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Whimsy",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Help, Pix!",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Wild Growth",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Space Groove Lulu",
+        "num": 27
+      },
+      "splashColor": "#c27e49"
     },
     {
       "slug": "lux",
       "name": "Lux",
-      "ddragonId": "Lux"
+      "ddragonId": "Lux",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Light Binding",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Prismatic Barrier",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Lucent Singularity",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Final Spark",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Elementalist Lux",
+        "num": 7
+      },
+      "splashColor": "#e4a579"
     },
     {
       "slug": "malphite",
       "name": "Malphite",
-      "ddragonId": "Malphite"
+      "ddragonId": "Malphite",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Seismic Shard",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Thunderclap",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Ground Slam",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Unstoppable Force",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Dark Star Malphite",
+        "num": 24
+      },
+      "splashColor": "#cf8652"
     },
     {
       "slug": "malzahar",
       "name": "Malzahar",
-      "ddragonId": "Malzahar"
+      "ddragonId": "Malzahar",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Call of the Void",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Void Swarm",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Malefic Visions",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Nether Grasp",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Malzahar",
+        "num": 7
+      },
+      "splashColor": "#2d51a9"
     },
     {
       "slug": "maokai",
       "name": "Maokai",
-      "ddragonId": "Maokai"
+      "ddragonId": "Maokai",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Bramble Smash",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Twisted Advance",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Sapling Toss",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Nature's Grasp",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Corrupted Petricite Maokai",
+        "num": 35
+      },
+      "splashColor": "#6936aa"
     },
     {
       "slug": "masteryi",
       "name": "Master Yi",
-      "ddragonId": "MasterYi"
+      "ddragonId": "MasterYi",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Alpha Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Meditate",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Wuju Style",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Highlander",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "PROJECT: Command Line Yi",
+        "num": 116
+      },
+      "splashColor": "#a62e42"
     },
     {
       "slug": "mel",
       "name": "Mel",
-      "ddragonId": "Mel"
+      "ddragonId": "Mel",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Radiant Barrage",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Rebuttal",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Solar Snare",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Golden Eclipse",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Winterblessed Mel",
+        "num": 10
+      },
+      "splashColor": "#5e7ac0"
     },
     {
       "slug": "milio",
       "name": "Milio",
-      "ddragonId": "Milio"
+      "ddragonId": "Milio",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Ultra Mega Fire Kick",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Cozy Campfire",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Warm Hugs",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Breath of Life",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Winter Wonder Milio",
+        "num": 20
+      },
+      "splashColor": "#3d58a3"
     },
     {
       "slug": "missfortune",
       "name": "Miss Fortune",
-      "ddragonId": "MissFortune"
+      "ddragonId": "MissFortune",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Double Up",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Strut",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Make It Rain",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Bullet Time",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Gun Goddess Miss Fortune",
+        "num": 16
+      },
+      "splashColor": "#ae442e"
     },
     {
       "slug": "mordekaiser",
       "name": "Mordekaiser",
-      "ddragonId": "Mordekaiser"
+      "ddragonId": "Mordekaiser",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Obliterate",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Indestructible",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Death's Grasp",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Realm of Death",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Sahn-Uzal Mordekaiser",
+        "num": 54
+      },
+      "splashColor": "#b74d25"
     },
     {
       "slug": "morgana",
       "name": "Morgana",
-      "ddragonId": "Morgana"
+      "ddragonId": "Morgana",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Dark Binding",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Tormented Shadow",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Black Shield",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Soul Shackles",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Spirit Blossom Morgana",
+        "num": 80
+      },
+      "splashColor": "#1e2b97"
     },
     {
       "slug": "naafiri",
       "name": "Naafiri",
-      "ddragonId": "Naafiri"
+      "ddragonId": "Naafiri",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Darkin Daggers",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "The Call of the Pack",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Eviscerate",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Hounds' Pursuit",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Warhound Naafiri",
+        "num": 29
+      },
+      "splashColor": "#5e31cb"
     },
     {
       "slug": "nami",
       "name": "Nami",
-      "ddragonId": "Nami"
+      "ddragonId": "Nami",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Aqua Prison",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Ebb and Flow",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Tidecaller's Blessing",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Tidal Wave",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Sunken Shadows Nami",
+        "num": 68
+      },
+      "splashColor": "#66ccbd"
     },
     {
       "slug": "nasus",
       "name": "Nasus",
-      "ddragonId": "Nasus"
+      "ddragonId": "Nasus",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Siphoning Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Wither",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Spirit Fire",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Fury of the Sands",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Infernal Nasus",
+        "num": 5
+      },
+      "splashColor": "#641d81"
     },
     {
       "slug": "nautilus",
       "name": "Nautilus",
-      "ddragonId": "Nautilus"
+      "ddragonId": "Nautilus",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Dredge Line",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Titan's Wrath",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Riptide",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Depth Charge",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Crystalis Indomitus Nautilus",
+        "num": 36
+      },
+      "splashColor": "#5a55b3"
     },
     {
       "slug": "neeko",
       "name": "Neeko",
-      "ddragonId": "Neeko"
+      "ddragonId": "Neeko",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Blooming Burst",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Shapesplitter",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Tangle-Barbs",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Pop Blossom",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Star Guardian Neeko (2022)",
+        "num": 21
+      },
+      "splashColor": "#da9a41"
     },
     {
       "slug": "nidalee",
       "name": "Nidalee",
-      "ddragonId": "Nidalee"
+      "ddragonId": "Nidalee",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Javelin Toss / Takedown",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Bushwhack / Pounce",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Primal Surge / Swipe",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Aspect Of The Cougar",
+          "maxRank": 4
+        }
+      ],
+      "splash": {
+        "skin": "Spirit Blossom Nidalee",
+        "num": 58
+      },
+      "splashColor": "#3273d1"
     },
     {
       "slug": "nilah",
       "name": "Nilah",
-      "ddragonId": "Nilah"
+      "ddragonId": "Nilah",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Formless Blade",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Jubilant Veil",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Slipstream",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Apotheosis",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Inkshadow Nilah",
+        "num": 21
+      },
+      "splashColor": "#87a3e6"
     },
     {
       "slug": "nocturne",
       "name": "Nocturne",
-      "ddragonId": "Nocturne"
+      "ddragonId": "Nocturne",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Duskbringer",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Shroud of Darkness",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Unspeakable Horror",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Paranoia",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Nocturne",
+        "num": 16
+      },
+      "splashColor": "#233786"
     },
     {
       "slug": "nunuwillump",
       "name": "Nunu & Willump",
-      "ddragonId": "Nunu"
+      "ddragonId": "Nunu",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Consume",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Biggest Snowball Ever!",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Snowball Barrage",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Absolute Zero",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Nunu & Willump Bot",
+        "num": 4
+      },
+      "splashColor": "#355999"
     },
     {
       "slug": "olaf",
       "name": "Olaf",
-      "ddragonId": "Olaf"
+      "ddragonId": "Olaf",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Undertow",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Tough It Out",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Reckless Swing",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Ragnarok",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Brolaf",
+        "num": 3
+      },
+      "splashColor": "#caaf20"
     },
     {
       "slug": "orianna",
       "name": "Orianna",
-      "ddragonId": "Orianna"
+      "ddragonId": "Orianna",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Command: Attack",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Command: Dissonance",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Command: Protect",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Command: Shockwave",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Risen Legend Orianna",
+        "num": 40
+      },
+      "splashColor": "#344ea5"
     },
     {
       "slug": "ornn",
       "name": "Ornn",
-      "ddragonId": "Ornn"
+      "ddragonId": "Ornn",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Volcanic Rupture",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Bellows Breath",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Searing Charge",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Call of the Forge God",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Aegis Frame Ornn",
+        "num": 29
+      },
+      "splashColor": "#a95335"
     },
     {
       "slug": "pantheon",
       "name": "Pantheon",
-      "ddragonId": "Pantheon"
+      "ddragonId": "Pantheon",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Comet Spear",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Shield Vault",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Aegis Assault",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Grand Starfall",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Ashen Conqueror Pantheon",
+        "num": 36
+      },
+      "splashColor": "#6e3caa"
     },
     {
       "slug": "poppy",
       "name": "Poppy",
-      "ddragonId": "Poppy"
+      "ddragonId": "Poppy",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Hammer Shock",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Steadfast Presence",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Heroic Charge",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Keeper's Verdict",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Poppy",
+        "num": 15
+      },
+      "splashColor": "#3f8bc6"
     },
     {
       "slug": "pyke",
       "name": "Pyke",
-      "ddragonId": "Pyke"
+      "ddragonId": "Pyke",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Bone Skewer",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Ghostwater Dive",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Phantom Undertow",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Death From Below",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Soul Fighter Pyke",
+        "num": 54
+      },
+      "splashColor": "#bd7c25"
     },
     {
       "slug": "qiyana",
       "name": "Qiyana",
-      "ddragonId": "Qiyana"
+      "ddragonId": "Qiyana",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Elemental Wrath / Edge of Ixtal",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Terrashape",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Audacity",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Supreme Display of Talent",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Battle Academia Qiyana",
+        "num": 50
+      },
+      "splashColor": "#4982be"
     },
     {
       "slug": "quinn",
       "name": "Quinn",
-      "ddragonId": "Quinn"
+      "ddragonId": "Quinn",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Blinding Assault",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Heightened Senses",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Vault",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Behind Enemy Lines",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "PROJECT: Quinn",
+        "num": 24
+      },
+      "splashColor": "#6096c2"
     },
     {
       "slug": "rakan",
       "name": "Rakan",
-      "ddragonId": "Rakan"
+      "ddragonId": "Rakan",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Gleaming Quill",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Grand Entrance",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Battle Dance",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "The Quickness",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Dragonmancer Rakan",
+        "num": 38
+      },
+      "splashColor": "#c04264"
     },
     {
       "slug": "rammus",
       "name": "Rammus",
-      "ddragonId": "Rammus"
+      "ddragonId": "Rammus",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Powerball",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Defensive Ball Curl",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Frenzying Taunt",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Soaring Slam",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Rammus",
+        "num": 16
+      },
+      "splashColor": "#4768dd"
     },
     {
       "slug": "reksai",
       "name": "Rek'Sai",
-      "ddragonId": "RekSai"
+      "ddragonId": "RekSai",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Queen's Wrath / Prey Seeker",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Burrow / Un-burrow",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Furious Bite / Tunnel",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Void Rush",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Primordian Rek'Sai",
+        "num": 26
+      },
+      "splashColor": "#3790ac"
     },
     {
       "slug": "rell",
       "name": "Rell",
-      "ddragonId": "Rell"
+      "ddragonId": "Rell",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Shattering Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Ferromancy: Crash Down",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Full Tilt",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Magnet Storm",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "High Noon Rell",
+        "num": 20
+      },
+      "splashColor": "#b8641d"
     },
     {
       "slug": "renataglasc",
       "name": "Renata Glasc",
-      "ddragonId": "Renata"
+      "ddragonId": "Renata",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Handshake",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Bailout",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Loyalty Program",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Hostile Takeover",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige La Ilusión Renata Glasc",
+        "num": 21
+      },
+      "splashColor": "#ce7340"
     },
     {
       "slug": "renekton",
       "name": "Renekton",
-      "ddragonId": "Renekton"
+      "ddragonId": "Renekton",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Cull the Meek",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Ruthless Predator",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Slice and Dice",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Dominus",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Renekton",
+        "num": 17
+      },
+      "splashColor": "#339aba"
     },
     {
       "slug": "rengar",
       "name": "Rengar",
-      "ddragonId": "Rengar"
+      "ddragonId": "Rengar",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Savagery",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Battle Roar",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Bola Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Thrill of the Hunt",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Street Demons Rengar",
+        "num": 40
+      },
+      "splashColor": "#8b225d"
     },
     {
       "slug": "riven",
       "name": "Riven",
-      "ddragonId": "Riven"
+      "ddragonId": "Riven",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Broken Wings",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Ki Burst",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Valor",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Blade of the Exile",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Valiant Sword Riven (2022)",
+        "num": 45
+      },
+      "splashColor": "#d3a165"
     },
     {
       "slug": "rumble",
       "name": "Rumble",
-      "ddragonId": "Rumble"
+      "ddragonId": "Rumble",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Flamespitter",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Scrap Shield",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Electro Harpoon",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "The Equalizer",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Super Galaxy Rumble",
+        "num": 3
+      },
+      "splashColor": "#a14730"
     },
     {
       "slug": "ryze",
       "name": "Ryze",
-      "ddragonId": "Ryze"
+      "ddragonId": "Ryze",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Overload",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Rune Prison",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Spell Flux",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Realm Warp",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Blood Moon Ryze",
+        "num": 29
+      },
+      "splashColor": "#ad1f33"
     },
     {
       "slug": "samira",
       "name": "Samira",
-      "ddragonId": "Samira"
+      "ddragonId": "Samira",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Flair",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Blade Whirl",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Wild Rush",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Inferno Trigger",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Soul Fighter Samira",
+        "num": 30
+      },
+      "splashColor": "#1b5f87"
     },
     {
       "slug": "sejuani",
       "name": "Sejuani",
-      "ddragonId": "Sejuani"
+      "ddragonId": "Sejuani",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Arctic Assault",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Winter's Wrath",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Permafrost",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Glacial Prison",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Sejuani",
+        "num": 15
+      },
+      "splashColor": "#cd8e64"
     },
     {
       "slug": "senna",
       "name": "Senna",
-      "ddragonId": "Senna"
+      "ddragonId": "Senna",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Piercing Darkness",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Last Embrace",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Curse of the Black Mist",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Dawning Shadow",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Lunar Eclipse Senna",
+        "num": 27
+      },
+      "splashColor": "#3f42a2"
     },
     {
       "slug": "seraphine",
       "name": "Seraphine",
-      "ddragonId": "Seraphine"
+      "ddragonId": "Seraphine",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "High Note",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Surround Sound",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Beat Drop",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Encore",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "K/DA ALL OUT Seraphine Indie",
+        "num": 1
+      },
+      "splashColor": "#d44e6d"
     },
     {
       "slug": "sett",
       "name": "Sett",
-      "ddragonId": "Sett"
+      "ddragonId": "Sett",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Knuckle Down",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Haymaker",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Facebreaker",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "The Show Stopper",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Radiant Serpent Sett",
+        "num": 66
+      },
+      "splashColor": "#d06648"
     },
     {
       "slug": "shaco",
       "name": "Shaco",
-      "ddragonId": "Shaco"
+      "ddragonId": "Shaco",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Deceive",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Jack In The Box",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Two-Shiv Poison",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Hallucinate",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Pandemonium Shaco",
+        "num": 71
+      },
+      "splashColor": "#e6992d"
     },
     {
       "slug": "shen",
       "name": "Shen",
-      "ddragonId": "Shen"
+      "ddragonId": "Shen",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Twilight Assault",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Spirit's Refuge",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Shadow Dash",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Stand United",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Ashen Guardian Shen",
+        "num": 49
+      },
+      "splashColor": "#5e4fb7"
     },
     {
       "slug": "shyvana",
       "name": "Shyvana",
-      "ddragonId": "Shyvana"
+      "ddragonId": "Shyvana",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Emberstrike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Inferno Aegis",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Molten Burst",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Dragon's Descent",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Immortal Journey Shyvana",
+        "num": 17
+      },
+      "splashColor": "#cd634c"
     },
     {
       "slug": "singed",
       "name": "Singed",
-      "ddragonId": "Singed"
+      "ddragonId": "Singed",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Poison Trail",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Mega Adhesive",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Fling",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Insanity Potion",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Astronaut Singed",
+        "num": 19
+      },
+      "splashColor": "#3d7ace"
     },
     {
       "slug": "sion",
       "name": "Sion",
-      "ddragonId": "Sion"
+      "ddragonId": "Sion",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Decimating Smash",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Soul Furnace",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Roar of the Slayer",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Unstoppable Onslaught",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Mecha Zero Sion",
+        "num": 5
+      },
+      "splashColor": "#4248b9"
     },
     {
       "slug": "sivir",
       "name": "Sivir",
-      "ddragonId": "Sivir"
+      "ddragonId": "Sivir",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Boomerang Blade",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Ricochet",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Spell Shield",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "On The Hunt",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Ann-Sivir-sary",
+        "num": 70
+      },
+      "splashColor": "#568ed6"
     },
     {
       "slug": "skarner",
       "name": "Skarner",
-      "ddragonId": "Skarner"
+      "ddragonId": "Skarner",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Shattered Earth / Upheaval",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Seismic Bastion",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Ixtal's Impact",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Impale",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Battlecast Alpha Skarner",
+        "num": 3
+      },
+      "splashColor": "#9f2f28"
     },
     {
       "slug": "smolder",
       "name": "Smolder",
-      "ddragonId": "Smolder"
+      "ddragonId": "Smolder",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Super Scorcher Breath",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Achooo!",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Flap, Flap, Flap",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "MMOOOMMMM!",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Reindeer Smolder",
+        "num": 11
+      },
+      "splashColor": "#c17c4f"
     },
     {
       "slug": "sona",
       "name": "Sona",
-      "ddragonId": "Sona"
+      "ddragonId": "Sona",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Hymn of Valor",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Aria of Perseverance",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Song of Celerity",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Crescendo",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "DJ Sona",
+        "num": 6
+      },
+      "splashColor": "#0d458d"
     },
     {
       "slug": "soraka",
       "name": "Soraka",
-      "ddragonId": "Soraka"
+      "ddragonId": "Soraka",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Starcall",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Astral Infusion",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Equinox",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Wish",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Star Guardian Soraka",
+        "num": 17
+      },
+      "splashColor": "#d99663"
     },
     {
       "slug": "swain",
       "name": "Swain",
-      "ddragonId": "Swain"
+      "ddragonId": "Swain",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Death's Hand",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Vision of Empire",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Nevermove",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Demonic Ascension",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Chosen of the Wolf Swain",
+        "num": 33
+      },
+      "splashColor": null
     },
     {
       "slug": "sylas",
       "name": "Sylas",
-      "ddragonId": "Sylas"
+      "ddragonId": "Sylas",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Chain Lash",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Kingslayer",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Abscond / Abduct",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Hijack",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige T1 Sylas",
+        "num": 53
+      },
+      "splashColor": null
     },
     {
       "slug": "syndra",
       "name": "Syndra",
-      "ddragonId": "Syndra"
+      "ddragonId": "Syndra",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Dark Sphere",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Force of Will",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Scatter the Weak",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Unleashed Power",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Star Guardian Syndra",
+        "num": 34
+      },
+      "splashColor": "#3fb0c1"
     },
     {
       "slug": "tahmkench",
       "name": "Tahm Kench",
-      "ddragonId": "TahmKench"
+      "ddragonId": "TahmKench",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Tongue Lash",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Abyssal Dive",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Thick Skin",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Devour",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Choncc Kench",
+        "num": 39
+      },
+      "splashColor": "#bb4662"
     },
     {
       "slug": "taliyah",
       "name": "Taliyah",
-      "ddragonId": "Taliyah"
+      "ddragonId": "Taliyah",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Threaded Volley",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Seismic Shove",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Unraveled Earth",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Weaver's Wall",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Crystalis Motus Taliyah",
+        "num": 21
+      },
+      "splashColor": "#34adb1"
     },
     {
       "slug": "talon",
       "name": "Talon",
-      "ddragonId": "Talon"
+      "ddragonId": "Talon",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Noxian Diplomacy",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Rake",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Assassin's Path",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Shadow Assault",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige High Noon Talon",
+        "num": 39
+      },
+      "splashColor": "#c85b4c"
     },
     {
       "slug": "taric",
       "name": "Taric",
-      "ddragonId": "Taric"
+      "ddragonId": "Taric",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Starlight's Touch",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Bastion",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Dazzle",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Cosmic Radiance",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Fatebreaker Taric",
+        "num": 27
+      },
+      "splashColor": "#b66346"
     },
     {
       "slug": "teemo",
       "name": "Teemo",
-      "ddragonId": "Teemo"
+      "ddragonId": "Teemo",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Blinding Dart",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Move Quick",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Toxic Shot",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Noxious Trap",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Spirit Blossom Teemo",
+        "num": 27
+      },
+      "splashColor": "#ba7656"
     },
     {
       "slug": "thresh",
       "name": "Thresh",
-      "ddragonId": "Thresh"
+      "ddragonId": "Thresh",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Death Sentence",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Dark Passage",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Flay",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "The Box",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Pulsefire Thresh (2022)",
+        "num": 38
+      },
+      "splashColor": "#cb8d5d"
     },
     {
       "slug": "tristana",
       "name": "Tristana",
-      "ddragonId": "Tristana"
+      "ddragonId": "Tristana",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Rapid Fire",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Rocket Jump",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Explosive Charge",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Buster Shot",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Risen Legend Tristana",
+        "num": 79
+      },
+      "splashColor": "#5888c7"
     },
     {
       "slug": "trundle",
       "name": "Trundle",
-      "ddragonId": "Trundle"
+      "ddragonId": "Trundle",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Chomp",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Frozen Domain",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Pillar of Ice",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Subjugate",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Esports Fan Trundle",
+        "num": 21
+      },
+      "splashColor": "#4675b5"
     },
     {
       "slug": "tryndamere",
       "name": "Tryndamere",
-      "ddragonId": "Tryndamere"
+      "ddragonId": "Tryndamere",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Bloodlust",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Mocking Shout",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Spinning Slash",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Undying Rage",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Demonblade Tryndamere",
+        "num": 4
+      },
+      "splashColor": "#a35c2f"
     },
     {
       "slug": "twistedfate",
       "name": "Twisted Fate",
-      "ddragonId": "TwistedFate"
+      "ddragonId": "TwistedFate",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Wild Cards",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Pick a Card",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Stacked Deck",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Destiny",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "The Magnificent Twisted Fate",
+        "num": 3
+      },
+      "splashColor": "#ac1a15"
     },
     {
       "slug": "twitch",
       "name": "Twitch",
-      "ddragonId": "Twitch"
+      "ddragonId": "Twitch",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Ambush",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Venom Cask",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Contaminate",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Spray and Pray",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Cheddar Chief Twitch",
+        "num": 55
+      },
+      "splashColor": "#bf8434"
     },
     {
       "slug": "udyr",
       "name": "Udyr",
-      "ddragonId": "Udyr"
+      "ddragonId": "Udyr",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Wilding Claw",
+          "maxRank": 6
+        },
+        {
+          "key": "w",
+          "name": "Iron Mantle",
+          "maxRank": 6
+        },
+        {
+          "key": "e",
+          "name": "Blazing Stampede",
+          "maxRank": 6
+        },
+        {
+          "key": "r",
+          "name": "Wingborne Storm",
+          "maxRank": 6
+        }
+      ],
+      "splash": {
+        "skin": "Spirit Guard Udyr",
+        "num": 3
+      },
+      "splashColor": "#a84d35"
     },
     {
       "slug": "urgot",
       "name": "Urgot",
-      "ddragonId": "Urgot"
+      "ddragonId": "Urgot",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Corrosive Charge",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Purge",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Disdain",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Fear Beyond Death",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Old God Urgot",
+        "num": 41
+      },
+      "splashColor": "#bf415c"
     },
     {
       "slug": "varus",
       "name": "Varus",
-      "ddragonId": "Varus"
+      "ddragonId": "Varus",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Piercing Arrow",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Blighted Quiver",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Hail of Arrows",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Chain of Corruption",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Empyrean Varus",
+        "num": 53
+      },
+      "splashColor": "#a8331c"
     },
     {
       "slug": "vayne",
       "name": "Vayne",
-      "ddragonId": "Vayne"
+      "ddragonId": "Vayne",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Tumble",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Silver Bolts",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Condemn",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Final Hour",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Risen Legend Vayne",
+        "num": 64
+      },
+      "splashColor": "#c03e50"
     },
     {
       "slug": "veigar",
       "name": "Veigar",
-      "ddragonId": "Veigar"
+      "ddragonId": "Veigar",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Baleful Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Dark Matter",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Event Horizon",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Primordial Burst",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Magma Chamber Veigar",
+        "num": 67
+      },
+      "splashColor": "#c37944"
     },
     {
       "slug": "velkoz",
       "name": "Vel'Koz",
-      "ddragonId": "Velkoz"
+      "ddragonId": "Velkoz",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Plasma Fission",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Void Rift",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Tectonic Disruption",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Life Form Disintegration Ray",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Spaghetti alla Vel'Koz",
+        "num": 29
+      },
+      "splashColor": "#b1672c"
     },
     {
       "slug": "vex",
       "name": "Vex",
-      "ddragonId": "Vex"
+      "ddragonId": "Vex",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Mistral Bolt",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Personal Space",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Looming Darkness",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Shadow Surge",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Surprise Party Vex",
+        "num": 29
+      },
+      "splashColor": "#514dba"
     },
     {
       "slug": "vi",
       "name": "Vi",
-      "ddragonId": "Vi"
+      "ddragonId": "Vi",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Vault Breaker",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Denting Blows",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Relentless Force",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Cease and Desist",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Arcane Brawler Vi",
+        "num": 48
+      },
+      "splashColor": "#1c4782"
     },
     {
       "slug": "viego",
       "name": "Viego",
-      "ddragonId": "Viego"
+      "ddragonId": "Viego",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Blade of the Ruined King",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Spectral Maw",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Harrowed Path",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Heartbreaker",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Revenant Reign Viego",
+        "num": 43
+      },
+      "splashColor": "#ce3e60"
     },
     {
       "slug": "viktor",
       "name": "Viktor",
-      "ddragonId": "Viktor"
+      "ddragonId": "Viktor",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Siphon Power",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Gravity Field",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Hextech Ray",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Arcane Storm",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Arcane Savior Viktor",
+        "num": 24
+      },
+      "splashColor": "#db749f"
     },
     {
       "slug": "vladimir",
       "name": "Vladimir",
-      "ddragonId": "Vladimir"
+      "ddragonId": "Vladimir",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Transfusion",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Sanguine Pool",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Tides of Blood",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Hemoplague",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Blood Lord Vladimir",
+        "num": 5
+      },
+      "splashColor": "#aa3518"
     },
     {
       "slug": "volibear",
       "name": "Volibear",
-      "ddragonId": "Volibear"
+      "ddragonId": "Volibear",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Thundering Smash",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Frenzied Maul",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Sky Splitter",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Stormbringer",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Duality Dragon Volibear",
+        "num": 9
+      },
+      "splashColor": "#cb4950"
     },
     {
       "slug": "warwick",
       "name": "Warwick",
-      "ddragonId": "Warwick"
+      "ddragonId": "Warwick",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Jaws of the Beast",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Blood Hunt",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Primal Howl",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Infinite Duress",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Winterblessed Warwick",
+        "num": 46
+      },
+      "splashColor": "#4b7bc0"
     },
     {
       "slug": "wukong",
       "name": "Wukong",
-      "ddragonId": "MonkeyKing"
+      "ddragonId": "MonkeyKing",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Crushing Blow",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Warrior Trickster",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Nimbus Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Cyclone",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Mecha Kingdoms Wukong",
+        "num": 26
+      },
+      "splashColor": "#c45343"
     },
     {
       "slug": "xayah",
       "name": "Xayah",
-      "ddragonId": "Xayah"
+      "ddragonId": "Xayah",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Double Daggers",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Deadly Plumage",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Bladecaller",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Featherstorm",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Brave Phoenix Xayah",
+        "num": 26
+      },
+      "splashColor": "#bb3e3d"
     },
     {
       "slug": "xerath",
       "name": "Xerath",
-      "ddragonId": "Xerath"
+      "ddragonId": "Xerath",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Arcanopulse",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Eye of Destruction",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Shocking Orb",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Rite of the Arcane",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Crystalis Indomitus Xerath",
+        "num": 30
+      },
+      "splashColor": "#7833aa"
     },
     {
       "slug": "xinzhao",
       "name": "Xin Zhao",
-      "ddragonId": "XinZhao"
+      "ddragonId": "XinZhao",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Three Talon Strike",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Wind Becomes Lightning",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Audacious Charge",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Crescent Guard",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "T1 Xin Zhao",
+        "num": 53
+      },
+      "splashColor": "#d7715e"
     },
     {
       "slug": "yasuo",
       "name": "Yasuo",
-      "ddragonId": "Yasuo"
+      "ddragonId": "Yasuo",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Steel Tempest",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Wind Wall",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Sweeping Blade",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Last Breath",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Genesis Nightbringer Yasuo",
+        "num": 87
+      },
+      "splashColor": "#e24f61"
     },
     {
       "slug": "yone",
       "name": "Yone",
-      "ddragonId": "Yone"
+      "ddragonId": "Yone",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Mortal Steel",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Spirit Cleave",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Soul Unbound",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Fate Sealed",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Peacemaker High Noon Yone",
+        "num": 58
+      },
+      "splashColor": "#ca5336"
     },
     {
       "slug": "yorick",
       "name": "Yorick",
-      "ddragonId": "Yorick"
+      "ddragonId": "Yorick",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Last Rites",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Dark Procession",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Mourning Mist",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Eulogy of the Isles",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "High Noon Yorick",
+        "num": 50
+      },
+      "splashColor": "#c45327"
     },
     {
       "slug": "yunara",
       "name": "Yunara",
-      "ddragonId": "Yunara"
+      "ddragonId": "Yunara",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Cultivation of Spirit",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Arc of Judgment | Arc of Ruin",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Kanmei's Steps | Untouchable Shadow",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Transcend One's Self",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "T1 Yunara",
+        "num": 10
+      },
+      "splashColor": "#c57052"
     },
     {
       "slug": "yuumi",
       "name": "Yuumi",
-      "ddragonId": "Yuumi"
+      "ddragonId": "Yuumi",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Prowling Projectile",
+          "maxRank": 6
+        },
+        {
+          "key": "w",
+          "name": "You and Me!",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Zoomies",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Final Chapter",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Cyber Cat Yuumi",
+        "num": 50
+      },
+      "splashColor": "#5b74c5"
     },
     {
       "slug": "zaahen",
       "name": "Zaahen",
-      "ddragonId": "Zaahen"
+      "ddragonId": "Zaahen",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "The Darkin Glaive",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Dreaded Return",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Aureate Rush",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Grim Deliverance",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Immortal Journey Zaahen",
+        "num": 1
+      },
+      "splashColor": "#1a5485"
     },
     {
       "slug": "zac",
       "name": "Zac",
-      "ddragonId": "Zac"
+      "ddragonId": "Zac",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Stretching Strikes",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Unstable Matter",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Elastic Slingshot",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Let's Bounce!",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Space Groove Zac",
+        "num": 33
+      },
+      "splashColor": "#3253a5"
     },
     {
       "slug": "zed",
       "name": "Zed",
-      "ddragonId": "Zed"
+      "ddragonId": "Zed",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Razor Shuriken",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Living Shadow",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Shadow Slash",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Death Mark",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Spirit Blossom Zed",
+        "num": 69
+      },
+      "splashColor": "#515fb4"
     },
     {
       "slug": "zeri",
       "name": "Zeri",
-      "ddragonId": "Zeri"
+      "ddragonId": "Zeri",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Burst Fire",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Ultrashock Laser",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Spark Surge",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Lightning Crash",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Fright Night Zeri",
+        "num": 29
+      },
+      "splashColor": "#4655ac"
     },
     {
       "slug": "ziggs",
       "name": "Ziggs",
-      "ddragonId": "Ziggs"
+      "ddragonId": "Ziggs",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Bouncing Bomb",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Satchel Charge",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Hexplosive Minefield",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Mega Inferno Bomb",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Hextech Ziggs",
+        "num": 23
+      },
+      "splashColor": "#208fe0"
     },
     {
       "slug": "zilean",
       "name": "Zilean",
-      "ddragonId": "Zilean"
+      "ddragonId": "Zilean",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Time Bomb",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Rewind",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Time Warp",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Chronoshift",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Arcana Zilean",
+        "num": 24
+      },
+      "splashColor": "#aa4235"
     },
     {
       "slug": "zoe",
       "name": "Zoe",
-      "ddragonId": "Zoe"
+      "ddragonId": "Zoe",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Paddle Star!",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Spell Thief",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Sleepy Trouble Bubble",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Portal Jump",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Eternal Aspect Zoe",
+        "num": 43
+      },
+      "splashColor": "#e3ac5f"
     },
     {
       "slug": "zyra",
       "name": "Zyra",
-      "ddragonId": "Zyra"
+      "ddragonId": "Zyra",
+      "abilities": [
+        {
+          "key": "q",
+          "name": "Deadly Spines",
+          "maxRank": 5
+        },
+        {
+          "key": "w",
+          "name": "Rampant Growth",
+          "maxRank": 5
+        },
+        {
+          "key": "e",
+          "name": "Grasping Roots",
+          "maxRank": 5
+        },
+        {
+          "key": "r",
+          "name": "Stranglethorns",
+          "maxRank": 3
+        }
+      ],
+      "splash": {
+        "skin": "Prestige Coven Zyra",
+        "num": 6
+      },
+      "splashColor": "#c6975e"
     }
   ]
 }

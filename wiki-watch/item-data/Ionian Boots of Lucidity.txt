@@ -1,0 +1,25 @@
+["Ionian Boots of Lucidity"] = {
+        ["id"]                  = 3158,
+        ["tier"]                = 2,
+        ["type"]                = {"Boots"},
+        ["caption"]             = "\"This item is dedicated in honor of [[Ionia]]'s victory over [[Noxus]] in the [[Institute of War|Rematch]] for the Southern Provinces on 10 December, 20 CLE.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 10,
+            ["msflat"]          = 45,
+        },
+        ["effects"] = {
+        	["pass"] = {
+        		["name"]        = "Ionian Insight",
+        		["unique"]      = true,
+        		["description"] = "Gain 10 [[Haste#Summoner spell haste|summoner spell haste]].",
+        	},
+        },
+        ["recipe"]              = {"Boots", "Glowing Mote"},
+        ["buy"]                 = 900,
+    },

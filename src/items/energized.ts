@@ -10,11 +10,10 @@
 // ASSUMPTION (to check in the Practice Tool): daggers give only the plain 6, not Statikk's
 //   "+9 per basic attack" (daggers aren't basic attacks). With 15 per dagger, Statikk would
 //   proc 2 more times (daggers 8 and 15).
-import { PATCH } from "../data/patch.ts";
 import type { EffectContext, ItemEffect } from "../simulation/simulate.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Template:Energized_info", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Template:Energized_info", patch: "26.23" },
   fullBar: 100,
   stacksPerDagger: 6,
 };

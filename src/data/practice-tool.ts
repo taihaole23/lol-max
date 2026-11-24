@@ -1,9 +1,8 @@
 // The Practice Tool's target dummy, for the in-game validation tests (Step 8).
 // Only the tests use this; the site's dummies are real champions (champions.ts).
-import { PATCH } from "./patch.ts";
 
 export const practiceDummy = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Practice_Tool", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Practice_Tool", patch: "26.23" },
   // "Health 1000, armor 0, magic resist 0" before any cheats.
   baseHp: 1000,
   baseArmor: 0,

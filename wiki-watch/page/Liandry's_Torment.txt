@@ -1,0 +1,128 @@
+: ''For its previous successor, see {{ii|Liandry's Anguish}}.''
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Liandry's Lament}}.''
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Blackfire Torch;Cosmic Drive;Riftmaker;Rod of Ages;Rylai's Crystal Scepter;Hextech Rocketbelt
+|background =
+|notes =
+* {{sbc|Torment}} can be stacked on a target when applied by multiple users, though not refreshing the debuff for all subsequent sources at a time.
+* {{sbc|Torment}} deals {{tip|proc damage}} and is tagged as {{tip|persistent damage|periodic}} without applying {{tip|spell effects}}.
+* {{sbc|Torment}} itself is not blocked by {{tip|spell shield}}.
+* {{sbc|Suffering}} increases the damage dealt by {{sbc|Torment}} to {{ft|{{as|{{ap|6*1.06}}% of the target's '''maximum''' health}} {{as|'''total''' magic damage}}|{{as|{{ap|1*1.06}}% of the target's '''maximum''' health}} {{as|magic damage}} per tick}}at maximum stacks.
+* The increased damage from {{sbc|Suffering}} {{tip|stacks multiplicatively}} with other damage multipliers.
+|strategy =
+* {{ii|Liandry's Torment}} is best for champions that deal magic damage over an extended period of time.
+|oldicons =
+|trivia =
+* The search terms 'last shadow' and 'ls' reference LCK caster [https://lol.gamepedia.com/LS Nick De Cesare], who promoted {{ii|Liandry's Torment}} over {{ii|Morellonomicon}} as an effective item.<ref>[https://www.reddit.com/r/leagueoflegends/comments/m1ymei/ls_gets_emotional_after_discovering_searching_his/ LS item reaction]</ref><ref>[https://twitter.com/LSXYZ9/status/1369659269818150919 LS item acknowledgement]</ref>
+* The item was referred to as ''"Liandry's Lament"'' in several Riot posts, and is occasionally referred to as such.
+* The item was originally going to be called ''"Zephyr's Lament"'', but was later changed to "Liandry's Torment".
+* The item was named after LiaNdrY, the leader of unofficial Russian client development team, which existed before official launch of Russian server. Also LiaNdrY was administrator of lolgame.ru, the biggest site dedicated to League of Legends in Runet.
+[[File:Shadow Isles Crest icon.png|link=Universe:Shadow Isles|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Liandry's Anguish item screenshot.png|Item VFX
+</gallery>
+|sfx =
+;Passive Triggered
+* {{sm2|Liandry's Anguish passive SFX.ogg}} Passive SFX
+* {{sm2|Liandry's Anguish passive SFX 2.ogg}} Passive SFX
+* {{sm2|Liandry's Anguish passive SFX 3.ogg}} Passive SFX
+
+|revisions =
+|patchhistory =
+;[[V25.10]]
+* Ability power reduced to 60 from 70.
+
+;[[V14.20]]
+* Torment monster cap per tick reduced to 20 from 25.
+
+;[[V14.19]]
+* Ability power reduced to 70 from 90.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Liandry's Lament}}.
+
+;[[V14.10]]
+* {{sbc|New Recipe:}} {{ii|Haunting Guise}} + {{ii|Fated Ashes}} + {{g|800}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Haunting Guise}} + {{ii|Blasting Wand}} + {{g|850}} = {{g|3000}}.
+
+;[[V14.1]] - Re-added
+* ''Replaces {{ii|Liandry's Anguish}}.''
+* Updated icon.
+* {{sbc|Recipe:}} {{ii|Haunting Guise}} + {{ii|Blasting Wand}} + {{g|850}} = {{g|3000}}.
+* {{sbc|Stats:}} 300 health, 90 ability power.
+* {{sbc|Unique Passive - Torment:}} Dealing ability damage applies a burn for 3 seconds that deals {{as|magic damage}} equal to{{ft|{{as|2% of the target's '''maximum''' health|hp}} every second|{{as|{{ap|2*3}}% of the target's '''maximum''' health}} over the duration}}, capped at 50 against monsters.
+* {{sbc|Unique Passive - Suffering:}} For each second in combat with enemy champions, deal 2% increased damage, stacking up to 3 times for a total of 6%.
+* Limited to 1 '''Liandry's Torment'''.
+* {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Liandry's Lament}}.
+** {{sbc|Stats:}} 550 health, 110 ability power.
+
+;[[V10.23]] - Removed
+* Removed from the game.
+* ''Replaced by {{ii|Liandry's Anguish}}.''
+
+;[[V10.18]]
+* {{sbc|Bug Fix:}} Now properly applies its {{sbc|Unique}} passive, Torment, on {{ui|Baron Nashor}} regardless of distance.
+
+;[[V8.19]]
+* Ability power reduced to 75 from 80.
+* {{sbc|Torment}} damage per second increased to {{as|{{fd|1.5}}% of target's '''maximum''' health}} from {{as|1%|health}}.
+* Movement-impaired {{sbc|Torment}} damage per second increased to {{as|{{fd|2.5}}% of target's '''maximum''' health}} from {{as|2%|health}}.
+
+;[[V8.5]]
+* {{sbc|Bug Fix:}} The Madness passive no longer modifies true damage, matching rules around other damage-amplifying effects.
+
+;[[V8.4]]
+* {{sbc|Removed Unique Passive - Eyes of Pain:}} +15 magic penetration.
+* {{sbc|New Unique Passive - Madness:}} Damaging an enemy champion generates one stack every second for the next 4 seconds. Deal 2% increased damage for each stack, up to a maximum of 10%.
+* {{sbc|New Effect:}} Unique passive dealing bonus magic damage is now named {{sbc|Torment}}.
+* {{sbc|Torment}} damage per second changed to {{as|1% of target's '''maximum''' health}} from {{as|2% of target's '''current''' health}}.
+
+;[[V6.24]]
+* Total cost decreased to {{g|3100}} from {{g|3200}}.
+
+;[[V5.22]]
+* Total cost increased to {{g|3200}} from {{g|3000}}.
+
+;[[V5.13]]
+* {{sbc|New Recipe:}} {{ii|Haunting Guise}}{{plus}}{{ii|Blasting Wand}}{{plus}}{{g|650}}{{equals}}{{g|3000}}
+** {{sbc|Old Recipe:}} {{ii|Haunting Guise}}{{plus}}{{ii|Amplifying Tome}}{{plus}}{{g|980}}{{equals}}{{g|2900}}
+* Ability power increased to 80 from 50.
+
+;[[V3.10]]
+* Enabled on Twisted Treeline and Crystal Scar.
+
+;[[V3.03]]
+* Bug where Liandry's Torment was not dealing damage with damage over time effects or rapid spell damage was fixed.
+
+;[[V3.02]]
+* Ability power reduced to 50 from 60.
+* Damage per second increased to 2% from {{fd|1.66%}}.
+* Damage-over-time and multi-target spells no longer have reduced effect.
+* Fixed damage effect not being properly reapplied on targets that already have it.
+
+;[[V1.0.0.154]]
+* Health increased to 300 from 200.
+* Ability power reduced to 60 from 70.
+
+;[[V1.0.0.152]] Added
+* Recipe: {{ii|Haunting Guise}} + {{ii|Amplifying Tome}}
+* Item cost: {{g|2900}}
+* Combine cost: {{g|980}}
+* +70 ability power
+* +200 health.
+* {{sbc|Unique Passive - {{nie|Eyes of Pain}}:}} +15 magic penetration
+* {{sbc|Unique Passive:}} Dealing spell damage burns enemies for 5% of their current health as magic damage over 3 seconds. If their movement is impaired, they take double damage from this effect. Duration is halved for multi-target or periodic effects, 300 max damage vs monsters.
+}}
+
+
+[[cs:Liandry's Torment]]
+[[de:Liandrys Qual]]
+[[es:El Tormento de Liandry]]
+[[fr:Tourment de Liandry]]
+[[pl:Udręka Liandry'ego]]
+[[ru:Мучения Лиандри]]
+[[zh:黎安卓的折磨]]

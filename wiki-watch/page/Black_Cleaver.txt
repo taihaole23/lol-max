@@ -1,0 +1,270 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Obsidian Cleaver}}.''
+{{Item info
+|goldvalue =
+{{gold value|Fervor Gold Value|nolink=}}
+* 20 [[movement speed]] = {{g|{{#vardefineecho:fervor|{{#expr:{{#var:msflat}}*20}}}}}}
+** '''Total Gold Value ''' = {{g|{{#vardefineecho:fervortotal|{{#expr:{{#var:total}}+{{#var:fervor}}}}}}}}
+|goldefficiency =
+* While {{sbc|Fervor}} is active, {{ii|Black Cleaver}} becomes {{gec|Black Cleaver|{{#var:fervortotal}}}} gold efficient.
+|similaritems = Lord Dominik's Regards;Mortal Reminder;Serylda's Grudge;Terminus;Spear of Shojin;Sterak's Gage;Titanic Hydra;Trinity Force;Sundered Sky;Hullbreaker;Stridebreaker;Experimental Hexplate;Overlord's Bloodmail;Bloodletter's Curse
+|background =
+|notes =
+* {{sbc|Carve}} will also trigger on {{as|0 physical damage}} dealt by basic attacks.
+* {{sbc|Fervor}} can grant the bonus movement speed from {{tip|clone|clones}}.
+* {{sbc|Carve}} stacks will transfer to {{tip|clone|clones}}.
+* {{sbc|Carve}} by itself is not blocked by {{tip|spell shield}}.
+* {{sbc|Carve}} triggers on most cases of physical damage being dealt, including pets and effects that apply multiple instances of the damage type.
+* If a {{sbc|Carve}} stack is applied through an instance of {{tip|basic damage}}, that instance will '''<u>not</u>''' benefit from the armor reduction of its {{sbc|Carve}} stack.
+** The damage dealt is calculated first, and then the armor reduction debuff is applied afterwards.
+** This means that every instance of basic damage dealt benefits only from the armor reduction of the previous stacks.
+** However, if a {{sbc|Carve}} stack is applied through a non-{{tip|basic damage}} instance, that instance will benefit from the armor reduction of its own {{sbc|Carve}} stack.{{bug|2}}
+* '''Black Cleaver''' will '''<u>not</u>''' stack multiple times per frame for the following effects.
+** Part of {{tip|ability}} {{tip|cast instance}}: {{cai|Sentry|Aphelios}} [https://www.youtube.com/watch?v=2AvwAMglC0E], multiple {{cai|Prophet of an Elder God|Illaoi|Tentacle}} attacks [https://www.youtube.com/watch?v=llTaCNyNQKQ], {{cai|I|Naafiri|Packmates}} [https://www.youtube.com/watch?v=wZ17CIdXOno], {{cais|I|Qiyana}} '''additional''' damage from abilities, multiple {{cai|I|Yorick|Mist Walkers}} hits [https://www.reddit.com/r/yorickmains/comments/1ettvk6/black_cleaver_buff_changed_nothing_on_yorick/], {{cai|Razor Shuriken|Zed|Razor Shurikens}} thrown by him and his ''{{ai|Living Shadow|Zed|Shadows}}'' [https://www.youtube.com/watch?v=Dwa3SKU1jP8], {{iis|Eclipse}} {{nie|Ever Rising Moon}} if multiple stacks would be generated in the same frame.[https://www.youtube.com/watch?v=Iyt-gxBN0Wo]
+** {{tip|Basic damage}} instance followed by non-basic damage instances: {{cai|I|Ambessa}}, {{cai|Snack Attack|Briar}}, {{cai|Crescendum 2|Aphelios|Chakram}}, {{cai|W|Illaoi}}, {{cai|I|Jarvan IV}}, {{cai|I|K'Sante}}, {{cai|I|Riven}}, {{cai|Q|Vayne}}, {{cai|Q|Viego}} on-hit, {{cai|I|Xin Zhao}}, {{ii|Blade of the Ruined King}}, {{ii|Hullbreaker}}, {{ii|Muramana}}, {{ii|Recurve Bow}}, {{ii|Titanic Hydra}} Passive / Active, {{ri|Dark Harvest}}. [https://www.youtube.com/watch?v=ppm6VcDUYTE] [https://www.youtube.com/watch?v=t5iO_hcxyYk&t=1588s]
+** Damage dealt in a single instance that is [[Critical_strike#Champion_abilities_5|wrapped]] with the main [[basic attack]].
+** Special exclusions: {{cai|E|Kindred}}, {{cai|I|Miss Fortune}}, {{cais|Q|Udyr}} permanent on-hit [https://youtu.be/9XkNtj81mc0]. {{bug|2|Since V14.16 special exclusions were expected to be removed}}
+{{safesubst:unexpected|desc=
+* '''Black Cleaver''' '''<u>will</u>''' stack multiple times per frame for the following effects.
+** Multiple {{tip|basic damage}} instances: {{cai|Calibrum|Aphelios}} marks, {{cai|New Destiny|Graves}}, {{cai|R|Ivern}}, {{cai|W|Kled}}, {{cai|W|Malphite}}, {{cai|Q|Rengar}} and {{ai|R|Rengar}}, {{cai|Q|Viego}} possession mark, {{ii|Heartsteel}}, {{ii|Kraken Slayer}}.
+** Non-basic damage instance followed by {{tip|basic damage}} instances: {{cais|I|Qiyana}} from basic attacks, {{cai|I|Senna}}, {{cai|I|Sion}}, {{cais|Q|Udyr}} temporary on-hit, {{cai|I|Urgot}}, {{cai|W|Vi}}, {{ii|Dead Man's Plate}}, {{ii|Eclipse}}, {{iis|Runaan's Hurricane}} {{as|0 physical damage}} on-hit on primary target, {{ii|Sheen}} and other {{nie|Spellblade}} effects, {{ii|Voltaic Cyclosword}}, {{ri|Press the Attack}}, {{ri|Shield Bash}}.
+*** Randomly, stacks may be prevented from being applied multiple times. [https://youtu.be/a9slBLWNhZ0?t=216] [https://www.youtube.com/watch?v=HPFnIKcl1mk&t=58] [https://www.youtube.com/watch?v=KjrQeTIDQoc&t=880s] {{bug|2}}|affectedEffects=Black Cleaver|estimatedPatchOrigin=V14.16|<!--added automatically-->wikiUploadTimestamp=1774001406|<!--added automatically-->pagename=Black Cleaver
+}}
+** Special inclusions: {{cai|Pocket Pistol|Kled}}, and {{cai|Bladecaller|Xayah}}. [https://www.reddit.com/r/leagueoflegends/comments/7b0xwf/illaoi_cant_get_multiple_stacks_of_black_cleaver/dpf1o98/]
+|strategy =
+|oldicons =
+|trivia =
+<gallery captionalign="center" orientation="square" spacing="small">
+Black_Cleaver_Cleave_Stack.png
+Black_Cleaver_Cleave_Full_Stack.png
+</gallery>
+* The icons to the right feature the old indicator used to represent the target's armor was reduced.
+* In the now-removed official League of Legends [https://web.archive.org/web/20130726165848/http://forums.na.leagueoflegends.com/board/ forums], the first icon of {{ii|Black Cleaver|variant=old}} was used to represent the "Item Discussion" section.
+* '''Black Cleaver''' and '''Obsidian Cleaver''' are among a number of items that had the word "The" removed from their names in patch [[V9.19]]. They were previously known as '''''The'' Black Cleaver''' and '''''The'' Obsidian Cleaver''' respectively.
+* The icon of '''Black Cleaver''' is reused for the [[Teamfight Tactics]] item {{TFT Item|Berserker's Axe}}.
+[[File:Noxus Crest icon.png|link=Noxus#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Black Cleaver armor reduction indicator.png|Armor Reduced indicator
+Black Cleaver maximum armor reduction indicator.png|Maximum Stacks indicator
+</gallery>
+|sfx =
+;Passive Maximum Stacks
+* {{sm2|Black Cleaver passive SFX.ogg}} Passive SFX
+* {{sm2|Black Cleaver passive SFX 2.ogg}} Passive SFX
+* {{sm2|Black Cleaver passive SFX 3.ogg}} Passive SFX
+|revisions =
+|patchhistory =
+;[[V26.16]]
+* Attack damage increased to 45 from 40.
+* Fervor bonus movement speed changed to {{rd|20|10}} from 20.
+
+;[[V14.19]]
+* {{sbc|New Recipe:}} {{ii|Phage}} + {{ii|Kindlegem}} + {{ii|Pickaxe}} + {{g|225}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Phage}} + {{ii|Caulfield's Warhammer}} + {{ii|Ruby Crystal}} + {{g|400}} = {{g|3000}}.
+* Attack damage reduced to 40 from 55.
+
+;[[V14.16]]
+* {{sbc|Removed:}} No longer prevents champions from applying two stacks for basic attacks and abilities that apply after on-hit effects (e.g. {{ci|Senna}}).
+** {{sbc|Not Functional:}} Abilities are still prevented from stacking if a stack was already applied in this frame.
+** {{sbc|Not Functional:}} Some attacks that deal {{tip|basic damage}} as a secondary damage instance are still special cased to not apply stacks ({{cai|E|Kindred}}, {{cai|I|Miss Fortune}}).
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Obsidian Cleaver}}.
+
+;[[V14.10]]
+* Carve armor reduction per stack increased to 6% from 5%.
+** Carve maximum armor reduction increased to 30% from 25%.
+
+;[[V14.4]]
+* {{sbc|New Recipe:}} {{ii|Phage}} + {{ii|Caulfield's Warhammer}} + {{ii|Ruby Crystal}} + {{g|400}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Phage}} + {{ii|Kindlegem}} + {{ii|Long Sword}} + {{g|750}} = {{g|3000}}.
+* Carve armor reduction per stack increased to 5% from 4%.
+* Carve maximum stacks reduced to 5 from 6.
+* {{sbc|New Effect:}} Fervor can now trigger on mitigated damage.
+
+;[[V14.2]]
+* {{sbc|New Unique Passive - Fervor:}} Dealing {{as|physical damage}} grants you {{as|20 '''bonus''' movement speed}} for 2 seconds.
+* {{sbc|Removed Unique Passive - Rage:}} Basic attacks [[on-hit]] grant {{as|{{rd|20|10}} '''bonus''' movement speed}} for 2 seconds.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Phage}} + {{ii|Kindlegem}} + {{ii|Long Sword}} + {{g|750}} = {{g|3000}}.
+** {{sbc|Stats:}} 400 health, 55 attack damage, 20 ability haste.
+** {{sbc|Unique Passive - Carve:}} Dealing {{as|physical damage}} to an enemy champion applies a stack of ''Carve'' for 6 seconds, stacking up to 6 times. Each stack inflicts {{as|4% armor reduction}}, up to {{as|24%|armor}} at 6 stacks.
+** {{sbc|Unique Passive - Rage:}} Basic attacks on-hit grant {{as|{{rd|20|10}} '''bonus''' movement speed}} for 2 seconds.
+** Limited to 1 {{sbc|Fatality}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Obsidian Cleaver}}.
+*** {{sbc|Stats:}} 600 health, 65 attack damage, 25 ability haste.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Caulfield's Warhammer}} + {{ii|Kindlegem}} + {{ii|Long Sword}} + {{g|850}} = {{g|3100}}.
+** {{sbc|Stats:}} 400 health, 50 attack damage, 30 ability haste.
+** {{sbc|Unique Passive - Carve:}} Dealing {{as|physical damage}} to an enemy champion applies a stack of ''Carve'' for 6 seconds, stacking up to 6 times. Each stack inflicts {{as|5% armor reduction}}, up to {{as|30%|armor}} at 6 stacks.
+** {{sbc|Unique Passive - Rage:}} Dealing {{as|physical damage}} to an enemy champion grants {{as|3 '''bonus''' movement speed}} per stack of ''Carve'' on them for 2 seconds, up to {{as|18|ms}}.
+** Limited to 1 '''Black Cleaver'''.
+
+;[[V13.1b]]
+* Attack damage increased to 50 from 45.
+* Health increased to 400 from 350.
+
+;[[V12.14]]
+* {{sbc|Bug Fix:}} Bonus damage tracker now properly takes into account damage absorbed by shields.
+
+;[[V12.13]]
+* Now calculates and tracks the additional damage dealt due to applying Carve's armor reduction in the tooltip.
+
+;[[V12.8]]
+* {{sbc|Bug Fix:}} {{iis|Titanic Hydra}} Cleave and certain other on-hit effects from items and Champion passives no longer apply an additional stack of Carve on basic attacks if '''Black Cleaver's''' effect was acquired later (in a higher buff slot) than the on-hit effect.
+
+;[[V12.3]]
+* Attack damage increased to 45 from 40.
+* Ability haste increased to 30 from 25.
+* Health reduced to 350 from 450.
+
+;[[V11.13]]
+* Health increased to 450 from 400.
+* Bonus movement speed per stack reduced to 3 from 5.
+** Maximum bonus movement speed reduced to 18 from 30.
+
+;[[V11.12]]
+* {{sbc|Bug Fix:}} Now properly appears in the movement tab of the in-game shop.
+
+;[[V11.11]]
+* Armor reduction per Carve stack increased to 5% from 4%.
+** Maximum armor reduction increased to 30% from 24%.
+
+;[[V11.5]]
+* Total cost reduced to {{g|3100}} from {{g|3300}}.
+** Combine cost reduced to {{g|850}} from {{g|1050}}.
+* Health increased to 400 from 300.
+* {{sbc|New Unique Passive - Rage:}} Dealing {{as|physical damage}} to a champion grants {{as|5 '''bonus''' movement speed}} per stack of ''Carve'' on them for 2 seconds, up to {{as|30|ms}}.
+* {{sbc|Removed Unique Passive - Butcher:}} Basic attacks on-hit and abilities that deal {{as|physical damage}} against fully ''Shredded'' enemies deal {{as|'''bonus''' physical damage}} equal to {{as|5% of their '''missing''' health}}. This is reduced to {{as|2% of their '''missing''' health}} for damage over time effects, which may only deal the '''bonus''' damage every {{fd|0.5}} seconds.
+** {{sbc|Butcher}} dealt {{tip|proc damage}}.<!--used to say default damage, but supposedly it's actually this-->
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Caulfield's Warhammer}} + {{ii|Kindlegem}} + {{ii|Long Sword}} + {{g|1050}} = {{g|3300}}.
+** {{sbc|Stats:}} 300 health, 40 attack damage, 25 ability haste.
+** {{sbc|Unique Passive - Carve:}} Dealing {{as|physical damage}} to an enemy champion reduces their {{as|armor by 4%}} for 6 seconds, stacking up to 6 times for a maximum of {{as|24%|armor}}. Enemies with 6 stacks are ''Shredded''.
+** {{sbc|Unique Passive - Butcher:}} Basic attacks (on-hit) and damaging abilities against fully ''Shredded'' enemies deal {{as|'''bonus''' physical damage}} equal to {{as|5% of their '''missing''' health}}, reduced to {{as|2% of their '''missing''' health}} for damage over time effects ({{fd|0.5}} second cooldown).
+** Limited to 1 '''Black Cleaver'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Phage}} + {{ii|Kindlegem}} + {{g|950}} = {{g|3000}}.
+** {{sbc|Stats:}} 400 health, 40 attack damage, 20% cooldown reduction.
+** {{sbc|Unique Passive:}} Dealing {{as|physical damage}} to an enemy champion ''Cleaves'' them, {{sti|armor penetration|reducing|link=true}} their {{as|{{sti|armor}}}} by 4% for 6 seconds, [[stack]]ing up to 6 times for a maximum of 24%.
+** {{sbc|Unique Passive - Rage:}} Dealing physical damage grants {{as|{{rd|20|10}} movement speed}} for 2 seconds. Assists on ''Cleaved'' enemy champions or kills on any unit grant {{as|{{rd|60|30}} movement speed}} for 2 seconds instead.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Obsidian Cleaver}}.
+*** {{sbc|Stats:}} 550 health, 60 attack damage, 20% cooldown reduction.
+
+;[[V9.19]]
+* Renamed ''Black Cleaver'' from ''The Black Cleaver''.
+* {{ii|Obsidian Cleaver}}
+** Renamed ''Obsidian Cleaver'' from ''The Obsidian Cleaver''.
+
+;[[V9.1]]
+* {{ii|The Obsidian Cleaver}}
+** Total cost reduced to {{g|3000}} from {{g|4000}}.
+*** Combine cost reduced to {{g|0}} from {{g|1000}}.
+** Can now only be obtained if {{ci|Ornn}} forges the item (for himself or for another ally).
+
+;[[V8.20]]
+* {{sbc|Bug Fix:}} Now correctly stacks on [[Champion summoned units#Decoys|decoys]].
+
+;[[V7.17]]
+* Added to recipe from {{ii|The Obsidian Cleaver}}.
+** {{sbc|Recipe:}} {{ii|Black Cleaver|variant=old2|The Black Cleaver}} + {{g|1000}} = {{g|4000}}.
+** {{sbc|Stats:}} 550 health, 60 attack damage, 20% cooldown reduction.
+** {{sbc|Unique Passive:}} Dealing {{as|physical damage}} to an enemy champion ''Cleaves'' them, {{as|reducing their armor by 4%}} for 6 seconds, stacking up to 6 times for a maximum of {{as|24%|armor}}.
+** {{sbc|Unique Passive - Rage:}} Dealing {{as|physical damage}} grants {{as|{{rd|20|10}} movement speed}} for 2 seconds. Assists on ''Cleaved'' enemy champions or kills on any unit grant {{as|{{rd|60|30}} movement speed}} for 2 seconds instead.
+** Only available while {{ci|Ornn}} is on your team. Limited to one {{ai|Master Craftsman|Ornn}} item.
+
+;[[V7.13]]
+* {{sbc|Undocumented:}} An ability cannot add more than one stack in an instant.
+
+;[[V7.9]]
+* Armor reduction per stack reduced to 4% from 5%.
+** Maximum armor reduction reduced to 24% from 30%.
+
+;[[V7.4]]
+* {{sbc|New Recipe:}} {{ii|Phage}} + {{ii|Kindlegem}} + {{g|950}} = {{g|3000}}
+** {{sbc|Old Recipe:}} {{ii|Phage}} + {{ii|Caulfield's Warhammer}} + {{g|750}} = {{g|3100}}
+* Health increased to 400 from 300.
+* Attack damage reduced to 40 from 50.
+
+;[[V6.16]]
+* {{sbc|Bug Fix:}} Fixed a bug where an enemy hit with multiple shells from {{cis|Graves}} basic attacks only applied a single stack of '''The Black Cleaver'''.
+
+;[[V6.9]]
+* Total cost reduced to {{g|3100}} from {{g|3500}}.
+* Combine cost reduced to {{g|750}} from {{g|1150}}.
+* Attack damage reduced to 50 from 55.
+
+;[[V5.22]]
+* {{sbc|New Recipe:}} {{ii|Phage}} + {{ii|Caulfield's Warhammer}} + {{g|1150}} = {{g|3500}}.
+** {{sbc|Old Recipe:}} {{ii|Kindlegem}} + {{ii|Phage}} + {{g|825}} = {{g|3000}}
+* Attack damage increased to 55 from 40.
+* Health reduced to 300 from 400.
+
+;[[V5.8]]
+* New item icon.
+* New recipe: {{ii|Kindlegem}} + {{ii|Phage}} + {{g|825}} = {{g|3000}}
+** Old recipe: {{ii|Ruby Crystal}} + {{ii|The Brutalizer}} + {{g|1263}} = {{g|3000}}
+* Health increased to 400 from 200.
+* Attack damage reduced to 40 from 50.
+* Cooldown reduction increased to 20% from 10%.
+* No longer grants + 10 Armor Penetration.
+* {{sbc|Revised Passive:}} Dealing physical damage to an enemy champion ''Cleaves'' them, reducing their armor by 5% for 6 seconds, stacking up to 6 times.
+** The passive is now unique.
+* {{sbc|New Unique Passive:}} {{nie|Rage}}: Dealing physical damage grants 20 movement speed for 2 seconds. Assists on ''Cleaved'' enemy champions or kills on any unit grant 60 movement speed for 2 seconds instead. ''This movement speed is halved for ranged champions.''
+
+;[[V4.3]]
+* Combine cost increased to {{g|1263}} from {{g|1188}} (total cost remains the same due to {{iis|Ruby Crystal}} price being reduced).
+
+;[[V3.9]]'''
+* Can no longer apply more than one stack of Armor Shred in a single basic attack.
+
+;[[V3.01]]
+* Health reduced to 200 from 250.
+* Maximum stacks increased to 5 from 4.
+* Armor reduction per stack reduced to 5% from {{fd|6.25%}}.
+* Fixed a bug where spells were applying more reduction than intended.
+
+;[[V1.0.0.153]]
+* Armor reduction per stack reduced to {{fd|6.25%}} from {{fd|7.5%}} (Maximum reduction is now 25% from 30%).
+* Flat armor penetration reduced to 10 from 15 and is now Unique.
+
+;[[V1.0.0.152]] Rework
+* New recipe: {{ii|The Brutalizer}} + {{ii|Ruby Crystal}} + {{g|1188}} = {{g|3000}}.
+* +250 health
+* +50 attack damage
+* +10% cooldown reduction
+* +15 armor penetration
+* Passive: Dealing physical damage to an enemy champion reduces their armor by {{fd|7.5%}} for 4 seconds. This effect stacks up to 4 times.
+
+;[[V1.0.0.130]]
+* No longer shreds {{ui|Dragon}} and {{uis|Baron Nashor}} armor.
+
+;[[V1.0.0.109]]
+* Fixed a bug where it didn't appear in the attack speed tab.
+
+;[[V1.0.0.108]]
+* New recipe: {{ii|B. F. Sword}} + {{ii|Dagger}} + {{g|795}} = {{g|???}}
+** Old recipe: {{ii|B. F. Sword}} + {{ii|Long Sword}} + {{g|800}} = {{g|???}}
+** Damage reduced to 55 from 75.
+** Now adds 30% increased attack speed.
+** {{sbc|Unique passive:}} Now shreds 15 armor per stack from 12 but has a maximum of 3 stacks from 5.
+
+;[[May 15, 2009 Patch]]
+* Attack damage reduced to 75 from 80.
+}}
+
+
+[[cs:The Black Cleaver]]
+[[de:Schwarzes Beil]]
+[[es:La Cuchilla Oscura]]
+[[fr:Couperet Noir]]
+[[pl:Czarny Tasak]]
+[[ru:The Black Cleaver]]
+[[zh:黑色切割者]]
+[[Category:Items with passive abilities]]

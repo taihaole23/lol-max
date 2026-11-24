@@ -1,0 +1,28 @@
+["Thornmail"] = {
+        ["id"]                  = 3075,
+        ["nickname"]            = {"grievous wounds"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["armor"]           = 75,
+            ["hp"]              = 150,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Thorns",
+                ["unique"]      = true,
+                ["description"] = "When struck by a basic attack [[on-hit]], deal {{as|20 {{as|(+ 10% '''bonus''' armor)}} magic damage|magic damage}} to the attacker and, if they are a champion, inflict them with {{tip|Grievous Wounds}} for 3 seconds.",
+            },
+        },
+        ["recipe"]              = {"Bramble Vest", "Chain Vest", "Ruby Crystal"},
+        ["buy"]                 = 2450,
+    },

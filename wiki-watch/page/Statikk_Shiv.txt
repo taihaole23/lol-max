@@ -1,0 +1,314 @@
+:''For the {{tip|Legends of Runeterra}} item with a similar name, see {{LoR|Statikk Shock}}.''
+{{Item info
+|goldvalue =
+{{Gold value}}
+|goldefficiency =
+|similaritems = Guinsoo's Rageblade;Kraken Slayer;Navori Flickerblade;Phantom Dancer;Rapid Firecannon;Runaan's Hurricane;Fiendhunter Bolts;Stormrazor
+|background =
+|notes =
+* {{sbc|Electrospark}} deals {{tip|proc damage}} and is tagged as {{tip|area damage|area of effect}} without applying {{tip|spell effects}}.
+* The damage dealt by {{sbc|Electrospark}} is not affected by on-hit damage modifiers.
+* {{sbc|Electrospark}} is not blocked by {{tip|spell shield}}.
+* The lightning from {{sbc|Electrospark}} consists of individual parts as it travels from unit to unit, each one firing after a delay of {{fd|0.05}} seconds.
+* As with all other {{tip|Energized}} effects, {{sbc|Electrospark}} will activate and trigger against [[structures]]. It will not target [[structures]] if they are not the entities attacked.
+{{Energized info}}
+|strategy =
+|oldicons =
+|trivia =
+* {{ii|Statikk Shiv}} is named after [[James 'Statikk' Bach]], a Senior Game Designer at Riot.
+* Prior to [[V5.22]], '''Statikk Shiv''' had the same animation effects and sound as {{cai|Electrical Surge|Kennen}}.
+** When activating both {{cai|Electrical Surge|Kennen}} and '''Statikk Shiv''' passive within a small enough window, whichever was casted second will not have the sound effects replay (''due to the previous exact copy of the sound just previously playing'').
+** The only difference is that '''Statikk Shiv''' applies the effect at the seven closest targets, whereas {{cai|Electrical Surge|Kennen}} targets all [[unit]]s that are affected by {{ai|Mark of the Storm|Kennen}}.
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+File:Statikk Shiv lightning VFX.png|Passive VFX
+File:Statikk Shiv ready VFX.png|Old Energized VFX
+File:Statikk Shiv screenshot.png|Old Item VFX
+</gallery>
+|sfx =
+;Electrospark Attack
+* {{sm2|Statikk Shiv lightning SFX 0.ogg}} Hit SFX
+* {{sm2|Statikk Shiv lightning SFX 1.ogg}} Hit SFX
+* {{sm2|Statikk Shiv lightning SFX 2.ogg}} Hit SFX
+* {{sm2|Statikk Shiv lightning SFX 3.ogg}} Hit SFX
+* {{sm2|Statikk Shiv lightning SFX 4.ogg}} Hit SFX
+
+;Energized ''(Old)''
+* {{sm2|Statikk Shiv ready SFX.ogg}} Statikk Shiv Energized Ready SFX
+* {{sm2|Energized passive SFX.ogg}} Energized Ready SFX (with {{ii|Rapid Firecannon}})
+|revisions =
+<tabber>
+Hide=
+|-|
+V10.22 version=
+{{Infobox item
+|disp_name = Statikk Shiv
+|sub_name  = V10.22
+|icon      = Statikk Shiv item old
+|as        = 40
+|crit      = 25
+|ms        = 7
+|pass      = {{Unique|Energized|Moving and basic attacking generates ''Energize'' stacks, up to 100.}}
+|pass2     = {{Unique|Electroshock|When fully {{tip|Energized}}, your next basic attack deals {{as|120 '''bonus''' magic damage}} on-hit. ''Energized'' attacks bounce to 7 targets.}}
+|recipeold =
+{{Recipe
+|result = Statikk Shiv
+|variant= old
+|total  = 2600
+|cost   = 500
+|t1     = {{Recipe
+  |result = Zeal
+  |variant= old2
+  |total  = 1400
+  |cost   = 300
+  |t1     = {{Recipe/item|Cloak of Agility|800|variant=old}}
+  |t2     = {{Recipe/item|Dagger|300|variant=old2}}
+}}
+|t2     = {{Recipe
+  |result = Kircheis Shard
+  |variant= old
+  |total  = 700
+  |cost   = 400
+  |t1     = {{Recipe/item|Dagger|300|variant=old2}}
+}}
+}}
+|buy       = 2600
+|sell      = 1820
+|code      = 3087
+}}{{clr}}
+</tabber>
+|patchhistory =
+;[[V26.11]]
+* Attack damage increased to 45 from 40.
+
+;[[V26.09]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Scout's Slingshot}} + {{ii|Pickaxe}} + {{ii|Aether Wisp}} + {{g|625}} = {{g|3000}}.
+** {{sbc|Stats:}} 40 attack damage, 45 ability power, 30% attack speed, 4% movement speed.
+** {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+** {{sbc|Unique Passive - Electroshock:}} Attacking grants 9 '''bonus''' ''Energize'' stacks, for a total of 15.
+** {{sbc|Unique Passive - Electrospark:}} When fully {{tip|Energized}}, your next basic attack {{tip|on-hit}} is empowered to form chain lightning, dealing {{as|60 '''bonus''' magic damage}}, increased to {{as|90|magic damage}} against non-champions. This bounces to the closest target within 500 units, repeating from the new target to strike up to {{pp|4 to 8 by 1|1;6;10;14;20}} targets, dealing the same damage. The chain lightning also applies your {{tip|on-hit}} effects to targets other than the primary target.
+** Limited to 1 '''Statikk Shiv'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Scout's Slingshot}} + {{ii|Rectrix}} + {{ii|Pickaxe}} + {{g|450}} = {{g|2700}}.
+** {{sbc|Stats:}} 45 attack damage, 30% attack speed, 4% movement speed.
+** {{sbc|Unique Passive - Electrospark:}} Your next 3 attacks {{tip|on-hit}} within 8 seconds deal {{as|60 '''bonus''' magic damage}}, increased to {{as|85|magic damage}} against non-champions. This bounces to the closest target within 500 units, repeating from the new target to strike up to 5 targets ({{pp|25 to 10 for 6|1;8 to 12}} second cooldown, begins after the first attack).
+** {{sbc|Unique Passive - Electroshock:}} Scoring a {{tip|takedown}} against an enemy champion within 3 seconds of damaging them resets {{sbc|Electrospark's}} cooldown.
+** Limited to 1 '''Statikk Shiv'''.
+
+;[[V14.22]]
+* Total cost reduced to {{g|2700}} from {{g|2900}}.
+** Combine cost reduced to {{g|450}} from {{g|650}}.
+* Attack damage reduced to 45 from 50.
+* Attack speed reduced to 30% from 35%.
+* {{sbc|Unique Passive - Electrospark:}}
+** {{sbc|New Effect:}} Your next 3 attacks {{tip|on-hit}} within 8 seconds deal {{as|60 '''bonus''' magic damage}}, increased to {{as|85|magic damage}} against non-champions. This bounces to the closest target within 500 units, repeating from the new target to strike up to 5 targets ({{pp|25 to 10 for 6|1;8 to 12}} (begins after the first attack) second cooldown).
+** {{sbc|Old Effect:}} Upon killing a minion or monster, unleash an electric spark at the location of their death which chains to the closest target within 500 units, repeating from the new one to strike up to 6 targets, dealing {{as|120 magic damage}} to each (3 second cooldown).
+* {{sbc|Unique Passive - Electroshock:}}
+** {{sbc|New Effect:}} Scoring a {{tip|takedown}} against an enemy champion within 3 seconds of damaging them resets {{sbc|Electrospark's}} cooldown.
+** {{sbc|Old Effect:}} Scoring a {{tip|takedown}} against an enemy champion unleashes a lightning shock at the location of their death which chains to the closest target within 650 units, repeating from the new one to strike up to 186 targets, dealing {{as|270 magic damage}} to each.
+
+;[[V14.21]]
+* {{sbc|Bug Fix:}} Corrected tooltip formatting.
+
+;[[V14.20]]
+* Attack speed reduced to 35% from 40%.
+* {{sbc|Bug Fix:}} Electrospark & Electroshock no longer invariably target and damage all ally and enemy units within range from a unit kill, while the user is {{tip|berserk}}.
+
+;[[V14.19]]
+* Combine cost increased to {{g|650}} from {{g|325}}.
+** Total cost unchanged.
+* Attack damage reduced to 50 from 55.
+* Attack speed reduced to 40% from 45%.
+* Movement speed reduced to 4% from 5%.
+
+;[[V14.15]]
+* Total cost increased to {{g|2900}} from {{g|2800}}.
+** Combine cost increased to {{g|325}} from {{g|225}}.
+* Bonus movement speed reduced to 5% from 7%
+
+;[[V14.14]]
+* {{sbc|Bug Fix:}} Electroshock damage is now properly attributed to the item's owner instead of the killer of the unit that the passive activates from.
+
+;[[V14.12]]
+* {{sbc|New Recipe:}} {{ii|Scout's Slingshot}} + {{ii|Rectrix}} + {{ii|Pickaxe}} + {{g|225}} = {{g|2800}}.
+** {{sbc|Old Recipe:}} {{ii|Scout's Slingshot}} + {{ii|Rectrix}} + {{g|1000}} = {{g|2800}}.
+
+;[[V14.11]]
+* {{sbc|New Recipe:}} {{ii|Scout's Slingshot}} + {{ii|Rectrix}} + {{g|1000}} = {{g|2800}}.
+** {{sbc|Old Recipe:}} {{ii|Scout's Slingshot}} + {{ii|Hearthbound Axe}} + {{g|700}} = {{g|2900}}.
+* Attack damage increased to 55 from 50.
+* Attack speed increased to 45% from 40%.
+* Movement speed increased to 7% from 0%.
+* Electrospark damage increased to 120 from 90.
+** Electroshock damage unchanged.
+* {{sbc|Bug Fix:}} Damage tracker now correctly tracks and displays any damage dealt to champions.
+* {{sbc|Bug Fix:}} Electroshock no longer triggers from killing {{cai|A Harmless Scarecrow|Fiddlesticks|Effigies}}.
+* {{sbc|Bug Fix:}} Electroshock no longer triggers from clones including the item user's own, upon the clone dying or expiring.
+
+;[[V14.10]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Scout's Slingshot}} + {{ii|Hearthbound Axe}} + {{g|700}} = {{g|2900}}.
+** {{sbc|Stats:}} 50 attack damage, 40% attack speed.
+** {{sbc|Unique Passive - Electrospark:}} Upon killing a minion or monster, unleash an electric spark at the location of their death which chains to the closest target within 500 units, repeating from the new one to strike up to 6 targets, dealing {{as|90 magic damage}} to each (3 second cooldown).
+** {{sbc|Unique Passive - Electroshock:}} Scoring a {{tip|takedown}} against an enemy champion unleashes a lightning shock at the location of their death which chains to the closest target within 650 units, repeating from the new one to strike up to 186 targets, dealing {{as|{{ap|90*3}} magic damage}} to each.
+** Limited to 1 '''Statikk Shiv'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Noonquiver}} + {{ii|Cloak of Agility}} + {{ii|Kircheis Shard}} + {{g|300}} = {{g|2900}}.
+** {{sbc|Stats:}} 50 attack damage, 30% attack speed, 20% critical strike chance.
+** {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+** {{sbc|Unique Passive - Electroshock:}} When fully ''Energized'', your next basic attack deals {{as|90 '''bonus''' magic damage}}, increased to {{as|150|magic damage}} against minions. ''Energized'' attacks bounce their additional effect to the closest target within 500 units, repeating from the new target to strike up to 6 targets.
+** Limited to 1 '''Statikk Shiv'''.
+
+;[[V14.7]]
+* Total cost increased to {{g|2900}} from {{g|2700}}.
+** Combine cost increased to {{g|300}} from {{g|100}}.
+
+;[[V14.3]]
+* Total cost reduced to {{g|2700}} from {{g|3000}}.
+** Combine cost reduced to {{g|100}} from {{g|400}}.
+* Electroshock damage reduced to 90 at all levels from {{pp|100;110;120;130;140;145;150;155;160;165;170;175;180|1;7;8;9;10;11;12;13;14;15;16;17;18|formula=100 at level 1, then +10 per level starting at level 7, then +5 per level starting at level 11}}.
+
+;[[V14.1]]
+* Electroshot maximum targets reduced to 6 at all levels from {{pp|6 to 12 for 3|1;11;16}}.
+* {{sbc|Removed:}} Electroshock damage no longer scales with {{as|15% AP}}.
+
+;[[V13.19]]
+* Minion damage reduced to 150 from 200.
+
+;[[V13.18]]
+* Attack damage increased to 50 from 45.
+* Minion damage reduced to 200 at all levels from {{pp|250 to 350 for 11|1;9 to 18|formula=250 at level 1, then + 10 per level starting at level 9}}.
+
+;[[V13.17]]
+* AP ratio reduced to {{as|15% AP}} from {{as|30% AP}}.
+
+;[[V13.14]]
+* Attack speed increased to 30% from 25%.
+* Minion damage reduced to {{pp|250 to 350 for 11|1;9 to 18|formula=250 at level 1, then + 10 per level starting at level 9}} from {{pp|250;275;300;325;350;362.5;375;387.5;400;412.5;425;437.5;450|1;7;8;9;10;11;12;13;14;15;16;17;18|formula=250 at level 1, then +25 per level starting at level 7, then +12.5 per level starting at level 11}}.
+
+;[[V13.13]]
+* AP ratio reduced to {{as|30% AP}} from {{as|50% AP}}.
+* {{sbc|Removed:}} Damage against minions no longer scales with {{as|125% AP}}.
+
+;[[V13.12]]
+* Energized base damage changed to {{pp|100;110;120;130;140;145;150;155;160;165;170;175;180|1;7;8;9;10;11;12;13;14;15;16;17;18|formula=100 at level 1, then +10 per level starting at level 7, then +5 per level starting at level 11}} from {{pp|80;90 to 190 for 11|1;8 to 18}}.
+
+;[[V13.11]]
+* Energized base damage increased to {{pp|80;90 to 190 for 11|1;8 to 18}} from {{pp|60;70 to 170 for 11|1;8 to 18}}.
+* Damage against minions increased to 250% from 220%.
+* {{sbc|Bug Fix:}} Electroshock no longer is able to target and damage the user's allies indefinitely after they became {{tip|berserk}}.
+
+;[[V13.10]] - Re-added
+* Updated icon.
+* {{sbc|Recipe:}} {{ii|Noonquiver}} + {{ii|Cloak of Agility}} + {{ii|Kircheis Shard}} + {{g|400}} = {{g|3000}}.
+* {{sbc|Stats:}} 45 attack damage, 25% attack speed, 20% critical strike chance.
+* {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+* {{sbc|Unique Passive - Electroshock:}} When fully {{tip|Energized}}, your next basic attack deals {{as|{{pp|60;70 to 170 for 11|1;8 to 18}}|magic damage}} {{as|(+ 50% AP)}} {{as|'''bonus''' magic damage}}, increased to 220% against minions. ''Energized'' attacks bounce to up to {{pp|6 to 12 for 3|1;11;16}} targets.
+
+;[[V10.23]] - Removed
+* Removed from the game.
+
+;[[V10.11]]
+* Bonus movement speed increased to 7% from 5%.
+
+;[[V9.23]]
+* Combine cost reduced to {{g|500}} from {{g|800}}.
+* Energized stacks per attack reduced to 6 from 12.
+* Energized stacks per movement increased to (1 for every 25 units) from (1 for every 30 units).
+* {{sbc|New Effect:}} Energized effects now also work on structures.
+* Energized damage changed to 120 at all levels from {{pp|60;60;60;60;60 to 140|round=ceil}}.
+* {{sbc|New Effect:}} Damage from other Energized effects now stacks.
+* {{sbc|Removed:}} Energized effects can no longer critically strike.
+* Number of bounces increased to 7 from 5.
+* Unique Energized bonus magic damage and chain lightning is now named {{sbc|Electroshock}}.
+** {{sbc|Unique Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100.
+** {{sbc|Unique Passive - Electroshock:}} When fully {{tip|Energized}}, your next basic attack deals {{as|120 '''bonus''' magic damage on-hit}}. Energized attacks bounce to 7 targets.
+** {{sbc|Previous Passive - Energized:}} Moving and basic attacking generates ''Energize'' stacks, up to 100. When fully {{tip|Energized}}, your next basic attack deals {{as|{{pp|60;60;60;60;60 to 140|round=ceil}} '''bonus''' magic damage on-hit}}.
+** {{sbc|Previous Passive:}} Energized attacks bounce to 5 targets and are affected by {{tip|critical strike}} modifiers.
+
+;[[V9.17]]
+* {{sbc|Bug Fix:}} Will no longer hit nearby targets outside of {{cai|Realm of Death|Mordekaiser}} when the holder attacks him within it.
+
+;[[V9.4]]
+* Two passive effects (unnamed and {{sbc|Shiv Lightning}}) changed to {{sbc|Energized}} and a unique passive.
+** {{sbc|Unique Passive - Energized:}} Moving and attacking will make an attack {{tip|Energized}}. Your {{tip|Energized}} attacks deal {{pp|60;60;60;60;60 to 140|round=ceil}} '''bonus''' magic damage on hit.
+** {{sbc|Unique Passive:}} {{tip|Energized}} attacks bounce to 5 targets and can {{tip|critical strike|critically strike}}.
+
+;[[V9.3]]
+* Total cost reduced to {{g|2600}} from {{g|2800}}.
+** Combine cost increased to {{g|800}} from {{g|700}}.
+* Attack speed increased to 40% from 35%.
+* Critical strike chance reduced to 25% from 30%.
+
+;[[V8.15]]
+* Total cost reduced to {{g|2800}} from {{g|2900}}.
+** Combine cost reduced to {{g|700}} from {{g|800}}.
+
+;[[V8.11]]
+* Total cost increased to {{g|2900}} from {{g|2600}}.
+** Combine cost increased to {{g|800}} from {{g|600}}.
+
+;[[V8.6]]
+* Shiv Lightning damage reduced to {{pp|60;60;60;60;60 to 140|round=ceil}} from {{pp|60;60;60;60;60 to 160|round=ceil}}.
+* {{sbc|Removed:}} Dealing 65% bonus damage to minions.
+
+;[[V7.9]]
+* Combine cost increased to {{g|600}} from {{g|550}}.
+* Energized attack bonus damage increased to {{pp|60;60;60;60;60 to 160|round=ceil}} from {{pp|50;50;50;50;50 to 120|round=ceil}}.
+* Bonus damage to minions reduced to 65% from 120%.
+** Energized attack bonus damage against minions reduced to {{pp|99;99;99;99;99 to 264|round=ceil}} from {{pp|110;110;110;110;110 to 264|round=ceil}}.
+
+;[[V6.21]]
+* {{sbc|Bug Fix:}} Audio for the empowered attack proc no longer plays through Fog of War.
+
+;[[V6.3]]
+* Bonus damage increased to {{pp|50;50;50;50;50 to 120|round=ceil}} from {{pp|30;30;30;30;30 to 100|round=ceil}}.
+* Damage against minions increased to {{pp|110;110;110;110;110 to 264|round=ceil}} from {{pp|66;66;66;66;66 to 220|round=ceil}}.
+
+;[[V6.1]]
+* Bonus damage to minions increased to {{ft|120%|{{pp|66;66;66;66;66 to 220|round=ceil}}}} from {{ft|75%|{{pp|52.5;52.5;52.5;52.5;52.5 to 175|round=ceil}}}}.
+
+;[[V5.24]]
+* Total cost increased to {{g|2600}} from {{g|2500}}.
+* The bonus damage to your target from Rapid Firecannon and Statikk Shiv no longer stack. Only the greater damage is dealt.
+
+;[[V5.23]]
+* Damage adjusted to {{pp|30;30;30;30;30 to 100|round=ceil}} from {{pp|50;50;50;50;50 to 150|round=ceil}}.
+* Bonus damage to minions increased to 75% from 50%.
+
+;[[V5.22]]
+* Attack speed reduced to 35% from 40%.
+* Movement speed reduced to 5% from 6%.
+* Critical strike chance increased to 30% from 20%.
+* Removed unique passive.
+* Added unique passive - Energize: Moving and using basic attacks Energize you. When fully Energized, gain Shiv Lightning.
+* Added unique passive - Shiv Lightning: Your next basic attack (on-hit) deals {{pp|50;50;50;50;50 to 150|round=ceil}} bonus magic damage, increased to {{pp|75;75;75;75;75 to 225|round=ceil}} against minions, that can spark to up to 4 additional nearby units. This damage can critically strike and scales with critical strike damage.
+* Combine cost increased to {{g|550}} from {{g|525}}.
+* Removed {{ii|Avarice Blade}} from recipe.
+* Added {{ii|Kircheis Shard}} to recipe.
+
+;[[V4.10]]
+* Combine cost increased to {{g|600}} from {{g|525}}.
+
+;[[V4.2]]
+* The passive magic damage will now only critically strike if the associated attack critically strikes.
+
+;[[V1.0.0.152]] Added
+* {{ii|Statikk Shiv}}:
+** Recipe: {{ii|Zeal}} + {{ii|Avarice Blade}} + {{g|525}} = {{g|2500}}
+** +40% attack speed.
+** +6% movement speed.
+** +20% critical strike chance.
+** Unique passive: Moving and attacking build Static Charges. At 100 charges your next attack expends the charges to deal 100 magic damage to up to 4 targets. This damage can critically strike.
+|as=30}}
+
+
+[[cs:Statikk Shiv]]
+[[de:Statikks Stich]]
+[[es:Daga de Statikk]]
+[[fr:Poignard de Statikk]]
+[[pl:Kosa Statikka]]
+[[ru:Заточка Статикка]]
+[[zh:斯塔缇克电刃]]

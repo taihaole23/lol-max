@@ -1,0 +1,34 @@
+["Overlord's Bloodmail"] = {
+        ["id"]                  = 2501,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["caption"]             = "\"Only between life and death did he find a way to settle the score.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 550,
+            ["ad"]              = 40,
+        },
+        ["effects"] = {
+            ["pass"] = {
+            	["name"]        = "Tyranny",
+                ["unique"]      = true,
+                ["description"] = "Gain {{as|'''bonus''' attack damage}} equal to {{as|{{fd|2.5}}% '''bonus''' health}}.",
+            },
+            ["pass2"] = {
+            	["name"]        = "Retribution",
+                ["unique"]      = true,
+                ["description"] = "Gain {{as|'''bonus''' attack damage}} equal to {{pp|0 to 10 by 1|0 to 70|key=%|key1=%|type='''missing''' health|color=health}} of your {{as|'''total''' attack damage}} from other sources.",
+            },
+        },
+        ["recipe"]              = {"Tunneler", "Tunneler"},
+        ["buy"]                 = 3300,
+    },

@@ -1,0 +1,32 @@
+["Runaan's Hurricane"] = {
+        ["id"]                  = 3085,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["limit"]               = "Can only be purchased on {{tip|ranged}} champions.",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+            ["onhit effects"]   = true,
+            ["movement"]		= true,
+        },
+        ["stats"] = {
+            ["as"]              = 40,
+            ["crit"]            = 25,
+            ["ms"]              = 5,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Wind's Fury",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks [[on-attack]] fire additional bolts at up to 2 enemies {{tt|in front of you|180{{degree}}}}, each dealing {{as|60% AD}} {{as|physical damage}}. Bolts apply {{tip|on-hit}} effects and are affected by {{tip|critical strike}} modifiers.",
+                ["description2"]= "''The bolts will target the closest enemies to you that are not the main target.''",
+            },
+        },
+        ["recipe"]              = {"Zeal", "Scout's Slingshot"},
+        ["buy"]                 = 2650,
+    },

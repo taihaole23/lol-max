@@ -9,12 +9,11 @@
 // Death Lotus BUG (listed on the wiki, so it's how the game really plays): R's on-hit
 //   effectiveness (25 / 30 / 35%) also shrinks Luden's damage, because a dagger triggered it.
 //   We apply it to the leftover-stack hits too, since they come from the same trigger.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Luden%27s_Echo", patch: PATCH },
-  bugSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Luden%27s_Echo", patch: "26.23" },
+  bugSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: "26.23" },
   stacks: 6,
   baseDamage: 75,
   apRatio: 0.05,

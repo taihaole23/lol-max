@@ -1,0 +1,100 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems =Shadowflame;Cosmic Drive;Lich Bane;Horizon Focus;Hextech Rocketbelt;Hextech Gunblade;Sorcerer's Shoes
+|background =
+|notes =
+* {{sbc|Squall}} can be stacked on a target when applied by multiple users, though not refreshing the debuff for all subsequent sources at a time.
+* {{sbc|Squall}} deals {{tip|spell damage}} to the main target, and the electric field deals {{tip|area damage}}, and thus will trigger [[spell effects]].
+* {{sbc|Squall}} is an [[auto-targeted]] effect.
+* {{sbc|Squall's}} damage is special cased to not remove {{tip|sleep}}.<!--aoe too-->
+* The range modifier is calculated at the moment of applying ''Squall'', regardless of {{tip|cast instance|cast instances}} and when its damage is dealt.
+|strategy =
+|oldicons =
+|trivia =
+* The item's names and concept comes from the long-removed [[Summoner Mastery|Keystone Mastery]] called {{mi6|Stormraider's Surge}}.
+[[File:Freljord Crest icon.png|link=Freljord|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Stormsurge item VFX.png|Trigger VFX
+Stormsurge trigger delay VFX.png|Delay VFX
+Stormsurge area of effect VFX.png|AOE Trigger VFX
+Stormsurge gold and movemnt speed VFX.png|Gold and Movement Speed VFX
+</gallery>
+|sfx =
+;Squall Delay
+* {{sm2|Stormsurge passive delay SFX 2.ogg}} Passive SFX
+* {{sm2|Stormsurge passive delay SFX 3.ogg}} Passive SFX
+* {{sm2|Stormsurge passive delay SFX.ogg}} Passive SFX
+
+;Squall Triggered
+* {{sm2|Stormsurge passive triggered SFX 2.ogg}} Passive SFX
+* {{sm2|Stormsurge passive triggered SFX 4.ogg}} Passive SFX
+* {{sm2|Stormsurge passive triggered SFX.ogg}} Passive SFX
+|revisions =
+|patchhistory =
+;[[V26.05]]
+* {{sbc|Undocumented / New Effect:}} Squall is now special cased to not remove {{tip|sleep}}.
+
+;[[V25.10]]
+* Total cost reduced to {{g|2800}} from {{g|2900}}.
+** Combine cost reduced to {{g|800}} from {{g|900}}.
+* Movement speed increased to 6% from 4%.
+* {{sbc|Removed:}} Stormraider no longer grants {{as|25% '''bonus''' movement speed}} for {{fd|1.5}} seconds upon applying Squall.
+* {{sbc|Removed:}} Squall no longer awards {{g|30}} if the afflicted champion died before the lightning struck them only.
+
+;[[V14.20]]
+* Ability power reduced to 90 from 95.
+* Squall base damage reduced to 125 from 150.
+* Squall AP ratio reduced to {{as|10% AP}} from {{as|15% AP}}.
+
+;[[V14.19]]
+* Combine cost reduced to {{g|900}} from {{g|950}}.
+** Total cost unchanged.
+* Movement speed reduced to 4% from 5%.
+* Stormraider bonus movement speed reduced to 25% from 35%.
+* Stormraider bonus movement speed duration reduced to {{fd|1.5}} seconds from 2.
+* Squall base damage increased to 150 from 140.
+* Squall AP ratio reduced to {{as|15% AP}} from {{as|20% AP}}.
+
+;[[V14.18]]
+* Magic penetration increased to 15 from 10.
+* Movement speed reduced to 5% from 8%.
+* Stormraider health threshold reduced to {{as|25% of target's '''maximum''' health}} from {{as|35%|hp}}.
+* Squall base damage increased to 140 for all users from {{rd|140|{{ap|140*0.9}}}}.
+* Squall AP ratio increased to {{as|20% AP}} for all users from {{as|{{rd|20%|{{ap|20*0.9}}%}}|AP)}}.
+
+;[[V14.15]]
+* Stormraider bonus movement speed increased to 35% from 25%.
+* Squall base damage for {{tip|ranged}} champions increased to 126 from 105.
+* Squall AP ratio for {{tip|ranged}} champions increased to {{as|18% AP}} from {{as|15% AP}}.
+
+;[[V14.5]]
+* Movement speed increased to 8% from 5%.
+
+;[[V14.3]]
+* Ability power increased to 95 from 90.
+* Squall base damage changed to {{rd|140|105}} at all levels from {{rd|100 to 200|75 to 150|pp=true}}.
+* {{sbc|Bug Fix:}} Damage tracker now properly only counts Squall's damage dealt to champions instead of all enemy units.
+
+;[[V14.2]]
+* Ability power reduced to 90 from 100.
+* Squall AP ratio reduced to {{as|{{rd|20%|15%}} AP}} from {{as|{{rd|30%|{{fd|22.5}}%}} AP}}.
+* {{sbc|Bug Fix:}} No longer improperly deals the damage to the user if it hit {{cis|Neeko}} clone from her {{ai|Shapesplitter|Neeko}}.
+* {{sbc|Bug Fix:}} No longer improperly grants kill credit to the ally who triggered the area of effect rather than the user.
+
+;[[V14.1#January 12th Hotfix|V14.1]] - January 12th Hotfix
+* Squall base damage reduced to {{rd|100 to 200|75 to 150|pp=true}} from {{rd|120 to 260|90 to 195|pp=true}}.
+* Squall AP ratio reduced to {{as|{{rd|30%|{{fd|22.5}}%}} AP}} from {{as|{{rd|40%|30%}} AP}}.
+
+;[[V14.1]] - Added
+* {{sbc|Recipe:}} {{ii|Hextech Alternator}} + {{ii|Aether Wisp}} + {{g|950}} = {{g|2900}}.
+* {{sbc|Stats:}} 100 ability power, 10 magic penetration, 5% movement speed.
+* {{sbc|Unique Passive - Stormraider:}} Dealing damage to an enemy champion equal to {{as|35% of their '''maximum''' health}} within {{fd|2.5}} seconds inflicts them with ''Squall'' and grants you {{as|25% '''bonus''' movement speed}} for 2 seconds (30 second cooldown).
+* {{sbc|Unique Passive - Squall:}} After 2 seconds of having applied ''Squall'', strike the target with lightning, dealing {{as|{{rd|120 to 260|90 to 195|pp=true}}|magic damage}} {{as|(+ {{rd|40%|30%}} AP)}} {{as|magic damage}} to them. If the target dies before being struck, they emit an electric field instantly that shocks all enemy champions near them, dealing them the same damage and granting you {{g|30}}.
+* Limited to 1 '''Stormsurge'''.
+}}
+
+[[Category:Season 2024 item release]]
+[[ru:Штормовой прилив]]

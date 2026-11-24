@@ -1,0 +1,36 @@
+["Sterak's Gage"] = {
+        ["id"]                  = 3053,
+        ["nickname"]            = {"juggernaut", "primal", "shield", "sterak's cage"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Lifeline",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["attack damage"]   = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 400,
+            ["tenacity"]        = 20,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "The Claws that Catch",
+                ["unique"]      = true,
+                ["description"] = "Gain {{as|'''bonus''' attack damage}} equal to {{as|50% '''base''' AD}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Lifeline",
+                ["unique"]      = true,
+                ["description"] = "If you would take damage that would reduce you below {{as|30% of your '''maximum''' health}}, you first gain a {{tip|shield}} that absorbs damage equal to {{as|60% of '''bonus''' health}} which decays over {{fd|4.5}} seconds.",
+                ["cd"]          = "90",
+            },
+        },
+        ["recipe"]              = {"Pickaxe", "Tunneler", "Ruby Crystal"},
+        ["buy"]                 = 3200,
+    },

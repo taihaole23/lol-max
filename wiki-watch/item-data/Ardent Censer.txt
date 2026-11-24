@@ -1,0 +1,32 @@
+["Ardent Censer"] = {
+        ["id"]                  = 3504,
+        ["nickname"]            = {"censer"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["support"]         = true,
+            ["attack speed"]    = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 45,
+            ["hsp"]             = 10,
+            ["mp5"]             = 125,
+            ["ms"]              = 4,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Sanctify",
+                ["unique"]      = true,
+                ["description"] = "{{tip|Heal|Healing}} or {{tip|shield|shielding}} allied champions (''excluding yourself'') enhances you and them for 6 seconds, granting {{as|25% '''bonus''' attack speed|attack speed}} and {{as|20 '''bonus''' magic damage}} [[on-hit]] on basic attacks.",
+            },
+        },
+        ["recipe"]              = {"Aether Wisp", "Forbidden Idol"},
+        ["buy"]                 = 2200,
+    },

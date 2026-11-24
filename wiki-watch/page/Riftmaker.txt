@@ -1,0 +1,129 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Icathia's Curse}}.''
+{{Item info
+|goldvalue =
+{{gold value|Void Infusion Gold Value (from base stats)|nolink=}}
+* {{fd|{{#expr:{{cid|Riftmaker|hp}}*{{#vardefineecho:hppercenttoap|0.02}}}}}} [[ability power]] = {{g|{{#expr:{{cid|Riftmaker|hp}}*{{#var:hppercenttoap}}*{{#var:ap}}}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:total|{{#expr:{{#var:total}}+{{cid|Riftmaker|hp}}*{{#var:hppercenttoap}}*{{#var:ap}}}}}}}}
+{{gold value|Void Infusion Gold Value per 100 bonus health from outside sources|nolink=}}
+* {{fd|{{#expr:{{#var:hppercenttoap}}*100}}}} [[ability power]] = {{g|{{#vardefineecho:perhp|{{#expr:{{#var:ap}}*{{#var:hppercenttoap}}*100}}}}}}
+{{gold value|Void Corruption omnivamp Gold Value|nolink=}}
+* {{rd|10% [[omnivamp]]|6% [[omnivamp]]}} = {{rd|{{g|{{#vardefineecho:vampmelee|{{#expr:10*{{#var:omnivamp}} round 2}}}}}}|{{g|{{#vardefineecho:vampranged|{{#expr:6*{{#var:omnivamp}} round 2}}}}}}}}
+|goldefficiency =
+* {{iis|Riftmaker}} gold efficiency due to {{sbc|Void Infusion}} is increased by {{gec|Riftmaker|+{{#var:perhp}}}} for every {{as|100 '''bonus''' health}} from other sources.
+* While {{sbc|Void Corruption}} is fully stacked, {{iis|Riftmaker}} gold efficiency is increased by {{rd|{{gec|Riftmaker|+{{#var:vampmelee}}}}|{{gec|Riftmaker|+{{#var:vampranged}}}}}}.
+|similaritems = Liandry's Torment;Hextech Gunblade; Hextech Rocketbelt;Cosmic Drive;Dusk and Dawn;Rod of Ages;Rylai's Crystal Scepter;Blackfire Torch
+|notes =
+* {{sbc|Void Infusion}} grants {{as|{{fd|{{#expr:({{cid|Riftmaker|hp}}*{{#var:hppercenttoap}})}}}} ability power}} by itself.
+** With '''Riftmaker's''' ability power stat this totals to {{as|{{fd|{{#expr:{{cid|Riftmaker|ap}}+({{cid|Riftmaker|hp}}*{{#var:hppercenttoap}})}}}}|ap}}.
+* {{sbc|Void Corruption}} lasts for 3 seconds when not fully stacked, and 5 seconds when stacked.
+|strategy =
+* {{iis|Riftmaker}} effect can be kept active by constantly taking or dealing damage.
+|trivia =
+[[File:Void Crest icon.png|link=Void#Trivia|100px|center]]
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Riftmaker stacking up VFX.png|Stacking Up VFX
+Riftmaker maximum stacks reached VFX.png|Maximum Stacks Achieved VFX
+Riftmaker item screenshot.png|Maximum Stacks VFX
+</gallery>
+|sfx =
+;Passive Triggered (Maximum Stacks)
+* {{sm2|Riftmaker passive SFX.ogg}} Passive SFX
+
+;Effect Ends
+* {{sm2|Riftmaker passive SFX 2.ogg}} Passive SFX
+|revisions =
+|patchhistory =
+;[[V26.10]]
+* {{sbc|Bug Fix:}} Void Corruption passive no longer applies double the damage amplification.
+** {{note|1}} This bug was introduced in the previous patch.
+
+;[[V14.19]]
+* Combine cost increased to {{g|950}} from {{g|900}}.
+** Total cost unchanged.
+* Ability power reduced to 70 from 80.
+* Number of stacks reduced to 4 from 5.
+** Maximum bonus damage reduced to 8% from 10%.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Icathia's Curse}}.
+
+;[[V14.2]]
+* Total cost increased to {{g|3100}} from {{g|3000}}.
+** Combine cost increased to {{g|900}} from {{g|800}}.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Haunting Guise}} + {{ii|Fiendish Codex}} + {{g|800}} = {{g|3000}}.
+** {{sbc|Stats:}} 350 health, 80 ability power, 15 ability haste.
+** {{sbc|Unique Passive - Void Corruption:}}  For each second in combat with champions, deal 2% increased damage, stacking up to 5 times for a total of 10%. While this effect is fully stacked, gain {{as|{{rd|10%|6%}} omnivamp}}.
+** {{sbc|Unique Passive - Void Infusion:}} Gain {{as|ability power}} equal to {{as|2% of '''bonus''' health|hp}}.
+** Limited to 1 '''Riftmaker'''.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Icathia's Curse}}.
+*** {{sbc|Stats:}} 450 health, 90 ability power, 20 ability haste.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Leeching Leer}} + {{ii|Blasting Wand}} + {{g|1050}}= {{g|3200}}.
+** {{sbc|Stats:}} 300 health, 70 ability power, 15 ability haste, 7% omnivamp.
+** {{sbc|Unique Passive - Void Corruption:}} For each second in combat with champions, deal 3% increased damage, stacking up to 3 times for a total of 9%. While this effect is fully stacked, convert 100% of the increased damage into {{as|true damage}}.
+** {{sbc|Mythic Passive:}} Empowers each of your other Legendary items with {{as|2% omnivamp}} and {{as|8 ability power}}.
+** Limited to 1 {{sbc|Mythic}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Icathia's Curse}}.
+*** {{sbc|Stats:}} 450 health, 90 ability power, 20 ability haste, 8% omnivamp.
+
+;[[V12.23]]
+* {{sbc|Undocumented/Bug Fix:}} Bonus damage when not fully stacked is now an increase to the damage instance, instead of being applied using additional damage instances.
+** This resolves some recursion and performance issues.
+
+;[[V12.21]]
+* Updated icon.
+
+;[[V12.11]]
+* Ability power reduced to 70 from 80.
+* {{ii|Icathia's Curse}} ability power reduced to 90 from 100.
+
+;[[V12.10]]
+* Omnivamp reduced to 7% from 8%.
+* {{ii|Icathia's Curse}} omnivamp reduced to 8% from 10%.
+
+;[[V11.19]]
+* {{sbc|Bug Fix:}} {{ii|Icathia's Curse}} now properly grants its mythic bonuses per Legendary item owned.
+
+;[[V11.10]]
+* {{sbc|New Effect:}} Now also gains Void Corruption stacks from taking damage from champions.
+* Void Corruption maximum stacks reduced to 3 from 5.
+* Void Corruption bonus damage per stack increased to 3% from 2%.
+** Void Corruption maximum bonus damage reduced to 9% from 10%.
+
+;[[V11.9]]
+* {{sbc|Bug Fix:}} Now grants {{ci|Kai'Sa}} the appropriate amount of stats for her {{ai|Second Skin|Kai'Sa|Evolutions}}.
+* {{sbc|Bug Fix:}} Stat panel now correctly shows the omnivamp from the Mythic passive.
+
+;[[V11.3]]
+* Omnivamp reduced to 8% from 15%.
+* Health increased to 300 from 150.
+* Mythic passive changed to 2% omnivamp and 8 ability power from 5% magic penetration.
+* {{ii|Icathia's Curse}} omnivamp reduced to 10% from 18%.
+* {{ii|Icathia's Curse}} health increased to 450 from 300.
+
+;[[V10.24]]
+* Void Corruption bonus damage per stack reduced to 2% from 3%.
+** Void Corruption maximum bonus damage reduced to 10% from 15%.
+
+;[[V10.23#November 12th Hotfix|V10.23]] - November 12th Hotfix
+* {{sbc|Bug Fix:}} No longer causes {{bi|Aspect of the Dragon|Aspect of the Dragon's}} burn to last indefinitely until the target dies.
+
+;[[V10.23]] - Added
+* {{sbc|Recipe:}} {{ii|Leeching Leer}} + {{ii|Blasting Wand}} + {{g|1050}} = {{g|3200}}.
+* {{sbc|Stats:}} 80 ability power, 150 health, 15 ability haste, 15% omnivamp.
+* {{sbc|Unique Passive - Void Corruption:}} For each second in combat with champions, deal 3% increased damage, stacking up to 5 times. While this effect is fully stacked, convert 100% of the increased damage into {{as|true damage}}.
+* {{sbc|Mythic Passive:}} Empowers your other Legendary items with {{as|5% magic penetration}}.
+* Limited to 1 {{sbc|Mythic}} item.
+* {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Icathia's Curse}}.
+** {{sbc|Stats:}} 100 ability power, 300 health, 20 ability haste, 18% omnivamp.
+}}
+
+[[Category:Season 2021 item release]]
+[[de:Kluftformer]]
+[[ru:Творец разломов]]
+[[pt-br: Criafendas]]
+[[Category:Items with passive abilities]]

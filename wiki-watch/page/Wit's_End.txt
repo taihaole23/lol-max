@@ -1,0 +1,185 @@
+{{Item info
+|goldvalue =
+{{gold value|Fray Gold Value|nolink=}}
+* 45 [[on-hit]] [[magic damage]] = {{g|{{#expr:{{#var:ohdmg}}*45 round2}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:total|{{#expr:{{#var:total}}+{{#var:ohdmg}}*45 round 2}}}}}}
+|goldefficiency =
+|similaritems = Terminus;Blade of the Ruined King;Guinsoo's Rageblade;Kraken Slayer;Nashor's Tooth;Maw of Malmortius;Mercury's Treads;Sterak's Gage;Endless Hunger;Mercurial Scimitar
+|background =
+|notes =
+* {{sbc|Fray}} deals {{tip|proc damage}}, and thus will not trigger [[spell effects]].
+* {{sbc|Fray's}} on-hit damage does not apply to [[structure]]s.
+* The bonus damage dealt by {{sbc|Fray}} benefits from {{stil|life steal}}.
+|strategy =
+* {{ii|Wit's End}} is both an offensive and defensive item for magic damage; it provides magic damage on-hit while also resisting magic damage taken.
+* {{ii|Wit's End}} can be purchased on physical damage attackers to counter enemies with high amounts of armor with its passive that deals magic damage.
+|trivia =
+* Previously, '''Wit's End''' gave 42 on-hit magic damage and attack speed. Considering the item's name, this was probably a reference to {{w|The Hitchhiker's Guide to the Galaxy}}, where 42 is the answer to "the Ultimate Question of Life, the Universe, and Everything".
+* {{ii|Nashor's Tooth}} is the ability power counterpart to {{ii|Wit's End}}.
+[[File:Void Crest icon.png|link=Void#Trivia|100px|center]]
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Hearthbound Axe item screenshot.png|Old Movement Speed VFX
+Wit's End screenshot.png|Old Item VFX
+</gallery>
+|revisions =
+|patchhistory =
+;[[V14.19]]
+* Combine cost increased to {{g|550}} from {{g|500}}.
+** Total cost unchanged.
+* Attack speed reduced to 50% from 55%.
+* Magic resistance reduced to 45 from 50.
+* Fray damage changed to 45 at all levels from {{pp|40 to 80 for 11|1;9 to 18|formula=40, then +4 per level starting at level 9}}.
+
+;[[V14.15]]
+* {{sbc|Undocumented - New Recipe:}} {{ii|Recurve Bow}} + {{ii|Negatron Cloak}} + {{ii|Recurve Bow}} + {{g|500}} = {{g|2800}}.
+** {{sbc|Old Recipe:}} {{ii|Recurve Bow}} + {{ii|Negatron Cloak}} + {{ii|Dagger}} + {{g|900}} = {{g|2800}}.
+* Fray damage changed to {{pp|40 to 80 for 11|1;9 to 18|formula=40, then +4 per level starting at level 9}} from {{pp|15;25;35;45;55;65;75;76.25;77.5;78.75;80|1;9 to 18 for 10|formula=15, then +10 per level starting at level 9, then +1.25 per level starting at level 15}}.
+
+;[[V14.2]]
+* {{sbc|Bug Fix:}} No longer is incorrectly displayed in the attack damage section of the shop.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Recurve Bow}} + {{ii|Negatron Cloak}} + {{ii|Dagger}} + {{g|900}} = {{g|2800}}.
+** {{sbc|Stats:}} 55% attack speed, 50 magic resistance, 20% tenacity.
+** {{sbc|Unique Passive - Fray:}} Basic attacks deal {{as|{{pp|15;25;35;45;55;65;75;76.25;77.5;78.75;80|1;9 to 18 for 10|formula=15, then +10 per level starting at level 9, then +1.25 per level starting at level 15}} '''bonus''' magic damage}} on-hit.
+** Limited to 1 '''Wit's End'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Hearthbound Axe}} + {{ii|Null-Magic Mantle}} + {{ii|Recurve Bow}} + {{g|950}} = {{g|3200}}.
+** {{sbc|Stats:}} 40 attack damage, 40% attack speed, 40 magic resistance.
+** {{sbc|Unique Passive - Fray:}} Basic attacks deal {{as|{{pp|15;25;35;45;55;65;75;76.25;77.5;78.75;80|1;9 to 18 for 10|formula=15, then +10 per level starting at level 9, then +1.25 per level starting at level 15}} '''bonus''' magic damage}} on-hit and grant you {{as|20 '''bonus''' movement speed}} for 2 seconds.
+** Limited to 1 '''Wit's End'''.
+
+;[[V13.11]]
+* {{sbc|Bug Fix:}} No longer sometimes costs 100 more gold than intended.
+
+;[[V13.10]]
+* {{sbc|New Recipe:}} {{ii|Hearthbound Axe}} + {{ii|Null-Magic Mantle}} + {{ii|Recurve Bow}} + {{g|950}} = {{g|3200}}.
+** {{sbc|Old Recipe:}} {{ii|Hearthbound Axe}} + {{ii|Null-Magic Mantle}} + {{ii|Pickaxe}} + {{g|775}} = {{g|3100}}.
+
+;[[V12.3]]
+* Combine cost increased to {{g|775}} from {{g|675}}.
+** Total cost unchanged.
+
+;[[V12.1]]
+* {{sbc|New Recipe:}} {{ii|Hearthbound Axe}} + {{ii|Null-Magic Mantle}} + {{ii|Pickaxe}} + {{g|675}} = {{g|3100}}.
+** {{sbc|Old Recipe:}} {{ii|Hearthbound Axe}} + {{ii|Negatron Cloak}} + {{ii|Long Sword}} + {{g|750}} = {{g|3100}}.
+* Magic resistance reduced to 40 from 50.
+
+;[[V11.17]]
+* Fray damage changed to {{pp|15;25;35;45;55;65;75;76.25;77.5;78.75;80|1;9 to 18 for 10}} from {{pp|15 to 80}}. ''Formula changed.''
+
+;[[V11.9]]
+* {{sbc|New Recipe:}} {{ii|Hearthbound Axe}} + {{ii|Negatron Cloak}} + {{ii|Long Sword}} + {{g|750}} = {{g|3100}}.
+** {{sbc|Old Recipe:}} {{ii|Hearthbound Axe}} + {{ii|Negatron Cloak}} + {{ii|Dagger}} + {{g|800}} = {{g|3100}}.
+* Attack damage increased to 40 from 30.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Hearthbound Axe}} + {{ii|Negatron Cloak}} + {{ii|Dagger}} + {{g|800}} = {{g|3100}}.
+** {{sbc|Stats:}} 40% attack speed, 50 magic resistance, 30 attack damage.
+** {{sbc|Unique Passive - Fray:}} Basic attacks deal {{as|{{pp|15 to 80}} '''bonus''' magic damage}} on-hit and grant you {{as|20 '''bonus''' movement speed}} for 2 seconds.
+** Limited to 1 '''Wit's End'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Recurve Bow}} + {{ii|Negatron Cloak}} + {{ii|Dagger}} + {{g|800}} = {{g|2900}}.
+** {{sbc|Stats:}} 50% attack speed, 50 magic resistance, 5% movement speed.
+** {{sbc|Unique Passive - At Wit's End:}} Basic attacks deal {{as|{{pp|15 to 75 for 7;75 to 80|1;9 to 18 by 1}} '''bonus''' magic damage on-hit}}. While {{as|'''below''' 50% health}}, {{tip|heal}} for {{rd|100%|33%}} of this effect's {{tt|post-mitigation damage|Damage calculated after modifiers}}.
+
+;[[V9.7]]
+* Total cost increased to {{g|2900}} from {{g|2400}}.
+** Combine cost increased to {{g|880}} from {{g|380}}.
+* Attack speed increased to 50% from 40%.
+* Magic resistance increased to 50 from 40.
+* {{sbc|New Effect:}} Now grants 5% '''bonus''' movement speed.
+* {{sbc|New Unique Passive - At Wit's End:}} Basic attacks deal {{as|{{pp|15;25;35;45;55;65;75 to 80|1;9 to 18 for 10}} '''bonus''' magic damage on-hit}}. While {{as|'''below''' 50% health}}, heal for 33% of this effect's damage dealt, increased to 100% for {{tip|melee|melee champions}}.
+* {{sbc|Removed Unique Passive:}} Basic attacks deal {{as|42 '''bonus''' magic damage on-hit}}.
+* {{sbc|Removed Unique Passive:}} Basic attacks (on-hit) grant {{as|6 [[magic resistance]]}} and reduce {{as|the target's magic resistance by 6}} for 5 seconds. Both effects stack up to 30 magic resistance. {{tip|Ranged|Ranged champions}} only steal 3 magic resistance per basic attack, up to the same cap.
+
+;[[V8.4]]
+* Total cost reduced to {{g|2400}} from {{g|2500}}.
+** Combine cost reduced to {{g|380}} from {{g|480}}.
+* Bonus magic damage on-hit increased to 42 from 40.
+* Magic resistance stolen reduced to 3 from 5.
+* {{sbc|New Effect:}} {{tip|Melee}} champions instead steal 6 magic resistance per basic attack.
+* {{sbc|New Effect:}} Now stacks up to 30 magic resistance stolen from 25.
+
+;[[V6.11]]
+* {{sbc|New recipe:}} {{ii|Recurve Bow}} + {{ii|Negatron Cloak}} + {{ii|Dagger}} + {{g|480}}{{equals}}{{g|2500}}.
+** {{sbc|Old recipe:}} {{ii|Recurve Bow}} + {{ii|Null-Magic Mantle}} + {{ii|Dagger}} + {{g|1050}}{{equals}}{{g|2800}}.
+
+;[[V5.22]]
+* Total cost increased to {{g|2800}} from {{g|2550}}.
+* Magic resist increased to 40 from 30.
+* Attack speed reduced to 40% from 50%.
+* On-hit damage reduced to 40 from 42.
+
+;[[V5.16]]
+* Total cost reduced to {{g|2550}} from {{g|2600}}.
+
+;[[V5.8]]
+* Recipe cost reduced to {{g|550}} from {{g|750}}.
+
+;[[V4.20]]
+* Total cost increased to {{g|2600}} from {{g|2500}}.
+* Magic resistance increased to 30 from 25.
+
+;[[V4.10]]
+* Combine cost increased to {{g|750}} from {{g|700}}.
+** Total cost increased to {{g|2500}} from {{g|2450}}.
+* Attack speed increased to 50% from 42%.
+
+;[[V3.8]]
+* {{sbc|New recipe:}} {{ii|Recurve Bow}} + {{ii|Null-Magic Mantle}} + {{ii|Dagger}} + {{g|700}} = {{g|2400}}
+* Attack speed increased to 42% from 40%.
+* {{sbc|New Effect:}} Basic attacks steal 5 magic resist from the target for 5 seconds, stacks up to 5 times, for a maximum of {{as|+25 MR}}.
+* {{sbc|Removed:}} Basic attacks increase your magic resist by 5 for 5 seconds, stacks 4 times for maximum of {{as|+20 MR}}).
+
+;[[V3.02]]
+* Magic resistance increased to 25 from 20.
+
+;[[V1.0.0.152]]
+* Item cost increased to {{g|2200}} from {{g|2150}}.
+* Combine cost increased to {{g|850}} from {{g|700}}.
+* Magic resistance reduced to 20 from 30.
+
+;[[V1.0.0.138]]
+* Combine cost increased to {{g|700}} from {{g|550}}.
+* Total cost increased to {{g|2150}} from {{g|2000}}.
+
+;[[V1.0.0.118]] Reworked
+* No longer burns mana, but still deals 42 magic damage on each hit.
+* New passive: attacks increase your magic resist by 5 for 5 seconds (stacks 4 times for maximum of {{as|+20 MR}}).
+* Combine cost reduced to {{g|550}} from {{g|700}}.
+
+;[[V1.0.0.108]]
+* Now damages enemies that do not have mana.
+* Fixed a bug where it did not interact correctly with clones.
+
+;[[July 10, 2009 Patch]]
+* Combine cost reduced to {{g|700}} from {{g|900}}.
+
+;[[June 19, 2009 Patch]]
+* Recipe changed: now builds from {{ii|Null-Magic Mantle}}.
+
+;[[May 15, 2009 Patch]]
+* Recipe cost increased to {{g|800}} from {{g|600}}.
+
+;[[April 25, 2009 Patch]]
+* Mana burn reduced to 35 from 45.
+* Cost increased to {{g|600}} from {{g|500}}.
+
+;[[Alpha Week 5]]
+* Mana per attack increased to 45 from 40, and tooltip fixed.
+}}
+
+
+[[cs:Wit's End]]
+[[de:Ende der Weisheit]]
+[[es:Al Filo de la Cordura]]
+[[fr:Au Bout du Rouleau]]
+[[pl:Koniec Rozumu]]
+[[ru:Смерть Разума]]
+[[zh:智慧末刃]]
+[[Category:On-hit effect items]]

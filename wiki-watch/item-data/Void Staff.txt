@@ -1,0 +1,21 @@
+["Void Staff"] = {
+        ["id"]                  = 3135,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Blight",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 95,
+            ["mpen"]            = 40,
+        },
+        ["recipe"]              = {"Blighting Jewel", "Blasting Wand"},
+        ["buy"]                 = 3000,
+    },

@@ -1,0 +1,30 @@
+["Mejai's Soulstealer"] = {
+        ["id"]                  = 3041,
+        ["nickname"]            = {"book"},
+        ["tier"]                = 2,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Glory",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = false,
+            ["nb"]              = false,
+            ["ar"]              = false,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+            ["movement"]        = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 20,
+            ["hp"]              = 100,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Glory",
+                ["unique"]      = true,
+                ["description"] = "Gain 4 stacks for each champion [[kill]] and 2 stacks for each [[assist]], up to a '''maximum''' of 25 stacks. For every stack, gain {{as|5 ability power}}, up to {{as|125|AP}} at '''maximum''' stacks. If you have at least 10 stacks, also gain {{as|10% '''bonus''' movement speed}}. Lose 10 stacks on [[death]]. Stacks are preserved from {{ii|Dark Seal}}.",
+            },
+        },
+        ["recipe"]              = {"Dark Seal"},
+        ["buy"]                 = 1500,
+    },

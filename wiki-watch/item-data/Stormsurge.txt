@@ -1,0 +1,33 @@
+["Stormsurge"] = {
+        ["id"]                  = 4646,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 90,
+            ["mpenflat"]        = 15,
+            ["ms"]              = 6,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Stormraider",
+                ["unique"]      = true,
+                ["description"] = "Dealing damage to an enemy champion equal to {{as|25% of their '''maximum''' health}} within {{fd|2.5}} seconds inflicts them with ''Squall'' (30 second cooldown, starts on ''Squall's'' application).",
+            },
+            ["pass2"] = {
+                ["name"]        = "Squall",
+                ["unique"]      = true,
+                ["description"] = "After 2 seconds of having applied ''Squall'', strike the target with lightning, dealing {{as|125|magic damage}} {{as|(+ 10% AP)}} {{as|magic damage}} to them. If the target dies before being struck, they emit an electric field instantly that shocks all enemy champions in a {{tip|cr|icononly=true}} 600 radius, dealing them the same damage.",
+            },
+		},
+        ["recipe"]              = {"Hextech Alternator", "Aether Wisp"},
+        ["buy"]                 = 2800,
+    },

@@ -1,6 +1,5 @@
 // Katarina's game numbers. This file holds data only; the formulas that use it come in Step 3.
 // Every group of numbers has a `source`: where it was read, and for which patch.
-import { PATCH } from "./patch.ts";
 
 const WIKI_URL = "https://wiki.leagueoflegends.com/en-us/Katarina/LoL";
 
@@ -10,7 +9,7 @@ export const katarina = {
   // Stats at level 1 ("base") and how much they grow each level ("perLevel").
   // Growth is not added evenly per level; the exact formula is coded in Step 3.
   baseStats: {
-    source: { url: WIKI_URL, patch: PATCH },
+    source: { url: WIKI_URL, patch: "26.23" },
     health: { base: 672, perLevel: 108 },
     armor: { base: 32, perLevel: 4.7 },
     magicResist: { base: 32, perLevel: 2.05 },
@@ -25,14 +24,14 @@ export const katarina = {
 
   // Which stat adaptive force gives when bonus AD and AP are exactly equal (e.g. both 0).
   adaptiveType: {
-    source: { url: WIKI_URL, patch: PATCH },
+    source: { url: WIKI_URL, patch: "26.23" },
     whenTied: "ap" as "ad" | "ap", // the wiki's champion data says "Magic"
   },
 
   // Her 4 abilities, in the order the site shows them. `maxRank`: basic abilities go up to 5, R up to 3.
   // Only R is modelled in version 1; the others are shown as "coming soon".
   abilities: {
-    source: { url: WIKI_URL, patch: PATCH },
+    source: { url: WIKI_URL, patch: "26.23" },
     list: [
       { key: "q", name: "Bouncing Blade", maxRank: 5 },
       { key: "w", name: "Preparation", maxRank: 5 },
@@ -43,7 +42,7 @@ export const katarina = {
 
   // Death Lotus (R). Lists with 3 entries are by R rank: [rank 1, rank 2, rank 3].
   deathLotus: {
-    source: { url: WIKI_URL, patch: PATCH },
+    source: { url: WIKI_URL, patch: "26.23" },
     channelSeconds: 2.5,
     secondsBetweenDaggers: 0.166,
     // UNCONFIRMED: the wiki doesn't say when the first dagger lands. We assume right

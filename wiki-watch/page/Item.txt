@@ -1,0 +1,109 @@
+{{Article game navigation
+|lor = LoR:Items}}
+[[File:Shopkeeper Preseason 2021 Promo 01.jpg|thumb|400px|Summoner's Rift [[Universe:Yordle|yordle]] shopkeeper presenting [[Season 2021]] items. Various [[champions]] can be seen behind the shopkeeper.]]
+An '''item''' is a modular enhancement that grants bonuses and capabilities beyond what [[champion]]s have access to by default. Most '''items''' can be purchased from the [[shop]] in exchange for {{g|gold}} while near the [[spawn]], while a small number of them may be distributed to players from various effects.
+
+In {{tip|League of Legends}}, acquiring an item is the same as equipping it and its [[stat]]s and effects are gained ''passively''. A number of items may additionally feature unique [[active ability items|active item abilities]] that can be used via the respective slot's [[hotkey]] and are highlighted by a gold trim on the HUD.
+
+== Acquiring items ==
+[[File:Item_shop_desk.jpg|thumb|right|300px|Items and gold.]]
+The right side of the player's HUD displays a {{g|[[gold]]}} counter, the [[Shop#Item queuing|item queue]] circle, and the player's '''inventory''' where items are placed. The inventory has six slots by default: this limitation renders their combination and order—known as the player's ''build''—an important factor in determining champion power and agency. A seventh, ''trinket slot'' is occupied by ''[[trinket item]]s''. Players are usually given a default trinket item upon starting the game, which may be temporarily or permanently swapped with other trinket items throughout the game. On [[Summoner's Rift]], completing the Bot or Support [[Role Quests]] grants access to an additional item slot which holds a specific item and frees a main slot. The main slots of the inventory (excludes the trinket and Role Quest slots) can be rearranged by {{LMB}} clicking-and-dragging on items' icons; if an item occupies the target slot, the dragged item and the target will simply exchange slots.
+
+Items can be acquired in two ways:
+# By '''purchasing''' them from the [[shop]] while within valid range of the shopkeeper's stall—the gold counter button lights up while in range. The shop interface is accessed by {{LMB}} clicking on the model of the ally team's shopkeeper stall, {{LMB}} clicking on the gold counter in the HUD, or using the assigned hotkey (default {{sbc|P}}). The shop is located right next to the [[Spawn|spawn platform]] (fountain) in most maps.
+# Through the process of '''distribution'''. Distributed items are acquired upon fulfilling a condition, varying by item, and they automatically go into the next available slot in the inventory. Champions can acquire distributed items while at any location, they do not need to be in the shop's range.
+
+Items that the champion cannot equip due to any restrictions will feature a [[File:Shop_item_lock.png|20px|link=|Icon in the shop for locked items (items that the player cannot purchase)]] lock icon in the shop.
+
+[[File:Item shop interface.png|500px|thumb|center|The item shop interface.]]
+
+== Effects ==
+[[File:Item key bindings.png|thumb|right|300px|Items that include effects the player can actively use are highlighted with a golden trim (shown: {{sbc|2}}, {{sbc|3}} and {{sbc|4}}).]]
+Most items passively provide power or effects upon being equipped, but some items may feature an ''active ability'' (shortened to "active").
+* '''[[Champion statistic|Stats]]'''. The majority of items provide a number of statistics.
+* '''[[Passive|Passive item abilities]]''' grant a special effect automatically.
+* '''[[Active ability items|Active item abilities]]''' and [[Consumable item|consumables]] grant a special effect upon ''cast'', by clicking on the item or by pressing their slot's designated [[hotkey]]. Item actives are distinct active spells from [[champion ability|champion abilities]], while consumables grant various beneficial effects immediately or over a duration.
+* '''[[Aura|Auras]]''' are [[buff]]s (positive effects) or [[debuff]]s (negative effects) that may passively affect nearby allied or enemy units, respectively.
+
+Like champion abilities, item abilities may be [[named item effect|named]] and have certain [[targeting]], [[range]]s, [[cooldown]]s or other special conditions. Item effects' cooldown is affected by {{sti|ah|[[item haste]]}} and is shown on their icon while incurred.
+
+Items that grant static permanent stat bonuses via an item effect (e.g. {{ii|Rod of Ages}}) will have that bonus added to the innate stats. This does not only apply to the display of stats that the item grants: the item effects' bonuses count as innate stats themselves. Notably, {{ri|Jack of All Trades}} counts these bonuses as if they were innate to the item, thus granting a stack of the rune if the stat is unique.
+
+The icon of certain items in the inventory may be accompanied by a counter. Items that utilize a [[ammunition|stock]] always display their number of available charges and become greyed out to indicate when no charges are available. Items that grant a [[stack]]ing bonus or have a requirement may display a counter which indicates the granted bonus or remaining amount.
+
+== Classification ==
+=== {{Anchor|Quality Tiers}}Quality tiers ===
+Items are primarily categorized into quality tiers. Starter-tier items are meant to grant a modest amount of power at the start of the game and players are recommended to spend their starting {{g|gold}} on them. Basic- and Epic-tier items on the other hand may be combined in '''recipes''' to build powerful Legendary-tier items.
+
+;[[Starter item|Starter]]
+:These items are effective at the beginning of the game, but their value diminishes as the game goes on since they only grant moderate power compared to other items. Most starter items are not part of recipes and therefore cannot build into higher-tier items, occupying a slot in the player's inventory until sold.
+
+;[[Basic item|Basic]]
+:These items provide a single stat.
+
+;[[Epic item|Epic]]
+:These items may provide higher stats than basic items and/or new effects. Some Epic items offer a lesser version of the Legendary item(s) that they build into.
+
+;[[Legendary item|Legendary]]
+:Combining Basic and Epic items makes Legendary items, which provide the greatest power and effects of all items.
+
+=== {{anchor|Boot|Boot tiers}}Boots ===
+Boots are a distinct ecosystem of items. Only one Boots item can be equipped that will give champions important {{stil|''flat'' movement speed}}, but these items may also grant other [[Champion statistic|stats]] or [[Named item effect|effects]], similar to regular items.
+
+Boots items have three tiers:
+* '''Tier 1''': Grants {{as|25 movement speed|ms}} as a baseline. This tier contains {{ii|Boots}} (and similar strength boot items e.g. {{ii|Slightly Magical Boots}}).
+* '''Tier 2''': Purchased upgrades of Tier 1 boots. Grants {{as|45 movement speed|ms}} as a baseline.
+** This tier contains {{ii|Berserker's Greaves}}, {{ii|Boots of Swiftness}}, {{ii|Gluttonous Greaves}}, {{ii|Ionian Boots of Lucidity}}, {{ii|Mercury's Treads}}, {{ii|Plated Steelcaps}}, and {{ii|Sorcerer's Shoes}}.
+* '''Tier 3''': Upgraded, exclusive variants of Tier 2 boots. Grants {{as|45 movement speed|ms}} as a baseline. Tier 2 boots are upgraded into this tier once the {{tip|Midlane Quest}} is completed.
+** This tier contains  {{ii|Armored Advance}}, {{ii|Chainlaced Crushers}}, {{ii|Crimson Lucidity}}, {{ii|Gunmetal Greaves}}, {{ii|Immortal Path}}, {{ii|Spellslinger's Shoes}}, and {{ii|Swiftmarch}}.
+
+=== Consumables ===
+{{Main|Consumable item}}
+Consumable items grant small or moderate beneficial and utility effects. Some trinket items are also consumables. They are highlighted on the HUD similar to items that feature active abilities, since they can also be used.
+
+The player may be allowed to purchase certain consumables multiple times, up to a limit, which will then occupy only one slot together. Some consumables are removed from the inventory upon use while others may feature [[Ammunition|charges]] that are replenished passively, upon fulfilling a certain condition, or upon re-visiting the shop.
+
+Certain consumable items are automatically consumed if acquired while the inventory is full, granting their effects immediately and removing the item from the inventory. {{si|Recall}} is not interrupted by activating a consumable item (with the exception of {{ii|Eye of the Herald}}).
+
+== Transformation ==
+Most items can be combined by paying the cost in {{g|gold}}. Some, however, cannot be purchased and are obtained solely through the process of '''transformation''' that occurs under a specific condition. That condition is usually gaining a specified amount of '''stacks''' for the item or completing an explicit '''quest'''. Certain transforming items, such as {{nie|Support Quest}} items, may feature more than one transformation.
+
+Transformations happen automatically upon fulfilling the condition, even outside of the shop, granting their stats and/or effects immediately and replacing the lesser item with the transformed one in the inventory.
+
+== Uniqueness ==
+Items and their effects may be ''unique'', which encompasses the following rules for how their effects may (or may not) function together, or upon player's purchases.
+* By default, only one of each Legendary-tier item may be equipped.
+* '''[[Named_item_effect#Isolated effects|Single effect limitations]]''' prevent the item's effect from [[stack|stacking]] by equipping more than one of that same item. A unique effect can only be gained once.
+* '''[[Named item effect#Shared effects|Shared effect limitations]]''' broaden the constraint of unique effects to ''different items'' instead of only the same item. These unique effects can only be gained once from all items that share it, even if the two items seem to be entirely unrelated.
+* '''[[Item group]] limitations''' prohibit equipping more than one item within the same group, [[File:Shop_item_lock.png|20px|link=|Icon in the shop for locked items (items that the player cannot purchase)]] ''locking'' the player out from equipping further members. This excludes acquiring an item within the group by combining its recipe or via transformation—both processes instantly override the item in the player's inventory and thus avoid the limitation.
+* All buff or debuff [[aura]]s can only affect a unit once. Damaging auras may be able to stack, affecting all units within.
+
+If an effect features a cooldown and more than one of the item can be equipped, any other equipped item that has the same named effect will share the cooldown, even if not specifically used.
+
+Items do not possess uniqueness by default. In the case of '''all''' Legendary items as well as '''most''' consumable items however, intentionally strict and artificial rules are implemented to prevent the player from equipping or incurring more than one of the same effect simultaneously, compel diversity in item builds, and reduce waste of value.
+
+Internally, item uniqueness is handled by both general cases and name & group ID tags.
+
+== Notifications ==
+{{sbc|Potion Highlights:}} This applies to players at [[Experience (summoner)|account levels]] 1–10. If their champion drops under {{sti|health|{{as|40% '''maximum''' health}}}} and is [[Combat status|out-of-combat]], the icon of any health-restoring consumables will flash.
+
+{{sbc|Shop Reminder:}} The shop button will flash upon exiting the shop area without spending the given starting gold.
+
+On {{tip|Summoner's Rift}}, exiting the base without a [[trinket item|trinket]] will automatically grant {{ii|Stealth Ward}}.
+
+== Trivia ==
+* Items are usually weapons, artifacts and other objects from the canon [[Universe:Runeterra|Runeterra]] lore/background and are usually themed around a speciifc in-universe [[:Category:Places|region]].
+
+== See also ==
+{{anchor|List of Items}}
+{{Items|show}}
+
+[[Category:Items|Items]]
+[[cs:Předměty]]
+[[de:Gegenstände]]
+[[es:Objeto]]
+[[fr:Objet]]
+[[pl:Przedmiot]]
+[[pt-br:Item]]
+[[ru:Предмет]]
+[[zh:物品]]

@@ -1,0 +1,31 @@
+["Guardian Angel"] = {
+        ["id"]                  = 3026,
+        ["nickname"]            = {"ga"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = false,
+            ["nb"]              = false,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["marksman"]        = true,
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 55,
+            ["armor"]           = 45,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Rebirth",
+                ["unique"]      = true,
+                ["description"] = "Upon taking [[death|lethal damage]], enter {{tip|resurrection}} for 4 seconds, during which you are {{tip|invulnerable}}, {{tip|untargetable}}, and unable to act, and afterwards {{tip|heal}} for {{as|50% of '''base''' health}} and restore {{as|100% of '''maximum''' mana}} (300 second cooldown, starts after resurrection ends).",
+            },
+        },
+        ["recipe"]              = {"Steel Sigil", "B. F. Sword"},
+        ["buy"]                 = 3200,
+        ["sellratio"]           = 0.4,
+    },

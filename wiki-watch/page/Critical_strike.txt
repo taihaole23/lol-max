@@ -1,0 +1,237 @@
+{{SeeOther|success floating text, also referred to as "cosmetic crits"|[[Damage#Successful ability casts]]}}
+[[File:Critical strike icon.png|thumb|right|100px|Critical strike icon]]{{tocright}}
+A '''critical strike''' is a [[damage]] event that deals 200% of its normal value by default, denoted as {{sti|{{as|critical strike damage}}}}. This can occur on some [[item]]s and [[Champion ability|abilities]], and almost always on basic attacks. Depending on the effect, a critical strike would occur under specific conditions via [[champion ability|champion abilities]] or [[item|item abilities]] (and either [[passive]]ly or [[active]]ly), or semi-randomly based on {{sti|{{as|critical strike chance}}}}.
+
+Critical strikes interact exclusively with the game mechanics of {{sti|{{as|critical chance}}}}, {{sti|{{as|critical damage}}}}, and {{iis|Randuin's Omen}} {{nie|Resilience}}. The most common form of critical strike occurs on {{tip|basic attack|basic attacks}}. Basic attacks cannot critically strike against [[structures]]. The exceptions are the enhanced attacks from {{cai|E|Fiora}}, {{cai|I|Jhin}} and {{cai|I|Master Yi}}.
+
+Critical strikes are especially valuable for champions who primarily output basic attacks rather than abilities, since champion basic attacks have lower cooldowns compared to most abilities. Some champions, like {{ci|Ashe}}, have an affinity for critical strikes and benefit more than others from items that improve them.
+
+== Critical strike chance ==
+{{sti|{{as|'''Critical strike chance'''}}}} (often shortened to ''crit chance'', or ''% crit'' / ''crit%'') is a [[Champion statistic|stat]] that denotes the probability, or '''chance''', that a basic attack will critically strike. Some damaging effects may be able to critically strike using the same chance, some others may [[Champion statistic|scale with]] critical strike chance but are usually not able to critically strike themselves, and some may critically strike without a pre-requisite for this chance but based on other conditions.
+* Critical strike chance '''{{tip|stacks additively}}''', and each point acquired directly adds to the statistic (1:1).
+
+All champions start at 0% critical strike chance, and can only increase it via [[item]]s or certain abilities. Critical strike chance cannot exceed 100%, but some effects may be special-cased to benefit from the excess, such as by granting additional statistics (e.g. {{cai|Absolution|Senna}}).
+
+{{gold value}}
+* Critical strike chance has a gold value of {{g|{{#invoke:Gold value|wikivaluedefine}}{{#var:crit}}}} per point.
+
+== Algorithm ==
+Critical strikes being rolled is not governed by complete RNG but by a pseudorandom algorithm that aims to alleviate full randomness in a manner that is not intrusive. Generally, the probability of a critical strike chance increases with the number of attacks that have not critically struck against the same target, called a failure streak. It is governed by the following rules:
+# An internal constant, herein called ''luck modifier'', is explicitly defined every {{fd|0.5}} percent points of critical strike chance (rounded down when applying the user's critical strike chance). When graphed, the values resemble an [https://en.wikipedia.org/wiki/Error_function error function] where the midpoint (the 50% luck modifier mark) corresponds to exactly 63% critical strike chance.
+# 20% of the user's '''missing''' critical strike chance is guaranteed to apply every roll. This determines an absolute maximum ''modified'' probability of a critical strike and prevents guaranteed critical strikes at any chance below 100%.
+#* For example, at 25% critical strike chance, the maximum modified failure chance is {{fd|0.2}}{{times}}(1{{minus}}{{fd|0.25}}){{equals}}{{fd|0.15}}{{equals}}15%, making the maximum critical chance its 1-complement, 85%.
+# Observed critical strike probability is defined as the minimum between [ the maximum modified probability ] and [ the product of the luck modifier and the current streak ].
+# Streaks max out their probability at 5. This means any further rolls if unsuccessful will use the same probability as when on a streak of 5.
+
+As a result, the probability of failure streaks noticeably increases at lower luck modifiers, and the probability of critical strike streaks noticeably increases at higher critical strike chance.
+
+When averaged over a high number of basic attacks (i.e. calculating damage per second), critical strike chance is essentially a damage multiplier. At '''base''' critical strike damage (''100% bonus damage''), every 1% of critical chance equates to a 1% damage increase.
+: For example, the damage dealt with basic attacks by a champion with 50% critical strike chance and base critical damage is on average 150% of the damage they would deal if they had 0% critical strike chance.
+
+For this reason, critical strike chance scales well with both [[attack damage]] and [[attack speed]]. The formula for this damage multiplier is:
+:''Average damage multiplier'' = 1{{plus}}(''Critical chance''{{times}}(1 + '''''Bonus''' critical damage''))
+
+== Increasing critical strike chance ==
+=== Items ===
+{{Item stat table|crit}}
+
+=== Champion abilities ===
+{{Column|2|
+* {{cai|Absolution|Senna}}
+* {{cai|Battle Fury|Tryndamere}}
+* {{cai|Way of the Wanderer|Yasuo}}
+* {{cai|Way of the Hunter|Yone}}
+}}
+
+== Critical strike chance as scaling ==
+Some game elements scale with the champion's amount of {{as|critical strike chance}}.
+
+=== Champion abilities ===
+{{column|2|
+* {{cai|Comeuppance|Akshan}}
+* {{cai|Frost Shot|Ashe}}
+* {{cai|Headshot|Caitlyn}} and {{ai|Ace in the Hole|Caitlyn}}
+* {{cai|Missile Barrage|Corki}}
+* {{cai|Whisper|Jhin}}
+* {{cai|Mounting Dread|Kindred}}
+* {{cai|The Culling|Lucian}}
+* {{cai|Formless Blade|Nilah}} and {{ai|Apotheosis|Nilah}}
+* {{cai|Harrier|Quinn}}
+* {{cai|Absolution|Senna}}
+* {{cai|Boomerang Blade|Sivir}}
+* {{cai|Dragon Practice|Smolder}} and {{ai|Super Scorcher Breath|Smolder}}
+* {{cai|Explosive Charge|Tristana}}
+* {{cai|Pick a Card|Twisted Fate}}
+* {{cai|Blade of the Ruined King|Viego}} and {{ai|Heartbreaker|Viego}}
+* {{cai|Bladecaller|Xayah}}
+* {{cai|Wind Becomes Lightning|Xin Zhao}}
+* {{cai|Way of the Wanderer|Yasuo}}
+* {{cai|Way of the Hunter|Yone}}
+* {{cai|Prowling Projectile|Yuumi}}
+* {{cai|Spark Surge|Zeri}}
+}}
+
+=== Items ===
+* {{ii|Essence Reaver}}
+
+== Modifying critical strike damage ==
+=== General ===
+* In most cases, critical strike damage {{tip|stacks additively}}.
+* [[Damage modifier]]s apply to critical strike damage normally.
+
+=== Champion abilities ===
+* {{cai|Frost Shot|Ashe}}
+* {{cai|Bladework|Fiora}}
+* {{cai|Whisper|Jhin}}
+* {{cai|Absolution|Senna}}
+* {{cai|Deceive|Shaco}} when used to {{ai|Backstab|Shaco}}
+* {{cai|Way of the Wanderer|Yasuo}}
+* {{cai|Way of the Hunter|Yone}}
+
+=== Items ===
+* {{ii|Fiendhunter Bolts}}
+* {{ii|Infinity Edge}}
+* {{ii|Sundered Sky}}
+
+== Guaranteed critical strikes ==
+Some game elements can critically strike with no dependence on '''critical strike chance'''.
+
+=== Champion abilities ===
+* {{cai|Volley|Ashe}}
+* {{cais|Bladework|Fiora}} second attack
+* {{cais|Whisper|Jhin}} fourth attack and {{ais|Curtain Call|Jhin}} {{ai|Curtain Call 3|Jhin|fourth}} shot
+* {{cai|Double Up|Miss Fortune}} after killing the first target hit
+* {{cai|Deceive|Shaco}} when used to {{ai|Backstab|Shaco}}
+* {{cai|Noxian Diplomacy|Talon}} when used in melee range
+* {{cai|Ultrashock Laser|Zeri}} when it collides with terrain
+
+=== Items ===
+* {{ii|Fiendhunter Bolts}}
+* {{ii|Shadowflame}} against enemies below a health threshold
+* {{ii|Sundered Sky}}
+
+== Game elements that can critically strike ==
+=== Champion abilities ===
+;Basic attack modifiers
+Many abilities in the game wrap themselves with the main [[basic attack]], enhancing it to cause them to deal increased damage. Since these are basic attacks, they can critically strike, with a few exceptions (see [[#Basic_attacks_that_cannot_critically_strike|below]]), however, the ability's damage itself will only be amplified by a critical strike for the following abilities:
+
+{{column|2|
+* {{cai|Dirty Fighting|Akshan}}
+* {{cai|Infernum|Aphelios}}
+* {{cai|Power Fist|Blitzcrank}}
+* {{cai|Crippling Strike|Darius}}
+* {{cai|New Destiny|Graves}}
+* {{cai|Hyper Charge|Jayce}}
+* {{cai|Switcheroo!|Jinx}}
+* {{cai|Lightslinger|Lucian}}
+* {{cai|Double Strike|Master Yi}}
+* {{cai|Siphoning Strike|Nasus}} (only the base and flat '''bonus''' damage)
+* {{cai|Umbra Blades|Nocturne}}
+* {{cai|Shield Vault 2|Pantheon|Empowered Shield Vault}} basic attacks
+* {{cai|Queen's Wrath|Rek'Sai}} (only to primary target)
+* {{cai|Daredevil Impulse|Samira}}
+* {{cai|Backstab|Shaco}} and {{ai|Deceive|Shaco}} with {{ai|Backstab|Shaco}}
+* {{cai|Emberstrike|Shyvana}}
+* {{cai|Petricite Burst|Sylas}}
+* {{cai|Blade of the Ruined King|Viego}}
+* {{cai|Three Talon Strike|Xin Zhao}}
+}}
+
+;Modified damage
+The following enhanced basic attacks are wrapped with the main [[basic attack]] but are unaffected by critical damage modifiers, except the main basic attack portion which can still critically strike for bonus damage in addition to the modified damage.
+
+However, effects that modify the total critical strike damage (e.g {{ii|Randuin's Omen}}) will still modify the ability's damage:
+{{column|2|
+* {{cai|I|Caitlyn}}
+* {{cai|E|Dr. Mundo}}
+* {{cai|Q|Draven}}
+* {{cai|Colossal Smash|Galio}}
+* {{cai|Q|Garen}}
+* {{cai|Devastating Charge|Hecarim}}
+* {{cai|I|Jhin}}
+* {{cai|I|K'Sante}} ''All Out'' '''bonus'''
+* {{cai|Q|Nasus}} (only the '''bonus''' from stacks is unaffected by critical modifiers)
+* {{cai|I|Nautilus}}
+* {{cai|Takedown|Nidalee}}
+* {{cai|I|Quinn}}
+* {{cai|Ruthless Predator|Renekton}}
+* {{cai|I|Sett}} and {{ai|Q|Sett}}
+* {{cai|Q|Trundle}}
+* {{cai|Relentless Force|Vi}}
+* {{cai|Discharge|Viktor}} {{tt|*|Currently bugged, disables the critical strike bonus damage}}
+* {{cai|Q|Volibear}}
+* {{cai|Q|Yorick}}
+* {{cai|The Darkin Glaive|Zaahen}}
+}}
+
+;Critically striking abilities
+The following abilities are special cased to be able to critically strike:
+{{column|2|
+* {{cai|Heroic Swing|Akshan}}
+* {{cai|Onslaught|Aphelios}}, {{ai|Duskwave|Aphelios}}, {{ai|Crescendum|Aphelios}}, {{ai|Sentry|Aphelios}} and {{ai|Moonlight Vigil|Aphelios}}
+* {{cai|Void Surge|Bel'Veth}} and {{ai|Royal Maelstrom|Bel'Veth}}
+* {{cai|Blood Frenzy|Briar}}
+* {{cai|Parrrley|Gangplank}} and {{ai|Powder Keg|Gangplank}}
+* {{cai|Judgment|Garen}}
+* {{cai|Divine Ascent|Kayle|Fire Waves}} and {{ai|E|Kayle}} (while {{ai|I|Kayle|Aflame}})
+* {{cai|Alpha Strike|Master Yi}}
+* {{cai|Double Up|Miss Fortune}} and {{ai|Bullet Time|Miss Fortune}}
+* {{cai|Runic Blade|Riven}}
+* {{cai|Flair|Samira}} and {{ai|Inferno Trigger|Samira}}
+* {{cai|Ricochet|Sivir}}
+* {{cai|Spray and Pray|Twitch}}
+* {{cai|Clean Cuts|Xayah}}
+* {{cai|Steel Tempest|Yasuo}}
+* {{cai|Mortal Steel|Yone}}
+* {{cai|Cultivation of Spirit|Yunara}} spread and on-hit {{supNote|The on-hit deals 0% bonus damage from critically striking, causing it to be reduced by Randuin, but not be amped by her innate}}
+* {{cai|Burst Fire|Zeri}} and {{ais|Lightning Crash|Zeri}} physical damage chain
+}}
+
+=== Items ===
+The following item's damage will critically strike if the triggering basic attack does:
+* {{ii|Runaan's Hurricane}}
+
+== Basic attacks that cannot critically strike ==
+* {{cai|Precision Protocol|Camille}} - both enhanced attacks cannot critically strike.
+* {{cai|Bladework|Fiora}} - the first attack cannot critically strike.
+* {{cai|Emberstrike|Shyvana|}} - third cast's attack cannot critically strike.
+* {{cai|Pick a Card|Twisted Fate}} - enhanced attack cannot critically strike.
+* {{cai|Stretching Strikes|Zac}} - enhanced attack cannot critically strike.
+* {{cai|Living Battery|Zeri}} - cannot critically strike.
+
+== Critically striking against structures ==
+''Critical strikes do not affect structures, with the following exceptions:''
+* {{cai|Bladework|Fiora}} - second attack will also critically strike turrets.
+* {{cai|Whisper|Jhin}} - the fourth attack will also critically strike turrets.
+* {{cai|Double Strike|Master Yi}} - the additional attack can critically strike turrets.{{bug}}
+
+== Interacting with critical strikes ==
+* {{cai|Infernum|Aphelios}} sprays 6 missiles in a wider cone when critically striking enemies and {{ai|Crescendum|Aphelios}} has a reduced {{tip|attack windup|wind up}} percentage when critically striking enemies.
+* {{cai|New Destiny|Graves}} sprays {{as|6 pellets|buzzword2}} in a wider cone when critically striking enemies.
+* {{cai|Whisper|Jhin}} grants him movement speed when critically striking enemies.
+* {{cais|Lightning Rush|Kennen}} attack speed duration is extended when critically striking enemies.
+* {{cai|Spinning Slash|Tryndamere}} reduces its {{sti|cooldown}} when critically striking enemies.
+* {{cai|Last Breath|Yasuo}} grants all critical strikes {{sti|armor penetration|{{as|armor penetration}}}} against {{sti|armor|{{as|'''bonus''' armor}}}}.
+* {{cai|Vow of the First Lands|Yunara}} causes critical strikes to deal increased damage (without modifying critical strike damage).
+* {{cai|Spark Surge|Zeri}} reduces its {{sti|cooldown}} by an increased amount when {{ai|Burst Fire|Zeri}} critically strikes enemies and {{ai|Lightning Crash|Zeri}} will grant extra stacks when {{ai|Burst Fire|Zeri}} or {{ai|Ultrashock Laser|Zeri}} critically strikes enemies.
+* {{iis|Fiendhunter Bolts}} {{nie|Opening Barrage}} deals bonus damage if its empowered attacks would have already critically struck based on the user's critical strike chance.
+* {{iis|Randuin's Omen}} [[Named item effect#Resilience|Resilience]] reduces the damage dealt by incoming critical strikes from enemies.
+
+== Trivia ==
+* From its inception, critical strikes did 200% damage before being changed to 175% in [[V10.23]]. It would later be reverted to 200% again in [[V26.01]].
+* In many MMO settings, a number of attack damage-based assassins or secondary assassin-based champions also benefit from high critical strike chance in varying forms, as a means to help finish off targets faster as well as to deal more damage in bursts overall.
+* Most [[champion]]s have special [[basic attack]] animations that play when they critically strike, even champions who may not usually opt into critical strike chance.
+* A few champions that typically itemize critical strike chance may have quotes that play when they critically strike.
+* Some champions may actually use their critical strike animation for an empowered basic attack, when consuming a single-use on-hit effect ''(this is entirely cosmetic by itself and does not represent an actual critical strike)''.
+* At negative attack damage, critical strikes from basic attacks are also multiplied by the same amount (e.g. {{minus}}50 AD &rarr; {{minus}}{{ap|50*2}} critical physical damage).
+
+{{stats}}
+
+[[cs:Critical strike]]
+[[de:Kritischer Treffer]]
+[[es:Golpe crítico]]
+[[fr:Coup critique]]
+[[pl:Trafienie krytyczne]]
+[[ru:Критический удар]]
+[[zh:暴击]]
+[[Category:Offensive champion statistics]]

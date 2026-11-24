@@ -1,0 +1,29 @@
+["Banshee's Veil"] = {
+        ["id"]                  = 3102,
+        ["nickname"]            = {"bv", "spellshield", "spell shield"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Annul",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 105,
+            ["mr"]              = 40,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Annul",
+                ["unique"]      = true,
+                ["description"] = "Grants a {{tip|spell shield}} that blocks the next hostile ability (40 second cooldown, timer restarts upon taking damage from champions).",
+            },
+        },
+        ["recipe"]              = {"Needlessly Large Rod", "Verdant Barrier"},
+        ["buy"]                 = 3000,
+    },

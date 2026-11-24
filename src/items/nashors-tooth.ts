@@ -1,9 +1,8 @@
 // Nashor's Tooth, "Icathian Bite": 15 + 15% AP bonus magic damage on-hit.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Nashor%27s_Tooth", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Nashor%27s_Tooth", patch: "26.23" },
   baseDamage: 15,
   apRatio: 0.15,
 };

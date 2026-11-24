@@ -1,0 +1,53 @@
+{{Item info
+|goldvalue =
+{{#vardefine:swiftmarchratio|0.05}}
+{{gold value|Noxian Fervor Gold Value per 20 Total Movement Speed|nolink=}}
+* {{adaptive|1}} = {{g|{{#expr:0.6*{{#var:ad}} round 2}}}} or {{g|{{#expr:{{#var:ap}} round 2}}}}
+|goldefficiency =
+** {{ii|Swiftmarch}}'s gold efficiency due to {{sbc|Noxian Fervor}} is further increased by {{gec|Swiftmarch|{{#var:ap}}}} for every 20 {{as|'''total''' movement speed}} obtained.
+* {{ii|Swiftmarch}} is {{gec|Swiftmarch|{{cid|Swiftmarch|buy}}}} gold efficient at {{as|{{fd|{{#expr:({{cid|Swiftmarch|buy}}-{{#var:total}})/(0.6*{{#var:ad}})/{{#var:swiftmarchratio}} round 2}}}}|ad}} or {{as|{{fd|{{#expr:({{cid|Swiftmarch|buy}}-{{#var:total}})/{{#var:ap}}/{{#var:swiftmarchratio}} round 2}}}}|ap}} {{as|'''total''' movement speed}} due to {{sbc|Noxian Fervor}}.
+|similaritems = Armored Advance;Chainlaced Crushers;Crimson Lucidity;Gunmetal Greaves;Immortal Path;Spellslinger's Shoes
+|background =
+|notes =
+|strategy =
+|oldicons =
+|trivia =
+[[File:Freljord Crest icon.png|link=Universe:Freljord|100px|center]]
+|quotes =
+|media =
+|revisions =
+|patchhistory =
+;[[V26.17]]
+* {{sbc|Undocumented:}} Slow resistance reduced to 25% from 40%.
+
+;[[V26.01]]
+* No longer obtainable through Feats of Strength.
+** Required the ''[[Feats of Strength|Blessing of Noxus]]'' and two Legendary-tier items equipped.
+* Now obtainable through the mid lane role quest.
+** Upgrade cost reduced to {{g|0}} from {{g|500}}.
+* Slow resistance increased to 40% from 25%.
+
+;[[V25.09]]
+* Combine cost reduced to {{g|500}} from {{g|750}}.
+** Total cost reduced to {{g|1500}} from {{g|1750}}.
+* Movement speed reduced to 65 from 70.
+* {{sbc|Unique Passive - Noxian Fervor:}}
+** {{sbc|New Effect:}} Gain {{tip|adaptive force}} equal to {{as|5% of your '''total''' movement speed}}.
+** {{sbc|Old Effect:}} Gain {{as|4% '''bonus total''' movement speed}}.
+
+;[[V25.S1.1#January 10th Hotfix|V25.S1.1]] - January 10th Hotfix
+* Base movement speed reduced to 70 from 75.
+
+;[[V25.S1.1]] - Added
+* ''Tier 3 Boots.''
+* {{sbc|Requirements:}} Requires ''Blessing of Noxus'' and two Legendary-tier items equipped.
+* {{sbc|Recipe:}} {{ii|Boots of Swiftness}} + {{g|750}} = {{g|1750}}.
+* {{sbc|Stats:}} 75 movement speed.
+* {{sbc|Unique Passive - Fleetfooted:}} Gain 25% [[slow resist]].
+* {{sbc|Unique Passive - Noxian Fervor:}} Gain {{as|4% '''bonus total''' movement speed}}.
+* Limited to 1 {{sbc|Boots}} item.
+* {{sbc|Caption:}} "Now this is how to move! —Draven"
+
+}}
+
+[[Category:2025 Annual Cycle item release]]

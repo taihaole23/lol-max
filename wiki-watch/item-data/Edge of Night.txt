@@ -1,0 +1,30 @@
+["Edge of Night"] = {
+        ["id"]                  = 3814,
+        ["nickname"]            = {"eon", "lethality", "spellshield", "spell shield"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Annul",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 50,
+            ["hp"]              = 250,
+            ["lethality"]       = 15,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Annul",
+                ["unique"]      = true,
+                ["description"] = "Grants a {{tip|spell shield}} that blocks the next hostile ability (40 second cooldown, timer restarts upon taking damage from champions).",
+            },
+        },
+        ["recipe"]              = {"Serrated Dirk", "Tunneler"},
+        ["buy"]                 = 3000,
+    },

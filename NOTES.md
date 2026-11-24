@@ -132,6 +132,11 @@ You need Node.js (v24 works). In a terminal inside this folder:
 | `npm run test:watch` | Re-runs the tests every time you save. |
 | `npm run test:slow` | The slow optimizer checks (~3 minutes): the beam search against trying every Late build, for each enemy type. Run it before each release and after changing item passives or the search. `npm test` skips these. |
 | `npm run update-items -- 16.23.1` | Downloads Riot's item data and saves the snapshot `src/data/items.<patch>.json`. The number is Data Dragon's version for our patch. Only needed when the patch changes. |
+| `npm run update-icons -- 16.23.1` | Downloads every champion, ability and item icon and the splash art, and picks each champion page's colour from its splash. Run it after `update-items`. |
+| `npm run patch-day` | Patch day, the automatic part: switches to the newest patch, downloads everything, lists what changed (items and wiki) and runs the tests. Writes `patch-report.md`. In Claude Code, `/patch-day` runs this and then works through the report. |
+| `npm run check-wiki` | Shows what changed on the wiki since the saved copies in `wiki-watch/`. `npm run check-wiki -- --accept` saves the wiki as it is now (only after every change is handled). |
+| `npm run patch-diff` | Compares the two newest item snapshots. |
+| `node scripts/splash-colors.mjs` | Only re-picks the splash colours from the saved splashes (no download). For trying out changes to how colours are picked. |
 | `npm run build` | Type-checks the code (`tsc`), then builds the real website into `dist/`. This is what Vercel runs. |
 
 ## Project layout (planned)
@@ -311,8 +316,28 @@ validation/    Practice Tool test plan and measurements
     - When a style's best build is already in the top 5, its row says "same as #N".
   - Cost: Full-stage Optimize takes about 5.5 s instead of 3.4 s (measured in Node). The loading bar gives the main search 85% and the three style searches the rest.
 - **Ambience (Eric: "kind of boring"):**
-  - Katarina's splash art sits behind the top of her page, faded and fading out downwards. Riot calls this version "centered"; it's cropped for banners.
-    - Only champions the site supports get one, since each is about 135 KB. `update-icons.mjs` has a `splashChampions` list, and a test checks every playable champion has a splash.
+  - Each champion's splash art sits behind the top of their page, faded and fading out downwards. Riot calls this version "centered"; it's cropped for banners.
+    - At first only Katarina had one, to keep the repo small. When every champion got the full page (below), all 173 were saved: about 18 MB.
+    - Fiddlesticks has no "centered" splash, so the script falls back to the normal one.
+  - **The splash is one of the champion's best skins (Eric), not the default.**
+    - Data Dragon lists skins but not their tier, so the tiers come from CommunityDragon, a community copy of the game's files.
+    - The rule: highest tier first (Ultimate / Exalted / Transcendent, then Mythic = Prestige, Legendary, Epic), newest among equals. Katarina gets Prestige Masque of the Black Rose; Lux gets Elementalist; Ezreal gets Pulsefire.
+    - `splashOverrides` in `update-icons.mjs` picks a different skin for any champion (slug → skin number).
+    - Katarina uses Battle Queen Katarina (skin 29, Eric's pick) instead of the automatic Prestige Masque of the Black Rose. Her page colour follows it (a crimson-pink from the armor).
+    - The page credits the skin in the top-right corner. CommunityDragon is listed under Sources; `sources.test.ts` allows it for that one entry only, since it never supplies a game number.
+- **Each champion page takes its colours from the splash art (Eric).**
+  - Picked once, when the icons are downloaded (`scripts/splash-colors.mjs`, run by `update-icons.mjs`), and saved as `splashColor` in the champion list. Chose this over picking the colour in the browser on every visit because the colours are ready before the page draws (no flash of red first), and they can be tested.
+    - Reading a .jpg's pixels needs `jpeg-js` (a dev dependency, approved by Eric). Only the script uses it; visitors never download it.
+  - How the colour is picked: skip greys, near-blacks and near-whites, sort the rest into 36 hue buckets, and let each pixel count chroma³ (vivid pixels count far more). Plain chroma picked skin and background browns; chroma³ finds small glowing accents (Aurora's green, Hecarim's teal-gold).
+  - Nearly black-and-white splashes (Elise, Lillia, Swain, Sylas on 26.23) get no colour and keep the normal red. `colorOverrides` in the script sets a colour by hand.
+  - `src/ui/champion-colors.ts` keeps the colour's hue and picks its lightness, so it's always readable: it gets lighter on the dark theme and darker on the light theme until it passes the WCAG contrast check (4.5 for text, 3 for shapes). A test checks every champion in both themes.
+  - Only the accent variables change (`--accent`, `--accent-strong`, `--accent-soft`, `--bg-glow`, `--on-accent`). The damage-type colours never change (magic is always purple). Warnings got their own fixed `--warning` red, so they still look like warnings on a teal page.
+  - Button text is white when readable, otherwise near-black (gold, teal and light-green buttons).
+  - New patch: re-running `update-icons.mjs` re-picks the colours from the new splashes in the same run, so a colour can never belong to an old splash.
+- **Every champion gets the full page (Eric):** splash, portrait, and all 4 abilities with icons, names on hover and rank boxes, all "coming soon" like Katarina's Q / W / E. Clicking an ability picks it (`/aatrox/q`).
+  - The ability names and rank counts come from Data Dragon, saved into the champion list by `update-icons.mjs`. Ranks vary: Udyr has 6 on every ability, Elise's R has 4.
+  - That's display only: Data Dragon's ability numbers stay unused (unreliable), so a champion the site calculates still gets its own data file from the wiki.
+  - A test checks that Katarina's names and ranks agree between the two.
   - The damage total counts up to its new value (`src/ui/count-up.ts`, 0.35 s). It's skipped when the visitor's system asks for reduced motion.
 - **The casino roll (Eric):** `src/ui/slot-roller.ts`. While Optimize runs, every free item slot flicks through random item icons, with a gold rim.
   - When the answer arrives, the slots stop left to right, 170 ms apart, each with a small bounce. Only then do the damage total (counting up) and the top 5 change.
@@ -322,6 +347,35 @@ validation/    Practice Tool test plan and measurements
   - Before, the dummy panel was ~90 px taller, and the stretched "Your build" panel had a big empty gap.
   - The stage buttons now fill their box.
 - **Number boxes have big ▲ / ▼ buttons (Eric):** each press changes the number by a useful step (levels 1, HP 100, armor and MR 10) and counts as typing it. The browser's tiny arrows are hidden.
+- **Each hand-typed source records the patch it was last CHECKED on (`patch: "26.23"`), not `patch: PATCH`.** Patch day, step 1 of 4.
+  - Before, every source borrowed `PATCH`, so bumping the patch would have made every number claim the new patch, even ones nobody re-checked.
+  - `tests/patch-check.test.ts` reads the text of every file in `src/` and finds each `patch: "..."`, including ones never shown on the site (`bugSource`, `daggerSource`). It fails when:
+    - a source borrows a variable instead of writing the patch out
+    - a source is older than `PATCH`. The failure lists each file and line to re-check.
+  - Snapshot sources (items, champion list) keep `snapshot.patch`: the download scripts write it, so it's always true.
+  - Comments like "measured in the Practice Tool (patch 26.23)" are history and stay as they are.
+- **Patch day is one command (Eric): `/patch-day` in Claude Code, or `npm run patch-day` for the automatic part only.**
+  - `scripts/patch-day.mjs` asks Data Dragon for the newest version. If it's a new patch, it:
+    - changes `PATCH` and the snapshot file names, downloads items, icons and splash colours
+    - lists item changes (`scripts/patch-diff.mjs`) and wiki changes (`scripts/check-wiki.mjs`)
+    - runs the tests and writes everything into `patch-report.md` (not committed)
+  - It never edits a hand-typed number: that's for a person, or Claude following `.claude/commands/patch-day.md`, which says exactly how to work through the report and when to stop and ask Eric.
+  - `patch-diff.mjs` sorts item changes by the item's checklist status: hand-coded items first ("check these"), then new, removed, changed passive text on irrelevant items, and stats-only changes (nothing to do: the site reads stats from the snapshot).
+  - **`check-wiki.mjs`: why we watch the wiki.** The site never reads the wiki by itself, so a wiki change (say Death Lotus's AP ratio) would go unnoticed. `wiki-watch/` keeps a saved copy of every wiki text our numbers come from (180 pieces); the script shows a line-by-line diff of what changed since.
+    - It finds what to watch by itself: every wiki link in `src/`, plus each linked champion's block in `Module:ChampionData/data` (where the wiki keeps base stats) and each snapshot item's block in `Module:ItemData/data` (stats, passive text, item groups). Ability pages are listed in `abilityPages` in the script; add one when a new ability is modelled.
+    - Chose "save a copy and diff it" over reading specific numbers out of the wiki because the ability pages are formatted text (`{{ap|25 to 50}} {{as|(+ 19% AP)}}`): reading them reliably would need a parser per template, and a diff catches every change, including notes about interactions.
+    - Wording edits show up too; they're quick to skim.
+    - `--accept` saves the wiki as it is now. Run it only when every listed change is handled: the saved copies mean "the site agrees with this".
+    - First copies saved 2026-11-24, after checking that Katarina's and the 3 dummy champions' stats and Death Lotus's numbers on the wiki match our files exactly. Item passives were checked against the wiki in Step 5 (patch 26.23).
+    - The wiki limits how fast scripts can ask (it answered 429 "too many requests" while this was being tested). The script asks for one page at a time with a short pause, and waits and retries on 429.
+    - Riot writes "Blade of The Ruined King", the wiki "Blade of the Ruined King", so names are matched ignoring upper/lower case.
+  - Data Dragon numbers versions the old way: 16.24.1 = patch 26.24 (first number + 10). The script checks this rule against the current snapshot before trusting it.
+  - **Practice Tool measurements stay valid until a patch changes something they depend on (Eric: no re-measuring everything every 2 weeks).** This replaces the Step 8 rule ("any patch change = redo every test").
+    - Every case depends on Katarina, Death Lotus, the game rules and the Practice Tool dummy. Each case also depends on its own items.
+    - On patch day, each case is checked against what changed. Out-of-date cases go into `needsRemeasuring` (in `tests/practice-tool-cases.ts`) with the reason, and are skipped until Eric redoes them, whenever he likes. Then `stillValidOnPatch` moves to the new patch.
+    - The test fails only while `stillValidOnPatch` is behind the site's patch, meaning nobody has checked yet.
+    - Out-of-date cases are skipped, not compared: an old measurement can't prove new numbers right or wrong.
+    - Trade-off: if a patch changes Katarina herself, every case is out of date and the site has no in-game check until something is re-measured. Cases 1-3 (no items) take ~2 minutes and restore a basic one.
 - **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
 
 ## Things we learned from the data

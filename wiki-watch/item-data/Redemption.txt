@@ -1,0 +1,33 @@
+["Redemption"] = {
+        ["id"]                  = 3107,
+        ["nickname"]            = {"burn"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["limit"]               = "''Intervention's'' effects are reduced by 50% if the target was affected by another ''Intervention'' in the last 12 seconds.",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 30,
+            ["ah"]              = 15,
+            ["hsp"]             = 10,
+            ["mp5"]             = 100,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Intervention",
+                ["unique"]      = true,
+                ["description"] = "Call upon a 550-radius beam of light to strike upon the target location after {{fd|2.5}} seconds, granting {{tip|sight}} of the area for the duration. Allies within the area are {{tip|heal|healed}} for {{pp|150 to 350|type=target's level|color=heal}}, while enemy champions within take {{as|10% of target's '''maximum''' health}} as {{as|true damage}}. '''Can be used while [[death|dead]].'''",
+                ["cd"]          = "90",
+                ["range"]       = "5500",
+            },
+        },
+        ["recipe"]              = {"Fiendish Codex", "Forbidden Idol"},
+        ["buy"]                 = 2250,
+    },

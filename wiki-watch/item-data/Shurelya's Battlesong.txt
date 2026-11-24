@@ -1,0 +1,32 @@
+["Shurelya's Battlesong"] = {
+        ["id"]                  = 2065,
+        ["nickname"]            = {"shurelya", "reverie"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["support"]         = true,
+            ["movement"]        = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 50,
+            ["ah"]              = 15,
+            ["mp5"]             = 125,
+            ["ms"]              = 4,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Inspiring Speech",
+                ["unique"]      = true,
+                ["description"] = "Grants you and all allies within 1000 units {{as|30% '''bonus''' movement speed}} for 4 seconds.",
+                ["cd"]          = "75",
+            },
+        },
+        ["recipe"]              = {"Aether Wisp", "Bandleglass Mirror"},
+        ["buy"]                 = 2200,
+    },

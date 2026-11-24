@@ -1,0 +1,36 @@
+["Warmog's Armor"] = {
+        ["id"]                  = 3083,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = false,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 1000,
+            ["hp5"]             = 100,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["unique"]      = true,
+                ["description"] = "Grants ''Warmog's Heart'' if you have at least {{as|2000 '''bonus''' health}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Warmog's Heart",
+                ["unique"]      = true,
+                ["description"] = "{{stil|Health regeneration|Regenerate}}{{ft|{{as|{{fd|1.5}}% '''maximum''' health}} every {{fd|0.5}} seconds|{{as|15% '''maximum''' health}} every 5 seconds}}if [[damage]] has not been taken in the last 8 seconds (3 seconds for damage from non-champions).",
+            },
+            ["pass3"] = {
+                ["name"]        = "Warmog's Vitality",
+                ["unique"]      = true,
+                ["description"] = "Gain {{as|'''bonus''' health}} equal to {{as|12% '''bonus''' health '''from items'''}}.",
+            },
+        },
+        ["recipe"]              = {"Giant's Belt", "Giant's Belt", "Crystalline Bracer"},
+        ["buy"]                 = 3100,
+    },

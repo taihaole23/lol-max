@@ -1,0 +1,33 @@
+["Mercurial Scimitar"] = {
+        ["id"]                  = 3139,
+        ["nickname"]            = {"merc scim", "qss", "quicksilver sash", "silvermere dawn"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Quicksilver",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+        	["fighter"]         = true,
+            ["marksman"]        = true,
+            ["movement"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 50,
+            ["lifesteal"]       = 10,
+            ["mr"]              = 35,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Quicksilver",
+                ["unique"]      = true,
+                ["description"] = "Removes all {{tip|crowd control}} debuffs (except {{tip|Airborne}}) from your champion and grants {{as|50% '''bonus total''' movement speed}} and {{tip|ghosted|ghosting}} for 2 seconds.",
+                ["cd"]          = "90",
+            },
+        },
+        ["recipe"]              = {"Quicksilver Sash", "Pickaxe", "Vampiric Scepter"},
+        ["buy"]                 = 3200,
+    },

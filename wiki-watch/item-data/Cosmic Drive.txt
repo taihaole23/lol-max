@@ -1,0 +1,31 @@
+["Cosmic Drive"] = {
+        ["id"]                  = 4629,
+        ["nickname"]            = {"cooldown hat"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+            ["movement"]        = true,
+        },
+        ["stats"] = {
+        	["hp"]              = 350,
+            ["ah"]              = 25,
+            ["ap"]              = 70,
+            ["ms"]              = 4,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Spelldance",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{as|magic|magic damage}} or {{as|true|true damage}} damage to an enemy champion grants you {{as|20 '''bonus''' movement speed|ms}} for 4 seconds.",
+            },
+        },
+        ["recipe"]              = {"Kindlegem", "Aether Wisp", "Fiendish Codex"},
+        ["buy"]                 = 3000,
+    },

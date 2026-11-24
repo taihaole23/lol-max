@@ -1,0 +1,33 @@
+["Liandry's Torment"] = {
+        ["id"]                  = 6653,
+    	["nickname"]            = {"last shadow", "ls", "burn"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 60,
+            ["hp"]              = 300,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Torment",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{tip|ability damage}} or {{tip|pet damage}} burns enemies, causing them to take{{ft|{{as|1% of the target's '''maximum''' health}} {{as|magic damage}} every {{fd|0.5}} seconds over 3 seconds, capped at 20 per tick against monsters.|{{as|6% of the target's '''maximum''' health}} {{as|'''total''' magic damage}} over 3 seconds, capped at 120 against monsters.}}",
+            },
+            ["pass2"] = {
+                ["name"]        = "Suffering",
+                ["unique"]      = true,
+                ["description"] = "For each second in combat with enemy champions, deal 2% increased damage, stacking up to 3 times for a total of 6%.",
+            },
+		},
+        ["recipe"]              = {"Haunting Guise", "Fated Ashes"},
+        ["buy"]                 = 3000,
+    },

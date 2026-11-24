@@ -1,0 +1,47 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems =Lich Bane;Nashor's Tooth;Cosmic Drive;Riftmaker;Hextech Rocketbelt;Rylai's Crystal Scepter;Hextech Gunblade;Iceborn Gauntlet;Trinity Force;Essence Reaver;Guinsoo's Rageblade
+|background =
+|notes =
+* '''Dusk and Dawn's''' {{sbc|Spellblade}} does not apply any {{tip|on-hit}} effects against {{tip|structures}}.{{bug|2}}
+* '''Dusk and Dawn's''' bonus damage and healing from {{sbc|Spellblade}} are triggered {{tip|on-hit}} but do not do so again from the repeat on-hit application instance as {{tip|Spellblade}} cannot be triggered more than once from the same attack on-hit.
+* '''Dusk and Dawn's''' repeat on-hit application will deal {{tip|proc damage}}, and will transform the damage type of any {{tip|on-hit}} effect applied this way to the same type.{{bug|2}}
+{{Spellblade info}}
+|strategy =
+|oldicons =
+|trivia =
+* Dusk and Dawn's codename in development was ''Scepter of Bonking''.<ref>[https://www.leagueoflegends.com/en-us/news/dev/dev-2026-season-one-gameplay-preview/ /dev: 2026 Season One Gameplay Preview]</ref>
+** ''Bonking'' can be used to search for Dusk and Dawn in the item shop, probably as a homage to its previous name.
+[[File:Targon Crest icon.png|link=Universe:Targon|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Dusk and Dawn spellblade VFX.png|Attack Ready VFX
+Dusk and Dawn spellblade attack VFX.png|Attack Trigger VFX
+Dusk and Dawn spellblade attack VFX 2.png|Attack Trigger VFX
+</gallery>
+|revisions =
+|patchhistory =
+;[[V26.09]]
+* Health reduced to 300 from 350.
+* Ability power reduced to 60 from 70.
+* Attack speed reduced to 20% from 25%.
+* {{sbc|New Effect:}} Spellblade now heals the user for {{as|10% AP}} {{as|(+ 3% '''bonus''' health)}}.
+
+;[[V26.05]]
+* {{sbc|Undocumented / Bug Fix:}} No longer triggers {{tip|on-hit}} effects against {{tip|structures}}.
+
+;[[V26.03]]
+* Health increased to 350 from 300.
+* Spellblade base AD ratio reduced to {{as|75% '''base''' AD}} from {{as|100%|ad}}.
+* {{sbc|Undocumented / Bug Fix:}} Spellblade now properly applies {{cai|Toxic Shot|Teemo}} a second time.
+
+;[[V26.01]] - Added
+* {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Blasting Wand}} + {{ii|Kindlegem}} + {{ii|Dagger}} + {{g|300}} = {{g|3100}}.
+* {{sbc|Stats:}} 300 health, 70 ability power, 20 ability haste, 25% attack speed.
+* {{sbc|Unique Passive - Spellblade:}} After using an [[Champion ability|ability]], your next basic attack within 10 seconds deals {{as|100% '''base''' AD}} {{as|(+ 10% AP)}} {{as|'''bonus''' magic damage}} [[on-hit]] and applies on-hit effects twice ({{fd|1.5}} second cooldown, starts after using the empowered attack).
+* Limited to 1 {{sbc|Spellblade}} item.
+}}
+
+[[Category:2026 Annual Cycle item release]]

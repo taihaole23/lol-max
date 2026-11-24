@@ -1,0 +1,37 @@
+["Youmuu's Ghostblade"] = {
+        ["id"]                  = 3142,
+        ["nickname"]            = {"lethality", "haste"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["caption"]             = "\"The dearly beloved gathered, but soon there would be much more to mourn.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["assassin"]        = true,
+            ["movement"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 55,
+            ["lethality"]       = 18,
+            ["ms"]              = 4,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Wraith Step",
+                ["unique"]      = true,
+                ["description"] = "Gain {{as|{{rd|20%|15%}} '''bonus''' movement speed}} and {{tip|ghosted|ghosting}} for {{rd|6|4}} seconds.",
+                ["cd"]          = "45",
+            },
+            ["pass"] = {
+                ["name"]        = "Haunt",
+                ["unique"]      = true,
+                ["description"] = "Gain {{as|{{rd|20|10}} '''bonus''' movement speed}} while out-of-combat with enemy champions for 3 seconds.",
+			},
+        },
+        ["recipe"]              = {"Serrated Dirk", "Rectrix", "Long Sword"},
+        ["buy"]                 = 2800,
+    },

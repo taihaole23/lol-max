@@ -1,0 +1,537 @@
+[[File:Practice Tool icon.png|right]]{{tocright}}
+{{Quote|As League gains more and more similarities to a sport, it makes sense that there be a place where you can go to shoot hoops!|Riot Games<ref name="Practice Purpose News">[https://web.archive.org/web/0/https://na.leagueoflegends.com/en/news/game-updates/features/practice-purpose Practice Purpose]</ref>}}
+'''Practice Tool''' is the sandbox mode of [[League of Legends]]. Released in [[V7.3]], the mode was specifically designed to allow players to interact with training dummies and enable cheats on {{tip|Summoner's Rift}}.
+
+On patch [[V25.S1.1]], Practice Tool was granted support for multiplayer, allowing up to 10 players (5v5) within the lobby. Prior to this patch and since its release, it could only be played by a single player with the option of enabling only one bot on the enemy team (1v1).
+
+== General ==
+* {{sbc|Map}}: {{tip|Summoner's Rift}}
+* {{sbc|Draft type}}: [[Blind pick]]
+* {{sbc|Mode:}} {{tip|Classic 5v5}}
+
+A simple, straight forward environment that lets you and other players test out things like checking wall {{si|Flash}} points or if {{ui|Dragon}} can be slain solo with a certain item build, without having to manually spend time experimenting in [[Custom game]]s.
+
+== Bots ==
+[[File:Custom game bot options.png|thumb|320px|Bot selection interface in the Practice Tool lobby.]]
+Up to 9 bots can be added between teams in the lobby to participate in the practice session. Each bot's intelligence can be configured to the lobby owner's desire, ranking from ''Intro'' to ''Beginner'' to ''Intermediate'', with higher ranks further advancing the bot's AI.
+{{Clr}}
+== Dummy ==
+{{infobox unit
+|name        = Dummy
+|image       = File:Target Dummy TFT item.png
+|gallery      =
+{{GalleryHelper
+|Enemy Target Dummy Render.png¦Enemy
+|Allied Target Dummy Render.png¦Allied
+}}
+|hp          = 1000
+|movespeed   = 370
+|armor       = 0
+|magicresist = 0
+|attackspeed = {{fd|0.66}}
+|range       = {{tip|melee|icononly=true}} 175
+|radius = 65
+|pathingradius = 30
+}}
+
+Dummy is a unit type that can be directly summoned in Practice Tool, it stands in as a champion for all intents and purposes. It can be summoned by pressing {{sbc|Shift + B}} for the enemy dummy, or {{sbc|Shift + N}} for the ally dummy. It will face toward the player that summoned it.
+
+Upon taking damage from a champion, the Dummy will track total damage, damage per second, and last tick of damage value. Dummy health can be seen dropped, but they cannot die (similar to {{ais|Undying Rage|Tryndamere}} buff). After 3 seconds of not taking damage (remaining time displayed visually by the dummy's resource bar), the damage tracking is reset and the dummy health is restored to full.
+
+Using practice tool commands, the player can change maximum health and resistances only of an enemy dummy. Dummies gain up to +100% increased size based on {{as|'''bonus''' health}}, with the maximum size capped at 10,000 health (130 gameplay radius). Allied dummies always have the default statistics unless modified by other means.
+
+A dummy's health cannot go below 1 health.
+
+A dummy can take a maximum of ({{as|100% of target dummy's '''maximum''' health}} - 1) damage.
+
+Dummies are immune to {{tip|Grievous Wounds}}.
+
+{{clr}}
+
+== Commands ==
+[[File:Practice Tool cheat menu.png|300px|right|thumb|Cheat menu interface]]
+Commands, or cheats, are functions that help players in testing. It can be a resource free, instant refresh spells so you can practice landing them. Or you can summon jungle camps repetitively to test the best jungle route.
+
+The player may see all of the commands using the cheat menu located to the left of their screen. Commands can be activated either by clicking the respective cheat button in the cheat menu interface, or by pressing the designated hotkeys configured for each one (default hotkey for each command can be seen in the below table).
+{{clr}}
+<tabber>
+Commands 1=
+{| class="article-table"
+|-
+!
+!Command
+!Details
+!width="23%"|Shortcut
+|-
+| [[File:Practice Tool Auto-Refresh Cooldowns.png|40px|link=]]
+| Auto-Refresh Cooldowns
+| {{as|Toggle|gold}} to refresh the cooldowns of your abilities, summoner spells, and item actives every second.
+| <code>[Shift][x]</code>
+|-
+| [[File:Practice Tool Auto-Refresh HP.png|40px|link=]]
+| Auto-Refresh HP
+| {{as|Toggle|gold}} to {{tip|heal}} yourself for 1000 every 2 seconds. Grants the heal immediately after toggling on.
+| <code>[Shift][z]</code>
+|-
+| [[File:Practice Tool Auto-Refresh Mana-Energy.png|40px|link=]]
+| Auto-Refresh Mana/Energy
+| {{as|Toggle|gold}} to restore {{sti|{{as|1000 mana}}}} or full {{sti|{{as|energy}}}} every 2 seconds. Grants the restore immediately after toggling on.
+| <code>[Shift][c]</code>
+|-
+| [[File:Practice Tool Add Gold.png|40px|link=]]
+| Add Gold
+| Grants you {{g|10,000}}.
+| <code>[Shift][t]</code>
+|-
+| [[File:Practice Tool Level Up.png|40px|link=]]
+| Level Up
+| Grants you 1 level.
+| <code>[Shift][y]</code>
+|-
+| [[File:Practice Tool Lock XP Level.png|40px|link=]]
+| Lock XP Level
+| {{as|Toggle|gold}} to reduce all {{sti|{{as|experience}}}} gained by 100%.
+| <code>[Shift][u]</code>
+|-
+| [[File:Practice Tool Teleport to Cursor.png|40px|link=]]
+| Teleport to Cursor
+| Allows you to select a target location to {{tip|blink}} to.
+| <code>[Shift][s]</code>
+|-
+| [[File:Practice Tool Revive.png|40px|link=]]
+| Revive
+| Sets your respawn timer to 1 second.
+| <code>[Shift][v]</code>
+|-
+| [[File:Practice Tool Kill Player Champion.png|40px|link=]]
+| Kill Player Champion
+| Deals {{as|100% '''current''' health}} {{tip|raw damage}} to you.
+| <code>[Ctrl][Shift][v]</code>
+|-
+| [[File:Practice Tool Toggle Towers Invincible.png|40px|link=]]
+| Toggle Towers Invincible
+| {{as|Toggle|gold}} to render all turrets invulnerable to damage.
+| <code>[Shift][h]</code>
+|-
+| [[File:Practice Tool Toggle Tower Fire.png|40px|link=]]
+| Toggle Tower Fire
+| {{as|Toggle|gold}} to disable all turrets, preventing them from attacking and gaining aggro against enemies.
+| <code>[Shift][g]</code>
+|-
+| [[File:Practice Tool Toggle Minion Spawn.png|40px|link=]]
+| Toggle Minion Spawn
+| {{as|Toggle|gold}} to prevent any minions from spawning for either team. Despawns all {{tip|minions}} in the map.
+| <code>[Ctrl][Shift][i]</code>
+|-
+| [[File:Practice Tool Fast Foward 30sec.png|40px|link=]]
+| Fast Forward 30sec
+| Accelerates the game time by 30 seconds over 5 seconds. During this time, you are unable to act and become invulnerable and untargetable.
+| <code>[Ctrl][Shift][o]</code>
+|-
+| [[File:Practice Tool Fast Forward 10min.png|40px|link=]]
+| Fast Forward 10min
+| Accelerates the game time by 10 minutes over 20 seconds. During this time, you are unable to act and become invulnerable and untargetable.
+| <code>[Ctrl][Shift][l]</code>
+|-
+| [[File:Practice Tool Reset Game.png|40px|link=]]
+| Reset Game
+| Restarts the game state, maintaining champion choice. This does not reset the [[Dragon pit|Elemental Rift]].
+| <code>[Ctrl][Shift][p]</code>
+|-
+| [[File:Practice Tool Win The Game.png|40px|link=]]
+| Win The Game
+| Destroys the enemy Nexus.
+| <code>[Ctrl][Shift][.]</code>
+|}
+|-|
+Commands 2=
+{| class="article-table"
+|-
+!
+!Command
+!Details
+!width="23%"|Shortcut
+|-
+| [[File:Practice Tool Spawn Enemy Dummy.png|40px|link=]]
+| Spawn Enemy Dummy
+| Allows you to select a target location to spawn an enemy ''Target Dummy''. Up to 4 enemy dummies can be placed at a time.
+| <code>[Shift][b]</code>
+|-
+| [[File:Practice Tool Spawn Allied Dummy.png|40px|link=]]
+| Spawn Allied Dummy
+| Allows you to select a target location to spawn an allied ''Target Dummy''. Up to 4 allied dummies can be placed at a time.
+| <code>[Shift][n]</code>
+|-
+| [[File:Practice Tool Clear Target Dummies.png|40px|link=]]
+| Clear Target Dummies
+| Despawns all allied and enemy ''Target Dummies''.
+| <code>[Shift][m]</code>
+|-
+| [[File:Practice Tool Add 100 Max HP.png|40px|link=]]
+| Add 100 Max HP
+| Allows you to select a target enemy to grant them {{sti|{{as|100 '''bonus''' health}}}}. This is automatically cast against enemies you have declared as a target with attack commands.
+| <code>[Ctrl][Shift][t]</code>
+|-
+| [[File:Practice Tool Remove 100 Max HP.png|40px|link=]]
+| Remove 100 Max HP
+| Allows you to select a target enemy to remove {{sti|{{as|100 '''bonus''' health}}}} from them. This is automatically cast against enemies you have declared as a target with attack commands.<br><br>Only affects the {{as|'''bonus''' health}} granted to enemies with the ''Add 100 Max HP'' command.
+| <code>[Ctrl][Shift][y]</code>
+|-
+| [[File:Practice Tool Add 10 Resistances.png|40px|link=]]
+| Add 10 Resistances
+| Allows you to select a target enemy to grant them 10 '''bonus''' {{sti|{{as|armor}}}} and {{sti|{{as|magic resistance}}}}. This is automatically cast against enemies you have declared as a target with attack commands.
+| <code>[Ctrl][Shift][g]</code>
+|-
+| [[File:Practice Tool Remove 10 Resistances.png|40px|link=]]
+| Remove 10 Resistances
+| Allows you to select a target enemy to remove 10 '''bonus''' {{sti|{{as|armor}}}} and {{sti|{{as|magic resistance}}}} from them. This is automatically cast against enemies you have declared as a target with attack commands.<br><br>Only affects the '''bonus''' resistances granted to enemies with the ''Add 10 Resistances'' command.
+| <code>[Ctrl][Shift][h]</code>
+|-
+| [[File:Practice Tool Auto-Refresh Cooldowns.png|40px|link=]]
+| Set Game Speed to 0.25x
+| Slows down the game clock relative to real time by 4 times.
+| <code>[Ctrl][Shift][2]</code>
+|-
+| [[File:Practice Tool Auto-Refresh Cooldowns.png|40px|link=]]
+| Set Game Speed to 0.5x
+| Slows down the game clock relative to real time by 2 times.
+| <code>[Ctrl][Shift][3]</code>
+|-
+| [[File:Practice Tool Fast Foward 30sec.png|40px|link=]]
+| Set Game Speed to 1x
+| Sets the game clock back to default speed (real time).<br><br>Reverts the change made by ''Set Game Speed to 0.25x'', ''Set Game Speed to 0.5x'', or ''Set Game Speed to 2x'', depending on which cheat was active at the time.
+| <code>[Ctrl][Shift][4]</code>
+|-
+| [[File:Practice Tool Fast Forward 10min.png|40px|link=]]
+| Set Game Speed to 2x
+| Speeds up the game clock relative to real time by 2 times.
+| <code>[Ctrl][Shift][5]</code>
+|-
+| [[File:Practice Tool Stack Tear.png|40px|link=]]
+| Stack Items
+| Fully stacks {{nie|Mana Charge}} items ({{ii|Tear of the Goddess|icononly=true}} {{ii|Archangel's Staff|icononly=true}} {{ii|Manamune|icononly=true}} {{ii|Winter's Approach|icononly=true}} {{ii|Whispering Circlet|icononly=true}}) and {{nie|Glory}} items ({{ii|Dark Seal|icononly=true}} {{ii|Mejai's Soulstealer|icononly=true}}), fully stacks {{iis|Gluttonous Greaves}} {{nie|Slay}}, {{iis|Force of Nature}} {{nie|Steadfast}} and {{iis|Yun Tal Wildarrows}} {{nie|Practice Makes Lethal}}, grants 100 {{as|'''bonus''' health}} from {{iis|Heartsteel}} {{nie|Colossal Consumption}}, automatically completes the gold progress for {{nie|Quest}} items ({{ii|World Atlas|icononly=true}} {{ii|Runic Compass|icononly=true}}) and the time progress for {{iis|Rod of Ages}} {{nie|Timeless}}, and grants 40 treats to {{nie|Jungle}} items ({{ii|Gustwalker Hatchling|icononly=true}} {{ii|Mosstomper Seedling|icononly=true}} {{ii|Scorchclaw Pup|icononly=true}}).
+| <code>[Shift][a]</code>
+|-
+| [[File:Practice Tool Fully Stack Runes.png|40px|link=]]
+| Fully Stack Runes
+| Fully stacks Legend ({{ri|Legend: Alacrity|icononly=true}} {{ri|Legend: Bloodline|icononly=true}} {{ri|Legend: Haste|icononly=true}}), {{ri|Manaflow Band}}, and Hunter ({{ri|Treasure Hunter|icononly=true}} {{ri|Relentless Hunter|icononly=true}} {{ri|Ultimate Hunter|icononly=true}}) runes.
+|
+|-
+| [[File:Practice Tool Create a Spell Shield.png|40px|link=]]
+| Create a Spell Shield
+| Grants a {{tip|spell shield}} to you or the last {{tip|sight|visible}} enemy champion you declared as a target with attack commands. If the target already has a spell shield, it is destroyed instead.<br><br>This effect defaults to target you if you have not declared an attack target against a champion.
+|
+|-
+| [[File:Practice Tool Copy Inventory to Target.png|40px|link=]]
+| Copy Inventory to Target
+| Copies all of the items in your inventory to the item inventory of the last {{tip|sight|visible}} enemy champion you declared as a target with attack commands.
+|
+|-
+| [[File:Practice Tool Grant Target Status Effect.png|40px|link=]]
+| Grant Target Status Effect
+| Grants you a status effect. Cycles between {{tip|invulnerability}}, {{tip|silence}}, {{tip|root}}, {{tip|cc-immune}}, {{tip|stun}}, {{tip|blind}}, and {{tip|dodge}} {{tt|*|Dodge status effect causes the champion to always dodge enemy attacks}}. Use the command during the {{tip|dodge}} status effect to remove it.
+|}
+|-|
+Commands 3=
+{| class="article-table"
+|-
+!
+!Command
+!Details
+!width="23%"|Shortcut
+|-
+| [[File:Practice Tool Spawn Jungle Camps and Rift Herald.png|40px|link=]]
+| Spawn Rift Herald
+| Spawns {{ui|Rift Herald}}.<br><br>The {{ui|Rift Herald}} cannot spawn if the {{ui|Baron Nashor}} is in the pit.
+| <code>[Ctrl][Shift][j]</code>
+|-
+| [[File:Practice Tool Spawn Jungle Camps and Grubbies.png|40px|link=]]
+| Spawn Grubbies
+| Spawns the {{ui|Voidgrub|Voidgrubs}}.
+|
+|-
+| [[File:Practice Tool Spawn Jungle Camps and Baron.png|40px|link=]]
+| Spawn Baron
+| Spawns {{ui|Baron Nashor}}.
+|
+|-
+| [[File:Practice Tool Spawn Neutral Monsters.png|40px|link=]]
+| Spawn Neutral Monsters
+| Spawns all non-epic {{tip|monsters}}.
+|
+|-
+| [[File:Practice Tool Spawn Jungle Plants.png|40px|link=]]
+| Spawn Jungle Plants
+| {{as|Toggle|gold}} to respawn all jungle plants ({{ui|Blast Cone}}, {{ui|Honeyfruit}}, {{ui|Scryer's Bloom}}) and set their spawn timers to 3 seconds.
+| <code>[Alt][Shift][j]</code>
+|-
+| [[File:Practice Tool Spawn Cloud Drake.png|40px|link=]]
+| Spawn Cloud Drake
+| Spawns a {{ui|Cloud Drake}}.
+| <code>[Shift][j]</code>
+|-
+| [[File:Practice Tool Spawn Mountain Drake.png|40px|link=]]
+| Spawn Mountain Drake
+| Spawns a {{ui|Mountain Drake}}.
+| <code>[Shift][k]</code>
+|-
+| [[File:Practice Tool Spawn Infernal Drake.png|40px|link=]]
+| Spawn Infernal Drake
+| Spawns an {{ui|Infernal Drake}}.
+| <code>[Shift][l]</code>
+|-
+| [[File:Practice Tool Spawn Ocean Drake.png|40px|link=]]
+| Spawn Ocean Drake
+| Spawns an {{ui|Ocean Drake}}.
+| <code>[Shift][;]</code>
+|-
+| [[File:Practice Tool Spawn Hextech Drake.png|40px|link=]]
+| Spawn Hextech Drake
+| Spawns a {{ui|Hextech Drake}}.
+| <code>[Shift][p]</code>
+|-
+| [[File:Practice Tool Spawn Chemtech Drake.png|40px|link=]]
+| Spawn Chemtech Drake
+| Spawns a {{ui|Chemtech Drake}}.
+| <code>[Shift][o]</code>
+|-
+| [[File:Practice Tool Spawn Elder Dragon.png|40px|link=]]
+| Spawn Elder Dragon
+| Spawns an {{ui|Elder Dragon}}.
+| <code>[Shift][']</code>
+|-
+| [[File:Practice Tool Complete Role Quest.png|40px|link=]]
+| Complete Role Quest
+| Completes your role quest based on your assigned role.
+|
+|-
+| [[File:Practice Tool Toggle auto-attack range markers.png|40px|link=]]
+| Toggle auto-attack range markers
+| {{as|Toggle|gold}} to display an auto attack range indicator on all player champions in the game.<br><br>The opposing team's range indicator will be colored differently.
+|
+|}
+|-|Hide=
+* Click on the tabs above for details about Practice Tool commands.
+</tabber>
+
+== Particulars ==
+Results in Practice Tool do not always reflect the same circumstances in other game modes or have special interactions with its various cheats.
+
+=== Target dummy ===
+The dummy imposes special restrictions on certain abilities in order to avoid disrupting their function.
+* {{cai|Fear Beyond Death|Urgot}} can kill a dummy.
+** If the dummy is being {{tip|suppression|suppressed}} by {{ai|Fear Beyond Death 2|Urgot|Mercy}}, {{bi|Aspect of the Dragon}} can kill the dummy. {{bi|Aspect of the Dragon}} alone can also kill a dummy in rare occasions.
+* {{iis|Sundered Sky}} {{sbc|Lightshield Strike}} does not function against the dummy.{{bug}}
+* A killed dummy would respawn in its [[spawn|fountain]].
+
+=== Map ===
+* Minion waves spawn every 30 seconds invariably and do not respect current Summoner's Rift rules (30 to 25 to 20 seconds at game time breakpoints).{{bug}}
+* [[File:Practice Tool Reset Game.png|26px|link=]] Resetting the game will not change the map's element nor the game's set {{bi|Dragon Soul}}, but will revert the map to its pre-elemental form.
+* After killing an {{ui|Dragon|Elemental Drake|link=Dragon pit}}, spawning another too early will make the summoned '''Elemental Drake''' {{tip|untargetable}}.{{bug}}
+* Each Elemental Drake can be slain up to 4 times, even after the Dragon Soul has been acquired, to gain the respective {{bi|Dragon Slayer}} bonuses.
+** The exception is {{ui|Chemtech Drake}}, which may [[stack]] infinitely.{{bug|2}}
+* Every other Dragon (even numbered spawns) spawned by the Practice Tool will be an noninteractive dragon model that idles in place. They stack infinitely.
+* The {{ui|Voidgrub|Voidgrubs}} will not re-spawn a full group via the [[File:Practice Tool Spawn Jungle Camps and Grubbies.png|26px|link=]] Spawn Grubbies button if any of the three in the group are alive.
+* The {{ui|Voidgrub|Voidgrubs}} can co-exist with either {{ui|Rift Herald}} or {{ui|Baron Nashor}} in the [[baron pit]] (the latter two are mutually exclusive). Once {{ui|Baron Nashor}} spawns, {{ui|Rift Herald}} cannot spawn again for the current session, including through [[File:Practice Tool Reset Game.png|26px|link=]] resets.
+** Additionally, if the baron pit camps' possible spawn time has elapsed ('''is reset''' through [[File:Practice Tool Reset Game.png|26px|link=]] resets) {{ui|Rift Herald}} cannot spawn again for the current session.
+** If a player attempts to spawn the Rift Herald while Baron Nashor is already spawned beforehand, the Herald is killed instantly.
+* Prior to [[V25.S1.1]], after killing the first {{ui|Dragon|Elemental Drake|link=Dragon pit}} of the game, spawning the same one again would set the map's element and the game's {{bi|Dragon Soul}}.{{bug|2}}
+
+=== Other ===
+* {{ci|Kled}} will have to use [[File:Practice Tool Kill Player Champion.png|26px|link=]] Kill Player Champion function twice if he is mounted; one to dismount, and one to actually enter death state.
+* Using the [[File:Practice Tool Kill Player Champion.png|26px|link=]] Kill Player Champion function during {{cai|The Darkin Scythe|Kayn|Transformation}} will not grant Kayn his new form, abilities nor update the animations accordingly for which form he chose. Moreover, Kayn will not be able to transform unless the game is [[File:Practice Tool Reset Game.png|26px|link=]] reset.
+* If {{cai|Spray and Pray|Twitch}} is cast again before the effect has ended, it will refresh the stat buff (bonus AD and bonus range) but '''Twitch''' will fire standard attacks instead of the ''bolts''.
+* Casting {{cai|Cease and Desist|Vi}} on two different targets in quick succession will affect both of them at the same time if they are in a certain range of each other.
+* Each player can only have up to 20 {{tip|Farsight ward|Farsight wards}} on the map at any given time, with the oldest one being replaced upon a new one spawning over the limit.
+* After using [[File:Practice_Tool_Fast_Forward_10min.png|link=|width=26x26]] Fast Forward 10min, certain game mechanics refresh and occur significantly more frequently. For example, the [[File:Practice_Tool_Auto-Refresh_Cooldowns.png|link=|width=26x26]] Auto-Refresh Cooldowns toggle refreshes more quickly, allowing the player to cast abilities even more often. Player gold will also continue to rapidly accumulate for a short period afterward.{{bug}}
+* Some {{tip|on-hit}} effects will not trigger against invincible towers.
+* Respawned nexus turrets lose their [[File:Practice_Tool_Toggle_Tower_Fire.png|link=|width=26x26]] Toggle Fire status, but their [[File:Practice Tool Toggle Towers Invincible.png|26px|link=]] Invincibility state will remain if toggled after their destruction.{{bug}}
+* [[Feats of Strength]] cannot be reset; they are locked for the entirety of the session.
+* If the game is [[File:Practice Tool Reset Game.png|26px|link=]] reset while the [[File:Practice_Tool_Toggle_Minion_Spawn.png|link=|width=26x26]] Toggle Minion Spawn cheat is active, the cheat will no longer despawn minions when used. However, it will continue spawning new ones.{{bug}}
+* A {{tip|turret}} in an [[File:Practice Tool Toggle Towers Invincible.png|26px|link=]] Invincibility state might still take damage from certain effects.
+** This includes but is not limited to: [[Turret#Items|Crystalline Overgrowth]] and {{ri|Demolish}}.
+* Some items passives will visually reset but will stay on cooldown even if [[File:Practice_Tool_Auto-Refresh_Cooldowns.png|link=|width=26x26]] Auto-Refresh Cooldowns is toggled.{{bug}}
+** These items are: all {{iis|Sheen}} items, all {{iis|Tear of the Goddess}} items, {{ii|Statikk Shiv}} and items whose passive cooldowns are different for each target.
+
+== Trivia ==
+* '''Practice Tool''' games that are finished are tracked as [[custom game|custom games]] in [[Summoner_profile#Match_History|Match History]].
+* The Training Dummy design is based on {{ci|Teemo}}; red representing an enemy target dummy while the blue an ally target dummy.
+* Attacking an {{TFT Item|Target Dummy|Enemy Target Dummy}}, monster, or champion will allow you to more quickly and easily add or remove the target's health or resistances. This is because the game does not require you to select the target after issuing the command.
+* After using the practice tool for 59:14, a warning will appear stating that the practice tool will close in 1 minute. This makes the longest time that anyone can use the practice tool in one sitting 60 minutes and 14 seconds.
+* Dummies are summoned at level 1 and can gain experience like normal champions. They can also level up, but gain no benefits from it.
+* Dummies will face directly towards your location at the time of being summoned.
+* When you use the option 'Win the Game', a message appears over your character: "My only way to see that Victory screen."
+* In {{tip|Teamfight Tactics}}, the item {{TFT Item|Target Dummy}} reuses the model and animations of the Training Dummy.
+
+== Media ==
+<tabber>
+Videos=
+{{#ev:youtube|id=cHiVAaMbZbA|alignment=center|dimensions=640px}}
+|-|
+Gallery=
+<gallery position="center" spacing="small" captionalign="center">
+Teemo Target Dummy Concept 01.png|Teemo Target Dummy Concept 1 (by Riot Artist [[Grace Liu]])
+Teemo Target Dummy Concept 02.jpg|Teemo Target Dummy Concept 2 (by Riot Artist [[Grace Liu]])
+</gallery>
+</tabber>
+
+== Patch History ==
+{{Scroll box|content=
+;[[V26.19]]
+* Updated the Stack Item cheat to include: {{ii|Dark Seal}}, {{ii|Mejai's Soulstealer}}, {{ii|Heartsteel}}, {{ii|Gluttonous Greaves}}, and {{ii|Force of Nature}}.
+
+;[[V26.01]]
+* New cheat: Complete Role Quest.
+** Completes the player's role quest based on their assigned role.
+* Removed cheats:
+** Complete Feats of Strength
+** Spawn {{ui|Thornbound Atakhan}} in Top Lane
+** Spawn {{ui|Thornbound Atakhan}} in Bot Lane
+
+;[[V25.23]]
+* New cheat: Toggle auto-attack range markers.
+** Displays champions' basic attack range at all times as a decal around their model (similar to the turret range option in PvE modes).
+* {{sbc|Bug Fix:}} The first use of {{cai|Shattered Earth|Skarner}} after toggling the Refresh Cooldowns cheat and using Reset Game no longer has a massively increased cooldown.
+
+;[[V25.21]]
+* Practice Tool games now display as such in the friends list, instead of Normal (Summoners Rift) matches.
+* {{sbc|New:}} All champions are now unlocked for players in Practice Tool.
+** This applies when <u>only 1 human player</u> is in the lobby. Bots and spectators do not prevent eligibility.
+** The eligibility status for the current lobby will be visible via a padlock icon.
+* {{sbc|Bug Fix:}} The button to spawn all non-epic monster camps is now functional.
+* {{sbc|Bug Fix:}} The {{ui|Rift Scuttler}} no longer fails to spawn under certain circumstances when using the respective button.
+
+;[[V25.18]]
+* Spawn Rift Herald / Baron / Grubbies buttons no longer also spawn all jungle camps.
+** {{Note|1}} A new button to spawn/respawn all non-epic monster camps was added, but it is not visible or available to players due to incorrect implementation.
+* {{sbc|Bug Fix:}} Nexus Finishers are now functional in Practice Tool.
+* {{sbc|Bug Fix:}} Players can no longer sometimes be locked out of creating Practice Tool games entirely when lobby errors occur.
+
+;[[V25.17#August 29th Hotfix|V25.17]] - August 29th Hotfix
+* {{sbc|Undocumented / Bug Fix:}} Practice Tool games no longer require waiting for 5 seconds in the warning menu before the Leave button becomes available.
+
+;[[V25.16]]
+* {{sbc|Undocumented:}} Practice Tool games now also require waiting for 5 seconds in the warning menu before the Leave button becomes available.
+
+;[[V25.14]]
+* {{sbc|Undocumented:}} The Target Dummy's last hit damage counter now shows all damage dealt from the last hit instead of only the most recent damage instance.
+
+;[[V25.13]]
+* {{sbc|Bug Fix:}} Stack Items function no longer allows {{ii|Rod of Ages}} to exceed 10 stacks of Timeless.
+
+;[[V25.10]]
+* {{sbc|Bug Fix:}} Using the Reset Game function now properly resets minions' acquired buffs.
+* {{sbc|Bug Fix:}} Using the Reset Game function now properly restores the object and functionality of the river brush within his camp in the previous game clock cycle.
+
+;[[V25.09]]
+* New cheats:
+** Spawn {{ui|Thornbound Atakhan}} in Top Lane
+** Spawn {{ui|Thornbound Atakhan}} in Bot Lane
+* Removed cheats:
+** Spawn {{ui|Ruinous Atakhan}} in Top Lane
+** Spawn {{ui|Ruinous Atakhan}} in Bot Lane
+** Spawn {{ui|Voracious Atakhan}} in Top Lane
+** Spawn {{ui|Voracious Atakhan}} in Bot Lane
+* {{sbc|Bug Fix:}} Using the Reset Game function now properly resets the timers for {{ri|Conditioning}}, {{ri|Gathering Storm}} and {{ri|Magical Footwear}}.
+
+;[[V25.08]]
+* {{sbc|Bug Fix:}} Using the Reset Game function no longer causes minion waves to start spawning at a different and significantly shorter offset from the start of the game than intended as well as reverse the functionality of the Minion Spawn toggle.
+
+;[[V25.07]]
+* {{sbc|Bug Fix:}} Elemental Rift now properly resets upon using the Reset Game function (still is not able to change within the same session).
+* {{sbc|Bug Fix:}} {{uis|Atakhan}} terrain now properly resets upon using the Reset Game function.
+* {{sbc|Bug Fix:}} The various functions to spawn specific {{ui|Dragon|Dragons}} no longer spawn the next Elemental Drake prematurely then the same one thereafter, instead of the ones indicated in the buttons.
+* {{sbc|Bug Fix:}} Spawning a {{ui|Dragon}} no longer also spawns {{ui|Atakhan}}, which would also cause the latter's unique terrain to form prematurely if it has not formed yet.
+
+;[[V25.06#March 19th Hotfix|V25.06]] - March 19th Hotfix
+* {{sbc|Undocumented / Bug Fix:}} Practice Tool now properly always uses the Noxus map override and its latest version instead of sometimes loading the player into the default (non-Noxus) Summoner's Rift.
+
+;[[V25.06]]
+* {{sbc|Bug Fix:}} The Target Dummy's damage counter no longer sometimes disagrees with the actual damage dealt and the floating text display.
+* {{sbc|Bug Fix:}} Damaging clones can now once again deal damage to the Target Dummy.
+* {{sbc|Bug Fix:}} Feats of Strength now properly reset after resetting the game.
+* {{sbc|Bug Fix:}} All item effects from tier 3 boots items no longer fail to activate.
+* {{sbc|Bug Fix:}} Spawn Jungle Plants no longer stops working after resetting the game.
+
+;[[V25.S1.1]]
+* Added access to multi-player, up to 10 players.
+* New cheats:
+** Set Game Speed to:
+*** 0.25x
+*** 0.5x
+*** 1x
+*** 2x
+** Spawn {{ui|Ruinous Atakhan}} in Top Lane
+** Spawn {{ui|Ruinous Atakhan}} in Bot Lane
+** Spawn {{ui|Voracious Atakhan}} in Top Lane
+** Spawn {{ui|Voracious Atakhan}} in Bot Lane
+** Complete Feats of Strength.
+*** ''Can only be overridden by one team.''
+* {{sbc|Undocumented / Bug:}} After killing the first {{ui|Dragon|Elemental Drake|link=Dragon pit}} of the game, spawning the same one again no longer sets the map's element and the game's {{bi|Dragon Soul}}.
+
+;[[V14.22]]
+* {{sbc|Undocumented:}} Updated the Stack Item cheat to include: {{ii|Yun Tal Wildarrows}}.
+
+;[[V14.2]]
+* New ''"Spawn Jungle Camps and {{ui|Voidgrub|Grubbies}}"'' button.
+* New ''"Create a Spell Shield"'' button.
+* New ''"Copy Inventory to Target"'' button.
+* New ''"Grant Target Status Effect"'' button.
+** ''Target is the selected unit (default: MB1 / Left Click).''
+** Cycles between granting the target {{tip|invulnerability}}, {{tip|silence}}, {{tip|root}}, {{tip|cc-immune}}, {{tip|stun}}, and {{tip|blind}}.
+* New icon for ''"Spawn Jungle Camps and Baron"'' button.
+* ''"Reset Game"'' button now sets the new game time to {{sbc|0:00}}.
+* {{sbc|Bug Fix:}} ''"Reset Game"'' button now uses the correct icon.
+* {{sbc|Bug Fix:}} Buttons for spawning {{ui|Rift Herald}} and {{ui|Baron Nashor}} now properly function.
+
+;[[V13.16]]
+* Target Dummy
+** Base movement speed increased to 370 from 0.
+** Minimum health threshold reduced to 1 from 100.
+** {{sbc|Bug Fix:}} Maximum amount of damage possible to the dummy is no longer equivalent to 900 and is now equal to ({{as|100% of target dummy's '''maximum''' health}} - 1).
+
+;[[V12.23]]
+* {{sbc|Bug Fix:}} The rift no longer only transforms into the {{ui|Infernal Drake|Infernal Rift}} after two drakes are slain.
+
+;[[V12.22]]
+* ''Spawn {{ui|Chemtech Drake}} button'' re-added.
+
+;[[V12.3]]
+* {{sbc|Removed:}} Can no longer spawn {{ui|Chemtech Drake}}.
+
+;[[V12.1]]
+* Spawn Dragons:
+** New ''Spawn {{ui|Chemtech Drake}} button.''
+** New ''Spawn {{ui|Hextech Drake}} button.''
+
+;[[V10.8]]
+* Target dummies:
+** Health reduced to 1,000 from 10,000.
+** Armor and magic resistance to 0 from 100.
+** New ''"Add 100 Max HP"'' button.
+** New ''"Remove 100 Max HP"'' button.
+*** The target dummy gains increased size the more {{as|'''maximum''' health}} it has, with the maximum size capped at 10,000 health.
+** New ''"Add 10 Resistances"'' button.
+** New ''"Remove 10 Resistances"'' button.
+* New ''"Fast Forward 10min"'' button.
+* ''Spawn Jungle Camps'' are now split into:
+** ''"Spawn Jungle Camps and {{ui|Rift Herald}}"''
+** ''"Spawn Jungle Camps and {{ui|Baron Nashor}}"''
+* New ''"Kill Player Champion"'' button.
+* New ''"Fully Stack Runes"'' button, which fully stacks:
+** Precision Legend runes ({{ri|Legend: Alacrity}}, {{ri|Legend: Bloodline}}, {{ri|Legend: Tenacity}})
+** {{ri|Manaflow Band}}
+** Domination Vision runes ({{ri|Eyeball Collection}}, {{ri|Ghost Poro}}, {{ri|Zombie Ward}})
+** Domination Hunter runes ({{ri|Ingenious Hunter}}, {{ri|Ravenous Hunter}}, {{ri|Relentless Hunter}}, {{ri|Ultimate Hunter}}).
+
+;[[V9.7]]
+* Win the game Button added
+* Stack Tear Button added.
+
+;[[V7.3]] - Added
+* Practice Tool mode released.
+* Dummy units released.
+}}
+{{References}}
+{{Game modes}}
+[[Category:League of Legends game modes]]

@@ -1,0 +1,28 @@
+["Sundered Sky"] = {
+        ["id"]                  = 6610,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 400,
+            ["ad"]              = 40,
+            ["ah"]              = 10,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Lightshield Strike",
+                ["unique"]      = true,
+                ["description"] = "Your next basic attack against a champion is empowered to {{tip|critical strike|critically strike}} for{{ft|{{as|{{critical damage|60|80}}|critical damage}} '''bonus''' damage|{{sti|{{as|80% '''total''' critical damage}}}}}}and {{tip|heal}} you for {{as|{{rd|90%|45%}} '''base''' AD}} {{as|(+ 4% of your '''missing''' health)}} (10 second cooldown per target). Excess healing beyond {{as|'''maximum''' health}} is converted to {{as|'''bonus''' health}} for 8 seconds.",
+            },
+		},
+        ["recipe"]              = {"Tunneler", "Caulfield's Warhammer"},
+        ["buy"]                 = 3100,
+    },

@@ -1,0 +1,27 @@
+["Rabadon's Deathcap"] = {
+        ["id"]                  = 3089,
+        ["nickname"]            = {"banksys", "dc", "dcap", "hat", "witchcap", "wooglets"},
+        ["tier"]                = 2,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 130,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Magical Opus",
+                ["unique"]      = true,
+                ["description"] = "Increase your {{as|ability power}} by 30%.",
+            },
+        },
+        ["recipe"]              = {"Needlessly Large Rod", "Needlessly Large Rod"},
+        ["buy"]                 = 3500,
+    },

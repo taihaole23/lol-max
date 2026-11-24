@@ -4,6 +4,7 @@
 // which shows the right page for the web address. Each page lives in src/ui/pages/.
 import "./style.css";
 import { championList } from "./data/champion-list.ts";
+import { applyChampionColors } from "./ui/champion-colors.ts";
 import { mountChampionSearch } from "./ui/champion-search.ts";
 import { byId } from "./ui/html.ts";
 import { mountChampionPage } from "./ui/pages/champion-page.ts";
@@ -50,6 +51,8 @@ function show(route: Route): void {
 
   // The small search bar in the top bar, everywhere except home (which has the big one).
   byId("topbar-search").hidden = route.page === "home";
+  // A champion page takes its colours from the splash art; every other page uses the normal red.
+  applyChampionColors(route.page === "champion" ? route.slug : null);
 
   if (route.page === "home") {
     document.title = "lol-max: max out an ability's damage";

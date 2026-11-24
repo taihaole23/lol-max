@@ -1,0 +1,147 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Rabadon's Deathcrown}}.''
+{{Item info
+|goldvalue =
+* {{ap|{{cid|Rabadon's Deathcap|ap}}*{{#vardefineecho:rabadonratio|0.3}}}} [[ability power]] (from passive) = {{g|{{#expr:{{#var:ap}}*{{cid|Rabadon's Deathcap|ap}}*{{#var:rabadonratio}}}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:total|{{#expr:{{#var:total}}+{{#var:ap}}*{{cid|Rabadon's Deathcap|ap}}*{{#var:rabadonratio}}}}}}}}
+{{gold value|Passive Gold Value|nolink=}}
+* {{ap|{{#var:rabadonratio}}*100}} [[ability power]] (for every 100 ability power) = {{g|{{#expr:{{#var:ap}}*{{#var:rabadonratio}}*100}}}}
+|goldefficiency =
+* {{ii|Rabadon's Deathcap}} gold efficiency due to {{sbc|Magical Opus}} is further increased by {{gec|Rabadon's Deathcap|+{{#expr:{{#var:ap}}*{{#var:rabadonratio}}*100}}}} for every 100 ability power obtained from other sources.
+|similaritems = Shadowflame;Horizon Focus;Zhonya's Hourglass;Banshee's Veil;Mejai's Soulstealer
+|background =
+|notes =
+* '''Rabadon's Deathcap''' by itself grants {{as|{{ap|({{cid|Rabadon's Deathcap|ap}}+{{cid|Rabadon's Deathcap|ap}}*{{#var:rabadonratio}})}} ability power}} due to the increase from {{sbc|Magical Opus}}.
+* {{sbc|Magical Opus'}} {{as|ability power}} multiplier {{tip|stacks additively}} with {{bi|Infernal Might}}.
+** {{sbc|Magical Opus}} [[recursion|stacks recursively]] with other sources of {{as|ability power}}.
+|strategy =
+* {{ii|Rabadon's Deathcap}} is most suited for champions that have effects that scale with ability power (such as abilities, items, and runes), especially those with higher ratios.
+* {{ii|Rabadon's Deathcap}} is best purchased after having acquired a high amount of ability power.
+** This is because the item does not provide anything other than ability power in contrast to other items which provide unique bonus effects.
+*** Those items may scale with and also grant ability power, thus {{ii|Rabadon's Deathcap}} becomes more valuable as it will make those items even more effective due to its large increase in the stat.
+* Given a situation where the user can purchase {{ii|Rabadon's Deathcap}} or {{ii|Void Staff}}, the choice between the two is highly dependent on the champion's ratios.
+** {{ii|Rabadon's Deathcap}} becomes a better purchase if the user would gain more damage from the large increase in ability power due to having high ability power ratios. Otherwise, {{ii|Void Staff}} is more optimal of a purchase as its passive will increase overall magic damage dealt in spite of ability power ratios.
+* While it has the potential to be the single best source of ability power in the game, {{ii|Rabadon's Deathcap}} is rarely purchased first, as its passive ability requires other ability power items to have maximum effectiveness, thus at low ability power it loses a lot of its potential cost effectiveness. It has the most difficult recipe of any item in the game. In addition, other items provide unique passives beyond a statistic that may prove to be much more useful than only gaining ability power. These facts render the item ineffective or even detrimental to build earlier in the game, where the arms race for useful purchases at convenient timings is the most important.
+|trivia =
+* Upon applying a {{cai|Living Forge|Ornn|Masterwork}} upgrade to a {{ii|Rabadon's Deathcap}} owned by {{ci|Aurora}}, the item will transform into a [[File:Witch's Hat item.png|20px]] ''Witch's Hat''. The upgraded item will have a new icon and a caption that reads: ''"'Friend.' Yes, it is a funny word. Yet perhaps I understand its purpose."''
+** It is also called ''Rabbitdon's (Deathcap)'', or ''weirding witch hat'' in the game files.
+** This was added in [[V14.12]], two patches before {{cis|Aurora}} release. During these two patches, {{ci|Ornn}} would also receive the flavor item.
+* This item resulted from a separation of the offensive and defensive abilities of {{ii|Zhonya's Ring}}. This is the offensive item, while {{ii|Zhonya's Hourglass}} is its defensive counterpart.
+* It was originally named Banksy's Deathcap in the Patch Day Preview. This is a tribute to David 'Banksy' Banks, a [[Riot Games Inc.]] Director of Platform Engineering.
+* The image artwork would seem to be based on the {{wikia|harrypotter|Sorting Hat}} from the Harry Potter franchise. There are eyes and a mouth-like band visible on the hat, very similar to the Sorting Hat.
+|media =
+|revisions =
+|patchhistory =
+;[[V25.10]]
+* Total cost reduced to {{g|3500}} from {{g|3600}}.
+** Combine cost reduced to {{g|1100}} from {{g|1200}}.
+
+;[[V14.19]]
+* Combine cost increased to {{g|1200}} from {{g|1100}}.
+** Total cost unchanged.
+* Ability power reduced to 130 from 140.
+* Magical Opus bonus ability power reduced to 30% from 35%.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Rabadon's Deathcrown}}.
+
+;[[V14.1]]
+* Ability power increased to 140 from 120.
+* Magical Opus ability power reduced to 35% from 40%.
+* {{sbc|New {{ai|Living Forge|Ornn|Masterwork}} item:}} {{ii|Rabadon's Deathcrown}}.
+** {{sbc|Stats:}} 190 ability power.
+
+;[[V13.10]]
+* Magical Opus ability power increased to 40% from 35%.
+
+;[[V11.6]]
+* Total cost reduced to {{g|3600}} from {{g|3800}}.
+** Combine cost reduced to {{g|1100}} from {{g|1300}}.
+
+;[[V10.24]]
+* Updated icon.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Needlessly Large Rod}} + {{ii|Needlessly Large Rod}} + {{g|1300}} = {{g|3800}}.
+** {{sbc|Stats:}} 120 ability power.
+** {{sbc|Unique Passive - Magical Opus:}} Increase your {{as|ability power}} by 35%.
+** Limited to 1 '''Rabadon's Deathcap'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Needlessly Large Rod}} + {{ii|Needlessly Large Rod}} + {{g|1100}} = {{g|3600}}.
+** {{sbc|Stats:}} 120 ability power.
+** {{sbc|Unique Passive:}} +40% ability power.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Rabadon's Deathcrown}}.
+*** {{sbc|Stats:}} 175 ability power.
+
+;[[V9.1]]
+* {{ii|Rabadon's Deathcrown}}
+** Total cost reduced to {{g|3600}} from {{g|4600}}.
+*** Combine cost reduced to {{g|0}} from {{g|1000}}.
+** Can now only be obtained if {{ci|Ornn}} forges the item (for himself or for another ally).
+
+;[[V8.4]]
+* {{sbc|New Recipe:}} {{ii|Needlessly Large Rod}} + {{ii|Needlessly Large Rod}} + {{g|1100}} = {{g|3600}}.
+** {{sbc|Old Recipe:}} {{ii|Needlessly Large Rod}} + {{ii|Blasting Wand}} + {{ii|Amplifying Tome}} + {{g|1265}} = {{g|3800}}.
+* Unique passive ability power increased to 40% from 35%.
+* {{ii|Rabadon's Deathcrown}} total cost reduced to {{g|4600}} from {{g|4800}}.
+
+;[[V7.17]]
+* Added to recipe from {{ii|Rabadon's Deathcrown}}.
+** {{sbc|Recipe:}} {{ii|Rabadon's Deathcap|variant=old}} + {{g|1000}} = {{g|4800}}.
+** {{sbc|Stats:}} 175 ability power.
+** {{sbc|Unique Passive:}} +35% ability power.
+** Only available while {{ci|Ornn}} is on your team. Limited to one {{ai|Master Craftsman|Ornn}} item.
+
+;[[V5.22]]
+* Total cost increased to {{g|3800}} from {{g|3500}}.
+** Combine cost increased to {{g|1265}} from {{g|965}}.
+
+;[[V5.13]]
+* {{sbc|New Recipe:}} {{ii|Needlessly Large Rod}} + {{ii|Blasting Wand}} + {{ii|Amplifying Tome}} + {{g|965}} = {{g|3500}}
+** {{sbc|Old Recipe:}} {{ii|Needlessly Large Rod}} + {{ii|Blasting Wand}} + {{g|840}} = {{g|3300}}
+* Bonus ability power increased to 35% from 30%.
+
+;[[V4.1]]
+* {{sbc|New Effect:}} Tooltip now displays the amount of ability power gained from its unique passive.
+
+;[[V3.02]]
+* Total cost increased to {{g|3300}} from {{g|3200}}.
+** Combine cost increased to {{g|840}} from {{g|740}}.
+* Bonus ability power increased to 30% from 25%.
+
+;[[V1.0.0.152]]
+* Total cost reduced to {{g|3200}} from {{g|3600}}.
+** Combine cost reduced to {{g|740}} from {{g|1140}}.
+* Ability power reduced to 120 from 140.
+* Bonus ability power reduced to 25% from 30%.
+
+;[[V1.0.0.151]]
+* Removed from Crystal Scar.
+
+;[[V1.0.0.121]]
+* Ability power reduced to 140 from 155.
+
+;[[V1.0.0.110]]
+* Total cost increased to {{g|3600}} from {{g|3400}}.
+** Combine cost increased to {{g|1140}} from {{g|940}}.
+
+;[[V1.0.0.109]]
+* Total cost increased to {{g|3400}} from {{g|3300}}.
+** Combine cost increased to {{g|940}} from {{g|840}}.
+
+;[[V1.0.0.108]]
+* {{ii|Rabadon's Deathcap}}
+** {{sbc|Recipe:}} {{ii|Needlessly Large Rod}} + {{ii|Blasting Wand}} + {{g|840}} = {{g|3300}}
+** +155 ability power
+** {{sbc|Unique passive:}} Increases ability power by 30%.
+}}
+
+
+[[cs:Rabadon's Deathcap]]
+[[de:Rabadons Todeshaube]]
+[[es:Sombrero Mortífero de Rabadon]]
+[[fr:Coiffe de Rabadon]]
+[[pl:Zabójczy Kapelusz Rabadona]]
+[[ru:Смертельная шляпа Рабадона]]
+[[zh:灭世者的死亡之帽]]

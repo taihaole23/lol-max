@@ -5,11 +5,10 @@
 // Small simplification: R's magic damage is stored as two pieces (base, AP ratio). If the
 // base piece takes the dummy below 40%, the AP ratio piece of the same dagger gets the bonus,
 // although in the game they're one hit. That's at most one dagger's AP part per ult.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Shadowflame", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Shadowflame", patch: "26.23" },
   healthThreshold: 0.4,
   critDamage: 1.2,
 };

@@ -1,0 +1,27 @@
+["Shadowflame"] = {
+        ["id"]                  = 4645,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 110,
+            ["mpenflat"]        = 15,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Cinderbloom",
+                ["unique"]      = true,
+                ["description"] = "Your {{as|magic|magic damage}} and {{as|true|true damage}} damage will {{tip|critical strike|critically strike}} for {{as|120%|critical damage}} damage against enemies {{as|below 40% '''maximum''' health}}.",
+            },
+        },
+        ["recipe"]              = {"Hextech Alternator", "Needlessly Large Rod"},
+        ["buy"]                 = 3200,
+    },

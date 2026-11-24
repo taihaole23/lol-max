@@ -1,0 +1,4 @@
+{{<includeonly>1</includeonly><noinclude>void</noinclude>|1=
+* Each [[basic attack]] [[on-attack]] generates 6 ''Energize'' stacks while 1 is generated for every 24 in-game units traveled. This includes but is not limited to normal or special forms of movement, using {{tip|dash|dashes}} or {{tip|blink|blinks}}, or being {{tip|airborne|displaced}} to another location.
+** Hitting abilities that apply [[on-hit]] effects will also generate 6 stacks.
+}}<noinclude>{{doc}}</noinclude>

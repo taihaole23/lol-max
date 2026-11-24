@@ -1,0 +1,35 @@
+["Rod of Ages"] = {
+        ["id"]                  = 6657,
+        ["nickname"]            = {"RoA"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Eternity",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+        	["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 45,
+            ["hp"]              = 350,
+            ["mana"]            = 500,
+        },
+        ["effects"] = {
+            ["pass"] = {
+            	["name"]        = "Timeless",
+                ["unique"]      = true,
+                ["description"] = "This item gains {{as|10 '''bonus''' health}}, {{as|30 '''bonus''' mana}}, and {{as|3 ability power}} every minute, up to 10 times, for a maximum of {{as|100 '''bonus''' health}}, {{as|300 '''bonus''' mana}}, and {{as|30 ability power}}. Upon reaching maximum stacks, gain a level that preserves your current experience (level cap remains the same).",
+            },
+            ["pass2"] = {
+                ["name"]        = "Eternity",
+                ["unique"]      = true,
+                ["description"] = "Restore {{as|mana}} equal to 10% of {{tt|pre-mitigation damage|Damage calculated before modifiers}} taken from champions, and {{tip|heal}} for {{pp|0 to 20|0 to 80 by 5|type=mana spent|label=healing|color=heal|formula=25% of mana spent, up to 20 healing}} per cast. Toggled abilities can only heal for up to 20 per second.",
+            },
+        },
+        ["recipe"]              = {"Blasting Wand", "Catalyst of Aeons"},
+        ["buy"]                 = 2600,
+    },

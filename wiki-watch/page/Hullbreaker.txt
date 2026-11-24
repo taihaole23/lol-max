@@ -1,0 +1,124 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Black Cleaver;Experimental Hexplate;Spear of Shojin;Sterak's Gage;Stridebreaker;Sundered Sky;Titanic Hydra;Trinity Force;Overlord's Bloodmail
+|background =
+|notes =
+* {{sbc|Skipper}} deals {{tip|proc damage}}, and thus will not trigger [[spell effects]].
+* {{sbc|Skipper's}} on-hit damage applies to [[structures]].
+* The bonus damage dealt by {{sbc|Skipper}} benefits from {{stil|life steal}}.
+* {{sbc|Boarding Party}} does not affect {{tip|untargetable}} minions.
+* Minions that are granted increased [[size]] by {{sbc|Boarding Party}} grow to it over {{fd|0.25}} seconds and shrink instantly when the buff falls off.
+|strategy =
+* {{ii|Hullbreaker}} is best used to push out lanes and siege [[structures]] with or without your team.
+** The damage increase and empowerment to your large {{tip|minions}} will increase the speed of your push significantly.
+* {{sbc|Boarding Party}} empowers all nearby large {{tip|minions}}. Use this to your advantage by building up a wave consisting of several large minions.
+* {{sbc|Boarding Party's}} empowerment stacks with {{bi|Hand of Baron|Hand of Baron's}} empowerment.
+|oldicons =
+|trivia =
+* '''Hullbreaker''' can be searched in the shop with the keywords "pirate", "yarrr", and "ahoy".
+* {{sbc|Boarding Party}}'s minion buff tooltip, "Ahoy!!", references VTuber {{w|Houshou Marine}}.<ref>[https://imgur.com/a/JwtyLN7 VTuber Reference]</ref>
+* Before [[V14.3]], when allied champions could disable {{sbc|Boarding Party}}, pinging '''Hullbreaker''' in your inventory sent out a message stating "''You're too close: ([allied champions])!''"
+** When allied champions were close to entering the radius, the ping would be: "''I want to be alone: ([allied champions]).''"
+** When {{sbc|Boarding Party}} was active, the ping would be "''I'm hunting alone.''"
+[[File:Bilgewater Crest icon.png|link=Bilgewater#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Hullbreaker passive indicator.png|Passive indicator
+Hullbreaker empowered cannon VFX.png|Siege Minion Empowered VFX
+Hullbreaker empowered super minion VFX.png|Super Minion Empowered VFX
+Hullbreaker bonus damage VFX.png|Tower Bonus Damage VFX
+</gallery>
+|revisions =
+|patchhistory =
+;Unknown Patch<!--endstep said it was 25.14 but some reports suggest otherwise, maybe it was fixed once before and then broke-->
+* {{sbc|Bug Fix:}} Skipper on-hit damage now benefits from life steal.
+
+;[[V14.19]]
+* {{sbc|New Recipe:}} {{ii|Tunneler}} + {{ii|Winged Moonplate}} + {{ii|Pickaxe}} + {{g|175}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Tunneler}} + {{ii|Rectrix}} + {{ii|Pickaxe}} + {{g|75}} = {{g|3000}}.
+* Health increased to 500 from 350.
+* Attack damage reduced to 40 from 65.
+* Movement speed reduced to 4% from 5%.
+* Skipper non-structure damage AD ratio changed to {{as|{{rd|120%|{{ap|120*0.7}}%}} '''base''' AD|ad}} from {{as|{{rd|140%|70%}}|ad}}.
+* Skipper non-structure damage health ratio changed to {{as|{{rd|5%|{{ap|5*0.7}}%}} '''maximum''' health}} from {{as|{{fd|3.5}}%|hp}} for all users.
+* Skipper structure damage AD ratio changed to {{as|{{rd|300%|{{ap|300*0.7}}%}} '''base''' AD}} from {{as|{{rd|400%|200%}}|ad}}.
+* Skipper structure damage health ratio increased to {{as|{{rd|10%|{{ap|10*0.7}}%}} '''maximum''' health}} from {{as|7%|hp}} for all users.
+* Boarding Party bonus resistances changed to {{rd|70 to 130 for 11|70*0.5 to 130*0.5 for 11|levels=1;9 to 18|pp=true}} from {{rd|20 to 135|10 to 68.5|pp=true}}.
+
+;[[V14.12]]
+* {{sbc|Undocumented:}} Now available on Howling Abyss.
+** ''[Note: This was later documented in 14.13]''
+
+;[[V14.6]]
+* Combine cost reduced to {{g|75}} from {{g|125}}.
+** Total cost unchanged.
+
+;[[V14.4]]
+* {{sbc|New Effect:}} Skipper now stacks on-hit instead of on-attack.
+
+;[[V14.3]]
+* Now has the search keywords "pirate", "yarrr", and "ahoy".
+* {{sbc|Bug Fix:}} No longer requires the user to not be within {{tip|cr|icononly = true}} 1400 units of an allied champion in order to activate Boarding Party.
+* {{sbc|Bug Fix:}} Skipper now properly stacks on simulated attacks such as {{cai|Purge|Urgot}}.
+
+;[[V14.1]]
+* {{sbc|Undocumented:}} No longer is available in the shop on the Howling Abyss map.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Tunneler}} + {{ii|Rectrix}} + {{ii|Pickaxe}} + {{g|125}} = {{g|3000}}.
+** {{sbc|Stats:}} 65 attack damage, 350 health, 5% movement speed.
+** {{sbc|Unique Passive - Skipper:}} Basic attacks grant a stack for 10 seconds, stacking up to 5 times. The fifth stack consumes them all to deal {{rd|{{as|140% '''base''' AD}}|{{as|70% '''base''' AD}}}} {{as|(+ {{fd|3.5}}% '''maximum''' health)}} {{as|'''bonus''' physical damage}}, increased to {{rd|{{as|400% '''base''' AD}}|{{as|200% '''base''' AD}}}} {{as|(+ 7% '''maximum''' health)}} {{as|'''bonus''' physical damage}} against structures.
+** {{sbc|Unique Passive - Boarding Party:}} While no allied champions are within {{tip|cr|icononly = true}} 1400 units, allied siege and super minions within {{tip|er|icononly=true}} {{tt|1050 units|Estimated}} gain {{rd|{{pp|20 to 135}}|{{pp|10 to 68.5}}}} {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}}, as well as 10% increased size. The '''bonus''' resistances linger for 3 seconds when an allied champion is nearby.
+** Limited to 1 '''Hullbreaker'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Pickaxe}} + {{ii|Phage}}  + {{ii|Winged Moonplate}} + {{g|225}} = {{g|3000}}.
+** {{sbc|Stats:}} 60 attack damage, 400 health, 150% base health regeneration, 5% movement speed.
+** {{sbc|Unique Passive - Boarding Party:}} While no allied champions are within {{tip|cr|icononly = true}} 1400 units, gain {{rd|10;15;20;28;36;44;52;60|5;7;10;14;18;22;26;30|levels=1;12 to 18 by 1|pp=true}} {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} and 20% '''bonus''' {{tip|basic damage}} against structures. Allied {{ui|Blue Siege Minion|link=Siege minion|siege minions}} and {{ui|Blue Super Minion|link=Super minion|super minions}} within {{tip|er|icononly=true}} {{tt|1050 units|Estimated}} gain {{rd|10*3;15*3;20*3;28*3;36*3;44*3;52*3;60*3|5*3;7*3;10*3;14*3;18*3;22*3;26*3;30*3|levels=1;12 to 18 by 1|pp=true}} {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}}, 10% '''bonus''' size and deal 200% '''bonus''' damage against structures. '''Bonus''' resistances are lost instantly when an allied champion is nearby.
+** Limited to 1 '''Hullbreaker'''.
+
+;[[V13.21]]
+* Boarding Party bonus resistances reduced to {{rd|10;15;20;28;36;44;52;60|5;7;10;14;18;22;26;30|levels=1;12 to 18 by 1|pp=true}} from {{rd|10;20;35;43;51;59;67;75|5;10;17.5;21.5;25.5;29.5;33.5;37.5|levels=1;12 to 18 by 1|pp=true}}.
+** Boarding Party minion bonus resistances reduced to {{rd|10*3;15*3;20*3;28*3;36*3;44*3;52*3;60*3|5*3;7*3;10*3;14*3;18*3;22*3;26*3;30*3|levels=1;12 to 18 by 1|pp=true}} from {{rd|10*3;20*3;35*3;43*3;51*3;59*3;67*3;75*3|5*3;10*3;17.5*3;21.5*3;25.5*3;29.5*3;33.5*3;37.5*3|levels=1;12 to 18 by 1|pp=true}}.
+
+;[[V13.10]]
+* {{sbc|New Recipe:}} {{ii|Pickaxe}} + {{ii|Phage}} + {{ii|Winged Moonplate}} + {{g|225}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Pickaxe}} + {{ii|Phage}} + {{g|825}} = {{g|2800}}.
+* Attack damage increased to 60 from 50.
+* Now grants 5% bonus movement speed.
+
+;[[V12.23]]
+* {{sbc|Undocumented:}} No longer available as an item on the Howling Abyss.
+
+;[[V12.13]]
+* {{sbc|Bug Fix:}} Ping indicator now takes into account nearby untargetable allied champions for Boarding Party.
+* {{sbc|Bug Fix:}} Bonus resistances now properly decay over 3 seconds upon being in range of a nearby allied champion, instead of being lost instantly.
+
+;[[V12.9]]
+* {{sbc|New Effect:}} Now only amplifies damage dealt by basic attacks against structures, instead of all damage.
+* Boarding Party bonus resistances changed to {{rd|10;20;35;43;51;59;67;75|5;10;17.5;21.5;25.5;29.5;33.5;37.5|levels=1;12 to 18 by 1|pp=true}} from {{rd|20 to 60|10 to 30|levels=1;10 to 18 by 1|pp=true}}.
+** Boarding Party minion bonus resistances changed to {{rd|10*3;20*3;35*3;43*3;51*3;59*3;67*3;75*3|5*3;10*3;17.5*3;21.5*3;25.5*3;29.5*3;33.5*3;37.5*3|levels=1;12 to 18 by 1|pp=true}} from {{rd|60 to 180|30 to 90|levels=1;10 to 18 by 1|pp=true}}.
+
+;[[V12.5]]
+* Boarding Party bonus resistances for {{tip|ranged}} champions reduced to {{pp|10 to 30|1;10 to 18 by 1}} from {{pp|20 to 60|1;10 to 18 by 1}}.
+** Boarding Party minion bonus resistances for {{tip|ranged}} champions reduced to {{pp|10*3 to 30*3|1;10 to 18 by 1}} from {{pp|20*3 to 60*3|1;10 to 18 by 1}}.
+* {{sbc|Undocumented:}} Boarding Party bonus resistances are now lost instantly when an allied champion is nearby, rather than decaying over 3 seconds.
+
+;[[V11.17]]
+* Health increased to 400 from 300.
+
+;[[V11.15]]
+* Boarding Party bonus resistances increased to {{pp|20 to 60|1;10 to 18 by 1}} from {{pp|20 to 45|1;10 to 18 by 1}}.
+** Boarding Party minion bonus resistances increased to {{pp|20*3 to 60*3|1;10 to 18 by 1}} from {{pp|20*3 to 45*3|1;10 to 18 by 1}}.
+
+;[[V11.13]] - Added
+* ''Replaces {{ii|Sanguine Blade}}.''
+* {{sbc|Recipe:}} {{ii|Pickaxe}} + {{ii|Phage}} + {{g|825}} = {{g|2800}}.
+* {{sbc|Stats:}} 50 attack damage, 300 health, 150% base health regeneration.
+* {{sbc|Unique Passive - Boarding Party:}} While no allied champions are within {{tip|cr|icononly = true}} 1400 units, gain {{pp|20 to 45|1;10 to 18 by 1}} {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} and deal 20% '''bonus''' damage against structures. Nearby large allied minions gain {{pp|60 to 135|1;10 to 18 by 1}} {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} and deal 200% '''bonus''' damage against structures.
+* Limited to 1 '''Hullbreaker'''.
+}}
+
+[[Category:Season 2021 item release]]
+[[ru:Бортолом]]
+[[Category:Items with passive abilities]]

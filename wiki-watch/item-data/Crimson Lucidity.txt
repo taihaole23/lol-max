@@ -1,0 +1,32 @@
+["Crimson Lucidity"] = {
+        ["id"]                  = 3171,
+        ["nickname"]            = {"boots"},
+        ["tier"]                = 3,
+        ["type"]                = {"Boots"},
+        ["req"]                 = "Requires completion of the {{tip|Midlane Quest}} to obtain. Once the quest is completed, {{ii|Ionian Boots of Lucidity}} is upgraded into this item for free. If {{ii|Ionian Boots of Lucidity}} is in the inventory at the time of quest completion, it is automatically upgraded into these boots.",
+        ["caption"]             = "\"A little hemomancy always clears the mind… —Ophelia\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = false,
+            ["nb"]              = false,
+            ["ar"]              = false,
+        },
+        ["stats"] = {
+            ["ah"]              = 20,
+            ["msflat"]          = 45,
+        },
+        ["effects"] = {
+        	["pass"] = {
+        		["name"]        = "Ionian Lucidity",
+        		["unique"]      = true,
+        		["description"] = "Gain 20 [[Haste#Summoner spell haste|summoner spell haste]].",
+        	},
+            ["pass2"] = {
+                ["name"]        = "Noxian Haste",
+                ["unique"]      = true,
+                ["description"] = "{{tip|heal|Healing}}, {{tip|shield|shielding}} or buffing an ally, damaging abilities against champions, and using [[summoner spell]]s grants you {{as|{{rd|10%|8%}} '''bonus''' movement speed}} for 4 seconds. This can be triggered from the same {{tip|cast instance}} only once every 4 seconds.",
+            },
+        },
+        ["recipe"]              = {"Ionian Boots of Lucidity"},
+        ["buy"]                 = "=>Ionian Boots of Lucidity",
+    },

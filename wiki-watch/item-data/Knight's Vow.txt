@@ -1,0 +1,38 @@
+["Knight's Vow"] = {
+        ["id"]                  = 3109,
+        ["nickname"]            = {"kv"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 10,
+            ["armor"]           = 40,
+            ["hp"]              = 200,
+            ["hp5"]             = 100,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Pledge",
+                ["unique"]      = true,
+                ["description"] = "Designate the target allied champion as being ''Worthy'', forming a {{tip|tether}} between you and them. Champions can only be designated as ''Worthy'' by one '''Knight's Vow''' at a time. You cannot be designated as ''Worthy'' by an ally's '''Knight's Vow''' once you've formed a tether.",
+                ["range"]       = "{{tip|cr|icononly=true}} 1250",
+                ["cd"]          = "60",
+            },
+            ["pass"] = {
+                ["name"]        = "Sacrifice",
+                ["unique"]      = true,
+                ["description"] = "While your ''Worthy'' ally is {{tt|tethered to you|1250 units, center to edge}} and you are above {{as|30% of your '''maximum''' health}}, redirect 14% of the {{tt|pre-mitigation|Damage calculated before the Worthy ally's modifiers}} {{as|physical|physical damage}} and {{as|magic|magic damage}} damage they take to you as the respective damage type. Additionally, you {{tip|heal}} for 12% of the {{tt|post-mitigation damage|Damage calculated after modifiers}} dealt by your ''Worthy'' ally to champions.",
+            },
+        },
+        ["recipe"]              = {"Kindlegem", "Chain Vest", "Rejuvenation Bead"},
+        ["buy"]                 = 2300,
+    },

@@ -1,0 +1,34 @@
+["Horizon Focus"] = {
+        ["id"]                  = 4628,
+        ["nickname"]            = {"lock on", "snipe"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 75,
+            ["ah"]              = 25,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Hypershot",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{tip|ability damage}} to a champion with a [[champion ability]] at {{tip|cr|icononly = true}} 600 or more units away from the cast position marks them for 6 seconds, {{tip|standard sight|revealing}} them and increasing your damage dealt to them by 10%.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Focus",
+                ["unique"]      = true,
+                ["description"] = "Upon triggering ''Hypershot'', grant {{tip|sight}} of the {{tt|area|Grants sight through terrain and brush}} {{tip|cr|icononly=true}} 1400 units around the target for 2 seconds and apply ''Hypershot's'' mark to enemy champions within the area for 3 seconds.",
+                ["cd"]          = "30",
+            },
+        },
+        ["recipe"]              = {"Fiendish Codex", "Fiendish Codex", "Amplifying Tome"},
+        ["buy"]                 = 2700,
+    },

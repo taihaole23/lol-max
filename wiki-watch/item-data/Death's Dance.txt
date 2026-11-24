@@ -1,0 +1,34 @@
+["Death's Dance"] = {
+        ["id"]                  = 6333,
+        ["nickname"]            = {"dd"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 60,
+            ["ah"]              = 15,
+            ["armor"]           = 50,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Ignore Pain",
+                ["unique"]      = true,
+                ["description"] = "Reduces {{rd|30%|10%}} of all {{tt|post-mitigation|Damage calculated after modifiers}} {{as|physical|physical damage}} and {{as|magic|magic damage}} damage received and instead stores the damage to successively take it as {{as|true damage}} over 3 seconds, dealing a third of the stored damage each second.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Defy",
+                ["unique"]      = true,
+                ["description"] = "If an enemy champion dies within 3 seconds of you damaging them, removes ''Ignore Pain's'' remaining stored damage and {{tip|heals}} you for {{as|75% '''bonus''' AD}} over 2 seconds.",
+            },
+        },
+        ["recipe"]              = {"Steel Sigil", "Caulfield's Warhammer", "Pickaxe"},
+        ["buy"]                 = 3300,
+    },

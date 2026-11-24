@@ -1,0 +1,139 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|The Baron's Gift}}.''
+{{Item info
+|goldvalue =
+{{gold value|Icathian Bite Gold Value (from base stats)|nolink=}}
+* 15 + {{tt|{{#expr:{{cid|Nashor's Tooth|ap}}*{{#vardefineecho:nashorratio|0.15}}}}|From its own AP}}{{equals}}{{ap|15+{{cid|Nashor's Tooth|ap}}*{{#var:nashorratio}}}} [[on-hit]] [[magic damage]] = {{g|{{#expr:{{#var:ohdmg}}*(15+{{cid|Nashor's Tooth|ap}}*{{#var:nashorratio}}) round 2}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:total|{{#expr:{{#var:total}}+{{#var:ohdmg}}*(15+{{cid|Nashor's Tooth|ap}}*{{#var:nashorratio}}) round 2}}}}}}
+{{gold value|Icathian Bite Gold Value per 100 AP|nolink=}}
+* {{ap|100*{{#var:nashorratio}}}} [[on-hit]] [[magic damage]] = {{g|{{#vardefineecho:per100ap|{{#expr:{{#var:ohdmg}}*({{#var:nashorratio}}*100) round 2}}}}}}
+|goldefficiency =
+* {{iis|Nashor's Tooth}} gold efficiency due to {{sbc|Icathian Bite}} is increased by {{gec|Nashor's Tooth|+{{#var:per100ap}}}} for every {{as|100 ability power}} from other sources.
+|similaritems = Dusk and Dawn;Lich Bane;Guinsoo's Rageblade;Wit's End;Terminus;Blade of the Ruined King;Kraken Slayer
+|background =
+|notes =
+* {{sbc|Icathian Bite}} deals {{tip|proc damage}}, and thus will not trigger [[spell effects]].
+* {{sbc|Icathian Bite's}} on-hit damage does not apply to [[structure]]s.
+* The bonus damage dealt by {{sbc|Icathian Bite}} benefits from {{stil|life steal}}.
+|strategy =
+* '''Nashor's Tooth''' is best used by champions that can benefit from the on-hit damage and bonus attack speed, mainly magic damage dealers that use basic attacks in addition to their abilities.
+* '''Nashor's Tooth's''' ability power scaling allows its users to build ability power that increases both the damage dealt by their attacks via the item and their abilities simultaneously.
+|oldicons =
+|trivia =
+* '''Nashor's Tooth''' is named after the epic [[monster]], {{ui|Baron Nashor}}.
+* The {{ii|Nashor's Tooth|old icon|nolink=true|variant=old}} for '''Nashor's Tooth''' was a recolor of the icon for {{ii|Stinger}}, from blue to gold.
+[[File:Void Crest icon.png|link=The Void#Trivia|100px|center]]
+|quotes =
+|media =
+|revisions =
+|patchhistory =
+;[[V25.10]]
+* Total cost reduced to {{g|2900}} from {{g|3000}}.
+** Combine cost reduced to {{g|500}} from {{g|600}}.
+
+;[[V14.19]]
+* Combine cost increased to {{g|600}} from {{g|550}}.
+** Total cost unchanged.
+* Ability power reduced to 80 from 90.
+* Icathian Bite AP ratio reduced to {{as|15% AP}} from {{as|20% AP}}.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|The Baron's Gift}}.
+
+;[[V14.1]]
+* Total cost reduced to {{g|3000}} from {{g|3200}}.
+** Combine cost reduced to {{g|550}} from {{g|750}}.
+* Ability power reduced to 90 from 100.
+* {{sbc|New {{ai|Living Forge|Ornn|Masterwork}} item:}} {{ii|The Baron's Gift}}.
+** {{sbc|Stats:}} 120 ability power, 60% attack speed, 20 ability haste.
+
+;[[V13.10]]
+* Combine cost increased to {{g|750}} from {{g|450}}.
+** Total cost unchanged.
+* {{sbc|Bug Fix:}} Icathian Bite's on-hit damage is now properly applied even after death.
+** Buff now persists through death instead of only being reapplied within 10 seconds of dying, which allowed attacks that struck after dying and {{cai|Glory in Death|Sion}} to miss out on the effect most of the time.
+
+;[[V13.6]]
+* {{sbc|New Recipe:}} {{ii|Recurve Bow}} + {{ii|Blasting Wand}} + {{ii|Fiendish Codex}} + {{g|450}} = {{g|3200}}.
+** {{sbc|Old Recipe:}} {{ii|Recurve Bow}} + {{ii|Blasting Wand}} + {{ii|Amplifying Tome}} + {{g|715}} = {{g|3000}}.
+* Ability haste increased to 15 from 0.
+
+;[[V10.24]]
+* AP ratio reduced to {{as|20% AP}} from {{as|25% AP}}.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Recurve Bow}} + {{ii|Blasting Wand}} + {{ii|Amplifying Tome}} + {{g|715}} = {{g|3000}}.
+** {{sbc|Stats:}} 100 ability power, 50% attack speed.
+** {{sbc|New Unique Passive - Icathian Bite:}} Basic attacks deal {{as|15 {{as|(+ 25% AP)}} '''bonus''' magic damage|magic damage}} on-hit.
+** Limited to 1 '''Nashor's Tooth'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Stinger}} + {{ii|Fiendish Codex}} + {{g|1000}} = {{g|3000}}.
+** {{sbc|Stats:}} 80 ability power, 50% attack speed.
+** {{sbc|Unique:}} +20% cooldown reduction.
+** {{sbc|Unique Passive:}} Basic attacks deal {{as|15 {{as|(+ 15% AP)}} '''bonus''' magic damage|magic damage}} on-hit.
+
+;[[V6.11]]
+* Combine cost increased to {{g|1000}} from {{g|900}}.
+** ''Total cost unchanged at {{g|3000}}.''
+
+;[[V5.22]]
+* Attack speed increased to 50% from 40%.
+
+;[[V5.13]]
+* Attack speed reduced to 40% from 50%.
+* Ability power increased to 80 from 60.
+* Total cost increased to {{g|3000}} from {{g|2920}}.
+
+;[[V3.8]]
+* Combine cost increased to {{g|850}} from {{g|430}}.
+* Ability power reduced to 60 from 65.
+* {{sbc|New Unique Passive:}} Basic attacks deal 15 {{as|(+ 15% AP)}} '''bonus''' magic damage on-hit.
+
+;[[V3.5]]
+* Total cost increased to {{g|2500}} from {{g|2270}}.
+** Combine cost increased to {{g|430}} from {{g|200}}.
+
+;[[V3.01]]
+* Total cost reduced to {{g|2270}} from {{g|2500}}.
+** Combine cost reduced to {{g|200}} from {{g|250}}.
+* Mana regeneration per 5 seconds reduced to 0 from 10.
+
+;[[V1.0.0.152]]
+* Total cost reduced to {{g|2500}} from {{g|2615}}.
+** Combine cost reduced to {{g|250}} from {{g|400}}.
+* Cooldown reduction reduced to 20% from 25%.
+
+;[[V1.0.0.139]]
+* Total cost reduced to {{g|2615}} from {{g|2735}}.
+
+;[[V1.0.0.132]]
+* Ability power increased to 65 from 55.
+* Combine cost reduced to {{g|400}} from {{g|500}}.
+
+;[[V1.0.0.82]]
+* Attack speed increased to 50% from 30%.
+* Mana regeneration per 5 seconds reduced to 10 from 12.
+
+;[[V1.0.0.32]]
+* Tooltip was updated to match the functionality of the item.
+
+;[[V0.9.25.34]]
+* Mana regeneration per 5 seconds increased to 12 from 10.
+
+;[[V0.9.25.24]]
+* Cooldown reduction increased to 25% from 20%.
+* Recipe component changed to {{ii|Fiendish Codex}} from {{ii|Blasting Wand}}.
+
+;[[V0.9.22.15]]
+* Effect is now Unique.
+
+;[[V0.9.22.7]] - Added
+* {{ii|Nashor's Tooth}}
+** +30% attack speed.
+** +55 ability power.
+** +10 mana regeneration per 5.
+** +15% cooldown reduction.
+}}
+
+[[Category:On-hit effect items]]

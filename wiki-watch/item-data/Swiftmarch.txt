@@ -1,0 +1,31 @@
+["Swiftmarch"] = {
+        ["id"]                  = 3170,
+        ["nickname"]            = {"boots"},
+        ["tier"]                = 3,
+        ["type"]                = {"Boots"},
+        ["req"]                 = "Requires completion of the {{tip|Midlane Quest}} to obtain. Once the quest is completed, {{ii|Boots of Swiftness}} is upgraded into this item for free. If {{ii|Boots of Swiftness}} is in the inventory at the time of quest completion, it is automatically upgraded into these boots.",
+        ["caption"]             = "\"Now this is how to move! —Draven\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = false,
+            ["nb"]              = false,
+            ["ar"]              = false,
+        },
+        ["stats"] = {
+            ["msflat"]          = 65,
+        },
+        ["effects"] = {
+        	["pass"] = {
+        		["name"]        = "Fleetfooted",
+        		["unique"]      = true,
+        		["description"] = "Gain 25% [[slow resist]].",
+        	},
+            ["pass2"] = {
+                ["name"]        = "Noxian Fervor",
+                ["unique"]      = true,
+                ["description"] = "Gain {{tip|adaptive force}} equal to {{as|5% of your '''total''' movement speed}}.",
+            },
+        },
+        ["recipe"]              = {"Boots of Swiftness"},
+        ["buy"]                 = "=>Boots of Swiftness",
+    },

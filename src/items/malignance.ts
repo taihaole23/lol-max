@@ -9,11 +9,10 @@
 // ASSUMPTION (to check in the Practice Tool): the first tick lands 0.25 s after the zone
 // appears. 3 s × 4 ticks = 12 ticks, which matches the wiki's "180 total". Ticks after
 // the channel ends are thrown away (the channel window rule), so 10 ticks count.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Malignance", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Malignance", patch: "26.23" },
   zoneSeconds: 3,
   ticksPerSecond: 4,
   damagePerSecond: 60,

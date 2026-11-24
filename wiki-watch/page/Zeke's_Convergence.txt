@@ -1,0 +1,152 @@
+: ''For the removed [[item]]s, see {{ii|Zeke's Harbinger}} or {{ii|Zeke's Herald}}.''
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Locket of the Iron Solari;Bandlepipes;Knight's Vow;Experimental Hexplate;Fiendhunter Bolts
+|background =
+|notes =
+* {{sbc|Frostfire Tempest}} deals {{tip|proc damage}} and is tagged as {{tip|area damage|area of effect}} without applying {{tip|spell effects}}.
+* {{sbc|Frostfire Tempest}} is granted at the start of the triggering ability's cast time.
+* {{sbc|Frostfire Tempest}} is not blocked by {{tip|spell shield}}.
+* {{sbc|Frostfire Tempest}} is an {{tip|auto-targeted}} effect.
+{{Ultimate cast item info}}
+|strategy =
+|oldicons =
+|trivia =
+* {{ii|Zeke's Convergence}} is named after a character from the webcomic as a reward for the creator Tim Buckley gaining over 1000 referrals.
+* {{ii|Zeke's Convergence}} is the fourth iteration of a supportive aura item. Its ancestral origin is {{ii|Stark's Fervor}} which was remade into {{ii|Zeke's Herald}} and then replaced by {{ii|Zeke's Harbinger}} before being developed into its modern form.
+* The search term 'haroldandkumar' is a direct reference to the film {{w|Harold & Kumar}}.
+[[File:Piltover Crest icon.png|link=Piltover#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Zeke's Convergence storm VFX.png|Storm VFX
+Zeke's Convergence item screenshot.png|Old Mark indicator
+Zeke's Convergence screenshot.png|Old Item VFX
+Zeke's Convergence Knight's Vow screenshot.png|Old Item VFX with {{iis|Knight's Vow}} VFX
+Zeke's Convergence active screenshot.png|Old Storm VFX
+Zeke's Convergence active Knight's Vow screenshot.png|Old Storm VFX with {{iis|Knight's Vow}} VFX
+</gallery>
+|sfx =
+;Storm Aura
+* {{sm2|Zeke's Convergence passive zone SFX.ogg}} Passive SFX
+
+;Activation
+* {{sm2|Zeke's Convergence active SFX.ogg}} Old Active SFX
+|revisions =
+|patchhistory =
+;[[V26.15]]
+* {{sbc|Bug Fix:}} Fixed a bug where the active effect would not damage monsters.
+
+;[[V26.11]]
+* {{sbc|New Effect:}} Frostfire Tempest can now stall up to 5 seconds before activation until either a valid enemy is in its radius or the stall period ends.
+
+;[[V26.05]]
+* {{sbc|Bug Fix:}} Fixed a bug where the slow was sometimes stacking with other slows.
+
+;[[V26.01]]
+* {{sbc|New Unique Passive - Cryocombustion:}} Gain 15 ultimate ability haste.
+
+;[[V14.19]]
+* Frostfire Tempest damage per tick reduced to {{ap|30/4}} from {{ap|50/4}}.
+** Frostfire Tempest maximum damage reduced to {{ap|30*5}} from {{ap|50*5}}.
+
+;[[V14.15]]
+* Combine cost increased to {{g|700}} from {{g|650}}.
+** Total cost unchanged.
+
+;[[V14.10]]
+* {{sbc|New Recipe:}} {{ii|Kindlegem}} + {{ii|Cloth Armor}} + {{ii|Null-Magic Mantle}} + {{g|650}} = {{g|2200}}.
+** {{sbc|Old Recipe:}} {{ii|Kindlegem}} + {{ii|Glacial Buckler}} + {{g|450}} = {{g|2200}}.
+* Health increased to 300 from 200.
+* Ability haste reduced to 10 from 20.
+* Armor reduced to 25 from 30.
+* Magic resistance increased to 25 from 0.
+* Mana reduced to 0 from 250.
+
+;[[V14.6]]
+* Combine cost reduced to {{g|450}} from {{g|500}}.
+** Total cost unchanged.
+
+;[[V14.3]]
+* {{sbc|Bug Fix:}}  No longer slows enemies that are under the effects of slow immunity or total crowd control immunity.
+
+;[[V14.2]]
+* {{sbc|Bug Fix:}} Now is properly displayed in the mana section of the shop.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Kindlegem}} + {{ii|Glacial Buckler}} + {{g|500}} = {{g|2200}}.
+** {{sbc|Stats:}} 200 health, 250 mana, 30 armor, 20 ability haste.
+** {{sbc|Unique Passive - Frostfire Tempest:}} Upon casting your ultimate ability, you summon a storm of flame and ice in a {{tip|cr|icononly=true}} 350-radius around you for 5 seconds, dealing {{as|50 magic damage}} every second and {{tip|slow|slowing}} enemies within the area by 30% (45 second cooldown).
+** Limited to 1 '''Zeke's Convergence'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Lifewell Pendant}} + {{ii|Glacial Buckler}} + {{g|250}} = {{g|2200}}.
+** {{sbc|Stats:}} 200 health, 250 mana, 45 armor, 15 ability haste.
+** {{sbc|Unique Active - Conduit:}} Designate the target allied champion as the ''Accomplice'', forming a {{tip|tether}} between you and them. Champions can only be designated as the ''Accomplice'' by one '''Zeke's Convergence''' at a time (60 second cooldown; {{tip|cr|icononly=true}} 1250 range).
+** {{sbc|Unique Passive - Convergence:}} {{tip|Immobilize|Immobilizing}} enemy champions marks them for 8 seconds. Your ''Accomplice's'' basic attacks on-hit and ability hits against marked enemies fire a missile at them that deals {{as|{{pp|30 to 70}} {{as|(+ {{fd|7.5}}% of your AP)}} {{as|(+ {{fd|1.5}}% of your '''maximum''' health)}} '''bonus''' magic damage|magic damage}} upon arrival.
+** Limited to 1 '''Zeke's Convergence'''.
+
+;[[V13.10]]
+* {{sbc|New Recipe:}} {{ii|Lifewell Pendant}} + {{ii|Glacial Buckler}} + {{g|250}} = {{g|2200}}.
+** {{sbc|Old Recipe:}} {{ii|Kindlegem}} + {{ii|Glacial Buckler}} + {{g|700}} = {{g|2400}}.
+* Armor increased to 45 from 35.
+* Ability haste reduced to 15 from 20.
+* Health reduced to 200 from 250.
+
+;[[V12.11]]
+* Armor increased to 35 from 25.
+
+;[[V10.25]]
+* Armor reduced to 25 from 30.
+* Health reduced to 250 from 300.
+* Convergence duration increased to 8 seconds from 4.
+* Convergence base damage increased to {{pp|30 to 70}} from {{pp|25 to 50}}.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Kindlegem}} + {{ii|Glacial Buckler}} + {{g|700}} = {{g|2400}}.
+** {{sbc|Stats:}} 30 armor, 250 mana, 20 ability haste, 300 health.
+** {{sbc|Unique Active - Conduit:}} Designate an allied champion as the ''Accomplice'', forming a {{tip|tether}} between you and them. Champions can only be designated as the ''Accomplice'' by one '''Zeke's Convergence''' at a time (60 second cooldown).
+** {{sbc|Unique Passive - Convergence:}} When you {{tip|immobilize}} an enemy, they receive {{as|{{pp|25 to 50}} {{as|(+ {{fd|7.5}}% AP)}} {{as|(+ {{fd|1.5}}% '''maximum''' health)}} '''bonus''' magic damage|magic damage}} from your ''Accomplice's'' basic attacks on-hit and abilities for the next 4 seconds.
+** Limited to 1 '''Zeke's Convergence'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Aegis of the Legion}} + {{ii|Glacial Shroud}} + {{g|250}} = {{g|2250}}.
+** {{sbc|Stats:}} 60 armor, 250 mana, 10% cooldown reduction, 30 magic resistance.
+** {{sbc|Unique Passive:}} Casting your ultimate ability within range of your ''Conduit'' grant both of you bonus effects for 10 seconds. You are surrounded with a 300 range {{color|#0099CC|{{sbc|Frost}}}} storm which {{tip|slow|slows}} enemies within it by 20%, and your ''Conduit's'' basic attacks burn their target with {{color|#FFA500|{{sbc|Fire}}}} dealing {{as|30% '''bonus''' magic damage}} over 2 seconds (45 second cooldown).
+** {{sbc|Unique Passive - Frostfire Covenant:}} If an enemy is both struck by {{color|#0099CC|{{sbc|Frost}}}} and {{color|#FFA500|{{sbc|Fire}}}}, your {{color|#0099CC|{{sbc|Frost}}}} storm ignites and becomes {{color|#AF1AAF|{{sbc|Frostfire}}}}. A {{color|#AF1AAF|{{sbc|Frostfire}}}} storm, deals {{as|40 magic damage}} per second to nearby enemies and {{tip|slow|slows}} by 40% instead for 3 seconds.
+** {{sbc|Unique Active:}} Designate an allied {{tip|champion}} within 1000 range as your ''Conduit'' and form a {{tip|Tether|link}} with them ({{fd|0.5}} second cooldown).
+
+;[[V8.24b]]
+* ''Conduit'' basic attack burn damage reduced to {{as|30% '''bonus''' magic damage}} from {{as|50%|magic damage}}.
+
+;[[V7.19]]
+* Total cost reduced to {{g|2250}} from {{g|2400}}.
+** Combine cost reduced to {{g|250}} from {{g|400}}.
+* Frost storm no longer ignites from basic attacking a burning enemy, now ignites when it slows a burning enemy.
+* On-hit fire damage from Conduit increased to 25% of the basic attack's damage from {{fd|17.5}}%. ''Still deals 50% '''bonus''' magic damage.''
+
+;[[V7.13]]
+* Updated icon.
+
+;[[V7.12]]
+* Remade and renamed from {{ii|Zeke's Harbinger}}.
+* {{sbc|New Recipe:}} {{ii|Aegis of the Legion}} + {{ii|Glacial Shroud}} + {{g|400}} = {{g|2400}}
+** {{sbc|Old Recipe:}} {{ii|Glacial Shroud}} + {{ii|Amplifying Tome}} + {{ii|Amplifying Tome}} + {{g|380}} = {{g|2250}}
+* Ability power reduced to 0 from 50.
+* Armor increased to 60 from 30.
+* Magic resistance increased to 30 from 0.
+* {{sbc|New Passive:}} Casting your ultimate near your ally summons a local frost storm for 10 seconds. As the storm rages, nearby enemies are slowed by 20% and your ally's attacks burn their targets for {{as|50% '''bonus''' magic damage}} over 2 seconds (45 second cooldown).
+* {{sbc|New Passive:}} {{sbc|Frostfire Covenant:}} Basic attacking a burning enemy ignites your frost storm to deal 40 magic damage per second and slow by 40% instead for 3 seconds.
+* {{sbc|Removed Passive:}} When within 1000-units of each other, you and your '''Conduit''' will generate 1 charge every second, up to 100, with a bonus {{tt|4|You}} / {{tt|2|Conduit}} charges whenever you or your ally attack, and {{tt|8|You}} / {{tt|4|Conduit}} on spell cast. At 100 charge, dealing damage grants you and your '''Conduit''' {{as|20% increased AP}} and {{as|+50% flat critical strike chance}} for 8 seconds. All current charge is lost if you move further than 1000-units apart or hold onto 100 charge for longer than 5 seconds.
+* Active conduit cooldown reduced to 0 seconds from 60.
+* Active conduit tooltip changed to ''"Bind to an ally without an existing Conduit."'' from ''"Bind to target ally. This will remove all other Conduits on your target."''.
+}}
+
+
+[[de:Zekes Bote]]
+[[pl:Zwiastun Zeke'a]]
+[[ru:Конвергенция Зика]]
+[[Category:Season 2017 item release]]
+[[Category:Items with passive abilities]]

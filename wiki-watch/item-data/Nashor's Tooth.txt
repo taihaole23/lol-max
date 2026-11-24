@@ -1,0 +1,32 @@
+["Nashor's Tooth"] = {
+        ["id"]                  = 3115,
+        ["nickname"]            = {"nashors"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+        	["marksman"]        = true,
+            ["mage"]            = true,
+            ["onhit effects"]   = true,
+        },
+        ["stats"] = {
+        	["ah"]              = 15,
+            ["ap"]              = 80,
+            ["as"]              = 50,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Icathian Bite",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks deal {{as|15 {{as|(+ 15% AP)}} '''bonus''' magic damage|magic damage}} [[on-hit]].",
+            },
+        },
+        ["recipe"]              = {"Recurve Bow", "Blasting Wand", "Fiendish Codex"},
+        ["buy"]                 = 2900,
+    },

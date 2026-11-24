@@ -1,0 +1,33 @@
+["Dusk and Dawn"] = {
+        ["id"]                  = 2510,
+        ["nickname"]            = {"Spellblade"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Spellblade",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+        	["mage"]            = true,
+            ["onhit effects"]   = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 20,
+            ["ap"]              = 60,
+            ["hp"]              = 300,
+            ["as"]              = 20,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Spellblade",
+                ["unique"]      = true,
+                ["description"] = "After using an [[Champion ability|ability]], your next basic attack within 10 seconds deals {{as|75% '''base''' AD}} {{as|(+ 10% AP)}} {{as|'''bonus''' magic damage}} and {{tip|heals}} you for {{as|10% AP}} {{as|(+ 3% '''bonus''' health)}} on-hit, and applies {{tip|on-hit}} effects to the target again after a {{fd|0.2}}-second delay ({{fd|1.5}} second cooldown, starts after using the empowered attack).",
+            },
+        },
+        ["recipe"]              = {"Sheen", "Blasting Wand", "Kindlegem", "Dagger"},
+        ["buy"]                 = 3100,
+    },

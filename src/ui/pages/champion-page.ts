@@ -84,17 +84,45 @@ const numberBoxHtml = (id: string, name: string, stepSize: number, limits: strin
 
 // ---- The page's HTML (filled in by the render functions below) ----
 
-function pageHtml(slug: string, name: string): string {
+// The top of every champion page (calculated or not): splash art, portrait, name, the selected
+// ability's name underneath.
+function heroHtml(slug: string, name: string, sub = ""): string {
+  const skin = championList.find((c) => c.slug === slug)?.splash?.skin;
   return `
-    <!-- Splash art behind the header, fading into the page (decoration only). -->
+    <!-- Splash art behind the header (one of the champion's best skins), fading into the page. -->
     <div class="champ-splash" style="background-image:url('${iconPath.splash(slug)}')" aria-hidden="true"></div>
+    ${skin ? `<p class="splash-credit">Splash art: ${escapeHtml(skin)}</p>` : ""}
     <section class="champ-hero">
       <img class="champ-portrait" src="${iconPath.champion(slug)}" alt="" width="96" height="96" />
       <div>
         <h1 class="champ-name">${escapeHtml(name)}</h1>
-        <p id="champ-sub" class="champ-sub"></p>
+        <p id="champ-sub" class="champ-sub">${escapeHtml(sub)}</p>
       </div>
-    </section>
+    </section>`;
+}
+
+type AbilityInfo = { key: AbilityKey; name: string; maxRank: number };
+
+// One ability in the ability bar: big icon with its key, name on hover, rank boxes underneath.
+// Used by every champion page; `pips` are the rank boxes (buttons where ranks can be changed).
+function abilityCardHtml(slug: string, ability: AbilityInfo, selected: boolean, modelled: boolean, pips: string): string {
+  const tip = modelled ? ability.name : `${ability.name} · coming soon`;
+  return `
+    <div class="ability${selected ? " selected" : ""}${modelled ? "" : " unavailable"}">
+      <button type="button" class="ability-icon" data-ability="${ability.key}" data-tip="${escapeHtml(tip)}"
+        aria-label="${escapeHtml(tip)}" aria-pressed="${selected}">
+        <img src="${iconPath.ability(slug, ability.key)}" alt="" width="84" height="84" />
+        <span class="ability-key">${ability.key.toUpperCase()}</span>
+      </button>
+      <div class="rank-pips">${pips}</div>
+    </div>`;
+}
+
+const abilitySub = (ability: AbilityInfo | undefined) => (ability ? `${ability.name} (${ability.key.toUpperCase()})` : "");
+
+function pageHtml(slug: string, name: string): string {
+  return `
+    ${heroHtml(slug, name)}
 
     <nav id="abilities" class="ability-bar" aria-label="Abilities"></nav>
 
@@ -187,18 +215,19 @@ function pageHtml(slug: string, name: string): string {
     </section>`;
 }
 
-// A champion the site can't calculate yet.
-function comingSoonHtml(slug: string, name: string): string {
+// A champion the site can't calculate yet (Eric): the same page as Katarina's, with all 4
+// abilities "coming soon" like her Q, W and E. The abilities come from the champion list (Data
+// Dragon), so every champion gets this page with no extra work. Rank boxes are shown but empty.
+function comingSoonHtml(slug: string, name: string, abilityKey: AbilityKey | null): string {
+  const abilities = championList.find((c) => c.slug === slug)?.abilities ?? [];
+  const selected = abilities.find((a) => a.key === abilityKey);
+  const emptyPips = (a: AbilityInfo) => `<span class="rank-pip" aria-hidden="true"></span>`.repeat(a.maxRank);
+  const bar = abilities.map((a) => abilityCardHtml(slug, a, a.key === abilityKey, false, emptyPips(a))).join("");
   return `
-    <section class="champ-hero">
-      <img class="champ-portrait" src="${iconPath.champion(slug)}" alt="" width="96" height="96" />
-      <div>
-        <h1 class="champ-name">${escapeHtml(name)}</h1>
-        <p class="champ-sub">Coming soon</p>
-      </div>
-    </section>
+    ${heroHtml(slug, name, abilitySub(selected) || "Coming soon")}
+    <nav class="ability-bar" aria-label="Abilities">${bar}</nav>
     <section class="panel empty-state">
-      <h2>${escapeHtml(name)} isn't modelled yet</h2>
+      <h2>${escapeHtml(selected ? `${selected.name} isn't` : `${name} isn't`)} modelled yet</h2>
       <p>Right now the site calculates ${Object.values(playableChampions)
         .map((c) => `<a href="${paths.champion(championList.find((x) => x.name === c.name)?.slug ?? "")}">${escapeHtml(c.name)}</a>`)
         .join(", ")}. More champions are on the way.</p>
@@ -219,13 +248,10 @@ function render(): void {
 
 function renderAbilities(): void {
   const champion = playableChampions[state.champion];
-  const selected = champion.abilities.find((a) => a.key === state.ability);
-  byId("champ-sub").textContent = selected ? `${selected.name} (${selected.key.toUpperCase()})` : "";
+  byId("champ-sub").textContent = abilitySub(champion.abilities.find((a) => a.key === state.ability));
 
   byId("abilities").innerHTML = champion.abilities
     .map((ability) => {
-      const isSelected = ability.key === state.ability;
-      const modelled = modelledAbilities[state.champion].includes(ability.key);
       const rank = state.ranks[ability.key];
 
       // One pip per rank. Filled = ranks you have. R's pips above what the level allows are disabled.
@@ -239,16 +265,8 @@ function renderAbilities(): void {
         );
       }
 
-      const tip = modelled ? ability.name : `${ability.name} · coming soon`;
-      return `
-        <div class="ability${isSelected ? " selected" : ""}${modelled ? "" : " unavailable"}">
-          <button type="button" class="ability-icon" data-ability="${ability.key}" data-tip="${escapeHtml(tip)}"
-            aria-label="${escapeHtml(tip)}" aria-pressed="${isSelected}">
-            <img src="${iconPath.ability(state.champion, ability.key)}" alt="" width="84" height="84" />
-            <span class="ability-key">${ability.key.toUpperCase()}</span>
-          </button>
-          <div class="rank-pips">${pips.join("")}</div>
-        </div>`;
+      const modelled = modelledAbilities[state.champion].includes(ability.key);
+      return abilityCardHtml(state.champion, ability, ability.key === state.ability, modelled, pips.join(""));
     })
     .join("");
 }
@@ -579,7 +597,12 @@ function currentBest(): { items: Item[] } | undefined {
 export function mountChampionPage(root: HTMLElement, slug: string, ability: AbilityKey | null, navigate: (path: string) => void): () => void {
   const name = championList.find((c) => c.slug === slug)?.name ?? slug;
   if (!isPlayable(slug)) {
-    root.innerHTML = comingSoonHtml(slug, name);
+    root.innerHTML = comingSoonHtml(slug, name, ability);
+    // Clicking an ability changes the address (/aatrox/q), which redraws this page with it picked.
+    root.addEventListener("click", (event) => {
+      const key = (event.target as HTMLElement).closest<HTMLElement>("[data-ability]")?.dataset.ability;
+      if (key) navigate(paths.champion(slug, key as AbilityKey));
+    });
     return () => {};
   }
 

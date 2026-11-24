@@ -1,0 +1,40 @@
+["Statikk Shiv"] = {
+        ["id"]                  = 3087,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+            ["onhit effects"]   = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 45,
+            ["ap"]              = 45,
+            ["as"]              = 30,
+            ["ms"]              = 4,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Energized",
+                ["unique"]      = true,
+                ["description"] = "Moving and basic attacking generates ''Energize'' stacks, up to 100.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Electroshock",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks generate 9 '''bonus''' ''Energize'' stacks, for a total of 15 stacks per attack.",
+            },
+            ["pass3"] = {
+                ["name"]        = "Electrospark",
+                ["unique"]      = true,
+                ["description"] = "When fully {{tip|Energized}}, your next basic attack on-hit is empowered to form chain lightning, dealing {{as|60 '''bonus''' magic damage}}, increased to {{as|90|magic damage}} against non-champions. This bounces to the closest target within 500 units, repeating from the new target to strike up to {{pp|4 to 8 by 1|1;6;10;14;20}} targets, dealing the same damage and applying {{tip|on-hit}} effects to secondary targets hit.",
+            },
+        },
+        ["recipe"]              = {"Scout's Slingshot", "Pickaxe", "Aether Wisp"},
+        ["buy"]                 = 3000,
+    },

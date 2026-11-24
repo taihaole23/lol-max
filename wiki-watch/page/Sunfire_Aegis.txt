@@ -1,0 +1,162 @@
+:''For its predecessor, see {{ii|Sunfire Cape}}, {{ii|Forgefire Cape}}, and {{ii|Forgefire Crest}}.''
+{{Item info
+|mgv = {{mgv|hp|50}}
+|goldvalue =
+|goldefficiency =
+|goldvalue2 =
+|goldefficiency2 =
+|similaritems = Hollow Radiance;Randuin's Omen;Dead Man's Plate;Iceborn Gauntlet;Thornmail;Unending Despair;Jak'Sho, The Protean
+|notes =
+* {{sbc|Immolate}} deals {{tip|proc damage}} and is tagged as {{tip|persistent damage|periodic}} without applying {{tip|spell effects}}.
+* {{sbc|Immolate}} will trigger from its own damage, burning infinitely so long and there is an enemy in range.
+* {{sbc|Immolate}} is an [[auto-targeted]] effect.
+* {{sbc|Immolate's}} current damage per second is displayed on the item's icon as a counter which dynamically updates.
+** This is exclusive to '''Sunfire Aegis''' and is not present in {{ii|Hollow Radiance}}; it is vestigial functionality due to the former's {{sbc|Immolate}} effect dealing a variable amount of damage in a previous iteration.
+* Against {{tip|minions}}, it would deal an increased {{as|{{ap|20*1.5}}|magic damage}} {{as|(+ {{ap|1.5*1.5}}% '''bonus''' health)|health}} {{as|magic damage}} per tick and against {{tip|monsters}}, it would deal an increased {{as|{{ap|20*1.8}}|magic damage}} {{as|(+ {{ap|1.5*1.8}}% '''bonus''' health)|health}} {{as|magic damage}} per tick.
+* The aura increases if the user increases in [[size]], but is not impacted by their '''base''' size.
+** The aura cannot get reduced below the base radius by negative size modifiers.
+* Because the [[aura]] must reach an enemy's center to damage them, some melee champions will not apply the effect at their maximum attack range against champions or {{tip|monsters}} with a large enough collision radius (for example the {{ui|Dragon}} or {{ui|Rift Herald}}).
+|strategy =
+* {{iis|Sunfire Aegis}} damaging aura is useful when fighting multiple enemies that are within close proximity.
+* {{sbc|Immolate}} auras can be stacked between multiple users of {{ii|Sunfire Aegis}}.
+|trivia =
+* The search term 'sunborn' references the item's work-in-progress name on [[PBE]]: ''Sunborn Aegis''.
+[[File:Shurima Crest icon.png|link=Shurima#Trivia|100px|center]]
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Sunfire Aegis passive inactive VFX.png|Aura VFX (Inactive)
+Sunfire Aegis item screenshot.png|Aura VFX (Active)
+Sunfire Aegis flametouch item screenshot.png|Old Flametouch VFX
+</gallery>
+|revisions =
+|patchhistory =
+;[[V26.20]]
+* {{sbc|Bug Fix:}} Immolate aura range now always properly scale with bonus size.
+
+;[[V26.16]]
+* Total cost increased to {{g|2800}} from {{g|2700}}.
+** Combine cost increased to {{g|700}} from {{g|600}}.
+* Immolate health ratio increased to {{as|{{fd|1.5}}% '''bonus''' health}} from {{as|1%|health}}.
+* Immolate minion damage reduced to 150% from 160%.
+* Immolate monster damage reduced to 180% from 200%.
+
+;Unknown Patch - likely after [[V26.08]]
+* {{sbc|Undocumented / Bug:}} Immolate area of effect size no longer scales with '''bonus''' champion size.
+
+;[[V26.06]]
+* {{sbc|New Recipe:}} {{ii|Bami's Cinder}} + {{ii|Chain Vest}} + {{ii|Ruby Crystal}} + {{g|600}} = {{g|2700}}.
+** {{sbc|Old Recipe:}} {{ii|Bami's Cinder}} + {{ii|Chain Vest}} + {{g|1000}} = {{g|2700}}.
+
+;[[V25.23]]
+* Monster damage increased to 200% from 160%.
+
+;[[V25.18]]
+* Immolate minion damage increased to 160% from 150%.
+* Immolate monster damage increased to 160% from 150%.
+
+;[[V14.19]]
+* Immolate base damage per second increased to 20 from 15.
+* Immolate health ratio per second reduced to {{as|1% '''bonus''' health}} from {{as|{{fd|1.75}}%|hp}}.
+* Immolate minion damage increased to 150% from 125%.
+* {{sbc|New Effect:}} Immolate now deals 150% damage to monsters.
+* {{sbc|Removed:}} Damaging enemy champions or epic monsters with ''Immolate'' no longer grants a stack for 5 seconds that increases subsequent Immolate damage by 10%, stacking up to 6 times for a 60% increase.
+
+;[[V14.10]]
+* Combine cost increased to {{g|1000}} from {{g|900}}.
+** Total cost unchanged.
+* Health reduced to 350 from 500.
+* Ability haste increased to 10 from 0.
+
+;[[V14.5]]
+* Health increased to 500 from 450.
+* Immolate base damage increased to 15 from 12.
+
+;[[V14.1]]
+* Health reduced to 450 from 500.
+* Immolate base damage reduced to 12 from 15.
+
+;[[V12.23]]
+* Total cost reduced to {{g|2700}} from {{g|2800}}.
+** Combine cost reduced to {{g|900}} from {{g|1000}}.
+* Health increased to 500 from 400.
+
+;[[V12.22]]
+* {{sbc|New Recipe:}} {{ii|Bami's Cinder}} + {{ii|Chain Vest}} + {{g|1000}} = {{g|2800}}.
+** {{sbc|Old Recipe:}} {{ii|Bami's Cinder}} + {{ii|Aegis of the Legion}} + {{g|800}} = {{g|3200}}.
+* Item type changed to Legendary from Mythic.
+* Ability haste reduced to 0 from 20.
+* Armor increased to 50 from 35.
+* Health reduced to 400 from 450.
+* Magic resistance reduced to 0 from 35.
+* {{sbc|Removed Unique Passive - Flametouch:}} At '''maximum''' ''Immolate'' stacks, your basic attacks create an explosion around you, applying a burn to all nearby enemies that deals your '''current''' ''Immolate'' damage to them for 3 seconds.
+* {{sbc|Removed:}} Immolate no longer deals 150% increased damage against monsters.
+* {{sbc|Removed:}} No longer has a Mythic passive granting 5% tenacity, 5% slow resist and {{as|50 '''bonus''' health}} per Legendary item.
+* {{sbc|Removed:}} {{cai|Living Forge|Ornn|Masterwork}} item {{ii|Forgefire Crest}}.
+* Limited to 1 {{sbc|Immolate}} item.
+
+;[[V12.14]]
+* Immolate base damage changed to 15 at all levels from {{pp|12 to 30}}.
+* Immolate health ratio increased to {{as|{{fd|1.75}}% '''bonus''' health}} from {{as|1%|health}}.
+
+;[[V12.11]]
+* Combine cost increased to {{g|800}} from {{g|700}}.
+** Total cost unchanged.
+* Health increased to 450 from 350.
+* {{ii|Forgefire Crest}} health increased to 600 from 500.
+
+;[[V12.10]]
+* Bonus Immolate damage per stack reduced to 10% from 12%.
+
+;[[V11.23]]
+* Combine cost increased to {{g|700}} from {{g|600}}.
+** Total cost unchanged.
+* Armor increased to 35 from 30.
+* Magic resistance increased to 35 from 30.
+* {{sbc|New Effect:}} Mythic passive now also grants {{as|50 '''bonus''' health}}.
+* {{sbc|New Effect:}} Immolate now executes minions that would be killed by one more tick of damage.
+* {{ii|Forgefire Crest}} armor increased to 50 from 45.
+* {{ii|Forgefire Crest}} magic resistance increased to 50 from 45.
+
+;[[V11.9]]
+* Bonus monster damage increased to 150% from 100%.
+
+;[[V11.6]]
+* Ability haste increased to 20 from 15.
+* Bonus Immolate damage per stack increased to 12% from 10%.
+* {{ii|Forgefire Crest}} ability haste increased to 25 from 20.
+
+;[[V11.2]]
+* Mythic passive changed to 5% tenacity and slow resistance from 5 ability haste.
+
+;[[V10.25#December 15th Hotfix|V10.25]] - December 15th Hotfix
+* Bonus Immolate damage per stack reduced to 10% from 12%.
+
+;[[V10.25]]
+* Combine cost reduced to {{g|600}} from {{g|700}}.
+** Total cost unchanged.
+* Health reduced to 350 from 450.
+* Bonus monster damage reduced to 100% from 150%.
+* {{ii|Forgefire Crest}} health reduced to 500 from 550.
+* {{sbc|Bug Fix:}} Immolate range indicator now properly increases in size with the champion.{{tt|*|Did not actually ship.}}
+
+;[[V10.23#November 16th Hotfix|V10.23]] - November 16th Hotfix
+* Immolate base damage reduced to {{pp|12 to 30}} from {{pp|20 to 40}}.
+* Bonus minion damage reduced to 25% from 50%.
+* Bonus monster damage reduced to 150% from 200%.
+
+;[[V10.23]] - Added
+* ''Replaces {{ii|Sunfire Cape}}.''
+* {{sbc|Recipe:}} {{ii|Bami's Cinder}} + {{ii|Aegis of the Legion}} + {{g|700}} = {{g|3200}}.
+* {{sbc|Stats:}} 450 health, 30 armor, 30 magic resistance, 15 ability haste.
+* {{sbc|Unique Passive - Immolate:}} Taking or dealing damage activates this passive for 3 seconds. Deal {{as|{{pp|20 to 40}} {{as|(+ 1% '''bonus''' health)}} magic damage|magic damage}} per second to nearby enemies, increased by 50% against minions and 200% against monsters. Damaging enemy champions or epic monsters with this effect adds a stack for 5 seconds, increasing subsequent ''Immolate'' damage by 12%, stacking up to 6 times for a 72% increase.
+* {{sbc|Unique Passive - Flametouch:}} At maximum stacks, your basic attacks explode around you, burning nearby enemies for your ''Immolate'' damage for 3 seconds.
+* {{sbc|Mythic Passive:}} Empowers other Legendary items with 5 ability haste.
+* Limited to 1 {{sbc|Mythic}} item.
+* {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Forgefire Crest}}.
+** {{sbc|Stats:}} 550 health, 45 armor, 45 magic resistance, 20 ability haste.
+}}
+
+
+[[Category:Season 2021 item release]]
+[[ru:Эгида солнечного пламени]]
+[[Category:Items with passive abilities]]

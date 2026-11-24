@@ -1,0 +1,32 @@
+["Wit's End"] = {
+        ["id"]                  = 3091,
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["marksman"]        = true,
+            ["onhit effects"]   = true,
+        },
+        ["stats"] = {
+            ["as"]              = 50,
+            ["mr"]              = 45,
+            ["tenacity"]        = 20,
+
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Fray",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks deal {{as|45 '''bonus''' magic damage}} [[on-hit]].",
+            },
+        },
+        ["recipe"]              = {"Recurve Bow", "Negatron Cloak", "Recurve Bow"},
+        ["buy"]                 = 2800,
+    },

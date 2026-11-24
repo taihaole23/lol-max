@@ -1,0 +1,30 @@
+["Spirit Visage"] = {
+        ["id"]                  = 3065,
+        ["nickname"]            = {"sv"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 10,
+            ["hp"]              = 400,
+            ["hp5"]             = 100,
+            ["mr"]              = 50,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Boundless Vitality",
+                ["unique"]      = true,
+                ["description"] = "Increases all {{tip|heal|healing}} and {{tip|shield|shielding}} received as well as {{stil|health regeneration}} by 25%.",
+            },
+        },
+        ["recipe"]              = {"Spectre's Cowl", "Kindlegem"},
+        ["buy"]                 = 2700,
+    },

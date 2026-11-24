@@ -1,0 +1,29 @@
+["Eclipse"] = {
+        ["id"]                  = 6692,
+        ["nickname"]            = {"lethality"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 60,
+            ["ah"]              = 15,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Ever Rising Moon",
+                ["unique"]      = true,
+                ["description"] = "Damaging [[basic attack]]s, [[champion ability|abilities]], [[Named item effect|item effects]], and [[summoner spell]]s, as well as the application of {{tip|crowd control}} and [[damage over time]] effects, apply [[stack]]s against enemy champions, up to one per {{tip|cast instance}} per champion. Applying 2 stacks to a champion within a 2 second period deals {{as|'''bonus''' physical damage}} to them equal to {{as|{{rd|8%|5%}} of target's '''maximum''' health}} and grants you a {{tip|shield}} for {{rd|150|75}} {{as|(+ {{rd|40%|20%}} '''bonus''' AD)}} for 2 seconds.",
+                ["cd"]          = "6",
+            },
+        },
+        ["recipe"]              = {"Caulfield's Warhammer", "Pickaxe", "Long Sword"},
+        ["buy"]                 = 2900,
+    },

@@ -1,0 +1,30 @@
+["Serylda's Grudge"] = {
+        ["id"]                  = 6694,
+        ["nickname"]            = {"slow"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Fatality",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 45,
+            ["ah"]              = 15,
+            ["armpen"]          = 35,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Bitter Cold",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{tip|ability damage}} to an enemy that is at or below {{as|50% of their '''maximum''' health}} {{tip|slow|slows}} them by 30% for 1 second.",
+            },
+        },
+        ["recipe"]              = {"Caulfield's Warhammer", "Last Whisper"},
+        ["buy"]                 = 3000,
+    },

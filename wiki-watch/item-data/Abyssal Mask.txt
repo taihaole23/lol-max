@@ -1,0 +1,29 @@
+["Abyssal Mask"] = {
+        ["id"]                  = 8020,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 15,
+            ["hp"]              = 350,
+            ["mr"]              = 45,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Unmake",
+                ["unique"]      = true,
+                ["description"] = "Enemy champions within {{tt|700 units|center to edge}} of you become cursed, causing them to receive {{as|12% increased magic damage|magic damage}} post-mitigation from all sources.",
+            },
+        },
+        ["recipe"]              = {"Kindlegem", "Negatron Cloak"},
+        ["buy"]                 = 2650,
+    },

@@ -1,0 +1,37 @@
+["Ravenous Hydra"] = {
+        ["id"]                  = 3074,
+        ["nickname"]            = {"rav hydra"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Hydra",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 65,
+            ["ah"]              = 15,
+            ["lifesteal"]       = 12,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Ravenous Crescent",
+                ["unique"]      = true,
+                ["description"] = "Deal {{as|80% AD}} {{as|physical damage}} to enemies within a {{tip|cr|icononly = true}} 450 radius {{tt|in front of you|100 unit offset in the caster's facing direction}}. This damage benefits from {{as|{{sti|life steal}}}} at 100% effectiveness.",
+                ["cd"]          = "10",
+            },
+            ["pass"] = {
+                ["name"]        = "Cleave",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks [[on-hit]] deal {{as|{{rd|40% AD|20% AD}}|ad}} {{as|physical damage}} to other enemies in a {{tip|cr|icononly = true}} 350 radius centered around the target. This damage benefits from {{as|{{sti|life steal}}}} at 100% effectiveness.",
+            },
+        },
+        ["recipe"]              = {"Tiamat", "Vampiric Scepter", "Caulfield's Warhammer"},
+        ["buy"]                 = 3300,
+    },

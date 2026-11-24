@@ -5,11 +5,10 @@
 //   effects (wiki), and Flurry works like one.
 // "Practice Makes Lethal" (permanent crit chance per attack) starts at 0 (stacks earned by
 // fighting), and crit doesn't change R's damage, so it's left out.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Yun_Tal_Wildarrows", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Yun_Tal_Wildarrows", patch: "26.23" },
   flurryBonusAttackSpeed: 0.3,
 };
 

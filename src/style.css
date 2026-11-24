@@ -11,15 +11,20 @@
   --bg-glow: rgba(224, 69, 95, 0.09);
   --panel: #121722;
   --panel-raised: #19202d;
-  --panel-hover: #1f2738;
+  --panel-hover: #1f2738; /* = DARK_SURFACE in src/ui/champion-colors.ts: change both */
   --border: #222a39;
   --border-strong: #303b51;
   --text: #e9ecf3;
   --muted: #8b94a8;
   --faint: #5a6377;
-  --accent: #e0455f; /* Katarina red */
+  /* The accent is the site's normal red. A champion page swaps all five accent variables for
+     colours from the splash art (src/ui/champion-colors.ts). */
+  --accent: #e0455f;
   --accent-strong: #f0607a;
   --accent-soft: rgba(224, 69, 95, 0.14);
+  --on-accent: #fff; /* text on an accent-coloured button */
+  /* Warnings stay red on every champion page, so they always look like warnings. */
+  --warning: #f0607a;
   --gold: #d4ad4c;
   --success: #43b581;
   --typed: rgba(212, 173, 76, 0.16); /* a dummy stat the user typed in */
@@ -62,7 +67,7 @@
   --bg-glow: rgba(179, 18, 46, 0.06);
   --panel: #ffffff;
   --panel-raised: #f2f3f6;
-  --panel-hover: #e9ebf0;
+  --panel-hover: #e9ebf0; /* = LIGHT_SURFACE in src/ui/champion-colors.ts: change both */
   --border: #e0e3ea;
   --border-strong: #c9ced9;
   --text: #171a21;
@@ -71,6 +76,8 @@
   --accent: #b3122e;
   --accent-strong: #cc1f3d;
   --accent-soft: rgba(179, 18, 46, 0.1);
+  --on-accent: #fff;
+  --warning: #cc1f3d;
   --gold: #9a7414;
   --success: #1d8a57;
   --typed: rgba(212, 173, 76, 0.22);
@@ -169,7 +176,7 @@ input.typed { background: var(--typed); border-color: var(--gold); }
 .empty-state { text-align: center; padding: var(--s7) var(--s5); }
 .empty-state h2 { font-size: 1.3rem; text-transform: none; letter-spacing: 0; color: var(--text); margin-bottom: var(--s2); }
 .empty-state p { color: var(--muted); }
-.notice { color: var(--accent-strong); font-weight: 600; margin: var(--s2) 0; }
+.notice { color: var(--warning); font-weight: 600; margin: var(--s2) 0; }
 
 /* ---------- Form pieces ---------- */
 .field { display: flex; flex-direction: column; gap: var(--s2); margin-bottom: var(--s4); min-width: 0; }
@@ -186,7 +193,7 @@ p.field-hint { margin: var(--s3) 0 0; }
 .segmented { display: flex; padding: 3px; gap: 2px; background: var(--panel-raised); border: 1px solid var(--border); border-radius: var(--r); }
 .segmented button { flex: 1; border: none; background: none; padding: var(--s2) var(--s4); border-radius: var(--r-sm); color: var(--muted); font-weight: 600; }
 .segmented button:hover:not(:disabled) { background: var(--panel-hover); color: var(--text); }
-.segmented button.selected { background: var(--accent); color: #fff; }
+.segmented button.selected { background: var(--accent); color: var(--on-accent); }
 
 /* Switch: a real checkbox, drawn as a sliding switch */
 .switch-row { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s5); margin-bottom: var(--s4); }
@@ -201,13 +208,13 @@ p.field-hint { margin: var(--s3) 0 0; }
   background: var(--muted); transition: transform 0.2s, background 0.2s;
 }
 .switch input:checked + .switch-track { background: var(--accent); border-color: var(--accent); }
-.switch input:checked + .switch-track::after { transform: translateX(16px); background: #fff; }
+.switch input:checked + .switch-track::after { transform: translateX(16px); background: var(--on-accent); }
 .switch input:focus-visible + .switch-track { outline: 2px solid var(--accent); outline-offset: 2px; }
 .switch input:disabled ~ * { opacity: 0.4; cursor: not-allowed; }
 
 button.primary {
   background: var(--accent); border: 1px solid var(--accent);
-  color: #fff; font-weight: 600; font-size: 1rem;
+  color: var(--on-accent); font-weight: 600; font-size: 1rem;
   padding: var(--s2) var(--s6); border-radius: var(--r);
 }
 button.primary:hover:not(:disabled) { background: var(--accent-strong); border-color: var(--accent-strong); }
@@ -250,6 +257,9 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
   -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent); mask-image: linear-gradient(to bottom, #000 30%, transparent);
 }
 :root[data-theme="light"] .champ-splash { opacity: 0.22; }
+/* Which skin the splash art is, small in the top-right corner */
+.splash-credit { position: absolute; top: 0; right: 0; font-size: 0.75rem; color: var(--faint); }
+@media (max-width: 600px) { .splash-credit { position: static; text-align: center; margin-bottom: var(--s2); } }
 .champ-hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--s3); margin: var(--s4) 0 var(--s5); }
 .champ-portrait { width: 96px; height: 96px; border-radius: var(--r); border: 2px solid var(--accent); }
 .champ-name { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 600; letter-spacing: 0; line-height: 1.1; }
@@ -272,7 +282,7 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
   padding: 4px 6px; border-radius: var(--r-sm); font-size: 0.8rem; font-weight: 700;
   background: var(--panel); border: 1px solid var(--border-strong);
 }
-.ability.selected .ability-key { background: var(--accent); border-color: var(--accent); color: #fff; }
+.ability.selected .ability-key { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .rank-pips { display: flex; gap: 5px; }
 .rank-pip { width: 16px; height: 8px; padding: 0; border-radius: 1px; background: var(--panel-hover); border: none; }
 .rank-pip:hover:not(:disabled) { background: var(--border-strong); }
@@ -366,7 +376,7 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 .results-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s5); flex-wrap: wrap; margin-bottom: var(--s4); }
 .damage-total { font-family: var(--font-display); font-size: clamp(2.2rem, 5.5vw, 3rem); font-weight: 600; letter-spacing: 0; line-height: 1; font-variant-numeric: tabular-nums; margin-top: var(--s1); }
 .damage-note { color: var(--muted); max-width: 420px; text-align: right; }
-.damage-note.is-problem { color: var(--accent-strong); font-weight: 600; }
+.damage-note.is-problem { color: var(--warning); font-weight: 600; }
 
 .top-builds { list-style: none; padding: 0; margin: 0 0 var(--s6); display: grid; gap: var(--s2); }
 .build-card {
@@ -442,7 +452,7 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 .card-effect p { color: var(--muted); }
 .card-status { margin-top: var(--s3); padding-top: var(--s2); border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--faint); }
 .card-status.modelled { color: var(--success); font-weight: 700; }
-.card-note { margin-top: var(--s2); color: var(--accent-strong); font-weight: 700; font-size: 0.8rem; }
+.card-note { margin-top: var(--s2); color: var(--warning); font-weight: 700; font-size: 0.8rem; }
 
 /* ---------- Item picker (opens from a slot) ---------- */
 .item-picker {

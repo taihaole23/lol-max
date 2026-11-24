@@ -1,0 +1,30 @@
+["Moonstone Renewer"] = {
+        ["id"]                  = 6617,
+        ["nickname"]            = {"yuumi"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 20,
+            ["ap"]              = 25,
+            ["hp"]              = 200,
+            ["mp5"]             = 125,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Starlit Grace",
+                ["unique"]      = true,
+                ["description"] = "{{tip|Heal|Healing}} or {{tip|shield|shielding}} an allied champion chains the effect to the other nearest and {{tt|most wounded|Lowest health percent}} allied champion within {{tip|cr|icononly = true}} 800 units of them (''excluding yourself''), granting them 30% of the heal or 35% of the shield's initial strength. If no other allied champions are in the radius, grant the same target an additional 30% of the heal or 35% of the shield.",
+			},
+        },
+        ["recipe"]              = {"Kindlegem", "Bandleglass Mirror"},
+        ["buy"]                 = 2200,
+    },

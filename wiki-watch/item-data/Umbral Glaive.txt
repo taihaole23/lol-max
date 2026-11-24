@@ -1,0 +1,40 @@
+["Umbral Glaive"] = {
+        ["id"]                  = 3179,
+        ["nickname"]            = {"lethality"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = false,
+        },
+        ["menu"] = {
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 60,
+            ["ah"]              = 15,
+            ["lethality"]       = 18,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Blackout",
+                ["unique"]      = true,
+                ["description"] = "When spotted by enemy [[Stealth#Stealthed_traps_and_wards|stealthed]] {{tip|wards}} or {{tip|stealthed trap|traps}}, gain ''Blackout'' for 8 seconds.",
+                ["cd"]          = "90",
+                ["range"]       = "400",
+            },
+            ["pass2"] = {
+            	["name"]       = "Blackout",
+            	["description"] = "You {{tip|disabled ward|disable}} surrounding stealthed wards, as well as {{tip|expose}} and {{tip|true sight|reveal}} nearby stealthed wards and traps while ''Blackout'' is active. Your [[basic attack]]s deal {{as|{{rd|2|1}} '''bonus''' true damage}} to wards.",
+            },
+            ["pass3"] = {
+            	["name"]		= "Nightstalker",
+                ["unique"]      = true,
+                ["description"] = "After being not {{tip|sight|visible}} to enemies for at least 1 second, your next basic attack against a champion is empowered to deal {{as|50 {{as|(+ {{fd|1.5}} per 1 Lethality)}} '''bonus''' true damage}} [[on-hit]]. The empowered attack lasts for 4 seconds after being seen by an enemy.",
+            },
+        },
+        ["recipe"]              = {"Serrated Dirk", "Caulfield's Warhammer"},
+        ["buy"]                 = 2800,
+    },

@@ -6,11 +6,10 @@
 // The damage is on-hit, so it's shrunk by R's 25 / 30 / 35%.
 // ASSUMPTION: the missing-health bonus grows in a straight line (0% missing → +0%, 100% → +75%).
 //   The wiki's "0 to 75 by 5" might mean it goes up in 5% steps instead.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Kraken_Slayer", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Kraken_Slayer", patch: "26.23" },
   stacksToProc: 2,
   baseDamage: 150,
   damagePerLevelAfter: 5,

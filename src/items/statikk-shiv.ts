@@ -4,12 +4,11 @@
 // The wiki says Electrospark "is not affected by on-hit damage modifiers", so R's 25 / 30 / 35%
 // does NOT shrink it. (To check in the Practice Tool.)
 // "Electroshock" (+9 Energize per basic attack): see the assumption in energized.ts.
-import { PATCH } from "../data/patch.ts";
 import { energizedEffect } from "./energized.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Statikk_Shiv", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Statikk_Shiv", patch: "26.23" },
   damage: 60,
 };
 

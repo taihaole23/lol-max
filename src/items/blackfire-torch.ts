@@ -13,14 +13,13 @@
 // Dagger 1 starts the burn, so dagger 1 itself doesn't get the 4% ("same time = same hit",
 // see NOTES.md). The AP goes up right after dagger 1 finishes, so dagger 2 onward,
 // the burn ticks and other AP-based item damage all get it.
-import { PATCH } from "../data/patch.ts";
 import { addApPercent } from "../stats/ap-percent.ts";
 import { tickingEffect } from "./ticking.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Blackfire_Torch", patch: PATCH },
-  bugSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Blackfire_Torch", patch: "26.23" },
+  bugSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: "26.23" },
   burnDamagePerTick: 10,
   burnApRatioPerTick: 0.01,
   burnSecondsBetweenTicks: 0.5,

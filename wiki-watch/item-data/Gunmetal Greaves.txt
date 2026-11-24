@@ -1,0 +1,21 @@
+["Gunmetal Greaves"] = {
+        ["id"]                  = 3172,
+        ["nickname"]            = {"boots"},
+        ["tier"]                = 3,
+        ["type"]                = {"Boots"},
+        ["req"]                 = "Requires completion of the {{tip|Midlane Quest}} to obtain. Once the quest is completed, {{ii|Berserker's Greaves}} is upgraded into this item for free. If {{ii|Berserker's Greaves}} is in the inventory at the time of quest completion, it is automatically upgraded into these boots.",
+        ["caption"]             = "\"The empire values strength. I value style. —Samira\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = false,
+            ["nb"]              = false,
+            ["ar"]              = false,
+        },
+        ["stats"] = {
+            ["as"]              = 45,
+            ["lifesteal"]       = 5,
+            ["msflat"]          = 45,
+        },
+        ["recipe"]              = {"Berserker's Greaves"},
+        ["buy"]                 = "=>Berserker's Greaves",
+    },

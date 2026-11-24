@@ -1,0 +1,223 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Trinity Force;Dusk and Dawn;Iceborn Gauntlet;Lich Bane;Manamune;Infinity Edge;Yun Tal Wildarrows;Stormrazor;The Collector;Hexoptics C44;Immortal Shieldbow
+|background =
+|notes =
+{{Spellblade info}}
+|strategy =
+|oldicons =
+|trivia =
+* During testing on the [[VPBE|PBE]], the item's icon was a horizontally reflected and blue recolor of {{ii|The Bloodthirster}}. A video demonstration can be seen [https://www.youtube.com/watch?v=izJv9g-W5ps here].
+** The search term 'bloothirster' references this association. The term was removed in [[V10.23]].
+[[File:Shadow Isles Crest icon.png|link=Shadow Isles#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Essence Reaver item screenshot.png|Spellblade Ready VFX
+Essence Reaver mana restored VFX.png|Mana Restored VFX
+Essence Reaver attack item screenshot.png|Spellblade Attack VFX
+</gallery>
+|revisions =
+|patchhistory =
+;[[V26.01#January 9th Hotfix|V26.01]] - January 9th Hotfix
+* Total cost increased to {{g|3050}} from {{g|2900}}.
+** Combine cost increased to {{g|500}} from {{g|350}}.
+* Attack damage reduced to 50 from 55.
+
+;[[V26.01]]
+* {{sbc|New Recipe:}} {{ii|Sheen}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|350}} = {{g|2900}}.
+** {{sbc|Old Recipe:}} {{ii|Pickaxe}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|350}} = {{g|2900}}.
+* Attack damage reduced to 55 from 60.
+* Ability haste increased to 20 from 15.
+* {{sbc|New Unique Passive - Spellblade:}} After using an [[Champion ability|ability]], your next basic attack within 10 seconds deals {{as|125% '''base''' AD}} {{as|(+ 50% critical strike chance)}} {{as|'''bonus''' physical damage}} [[on-hit]] and restores mana equal 50% of damage dealt ({{fd|1.5}} second cooldown, starts after using the empowered attack).
+* {{sbc|Removed Unique Passive - Essence Drain:}} Basic attacks [[on-hit]] restore {{as|15|mana}} {{as|(+ 10% '''bonus''' AD)|ad}} {{as|mana}}.
+* Limited to 1 {{sbc|Spellblade}} item.
+
+;[[V14.20]]
+* {{sbc|New Recipe:}} {{ii|Pickaxe}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|375}} = {{g|2900}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|250}} = {{g|3150}}.
+* Ability haste reduced to 15 from 20.
+* Attack damage reduced to 60 from 65.
+
+;[[V14.19]]
+* Total cost increased to {{g|3150}} from {{g|3100}}.
+** Combine cost increased to {{g|200}} from {{g|100}}.
+* Attack damage reduced to 65 from 70.
+* Ability haste reduced to 20 from 25.
+
+;[[V14.11]]
+* Total cost reduced to {{g|3100}} from {{g|3200}}.
+** Combine cost reduced to {{g|100}} from {{g|200}}.
+
+;[[V14.10#May 16th Hotfix|V14.10]] - May 16th Hotfix
+* Attack damage increased to 70 from 65.
+
+;[[V14.10]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|B. F. Sword}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|200}} = {{g|3200}}.
+** {{sbc|Stats:}} 65 attack damage, 25 ability haste, 25% critical strike chance.
+** {{sbc|Unique Passive - Essence Drain:}} Basic attacks on-hit restore {{as|15|mana}} {{as|(+ 10% '''bonus''' AD)|ad}} {{as|mana}}.
+** Limited to 1 '''Essence Reaver'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Sheen}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|300}} = {{g|2900}}.
+** {{sbc|Stats:}} 60 attack damage, 20 ability haste, 20% critical strike chance.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, your next basic attack on-hit within 10 seconds deals {{as|140% '''base''' AD (+ 20% '''bonus''' AD)}} {{as|'''bonus''' physical damage}} and restores {{as|mana}} equal to{{ft|40% of that amount|{{as|56% '''base''' AD (+ 8% '''bonus''' AD)}}}} {{fd|1.5}} (begins after using the empowered attack).
+** Limited to 1 {{sbc|Spellblade}} item.
+
+;[[V14.3]]
+* Combine cost increased to {{g|300}} from {{g|200}}.
+** Total cost unchanged.
+* Attack damage increased to 60 from 55.
+
+;[[V14.1#January 12th Hotfix|V14.1]] - January 12th Hotfix
+* Total cost reduced to {{g|2900}} from {{g|3000}}.
+** Combine cost reduced to {{g|200}} from {{g|300}}.
+* Spellblade base AD ratio increased to {{as|140% '''base''' AD}} from {{as|130%|AD}}.
+
+;[[V14.1]]
+* Total cost increased to {{g|3000}} from {{g|2900}}.
+** Combine cost reduced to {{g|300}} from {{g|500}}.
+* Now limits the user to 1 {{sbc|Spellblade}} item.
+
+;[[V13.13]]
+* Spellblade base AD ratio increased to {{as|130% '''base''' AD}} from {{as|100%|AD}}.
+* Spellblade bonus AD ratio reduced to {{as|20% '''bonus''' AD}} from {{as|40%|AD}}.
+
+;[[V13.1b]]
+* Total cost increased to {{g|2900}} from {{g|2800}}.
+** Combine cost increased to {{g|500}} from {{g|400}}.
+* Attack damage increased to 55 from 45.
+
+;[[V12.21]]
+* Updated icon.
+
+;[[V11.7]]
+* Total cost reduced to {{g|2800}} from {{g|2900}}.
+** Combine cost reduced to {{g|400}} from {{g|500}}.
+* Attack damage reduced to 45 from 55.
+
+;[[V11.3]]
+* {{sbc|Bug Fix:}} Now properly restores mana if the attack was also empowered by {{ii|Sheen}}.
+
+;[[V11.2]]
+* Mana restoration changed to 40% of Spellblade's pre-mitigation damage from {{as|3% '''maximum''' mana}}.
+
+;[[V10.25]]
+* Attack damage increased to 55 from 50.
+
+;[[V10.24]]
+* Attack damage increased to 50 from 40.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Caulfield's Warhammer}} + {{ii|Sheen}} + {{ii|Cloak of Agility}} + {{g|500}} = {{g|2900}}.
+** {{sbc|Stats:}} 40 attack damage, 20% critical strike chance, 20 ability haste.
+** {{sbc|Unique Passive - Spellblade:}} After using an ability, deal {{as|100% '''base''' attack damage (+ 40% '''bonus''' AD)}} {{as|physical damage}} on-hit and restore {{as|3% of your '''maximum''' mana}} ({{fd|1.5}} second cooldown).
+** Limited to 1 '''Essence Reaver'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|B. F. Sword}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|100}} = {{g|3300}}.
+** {{sbc|Stats:}} 70 attack damage, 25% critical strike chance.
+** {{sbc|Unique:}} +20% cooldown reduction.
+** {{sbc|Unique Passive:}} Basic attacks refund {{as|{{fd|1.5}}% of '''missing''' mana}} on-hit.
+
+;[[V9.13]]
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|100}} = {{g|3300}}.
+** {{sbc|Old Recipe:}} {{ii|Pickaxe}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|425}} = {{g|3200}}.
+
+;[[V9.10]]
+* Attack damage increased to 70 from 65.
+
+;[[V9.4]]
+* {{sbc|New Effect:}} Cooldown reduction now {{sbc|Unique}}.
+* Attack damage increased to 65 from 60.
+* {{sbc|Bug Fix:}} Now appears in the correct shop categories.
+
+;[[V9.3]]
+* {{sbc|New Recipe:}} {{ii|Pickaxe}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|425}} = {{g|3200}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Caulfield's Warhammer}} + {{ii|Sapphire Crystal}} + {{g|250}} = {{g|3000}}.
+* Attack damage reduced to 60 from 75.
+* {{sbc|Removed:}} No longer grants 300 mana.
+* {{sbc|New Effect:}} Now grants 25% critical strike chance.
+* Mana refund on basic attacks increased to {{as|{{fd|1.5}}% of '''missing''' mana}} from {{as|1%|mana}}.
+* {{sbc|Removed Unique Passive:}} After casting your ultimate, your next basic attack on-attack within 10 seconds grants {{sbc|Essence Flare}} for 6 seconds (30 second cooldown).
+* {{sbc|Removed Unique Passive - Essence Flare:}} Gain 50% '''bonus''' attack speed, and basic attacks refund 20% of your '''remaining''' basic abilities cooldowns on-attack.
+
+;[[V8.21]]
+* Total cost reduced to {{g|3000}} from {{g|3200}}.
+** Combine cost reduced to {{g|250}} from {{g|450}}.
+
+;[[V8.15]]
+* Attack damage increased to 75 from 70.
+
+;[[V8.12#June 18th Hotfix|V8.12]] - June 18th Hotfix
+* Essence Flare duration reduced to 6 seconds from 8.
+* Essence Flare bonus attack speed increased to 50% from 30%.
+
+;[[V8.11]]
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Caulfield's Warhammer}} + {{ii|Sapphire Crystal}} + {{g|450}} = {{g|3200}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|200}} = {{g|3400}}.
+* {{sbc|New Effects:}}
+** {{sbc|Stats:}} +70 attack damage, +20% cooldown reduction, and +300 mana.
+** {{sbc|Unique Passive:}} Basic attacks refund {{as|1% of '''missing''' mana}} on-hit.
+** {{sbc|Unique Passive:}} After casting your ultimate, your next basic attack within 10 seconds grants {{sbc|Essence Flare}} for 8 seconds (30 second cooldown).
+** {{sbc|Essence Flare:}} Gain 30% '''bonus''' attack speed, and basic attacks refund 20% of your '''remaining''' non-ultimate cooldowns.
+* {{sbc|Old Effects:}}
+** {{sbc|Stats:}} +70 attack damage and +20% critical strike chance.
+** {{sbc|Unique Passive:}} +10% cooldown reduction.
+** {{sbc|Unique Passive:}} Gain {{pp|type=critical strike chance|0%;1.25%;3.33%;6.25%;10%;14.58%;20%|0%;5%;10%;15%;20%;25%;30%|formula=(critical strike chance{{times}}(1{{plus}}0.1{{times}}critical strike chance)){{Divided by}}6. ''This is capped at 20% cooldown reduction at 30% critical strike chance.''}} additional cooldown reduction. This bonus does not include the critical strike chance given by this item.
+** {{sbc|Unique Passive:}} {{tip|critical strike|Critical strikes}} restore {{as|3% of your '''maximum''' mana}}.
+
+;[[V7.9]]
+* Total cost reduced to {{g|3400}} from {{g|3600}}.
+** Combine cost reduced to {{g|200}} from {{g|400}}.
+
+;[[V6.14]]
+* Added to the [[Twisted Treeline]].
+
+;[[V6.12]]
+* Attack damage increased to 70 from 65.
+
+;[[V5.24]]
+* Additional cooldown reduction is no longer linear with critical strike chance (from other sources).
+** {{tt|{{sbc|CDR}}|Additional Cooldown Reduction}} = ({{tt|{{sbc|Crit}}|Critical Strike Chance}}{{times}}(1{{plus}}{{fd|0.1}}{{times}}{{tt|{{sbc|Crit}}|Critical Strike Chance}})){{Divided by}}6
+
+;[[V5.22]]
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Caulfield's Warhammer}} + {{ii|Cloak of Agility}} + {{g|400}} = {{g|3600}}.
+** {{sbc|Old Recipe:}} {{ii|B. F. Sword}} + {{ii|Vampiric Scepter}} + {{g|850}} = {{g|3200}}.
+* Attack damage decreased to 65 from 80.
+* {{sbc|New Effect:}} Now grants 20% critical strike chance.
+* {{sbc|Removed:}} No longer grants 10% life steal.
+* {{sbc|Removed Unique Passive:}} Your basic attacks restore mana equal to {{as|between 2% and 8% of the physical damage dealt}}, based on your {{as|'''missing''' mana}}.
+* {{sbc|New Unique Passive:}} +10% cooldown reduction.
+* {{sbc|New Unique Passive:}} Gains up to +20% additional cooldown reduction equal to your {{as|critical strike chance}} from other sources.
+* {{sbc|New Unique Passive:}} Critical strikes restore {{as|3% of '''maximum''' mana}}.
+
+;[[V4.15]]
+* Total cost reduced to {{g|3200}} from {{g|3400}}.
+** Combine cost reduced to {{g|850}} from {{g|1050}}.
+* {{sbc|Bug Fix:}} Fixed a bug where it was restoring more mana than it should at higher mana levels.
+
+;[[V4.12]]
+* Attack damage increased to 80 from 60.
+* {{sbc|New Recipe:}} {{ii|B. F. Sword}} + {{ii|Vampiric Scepter}} + {{g|1050}} = {{g|3400}}.
+** {{sbc|Old Recipe:}} {{ii|Pickaxe}} + {{ii|Vampiric Scepter}} + {{g|950}} = {{g|2650}}.
+
+;[[V4.11]]
+* Attack damage increased to 60 from 50.
+
+;[[V4.10]] - Added
+* {{sbc|Recipe:}} {{ii|Pickaxe}} + {{ii|Vampiric Scepter}} + {{g|950}} = {{g|2650}}.
+* {{sbc|Stats:}} +50 attack damage, +10% life steal, +10% cooldown reduction.
+* {{sbc|Unique Passive:}} Your basic attacks restore mana equal to {{as|between 2% and 8% of the physical damage dealt}}, based on your {{as|'''missing''' mana}}.
+}}
+
+
+[[cs:Essence Reaver]]
+[[de:Essenzräuber]]
+[[es:Saqueador de Esencias]]
+[[fr:Faux Spectrale]]
+[[pl:Złodziej Esencji]]
+[[ru:Похититель сущности]]
+[[Category:Items with passive abilities]]

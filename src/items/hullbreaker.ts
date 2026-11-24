@@ -6,11 +6,10 @@
 // A Guinsoo's Phantom Hit is an on-hit too, so it also gives a stack.
 // The damage is on-hit, so it's shrunk by R's 25 / 30 / 35%.
 // "Boarding Party" (minion buff) doesn't matter.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Hullbreaker", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Hullbreaker", patch: "26.23" },
   stacksToProc: 4,
   baseAdRatio: 1.2,
   maxHealthRatio: 0.05,

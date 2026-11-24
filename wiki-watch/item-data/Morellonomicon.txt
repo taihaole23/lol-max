@@ -1,0 +1,30 @@
+["Morellonomicon"] = {
+        ["id"]                  = 3165,
+        ["nickname"]            = {"forbidden book", "grievous", "grievous wounds", "last shadow", "nmst"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 75,
+            ["ah"]              = 15,
+            ["hp"]              = 350,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Grievous Wounds",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{as|magic damage}} to enemy champions inflicts them with {{tip|Grievous Wounds}} for 3 seconds.",
+            },
+        },
+        ["recipe"]              = {"Oblivion Orb", "Blasting Wand", "Kindlegem"},
+        ["buy"]                 = 2850,
+    },

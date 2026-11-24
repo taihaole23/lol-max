@@ -1,0 +1,36 @@
+["Guinsoo's Rageblade"] = {
+        ["id"]                  = 3124,
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["marksman"]        = true,
+            ["onhit effects"]   = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 30,
+            ["ap"]              = 30,
+            ["as"]              = 25,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Wrath",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks deal {{as|30 '''bonus''' magic damage}} on-hit.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Seething Strike",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks {{tip|on-attack}} grant {{as|8% '''bonus''' attack speed}} for 4 seconds, stacking up to 4 times for a total of {{as|32% '''bonus''' attack speed}}. At maximum stacks, basic attacks {{tip|on-attack}} also grant a ''Phantom'' stack for 4 seconds, up to 2 stacks. At 2 ''Phantom'' stacks, the next basic attack consumes all of those stacks {{tip|on-attack}} to trigger a ''Phantom Hit'' that applies {{tip|on-hit}} effects to the target after a {{fd|0.15}}-second delay.",
+            },
+        },
+        ["recipe"]              = {"Amplifying Tome", "Recurve Bow", "Pickaxe"},
+        ["buy"]                 = 3000,
+    },

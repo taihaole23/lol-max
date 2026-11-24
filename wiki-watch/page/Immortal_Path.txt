@@ -1,0 +1,47 @@
+{{Item info
+|goldvalue =
+{{gold value|Slay Gold Value per Stack|nolink=}}
+* 0.6% - 6% [[omnivamp]] = {{g|{{#expr:0.6*{{#var:omnivamp}} round 2}}}} - {{g|{{#expr:6*{{#var:omnivamp}} round 2}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:totalmin|{{#expr:{{#var:total}}+0.6*{{#var:omnivamp}} round 2}}}}}} -  {{g|{{#vardefineecho:totalmax|{{#expr:{{#var:total}}+6*{{#var:omnivamp}} round 2}}}}}}
+|goldefficiency =
+* {{ii|Immortal Path}} becomes {{gec|Immortal Path|{{#var:totalmin}}}} - {{gec|Immortal Path|{{#var:totalmax}}}} gold efficient from {{sbc|Slay}} stacks.
+|similaritems = Armored Advance;Chainlaced Crushers;Crimson Lucidity;Gunmetal Greaves;Spellslinger's Shoes;Swiftmarch
+|background =
+|notes =
+* {{sbc|Now and Forever}} stacks multiplicatively with other sources of {{tip|healing}} modifiers.
+* {{sbc|Now and Forever}} stacks additively with other sources of {{sti|{{as|health regeneration}}}} modifiers.
+* {{sbc|Now and Forever}} does not increase the {{tip|healing}} provided by [[Life Steal]] and [[Omnivamp]] effects, but directly increases the amount of the stat the champion has.{{bug|2|trundle w doesn't work like this for example}}
+** {{sbc|Now and Forever}} stacks [[recursion|recursively]] with {{iis|Spirit Visage}} {{nie|Boundless Vitality}} when it comes to modifying {{as|life steal}} and {{as|omnivamp}}.{{bug|2}}
+** Abilities and effects that apply ''life steal'' (e.g {{cai|Q|Samira}}) will also only benefit from the increase in ''life steal'', and not from the increase in ''healing''.
+*** Abilities and effects that directly ''heal'' the user, but scale with ''life steal'' (i.e {{cai|W|Xin Zhao}} and {{cai|R|Ambessa}}) will benefit from both the increase in ''life steal'' and from the increase in ''healing'', effectively amplified by {{ap|(1.12*1.12-1)*100}}% ({{fd|1.12}}{{times}}{{fd|1.12}}), instead of 12%.{{bug|2}}
+** Since {{sbc|Now and Forever}} updates in {{fd|0.25}} second intervals, this can lead to strange interactions with abilities that scale with those stats (i.e. {{cai|Royal Maelstrom|Bel'Veth}}).<ref>[https://www.youtube.com/watch?v=kZVUhWICUO0 "strange interactions"</ref>
+{{Healing modifiers|icononly=true}}
+|strategy =
+|oldicons =
+|trivia =
+|quotes =
+|media =
+|revisions =
+|patchhistory =
+;[[V26.14]]
+* Now and Forever damage increase reduced to 4% from 5%.
+* Now and Forever increased healing reduced to 12% from 15%.
+
+;[[V26.11]]
+* {{sbc|Bug Fix:}} Fixed a bug where it was named charges instead of stacks when pinged.
+
+;[[V26.10]]
+* Slay omnivamp per stack reduced to {{fd|0.6}}% from 1%.
+* Slay maximum stacks increased to 10 from 6.
+* {{sbc|Bug Fix:}} Fixed a bug where it would not inherit the extra Move Speed from {{ii|Slightly Magical Boots}}.
+
+;[[V26.09]] - Added
+* ''Tier 3 Boots, upgrades from {{ii|Gluttonous Greaves}}.''
+* {{sbc|Requirements:}} {{tip|Midlane Quest}}.
+* {{sbc|Stats:}} 45 movement speed, 4% omnivamp.
+* {{sbc|Unique Passive - Slay:}} Gain 1% omnivamp for each {{tip|takedown}} on enemy {{tip|champions}}, up to 6% at 6 takedowns.
+* {{sbc|Unique Passive - Now and Forever:}} While {{as|'''above''' 50% health}}, deal 5% increased damage. While {{as|'''below''' 50% health}}, gain 15% increased {{tip|heal|healing}}, {{tip|shield|shielding}} and {{as|{{sti|health regeneration}}}}.
+* Limited to 1 {{sbc|Boots}} item.
+* {{sbc|Caption:}} "My blood burns for slaughter. My mind urges grace." —{{ci|Zaahen}}, The Unsundered
+}}
+[[Category:2026 Annual Cycle item release]]

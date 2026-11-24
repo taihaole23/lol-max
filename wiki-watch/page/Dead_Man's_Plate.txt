@@ -1,0 +1,163 @@
+{{Item info
+|goldvalue = <!--
+-->{{#vardefine:lowestBaseADChamp|{{Highest lowest stats|ad|lvl=1|size=1|sortby=bottom|get=champ}}}}<!--
+-->{{#vardefine:lowestBaseAD|{{Highest lowest stats|ad|lvl=1|size=1|sortby=bottom|get=stat}}}}<!--
+-->{{#vardefine:highestBaseADChamp|{{Highest lowest stats|ad|lvl=18|size=1|sortby=top|get=champ}}}}<!--
+-->{{#vardefine:highestBaseAD|{{Highest lowest stats|ad|lvl=18|size=1|sortby=top|get=stat}}}}<!--
+-->{{gold value|Gold Value of maximum Momentum passive|nolink=}}
+* 20 flat [[movement speed]] = {{g|{{#expr:{{#var:msflat}}*20}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:passval|{{#expr:{{#var:total}}+{{#var:msflat}}*20 round 2}}}}}}
+|goldefficiency =
+* {{ii|Dead Man's Plate}} becomes {{gec|Dead Man's Plate|{{#var:passval}}}} gold efficient at maximum ''Momentum'' stacks.
+|similaritems = Sunfire Aegis;Thornmail;Randuin's Omen;Iceborn Gauntlet;Unending Despair;Boots of Swiftness
+|background =
+|notes =
+* {{sbc|Shipwrecker}} deals {{tip|proc damage}}, and thus will not trigger {{tip|spell effects}}.
+* {{sbc|Shipwrecker}} is not blocked by {{tip|spell shield}}.
+* {{sbc|Shipwrecker}} can apply against {{tip|turrets}}.
+* {{tip|blink|Blinks}} always grant 7 ''Momentum'' stacks, regardless of distance.
+* ''Momentum'' stacks will be generated even while {{tip|attach|attached}} to a unit.
+|strategy =
+|oldicons =
+|trivia =
+* '''Dead Man's Plate''' was first introduced during the {{tip|Black Market Brawlers}} [[Featured Game Mode]], and has later been added to all [[Field of Justice|maps]] after the Bilgewater event, Burning Tides, had ended.
+* {{cis|Gangplank}} pauldron is the '''Dead Man's Plate''', worn by him after his supposed "death" at the hands of {{ci|Miss Fortune}} in Act 3 of [[Burning Tides]].
+* The trailing visual effect for maximum {{sbc|Momentum}} is reused from {{cai|Unstoppable Onslaught|Sion}}, but shrunken down slightly.
+* {{Univ|Pentakill|Pentakill's}} second volume, [[Pentakill II: Grasp of the Undying]], named its fifth track after this item.
+[[File:Bilgewater Crest icon.png|link=Bilgewater#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Dead Man's Plate screenshot.png|Maximum Momentum VFX
+Dead Man's Plate attack screenshot.png|Maximum Momentum Attack VFX
+</gallery>
+|sfx =
+;Effect Active
+* {{sm2|Dead Man's Plate passive SFX.ogg}} Passive SFX
+* {{sm2|Dead Man's Plate passive SFX 5.ogg}} Passive SFX
+* {{sm2|Dead Man's Plate passive SFX 2.ogg}} Passive SFX
+
+;Effect Triggered
+* {{sm2|Dead Man's Plate passive SFX 3.ogg}} Passive SFX
+* {{sm2|Dead Man's Plate passive SFX 4.ogg}} Passive SFX
+|revisions =
+|patchhistory =
+;[[V25.08]]
+* Unsinkable slow resist reduced to 15% from 25%.
+
+;[[V25.05]]
+* {{sbc|Bug Fix:}} Restored Shipwrecker hit SFX when it is applied by a {{tip|ranged}} champion.
+
+;[[V14.19]]
+* Health increased to 350 from 300.
+* Armor increased to 55 from 45.
+* Movement speed reduced to 4% from 5%.
+* Shipwrecker maximum bonus movement speed reduced to 20 from 40.
+
+;[[V14.2]]
+* {{sbc|Bug Fix:}} ''Momentum'' stacks are no longer lost from attacking traps or jungle plants.
+
+;[[V14.1]]
+* {{sbc|New Unique Passive - Unsinkable:}} Gain 25% {{tip|slow resist}}.
+* {{sbc|Removed:}} {{tip|Melee}} champions no longer cause their next basic attack on-hit at maximum stacks to apply a 50% {{tip|slow}} for 1 second.
+* {{sbc|Removed:}} Stacks no longer decay by 15 every {{fd|0.25}} seconds while the user is {{tip|immobilize|immobilized}}.
+* Now limits the user to 1 {{sbc|Momentum}} item.
+
+;[[V12.12]]
+* {{sbc|Bug Fix:}} Cast SFX is no longer audible in the Fog of War when it shouldn't be.
+
+;[[V11.14]]
+* Armor increased to 45 from 40.
+
+;[[V11.13]]
+* Momentum charge time reduced to {{fd|3.75}} seconds from 5.
+** Stacks per tick ({{fd|0.25}} seconds) of movement increased to 7 from 5.
+* Shipwrecker maximum bonus movement speed reduced to 40 from 60.
+* Shipwrecker damage per stack reduced to {{fd|0.4}} from 1.
+** Shipwrecker maximum damage reduced to 40 from 100.
+* {{sbc|New Effect:}} Shipwrecker damage now scales with {{as|{{pp|0 to 100 for 11|0 to 100|key=%|type=stacks of Momentum|formula=1% for every 1 stack of Momentum, capped at 100}} '''base''' AD}}.
+* Shipwrecker damage type changed to physical from magic.
+
+;[[V11.9]]
+* Health reduced to 300 from 400.
+
+;[[V11.3]]
+* Health reduced to 400 from 475.
+
+;[[V10.24]]
+* Updated icon.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Winged Moonplate}} + {{ii|Ruby Crystal}} + {{ii|Chain Vest}} + {{g|900}} = {{g|2900}}.
+** {{sbc|Stats:}} 475 health, 40 armor, 5% movement speed.
+** {{sbc|Unique Passive - Shipwrecker:}} While moving, generates 5 stacks of ''Momentum'' each {{fd|0.25}} seconds, granting up to {{as|60 '''bonus''' movement speed}} at 100 stacks after 5 seconds of moving. ''Momentum'' decays by 15 every {{fd|0.25}} seconds while {{tip|immobilize|immobilized}}. Attacks deal {{as|1 magic damage}} on-hit per stack of '' Momentum'', consuming all stacks. At max stacks, the target is also {{tip|slow|slowed}} by 50% for 1 second if the attacker is {{tip|melee}}.
+** Limited to 1 '''Dead Man's Plate'''.
+** {{sbc|Removed:}} Damage no longer applies {{sti|life steal}}, for being {{as|magic damage}}.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Chain Vest}} + {{ii|Giant's Belt}} + {{g|1100}} = {{g|2900}}.
+** {{sbc|Stats:}} 425 health, 60 armor.
+** {{sbc|Unique Passive - Dreadnought:}} Generates a maximum of 100 ''Momentum'' stacks by moving, which grant up to {{as|60 '''bonus''' movement speed}}. ''Momentum'' decays by 3 every {{fd|0.25}} seconds while {{tip|immobilize|immobilized}}.
+** {{sbc|Unique Passive - Crushing Blow:}} Basic attacks discharge all stacks to deal {{as|(1 per stack) '''bonus''' magic damage}} on-hit, up to 100. Basic attacks at 100 stacks also {{tip|slow}} by 50% for 1 second. This damage can {{tip|critical strike|critically strike}}.
+** {{sbc|Limits:}} On {{tip|ranged}} champions, {{sbc|Crushing Blow}} cannot {{tip|slow}}. However, ''Momentum'' will still discharge on-hit.
+
+;[[V10.20]]
+* {{sbc|Bug Fix:}} Certain empowered basic attacks no longer grant double {{ri|Conqueror}} stacks when the champion in question has '''Dead Man's Plate'''.
+* {{sbc|Undocumented:}} {{ci|Mordekaiser}} is no longer granted an additional stack of {{ai|I|Mordekaiser}} per basic attack. (before - [https://youtu.be/2wfHUSl1-Yo])
+
+;[[V8.12]]
+* {{sbc|Bug Fix:}} Crushing Blow now properly deals magic damage for ranged users.
+
+;[[V8.6]]
+* {{sbc|Crushing Blow}} damage changed to magic from physical.
+* {{sbc|Removed:}} Being slow or basic attacking discharging stacks.
+* {{sbc|New Effect:}} Basic attacks can now discharge all stacks to deal 1 bonus damage per stack. ''Slow remains at 100 stacks and for melee only.''
+* {{sbc|New Effect:}} Basic attacking now locks out Momentum generation until your attack timer resets.
+
+;[[V7.9]]
+* Health reduced to 425 from 500.
+* Armor increased to 60 from 50.
+* Maximum stack generation per second increased to 20 from {{fd|12.5}}.
+* {{sbc|Crushing Blow's}} slow no longer decays over the duration.
+* {{sbc|New Effect:}} Now only deal bonus damage on basic attacks when at full stacks.
+* {{sbc|New Effect:}} When not at full stacks, basic attacks now reduces stack count by 15.
+
+;[[V6.3]]
+* Total cost increased to {{g|2900}} from {{g|2800}}.
+** Combine cost increased to {{g|1100}} from {{g|1000}}.
+* {{sbc|Crushing Blow}} slow reduced to 50% from 75%.
+
+;[[V5.24]]
+* Health reduced to 500 from 600.
+
+;[[V5.22]]
+* Total cost increased to {{g|2800}} from {{g|2750}}.
+
+;[[V5.18]]
+* Tooltip updated to clarify that silences and blinds do not affect momentum generation/decay.
+* Fixed a bug where {{ai|Whimsy|Lulu}} was not affecting ''Momentum''.
+
+;[[V5.16]]
+* Total cost reduced to {{g|2750}} from {{g|2800}}.
+* Health increased to 600 from 580.
+* Armor reduced to 50 from 55.
+
+;[[V5.15]] - (2015-08-10 - Black Market Brawlers end)
+* Now available on [[Summoner's Rift]].
+* Armor increased to 55 from 50.
+
+;[[V5.14]] - Added (2015-07-30 - Black Market Brawlers release)
+* {{ii|Dead Man's Plate}}
+** {{sbc|Recipe:}} {{ii|Chain Vest}} + {{ii|Giant's Belt}} + {{g|1000}} = {{g|2800}}.
+** {{sbc|Stats:}} 580 health and 50 armor.
+** {{sbc|Unique Passive - Dreadnought:}} You build Momentum stacks while moving, up to 100, granting up to 60 bonus movement speed. Momentum rapidly decays while under immobilizing crowd control effects, and decays slowly while slowed.
+** {{sbc|Unique Passive - Crushing Blow:}} Basic attacks discharge all Momentum, dealing 1 bonus physical damage for every 2 momentum. If 100 stacks are discharged, the damage is doubled; if this attack is melee, the target will also be slowed for 75%, decaying over 1 second.
+** {{sbc|Caption:}} ''"There's only one way you'll get this armor from me..."'' - forgotten namesake
+}}
+
+
+[[de:Panzer des toten Mannes]]
+[[pl:Pancerz Umrzyka]]
+[[ru:Броня мертвеца]]
+[[Category:Items with passive abilities]]

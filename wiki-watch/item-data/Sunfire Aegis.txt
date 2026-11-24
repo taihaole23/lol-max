@@ -1,0 +1,30 @@
+["Sunfire Aegis"] = {
+    	["id"]                  = 3068,
+    	["nickname"]            = {"burn", "sunborn", "sunfire"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Immolate",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["tank"]            = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 10,
+            ["armor"]           = 50,
+            ["hp"]              = 350,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Immolate",
+                ["unique"]      = true,
+                ["description"] = "Taking or dealing damage activates this passive for 3 seconds. Deal {{as|20 {{as|(+ {{fd|1.5}}% '''bonus''' health)}} magic damage|magic damage}} every second to enemies within {{tip|cr|icononly = true}} 325 (+ 100% '''bonus''' [[size]]) units, with the damage being increased to 150% against {{tip|minions}} and to 180% against {{tip|monsters}}. This executes minions that would be killed by one more tick of damage.",
+            },
+        },
+        ["recipe"]              = {"Bami's Cinder", "Chain Vest", "Ruby Crystal"},
+        ["buy"]                 = 2800,
+    },

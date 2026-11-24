@@ -1,0 +1,30 @@
+["Mortal Reminder"] = {
+        ["id"]                  = 3033,
+        ["nickname"]            = {"grievous", "grievous wounds"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Fatality",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 35,
+            ["armpen"]          = 30,
+            ["crit"]            = 25,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Grievous Wounds",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{as|physical damage}} to enemy champions inflicts them with {{tip|Grievous Wounds}} for 3 seconds.",
+            },
+        },
+        ["recipe"]              = {"Executioner's Calling", "Last Whisper", "Cloak of Agility"},
+        ["buy"]                 = 3000,
+    },

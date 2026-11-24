@@ -7,11 +7,10 @@
 //   On-hit damage only benefits from earlier stacks.
 // - Non-basic damage adds at most one stack per frame. We treat "same time" as "same frame",
 //   so each dagger adds one stack, however many physical pieces it has.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Black_Cleaver", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Black_Cleaver", patch: "26.23" },
   armorReductionPerStack: 0.06,
   maxStacks: 5,
 };

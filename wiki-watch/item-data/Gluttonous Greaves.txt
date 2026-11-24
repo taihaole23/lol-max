@@ -1,0 +1,26 @@
+["Gluttonous Greaves"] = {
+        ["id"]                  = 3008,
+        ["nickname"]            = {"boots"},
+        ["tier"]                = 2,
+        ["type"]                = {"Boots"},
+        ["caption"]             = "\"I will drown them in oceans of blood. —Aatrox\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = false,
+        },
+        ["stats"] = {
+            ["msflat"]          = 45,
+            ["omnivamp"]        = 4,
+        },
+        ["effects"] = {
+            ["pass"] = {
+            	["name"]        = "Slay",
+            	["unique"]      = true,
+                ["description"] = "Scoring a {{tip|takedown}} against an enemy champion grants you {{as|{{fd|0.6}}% omnivamp}}, stacking up to 10 times for a total of {{as|6%|omnivamp}}.",
+            },
+        },
+        ["recipe"]              = {"Boots"},
+        ["buy"]                 = 1100,
+    },

@@ -1,0 +1,42 @@
+["Manamune"] = {
+        ["id"]                  = 3004,
+        ["nickname"]            = {"Muramana", "tear"},
+        ["tags"]                = {"HasOnHit"},
+        ["tier"]                = 3,
+        ["type"]                = "=>Muramana",
+        ["itemlimit"]           = "Manaflow",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["marksman"]        = true,
+            ["assassin"]        = true,
+            ["onhit effects"]   = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 35,
+            ["ah"]              = 15,
+            ["mana"]            = 500,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Awe",
+                ["unique"]      = true,
+                ["description"] = "Grants {{as|'''bonus''' attack damage}} equal to {{as|2% '''maximum''' mana}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Manaflow",
+                ["unique"]      = true,
+                ["description"] = "Grants a charge every 8 seconds, up to 4 charges. Consumes a charge [[on-hit]] and whenever affecting an enemy or ally with an [[champion ability|ability]] to grant {{as|3 '''bonus''' mana}}, increased to {{as|6|mana}} for champion targets, up to a '''maximum''' of {{as|360 '''bonus''' mana}}. Can only be triggered once per {{tip|cast instance}}.",
+            },
+            ["pass3"] = {
+                ["description"] = "Transforms into {{ii|Muramana}} at {{as|360 '''bonus''' mana}}.",
+            },
+        },
+        ["recipe"]              = {"Tear of the Goddess", "Caulfield's Warhammer", "Long Sword"},
+        ["buy"]                 = 2900,
+    },

@@ -7,9 +7,26 @@ import { simulateBuild } from "../src/simulation/simulate-build.ts";
 import type { RRank } from "../src/formulas/death-lotus.ts";
 import type { Target } from "../src/simulation/simulate.ts";
 
-// The patch the measurements were taken on. If the site's patch changes, the test fails until
-// the measurements are redone (an old measurement can't prove the new numbers right).
+// ---- Are the measurements still valid after a patch? (Eric: no re-measuring everything every 2 weeks.) ----
+//
+// A measurement stays valid until a patch changes something it depends on. Every case depends on:
+//   Katarina (stats, Death Lotus), the game rules in src/data/game-rules.ts (armor / MR, stat
+//   growth...) and the Practice Tool dummy (src/data/practice-tool.ts).
+// Each case also depends on its own items (their stats AND passives).
+//
+// On patch day (/patch-day), each case is checked against what changed:
+//   - nothing it depends on changed → still valid: `stillValidOnPatch` moves to the new patch.
+//   - something changed → the case goes into `needsRemeasuring` with the reason. Its comparison is
+//     SKIPPED (an old measurement can't prove new numbers right, either way) until Eric redoes it.
+// The test fails only if `stillValidOnPatch` is behind the site's patch, meaning nobody checked yet.
+
+// The patch the measurements were taken on (unless a case says otherwise with `measuredOn`).
 export const measuredOnPatch = "26.23";
+// The newest patch on which every measurement NOT in `needsRemeasuring` was confirmed still valid.
+export const stillValidOnPatch = "26.23";
+// Cases whose measurement a patch made out of date: case id → what changed. Skipped until redone.
+// After re-measuring: put in the new numbers, set the case's `measuredOn`, and remove it from here.
+export const needsRemeasuring: Record<string, string> = {};
 
 export type PracticeCase = {
   id: string;
@@ -22,6 +39,7 @@ export type PracticeCase = {
   // The dummy's HP read off its HP bar right after the ult. The more reliable reading: the counter
   // adds one physical hit that never happened (see practiceDummy.counterExtraRPhysicalHits).
   hpAfter?: number[];
+  measuredOn?: string; // only when re-measured on a later patch than measuredOnPatch
 };
 
 // The dummy as the calculator sees it. It starts at 1000 HP and 0 armor / MR, so everything added

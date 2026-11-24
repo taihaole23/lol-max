@@ -9,11 +9,10 @@
 // SIMPLIFICATION: in the game, Galvanize also fires the OTHER Energized items in the build
 //   (unshrunk). We still let those proc on dagger 1's on-hit at R's %. Only matters for
 //   Voltaic + Rapid Firecannon / Stormrazor; e.g. Stormrazor's 100 would be 35 instead of 100.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Voltaic_Cyclosword", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Voltaic_Cyclosword", patch: "26.23" },
   currentHealthDamage: 0.08,
   meleeLethality: 15,
 };

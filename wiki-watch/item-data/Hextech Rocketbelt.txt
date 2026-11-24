@@ -1,0 +1,32 @@
+["Hextech Rocketbelt"] = {
+    	["id"]                  = 3152,
+    	["nickname"]            = {"protobelt", "rocket belt"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+            ["movement"]		= true,
+        },
+        ["stats"] = {
+            ["ah"]              = 10,
+            ["ap"]              = 60,
+            ["hp"]              = 350,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Supersonic",
+                ["unique"]      = true,
+                ["description"] = "{{tip|Dash}} 275 units in the target direction, though not through terrain, then unleash an arc of 7 rockets forward which travel up to 1050 units; and upon collision with an enemy or terrain, explode in a {{tip|cr|icononly = true}} {{tt|185-radius|estimated}} area. Enemies within {{tt|85 units|center-to-edge, estimated}} of your dash and ones hit by any rocket's explosion are dealt {{as|135 {{as|(+ 15% AP)}} magic damage|magic damage}}, once per cast.",
+                ["description2"]= "''Supersonic'' {{tip|basic attack reset|resets}} the user's [[basic attack]] timer.",
+                ["cd"]          = "50",
+            },
+        },
+        ["recipe"]              = {"Hextech Alternator", "Kindlegem", "Ruby Crystal"},
+        ["buy"]                 = 2650,
+    },

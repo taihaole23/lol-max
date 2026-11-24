@@ -1,0 +1,18 @@
+["Sorcerer's Shoes"] = {
+        ["id"]                  = 3020,
+        ["nickname"]            = {"boots", "sorcs"},
+        ["tier"]                = 2,
+        ["type"]                = {"Boots"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["stats"] = {
+            ["mpenflat"]        = 12,
+            ["msflat"]          = 45,
+        },
+        ["recipe"]              = {"Boots"},
+        ["buy"]                 = 1100,
+    },

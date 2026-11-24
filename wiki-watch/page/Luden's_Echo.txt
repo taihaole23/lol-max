@@ -1,0 +1,148 @@
+: ''For its predecessor, see {{ii|Luden's Companion}}.''
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems =Actualizer;Archangel's Staff;Blackfire Torch;Malignance;Rod of Ages
+|background =
+|notes =
+* {{sbc|Echo}} deals {{tip|proc damage}}, and thus will not trigger [[spell effects]].
+* {{sbc|Echo}} is blocked by {{tip|spell shield}}.
+* {{sbc|Echo}} is an [[auto-targeted]] effect.
+* {{sbc|Echo's}} bolts are {{tip|projectiles}}.
+* {{sbc|Echo's}} remaining charges against the primary target deal their additional damage in {{fd|0.25}}-second intervals.
+** This means it takes {{pp|0.25 to 1.25 for 5|1 to 5|type=remaining charges}} seconds for the damage of all the charges to be dealt.
+|strategy =
+|oldicons =
+|trivia =
+* This item was designed to replace the removed {{ii|Deathfire Grasp}} as the third high-end AP item.
+* The name "Luden's Echo" was data-mined from the [[VPBE|PBE]] update pushed on 2015-02-17.<ref>http://www.surrenderat20.net/2015/02/217-pbe-update.html</ref> The item was later enabled for testing with placeholder name "Item 3285".
+* The name "Luden's Echo" comes from a player who reached 1000 referrals on the old [[Refer-A-Friend]] system.<ref>http://www.reddit.com/r/leagueoflegends/comments/2ysdns/who_is_luden_and_why_does_he_get_an_item_named/cpcukll</ref>
+* During testing on the [[VPBE|PBE]], the item's icon was a purple recolor of {{ii|Statikk Shiv}}.
+[[File:Void Crest icon.png|link=The Void#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Luden's Companion trigger VFX.png|Trigger VFX
+Luden's Companion charge spread VFX.png|Charge Spread VFX
+Luden's Companion charge hit VFX.png|Charge Hit VFX
+</gallery>
+|sfx =
+;Passive Triggered
+* {{sm2|Luden's Tempest passive SFX.ogg}} Passive SFX
+* {{sm2|Luden's Tempest passive SFX 2.ogg}} Passive SFX
+* {{sm2|Luden's Tempest passive SFX 3.ogg}} Passive SFX
+|revisions =
+<tabber>Hide=
+|-|V10.22 version=
+{{Infobox item
+|disp_name = Luden's Echo
+|sub_name  = V10.22
+|icon      = Luden's Echo item old
+|ap        = 90
+|cdr       = 10
+|mana      = 600
+|pass      = {{Unique|Haste|Grants an additional 10% cooldown reduction.}}
+|pass2     = {{Unique|Echo|Grants 1 charge per 35 units traveled by any means or 10 charges per ability cast. At 100 charges, the next instance of [[spell effects|ability damage]] dealt expends all charges to deal {{as|100 {{as|(+ 10% AP)}} '''bonus''' magic damage|magic damage}} to the {{tt|first enemy hit|On area of effect abilities, spell effects prioritize enemies based on proximity}} and to 3 enemies within a {{tip|cr|icononly = true}} 600 radius, prioritizing enemies damaged by the ability and [[champion]]s over [[minion]]s.}}
+|recipeold =
+{{Recipe
+|result = Luden's Echo
+|variant= old
+|total  = 3200
+|cost   = 1050
+|t1     = {{Recipe
+  |result = Lost Chapter
+  |variant= old
+  |total  = 1300
+  |cost   = 80
+  |t1     = {{Recipe/item|Amplifying Tome|435|variant=old}}
+  |t2     = {{Recipe/item|Sapphire Crystal|350|variant=old}}
+  |t3     = {{Recipe/item|Amplifying Tome|435|variant=old}}
+}}
+|t2     = {{Recipe/item|Blasting Wand|850|variant=old}}
+}}
+|buy       = 3200
+|sell      = 2240
+|code      = 3285
+}}
+* {{ii|Luden's Pulse}} stats: 120 ability power, 10% cooldown reduction, 850 mana. Item ID: 3390.
+</tabber>
+|patchhistory =
+;[[V26.01]] - Re-added
+* ''Replaces {{ii|Luden's Companion}}.''
+* {{sbc|Recipe:}} {{ii|Lost Chapter}} + {{ii|Hextech Alternator}} + {{g|450}} = {{g|2750}}.
+* {{sbc|Stats:}} 100 ability power, 600 mana, 10 ability haste.
+* {{sbc|Unique Passive - Echo:}} Gain 6 ''Echo'' stacks. Dealing [[ability damage]] to an enemy consumes all ''Echo'' stacks to deal {{as|75|magic damage}} {{as|(+ 5% AP)}} {{as|'''bonus''' magic damage}} to them and, for each stack consumed beyond the first, an additional enemy within {{tip|cr|icononly=true}} 600 units of them, firing an orb at each secondary target that impacts after {{rutngt|0.5}} to deal the damage. If the number of additional targets fired at is less than the number of stacks consumed,{{ft|deal an additional {{as|{{pp|75*0.2 to 75*5*0.2 for 5|1 to 5|changedisplay=true|type=remaining ''Echo'' stacks}}|magic damage}} {{as|(+ {{pp|key=%|5*0.2 to 5*5*0.2 for 5|1 to 5|type=remaining ''Echo'' stacks|changedisplay=true|showtype=false}} AP)}} {{as|magic damage}} to the primary target, for a total of {{as|{{pp|(75*0.2)+75 to (75*5*0.2)+75 for 5|1 to 5|type=remaining ''Echo'' stacks|changedisplay=true|showtype=false}}|magic damage}} {{as|(+ {{pp|key=%|(5*0.2)+5 to (5*5*0.2)+5 for 5|1 to 5|type=remaining ''Echo'' stacks|changedisplay=true|showtype=false}} AP)}}|deal an additional 20% damage to the primary target for each remaining ''Echo'' stack}} (12 second cooldown).
+* Limited to 1 '''Luden's Echo'''.
+
+;[[V10.23]] - Removed
+* Removed from the game.
+* ''Replaced by {{ii|Luden's Tempest}}.''
+
+;[[V10.18]] (Exact patch unknown)
+* {{sbc|Undocumented/Bug Fix:}} {{ii|Luden's Pulse}} base damage to primary target increased to 100 from 60.
+
+;[[V10.16]]
+* {{sbc|Undocumented:}} {{ii|Luden's Echo}} base damage to primary target increased to 100 from 60.
+** ''{{ii|Luden's Pulse}} base damage to secondary targets still 60.''{{bug}}
+
+;[[V10.15]]
+* {{sbc|Undocumented:}} {{ii|Luden's Echo}} base damage to primary target reduced to 60 from 100. ''Base damage to secondary targets is still 100.''
+* {{sbc|Undocumented:}} {{ii|Luden's Pulse}} base damage to primary target increased to 100 from 60. ''Base damage to secondary targets is still 60.''
+
+;[[V9.1]]
+* Added to recipe from {{ii|Luden's Pulse}}. ''Can only be forged by {{ci|Ornn}}.''
+
+;[[V8.9]]
+* {{sbc|New Recipe:}} {{ii|Lost Chapter}} + {{ii|Blasting Wand}} + {{g|1050}} = {{g|3200}}.
+** {{sbc|Old Recipe:}} {{ii|Lost Chapter}} + {{ii|Amplifying Tome}} + {{ii|Blasting Wand}} + {{g|915}} = {{g|3300}}.
+* Mana increased to 600 from 500.
+
+;[[V8.4]]
+* {{sbc|New Recipe:}} {{ii|Lost Chapter}} + {{ii|Amplifying Tome}} + {{ii|Blasting Wand}} + {{g|915}} = {{g|3300}}.
+** {{sbc|Old Recipe:}} {{ii|Needlessly Large Rod}} + {{ii|Aether Wisp}} + {{g|1100}} = {{g|3200}}.
+* Ability power reduced to 90 from 100.
+* {{sbc|Removed:}} +10% bonus movement speed.
+* {{sbc|New Effect:}} Grants 500 mana.
+* {{sbc|New Effect:}} Grants 10% cooldown reduction.
+* {{sbc|New Unique Passive - Haste:}} Grants an additional 10% cooldown reduction.
+
+;[[V5.22]]
+* Combine cost increased to {{g|1100}} from {{g|900}}.
+** Total cost increased to {{g|3200}} from {{g|3000}}.
+
+;[[V5.14]]
+* Recipes for different maps merged.
+
+;[[V5.13]]
+* Combine cost increased to {{g|900}} from {{g|650}}.
+** Total cost reduced to {{g|3000}} from {{g|3100}}.
+* Ability power reduced to 100 from 120.
+* Movement speed increased to 10% from 7%.
+
+;[[V5.11]]
+* {{ii|Luden's Echo}} charges stacks at a rate of 10 stacks per spell cast instead of 20.
+* Damage reduced to 100 {{as|(+ 10% AP)}} from 100 {{as|(+ 15% AP)}}.
+
+;[[V5.7]]
+* Brought back to [[Twisted Treeline]] and [[Crystal Scar]].
+** Recipe on [[Twisted Treeline]] and [[Crystal Scar]]: {{ii|Blasting Wand}} + {{ii|Aether Wisp}} + {{g|1090}} = {{g|2800}}.
+** +100 ability power (increased to {{as|120|AP}} on both [[Summoner's Rift]] and [[Howling Abyss]])
+* VFX for the proc affect updated.
+
+;[[V5.6]]
+* Removed from [[Twisted Treeline]] and [[Crystal Scar]].
+
+;[[V5.5]]
+* Added to the game.
+**Replaces {{ii|Deathfire Grasp}} after its removal in [[V5.2]].
+** Recipe: {{ii|Needlessly Large Rod}} + {{ii|Aether Wisp}} + {{g|650}} = {{g|3100}}.
+** +120 ability power
+** +7% movement speed
+** {{sbc|Unique Passive:}} Gains charges upon moving or casting. At 100 charges, the next spell hit expends all charges to deal 100 {{as|(+ 15% AP)}} bonus magic damage to up to 4 targets on hit.
+}}
+
+
+[[de:Ludens Echo]]
+[[es:Eco de Luden]]
+[[pl:Echo Luden]]
+[[ru:Эхо Людена]]

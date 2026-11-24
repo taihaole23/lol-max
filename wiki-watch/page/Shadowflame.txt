@@ -1,0 +1,71 @@
+{{Item info
+|goldvalue =
+|goldefficiency =
+|goldvalue2 =
+|goldefficiency2 =
+|similaritems = Stormsurge;Horizon Focus;Rabadon's Deathcap;Zhonya's Hourglass;Banshee's Veil;Mejai's Soulstealer;Sorcerer's Shoes
+|notes =
+* {{sbc|Cinderbloom}} uses the following formula to calculate the damage for its critical strike: <math>{\rm increased\ damage}={\rm base\ damage}+(({\rm base\ damage}\times 0.2)\times ({\rm product\ of\ all\ critical\ damage\ modifiers}))</math>.
+** For example, if an ability deals 100 damage by default, then it will critically strike for 120 damage: <math>{\rm 120}={\rm 100}+({\rm 100}\times 0.2)</math>.
+*** If the user has a critical damage modifier such as {{ii|Infinity Edge}}, the damage amplifier is increased to 26%. The ability will thus critically strike for 126 damage: <math>{\rm 126}={\rm 100}+(({\rm 100}\times 0.2)\times (1+0.3))</math>.
+*** If the target has critical strike damage reduction such as {{iis|Randuin's Omen}} {{nie|Resilience}}, which counts as a critical damage modifier for {{sbc|Cinderbloom}}, the damage amplifier is reduced to 14%. The ability will thus critically strike for 114 damage: <math>{\rm 114}={\rm 100}+(({\rm 100}\times 0.2)\times (1+(-0.3)))</math>.
+*** If the user has {{ii|Infinity Edge}} and the target has {{ii|Randuin's Omen}}, the damage amplifier is reduced to {{fd|18.2}}%, which is only slightly lower than the base amplifier of 20% due to the multiplicative nature of the modifiers. The ability will thus critically strike for {{fd|118.2}} damage: <math>118.2=100+100\times 0.2\times (1+0.3)\times(1-0.3)</math>.
+** If the damage dealt already critically strikes, {{sbc|Cinderbloom}} will stack multiplicatively with the critical strike damage multiplier.
+*** For example, if a damage instance critically strikes for 200% damage, {{sbc|Cinderbloom}} will stack with that multiplier multiplicatively for a total critical strike of 240% damage: <math>{\rm 2.4}={\rm 2}\times 1.2</math>.
+* {{sbc|Cinderbloom}} affects the damage dealt by all sources except [[summoner spell]]s.
+* {{sbc|Cinderbloom}} does not apply to damage dealt against [[structures]].
+* {{sbc|Cinderbloom}} only activates on damage instances against targets that are already below {{as|40% of their '''maximum''' health}}.
+|strategy =
+|trivia =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Shadowflame MR penetration VFX.png|Old Magic Penetration VFX
+</gallery>
+|revisions =
+|patchhistory =
+;[[V26.11]]
+* {{sbc|Bug Fix:}} Fixed a bug where it may not amplify certain on hit effects.
+
+;[[V25.12]]
+* {{sbc|Bug Fix:}} Cinderbloom once again correctly does not affect summoner spell damage (i.e., {{si|Ignite}}).
+
+;[[V14.19]]
+* Combine cost increased to {{g|900}} from {{g|850}}.
+** Total cost unchanged.
+* Ability power reduced to 110 from 115.
+* Cinderbloom damage over time and pet critical damage reduced to 120% from 125%.
+
+;[[V14.18]]
+* Ability power reduced to 115 from 120.
+* Magic penetration increased to 15 from 12.
+* Cinderbloom health threshold increased to {{as|40% of target's '''maximum''' health}} from {{as|35%|hp}}.
+* Cinderbloom damage over time and pet critical damage reduced to 125% from 130%.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Hextech Alternator}} + {{ii|Needlessly Large Rod}} + {{g|850}} = {{g|3200}}.
+** {{sbc|Stats:}} 120 ability power, 12 magic penetration.
+** {{sbc|Unique Passive - Cinderbloom:}} {{as|Magic damage}} and {{as|true damage}} {{tip|critical strike|critically strikes}} enemies below {{as|35% '''maximum''' health}} for 120% damage, increased to 130% damage for {{tip|persistent damage}} and {{tip|pet damage}}.
+** Limited to 1 '''Shadowflame'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Hextech Alternator}} + {{ii|Needlessly Large Rod}} + {{g|700}} = {{g|3000}}.
+** {{sbc|Stats:}} 200 health, 100 ability power.
+** {{sbc|Unique Passive - Cinderbloom:}} Dealing {{as|magic damage}} to champions ignores {{as|{{pp|type=target's '''current''' health|10 to 20 for 11|2500 to 1000}}|mr}} of their {{as|magic resistance}}, increased to '''maximum''' value if they were affected by a {{tip|shield}} within the last 5 seconds.
+** Limited to 1 '''Shadowflame'''.
+
+;[[V12.13]]
+* {{sbc|Bug Fix:}} Bonus damage tracker for Cinderbloom now displays accurate values.
+** "Bonus damage to shields" tracker removed, for now.
+
+;[[V12.12]]
+* {{sbc|Bug Fix:}} Additional magic damage dealt is no longer reduced by magic resist for an additional time.
+
+;[[V11.23]] - Added
+* {{sbc|Recipe:}} {{ii|Hextech Alternator}} + {{ii|Needlessly Large Rod}} + {{g|700}} = {{g|3000}}.
+* {{sbc|Stats:}} 100 ability power, 200 health.
+* {{sbc|Unique Passive - Cinderbloom:}} Damage against champions benefits from {{pp|type=target's '''current''' health|10 to 20 for 11|2500 to 1000}} magic penetration, increased to maximum value if the target was affected by a {{tip|shield}} within the last 5 seconds.
+* Limited to 1 '''Shadowflame'''.
+}}
+
+[[Category:Season 2022 item release]]
+[[ru:Сумрачное пламя]]

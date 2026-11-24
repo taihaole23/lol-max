@@ -1,0 +1,172 @@
+: {{Hatnote|''Also see: [[List of abilities|List of all abilities]].''}}
+
+A '''champion ability''' is a type of [[Terminology#Spell|spell]], or move, that is uniquely available to a certain [[champion]]. The entire set of a champion's abilities is commonly referred to as their ''kit''.
+
+== Terminology ==
+Champion abilities are a category of spells, and spells are ''[[Passive and active spell|cast]]'' (activated) in one of two ways, ''passively'' or ''actively''. This refers to the level of player input required. Each champion ability may feature any number of passive and/or active effects.
+
+Because the order of champion abilities on the player's HUD is immutable (unlike the [[inventory]] and [[summoner spell]] loadouts), champion abilities are distinguished by and can be referred to using the name of their ''key slot'' instead of their title, meaning the order on the player's HUD and its corresponding key. Those key slots are: I / [[File:Q.png|20px|border|link=|Q ability slot icon]] / [[File:W.png|20px|border|link=|W ability slot icon]] / [[File:E.png|20px|border|link=|E ability slot icon]] / [[File:R.png|20px|border|link=|R ability slot icon]]
+
+== Kit ==
+All of a champion's abilities together is called their '''kit'''. Most champions' '''kit''' follows a similar structure. An innate ability, a number of basic abilities—typically three—and an ultimate ability. Each ability may grant a number of effects or even have different behaviors.
+* {{sbc|Innate:}} An ''innate'' ability is learned as soon as the game starts and cannot be improved via skill points. All champions have one innate ability available that defines their play style or strategy.
+* {{sbc|Basic ability:}} A ''basic ability'' is part of a champion's common and repeatable move set.
+* {{sbc|Ultimate:}} The ''ultimate'' ability is a champion's signature ability. It involves high-potency effects that can change the game.
+* {{sbc|Pseudo-Ultimate}}: A ''pseudo-ultimate'' is an ability classified as an ultimate for effects that interact with ultimate abilities ("ultimate effects"), such as {{cai|Hijack|Sylas}} and {{ri|Axiom Arcanist}}, but deviates greatly from the typical design. This includes transforming champions' transformation ability, low-cooldown abilities like {{cai|Portal Jump|Zoe}}, as well as abilities that upgrade other abilities to new ones upon casting the pseudo-ultimate.
+
+A circle next to champions in the scoreboard portraits represents their ultimate/R slot, which can be [[ping]]ed to display various information in [[chat]]. For allies, who are also shown in the portraits at the edge of the player's screen, the circle also displays the status of their ultimate, and the exact cooldown is shown to the team whenever pinged. If the ally's ultimate/R slot is on cooldown, the circle fills up radially as the cooldown elapses. The circle is black while the respective ability has not been learned, blue while counting its cooldown, and green while the ability is available.
+
+== List of abilities ==
+For a page listing all Champion abilities, see below:
+
+<p style="text-align:center;font-size:30px">Main article: [[List of abilities]]</p>
+
+== Skill Points ==
+No champion has their entire kit available at once and at its full potency right from the start of a game. For this purpose, '''skill points''' exist that players can obtain and spend (allocate) in ''learning'' and ''ranking'' their preferred abilities. An ability becomes immediately available to use upon learning it (conditions to cast a component must still be fulfilled).
+
+Each ability slot can have a maximum number of skill points that players can spend on, strictly from zero to six.
+* Innate abilities cannot be ranked up via skill points.
+* Basic abilities usually have five ranks at most.
+* Ultimate abilities usually have three ranks at most.
+
+Abilities can be referred to by the number of skill points spent on them, with unlearned abilities being considered rank zero. Ability ranks are denoted via the number of ranks before their slot letter (e.g. <code>3Q</code> means the Q slot at rank 3).
+
+Abilities at rank zero that grant a passive effect corresponding to another ability may affect the latter at a different potency. Examples include:
+* {{cai|Searing Brilliance|Mel|Overwhelm}} stored damage is increased with each rank in {{ai|Golden Eclipse|Mel}}.
+* {{cai|Across the Veil|Aurora}} ''Realm Hopper'' {{sti|ms|movement speed}} is increased with each rank in the ability but it is also granted by {{ai|Between Worlds|Aurora}}.
+
+=== Obtaining skill points ===
+One skill point is obtained each time the champion {{stil|xp|levels up}}, with the first being granted at level 1 always, and a maximum of 18 possible from leveling up. One additional skill point can be obtained by consuming {{ii|Elixir of Skill}}, a distributed item. This is always true in all game modes, as the number of an ability's ranks cannot change.
+
+=== Spending skill points ===
+While available, skill points can be spent by clicking on the corresponding arrow in the grid above the respective slot in the HUD, or using the respective [[hotkeys]] (default: {{sbc|Ctrl}} + {{sbc|Q}} / {{sbc|Ctrl}} + {{sbc|W}} / {{sbc|Ctrl}} + {{sbc|E}} / {{sbc|Ctrl}} + {{sbc|R}}).
+
+Note that the same grid and leveling system is used for {{cai|Glorious Evolution|Viktor}} ''augments'', though it is independent of and takes precedence over ability ranking, and that {{ci|Hwei}} is forbidden from spending skill points while in any of his three moods even while he has skill points available.
+
+=== Ranking order & rules ===
+The order in which a player spends skill points in each ability slot as they are obtained is referred to as their ''skill order''. However, there are certain rules that the game enforces on ''skill order'' for game balance purposes, in order to render matches more uniform and intuitive, and to incentivize players to employ their entire kit.
+* The first skill point can be spent on any '''basic''' ability.
+** {{cai|Burst Fire|Zeri}} is uniquely learned at the start of the game automatically, with the first skill point being expended.
+** {{ci|Azir}} must rank {{ai|Arise!|Azir}} as his first ability, and will do so automatically if he reaches level 2 before ranking an ability.
+** {{cai|You and Me!|Yuumi}}, as well as certain pseudo-ultimate abilities that correspond to the R slot are already learned at the start of the game, but the first skill point is still available for ranking a basic ability.
+* Beyond level 1, the current rank of any ability cannot exceed half the champion's current level rounded down. This rule practically limits each new rank for the same ability to every odd, single-digit level.
+* Ultimate abilities can only be learned/ranked upon reaching levels 6, 11, 16.
+
+<!--* {{cis|Aphelios}} basic and ultimate abilities uniquely do not feature ranks and are not improved via skill points. However his innate, {{ai|The Hitman and the Seer|Aphelios}}, does features ranks that grant him [[stat]] bonuses.
+-->
+Skill order is denoted by typing out each slot's letter that the player spends each skill point on in succession, without any spaces: e.g. EQWEQRE…
+
+The order in which a player maxes out the ranks of their abilities as soon as ranking them becomes available is referred to as their ''max order''. Since ultimate abilities are very potent and thus players are generally always incentivized to learn and rank them up as they become available, the ultimate ability (R slot) tends to be omitted when referring to the max order. Common conventions for notation include e.g. "E > Q > W" and permutations of such.
+
+Certain champions are required to learn certain abilities to use some others. This includes:
+* {{cai|Conquering Sands|Azir}} and {{ai|Shifting Sands|Azir}} require {{ai|Arise!|Azir}}.
+* {{cai|Spirit's Refuge|Shen}} requires {{ai|Twilight Assault|Shen}}.
+* {{cai|Bladecaller|Xayah}} requires either {{ai|Double Daggers|Xayah}} or {{ai|Deadly Plumage|Xayah}}.
+* {{cai|Rewind|Zilean}} requires either {{ai|Time Bomb|Zilean}} or {{ai|Time Warp|Zilean}}.
+* {{cai|Rampant Growth|Zyra}} requires either {{ai|Deadly Spines|Zyra}} or {{ai|Grasping Roots|Zyra}}.
+
+== Components ==
+: ''Any given ability can possess one or more of the following components (combinations may vary)''
+* {{sbc|Scaling:}} Abilities increase in potency and/or strength through a portion of certain [[Champion statistic|stats]] that the champion has acquired, such as from [[item]]s and/or [[rune]]s.
+* {{sbc|Cost:}} Most abilities require the champion to expend a [[Ability resource|resource]] cost ({{sti|mana|link=true}}, {{sti|energy|link=true}}, {{sti|health|link=true}} or other) in order to be cast, becoming unable to do so if they possess less than the required amount (the ability's HUD icon will turn blue).
+** Toggles continuously consume a resource until the ability is toggled off manually or does so automatically upon resource depletion.
+** Resourceless champions do not have costs on their abilities.
+* {{sbc|Cooldown:}} Champions must wait a certain length of time before they can use the same ability again via a {{sti|cooldown|link=true}}. This wait can be shortened by the [[haste]] stat.
+* {{sbc|[[Ammunition|Ammo]]:}} Some abilities run on charges (as opposed to a cooldown) in order to be used.
+** '''Stock:''' Activation charges are generated periodically up to a maximum (recharge time is affected by ability haste)
+** '''Barrage:''' Charges are generated upon activating the ability, and are available for the duration (all unused charges are lost when it ends). Used charges incur no additional resource costs, but are gated with static recast cooldowns.
+* {{sbc|[[Range]]:}} Describes the number of units the caster and the target must be from one another in order for the ability to be cast / to hit (hitbox collision detection determines if the range used is {{tip|center range|center-based}} or {{tip|edge range|edge-based}}).
+** In-game tooltips do not display either range or targeting (visually drawn by placing the cursor over an ability's icon on the HUD)
+** Some abilities feature an unlimited global range, commonly ultimates.
+* {{sbc|[[Cast time]]:}} Abilities may incur a casting time in which the champion is unable to perform any other actions for a short period of time until the ability takes effect (can only be interrupted by the champion's [[death]]). Cast times are measured in seconds and commonly last for {{fd|0.25}}, {{fd|0.5}}, and 1 second(s). They prevent abilities from triggering their effects instantaneously.
+** A cast may include a ''lockout'' that prevents certain actives until afterward (buffer), or disables them entirely. This lockout can extend past the cast time up until the ability ends.
+* {{sbc|[[Channel]]:}} Abilities may incur a channeling time in which the champion is either unable to or must not perform any other actions for a period of time in order for the ability to successfully take effect during the time of the channel or after it completes. Channels can be interrupted by the caster themselves by performing certain actions that would do so (unless otherwise stated) and all forms of {{tip|cast-inhibiting crowd control}} in addition to {{tip|disrupt}}.
+** A special form of channel includes charged abilities, where the caster must maintain their channel in order to increase the ability's effectiveness over the duration. These abilities have both an active and a recast component.
+* {{sbc|Stance:}} Causes the champion to ''shapeshift'' themselves and/or their abilities, gaining persistent effects (mutually exclusive) and/or temporary ones while losing others.
+** Rapid stance-swapping is usually regulated by a brief global cooldown in order to prevent a champion from continually accumulating temporary effects.
+** Some stances replace temporary effects by granting completely different basic abilities based on the active stance.
+* {{sbc|[[Champion summoned units|Summon]]:}} Champions can bring forth other units to assist them and/or their allies on the battlefield.
+* {{sbc|[[On-Action Effects]]:}} Abilities within a champion's kit can interact with certain actions and/or each other for synergistic effects and results.
+** Most abilities apply [[spell vamp]], [[omnivamp]] and/or [[spell effects]] from items and runes.
+*** A select few apply [[on-hit effect]]s and [[on-attack effect]]s (but only if specifically stated to be able to do so).
+
+== Effects ==
+: ''Any given ability can possess one or more of the following effects (combinations may vary)''
+* {{sbc|Combat:}} Enhances offensive and/or defensive aspects.
+** [[Damage]] allows champions to kill enemy units.
+** [[Buff]]s affect the caster and/or their allies for their benefit.
+** [[Debuff]]s affect the caster's enemies for their detriment.
+*** [[Crowd control]] is a special, standardized category of debuffs which temporarily disable certain actions enemies are allowed to perform or hinder other capabilities.
+* {{sbc|Utility:}} Enhances non-combat aspects.
+** {{tip|Blink|Blinks}}, {{tip|dash|dashes}}, {{sti|ms|hastes}} and {{tip|ghosting}} effects serve as forms of mobility for a champion, allowing them to reposition, move around obstacles, or close the gap to and create distance from their opponents.
+** {{tip|Heal|Healing}} provides a means of remaining in combat longer.
+** {{tip|Shield|Shields}} enhance survivability by absorbing damage to prevent health loss.
+** {{tip|Stealth}} grants {{tip|invisibility}} and {{tip|camouflage}} to avoid enemy detection.
+** {{tip|Invulnerability}} gives immunity to sources of enemy damage.
+** {{tip|Untargetability}} grants immunity to enemy focus-fire (preventing targeted abilities from acquiring a unit as a target)
+
+== Trivia ==
+=== General ===
+* {{ci|Hwei}} is currently the champion with the highest number of abilities in the game: 11 when excluding his subject selection spells, and 15 when including them.
+* {{ai|Spider Form|Elise}} / {{ai|Human Form|Elise}}, {{ai|Rage Gene|Gnar}}, {{ai|Transform Mercury Hammer|Jayce|Mercury Hammer}} / {{ai|Transform Mercury Cannon|Jayce|Mercury Cannon}}, {{ai|The Darkin Scythe|Kayn}}, {{ai|Skaarl the Cowardly Lizard|Kled}}, {{ai|Aspect of the Cougar|Nidalee}}, {{ai|Behind Enemy Lines|Quinn}} / {{ai|Skystrike|Quinn}}, and {{ai|Burrow|Rek'Sai}} / {{ai|Unburrow|Rek'Sai}}, are stance abilities that 'shapeshift' their wielders, granting them one or more extra basic abilities.
+
+=== Innate abilities ===
+* {{ai|Moonsilver Blade|Diana}}, {{ai|Nimble Fighter|Fizz}}, {{ai|Searing Brilliance|Mel}}, {{ai|Darkness Rise|Mordekaiser}}, {{ai|Living Forge|Ornn}}, {{ai|Pit Grit|Sett}}, {{ai|Crimson Pact|Vladimir}}, {{ai|Way of the Wanderer|Yasuo}}, {{ai|Way of the Hunter|Yone}} and {{ai|Cell Division|Zac}} are innate abilities featuring two or more independent effects.
+* {{ai|Spider Queen|Elise}} and {{ai|Aspect of the Cougar|Nidalee}} are the only innate abilities with two effects that stack with others and/or with abilities.
+* {{ai|Death Defied|Karthus}}, {{ai|Icathian Surprise|Kog'Maw}}, and {{ai|Glory in Death|Sion}} are the only innate abilities that allow for post-{{tip|death}} activity.
+* {{ai|Shurima's Legacy|Azir}}, {{ai|Prophet of an Elder God|Illaoi}} and {{ai|Garden of Thorns|Zyra}} are the only summon innate abilities.
+* {{ai|Rage Gene|Gnar}}, {{ai|The Darkin Scythe|Kayn}}, and {{ai|Skaarl the Cowardly Lizard|Kled}} are the only stance innate abilities.
+* {{ai|A Harmless Scarecrow|Fiddlesticks}} is currently the only ability preventing the user from purchasing an item.
+* {{ai|Martial Poise|Kalista}} is the only ability that generates a unique item for the user.
+* {{ai|Transcendent|Syndra}} has the most independent effects of any ability (four).
+
+=== Basic abilities ===
+* {{cis|Jayce}} and {{cis|Udyr}} basic abilities can have six ranks.
+** {{cis|Udyr}} ultimate ability is also uniquely tied to his innate, which has a pseudo-ultimate component (''Awakened Spirit'').
+** {{cai|Prowling Projectile|Yuumi}} can individually have six ranks.
+* All of {{cis|Lee Sin}} basic ability slots correspond to two distinct abilities.
+* {{ci|Kha'Zix}} and {{ci|Viktor}} are the only champions that can permanently evolve their abilities throughout the game.
+** {{ci|Kai'Sa}} and {{ci|Syndra}} gain extra permanent effects on all of their abilities.
+** {{ci|Rengar}} gains extra temporary effects on all of his basic abilities.
+** {{ai|The Darkin Scythe|Kayn}} and {{ai|Dragon's Descent|Shyvana}} 'shapeshift' both their wielders and basic abilities.
+** {{ai|The Darkin Scythe|Kayn}} allows only a single stance change per game.
+* {{cai|Weapon Queue System|Aphelios}}, set to his E slot, is the only ability in the game to have no gameplay effect.
+** This transcends the definition of ability and therefore the button should not be called an ability. Nevertheless it remains a slot in his kit and its effect is internally coded as an ability-sourced buff due to the way the engine works.
+
+=== Ultimate abilities ===
+* {{cis|Nocturne}}, {{cis|Kayn}}, {{cis|Ornn}}, {{cis|Quinn}}, {{cis|Riven}}, {{cis|Tahm Kench}}, {{cis|Twisted Fate}}, and {{cis|Urgot}} ultimate abilities each have two differing casts within a single ability usage.
+** This excludes ultimates that are repeatable, toggleable or terminable by their second cast.
+* {{ai|Enchanted Crystal Arrow|Ashe}}, {{ai|Whirling Death|Draven}}, {{ai|Chronobreak|Ekko}}, {{ai|Trueshot Barrage|Ezreal}}, {{ai|Cannon Barrage|Gangplank}}, {{ai|Super Mega Death Rocket!|Jinx}}, {{ai|Requiem|Karthus}}, {{ai|Lilting Lullaby|Lillia}}, {{ai|Golden Eclipse|Mel}}, {{ais|Paranoia|Nocturne}} {{tip|nearsight}}, {{ai|Dawning Shadow|Senna}}, {{ai|Stand United|Shen}}, {{ai|Wish|Soraka}}, and {{ai|Destiny|Twisted Fate}}'s {{tip|true sight|reveal}} are the only global ultimate abilities.
+* {{ai|Spider Form|Elise}} / {{ai|Human Form|Elise}}, {{ai|Mantra|Karma}} and {{ai|Aspect of the Cougar|Nidalee}} are all available at level 1 and each has four ranks (levels 1, 6, 11, and 16).
+** {{ai|Transform Mercury Hammer|Jayce|Mercury Hammer}} / {{ai|Transform Mercury Cannon|Jayce|Mercury Cannon}} is available at level 1 and has only one rank.
+* {{ai|Endless Banquet|Bel'Veth}} is the only ultimate ability that evolves a champion into a different form and grants extra stats.
+
+==== Pseudo-Ultimate abilities ====
+* {{cai|Wingborne Storm|Udyr}}
+* {{cai|Transform Mercury Hammer|Jayce}} / {{ai|Transform Mercury Cannon|Jayce}}
+
+=== Others ===
+* {{ai|Riposte|Fiora}}, {{ai|Divine Judgment|Kayle}}, and {{ai|Cosmic Radiance|Taric}} are the only abilities that provide pure [[invulnerability]].
+** {{ai|Tempered Fate|Bard}}, {{ai|Frozen Tomb|Lissandra}}, {{ai|Force of Will|Syndra}} (non-champions only), and {{ai|Chronoshift|Zilean}} grant invulnerability through {{tip|stasis}} effect.
+** {{ai|Hallowed Mist|Gwen}}, {{ai|Crescent Guard|Xin Zhao}}, {{ai|Lamb's Respite|Kindred}}, and {{ai|Aegis Assault|Pantheon}} have a conditional [[invulnerability]]. {{ci|Gwen}} and {{ci|Xin Zhao}} are vulnerable if enemies enter their respective zones; {{ci|Kindred}} and allied champs can be displaced outside of {{ai|Lamb's Respite|Kindred}} and lose the invulnerability. {{ci|Pantheon}} is only invulnerable in the direction he faces with his shield.
+
+== Non-Champion Abilities ==
+Epic [[monster]]s, such as {{ui|Baron Nashor}} and {{ui|Dragon|Elemental Drakes}}, as well as the {{ui|Rift Herald|Mercenary}}, generally have one to a few unique active or passive abilities available that are distinct from champion abilities. The offensive abilities of those monsters may interact with and break champion {{tip|spell shield|spell shields}}. All other non-champion units have permanently available effects that are handled purely by the game rules instead of through a specific ability. Some units have no set of moves at all including [[basic attack]]s (e.g. [[jungle plants]] and some types of [[ward]]s).
+
+Non-champion units may have a pseudo-inventory that can be viewed in their target frame upon [[Unit selection|focusing]] them (default: {{LMB}} MB1 / left-click) which may explain some of their behavior or effects.
+
+{{References}}
+
+== See Also ==
+{{Gameplay elements}}
+
+[[de:Fähigkeiten]]
+[[es:Habilidad de campeón]]
+[[fr:Compétence]]
+[[pl:Umiejętność]]
+[[pt-br:Habilidade]]
+[[ru:Умение чемпиона]]
+[[zh:英雄技能]]
+[[Category:Gameplay elements]]
+[[Category:Abilities]]
+[[Category:Champions]]

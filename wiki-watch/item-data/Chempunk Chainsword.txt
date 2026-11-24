@@ -1,0 +1,30 @@
+["Chempunk Chainsword"] = {
+        ["id"]                  = 6609,
+        ["nickname"]            = {"grievous", "grievous wounds"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 45,
+            ["ah"]              = 15,
+            ["hp"]              = 450,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Hackshorn",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{as|physical damage}} to enemy champions inflicts them with {{tip|Grievous Wounds}} for 3 seconds.",
+            },
+        },
+        ["recipe"]              = {"Executioner's Calling", "Giant's Belt", "Caulfield's Warhammer"},
+        ["buy"]                 = 3000,
+    },

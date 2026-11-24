@@ -5,11 +5,10 @@
 // The damage is on-hit, so it's shrunk by R's 25 / 30 / 35%.
 // ASSUMPTION (to check in the Practice Tool): daggers use up Momentum like a basic attack,
 //   the same way they trigger Energized items (Eric, from playing).
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Dead_Man%27s_Plate", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Dead_Man%27s_Plate", patch: "26.23" },
   fullMomentumDamage: 40,
   fullMomentumBaseAdRatio: 1,
 };

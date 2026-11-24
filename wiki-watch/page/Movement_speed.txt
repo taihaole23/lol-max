@@ -1,0 +1,484 @@
+: {{Hatnote|''Also see: [[List of champions/Movement speed]].''}}
+{{as|{{sti|'''Movement speed'''}}|ms}} (also ''Move speed''), or {{as|{{sti|'''MS'''}}|ms}}, is a [[Champion statistic|stat]] that represents the rate at which an entity travels across the [[map]], measured in game-distance units traveled per second.{{TOCright}}
+* ''As a frame of reference, {{cis|Teemo}} hat is circa 100 game-distance units in diameter. A champion with 300 movement speed is able to traverse three {{ci|Teemo|Teemos}} standing hat-to-hat next to one another in one second.''
+
+Each champion begins the game with a base amount of movement speed that ranges strictly from {{ccd|Anivia|ms}} (e.g. {{ci|Anivia}}) to {{ccd|Master Yi|ms}} (e.g. {{ci|Master Yi}}). Some effects ''innately'' decrease or increase certain champions' own movement speed, such as {{ci|Kled}} with {{ccd|Kled|ms}} movement speed while {{ai|Dismounted Skaarl the Cowardly Lizard|Kled|dismounted}}.
+
+This base movement speed can be increased by flat bonuses and percentage bonuses, or reduced by [[Types of Crowd Control#Slow|slows]]. These increases or decreases can be sourced from [[Champion ability|champion abilities]], [[item]]s, [[summoner spell]]s, [[rune]]s and [[buff]]s or [[debuff]]s.
+
+== Calculations ==
+A champion's total movement speed is given by the following formula:
+: (Base MS + Flat MS bonuses){{times}}(1 + Sum of all Additive Percent MS bonuses){{times}}[ Product of (1 + each Multiplicative Movement Speed bonus) ]{{times}}(1 - Highest Slow ratio)
+Add any flat bonuses to the champion's base movement speed; the total flat movement speed will be the baseline for the percentage bonuses. Add all additive percentage bonuses together, add 100% to the result, and multiply it with the total flat movement speed. Then, if applicable, apply the slow reduction and any special [[#Multiplicative speed boosts|multiplicative bonuses]] one at a time. If the result is over 415 or under 220 movement speed, apply <u>soft caps</u> as described <u>below</u>.
+
+=== Movement speed caps ===
+When the raw movement speed is greater than 415, there are two soft caps applied:
+* The raw speed between 415 and 490 gets multiplied by 80%.
+* The raw speed over 490 gets multiplied by 50%.
+The two ranges have their reductions applied at the same time before being added back together.
+: ''As an example, if the calculated raw speed is 600 before soft caps kick in, it is reduced to (600{{minus}}490){{times}}{{fd|0.5}}{{plus}}(490{{minus}}415){{times}}{{fd|0.8}}{{plus}}415{{equals}}530, which means an '''{{fd|11.7%}} reduction of the raw movement speed.'''''
+
+These are the simplified formulas:
+* If the raw speed is 415 or lower, no cap is applied.
+* If the raw speed is between 415 and 490, final speed is soft capped to (Raw MS){{times}}{{fd|0.8}}{{plus}}{{tt|83|415*(1-0.8)}}.
+* If the raw speed is above 490, final speed is soft capped to (Raw MS){{times}}{{fd|0.5}}{{plus}}{{tt|230|415*(1-0.5) + (490-415)*(0.8-0.5)}}.
+
+When the raw movement speed is less than 220 another two soft caps are used:
+* If the raw speed is below 220, final speed is increased to {{tt|110|220*(1-0.5)}}{{plus}}(Raw MS){{times}}{{fd|0.5}}.
+* If the raw speed is below 0, final speed is increased to {{tt|110|220*(0.5-0)}}{{plus}}(Raw MS){{times}}{{fd|0.01}}.
+: ''Example 1: If the calculated raw speed is 180 before soft caps kick in, it is increased to 180{{times}}{{fd|0.5}}{{plus}}110{{equals}}200.''
+: ''Example 2: If the calculated raw speed is 0 before soft caps kick in, it is increased to 0{{times}}{{fd|0.5}}{{plus}}110{{equals}}110.''
+: ''Example 3: If the calculated raw speed is -10000 before soft caps kick in, it is increased to -10000{{times}}{{fd|0.01}}{{plus}}110{{equals}}10.''
+
+Only the slow with the highest value is taken into account within movement speed calculations. All additional slows are ignored until the higher-valued slow wears off.<!--movement speed self mods should scale multiplicatively with slows just like speed buffs; pending for test-->
+
+=== Slow Resist ===
+{{main|Slow resist}}
+Slow Resist is a statistic that reduces the strength of {{tip|slows}} by a percentage.
+
+:''Example: 50% Slow Resist reduces a 40% Slow to a 20% Slow. If it would normally reduce e.g. 400 raw speed to 400''{{Times}}''(1{{minus}}{{fd|0.4}}){{equals}}240 raw speed, because of the Slow Resist it reduces 400 raw speed to 400''{{Times}}''(1{{minus}}{{fd|0.4}}{{times}}(1{{minus}}{{fd|0.5}})){{equals}}320 raw speed. If the resulting raw values were beyond the soft cap thresholds, they would each be adjusted as usual.''
+
+=== Simple Example ===
+'''''Last updated:''' April 22nd, 2026, patch [[V26.08]].''
+
+Consider the following situation. {{ci|Nocturne}} has {{ii|Boots of Swiftness}}, {{ii|Mercurial Scimitar}}, {{ii|Winged Moonplate}}, and {{ii|Stridebreaker}}. To calculate {{cis|Nocturne}} total movement speed when affected by all item actives, {{ai|Duskbringer|Nocturne}}, and {{cai|Mega Adhesive|Singed}},
+# Start with the base movement speed. {{ci|Nocturne}} has {{ccd|Nocturne|ms}} base movement speed.<!--
+--><br /><code>{{#vardefineecho:step1|{{ccd|Nocturne|ms}}}}</code>
+# Apply flat movement speed bonuses. +55 flat movement speed bonus from {{ii|Boots of Swiftness}}.<!--
+--><br /><code>{{#var:step1}}{{plus}}{{ii|Boots of Swiftness|55}}{{equals}}{{#vardefineecho:step2|{{#expr:{{#var:step1}} + 55}}}}</code>
+# Apply additive movement speed bonuses. +4% additive movement speed bonus from {{ii|Winged Moonplate}} and +35% additive movement speed bonus from {{ii|Stridebreaker}}.<!--
+--><br /><code>{{#var:step2}}{{times}}(1{{plus}}({{ii|Winged Moonplate|0.04}}{{plus}}{{ii|Stridebreaker|0.35}})){{equals}}{{#var:step2}}{{times}}1.39{{equals}}{{#vardefineecho:step3|{{#expr:{{#var:step2}} * 1.39}}}}</code>
+# Apply multiplicative movement speed bonuses. +40% multiplicative movement speed bonus from {{ai|Duskbringer|Nocturne}} and +50% multiplicative movement speed bonus from {{ii|Mercurial Scimitar}}.<!--
+--><br /><code>{{#var:step3}}{{times}}(1{{plus}}{{ai|Duskbringer|Nocturne|0.40}}){{times}}(1{{plus}}{{ii|Mercurial Scimitar|0.50}}){{equals}}{{#var:step3}}{{times}}2.10{{equals}}{{#vardefineecho:step4|{{#expr:{{#var:step3}} * 2.10}}}}</code>
+# Apply movement speed slows (affected by slow resists). +70% slow from {{cai|Mega Adhesive|Singed}} and +25% slow resist from {{ii|Boots of Swiftness}}.<!--
+--><br /><code>{{#var:step4}}{{times}}(1{{minus}}({{ai|Mega Adhesive|Singed|0.7}}{{times}}(1{{minus}}{{ii|Boots of Swiftness|0.25}}))){{equals}}{{#var:step4}}{{times}}0.475{{equals}}{{#vardefineecho:step5|{{#expr:{{#var:step4}} * 0.475}}}}</code>
+# Apply soft movement speed caps. {{#var:step5}} is greater than 490.<br /><code>{{#var:step5}}{{times}}0.5{{plus}}230{{equals}}{{#vardefineecho:step6|{{#expr:({{#var:step5}} * 0.5) + 230}}}}</code>
+The resulting total movement speed is {{#var:step6}}.
+
+== Movement speed as scaling ==
+These use the champion's personal movement speed to increase the magnitude of the item or ability. By building movement speed items or casting spells you can receive more benefit and power from these items or abilities in most situations. This also means that any slowing effects will have the inverse result.
+
+=== Items ===
+* {{ii|Swiftmarch}}
+
+=== Movement abilities ===
+* {{Cai|Drakehound's Step|Ambessa}} (Affects the speed of the dash)
+* {{Cai|Astral Flight|Aurelion Sol}}
+* {{Cai|The Weirding| Aurora}} (The recoil speed is increased)
+* {{Cai|Void Surge|Bel'Veth}}
+* {{Cai|Stand Behind Me|Braum}}
+* {{cai|Wall Dive|Camille}}
+* {{cai|Valkyrie|Corki}}
+* {{cai|Decisive Strike|Garen}} (nudge speed is modified by movement speed, the time when the ability hits doesn't change)
+* {{cai|Bladesurge|Irelia}}
+* {{cai|Footwork|K'Sante}}
+* {{cai|Dance of Arrows|Kindred}}
+* {{cai|Jousting|Kled}} and {{ai|Chaaaaaaaarge!!!|Kled}}
+* {{cai|Martial Poise|Kalista}} (dash distance increases with boots tier and dash speed with movement speed)
+* {{cai|Reaping Slash|Kayn}}
+* {{cai|Resonating Strike|Lee Sin}} and {{ai|Safeguard|Lee Sin}}
+* {{cai|Unstoppable Force|Malphite}}
+* {{cai|Biggest Snowball Ever!|Nunu & Willump}} (Nunu and Willump keep all increases in movement speed at time of cast for the duration of the charge)
+* {{cai|Terrashape|Qiyana}} and {{ai|Audacity|Qiyana}}
+* {{cai|Battle Dance|Rakan}}
+* {{cai|Soaring Slam|Rammus}} (The range of the dash is affected)
+* {{cai|Tunnel|Rek'Sai}}
+* {{cai|Slice and Dice|Renekton}}
+* {{cai|Shadow Dash|Shen}}
+* {{cai|Unstoppable Onslaught|Sion}}
+* {{cai|Assassin's Path|Talon}}
+* {{cai|Disdain|Urgot}}
+* {{cai|Tumble|Vayne}}
+* {{cai|Infinite Duress|Warwick}} (The range and speed of the dash is affected)
+* {{cai|Sweeping Blade|Yasuo}}
+* {{Cai|Spark Surge|Zeri}}
+
+=== Other ===
+* {{cai|Warpath|Hecarim}}
+
+== Increasing flat movement speed ==
+The bonus given by these items or champion abilities are flat increases to the champion's base movement speed. These flat bonuses will increase the effectiveness of percentage bonuses.
+
+Purchasing boots from the store grants a champion a flat increase in movement speed. The bonus from boots is quite big compared to their cost and is essential for all champions.
+
+{{gold value}}
+* '''Flat movement speed''' has a gold value of {{g|{{#invoke:Gold value|wikivaluedefine}}{{#var:msflat}}}} per point.
+=== Items ===
+{{Item stat table|msflat}}
+
+==== Item passives ====
+{{Column|2|
+* {{ii|Bandlepipes}}
+* {{ii|Black Cleaver}}
+* {{ii|Cosmic Drive}}
+* {{ii|Dead Man's Plate}}
+* {{ii|Phage}}
+* {{ii|Trinity Force}}
+* {{ii|Youmuu's Ghostblade}}
+}}
+
+=== Champion abilities ===
+{{Column|2|
+* {{cai|Dirty Fighting|Akshan}} and {{ai|Going Rogue|Akshan}}
+* {{cai|Spider Form|Elise}}
+* {{cai|Rage Gene|Gnar}}
+* {{cai|Hextech Capacitor|Jayce}}
+* {{cai|Skaarl the Cowardly Lizard|Kled}} and {{ai|Chaaaaaaaarge!!!|Kled}}
+* {{cai|Ardent Blaze|Lucian}}
+* {{cai|Strut|Miss Fortune}}
+* {{cai|Surging Tides|Nami}}
+* {{cai|Biggest Snowball Ever!|Nunu}}
+* {{cai|Burrow|Rek'Sai}}
+* {{cai|Ferromancy: Crash Down|Rell}}
+* {{cai|Insanity Potion|Singed}}
+* {{cai|Unstoppable Onslaught|Sion}}
+* {{cai|Fleet of Foot|Sivir}}
+* {{cai|Night Hunter|Vayne}}
+}}
+
+=== Runes ===
+{{Column|2|
+* {{ri|Relentless Hunter}}
+* {{ri|Waterwalking}}
+* {{ri|Magical Footwear}}
+}}
+
+== Increasing percentage movement speed ==
+The bonus movement speed given by these items or champion abilities are based on a percentage of the bonus compared to your total flat movement speed (before all sources of percentage movement speed bonuses are factored in). Percentage movement speed will {{tip|stacks additively|stack additively}} with other sources of percentage movement speed, unless the bonus movement speed is one of the few exceptions that {{tip|stacks multiplicatively|stack multiplicatively}}.
+
+All percentage bonuses from the items listed below stack additively with one another.
+
+{{gold value}}
+* '''Percent movement speed''' has a gold value of {{g|{{#invoke:Gold value|wikivaluedefine}}{{#var:ms}}}} per point.
+
+=== Items ===
+{{Item stat table|ms}}
+
+==== Item actives and passives ====
+{{Column|2|
+* {{ii|Crimson Lucidity}}
+* {{ii|Elixir of Iron}} (allies only)
+* {{ii|Experimental Hexplate}}
+* {{ii|Force of Nature}}
+* {{ii|Gustwalker Hatchling}}
+* {{ii|Mejai's Soulstealer}}
+* {{ii|Protoplasm Harness}}
+* {{ii|Shurelya's Battlesong}}
+* {{ii|Solstice Sleigh}}
+* {{ii|Stormrazor}}
+* {{ii|Stridebreaker}}
+* {{ii|Youmuu's Ghostblade}}
+}}
+
+=== Champion abilities ===
+==== Ally and/or User-targeted ====
+{{Column|2|
+* {{cai|Molten Shield|Annie}}
+* {{cai|Caretaker's Shrine|Bard}}
+* {{cai|Cannon Barrage|Gangplank}} with {{ii|Raise Morale}}
+* {{cai|Fleeting Current|Hwei}}
+* {{cai|Tailwind|Janna}}
+* {{cai|Acceleration Gate|Jayce}}
+* {{cai|Inspire|Karma}} and {{ai|Defiance|Karma}}
+* {{cai|Celestial Blessing|Kayle}}
+* {{cai|Chaaaaaaaarge!!!|Kled}} {{tt|*|In champion combat}}
+* {{cai|Whimsy|Lulu}}
+* {{cai|Warm Hugs|Milio}}
+* {{cai|The Call of the Pack|Naafiri}} {{tt|*|Grants movement speed to Naafiri and her allied pets only}}
+* {{cai|Jubilant Veil|Nilah}}
+* {{cai|Call of the Freljord|Nunu}}
+* {{cai|Command: Dissonance|Orianna}}
+* {{cai|Bailout|Renata Glasc}}
+* {{cai|Curse of the Black Mist|Senna}}
+* {{cai|Surround Sound|Seraphine}}
+* {{cai|On the Hunt|Sivir}}
+* {{cai|Astral Infusion|Soraka}} with {{ai|Starcall|Soraka}}
+* {{cai|Song of Celerity|Sona}}
+* {{cai|Zoomies|Yuumi}}
+* {{cai|Time Warp|Zilean}}
+}}
+
+==== User only ====
+{{Column|2|
+* {{cai|World Ender|Aatrox}}
+* {{cai|Fox-Fire|Ahri}}
+* {{cai|Assassin's Mark|Akali}} and {{ai|Twilight Shroud|Akali}}
+* {{cai|Avengerang|Akshan}}
+* {{cai|Onslaught|Aphelios}}
+* {{cai|Across the Veil|Aurora}} and {{ai|Between Worlds|Aurora}}
+* {{cai|Traveler's Call|Bard}}
+* {{cai|Overdrive|Blitzcrank}}
+* {{cai|Unbreakable|Braum}}
+* {{cai|Blood Frenzy|Briar}}
+* {{cai|Precision Protocol|Camille}}
+* {{cai|Noxious Blast|Cassiopeia}}
+* {{cai|Maximum Dosage|Dr. Mundo}}
+* {{cai|Blood Rush|Draven}}
+* {{cai|Z-Drive Resonance|Ekko}}
+* {{cai|Whiplash|Evelynn}}
+* {{cai|Duelist's Dance|Fiora}} and {{ai|Grand Challenge|Fiora}}
+* {{cai|Playful|Fizz}}
+* {{cai|Trial by Fire|Gangplank}}
+* {{cai|Decisive Strike|Garen}}
+* {{cai|Hyper|Gnar}}
+* {{cai|Hextech Affinity|Heimerdinger}}
+* {{cai|Zephyr|Janna}}
+* {{cai|Whisper|Jhin}}
+* {{cai|Get Excited!|Jinx}}
+* {{cai|Supercharge|Kai'Sa}}
+* {{cai|Preparation|Katarina}}
+* {{cai|Divine Ascent|Kayle}}
+* {{cai|Lightning Rush|Kennen}}
+* {{cai|Void Assault|Kha'Zix}}
+* {{cai|Jousting|Kled}}
+* {{cai|Icathian Surprise|Kog'Maw}}
+* {{cai|Prance|Lillia}}
+* {{cai|W|Locke}}
+* {{cai|Seismic Shard|Malphite}}
+* {{cai|Nature's Grasp|Maokai}}
+* {{cai|Highlander|Master Yi}}
+* {{cai|Rebuttal|Mel}}
+* {{cai|Darkness Rise|Mordekaiser}}
+* {{cai|Soul Shackles|Morgana}}
+* {{cai|Shapesplitter|Neeko}}
+* {{cai|Prowl|Nidalee}}
+* {{cai|Unspeakable Horror|Nocturne}}
+* {{cai|Ragnarok|Olaf}}
+* {{cai|Aegis Assault 2|Pantheon|Empowered Aegis Assault}}
+* {{cai|Steadfast Presence|Poppy}}
+* {{cai|Ghostwater Dive|Pyke}}
+* {{cis|Qiyana}} {{ai|Elemental Wrath|Qiyana|image = Edge of Ixtal Brush.png}} with {{sbc|{{as|Brush}}}} and {{ai|Terrashape|Qiyana}} with an ''Element''
+* {{cai|Heightened Senses|Quinn}}
+* {{cai|The Quickness|Rakan}}
+* {{cai|Ferromancy: Mount Up|Rell}} and {{ai|Full Tilt|Rell}}
+* {{cai|Unseen Predator|Rengar}} and {{ai|Thrill of the Hunt|Rengar}}
+* {{cai|Scrap Shield|Rumble}}
+* {{cai|Overload|Ryze}}
+* {{cai|Daredevil Impulse|Samira}}
+* {{cis|Senna}} {{ai|Absolution|image = Absolution 2.png|Senna|Relic Cannon|}}
+* {{cai|Looking for a Fight|Sett}}
+* {{cai|Inferno Aegis|Shyvana}}
+* {{cai|Noxious Slipstream|Singed}}
+* {{cai|Death Surge|Sion}}
+* {{cai|Impale|Skarner}}
+* {{cai|Flap, Flap, Flap|Smolder}}
+* {{cai|Salvation|Soraka}} and {{ai|Starcall|Soraka}}
+* {{cai|Devour|Tahm Kench}}
+* {{cai|Shadow Assault|Talon}}
+* {{cai|Rock Surfing|Taliyah}}
+* {{cai|Move Quick|Teemo}}
+* {{cai|Frozen Domain|Trundle}}
+* {{cai|Ambush|Twitch}}
+* {{cai|Blazing Stampede|Udyr}}
+* {{cai|Sovereign's Domination|Viego}} and {{ai|Harrowed Path|Viego}}
+* {{cai|Augment- Turbocharge|Viktor|Augment: Turbocharge}}
+* {{cai|Transfusion|Vladimir}} and {{ai|Sanguine Pool|Vladimir}}
+* {{cai|Thundering Smash|Volibear}}
+* {{cai|Blood Hunt|Warwick}}
+* {{cai|Cyclone|Wukong}}
+* {{cai|Deadly Plumage|Xayah}}
+* {{cai|Soul Unbound|Yone}}
+* {{cai|Mourning Mist|Yorick}}
+* {{cai|Kanmei's Steps|Yunara}}
+* {{cai|Let's Bounce!|Zac}}
+* {{cai|Lightning Crash|Zeri}}
+* {{cai|Spell Thief|Zoe}}
+}}
+
+=== Summoner spells ===
+* {{si|Ghost}}
+
+=== Runes ===
+{{Column|2|
+* {{ri|Celerity}}
+* {{ri|Fleet Footwork}}
+* {{ri|Nimbus Cloak}}
+* {{ri|Stormraider's Surge}}
+}}
+
+=== Neutral Buffs ===
+{{Column|2|
+* {{bi|Cloudbringer's Grace}}
+* {{bi|Cloud Dragon Soul}}
+* [[File:Homeguard_buff.png|20px|link=]] [[Homeguard]] and Homestart
+* {{bi|Speed Shrine}}
+}}
+
+=== Other ===
+* {{ui|Cloud Drake|Cloud Rift}} speed zones
+* {{tip|Jungle Quest}}
+
+== Multiplicative speed boosts ==
+Most speed boosts {{tip|stacks additively|stack additively}}, but a select few {{tip|stacks multiplicatively|stack multiplicatively}} with other speed boosts. These do not stack additionally with other percentage movement speed bonus, but rather multiply the '''total''' movement speed after all other percentage movement speed have been calculated. Movement speed obtained thanks to the formula is still affected by movement speed caps (see above).
+
+=== Items ===
+* {{ii|Mercurial Scimitar}}
+
+=== Champions ===
+{{Column|2|
+* {{cai|Devastating Charge|Hecarim}}
+* {{cai|Shadow Step|Kayn}} and {{cis|Shadow Assassin}} {{ai|Shadow Step A|Kayn|Shadow Step}}
+* {{cai|Duskbringer|Nocturne}}
+* {{cai|Behind Enemy Lines|Quinn}}
+* {{cai|Powerball|Rammus}}
+}}
+
+=== Runes ===
+{{Column|2|
+* {{ri|Approach Velocity}}
+}}
+
+=== Summoner spells ===
+{{Column|2|
+* {{si|Heal}}
+* {{si|Unleashed Teleport}}
+}}
+
+=== Other ===
+* {{bi|Hand of Baron}} (affects nearby {{ui|Blue Melee Minion|link=Melee minion|Melee minions}} and {{ui|Blue Super Minion|link=Super minion|Super minions}} only)
+
+== Decreasing movement speed ==
+There are many ways to decrease a champion's movement speed, with the most usual one being through champion abilities. For a full list of slows, see [[Types of Crowd Control/Sources#Slow]].
+
+Movement speed can also be decreased by negative buff values (e.g. by having a negative [[stat]] scaling with it) down to 0 (ignoring the {{as|{{sti|110 movement speed}}}} floor that {{tip|slows}} have) down to 0, at which point the unit will {{tt|not move|Distinct from imobilizing crowd control, as the unit can still input movement commands and use movement spells}} at all. Movement speed cannot be reduced below 0 in any way.
+
+== Base movement speeds by champion ==
+{{:List of champions/Movement speed}}
+
+== Old slow stacking ==
+'''Since patch [[V5.13]], units can only be affected by the highest slow value during its effect. Any applied slows that have a lower potency do not further affect the slow amount.'''
+
+Prior to patch [[V5.13]] slow stacked:
+
+Slowing effects followed particular rules when stacking:
+
+* If a champion was affected by multiple slows, the strongest one would be fully applied, while the others were applied sequentially with '''65% reduced effectiveness''' down to 35% of its original strength.
+
+* Slow effects derived from items with the same name or [[named item effect]] did '''NOT''' stack, even when coming from different champions. Only the strongest item slow was applied at any moment. The exception to this was the active effect of {{ii|Randuin's Omen}} which stacked with other slowing items normally, because they were considered champion abilities for slow stacking purposes.
+
+* Attacking a champion with the {{bi|Crest of Cinders}} [[buff]] when the target was already affected by that slow would reapply the debuff, resetting its duration. It would '''NOT''' increase the slow amount. The same held true for the {{si|Exhaust}} [[summoner spell]].
+
+==== Example ====
+
+A champion with a raw movement speed of 400 was affected by a 2 second long 40% slow and a 5 second long 20% slow at the same time.
+
+* For the first two seconds, they would have (1{{minus}}{{fd|0.4}}){{times}}(1{{minus}}{{fd|0.2}}{{times}}{{fd|0.35}}){{equals}}{{fd|0.6}}{{times}}{{fd|0.93}}{{equals}}{{fd|55.8%}} of his original movement speed (a {{fd|44.2%}} effective slow). So he would have 400{{times}}{{fd|0.558}}{{equals}}{{fd|223.2}} raw movement speed.
+
+* For the following three seconds, the effective slow would be 20% and so he would have 400{{times}}{{fd|0.8}}{{equals}}320 movement speed.
+
+* After that, he would return to his normal speed of 400.
+{{#ev:youtube|id=XAfhaIsKouw|dimensions=320px|alignment=center}}
+
+== Trivia ==
+* The old stat icon for [[File:Stat_icon_movement_speed.jpg]] '''movement speed''' was an edited version of the icon of {{ii|Boots of Speed}}.
+
+----
+
+'''''Last updated:''' January 8th, 2020, patch [[V10.1]]''
+
+* Without using {{ri|Gathering Storm}} or {{ri|Prototype: Omnistone}}, the highest '''movement speed''' attainable is about '''{{tt|47959|47959.60363}}''' as {{ci|Rammus}} at level 18.
+
+* {{sbc|Base stats:}} {{as|335 movement speed}}
+* {{sbc|Runes:}}
+** {{ri|Predator}}
+** {{ri|Relentless Hunter}}
+** {{ri|Approach Velocity}}
+** {{ri|Magical Footwear}}
+* {{sbc|Items:}}
+** 1 {{ii|Mercurial Scimitar}} '''activated'''
+** 1 {{ii|Righteous Glory}} '''activated'''
+** 1 {{ii|Youmuu's Ghostblade}} '''activated'''
+** 1 {{ii|Boots of Mobility}}
+** 1 {{Template:Item icon|Spellbinder}} activated
+** 1 {{Template:Item icon|Shurelya's Reverie
+}} activated
+* '''Buffs:'''
+** ''{{ci|Rammus}} will need to have {{ci|Nami}}, {{ci|Kayle}}, {{ci|Lulu}} and {{ci|Zilean}} alongside him.''
+** {{cai|Powerball|Rammus}}
+** {{cai|Tidal Wave|Nami}} to proc {{ai|Surging Tides|Nami}}
+** {{cai|Celestial Blessing|Kayle}}
+** {{cai|Whimsy|Lulu}}
+** {{ci|Zilean}}:
+*** {{ii|Shurelya's Reverie}} active
+*** Has to have impaired movement to proc {{ri|Approach Velocity}}.
+*** {{ri|Guardian}}
+*** {{ai|Time Warp|Zilean}}
+** {{ii|Homeguard}} '''empowered by''' {{bi|Hand of Baron}}
+** {{si|Heal}}
+** {{si|Ghost}}
+** Four {{bi|Infernal Might}} buffs.
+* Must be out of combat for {{ii|Boots of Mobility}} and {{ii|Youmuu's Ghostblade}} passive.
+
+* {{ci|Nami}}, {{ci|Kayle}}, and {{ci|Lulu}}:
+** {{sbc|Runes:}}
+*** {{ri|Conqueror}} '''at 10 stacks'''
+*** {{ri|Presence of Mind}} '''at 500 mana'''
+*** {{ri|Absolute Focus}}
+*** {{ri|Waterwalking}}
+** {{sbc|Items:}}
+*** 3 {{ii|Rabadon's Deathcap}}
+*** 1 {{ii|Spellbinder}} '''activated at 100 stacks'''
+*** 1 {{ii|Mejai's Soulstealer}} '''at 25 stacks'''
+*** 1 {{ii|Seraph's Embrace}}
+
+* '''Relevant mathematics:'''
+<!-- Nami -->
+* {{cis|Nami}} AP:
+** '''Items''' = {{ii|Rabadon's Deathcap|120{{times}}3}} + {{ii|Spellbinder|200}} + {{ii|Mejai's Soulstealer|145}} + {{ii|Seraph's Embrace|{{fd|146.246}}}} = {{as|{{fd|851.246}} AP}}
+*** {{iis|Seraph's Embrace}} AP = 50 + ({{ci|Nami|{{fd|1108.2}}}} + {{ii|Mejai's Soulstealer|200}} + {{ri|Presence of Mind|500}} + {{ii|Seraph's Embrace|1400}}){{times}}{{fd|0.03}} = {{as|{{fd|146.246}} AP}}
+** '''Runes''' =  {{ri|Absolute Focus|30}} + {{ri|Waterwalking|30}} + {{ri|Conqueror|50}} = {{as|110 AP}}
+** '''Buffs''' = {{bi|Hand of Baron|80}} + {{ii|Elixir of Sorcery|50}} = {{as|130 AP}}
+** '''AP Multiplier''' = 1 + {{ii|Rabadon's Deathcap|{{fd|0.4}}}} + {{bi|Infernal Might|{{fd|0.16}}}} = {{fd|1.56}}
+*** {{cis|Nami}} AP = ({{tt|{{fd|851.246}}|Items}} + {{tt|110|Runes}} + {{tt|130|Buffs}}){{times}}{{fd|1.56}} = '''{{as|{{fd|1702.24}} AP}}'''
+*** {{ais|Surging Tides|Nami}} bonus MS = 120 + {{fd|0.4}}{{times}}1624.34 = '''{{as|{{fd|800.896}} flat movement speed}}'''
+
+<!-- Kayle -->
+* {{cis|Kayle}} AP:
+** '''Items''' = {{ii|Rabadon's Deathcap|120{{times}}3}} + {{ii|Spellbinder|200}} + {{ii|Mejai's Soulstealer|145}} + {{ii|Seraph's Embrace|{{fd|137}}}} = {{as|{{fd|842}} AP}}
+*** {{iis|Seraph's Embrace}} AP = 50 + ({{ci|Kayle|800}} + {{ii|Mejai's Soulstealer|200}} + {{ri|Presence of Mind |500}} + {{ii|Seraph's Embrace|1400}}){{times}}{{fd|0.03}} = {{as|{{fd|137}} AP}}
+** '''Runes''' =  {{ri|Absolute Focus|30}} + {{ri|Waterwalking|30}} + {{ri|Conqueror|50}} = {{as|110 AP}}
+** '''Buffs''' = {{bi|Hand of Baron|80}} + {{ii|Elixir of Sorcery|50}} = {{as|130 AP}}
+** '''AP Multiplier''' = 1 + {{ii|Rabadon's Deathcap|{{fd|0.4}}}} + {{bi|Infernal Might|{{fd|0.16}}}} = {{fd|1.56}}
+*** {{cis|Kayle}} AP = ({{tt|{{fd|842}}|Items}} + {{tt|110|Runes}} + {{tt|130|Buffs}}){{times}}{{fd|1.56}} = '''{{as|{{fd|1687.92}} AP}}'''
+*** {{ais|Celestial Blessing|Kayle}} bonus MS = 40% + (1687.92{{times}}8 / 100)% = '''{{as|{{fd|175.034}}% bonus movement speed}}'''
+
+<!-- Lulu -->
+* {{cis|Lulu}} AP:
+** '''Items''' = {{ii|Rabadon's Deathcap|120{{times}}3}} + {{ii|Spellbinder|200}} + {{ii|Mejai's Soulstealer|145}} + {{ii|Seraph's Embrace|{{fd|151.55}}}} = {{as|856.55 AP}}
+*** {{iis|Seraph's Embrace}} AP = 50 + ({{ci|Lulu|1285}} + {{ii|Mejai's Soulstealer|200}} + {{ri|Presence of Mind|500}} + {{ii|Seraph's Embrace|1400}}){{times}}{{fd|0.03}} = {{as|{{fd|151.55}} AP}}
+** '''Runes''' =  {{ri|Absolute Focus|30}} + {{ri|Waterwalking|30}} + {{ri|Conqueror|50}} = {{as|110 AP}}
+** '''Buffs''' = {{bi|Hand of Baron|80}} + {{ii|Elixir of Sorcery|50}} = {{as|130 AP}}
+** '''AP Multiplier''' = 1 + {{ii|Rabadon's Deathcap|{{fd|0.4}}}} + {{bi|Infernal Might|{{fd|0.16}}}} = {{fd|1.56}}
+**
+*** {{cis|Lulu}} AP = ({{tt|{{fd|856.55}}|Items}} + {{tt|110|Runes}} + {{tt|130|Buffs}}){{times}}{{fd|1.56}} = '''{{as|{{fd|1710.62}} AP}}'''
+*** {{ais|Whimsy|Lulu}} bonus = 30% + (1710.62{{times}}5 / 100)% = '''{{as|{{fd|115.531}}% bonus movement speed}}'''
+
+<!-- Rammus -->
+* {{cis|Rammus}} movement speed:
+** '''Base''' = 335
+** '''Items''' = {{ii|Boots of Mobility|115}} + {{ii|Righteous Glory|75%}} + {{ii|Youmuu's Ghostblade|(40 + 20%)}} + {{Template:Item icon|Spellbinder|60%}} + {{Template:Item icon|60|60|item = Dead Man's Plate}} = {{as|215 flat movement speed + 155% '''bonus''' movement speed}}
+** '''Runes''' = {{ri|Predator|67.5%}}{{tt|*|For the first 1.5 seconds of the active}} + {{ri|Relentless Hunter|55}} + {{ri|Approach Velocity|15%}} + {{ri|Magical Footwear|10}} = {{as|65 flat movement speed + 82.5% '''bonus''' movement speed}}
+** '''Buffs''' = {{ai|Surging Tides|Nami|800.896}} + {{ai|Celestial Blessing|Kayle|175.034%}} + {{ai|Whimsy|Lulu|115.531%}} + {{ii|Shurelya's Reverie|40%}} + {{ri|Guardian|20%}} + {{ai|Time Warp|Zilean|99%}} + {{Template:Buff icon|Hand of Baron|200%}} +  {{si|Ghost|45%}} = {{as|{{fd|800.896}} flat movement speed + {{fd|694.565%}} '''bonus''' movement speed}}
+** '''Total Movement Speed Multiplier''' = {{ai|Powerball|Rammus|3.35}}{{times}}{{ii|Mercurial Scimitar|1.5}}{{times}}{{si|Heal|1.3}} = {{fd|6.5325}}
+*** {{cis|Rammus}} Movement Speed = ({{tt|215|Items}} + {{tt|65|Runes}} + {{tt|{{fd|800.896}}|Buffs}} + {{tt|335|Rammus' base movement speed}}){{times}}(1 + {{tt|{{fd|1.55}}|Items}} + {{tt|{{fd|0.825}}|Runes}} + {{tt|{{fd|6.94565}}|Buffs}}){{times}}{{fd|6.5325}} = '''{{as|{{fd|95,459.2073}} movement speed}}''' before soft caps
+
+* {{sbc|Soft caps:}}
+** {{cis|Rammus}} Movement Speed = {{tt|{{fd|95,459.2073}}|Rammus' movement speed before soft caps}}{{times}}{{fd|0.5}} + 230 = '''{{as|{{fd|47,959.6034}} movement speed}}'''
+
+=== Infinite MS Theory ===
+There is a theory that allow 2 players, one from each team, to reach infinite amount of movement speed. It require the same set-up as seen just before, twice, each per team, but with a {{ci|Malphite}} replacing the {{ci|Rammus}}. The theory is simple: {{sbc|Team 1}} speeds up '''Malphite 1''', and as soon as he reaches his highest amount '''Malphite 2''' steals '''Malphite 1''' movement speed with {{ai|Seismic Shard|Malphite}}, and get speeds up by {{sbc|Team 2}}. Then as soon as he reaches his highest amount '''Malphite 1''' steals '''Malphite 2''' movement speed with {{ai|Seismic Shard|Malphite}} and get speeds up by {{sbc|Team 1}}. Repeat the operation an infinite amount of time and in the end '''Malphite 1''' or '''Malphite 2''' will have an infinite amount of movement speed. As seen in this [https://www.youtube.com/watch?v=6TSV76fa-j0 video].
+
+== See also ==
+{{List of champions}}
+{{stats}}
+
+== References ==
+<references />[[cs:Movement speed]]
+[[de:Lauftempo]]
+[[es:Velocidad de movimiento]]
+[[fr:Vitesse de déplacement]]
+[[pl:Prędkość ruchu]]
+[[pt-br:Velocidade de Movimento]]
+[[ru:Скорость передвижения]]
+[[zh:移动速度]]
+[[Category:Champion statistics]]

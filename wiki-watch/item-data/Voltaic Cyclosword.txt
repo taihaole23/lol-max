@@ -1,0 +1,39 @@
+["Voltaic Cyclosword"] = {
+        ["id"]                  = 6699,
+        ["nickname"]            = {"lethality"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 55,
+            ["ah"]              = 10,
+            ["lethality"]       = 10,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Energized",
+                ["unique"]      = true,
+                ["description"] = "Moving and basic attacking generates ''Energize'' stacks, up to 100.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Galvanize",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{tip|ability damage}} to an enemy champion, with an {{tip|ability}} {{tip|cast instance}}, triggers the effects of {{tip|Energized}} attacks against them if they are ready.",
+            },
+            ["pass3"] = {
+                ["name"]        = "Firmament",
+                ["unique"]      = true,
+                ["description"] = "When fully {{tip|Energized}}, your next basic attack [[on-hit]] grants you {{as|{{rd|15|12}} lethality}} for 4 seconds and deals {{as|'''bonus''' physical damage}} equal to {{as|{{rd|8%|6%}} of the target's '''current''' health}}, capped at 200 against non-champions.",
+            },
+		},
+        ["recipe"]              = {"The Brutalizer", "Long Sword", "Long Sword"},
+        ["buy"]                 = 3000,
+    },

@@ -12,11 +12,10 @@
 // ASSUMPTION (to check in the Practice Tool): the Phantom Hit's on-hit effects are shrunk by
 //   R's 25 / 30 / 35% like a normal dagger's. Old wiki text said "100% effectiveness"; the
 //   current text doesn't say. We picked the lower guess.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Guinsoo%27s_Rageblade", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Guinsoo%27s_Rageblade", patch: "26.23" },
   wrathDamage: 30,
   attackSpeedPerStack: 0.08,
   maxAttackSpeedStacks: 4,

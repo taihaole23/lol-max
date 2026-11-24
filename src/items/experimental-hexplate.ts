@@ -5,11 +5,10 @@
 // - The attack speed raises R's AD part (its AD ratio grows with bonus attack speed).
 // - The move speed only matters for Swiftmarch.
 // "Hexcharged" (ultimate haste) doesn't change damage.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Experimental_Hexplate", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Experimental_Hexplate", patch: "26.23" },
   meleeBonusAttackSpeed: 0.5,
   meleePercentMoveSpeed: 0.2,
 };

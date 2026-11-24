@@ -1,0 +1,209 @@
+{{tocright}}
+<!--A statistic is generally a value/magnitude (which may have a unit of measure or be dimensionless) attributed to a player-controlled or computer-controlled entity. Statistics define innate, unmodified power.-->When referring to player units (such as [[champion]]s) a '''statistic''' measures the magnitude of an unmodified basic attribute or capability. For example: how durable the unit is; how fast it is able to move; how quickly it is able to perform basic attacks; etc. An effect (e.g. how much damage an [[Champion ability|ability]] deals) that increases in strength by a statistic is said to "'''scale with'''" or "scale off of" that statistic. Scaling type can either directly or indirectly influence the champion's capabilities, and often heavily correlates to the [[Champion classes|champion's design]]. Statistics define a champion's '''numerical''' strength at various stages of the game or a fight, but not necessarily their overall strength—nevertheless, big differences in statistics also mean a substantial difference in the way different champions and champion classes interact with each other on the battlefield, as well as influence the game.
+
+Units are typically given a group of non-zero, fundamental '''base''' stats by the game rules, while the remaining stats always have a '''base''' value of zero. A subset of those non-zero base stats can naturally improve, or '''grow''', by [[Experience (champion)|leveling up]].
+* A '''base''' statistic is a statistic's unmodified value at level '''1'''.
+* A '''growth''' statistic is an increase to the base amount that is gained explicitly by leveling up.
+
+Increases and reductions to the statistics that are gained from any other source than leveling up, such as [[Champion ability|champion abilities]], [[rune]]s, [[item]]s, [[buff]]s and [[debuff]]s, are called '''bonuses'''. The exception is attack speed growth, which is gained per level but uniquely counts {{tt|toward the bonus amount|This is a deliberate mathematical interaction, intrinsic to the design of League of Legends.}}.
+
+== Types ==
+There are 28 types of champion statistics divided into 4 different categories: Defensive, Offensive, Utility, Presence. In the list below, only the basic attribute of each statistic is presented. ''In League of Legends, modified attacks, abilities, items, and runes, may freely scale off of '''any''' and/or '''multiple''' statistics (and sometimes other effects), whether in their damage, defense, cooldown, or {{tt|any other attribute|For game design reasons, the statistics and game mechanics are often matched e.g. damage scales through damage, defense scales through defense; etc. This is not always the case however, neither is it obligatory for any statistic nor specific game balance.}}''.
+
+=== Defensive ===
+* '''{{stil|Health}}''' ['''HP''']: A champion [[Death|dies]] when their health is reduced to zero. Some abilities and effects may scale off of your own, on your ally's, or on a target enemy's: current, bonus, missing, or maximum health.
+* '''{{stil|Health regeneration}}''' ['''HP5''']: The amount of {{as|health}} a champion passively restores per 5 seconds.
+* '''{{stil|Heal and shield power}}''': Increases the strength of certain [[Healing|healing]] and all [[Shield|shielding]] effects on yourself or allies. ''See page for related attributes, mechanics, and exceptions''.
+* '''{{stil|Armor}}''' ['''AR''']: Reduces (mitigates) the amount of {{as|physical damage}} taken, thus increasing a champion's effective health against physical damage.
+* '''{{stil|Magic resistance}}''' ['''MR''']: Reduces (mitigates) the amount of {{as|magic damage}} taken, thus increasing a champion's effective health against magic damage.
+* '''{{stil|Tenacity}}''': Reduces the '''duration''' of most hostile [[Crowd control|crowd control effects/disables]] by a percentage. Stacking multiple sources of tenacity has diminishing returns. Disables cannot be reduced to under {{fd|0.3}} seconds.
+* '''{{stil|Slow resist}}''': Reduces the '''strength''' of incoming hostile [[Types of Crowd Control#Slow|slows]] (movement speed reductions). The reduction is a percentage of the slow's strength.
+
+=== Offensive ===
+* '''{{stil|Attack speed}}''' ['''AS''']: The number of [[Basic attack|basic attacks]] your champion is allowed to perform per second. ''See page for other relevant attributes''.
+* '''{{stil|Attack damage}}''' ['''AD''']: One of the two main offensive statistics, along with ability power. '''Unmodified''' basic attacks deal exactly this amount of damage.
+* '''{{stil|Ability power}}''' ['''AP''']: One of the two main offensive statistics, along with attack damage.
+* '''{{stil|Critical strike chance}}''' ['''Crit%''']: Denotes the chance that a basic attack will critically strike. Certain abilities can also critically strike for modified damage.
+* '''{{stil|Critical strike damage}}''': Denotes the damage dealt when a basic attack critically strikes. Abilities that can critically strike usually also benefit from critical strike damage.
+* '''{{stil|Armor penetration}}''': When applying {{as|physical damage}} to an enemy, ignores a part of their [[armor]] in the damage calculations. Armor penetration can be either flat (''lethality'') or percentage-based. The target's armor is unchanged.
+* '''{{stil|Magic penetration}}''': When applying {{as|magic damage}} to an enemy, ignores a part of their [[magic resistance]] in the damage calculations. Magic penetration can be either flat or percentage-based. The target's magic resistance is unchanged.
+* '''{{stil|Life steal}}''': How much {{as|health}} a champion restores, as a percentage of the {{tt|post-mitigation|Damage calculated after resistances and other modifiers.}} damage dealt by basic attacks and [[Attack effects#On Hitting|on-hit effects]].
+* '''{{stil|Physical vamp}}''': How much {{as|health}} a champion restores, as a percentage of all {{as|physical damage}} dealt. Physical vamp is only 33% as effective when dealing {{tip|area damage|noimg=true}} or {{tip|pet damage|noimg=true}}.
+* '''{{stil|Spell vamp}}''': How much {{as|health}} a champion restores, as a percentage of all {{tip|ability damage}} dealt. Spell vamp is only 33% as effective when dealing {{tip|area damage|noimg=true}} or {{tip|pet damage|noimg=true}}.
+* '''{{stil|Omnivamp}}''': How much {{as|health}} a champion restores, as a percentage of all damage dealt. Omnivamp is only 20% as effective against non-champions.
+
+=== Utility ===
+* All [[Haste|'''haste''']], but more commonly '''{{stil|ability haste}}''' ['''AH''']: Reduces the [[Cooldown|cooldown]] of abilities by a percentage. Stacking ability haste itself has diminishing returns, but not in terms of cooldowns and casting.
+** Ability haste is just one of several forms of haste that a champion can obtain, but it is the only one actually displayed on a champion's statistics panel.
+* '''Resource''' refers to a mechanic meant to gate and be spent on ability casting. Each resource has a maximum pool or amount, and may or may not regenerate passively. Resource and resource regeneration are counted as two distinct and innate statistics for '''all''' champions, regardless of whether {{tt|they use a certain resource type or not|Even entirely resourceless champions will have the statistics of 'resource' and 'resource regeneration' because they are innate, but evidently both will be zero.}}. Below are listed two prevalent resources that interact with resource-generic effects, unlike all others. ''For all non-mana–users, see [[Manaless|here]]''.
+** '''{{stil|Mana}}''' ['''MP''']: {{as|Mana}} is a longer-term resource that replenishes fairly slowly, but can be improved into great supply. Some effects may scale off a portion or all of your mana.
+** '''{{stil|Mana regeneration}}'''  ['''MP5''']: The amount of {{as|mana}} a champion passively restores per 5 seconds.
+** '''{{stil|Energy}}''': {{as|Energy}} is a shorter-term resource that replenishes fairly quickly, but comes in limited supply compared to mana. All champions who use energy also have at least one means by which they are able to restore a flat amount of energy.
+** '''{{stil|Energy regeneration}}''': The amount of {{as|energy}} a champion passively restores. Energy regeneration rate is a base of 50 energy per 5 seconds for all energy users, but it can be increased through a few effects.
+* '''{{stil|Attack range}}''': The maximum distance that a basic attack can be initiated from. Attack range is measured in game-distance units and refers to the distance from the source's edge to the target's edge.
+** When referring to [[Range|'''range''']] in general — abilities, item actives, and summoner spells' maximum distance and/or dimensions (where applicable) can also be included. Ability ranges have different targeting conditions.
+* '''{{stil|Movement speed}}''' ['''MS''']: How quickly a champion moves across the map, measured in game-distance units per second.
+* '''{{stil|Gold generation}}''': The rate at which a champion passively generates gold, measured per 10 seconds.
+
+=== Presence ===
+* '''{{tip|Gameplay radius}}''': The unit's dimensions for hitbox and visual purposes. This value can be increased or decreased via size modifiers.
+* '''{{tip|Pathing radius}}''': The unit's dimensions for determining unit collision. This value cannot be changed.
+* '''{{tip|Selection radius}}''' and '''{{tip|selection height}}''': The dimensions of the unit's virtual surfaces that allow selection of it by human players, in addition to its visual model. These values cannot be changed.
+* '''{{tip|Acquisition radius}}''': The radius of the unit's automatic seeking for basic attack targets while idling. {{sti|Attack range modifiers}} affect this value by the same amount, but no other effect can change it.
+
+== {{Anchor|Increasing Statistics}}Growing statistics ==
+There are eight '''base''' stats that may increase through '''growth''': [[attack damage]], [[armor]], [[magic resistance]], [[health]], [[health regeneration]], [[mana]], [[mana regeneration]] and [[attack speed]].
+
+The first seven growing stats' calculations use an explicit formula called the ''growth formula'', which directly adds all amounts gained together. The primary growth formula may also be used for any other champion-related effect, including [[champion summoned unit|champion summons]].
+
+Attack speed calculations specifically use a slightly modified formula instead.
+
+=== Primary growth formula ===
+To calculate the amount of a growing statistic that a champion has at a specific level, the following formula is used. This formula can be used for any level.
+
+<span style="font-weight:bold;font-size:140%;><center>Statistic = base + bonus + g{{times}}(n{{minus}}1){{times}}(0.7025 + 0.0175{{times}}(n{{minus}}1))</center></span>
+Where:
+* base = initial statistic value
+* bonus = bonus statistic from any source (runes, items, buffs, etc.)
+* g = growth statistic
+* n = current level
+* (n{{minus}}1) = total number of level ups
+
+Growth stats cannot be modified (with the exception of when {{ci|Gnar}} and {{ci|Mega Gnar}}<nowiki>  change forms).</nowiki>
+
+=== Attack speed growth ===
+[[Attack speed]] is measured based on frequency, but it may only be increased and decreased by a percentage in ''League of Legends''. Additionally, units are given a modifier to all attack speed bonuses by the game rules, called the attack speed ''ratio''. For this purpose, all attack speed increases and reductions are considered bonuses including via growth—the growth of bonus attack speed however happens at the same rate as all other growing statistics.
+
+The primary growth formula is adjusted to the following for attack speed calculations:
+
+<span style="font-weight:bold;font-size:140%;><center>Total Attack Speed = ASbase + [ASbonus + g{{times}}(n{{minus}}1){{times}}(0.7025 + 0.0175{{times}}(n{{minus}}1))]{{times}}ASratio</center></span>
+Where:
+* ASbase = base attack speed
+* ASratio = attack speed ratio
+* g = bonus attack speed growth, gained explicitly <u>from leveling up</u>
+* ASbonus = sum of any percent bonus attack speed gained explicitly from any source <u>except leveling up</u>
+* n = current level
+* (n{{minus}}1) = total number of level ups
+
+=== {{Anchor|Growth statistic calculations}}Growth by level ===
+The amount of the growth stat gained by leveling up increases linearly with each level; it is not constant. To achieve this formula, the growth formula is differentiated with respect to levels:
+
+<center><span style="font-weight:bold;font-size:140%;">Stat Increase = g{{times}}(0.65 + 0.035{{times}}n)</span></center>
+Where:
+* g = growth statistic
+* n = current level ≥ 2
+
+The number in brackets determines the coefficient of the growth statistic, which increases with each level.
+* When leveling up from level 1 to level 2, the champion gains 0.65 + 0.035{{times}}2 = 0.72 = 72% of the growth stat.
+* When leveling up from level 9 to level 10, the champion gains 0.65 + 0.035{{times}}10 = 1.00 = 100% of the growth stat.
+* When leveling up from level 17 to level 18, the champion gains 0.65 + 0.035{{times}}18 = 1.28 = 128% of the growth stat.
+* When leveling up from level 19 to level 20, the champion gains 0.65 + 0.035{{times}}20 = 1.35 = 135% of the growth stat.
+
+By level 18, a champion will have gained a total of 1700%, or 17 times, their growth statistic. In other words, a growing statistic will be equal to [ base + 17{{times}}growth ] at level 18 when non-growth sources are ignored. The two next levels (for a total of 20) provide an additional 266.5% of the growth statistic value for a total of 1966.5% their growth statistic.
+
+<gallery navigation="true" widths="460" heights="330" style="display: block; margin: 0 auto; text-align: center;">
+Stat growth total.jpg|<center>The amount of stats gained via growth is quadratic.<center>
+Stat growth by level.jpg|<center>The rate of stat growth by level is linear.<center>
+</gallery>
+{{clr}}
+
+=== Generic growth example ===
+* {{ci|Alistar}} starts the game at level 1 with {{#vardefineecho:AHP_base|{{ccd|Alistar|hp_base}}}} base health.
+* His health growth stat is {{#vardefineecho:AHP_g|{{ccd|Alistar|hp_lvl}}}}.
+
+{{cis|Alistar}} base health at level 2 will be:
+* {{#var:AHP_base}} + {{#var:AHP_g}}{{times}}(2{{minus}}1){{times}}(0.7025 + 0.0175{{times}}(2{{minus}}1))
+* {{#var:AHP_base}} + {{#var:AHP_g}}{{times}}1{{times}}{{#expr:0.7025 + 0.0175 * (2 - 1)}}
+* {{#var:AHP_base}} + {{#expr:{{#var:AHP_g}} * (2 - 1) * (0.7025 + 0.0175 * (2 - 1))}}
+* {{#expr:{{#var:AHP_base}} + {{#var:AHP_g}} * (2 - 1) * (0.7025 + 0.0175 * (2 - 1))}}
+
+On the HUD, that is rounded to '''{{#expr:ceil({{#var:AHP_base}} + ({{#var:AHP_g}} * (2 - 1) * (0.7025 + 0.0175 * (2 - 1))))}}'''.
+
+=== Attack speed growth example ===
+* {{ci|Volibear}} starts the game at level 1 with {{#vardefineecho:VAS_base|{{ccd|Volibear|as_base}}}} base attack speed.
+* His attack speed ratio is {{#vardefineecho:VAS_r|{{ccd|Volibear|as_ratio}}}}.
+* His bonus attack speed growth stat is {{ccd|Volibear|as_lvl}}% = {{#vardefineecho:VAS_g|{{#expr:{{ccd|Volibear|as_lvl}}/100}}}}.
+* If he has 5 stacks of {{ai|The Relentless Storm|Volibear}}, he will also gain 5%{{times}}5 = 25% = 0.25 bonus attack speed.
+
+{{cis|Volibear}} attack speed at level 3 and while his passive is fully stacked will be:
+* {{#var:VAS_base}} + [0.25 + {{#var:VAS_g}}{{times}}(3{{minus}}1){{times}}(0.7025 + 0.0175{{times}}(3{{minus}}1))]{{times}}0.7
+* {{#var:VAS_base}} + [0.25 + {{#var:VAS_g}}{{times}}2{{times}}{{#expr:0.7025 + 0.0175 * (3 - 1)}}]{{times}}0.7
+* {{#var:VAS_base}} + [0.25 + {{#var:VAS_g}}{{times}}{{#expr:(3 - 1) * (0.7025 + 0.0175 * (3 - 1))}}]{{times}}0.7
+* {{#var:VAS_base}} + [0.25 + {{#expr:{{#var:VAS_g}} * (3 - 1) * (0.7025 + 0.0175 * (3 - 1))}}]{{times}}0.7
+* {{#var:VAS_base}} + [{{#expr:0.25 + {{#var:VAS_g}} * (3 - 1) * (0.7025 + 0.0175 * (3 - 1))}}]{{times}}0.7
+* {{#var:VAS_base}} + {{#expr:(0.25 + {{#var:VAS_g}} * (3 - 1) * (0.7025 + 0.0175 * (3 - 1))) * 0.7}}
+* {{#expr:{{#var:VAS_base}} + (0.25 + {{#var:VAS_g}} * (3 - 1) * (0.7025 + 0.0175 * (3 - 1))) * 0.7}}
+
+On the HUD, that is rounded to '''{{#expr:{{#var:VAS_base}} + (0.25 + {{#var:VAS_g}} * (3 - 1) * (0.7025 + 0.0175 * (3 - 1))) * 0.7 round2}}''' (or {{#expr:{{#var:VAS_base}} + (0.25 + {{#var:VAS_g}} * (3 - 1) * (0.7025 + 0.0175 * (3 - 1))) * 0.7 round3}} in the tooltip within the champion stats panel).
+
+== Non-growing statistics ==
+Non-growing statistics are those which do not grow by leveling up. Most statistics do not grow.
+
+The following statistics have a '''non-zero''' base value and are non-growing: all types of [[#Presence|presence]] statistics, [[range|basic attack range]], [[gold generation]], [[Critical strike|critical strike damage]] and [[movement speed]].
+* Presence statistics cannot be zero, by strict limitation of the game.
+* Every champion is given a base attack range and a base movement speed, neither of which increases naturally. ''Natural increase means explicitly from leveling up itself—stats gained from innate abilities such as {{cai|Draw a Bead|Tristana}}, despite scaling by level, are considered bonuses because they do not originate from growth.''
+* All champions on the same map start the game with the same passive gold generation, which may or may not be zero.
+* All champions on the same map start the game with the same {{sti|critical damage|{{as|critical damage}}}}—even {{ci|Ashe}}, {{ci|Jhin}}, and others despite their innate abilities—which is by definition higher than 1.
+
+All other statistics have a base value of '''zero''' and can only be increased via bonuses.
+
+== Notes ==
+* Statistics having a "base" value was established in patch [[V4.20]], These are the values '''''at'' level 1'''.<ref>[https://web.archive.org/web/0/http://oce.leagueoflegends.com/en/news/game-updates/patch/patch-420-notes#patch-stats-gained-per-level Patch 4.20 Notes]</ref> These values can also be verified by entering a [[Practice Tool]] game with no runes and viewing the champion statistics panel.
+** The same patch changed stat growth from linear to quadratic (growth increases with increasing level).
+* In the champion stats panels:
+** [[Attack damage]], [[ability power]], [[armor]], [[magic resistance]], [[attack speed]], [[movement speed]], [[ability haste]] and [[critical strike|critical strike chance]] can be found in the basic (or default) stats menu (the player can show or hide the panel by clicking on the panel's button).
+** [[Health regeneration]], [[mana regeneration]], [[heal and shield power]], [[armor penetration]], [[magic penetration]], [[life steal]], [[physical vamp]], [[omnivamp]], [[Range|attack range]], and [[tenacity]] can be found in the advanced player stats menu (default <code>'''C'''</code> to toggle and <code>'''Ctrl''' + '''C'''</code> to cycle).
+** For each statistic, if its value is written in white then only the base amount is present, and if its value is is written in bold yellow then it has been increased from the base amount through bonuses. By hovering the cursor over almost any statistic, a tooltip can be accessed that includes extra information about the statistic and/or more precise values. Each stat can be hovered to show a tooltip that includes a brief description of a statistic, and total, base, and bonus values, in the format <code>total (base + bonus)</code>. The base value is colored blue, and the bonus amount is colored green. If there is no bonus amount then the total value is colored blue, and if there are any bonuses then the total value is colored green. This coloring scheme applies to all visible stats, with the exceptions of armor penetration and magic penetration which are always written in blue (an inconsistency, but purely cosmetic nonetheless).
+** {{as|Armor}} and {{as|magic resistance}} also include the resulting damage reduction in their respective tooltips.
+** {{as|Ability haste}} also includes the resulting cooldown reduction in its respective tooltip.
+** {{as|Health regeneration}} and resource regeneration are presented together as "Regen" and in the format <code>'''Health regen. | Resource regen.'''</code>.
+** {{as|Armor penetration}} and {{as|magic penetration}} are presented in the format <code>'''Flat | Percentage'''</code>.
+** {{as|Total critical damage}} is not shown to the player. Within the {{as|critical strike chance}} tooltip, the {{as|base critical damage}} value is always listed regardless of any bonuses. The presented information also does not consider any other forms or values for {{tip|critical strike|critical strikes}}.
+* Basic stats, which include health, [[Ability resource|resource]], attack damage, ability power, armor, magic resistance, attack speed, movement speed, ability haste and critical strike chance (along with [[buff]]s and [[debuff]]s) are displayed on the target frame, when a unit is selected. Hovering the cursor over the {{as|health}} line or the resource line in the HUD additionally displays {{as|health regeneration}} and resource regeneration in amount per second, as opposed to the regular amount per 5 seconds. The player can also hover their cursor over their own health and resource bar to view these values per second.
+
+== Infinite Stat Stacking ==
+{{Champion with infinite scaling}}
+* {{ci|Aurelion Sol}} can infinitely augment the {{tt|potency|Different attribute for each ability.}} of his abilities by collecting {{ai|Cosmic Creator|Aurelion Sol|Stardust}} stacks.
+* {{ci|Bel'Veth}} can infinitely stack her attack speed with {{ai|Death in Lavender|Bel'Veth|Lavender}} stacks.
+* {{ci|Cho'Gath}} can infinitely stack its health with {{ai|Feast|Cho'Gath}} stacks.
+* {{ci|Draven}} can infinitely gain {{ai|League of Draven|Draven|Adoration}} stacks, assuming he does not die.
+* {{ci|Kindred}} can infinitely stack the bonus attack speed gained from {{ai|Dance of Arrows|Kindred}} which scales based on how many {{ai|Mark of the Kindred|Kindred|Marks}} they have.
+* {{ci|Nasus}} can infinitely stack the bonus damage of his {{ai|Siphoning Strike|Nasus}} by using it to kill enemies.
+* {{ci|Senna}} can infinitely stack her bonus attack damage, bonus range, and life steal by converting critical strike chance beyond the cap from {{ai|Absolution|Senna|Mist}} stacks.
+* {{ci|Shyvana}} can infinitely stack her resistances from {{ai|Scalemail|Shyvana}}.
+* {{ci|Sion}} can infinitely stack his health with {{ais|Soul Furnace|Sion}} passive stacks.
+* {{ci|Smolder}} can infinitely stack the bonus magic damage on his basic abilities, as well as the number of bolts and true damage of {{ai|Super Scorcher Breath|Smolder}} by collecting {{ai|Dragon Practice|Smolder}} stacks.
+* {{ci|Swain}} can infinitely stack his health with {{ai|Ravenous Flock|Swain|Soul Fragment}} stacks.
+* {{ci|Sylas}} can infinitely stack his health from {{ai|Hijack|Sylas|Hijacking}} an enemy {{cai|R|Cho'Gath}} and gaining stacks of the ability as they are permanent.
+* {{ci|Thresh}} can infinitely stack his ability power and armor from {{ai|Damnation|Thresh|Soul}} stacks.
+* {{ci|Veigar}} can infinitely stack his ability power from {{ai|Phenomenal Evil Power|Veigar}} stacks.
+
+While not a scaling, these champions also have an infinitely stacking effect:
+* {{cbi|Yuumi}} can infinitely stack ''Friendship'' on ally champions with {{ai|Feline Friendship|Yuumi}}. This is a stat exclusive to Yuumi.
+* {{ci|Mel}} can infinitely stack the {{ai|Searing Brilliance|Mel|Overwhelm}} debuff on enemy champions. This is however not a stat.
+
+== Trivia ==
+* In the HUD, if there are any positive bonuses present in a statistic, the number will be highlighted in yellow; it will remain grey otherwise.
+** Negative bonuses that reduce a statistic to the base value or less will also cause the number to be grey.
+* [[Gold|Passive gold generation]], [[slow resist]], and total [[Critical strike|critical strike damage]] are the only statistics that have to be calculated by the player during the game, and are not explicitly displayed anywhere in the game's menus.
+** The current map's intrinsic gold generation is also not noted anywhere as a statistic.
+* [[Heal and shield power]] was added as a functional statistic as a passive item effect in [[V6.13]], standardized in [[V11.8]] as a proper statistic, but only added to the stats panel in [[V14.10]], almost eight years after its release.
+* [[Armor penetration#Lethality|Lethality]] was implemented as a standard statistic in [[V14.9]]. Before this, it would be handled through scripts.
+* Some statistics' effectiveness may also be relevant when combined with other statistics that both interact with a certain mechanic. For example, attack damage directly benefits the raw amount of health you gain back from life steal; both interact with the mechanic of basic attacks; and there is always an equilibrium of effectiveness among such statistics, depending on their availability [[Patch|at the time]].
+
+== See also ==
+* [[Base champion statistics]]
+* [[List of champions/Statistics at level 20|Champion statistics at level 20]]
+
+{{References}}
+{{Stats}}
+
+
+[[cs:Staty]]
+[[de:Championstatistik]]
+[[es:Estadísticas de campeones]]
+[[fr:Caractéristique de champion]]
+[[pl:Statystyki]]
+[[ru:Параметры чемпионов]]
+[[zh:英雄角色数据]]
+[[Category:Champion statistics]]

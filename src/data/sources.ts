@@ -1,7 +1,7 @@
 // Every source the site's numbers come from, grouped for the "Sources" section on the page.
 // Built from the `source` fields in the data files, so a new data file only needs adding here once,
 // and a link can't be shown on the site without also being the one the numbers came from.
-import { championListSource } from "./champion-list.ts";
+import { championListSource, skinTierSource } from "./champion-list.ts";
 import { champions } from "./champions.ts";
 import * as gameRules from "./game-rules.ts";
 import { itemGroups, katarinaCannotBuy } from "./item-groups.ts";
@@ -51,7 +51,8 @@ export const sourceGroups: SourceGroup[] = [
     title: "Items",
     sources: [
       named("Item stats (Riot's Data Dragon, saved snapshot)", itemSource),
-      named("Champion list and all icons (Riot's Data Dragon, saved copies)", championListSource),
+      named("Champion list, abilities, icons and splash art (Riot's Data Dragon, saved copies)", championListSource),
+      named("Skin tiers, to pick each champion's splash art (CommunityDragon)", skinTierSource),
       named("Item groups (\"only one of these\" rules)", itemGroups.source),
       named("Melee-only items", katarinaCannotBuy.source),
     ],

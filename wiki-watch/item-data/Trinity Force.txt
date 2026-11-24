@@ -1,0 +1,39 @@
+["Trinity Force"] = {
+        ["id"]                  = 3078,
+        ["nickname"]            = {"Spellblade", "triforce", "tons of damage", "33333"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Spellblade",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["marksman"]        = true,
+            ["movement"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 36,
+            ["ah"]              = 15,
+            ["as"]              = 30,
+            ["hp"]              = 333,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Spellblade",
+                ["unique"]      = true,
+                ["description"] = "After using an [[Champion ability|ability]], your next basic attack within 10 seconds deals {{as|200% '''base''' AD}} {{as|'''bonus''' physical damage}} [[on-hit]] ({{fd|1.5}} second cooldown, starts after using the empowered attack).",
+            },
+            ["pass2"] = {
+                ["name"]        = "Quicken",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks [[on-hit]] grant {{as|20 '''bonus''' movement speed}} for 2 seconds",
+            },
+        },
+        ["recipe"]              = {"Sheen", "Phage", "Hearthbound Axe"},
+        ["buy"]                 = 3333,
+    },

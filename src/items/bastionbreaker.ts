@@ -2,11 +2,10 @@
 // true damage: 40 + 1.5 per lethality (melee values). Its cooldown is far longer than the
 // ult, so only the first dagger gets it. It's not on-hit, so R's 25 / 30 / 35% doesn't apply.
 // ("Sabotage" needs a takedown, and the dummy never dies.)
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Bastionbreaker", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Bastionbreaker", patch: "26.23" },
   baseDamage: 40,
   damagePerLethality: 1.5,
 };

@@ -1,0 +1,35 @@
+["The Collector"] = {
+        ["id"]                  = 6676,
+        ["nickname"]            = {"deathblade", "gun", "lethality"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 50,
+            ["crit"]            = 25,
+            ["lethality"]       = 10,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Death",
+                ["unique"]      = true,
+                ["description"] = "If you deal {{tt|post-mitigation|Damage calculated after modifiers}} damage that would leave a champion below {{as|5% of their '''maximum''' health}}, {{tip|execute}} them.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Taxes",
+                ["unique"]      = true,
+                ["description"] = "Killing a champion grants you an additional {{g|25}}.",
+            },
+        },
+        ["recipe"]              = {"Pickaxe", "Serrated Dirk", "Cloak of Agility"},
+        ["buy"]                 = 3000,
+    },

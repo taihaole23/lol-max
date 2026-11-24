@@ -1,0 +1,29 @@
+["Actualizer"] = {
+        ["id"]                  = 2522,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = false,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 90,
+            ["ah"]              = 10,
+            ["mana"]            = 300,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Mana Made Real",
+                ["unique"]      = true,
+                ["description"] = "For 8 seconds, your mana is ''Empowered''. While ''Empowered'': your [[champion ability|abilities]] cost 100% more mana; you gain 15% {{as|(+ {{fd|0.5}}% per 100 '''bonus''' mana)}} increased {{tip|ability damage|ability}} and {{tip|pet damage}}, {{tip|healing}}, and {{tip|shielding}}; and your basic abilities' cooldowns progress 30% faster.",
+                ["cd"]          = "60",
+            },
+		},
+        ["recipe"]              = {"Lost Chapter", "Blasting Wand"},
+        ["buy"]                 = 2800,
+    },

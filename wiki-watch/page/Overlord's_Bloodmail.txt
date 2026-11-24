@@ -1,0 +1,141 @@
+{{Item info
+|goldvalue =
+{{gold value|Tyranny Gold Value (from base stats)|nolink=}}
+* {{fd|{{#expr:{{cid|Overlord's Bloodmail|hp}}*{{#vardefineecho:hppercenttoad|0.025}}}}}} [[attack damage]] = {{g|{{#expr:{{cid|Overlord's Bloodmail|hp}}*{{#var:hppercenttoad}}*{{#var:ad}}}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:total|{{#expr:{{#var:total}}+{{cid|Overlord's Bloodmail|hp}}*{{#var:hppercenttoad}}*{{#var:ad}}}}}}}}
+{{gold value|Tyranny Gold Value per 100 bonus Health from outside sources|nolink=}}
+* {{fd|{{#expr:{{#var:hppercenttoad}}*100}}}} [[attack damage]] = {{g|{{#expr:{{#vardefineecho:perhp|{{#expr:{{#var:ad}}*{{#var:hppercenttoad}}*1}}}}*100}}}}
+|goldefficiency =
+* {{iis|Overlord's Bloodmail}} gold efficiency due to {{sbc|Tyranny}} is increased by {{gec|Overlord's Bloodmail|+{{#expr:{{#var:ad}}*{{#var:hppercenttoad}}*100}}}} for every {{as|100 '''bonus''' health}} from other sources.
+* {{ii|Overlord's Bloodmail}} becomes 100% gold efficient at {{as|{{#vardefineecho:hpforefficient|{{#expr:({{cid|Overlord's Bloodmail|buy}}-{{#var:total}})/({{#var:perhp}}) round0}}}} '''bonus''' health}} from other sources (which grants an additional {{as|{{fd|{{#expr:{{#var:hpforefficient}}*{{#var:hppercenttoad}}}}}} '''bonus''' attack damage}} from {{sbc|Tyranny}}).
+|similaritems =Sterak's Gage;Sundered Sky;Titanic Hydra;Hullbreaker;Experimental Hexplate;Trinity Force;Spear of Shojin;Black Cleaver;Stridebreaker
+|background =
+|notes =
+* {{sbc|Tyranny}} grants {{as|{{fd|{{#expr:({{cid|Overlord's Bloodmail|hp}}*{{#var:hppercenttoad}})}}}} '''bonus''' attack damage}} by itself.
+** With '''Overlord's Bloodmail's''' attack damage stat this totals to {{as|{{fd|{{#expr:{{cid|Overlord's Bloodmail|ad}}+({{cid|Overlord's Bloodmail|hp}}*{{#var:hppercenttoad}})}}}}|ad}}.
+* {{sbc|Retribution's}} in-game tooltip falsely displays its {{as|'''bonus''' attack damage}} value as if it were being increased by its {{as|'''missing''' health}} scaling recurrently, but the actual value is unaffected.{{bug}}
+* {{sbc|Retribution's}} bonus is displayed on the item's icon as a counter which dynamically updates.
+|strategy =
+|oldicons =
+|trivia =
+|quotes =
+|media =
+|revisions =
+<tabber>
+Hide=
+|-|Season 2016 version=
+{{Infobox item
+|disp_name = Overlord's Bloodmail
+|sub_name  = V6.14
+|icon      = Overlord's Bloodmail item old
+|health    = 800
+|hp5       = 100
+|act       = {{Unique|Upon scoring a champion {{tip|takedown}}, {{tip|heal}} for 300 over 5 seconds.}}
+|menu1a    = Defense
+|menu1b    = Health
+|menu2a    = Defense
+|menu2b    = Health Regen
+|recipeold = {{Recipe
+ |result = Overlord's Bloodmail
+ |variant= old
+ |total  = 2500
+ |cost   = 850
+ |t1     = {{Recipe
+  |result = Giant's Belt
+  |variant= old
+  |total  = 1000
+  |cost   = 600
+  |t1     = {{Recipe/item|Ruby Crystal|400|variant=old2}}
+  }}
+ |t2     = {{Recipe
+  |result = Crystalline Bracer
+  |variant= old
+  |total  = 650
+  |cost   = 100
+  |t1     = {{Recipe/item|Ruby Crystal|400|variant=old2}}
+  |t2     = {{Recipe/item|Rejuvenation Bead|150|variant=old}}
+  }}
+ }}
+ |buy    = 2500
+ |comb   = 850
+ |sell   = 1750
+ |code   = 3084
+}}
+{{gold value}}
+* 800 [[health]] = {{g|2133.33}}
+* 100% [[health regeneration|base health regeneration]] = {{g|300}}
+** '''Total Gold Value''' = {{g|2433.33}}
+</tabber>
+|patchhistory =
+;[[V26.22]]
+* Attack damage increased to 40 from 30.
+* Retribution health ratio reduced to {{pp|0 to 10 by 1|0 to 70|key=%|key1=%|type='''missing''' health|color=health}} from {{pp|0 to 12 by 1|0 to 70|key=%|key1=%|type='''missing''' health|color=health|showtype=false}}.
+
+;[[V25.08]]
+* Tyranny health ratio increased to {{as|{{fd|2.5}}% '''bonus''' health}} from {{as|2%|hp}}.
+* Retribution health ratio increased to {{pp|0 to 12 by 1|0 to 70|key=%|key1=%|type='''missing''' health|color=health}} from {{pp|0 to 10 by 1|0 to 70|key=%|key1=%|type='''missing''' health|color=health}}.
+
+;[[V14.19]]
+* Health increased to 550 from 500.
+* Attack damage reduced to 30 from 40.
+
+;[[V14.10]] - Re-added
+* Updated icon.
+* {{sbc|Recipe:}} {{ii|Tunneler}} + {{ii|Tunneler}} + {{g|1000}} = {{g|3300}}.
+* {{sbc|Stats:}} 500 health, 40 attack damage.
+* {{sbc|Unique Passive - Tyranny:}} Gain {{as|'''bonus''' attack damage}} equal to {{as|2% of your '''bonus''' health}}.
+* {{sbc|Unique Passive - Retribution:}} Gain {{as|'''bonus''' attack damage}} equal to {{pp|0 to 10 by 1|0 to 70|key=%|key1=%|type='''missing''' health|color=health}} of your {{as|'''total''' attack damage}} from other sources.
+* {{sbc|Caption:}} "Only between life and death did he find a way to settle the score."
+* Limited to 1 '''Overlord's Bloodmail'''.
+
+;[[V14.9]] - Re-added
+* Available on [[Arena]] on May 1st, 2024.
+* ''Obtained from {{ii|Prismatic Item|Prismatic Item Anvils}}.''
+** {{sbc|Sell:}} {{g|2000}}.
+** Attack damage increased to 45 from 0.
+** Health reduced to 500 from 800.
+** Base health regeneration reduced to 0 from 100%.
+** {{sbc|Removed Unique Passive:}} Upon scoring a champion {{tip|takedown}}, {{tip|heal}} for 300 over 5 seconds.
+** {{sbc|New Unique Passive - Tyranny:}} Gain {{as|'''bonus''' attack damage}} equal to {{as|3% '''bonus''' health}}.
+** {{sbc|New Unique Passive - Retribution:}} Increase your {{as|attack damage}} by {{as|{{pp|key=%|key1=%|type='''missing''' health|0 to 12 for 11|0 to 70|formula=0.171% per 1% of target's '''missing''' health, capped at 70% '''missing''' health}}|hp}}.
+
+;[[V6.14]]
+* Removed from [[Twisted Treeline]] thus from the game.
+
+;[[V6.3]] February 22nd 2016
+* Removed from [[Crystal Scar]] because the map was removed from the game.
+
+;[[V5.22]]
+* Combine cost reduced to {{g|850}} from {{g|900}}.
+** Total cost unchanged.
+
+;[[V5.11]]
+* {{sbc|New Recipe:}} {{ii|Giant's Belt}} + {{ii|Crystalline Bracer}} + {{g|900}} = {{g|2500}}
+* Health reduced to 800 from 850.
+* New stat: +100% base health regeneration.
+
+;[[V4.21]]
+* Now available in [[Crystal Scar]].
+* Passive health restore increased to 300 from 200.
+
+;[[V4.3]]
+* Combine cost increased to {{g|1055}} from {{g|980}} (total cost remains the same due to {{iis|Ruby Crystal}} price being reduced).
+
+;[[V1.0.0.152]]
+* Cost reduced to {{g|2455}} from {{g|2565}}.
+
+;[[V1.0.0.150]] Added
+* {{sbc|Recipe:}} {{ii|Giant's Belt}} + {{ii|Ruby Crystal}} + {{g|980}} = {{g|2565}}
+* Grants +850 health.
+* Unique Passive: On kill or assist, gain 200 health over 5 seconds.
+}}
+
+
+[[cs:Overlord's Bloodmail]]
+[[de:Blutpanzer des Gebieters]]
+[[es:Cota Sangrienta del Soberano]]
+[[fr:Armure Sanguine du Suzerain]]
+[[pl:Krwawa Kolczuga Władcy]]
+[[pt-br:Armadura Sangrenta do Suserano]]
+[[ru:Overlord's Bloodmail]]
+[[zh:Overlord's Bloodmail]]

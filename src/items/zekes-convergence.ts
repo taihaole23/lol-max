@@ -4,11 +4,10 @@
 //
 // ASSUMPTION (to check in the Practice Tool): the first tick lands 0.25 s after R is cast,
 // like Malignance. So 10 of its 20 ticks land inside the 2.5 s channel.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Zeke%27s_Convergence", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Zeke%27s_Convergence", patch: "26.23" },
   stormSeconds: 5,
   ticksPerSecond: 4,
   damagePerSecond: 30,

@@ -1,0 +1,29 @@
+["Hubris"] = {
+        ["id"]                  = 6697,
+        ["nickname"]            = {"lethality"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 55,
+            ["ah"]              = 10,
+            ["lethality"]       = 18,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Eminence",
+                ["unique"]      = true,
+                ["description"] = "Scoring a {{tip|takedown}} against an enemy champion within 3 seconds of damaging them generates a permanent stack and grants you {{as|{{rd|15|10}}|ad}} (+ {{rd|3|2}} per stack) {{as|'''bonus''' attack damage}} for 90 seconds.",
+            },
+		},
+        ["recipe"]              = {"Serrated Dirk", "Caulfield's Warhammer"},
+        ["buy"]                 = 2800,
+    },

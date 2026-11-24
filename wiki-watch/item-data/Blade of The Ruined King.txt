@@ -1,0 +1,38 @@
+["Blade of the Ruined King"] = {
+        ["id"]                  = 3153,
+        ["nickname"]            = {"brk", "bork", "botrk", "mist"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["marksman"]        = true,
+            ["onhit effects"]   = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 40,
+            ["as"]              = 25,
+            ["lifesteal"]       = 10,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Mist's Edge",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks deal {{as|'''bonus''' physical damage}} [[on-hit]] equal to {{as|{{rd|9%|6%}} of the target's '''current''' health}}, with a '''maximum''' of 100 against {{tip|minions}} and {{tip|monsters}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Clawing Shadows",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks on-hit against enemy champions apply a stack for 6 seconds, stacking up to 3 times. The third stack consumes them all to {{tip|slow}} the target by 30% for 1 second.",
+                ["cd"]          = "15",
+            },
+        },
+        ["recipe"]              = {"Vampiric Scepter", "Recurve Bow", "Pickaxe"},
+        ["buy"]                 = 3200,
+    },

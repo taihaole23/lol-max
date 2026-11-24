@@ -1,0 +1,28 @@
+["Rylai's Crystal Scepter"] = {
+        ["id"]                  = 3116,
+        ["nickname"]            = {"rylais"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 65,
+            ["hp"]              = 400,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Rimefrost",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{tip|ability damage}} {{tip|slow|slows}} enemies hit by 30% for 1 second.",
+            },
+        },
+        ["recipe"]              = {"Blasting Wand", "Giant's Belt", "Amplifying Tome"},
+        ["buy"]                 = 2600,
+    },

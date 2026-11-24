@@ -1,5 +1,4 @@
 // Numbers that apply to every champion, not just Katarina.
-import { PATCH } from "./patch.ts";
 
 const WIKI = "https://wiki.leagueoflegends.com/en-us/";
 
@@ -7,7 +6,7 @@ const WIKI = "https://wiki.leagueoflegends.com/en-us/";
 //   stat = base + growth × (level − 1) × (constant + perLevel × (level − 1))
 // Attack speed uses the same formula, but its growth counts as BONUS attack speed.
 export const statGrowth = {
-  source: { url: WIKI + "Champion_statistic", patch: PATCH },
+  source: { url: WIKI + "Champion_statistic", patch: "26.23" },
   constant: 0.7025,
   perLevel: 0.0175,
 };
@@ -17,38 +16,38 @@ export const statGrowth = {
 //   resist < 0:  damage × (2 − 100 / (100 − resist))
 // The same formula is used for armor (physical damage) and MR (magic damage).
 export const resistance = {
-  source: { url: WIKI + "Armor", patch: PATCH },
+  source: { url: WIKI + "Armor", patch: "26.23" },
   formulaConstant: 100,
 };
 
 // The champion levels at which an ultimate (R) can be learned / ranked up: rank 1, 2, 3.
 export const ultimateRanks = {
-  source: { url: WIKI + "Champion_ability", patch: PATCH },
+  source: { url: WIKI + "Champion_ability", patch: "26.23" },
   levels: [6, 11, 16],
 };
 
 // The highest champion level. Rod of Ages' extra level can't go past it.
 export const championLevels = {
-  source: { url: WIKI + "Experience_(champion)", patch: PATCH },
+  source: { url: WIKI + "Experience_(champion)", patch: "26.23" },
   max: 18,
 };
 
 // A champion has 6 item slots (boots take one of them). The trinket slot doesn't count.
 export const inventory = {
-  source: { url: WIKI + "Item", patch: PATCH },
+  source: { url: WIKI + "Item", patch: "26.23" },
   slots: 6,
 };
 
 // Critical strike chance can't go above 100%.
 export const criticalStrike = {
-  source: { url: WIKI + "Critical_strike", patch: PATCH },
+  source: { url: WIKI + "Critical_strike", patch: "26.23" },
   maxChance: 1,
 };
 
 // Adaptive force gives bonus AD or AP, whichever of the two is higher (wiki: Adaptive force).
 // 1 point of adaptive force = 0.6 bonus AD, or 1 AP.
 export const adaptiveForce = {
-  source: { url: WIKI + "Adaptive_force", patch: PATCH },
+  source: { url: WIKI + "Adaptive_force", patch: "26.23" },
   adPerPoint: 0.6,
   apPerPoint: 1,
 };
@@ -57,7 +56,7 @@ export const adaptiveForce = {
 //   the part between 415 and 490 counts 80%, the part above 490 counts 50%.
 // (There are also caps below 220, but nothing in this project slows Katarina.)
 export const moveSpeed = {
-  source: { url: WIKI + "Movement_speed", patch: PATCH },
+  source: { url: WIKI + "Movement_speed", patch: "26.23" },
   firstCapAt: 415,
   firstCapKeeps: 0.8,
   secondCapAt: 490,

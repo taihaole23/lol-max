@@ -1,0 +1,28 @@
+["Immortal Path"] = {
+        ["id"]                  = 3168,
+        ["nickname"]            = {"boots"},
+        ["tier"]                = 3,
+        ["type"]                = {"Boots"},
+        ["req"]                 = "Requires completion of the {{tip|Midlane Quest}} to obtain. Once the quest is completed, {{ii|Gluttonous Greaves}} is upgraded into this item for free. If {{ii|Gluttonous Greaves}} is in the inventory at the time of quest completion, it is automatically upgraded into these boots.",
+        ["caption"]             = "\"My blood burns for slaughter. My mind urges grace. —Zaahen\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = false,
+            ["nb"]              = false,
+            ["ar"]              = false,
+        },
+        ["stats"] = {
+            ["msflat"]           = "=>Gluttonous Greaves",
+            ["omnivamp"]         = "=>Gluttonous Greaves",
+        },
+        ["effects"] = {
+            ["pass"]            = "=>Gluttonous Greaves",
+            ["pass2"] = {
+            	["name"]        = "Now and Forever",
+            	["unique"]      = true,
+                ["description"] = "While above {{as|50% of your '''maximum''' health}}, you deal 4% increased damage. While below {{as|50% of your '''maximum''' health}}, you gain 12% increased {{tip|heal|healing}}, {{tip|shield|shielding}}, and {{stil|health regeneration}}.",
+            },
+        },
+        ["recipe"]              = {"Gluttonous Greaves"},
+        ["buy"]                 = "=>Gluttonous Greaves",
+    },

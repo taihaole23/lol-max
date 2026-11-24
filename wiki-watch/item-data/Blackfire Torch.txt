@@ -1,0 +1,35 @@
+["Blackfire Torch"] = {
+        ["id"]                  = 2503,
+        ["nickname"]            = {"bft"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["caption"]             = "\"The Black Mist needs a flame of equal pitch.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = false,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+        },
+        ["stats"] = {
+            ["ap"]              = 80,
+            ["ah"]              = 20,
+            ["mana"]            = 600,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Baleful Blaze",
+                ["unique"]      = true,
+                ["description"] = "Dealing {{tip|ability damage}} burns enemies, causing them to take {{as|{{ap|60/6}} {{as|(+ {{ap|6/6}}% AP)}} magic damage|magic damage}} every {{fd|0.5}} seconds over 3 seconds, for a total of {{as|60|magic damage}} {{as|(+ 6% AP)}}. Against monsters, the burn deals {{as|10 '''bonus''' magic damage}} per tick, dealing a total of {{as|{{ap|(60/6)+10}} {{as|(+ {{ap|6/6}}% AP)}} magic damage|magic damage}} per tick for up to {{as|{{ap|60+(10*6)}}|magic damage}} {{as|(+ 6% AP)}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Blackfire",
+                ["unique"]      = true,
+                ["description"] = "For each champion, epic monster, and large monster afflicted with ''Baleful Blaze's'' burn, increase your {{as|ability power}} by 4%.",
+            },
+		},
+        ["recipe"]              = {"Lost Chapter", "Fated Ashes"},
+        ["buy"]                 = 2800,
+    },

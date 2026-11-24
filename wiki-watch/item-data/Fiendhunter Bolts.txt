@@ -1,0 +1,35 @@
+["Fiendhunter Bolts"] = {
+        ["id"]                  = 2512,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+            ["movement"]		= true,
+        },
+        ["stats"] = {
+            ["as"]              = 45,
+            ["crit"]            = 25,
+            ["ms"]              = 4,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Night Vigil",
+                ["unique"]      = true,
+                ["description"] = "Gain 30 [[Haste#Ultimate haste|ultimate haste]].",
+            },
+            ["pass2"] = {
+                ["name"]        = "Opening Barrage",
+                ["unique"]      = true,
+                ["description"] = "After casting your ultimate ability, your next 3 basic attacks {{tip|on-attack}} within 8 seconds gain {{as|50% '''bonus''' attack speed}} and are empowered to {{tip|critically strike}} for{{ft|{{as|{{critical damage|60|80}}|critical damage}} '''bonus''' damage.|{{sti|{{as|80% '''total''' critical damage}}}}.}}If an attack would have already critically struck, it instead critically strikes for{{ft|{{as|{{critical damage|100|100}}|critical damage}} '''bonus''' damage|{{sti|{{as|100% '''total''' critical damage}}}}}}and deals {{as|'''bonus''' true damage}} equal to 15% of the triggering attack's damage {{tt|pre-mitigation|Damage calculated before modifiers}}.",
+                ["cd"]          = 45
+            },
+        },
+        ["recipe"]              = {"Zeal", "Scout's Slingshot"},
+        ["buy"]                 = 2650,
+    },

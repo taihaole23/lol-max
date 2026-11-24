@@ -1,0 +1,33 @@
+["Endless Hunger"] = {
+        ["id"]                  = 2517,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 65,
+            ["omnivamp"]        = 5,
+            ["tenacity"]        = 20,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Famine",
+                ["unique"]      = true,
+                ["description"] = "Gain {{as|5|ah}} {{as|(+ {{rd|13%|10%}} '''bonus''' AD)}} {{as|ability haste}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Feast",
+                ["unique"]      = true,
+                ["description"] = "Scoring a {{tip|takedown}} against an enemy champion within 3 seconds of damaging them grants you {{as|15% omnivamp}} for 8 seconds.",
+            },
+        },
+        ["recipe"]              = {"Caulfield's Warhammer", "Pickaxe", "Long Sword"},
+        ["buy"]                 = 3100,
+    },

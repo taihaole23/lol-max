@@ -1,0 +1,36 @@
+["Stormrazor"] = {
+        ["id"]                  = 3095,
+        ["nickname"]            = {"energize", "Windblade"},
+        ["tags"]                = {"HasOnHit", "HasOnAttack"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+            ["onhit effects"]   = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 50,
+            ["as"]              = 25,
+            ["crit"]            = 25,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Energized",
+                ["unique"]      = true,
+                ["description"] = "Moving and basic attacking generates ''Energize'' stacks, up to 100.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Bolt",
+                ["unique"]      = true,
+                ["description"] = "When fully {{tip|Energized}}, your next basic attack deals {{as|100 '''bonus''' magic damage}} [[on-hit]] and grants you {{as|45% '''bonus''' movement speed}} for {{fd|1.5}} seconds.",
+            },
+        },
+        ["recipe"]              = {"B. F. Sword", "Cloak of Agility", "Scout's Slingshot"},
+        ["buy"]                 = 3200,
+    },

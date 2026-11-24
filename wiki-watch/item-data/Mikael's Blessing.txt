@@ -1,0 +1,32 @@
+["Mikael's Blessing"] = {
+		["id"]                  = 3222,
+		["nickname"]            = {"crucible", "michael", "mikael"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["support"]         = true,
+        },
+        ["stats"] = {
+            ["hp"]              = 250,
+            ["ah"]              = 15,
+            ["hsp"]             = 12,
+            ["mp5"]             = 100,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Purify",
+                ["unique"]      = true,
+                ["description"] = "Remove all {{tip|crowd control}} debuffs (except {{tip|Airborne}}, {{tip|Blind}}, {{tip|Disarm}}, {{tip|Nearsight}}, and {{tip|Suppression}}) from yourself or the target allied champion and {{tip|heal}} the target for {{pp|100 to 250|type=target's level|color=heal}}.",
+                ["range"]       = "{{tip|cr|icononly=true}} 650",
+                ["cd"]          = "120",
+            },
+        },
+        ["recipe"]              = {"Kindlegem", "Forbidden Idol"},
+        ["buy"]                 = 2300,
+    },

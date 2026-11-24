@@ -1,0 +1,35 @@
+["Bastionbreaker"] = {
+        ["id"]                  = 2520,
+        ["nickname"]            = {"lethality"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = false,
+            ["nb"]              = true,
+            ["ar"]              = false,
+        },
+        ["menu"] = {
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 55,
+            ["ah"]              = 15,
+            ["lethality"]       = 18,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Shaped Charge",
+                ["unique"]      = true,
+                ["description"] = "Your next instance of {{tip|ability damage}} to a champion or epic monster with a [[champion ability]] deals {{as|{{rd|40|20}} {{as|(+ {{rd|{{fd|1.5}}|{{fd|0.75}}}} per 1 lethality)}} '''bonus''' true damage}}.",
+                ["cd"]          = "20",
+            },
+            ["pass2"] = {
+                ["name"]        = "Sabotage",
+                ["unique"]      = true,
+                ["description"] = "Scoring a {{tip|takedown}} against an enemy champion within 3 seconds of damaging them grants you ''Sabotage'', empowering your next basic attack against a {{tip|turret}} or epic {{tip|monster}} to consume the effect to deal {{as|{{rd|300|240}} {{as|(+ {{rd|25|20}} per 1 lethality)}} '''bonus''' true damage}} over 3 seconds.",
+            },
+		},
+        ["recipe"]              = {"The Brutalizer", "Serrated Dirk"},
+        ["buy"]                 = 3000,
+    },

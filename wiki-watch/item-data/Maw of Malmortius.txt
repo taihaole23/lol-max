@@ -1,0 +1,32 @@
+["Maw of Malmortius"] = {
+        ["id"]                  = 3156,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Lifeline",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["marksman"]        = true,
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 15,
+            ["ad"]              = 60,
+            ["mr"]              = 40,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Lifeline",
+                ["unique"]      = true,
+                ["description"] = "If you would take {{as|magic damage}} that would reduce you below {{as|30% of your '''maximum''' health}}, you first gain a {{tip|shield}} that absorbs {{as|{{rd|200|150}}|magic damage}} {{as|(+ {{rd|150%|{{fd|112.5}}%}} '''bonus''' AD)}} {{as|magic damage}} for 3 seconds. Additionally, triggering this effect grants you {{as|10% omnivamp}} until the end of [[combat status|combat]].",
+                ["cd"]          = "90",
+            },
+        },
+        ["recipe"]              = {"Hexdrinker", "Caulfield's Warhammer"},
+        ["buy"]                 = 3100,
+    },

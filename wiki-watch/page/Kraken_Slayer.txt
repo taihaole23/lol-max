@@ -1,0 +1,154 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Wyrmfallen Sacrifice}}.''
+{{Item info
+|goldvalue =
+|goldefficiency =
+|similaritems = Blade of the Ruined King;Guinsoo's Rageblade;Wit's End;Terminus;Nashor's Tooth;Statikk Shiv;Phantom Dancer;Rapid Firecannon;Navori Flickerblade;Runaan's Hurricane;Fiendhunter Bolts;Yun Tal Wildarrows;Stormrazor
+|notes =
+* {{tip|Ranged}} champions basic attacks will both stack and consume {{sbc|Bring It Down}} {{tip|on-attack}} to empower the attack to apply its effects {{tip|on-hit}}. Abilities that do not trigger on-attack effects but trigger on-hit effects (e.g {{cai|Onslaught|Aphelios}}) will instead always apply and consume {{sbc|Bring It Down}} on-hit.
+** {{ii|Guinsoo's Rageblade}} is special cased to also interact with the effect on-hit, while other effects like {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} are not.
+** Since {{cai|New Destiny|Graves}} applies the effect on-attack, he will '''not''' also apply it on-hit on the other targets hit.
+* {{sbc|Bring It Down}} deals {{tip|basic damage}}, and thus will not trigger [[spell effects]].
+* {{sbc|Bring It Down}} is not blocked by {{tip|spell shield}}.
+* {{sbc|Bring It Down's}} on-hit damage does not apply to [[structure]]s.
+** The stacks of the effect will still refresh from attacking them.
+* The bonus damage dealt by {{sbc|Bring It Down}} benefits from {{stil|life steal}}.
+|strategy =
+|trivia =
+[[File:Bilgewater Crest icon.png|link=Bilgewater#Trivia|100px|center]]
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Kraken Slayer item screenshot.png|2 Stacks VFX
+Kraken Slayer missile VFX.png|Empowered Missile VFX
+Kraken Slayer attack item screenshot.png|Hit VFX
+Kraken Slayer empowered attack hit VFX 2.png|Hit VFX
+Kraken Slayer empowered attack hit VFX 3.png|Hit VFX
+</gallery>
+|sfx =
+;Passive Ready (2 Stacks)
+* {{sm2|Kraken Slayer passive SFX 3.ogg}} Passive SFX
+
+;Passive Triggered
+* {{sm2|Kraken Slayer passive SFX 2.ogg}} Attack Cast SFX
+* {{sm2|Kraken Slayer passive SFX.ogg}} Attack Cast SFX
+* {{sm2|Kraken Slayer passive SFX 5.ogg}} Attack Cast SFX
+
+;Passive Attack Hit
+* {{sm2|Kraken Slayer passive SFX 4.ogg}} Attack Hit SFX
+|revisions =
+|patchhistory =
+;[[V25.16]]
+* {{sbc|Removed:}} {{cai|Alpha Strike|Master Yi}} is no longer special-cased to not generate stacks of Bring It Down.
+
+;[[V25.14]]
+* Total cost reduced to {{g|3000}} from {{g|3100}}.
+** Combine cost reduced to {{g|325}} from {{g|425}}.
+* Bring It Down bonus damage increased to {{pp|0 to 75 by 5|0 to 100|key=%|color=health|type=target's '''missing''' health|key1=%}} from {{pp|0 to 50 by 5|0 to 100|key=%|color=health|type=target's '''missing''' health|key1=%|showtype=false}}.
+** Bring It Down maximum damage changed to {{rd|150*1.75 to 200*1.75 for 11|150*0.8*1.75 to 200*0.8*1.75 for 11|levels=1;9 to 18|pp=true}} from {{rd|150*1.5 to 200*1.5 for 11|150*0.8*1.5 to 200*0.8*1.5 for 11|levels=1;9 to 18|pp=true}}.
+
+;Unknown Patch<!--endstep said it was 25.14 but some reports suggest otherwise, maybe it was fixed once before and then broke-->
+* {{sbc|Bug Fix:}} Bring It Down on-hit damage now benefits from life steal and is tagged as {{tip|basic damage}}.
+
+;[[V25.11]]
+* {{sbc|Bug Fix:}} No longer displays a redundant debuff icon on the target.
+
+;[[V14.19]]
+* Combine cost increased to {{g|425}} from {{g|200}}.
+** Total cost unchanged.
+* Attack damage reduced to 45 from 50.
+* Movement speed reduced to 4% from 5%.
+* Bring It Down base damage changed to {{rd|150 to 200 for 11|150*0.8 to 200*0.8 for 11|levels=1;9 to 18|pp=true}} from {{rd|140 to 310 for 11|140*0.8 to 310*0.8 for 11|levels=1;9 to 18|pp=true}}.
+** Bring It Down maximum damage changed to {{rd|150*1.5 to 200*1.5 for 11|150*0.8*1.5 to 200*0.8*1.5 for 11|levels=1;9 to 18|pp=true}} from {{rd|140*1.5 to 310*1.5 for 11|140*0.8*1.5 to 310*0.8*1.5 for 11|levels=1;9 to 18|pp=true}}
+
+;[[V14.15]]
+* Bonus movement speed reduced to 5% from 7%
+* {{sbc|New Effect:}} Damage is now reduced to 80% for {{tip|ranged}} champions.
+** Bring It Down damage changed to {{rd|140 to 310 for 11|140*0.8 to 310*0.8 for 11|levels=1;9 to 18|pp=true}} from {{pp|140 to 310 for 11|1;9 to 18}} for all users.
+*** Bring It Down maximum damage changed to {{rd|140*1.5 to 310*1.5 for 11|140*0.8*1.5 to 310*0.8*1.5 for 11|levels=1;9 to 18|pp=true}} from {{pp|140*1.5 to 310*1.5 for 11|1;9 to 18}} for all users.
+* {{sbc|Bug Fix:}} Collection tooltip now matches the in-game tooltip.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Wyrmfallen Sacrifice}}.
+
+;[[V14.10]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Rectrix}} + {{ii|Hearthbound Axe}} + {{ii|Recurve Bow}} + {{g|200}} = {{g|3100}}.
+** {{sbc|Stats:}} 50 attack damage, 40% attack speed, 7% movement speed.
+** {{sbc|Unique Passive - Bring It Down:}} Basic attacks {{rd|on-hit|on-attack}} grant a stack for 3 seconds, up to 2 stacks. At 2 stacks, the next basic attack consumes all stacks to deal {{pp|140 to 310 for 11|1;9 to 18|color=physical damage}} {{as|'''bonus''' physical damage}} on-hit, increased by {{pp|0 to 50 by 5|0 to 100|key=%|color=health|type=target's '''missing''' health|key1=%}}, for up to {{pp|140*1.5 to 310*1.5 for 11|1;9 to 18|color=physical damage}} {{as|'''bonus''' physical damage}}.
+** Limited to 1 '''Kraken Slayer'''.
+** {{ii|Wyrmfallen Sacrifice}} stats: 60 attack damage, 55% attack speed, 7% movement speed.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Noonquiver}} + {{ii|Cloak of Agility}} + {{ii|Recurve Bow}} + {{g|400}} = {{g|3000}}.
+** {{sbc|Stats:}} 40 attack damage, 35% attack speed, 20% critical strike chance.
+** {{sbc|Unique Passive - Bring It Down:}} Basic attacks {{rd|on-hit|on-attack}} grant a stack for 3 seconds, up to 2 stacks. At 2 stacks, the next basic attack consumes all stacks to deal {{as|{{pp|140 to 310 for 11|1;9 to 18}} '''bonus''' physical damage|physical damage}} on-hit. Consuming stacks on the same target within 6 seconds increases the damage by 50%, up to 100% for a maximum of {{as|{{pp|140*2 to 310*2 for 11|1;9 to 18}}|physical damage}} {{as|'''bonus''' physical damage}}.
+** Limited to 1 '''Kraken Slayer'''.
+** {{ii|Wyrmfallen Sacrifice}} stats: 60 attack damage, 45% attack speed, 20% critical strike chance.
+
+;[[V14.5]]
+* {{sbc|Bug Fix:}} {{cai|Ranger's Focus|Ashe}} attacks no longer prevent {{ii|Kraken Slayer}} from gaining an additional stack on-hit when {{iis|Guinsoo's Rageblade}} ''Phantom Hit'' is triggered.
+
+;[[V14.3]]
+* Base damage increased to {{pp|140 to 310 for 11|1;9 to 18}} from {{pp|35 to 85 for 11|1;9 to 18}}.
+* {{sbc|Removed:}} Bring It Down damage no longer scales with {{as|65% AD}} and {{as|60% AP}}.
+
+;[[V14.1]]
+* Attack speed increased to 35% from 30%.
+* Now interacts with {{ii|Guinsoo's Rageblade}} ''Phantom Hit'' again.
+* {{sbc|New {{ai|Living Forge|Ornn|Masterwork}} item:}} {{ii|Wyrmfallen Sacrifice}}.
+** {{sbc|Stats:}} 60 attack damage, 45% attack speed, 20% critical strike chance.
+
+;[[V13.20]]
+* {{sbc|Bug Fix:}} {{cai|Spirit's Refuge|Shen}} now properly blocks the on-hit damage of Bring It Down.
+
+;[[V13.11]]
+* Bring It Down damage type changed to physical from magic.
+* Base damage increased to {{pp|35 to 85 for 11|1;9 to 18}} from 20 at all levels.
+* AD ratio increased to {{as|65% AD}} from {{as|60% AD}}.
+* AP ratio increased to {{as|60% AP}} from {{as|45% AP}}.
+
+;[[V13.10]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Noonquiver}} + {{ii|Cloak of Agility}} + {{ii|Recurve Bow}} + {{g|400}} = {{g|3000}}.
+** {{sbc|Stats:}} 40 attack damage, 30% attack speed, 20% critical strike chance.
+** {{sbc|Unique Passive - Bring It Down:}} Basic attacks {{rd|on-hit|on-attack}} grant a stack for 3 seconds, up to 2 stacks. At 2 stacks, the next basic attack consumes all stacks to deal {{as|20 {{as|(+ 60% AD)}} {{as|(+ 45% AP)}} '''bonus''' magic damage|magic damage}} on-hit. Consuming stacks on the same target within 6 seconds increases the damage by 50%, up to 100%.
+** Limited 1 to '''Kraken Slayer'''.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Noonquiver}} + {{ii|Cloak of Agility}} + {{ii|Pickaxe}} + {{g|625}} = {{g|3400}}.
+** {{sbc|Stats:}} 65 attack damage, 25% attack speed, 20% critical strike chance.
+** {{sbc|Unique Passive - Bring It Down:}} Basic attacks {{rd|[[on-hit]]|[[on-attack]]}} grant a stack for 3 seconds, up to 2 stacks. At 2 stacks, the next basic attack consumes all stacks to deal {{as|50 {{as|(+ 40% '''bonus''' AD)}} '''bonus''' true damage|true damage}} on-hit.
+** {{sbc|Mythic Passive:}} Empowers other Legendary items with {{as|10% '''bonus''' attack speed}}.
+** Limited to 1 {{sbc|Mythic}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Wyrmfallen Sacrifice}}.
+*** {{sbc|Stats:}} 85 attack damage, 40% attack speed, 20% critical strike chance.
+
+;[[V12.11]]
+* Base damage reduced to 50 from 60.
+* Bonus AD ratio reduced to {{as|40% '''bonus''' AD}} from {{as|45%|AD}}.
+
+;[[V11.8]]
+* {{sbc|Bug Fix:}} When {{ci|Kayle}} uses {{ai|Starfire Spellblade|Kayle}} as a third attack, she will now properly deal true damage.
+* {{sbc|Bug Fix:}} {{ci|Jayce}} now properly deals true damage on his third attack with {{ai|Transform Mercury Cannon|Jayce|Mercury Cannon}} in all instances, not just when he crits.
+
+;[[V11.2]]
+* {{sbc|New Effect:}} True damage is now affected by the on-hit modifiers of {{cai|Onslaught|Aphelios}}, {{cai|Death Lotus|Katarina}}, and {{cai|Purge|Urgot}}.
+
+;[[V10.24]]
+* Attack damage increased to 65 from 60.
+* Bonus AD ratio increased to {{as|45% '''bonus''' AD}} from {{as|30%|AD}}.
+* {{ii|Wyrmfallen Sacrifice}} attack damage increased to 85 from 80.
+* {{sbc|Bug Fix:}} No longer interacts with {{ii|Guinsoo's Rageblade}} ''Phantom Hit'' for {{tip|melee}} champions.
+
+;[[V10.23]] - Added
+* {{sbc|Recipe:}} {{ii|Noonquiver}} + {{ii|Cloak of Agility}} + {{ii|Pickaxe}} + {{g|625}} = {{g|3400}}.
+* {{sbc|Stats:}} 60 attack damage, 25% attack speed, 20% critical strike chance.
+* {{sbc|Unique Passive - Bring It Down:}} Every third attack within 3 seconds deals {{as|60 {{as|(+ 30% '''bonus''' AD)}} '''bonus''' true damage|true damage}} on-hit.
+* {{sbc|Mythic Passive:}} Empowers your other Legendary items with {{as|10% '''bonus''' attack speed}}.
+* Limited to 1 {{sbc|Mythic}} item.
+* {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Wyrmfallen Sacrifice}}.
+** {{sbc|Stats:}} 80 attack damage, 40% attack speed, 20% critical strike chance.
+}}
+
+
+[[Category:Season 2021 item release]]
+[[de:Krakenbezwinger]]
+[[ru:Убийца кракенов]]
+[[Category:Items with passive abilities]]

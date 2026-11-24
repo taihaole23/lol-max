@@ -1,0 +1,94 @@
+{{Item info
+|goldvalue =
+{{gold value|Shadow Gold Value|nolink=}}
+* 30 [[on-hit damage]] = {{g|{{#expr:{{#var:ohdmg}}*30 round2}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:total|{{#expr:{{#var:total}}+{{#var:ohdmg}}*30 round2}}}}}}
+
+{{gold value|Juxtaposition Gold Value per Light stack|nolink=}}
+* 6 - 8 [[armor]] = {{g|{{#vardefineecho:juxtapositionar1|{{#expr:{{#var:armor}}*6}}}}}} - {{g|{{#vardefineecho:juxtapositionar18|{{#expr:{{#var:armor}}*8}}}}}}
+* 6 - 8 [[magic resistance]] = {{g|{{#vardefineecho:juxtapositionmr1|{{#expr:{{#var:mr}}*6}}}}}} - {{g|{{#vardefineecho:juxtapositionmr18|{{#expr:{{#var:mr}}*8}}}}}}
+** '''Gold Value''' = {{g|{{#vardefineecho:juxtapositionlight1|{{#expr:{{#var:juxtapositionar1}}+{{#var:juxtapositionmr1}}}}}}}} - {{g|{{#vardefineecho:juxtapositionlight18|{{#expr:{{#var:juxtapositionar18}}+{{#var:juxtapositionmr18}}}}}}}}
+
+{{gold value|Juxtaposition Gold Value at maximum Light stacks|nolink=}}
+* 18 - 24 [[armor]] = {{g|{{#vardefineecho:juxtapositionmaxar1|{{#expr:{{#var:armor}}*18}}}}}} - {{g|{{#vardefineecho:juxtapositionmaxar18|{{#expr:{{#var:armor}}*24}}}}}}
+* 18 - 24 [[magic resistance]] = {{g|{{#vardefineecho:juxtapositionmaxmr1|{{#expr:{{#var:mr}}*18}}}}}} - {{g|{{#vardefineecho:juxtapositionmaxmr18|{{#expr:{{#var:mr}}*24}}}}}}
+** '''Gold Value''' = {{g|{{#vardefineecho:juxtapositionlightmax1|{{#expr:{{#var:juxtapositionmaxar1}}+{{#var:juxtapositionmaxmr1}}}}}}}} - {{g|{{#vardefineecho:juxtapositionlightmax18|{{#expr:{{#var:juxtapositionmaxar18}}+{{#var:juxtapositionmaxmr18}}}}}}}}
+
+{{gold value|Juxtaposition Gold Value per Dark stack|nolink=}}
+* 10% [[armor penetration]] = {{g|{{#vardefineecho:juxtapositionarpen|{{#expr:{{#var:armpen}}*10 round2}}}}}}
+* 10% [[magic penetration]] = {{g|{{#vardefineecho:juxtapositionmpen|{{#expr:{{#var:mpen}}*10 round2}}}}}}
+** '''Gold Value''' = {{g|{{#vardefineecho:juxtapositiondark|{{#expr:{{#var:juxtapositionarpen}}+{{#var:juxtapositionmpen}}}}}}}}
+
+{{gold value|Juxtaposition Gold Value at maximum Dark stacks|nolink=}}
+* 30% [[armor penetration]] = {{g|{{#vardefineecho:juxtapositionmaxarpen|{{#expr:{{#var:armpen}}*30 round2}}}}}}
+* 30% [[magic penetration]] = {{g|{{#vardefineecho:juxtapositionmaxmpen|{{#expr:{{#var:mpen}}*30 round2}}}}}}
+** '''Gold Value''' = {{g|{{#vardefineecho:juxtapositiondarkmax|{{#expr:{{#var:juxtapositionmaxarpen}}+{{#var:juxtapositionmaxmpen}}}}}}}}
+
+{{gold value|Juxtaposition Gold Value at maximum Light and Dark stacks|nolink=}}
+* 18 - 24 [[armor]] = {{g|{{#vardefineecho:juxtapositionmaxar1|{{#expr:{{#var:armor}}*18}}}}}} - {{g|{{#vardefineecho:juxtapositionmaxar18|{{#expr:{{#var:armor}}*24}}}}}}
+* 18 - 24 [[magic resistance]] = {{g|{{#vardefineecho:juxtapositionmaxmr1|{{#expr:{{#var:mr}}*18}}}}}} - {{g|{{#vardefineecho:juxtapositionmaxmr18|{{#expr:{{#var:mr}}*24}}}}}}
+* 30% [[armor penetration]] = {{g|{{#vardefineecho:juxtapositionmaxarpen|{{#expr:{{#var:armpen}}*30 round2}}}}}}
+* 30% [[magic penetration]] = {{g|{{#vardefineecho:juxtapositionmaxmpen|{{#expr:{{#var:mpen}}*30 round2}}}}}}
+** '''Gold Value''' = {{g|{{#vardefineecho:juxtapositionmax1|{{#expr:{{#var:juxtapositionlightmax1}}+{{#var:juxtapositiondarkmax}}}}}}}} - {{g|{{#vardefineecho:juxtapositionmax18|{{#expr:{{#var:juxtapositionlightmax18}}+{{#var:juxtapositiondarkmax}}}}}}}}
+*** '''Total Gold Value''' = {{g|{{#vardefineecho:juxtapositiontotalmax1|{{#expr:{{#var:total}}+{{#var:juxtapositionmax1}}}}}}}} - {{g|{{#vardefineecho:juxtapositiontotalmax18|{{#expr:{{#var:total}}+{{#var:juxtapositionmax18}}}}}}}}
+|goldefficiency =
+* {{iis|Terminus}} gold efficiency increases by {{gec|Terminus|+{{#var:juxtapositionlight1}}}} - {{gec|Terminus|+{{#var:juxtapositionlight18}}}} per ''Light'' stack, up to {{gec|Terminus|+{{#var:juxtapositionlightmax1}}}} - {{gec|Terminus|+{{#var:juxtapositionlightmax18}}}} at maximum stacks.
+* {{iis|Terminus}} gold efficiency increases by {{gec|Terminus|+{{#var:juxtapositiondark}}}} per ''Dark'' stack, up to {{gec|Terminus|+{{#var:juxtapositiondarkmax}}}} at maximum stacks.
+* {{ii|Terminus}} becomes {{gec|Terminus|{{#var:juxtapositiontotalmax1}}}} - {{gec|Terminus|{{#var:juxtapositiontotalmax18}}}} gold efficient at maximum stacks of both ''Light'' and ''Dark''.
+|similaritems =Guinsoo's Rageblade;Wit's End;Blade of the Ruined King;Nashor's Tooth;Kraken Slayer;Maw of Malmortius;Death's Dance;Guardian Angel;Lord Dominik's Regards;Mortal Reminder;Serylda's Grudge;Black Cleaver
+|background =
+|notes =
+* {{sbc|Shadow}} deals {{tip|proc damage}}, and thus will not trigger [[spell effects]].
+* {{sbc|Shadow's}} on-hit damage does not apply to [[structure]]s.
+* The bonus damage dealt by {{sbc|Shadow}} benefits from {{stil|life steal}}.
+* {{sbc|Juxtaposition's}} does '''not''' interact with {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}}, despite interacting with other effects applying on-hit.
+* {{sbc|Juxtaposition's}} ''Light'' or ''Dark'' stacks are refreshed with the respective hit of basic attacks.
+** The user will continue to alternate between ''Light'' and ''Dark'' hits at maximum stacks of both bonuses.
+|strategy =
+|oldicons =
+|trivia =
+* In development this item was called '''Contradistinction''', fully explaining the item's fantasy (Light and Dark). Its passive effect named {{sbc|Juxtaposition}} references this.<ref>X — [https://twitter.com/RiotPhroxzon/status/1727181506945368562 Riot Phroxzon on Season  2024 announcement]</ref>
+** This old item name was also erroneously showcased in the patch [[V14.1]] highlights.
+[[File:Blessed Isles Crest icon.png|link=Blessed Isles|100px|center]]
+|quotes =
+|media =
+[[File:Terminus dark attack VFX.png|thumb|left|500px|Dark Hit VFX]]
+[[File:Terminus light attack VFX.png|thumb|left|500px|Light Hit VFX]]
+|revisions =
+|patchhistory =
+;[[V26.15]]
+* {{sbc|New Effect:}} Shadow on-hit damage now scales with {{as|10% '''bonus''' AD}} and {{as|10% AP}}.
+
+;[[V25.16]]
+* {{sbc|Removed:}} {{cai|Alpha Strike|Master Yi}} is no longer special-cased to not generate stacks of Juxtaposition.
+
+;[[V14.19]]
+* Combine cost increased to {{g|1100}} from {{g|1000}}.
+** Total cost unchanged.
+* Attack damage reduced to 30 from 35.
+
+;[[V14.10]]
+* {{sbc|New Recipe:}} {{ii|Hearthbound Axe}} + {{ii|Recurve Bow}} + {{g|1000}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Recurve Bow}} + {{ii|B. F. Sword}} + {{ii|Recurve Bow}} + {{g|300}} = {{g|3000}}.
+* Attack damage reduced to 35 from 40.
+* Attack speed increased to 35% from 30%.
+
+;[[V14.4]]
+* {{sbc|New Recipe:}} {{ii|Recurve Bow}} + {{ii|B. F. Sword}} + {{ii|Recurve Bow}} + {{g|300}} = {{g|3000}}.
+** {{sbc|Old Recipe:}} {{ii|Recurve Bow}} + {{ii|B. F. Sword}} + {{ii|Dagger}} + {{g|700}} = {{g|3000}}.
+* Now has the search keywords "bow" and "sentinel".
+* Maximum Light and Dark stacks reduced to 3 each from 5.
+* Bonus resistance per Light stack increased to {{pp|6 to 8 for 3|1;11;14|type=level}} from {{pp|3 to 5 for 3|1;11;14|type=level}}.
+* Resistance penetration per Dark stack increased to 10% from 6%.
+
+;[[V14.1]] - Added
+* {{sbc|Recipe:}} {{ii|Recurve Bow}} + {{ii|B. F. Sword}} + {{ii|Dagger}} + {{g|700}} = {{g|3000}}.
+* {{sbc|Stats:}} 40 attack damage, 30% attack speed.
+* {{sbc|Unique Passive - Shadow:}} Basic attacks deal {{as|30 '''bonus''' magic damage}} on-hit.
+* {{sbc|Unique Passive - Juxtaposition:}} Basic attacks against champions alternate between ''Light'' and ''Dark'' hits, each one granting a bonus for 5 seconds that stacks up to 5 times. ''Light'' hits grant {{pp|3 to 5 for 3|1;11;14|type=level}} {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} while ''Dark'' hits grant 6% {{as|armor penetration}} and {{as|magic penetration}}, for a total of {{pp|3*5 to 5*5}} '''bonus''' resistances and 30% resistances penetration at maximum stacks of each.
+* Limited to 1 {{sbc|Fatality}} item.
+* Limited to 1 {{sbc|Blight}} item.
+}}
+
+[[Category:Season 2024 item release]]
+[[ru:Светотень]]

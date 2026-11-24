@@ -1,0 +1,29 @@
+["Navori Flickerblade"] = {
+        ["id"]                  = 6675,
+        ["nickname"]            = {"crit shojin"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = false,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+        },
+        ["stats"] = {
+            ["as"]              = 40,
+            ["crit"]            = 25,
+            ["ms"]              = 4,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Transcendence",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks [[on-attack]] reduce the '''remaining''' cooldowns of your basic abilities by 15%.",
+            },
+        },
+        ["recipe"]              = {"Dagger", "Zeal", "Dagger"},
+        ["buy"]                 = 2650,
+    },

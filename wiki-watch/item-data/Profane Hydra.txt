@@ -1,0 +1,39 @@
+["Profane Hydra"] = {
+        ["id"]                  = 6698,
+        ["nickname"]            = {"lethality"},
+        ["tags"]                = {"HasOnHit"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Hydra",
+        ["caption"]             = "\"The depths demand sacrifice.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["assassin"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 55,
+            ["ah"]              = 10,
+            ["lethality"]       = 18,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Cleave",
+                ["unique"]      = true,
+                ["description"] = "Damaging basic attacks [[on-hit]] deal {{as|{{rd|40% AD|20% AD}}|ad}} {{as|physical damage}} to other enemies in a {{tip|cr|icononly=true}} 350 radius centered around the target.",
+                ["description2"] = "The same target may be damaged only once per frame. {{bug|2|This is unlike base Tiamat and other variants which can damage a single target multiple times if Cleave is triggered multiple times at once (eg. using Runaan's Hurricane).}}",
+            },
+            ["act"] = {
+                ["name"]        = "Heretical Cleave",
+                ["unique"]      = true,
+                ["description"] = "Deal {{as|80% AD}} {{as|physical damage}} to enemies in a {{tip|cr|icononly = true}} 450 radius {{tt|in front of you|100 unit offset in the caster's facing direction}}.",
+                ["cd"]          = "10",
+            },
+		},
+        ["recipe"]              = {"Tiamat", "The Brutalizer"},
+        ["buy"]                 = 2850,
+    },

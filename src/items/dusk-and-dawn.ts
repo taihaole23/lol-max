@@ -6,12 +6,11 @@
 // ASSUMPTIONS (to check in the Practice Tool): daggers trigger the second round too, and it
 // uses R's on-hit effectiveness like a normal dagger. The wiki also lists a bug where the second
 // round changes the damage type of on-hit effects; we ignore it because the note is unclear.
-import { PATCH } from "../data/patch.ts";
 import { spellbladeEffect } from "./spellblade.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Dusk_and_Dawn", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Dusk_and_Dawn", patch: "26.23" },
   baseAdRatio: 0.75,
   apRatio: 0.1,
   repeatDelaySeconds: 0.2,

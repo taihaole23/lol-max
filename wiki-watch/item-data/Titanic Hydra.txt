@@ -1,0 +1,38 @@
+["Titanic Hydra"] = {
+        ["id"]                  = 3748,
+        ["nickname"]            = {"beefer", "juggernaut"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Hydra",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["tank"]            = true,
+            ["onhit effects"]   = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 40,
+            ["hp"]              = 600,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Cleave",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks [[on-hit]] deal {{as|{{rd|1%|{{fd|0.5}}%}} '''maximum''' health|hp}} {{as|'''bonus''' physical damage}} to the target and {{as|{{rd|3%|{{fd|1.5}}%}} '''maximum''' health|hp}} {{as|physical damage}} to other enemies in a cone in the direction of the primary target.",
+            },
+            ["act"] = {
+                ["name"]        = "Titanic Crescent",
+                ["unique"]      = true,
+                ["description"] = "Your next basic attack [[on-hit]] within 10 seconds empowers ''Cleave'' to deal {{as|{{rd|4%|2%}} '''maximum''' health|hp}} {{as|'''bonus''' physical damage}} to the primary target and {{as|{{rd|9%|{{fd|4.5}}%}} '''maximum''' health|hp}} {{as|physical damage}} to secondary targets (10 second cooldown, starts after using the empowered attack).",
+                ["description2"]= "''Titanic Crescent'' [[Basic attack#Resets|resets]] the user's [[basic attack]] timer.",
+            },
+        },
+        ["recipe"]              = {"Tiamat", "Tunneler", "Giant's Belt"},
+        ["buy"]                 = 3300,
+    },

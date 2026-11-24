@@ -8,12 +8,11 @@
 // It's not on-hit damage, so R's on-hit effectiveness doesn't shrink it.
 // ASSUMPTION: only R's own daggers give stacks here. (Item damage can too, per the wiki, but
 //   with daggers every 0.166 s, dagger 2 comes before anything else could matter.)
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Eclipse", patch: PATCH },
-  daggerSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Eclipse", patch: "26.23" },
+  daggerSource: { url: "https://wiki.leagueoflegends.com/en-us/Template:Data_Katarina/Death_Lotus", patch: "26.23" },
   stacksToProc: 2,
   meleeMaxHealthDamage: 0.08,
 };

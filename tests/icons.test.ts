@@ -25,8 +25,23 @@ test("every champion in the search list has an icon and 4 ability icons", () => 
   }
 });
 
-test("every playable champion has splash art (update-icons.mjs's splashChampions list)", () => {
-  for (const slug of Object.keys(playableChampions)) expect(exists(iconPath.splash(slug)), slug).toBe(true);
+test("every champion has splash art, and 4 abilities (Q W E R) with a name and ranks", () => {
+  for (const c of championList) {
+    expect(exists(iconPath.splash(c.slug)), c.name).toBe(true);
+    expect(c.splash?.skin, c.name).toBeTruthy(); // the page credits which skin it is
+    expect(c.abilities.map((a) => a.key), c.name).toEqual(["q", "w", "e", "r"]);
+    for (const a of c.abilities) {
+      expect(a.name.length, `${c.name} ${a.key}`).toBeGreaterThan(0);
+      expect(a.maxRank, `${c.name} ${a.key}`).toBeGreaterThanOrEqual(1);
+    }
+  }
+});
+
+test("a calculated champion's ability names agree with the champion list", () => {
+  for (const [slug, champion] of Object.entries(playableChampions)) {
+    const listed = championList.find((c) => c.slug === slug)!.abilities;
+    expect(champion.abilities.map((a) => [a.key, a.name, a.maxRank])).toEqual(listed.map((a) => [a.key, a.name, a.maxRank]));
+  }
 });
 
 test("every item in the item snapshot has an icon", () => {

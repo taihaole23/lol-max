@@ -1,0 +1,35 @@
+["Riftmaker"] = {
+        ["id"]                  = 4633,
+        ["nickname"]            = {"velkoz"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["mage"]            = true,
+            ["lifesteal vamp"]  = true,
+        },
+        ["stats"] = {
+            ["ah"]              = 15,
+            ["ap"]              = 70,
+            ["hp"]              = 350,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Void Corruption",
+                ["unique"]      = true,
+                ["description"] = "For each second [[combat status|in combat]] with champions, deal 2% increased damage, stacking up to 4 times for a total of 8% increased damage. At maximum stacks, gain {{as|{{rd|10%|6%}} omnivamp}}.",
+            },
+            ["pass2"] = {
+                ["name"]        = "Void Infusion",
+                ["unique"]      = true,
+                ["description"] = "Gain {{as|ability power}} equal to {{as|2% '''bonus''' health}}.",
+            },
+        },
+        ["recipe"]              = {"Haunting Guise", "Fiendish Codex"},
+        ["buy"]                 = 3100,
+    },

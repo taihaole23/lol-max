@@ -1,0 +1,38 @@
+["Stridebreaker"] = {
+        ["id"]                  = 6631,
+        ["nickname"]            = {"kneecapper", "whipchain"},
+        ["tags"]                = {"HasOnHit"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Hydra",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["movement"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 40,
+            ["as"]              = 25,
+            ["hp"]              = 450,
+        },
+        ["effects"] = {
+            ["act"] = {
+                ["name"]        = "Breaking Shockwave",
+                ["unique"]      = true,
+                ["description"] = "Deal {{as|80% AD}} {{as|physical damage}} to enemies within a {{tip|cr|icononly=true}} 450 radius {{tt|in front of you|100 unit offset in the caster's facing direction}} and {{tip|slow}} them by 35% for 3 seconds. For each champion hit, gain {{as|35% '''bonus''' movement speed}} decaying over 3 seconds. Can move while casting.",
+                ["cd"]          = "15",
+            },
+            ["pass"] = {
+                ["name"]        = "Cleave",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks [[on-hit]] deal {{as|{{rd|40% AD|20% AD}}|ad}} {{as|physical damage}} to other enemies in a {{tip|cr|icononly = true}} 350 radius centered around the target.",
+            },
+        },
+        ["recipe"]              = {"Tiamat", "Phage", "Dagger"},
+        ["buy"]                 = 3300,
+    },

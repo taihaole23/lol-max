@@ -1,0 +1,34 @@
+["Spear of Shojin"] = {
+        ["id"]                  = 3161,
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["modes"] = {
+        	["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["fighter"]         = true,
+            ["ability haste"]   = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 45,
+            ["hp"]              = 450,
+        },
+        ["effects"] = {
+            ["pass"] = {
+            	["name"]        = "Dragonforce",
+                ["unique"]      = true,
+                ["description"] = "Gain 25 [[Haste#Basic ability haste|basic ability haste]].",
+            },
+            ["pass2"] = {
+            	["name"]         = "Focused Will",
+                ["unique"]       = true,
+                ["description"]  = "Dealing {{tip|ability damage}} or {{tip|pet damage}} from a non-innate {{tip|ability}} {{tip|cast instance}}, generates a stack of ''Focused Will'' for 6 seconds, stacking up to 4 times. For each stack, your {{tip|ability damage|ability}}, {{tip|proc damage|proc}} and {{tip|pet damage}} originating from your ability {{tip|cast instance|cast instances}} deals 3% increased damage, for a total increase of 12% at '''maximum''' stacks.",
+            	["description2"] = "Each {{tip|cast instance}} can only grant one stack per second."
+            },
+        },
+        ["recipe"]              = {"Pickaxe", "Tunneler", "Ruby Crystal"},
+        ["buy"]                 = 3100,
+    },

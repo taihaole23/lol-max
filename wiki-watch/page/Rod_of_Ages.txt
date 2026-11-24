@@ -1,0 +1,269 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Infinite Convergence}}.''
+{{Item info
+|goldvalue =
+{{gold value|Passive Gold Value (per Stack)|nolink=}}
+* 3 [[ability power]] = {{g|{{#vardefineecho:perstackAp|{{#expr:{{#var:ap}}*3}}}}}}
+* 10 [[health]] = {{g|{{#vardefineecho:perstackHealth|{{#expr:{{#var:hp}}*10}}}}}}
+* 30 [[mana]] = {{g|{{#vardefineecho:perstackMana|{{#expr:{{#var:mana}}*30}}}}}}
+** Gold Value per stack = {{g|{{#vardefineecho:perstack|{{#expr:{{#var:perstackAp}}+{{#var:perstackHealth}}+{{#var:perstackMana}}}}}}}}
+{{gold value|Passive Gold Value (Fully Stacked)|nolink=}}
+* 30 [[ability power]] = {{g|{{#expr:{{#var:perstackAp}}*10}}}}
+* 100 [[health]] = {{g|{{#expr:{{#var:perstackHealth}}*10}}}}
+* 300 [[mana]] = {{g|{{#expr:{{#var:perstackMana}}*10}}}}
+** '''Gold Value from 10 Stacks ''' = {{g|{{#expr:{{#var:perstack}}*10}}}}
+** '''Total Gold Value ''' = {{g|{{#vardefineecho:fullstacks|{{#expr:{{#var:total}}+{{#var:perstack}}*10}}}}}}
+|goldefficiency =
+* {{iis|Rod of Ages}} gold efficiency due to its passive increases by {{gec|Rod of Ages|+{{#var:perstack}}}} per stack.
+* At maximum stacks of its passive, {{ii|Rod of Ages}} is {{gec|Rod of Ages|{{#var:fullstacks}}}} gold efficient.
+|similaritems = Luden's Echo;Malignance;Archangel's Staff;Blackfire Torch;Actualizer;Liandry's Torment;Riftmaker;Cosmic Drive;Hextech Rocketbelt;Rylai's Crystal Scepter
+|background =
+|notes =
+* {{sbc|Eternity}} will trigger from all sources of mana costs.
+|strategy =
+* {{ii|Rod of Ages}} is best used by champions that can make use of the large stat increases by scaling with them effectively (usually mana).
+* {{ii|Rod of Ages}} is often the item that is built the first by its users due to wanting to stack up its passive as early as possible into the game.
+** This is because the stats the item grants by itself along with the stacks are highly valuable, especially in the early game.
+** Having the item as part of one's build is too high of an investment since it takes a total of 10 minutes for it to reach its full potential, so it must be prioritized as a rush item so that it achieves that power spike sooner than later.
+* {{ii|Rod of Ages}} also provides a slight amount of sustain with its other passive which recovers both health and mana.
+|oldicons =
+|trivia =
+* {{ii|Rod of Ages}} may have been originally named as "Guinsoo's Rod of Oblivion", and its icon is still named as such in the League of Legends install directory.
+* {{csl|Karthus|Karthus Lightsbane|Karthus Lightsbane}} uses the {{ii|Rod of Ages}}.
+* The name is likely a reference to Def Leppard's 1983 song "Rock of Ages". (The movie of the same name, which is also named after the song, was not released until 3 years after the item came out.)
+* The {{ii|Rod of Ages (Quick Charge)|Quick Charge}} version is also used on the [[Crystal Scar]] during [[Rotating Game Mode]]s.
+* The name of its Masterwork item on [[VPBE|PBE]] during the Preseason 2023 cycle was ''Scepter of Eternity''.
+[[File:Blessed Isles Crest icon.png|link=Blessed Isles|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Rod of Ages fully stacked VFX.png|Fully Stacked VFX
+Rod of Ages MS VFX.png|Old Movement Speed VFX
+Rod of Ages screenshot.png|Old Eternity Stack Gained VFX
+</gallery>
+|sfx =
+;Maximum Stacks
+* {{sm2|Rod of Ages MaxStacks SFX.ogg}} Passive SFX
+|revisions =
+{{#tag:tabber|Hide=
+* Click ''Show'' to view old item revisions.
+{{!}}-{{!}}Show=
+{{Infobox item
+|disp_name = Rod of Ages
+|sub_name  = &nbsp;<small>V10.22</small>
+|icon      = Rod of Ages item old
+|ap        = 60
+|health    = 300
+|mana      = 300
+|pass      = This item gains {{as|20 health}}, {{as|10 mana}} and {{as|4 ability power}} every minute, up to 10 times, for a maximum of {{as|200 health}}, {{as|100 mana}} and {{as|40 ability power}}.
+|pass2     = {{Unique|Eternity|Restore {{as|mana}} equal to 15% of damage taken from champions, and {{as|health}} equal to {{as|20% of mana spent}}, up to {{as|25 health}} per cast. Toggled abilities can only heal for up to {{as|25|health}} per second.}}
+|recipeold =
+{{Recipe
+|result = Rod of Ages
+|variant= old
+|total  = 2600
+|cost   = 650
+|t1     = {{Recipe
+  |result = Catalyst of Aeons
+  |variant= old
+  |total  = 1100
+  |cost   = 350
+  |t1     = {{Recipe/item|Ruby Crystal|400|variant=old2}}
+  |t2     = {{Recipe/item|Sapphire Crystal|350|variant=old}}
+}}
+|t2     = {{Recipe/item|Blasting Wand|350|variant=old}}
+}}
+|buy       = 2600
+|sell      = 1820
+|code      = 3027
+}}
+* Quick Charge version triggered the passive effect every 40 seconds instead of 60.
+{{Clr}}
+}}
+|patchhistory =
+;[[V25.14]]
+* Mana increased to 500 from 400.
+* Timeless mana per stack increased to 30 from 20.
+** Maximum bonus mana increased to 300 from 200.
+
+;[[V25.09]]
+* Ability power reduced to 45 from 50.
+* Health reduced to 350 from 400.
+
+;[[V25.07]]
+* Eternity mana restoration increased to 10% from 7%.
+
+;[[V25.05]]
+* Bonus health, mana, and ability power gained from Timeless are now considered innate stats.
+
+;[[V25.S1.3]]
+* {{sbc|Bug Fix:}} No longer displays higher values for Eternity's healing in the floating text display as if the user could heal for higher than the maximum allowed of 20.
+
+;[[V14.19]]
+* Timeless health per stack reduced to 10 from 20.
+** Maximum health bonus reduced to 100 from 200.
+* Timeless ability power per stack reduced to 3 from 4.
+** Maximum ability power bonus reduced to 30 from 40.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Infinite Convergence}}.
+
+;[[V14.5]]
+* {{sbc|Bug Fix:}} {{ii|Infinite Convergence}} holders can no longer purchase {{ii|Rod of Ages}} again.
+
+;[[V14.3]]
+* Health increased to 400 from 350.
+* Mana increased to 400 from 300.
+* {{ii|Infinite Convergence}} health increased to 550 from 500.
+* {{ii|Infinite Convergence}} mana increased to 650 from 550.
+
+;[[V14.2]]
+* {{sbc|Bug Fix:}} No longer is incorrectly displayed in the ability haste section of the shop.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Blasting Wand}} + {{ii|Catalyst of Aeons}} + {{g|450}} = {{g|2600}}.
+** {{sbc|Stats:}} 350 health, 300 mana, 50 ability power.
+** {{sbc|Unique Passive - Timeless:}} This item gains {{as|20 '''bonus''' health}}, {{as|20 '''bonus''' mana}}, and {{as|4 ability power}} every minute, up to 10 times, for a maximum of {{as|200 '''bonus''' health}}, {{as|200 '''bonus''' mana}}, and {{as|40 ability power}}. Upon reaching maximum stacks, gain a level, preserving your current experience (cap remains at level 18).
+** {{sbc|Unique Passive - Eternity:}} Restore {{as|mana}} equal to 7% of {{tt|pre-mitigation damage|Damage calculated before modifiers}} taken from champions, and {{tip|heal}} for an amount equal to {{as|25% of mana spent}}, up to 20 per cast. Toggled abilities can only heal for up to 20 per second.
+** Limited to 1 {{sbc|Eternity}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Infinite Convergence}}.
+*** {{sbc|Stats:}} 500 health, 550 mana, 70 ability power.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Catalyst of Aeons}} + {{ii|Blasting Wand}} + {{ii|Amplifying Tome}} + {{g|215}} = {{g|2800}}.
+** {{sbc|Stats:}} 400 health, 400 mana, 60 ability power.
+** {{sbc|Unique Passive:}} This item gains {{as|20 '''bonus''' health}}, {{as|20 '''bonus''' mana}}, and {{as|4 ability power}} every minute, up to 10 times, for a maximum of {{as|200 '''bonus''' health}}, {{as|200 '''bonus''' mana}}, and {{as|40 ability power}}. Upon reaching maximum stacks, gain a level, preserving your current experience (cap remains at level 18), and increase all effects of ''Eternity'' by 50%.
+** {{sbc|Unique Passive - Eternity:}} Restore {{as|mana}} equal to 7% of {{tt|pre-mitigation damage|Damage calculated before modifiers}} taken from champions, and {{tip|heal}} for an amount equal to {{as|25% of mana spent}}, up to 20 per cast. Toggled abilities can only heal for up to 20 per second. For every 200 healing or {{as|mana}} restored this way, gain {{as|35% '''bonus''' movement speed}} that decays over 3 seconds.
+** {{sbc|Mythic Passive:}} Empowers each of your other Legendary items with {{as|5 ability haste}}.
+** Limited to 1 {{sbc|Mythic}} item. Limited to 1 {{sbc|Eternity}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Infinite Convergence}}.
+*** {{sbc|Stats:}} 550 health, 550 mana, 80 ability power.
+
+;[[V13.24]]
+* {{sbc|Bug Fix:}} {{ii|Infinite Convergence}} now correctly shows the number of stacks gained in the HUD.<!--The bug was the tracker not the stats themselves: https://youtu.be/xAzrwsubAeo?si=co9tNmNSWfI8ijpJ&t=2650 -->
+
+;[[V13.7]]
+* Combine cost reduced to {{g|215}} from {{g|415}}.
+** Total cost unchanged.
+
+;[[V13.5]]
+* {{sbc|Bug Fix:}} Icon no longer disappears from the inventory if the item was purchased and then refunded.
+
+;[[V13.1]]
+* Mana restored reduced to 7% pre-mitigation damage taken from 8%.
+* Heal increased to 25% of mana spent from 20%.
+* Heal cap increased to 20 from 15.
+* Health increased to 400 from 300.
+* Bonus movement speed increased to 35% from 25%.
+* Bonus movement speed base duration increased to 3 seconds from 2.
+** Bonus movement speed duration at full stacks increased to {{fd|4.5}} seconds from 3.
+* Bonus movement speed threshold reduced to 200 health or mana restored from 250.
+* Eternity bonus movement speed now decays by 25% of the current value (exponential) per buff update tick (every {{fd|0.264}} seconds) from 35% of the current value (exponential).
+* {{sbc|New Effect:}} Eternity bonus movement speed proc buff now appears on the HUD.
+* {{sbc|New Effect:}} Healing and mana restored when at full health/mana now count towards Eternity's movement speed proc.
+* {{sbc|Bug Fix:}} Eternity's maximum heal cap now correctly increases at maximum stacks.
+* {{ii|Infinite Convergence}} health increased to 550 from 450.
+
+;[[V12.22#November 17th Hotfix|V12.22]] - November 17th Hotfix
+* Total cost reduced to {{g|2800}} from {{g|3200}}.
+** Combine cost reduced to {{g|415}} from {{g|815}}.
+
+;[[V12.22]] - Re-added
+* Updated icon.
+* {{sbc|Recipe:}} {{ii|Catalyst of Aeons}} + {{ii|Blasting Wand}} + {{ii|Amplifying Tome}} + {{g|815}} = {{g|3200}}.
+* {{sbc|Stats:}} 60 ability power, 300 health, 400 mana.
+* {{sbc|Unique Passive:}} This item gains {{as|20 '''bonus''' health}}, {{as|20 '''bonus''' mana}}, and {{as|4 ability power}} every minute, up to 10 times, for a maximum of {{as|200 '''bonus''' health}}, {{as|200 '''bonus''' mana}}, and {{as|40 ability power}}. Upon reaching maximum stacks, gain a level that preserves your current experience (cap remains at level 18) and increase all effects of ''Eternity'' by 50%.
+* {{sbc|Unique Passive - Eternity:}} Restore {{as|mana}} equal to 8% of {{tt|pre-mitigation damage|Damage calculated before modifiers}} taken from champions, and {{as|health}} equal to {{as|20% of mana spent}}, up to {{as|15 health}} per cast. Toggled abilities can only heal for up to {{as|15|health}} per second. For every 250 {{as|health}} or {{as|mana}} restored this way, gain {{as|25% '''bonus''' movement speed}} that decays over 2 seconds.
+* {{sbc|Mythic Passive:}} Empowers other Legendary items with 5 ability haste.
+* Limited to 1 {{sbc|Mythic}} / {{sbc|Eternity}} item.
+* {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Infinite Convergence}}.
+** {{sbc|Stats:}} 80 ability power, 450 health, 550 mana.
+
+;[[V10.23]] - Removed
+* Removed from the game.
+
+;[[V9.13]]
+* Total cost reduced to {{g|2600}} from {{g|2700}}.
+** Combine cost reduced to {{g|650}} from {{g|750}}.
+
+;[[V7.10]]
+* {{ii|Rod of Ages (Quick Charge)}}
+** Replaced normal version on the Howling Abyss.
+
+;[[V6.12]]
+* Total cost increased to {{g|2700}} from {{g|2600}}.
+** Combine cost increased to {{g|750}} from {{g|650}}.
+* Eternity: Mana to health conversion reduced to 20% from 25%.
+
+;[[V6.9]]
+* Total cost reduced to {{g|2600}} from {{g|3000}}
+** Combine cost reduced to {{g|650}} from {{g|950}}.
+* Ability power reduced to 60 from 80.
+* Mana reduced to 300 from 400.
+* Mana per stack reduced to 10 from 40.
+* New Passive effect - Eternity: 15% of damage taken from champions is gained as mana. Spending mana restores 25% of mana spent as health, up to 25 per cast (toggle spells heal for up to 25 per second).
+
+;[[V5.22]]
+* Total cost increased to {{g|3000}} from {{g|2700}}.
+* Ability power increased to 80 from 60.
+
+;[[V5.13]]
+* Total cost reduced to {{g|2700}} from {{g|2800}}.
+* Health reduced to 300 from 450.
+* Mana reduced to 400 from 450.
+* Mana per stack increased to 40 from 20.
+* Ability power per stack increased to 4 from 2.
+
+;[[V5.2]]
+* Now displays the current stacks over the icon.
+* No longer loses stacks when selling the item and then undoing the sale.
+
+;[[V3.8]]
+* {{ii|Rod of Ages (Crystal Scar)}}
+** Map-specific version added for Crystal Scar.
+
+;[[V1.0.0.152]]
+* Total cost reduced to {{g|2800}} from {{g|3035}}.
+** Combine cost reduced to {{g|740}} from {{g|850}}.
+* Mana reduced to 450 from 525.
+* Health per stack increased to 20 from 18.
+* {{sbc|Passive &ndash; {{nie|Valor's Reward}}:}}
+** On level-up heal reduced to 150 from 250.
+
+;[[V1.0.0.118]]
+* Now retains {{iis|Catalyst the Protector}} passive when upgraded, with both remaining Unique so they cannot stack.
+
+;[[V1.0.0.108]]
+* Now show you in its tooltip what the current stats on its passive are.
+
+;[[V1.0.0.103]]
+* Health increased to 450 from 360.
+* Mana increased to 525 from 425.
+* Ability power increased to 50 from 30.
+* Health per stack reduced to 18 from 27.
+* Mana per stack reduced to 20 from 30.
+* Ability power per stack reduced to 2 from 3.
+* Maximum stats unchanged.
+
+;[[V0.9.25.21]]
+* Health reduced to 425 from 450.
+* Mana reduced to 425 from 450.
+
+;[[V0.9.22.16]]
+* Combine cost increased to {{g|850}} from {{g|800}}.
+
+;[[July 10, 2009 Patch]]
+* Combine cost reduced to {{g|800}} from {{g|865}}.
+
+;[[May 15, 2009 Patch]]
+* Combine cost increased to {{g|865}} from {{g|665}}.
+}}
+
+
+[[cs:Rod of Ages]]
+[[de:Stab der Zeitalter]]
+[[es:Vara de las Edades]]
+[[fr:Bâton Séculaire]]
+[[pl:Różdżka Wieków]]
+[[pt-br:Bastão das Eras]]
+[[ru:Жезл веков]]
+[[zh:时光之杖]]

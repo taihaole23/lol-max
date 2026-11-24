@@ -1,0 +1,40 @@
+["Terminus"] = {
+        ["id"]                  = 3302,
+        ["nickname"]            = {"bow", "sentinel"},
+        ["tags"]                = {"HasOnHit", "OnHitAppliesLifeSteal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Fatality",
+        ["itemlimit2"]			= "Blight",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+        	["fighter"]         = true,
+            ["marksman"]        = true,
+            ["onhit effects"]   = true,
+            ["armor pen"]       = true,
+            ["magic pen"]       = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 30,
+            ["as"]              = 35,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Shadow",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks deal {{as|30|magic damage}} {{as|(+10% '''bonus''' AD)}} {{as|(+ 10% AP)}} {{as|'''bonus''' magic damage}} [[on-hit]].",
+            },
+            ["pass2"] = {
+                ["name"]        = "Juxtaposition",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks {{tip|on-hit}} against champions alternate between ''Light'' and ''Dark'' hits, each one granting a bonus for 5 seconds that stacks up to 3 times. ''Light'' hits grant {{pp|6 to 8 for 3|1;11;14|type=level}} {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} while ''Dark'' hits grant 10% {{as|armor penetration}} and {{as|magic penetration}}, for a total of {{pp|6*3 to 8*3 for 3|1;11;14}} '''bonus''' resistances and 30% resistances penetration at maximum stacks of each.",
+            },
+		},
+        ["recipe"]              = {"Hearthbound Axe", "Recurve Bow"},
+        ["buy"]                 = 3000,
+    },

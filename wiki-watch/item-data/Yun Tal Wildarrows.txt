@@ -1,0 +1,35 @@
+["Yun Tal Wildarrows"] = {
+        ["id"]                  = 3032,
+        ["nickname"]            = {"arrow", "yuntal"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["caption"]             = "\"Passed from Huntress to Huntress, to fell foe after foe.\"",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 50,
+            ["as"]              = 45,
+            ["crit"]            = 0,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Practice Makes Lethal",
+                ["unique"]      = true,
+                ["description"] = "Basic attacks {{tip|on-attack}} grant {{as|{{rd|{{fd|0.4}}%|{{fd|0.2}}%}} critical strike chance}} permanently, stacking up to {{rd|63|125}} times (capped at {{as|25% critical strike chance}}).",
+            },
+            ["pass2"] = {
+                ["name"]        = "Flurry",
+                ["unique"]      = true,
+                ["description"] = "Launching a basic attack against an enemy champion grants you {{as|30% '''bonus''' attack speed}} for 6 seconds (30 second cooldown, reduced by 1 second {{tip|on-hit}} and 2 seconds if the attack {{tip|critical strike|critically strikes}}).",
+            },
+        },
+        ["recipe"]              = {"B. F. Sword", "Scout's Slingshot", "Long Sword"},
+        ["buy"]                 = 3000,
+    },

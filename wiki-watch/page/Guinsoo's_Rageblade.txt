@@ -1,0 +1,397 @@
+: ''For the removed {{ai|Living Forge|Ornn|Masterwork}} item, see {{ii|Seething Sorrow}}.''
+{{Item info
+|goldvalue =
+{{gold value|Wrath Gold Value|nolink=}}
+* 30 [[on-hit]] [[magic damage]] = {{g|{{#expr:{{#var:ohdmg}}*30 round 2}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:total|{{#expr:{{#var:total}}+{{#var:ohdmg}}*30 round 2}}}}}}
+
+{{gold value|Seething Strike Gold Value per stack|nolink=}}
+* 8% [[attack speed]] = {{g|{{#vardefineecho:seething1|{{#expr:{{#var:as}}*8}}}}}}
+
+{{gold value|Fully stacked Seething Strike Gold Value|nolink=}}
+* 32% [[attack speed]] = {{g|{{#expr:{{#var:as}}*32}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:seethingFull|{{#expr:{{#var:total}}+{{#var:as}}*32 round 2}}}}}}
+
+|goldefficiency =
+* {{iis|Guinsoo's Rageblade}} gold efficiency is increased by {{gec|Guinsoo's Rageblade|+{{#var:seething1}}}} for every stack of {{sbc|Seething Strike}}.
+* While {{sbc|Seething Strike}} is fully stacked {{ii|Guinsoo's Rageblade}} becomes {{gec|Guinsoo's Rageblade|{{#var:seethingFull}}}} gold efficient and every source of on-hit damage is increased by {{fd|{{#expr:(1/3)*100 round 2}}}}%.
+|similaritems = Statikk Shiv;Blade of the Ruined King;Terminus;Nashor's Tooth;Wit's End;Kraken Slayer;Dusk and Dawn
+|background =
+|notes =
+* {{sbc|Wrath}} deals {{tip|proc damage}}, and thus will not trigger [[spell effects]].
+* {{sbc|Wrath's}} on-hit damage does not apply to [[structure]]s.
+* The bonus damage dealt by {{sbc|Wrath}} benefits from {{stil|life steal}}.
+* {{sbc|Seething Strike}} is not blocked by {{tip|spell shield}}.
+* Attacks against [[structure]]s will not grant, refresh, or affect the count of ''Phantom'' stacks.
+** They will grant and refresh {{sbc|Seething Strike}} stacks.
+* The {{sbc|Phantom Hit}} occurs a static delay after the basic attack was fired (independently of {{tip|melee}} or {{tip|ranged}}), and will occur even if the attack was destroyed (i.e. {{ai|Wind Wall|Yasuo}}) or {{tip|homing projectile destruction|popped}} (i.e. {{tip|untargetable|untargetability}}).
+** If a ranged attack is still in flight after {{fd|0.15}} seconds, its ''Phantom Hit'' lands first, which can change the order of on-hit effects (e.g. {{ii|Blade of the Ruined King}}).
+* The ''Phantom Hit'' from {{sbc|Seething Strike}} may generate stacks and trigger on abilities that applies on-attack effect. <!--Abilities that could hit multiple targets or applies multiple instances of damages only counted as single attack at same time.
+Examples: Katarina death lotus will generate a stack per tick and only hit closest target. Zeri, Yone and Yasuo Q will only generate one stack regardless number of enemy hit. Renekton or Pantheon empowered attacks is counted as separated attacks and so on.-->
+** On-hit effects, such as those from single-use empowered attacks, will not benefit from ''Phantom Hit'' and will apply their effect only once. This is due to the on-hit effect itself being consumed by the initial strike and unavailable for the second.
+** ''Phantom Hit'' does not interact with on-attack effects.
+<tabber>Hide=
+<span style="font-size:120%">Click the tabs above for a list of recorded interactions with ''Phantom Hit''. <span style="color:yellow">Please note: the information may be outdated; refer to the listings' main articles for more up-to-date information.</span></span>
+|-|On-Hit Effects=
+The following ''on-hit'' effects will apply an additional time from ''Phantom Hit'':
+;Stack generation (grants an additional stack)
+{{Column|3|
+* {{cai|Dirty Fighting|Akshan}}
+* {{cai|Moonsilver Blade|Diana}}
+* {{cai|Z-Drive Resonance|Ekko}}
+* {{cai|Hyper|Gnar}}
+* {{cai|Snip Snip!|Gwen}}
+* {{cai|Grandmaster-at-Arms|Jax}}
+* {{cai|Second Skin|Kai'Sa}}
+* {{cai|Rend|Kalista}}
+* {{cai|Double Strike|Master Yi}}
+* {{cai|Shapesplitter|Neeko}}
+* {{cai|Clockwork Windup|Orianna}}
+* {{cai|An Acquired Taste|Tahm Kench}}
+* {{cai|Explosive Charge|Tristana}}
+* {{cai|Stacked Deck|Twisted Fate}}
+* {{cai|Silver Bolts|Vayne}}
+* {{cai|Denting Blows|Vi}}
+* {{cai|Blighted Quiver|Varus}}
+* {{cai|Determination|Xin Zhao}}
+* {{ii|Kraken Slayer}} (does not apply empowered hit twice)
+}}
+
+;Bonus damage (applies damage twice)
+{{Column|3|
+* {{cai|Concussive Blows|Braum}} {{tt|*|To targets in immunity period}}
+* {{cai|Spider Form|Elise}}
+* {{cai|Seastone Trident|Fizz}} <!--If phantom hit triggered on the first hit after spell activation, the bonus damage is the smaller damage version as if Fizz not killed his target. Pending test: If this small bonus damage kills the target, it does not grant Fizz the mana refund andnor reduced cooldown.-->
+* {{cai|A Thousand Cuts|Gwen}} and {{ai|Skip 'n Slash|Gwen}}
+* {{cai|Nether Blade|Kassadin}}
+* {{cai|Starfire Spellblade|Kayle}}
+* {{cai|Bio-Arcane Barrage|Kog'Maw}}
+* {{cai|Wuju Style|Master Yi}}
+* {{cai|Thunderclap|Malphite}} {{tt|*|Cone damage}}
+* {{cai|Darkness Rise|Mordekaiser}}
+* {{cai|Terrashape|Qiyana}}
+* {{cai|Junkyard Titan|Rumble}}
+* {{cai|Absolution|Senna}}
+* {{cai|Twilight Assault|Shen}}
+* {{cai|Emberstrike|Shyvana}}
+* {{cai|Glory in Death|Sion}}
+* {{cai|An Acquired Taste|Tahm Kench}}
+* {{cai|Toxic Shot|Teemo}}
+* {{cai|Flay|Thresh}}
+* {{cai|Blighted Quiver|Varus}}
+* {{cai|Blade of the Ruined King|Viego}}
+* {{cai|The Relentless Storm|Volibear}}
+* {{cai|Eternal Hunger|Warwick}}
+* {{cai|Cultivation of Spirit|Yunara}}
+* {{ii|Blade of the Ruined King}}
+* {{ii|Guinsoo's Rageblade}}
+* {{ii|Muramana}}
+* {{ii|Nashor's Tooth}}
+* {{ii|Recurve Bow}}
+* {{ii|Stridebreaker}}{{tt|*|Cleave damage}}
+* {{ii|Tiamat}}{{tt|*|Cleave damage}}
+* {{ii|Titanic Hydra}}{{tt|*|On-hit damage and cleave damage}}
+* {{ii|Wit's End}}
+}}
+
+;Healing (triggers heal twice)
+{{Column|2|
+* {{cai|Spider Form|Elise}}
+* {{cai|Eternal Hunger|Warwick}}
+}}
+
+;Cooldown reduction (cooldown is reduced twice)
+{{Column|3|
+* {{cai|Alpha Strike|Master Yi}}
+* {{cai|Umbra Blades|Nocturne}}
+* {{cai|Reckless Swing|Olaf}}
+* {{cai|Piercing Darkness|Senna}}
+* {{cai|Twin Bite|Shyvana}}
+}}
+
+;Fury generation (grants twice as much Fury)
+{{Column|3|
+* {{cai|Rage Gene|Gnar}}
+* {{cai|Fury of the Xer'Sai|Rek'Sai}}
+* {{cai|Reign of Anger|Renekton}}
+* {{cai|Battle Fury|Tryndamere}}
+* {{cai|Dragon's Descent|Shyvana}}
+}}
+
+;Other
+* {{cai|Harsh Lesson|Illaoi}} (commands {{ai|I|Illaoi|Tentacles}} to attack without consuming the empowered attack)
+* {{cai|Flurry|Lee Sin}} (energy return doubled while only consuming 1 stack of Flurry)
+* {{cai|Hallucinate|Shaco}} (clone attacks)
+* {{ii|Trinity Force}} (bonus movement speed)
+
+;On being hit (being hit by ''Phantom Hit'')
+* {{cai|Tantrum|Amumu}} (reducing his cooldowns)
+* {{cai|Concussive Blows|Braum}} (stack application)
+* {{cai|Counter Strike|Jax}} (damage generation)
+* {{cai|Defensive Ball Curl|Rammus}} (reflect damage)
+* {{ii|Bramble Vest}} (reflect damage)
+* {{ii|Thornmail}} (reflect damage)
+
+The following do not interact with ''Phantom Hit'':
+* {{cai|Dirty Fighting|Akshan}} (stack application during {{ai|Heroic Swing|Akshan}}){{bug}}
+* {{cai|Spirit Abjuration|Aurora}} (stack generation)
+* {{cai|Relentless Assault|Jax}}
+* {{cai|Pow-Pow|Jinx}} (stack generation) and {{ai|Switcheroo!|Jinx|Fishbones}} (10% bonus damage and splash damage)
+* {{cai|Spinning Slash|Tryndamere}}
+* {{cai|Darkness Rise|Mordekaiser}} (stack generation for the aura effect)
+
+|-|On-Action Effects=
+''Phantom Hit'' does not cause you to ''attack'' twice. Effects that trigger on completing the attack windup will only trigger once and thus do not interact with ''Phantom Hit''. The following list includes those effects:
+{{Column|3|
+* {{cai|Ranger's Focus|Ashe}} (stack generation and empowered active)
+* {{cai|Traveler's Call 2|Bard|Meeps}}
+* {{cai|Vorpal Spikes|Cho'Gath}}
+* {{cai|Hemorrhage|Darius}}
+* {{cai|Electrical Surge|Kennen}}
+* {{cai|Pix, Faerie Companion|Lulu|Pix}}
+* {{cai|Hyper Charge|Jayce}} (stack decrement)
+* {{cai|Tidecaller's Blessing|Nami}}
+* {{cai|Queen's Wrath|Rek'Sai}}
+* {{cai|Ricochet|Sivir}}
+* {{cai|Petricite Burst|Sylas}} (stack decrement)
+* {{cai|Three Talon Strike|Xin Zhao}} (bonus damage and knockup)
+* {{cai|Way of the Hunter|Yone}} (bonus damage)
+* {{ii|Guinsoo's Rageblade}} (stack generation)
+* {{ii|Runaan's Hurricane}} (minor bolts)
+}}
+</tabber>
+|strategy =
+* {{ii|Guinsoo's Rageblade}} stats and effects make it a useful item for when a champion wants to specialize in dealing and applying on-hit effects. It is best used by a champion that is building to use basic attacks for their main source of damage.
+|oldicons =
+|trivia =
+* {{ii|Guinsoo's Rageblade}} is named after [[Steve 'Guinsoo' Feak]], one of the main creative minds behind ''[[League of Legends]]'' and creator of ''[[Defense of the Ancients: Allstars]]''.
+** According to Feak, '''Guinsoo's Rageblade''' was created with {{ci|Corki}} in mind.<ref>[https://web.archive.org/web/0/http://na.leagueoflegends.com/board/showthread.php?p=2851828#2851828]</ref>
+** It has a similar icon to the ''[[Defense of the Ancients: Allstars]]'' item Guinsoo's Scythe of Vyse, also named after Feak.
+** Guinsoo is also the name of a mysterious dagger that can be found hidden on Level 1 of the 1991 D&D video game, Eye of the Beholder. Steve Feak took his name from this dagger.<ref>[https://forgottenrealms.fandom.com/wiki/Guinsoo]</ref>
+* '''Guinsoo's Rageblade''' was one of the last items released before the launch of ''League of Legends'' itself.
+* There once existed a bug that enabled {{ci|Sion|variant = old}} to attain negative {{as|ability power}} and {{as|{{fd|2.5}} attack speed}} with '''Guinsoo's Rageblade''' alone.<ref>[https://web.archive.org/web/0/http://na.leagueoflegends.com/board/showthread.php?t=1506235]</ref>
+* The design is mostly similar to Kratos' blades (God of War franchise), both the Blades of Chaos and the Blades of Exile.
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Guinsoo's Rageblade Phantom screenshot.png|Phantom Hit Empowered Attack VFX
+Guinsoo's Rageblade particles screenshot.png|Phantom Hit Triggered VFX
+</gallery>
+|revisions =
+|patchhistory =
+;[[V26.18]]
+* Seething Strike stack duration increased to 4 seconds from 3.
+
+;[[V26.14]]
+* <!--retroactively documented-->{{sbc|Bug Fix:}} Attacks now grant ''Phantom'' stacks only after all 4 {{as|attack speed}} stacks are active, instead of granting them after the first 3. This causes the first ''Phantom Hit'' strike to now occur at the 7th attack, in total, instead of at the 6th. [https://www.reddit.com/r/leagueoflegends/comments/1vz9kzh/rageblade_has_been_activating_its_phantom_hit_on/p6b60dd/]
+** {{note|1}} This change was initially undocumented but was later officially documented in [[V26.17]].
+
+;[[V14.19]]
+* Ability power reduced to 30 from 35.
+* Attack damage reduced to 30 from 35.
+
+;[[V14.11]]
+* Can no longer be upgraded to {{ii|Seething Sorrow}}.
+
+;[[V14.7]]
+* {{sbc|Bug Fix:}} Now properly shows up in the Attack Damage section of the shop.
+
+;[[V14.3]]
+* {{sbc|New Recipe:}} {{ii|Amplifying Tome}} + {{ii|Recurve Bow}} + {{ii|Pickaxe}} + {{g|1025}} = {{g|3000}}.
+** {{sbc|Old  Recipe:}} {{ii|Amplifying Tome}} + {{ii|Hearthbound Axe}} + {{ii|Long Sword}} + {{g|1050}} = {{g|3000}}.
+* Attack damage increased to 35 from 30.
+* Ability power increased to 35 from 30.
+* {{ii|Seething Sorrow}} attack damage increased to 45 from 40.
+* {{ii|Seething Sorrow}} ability power increased to 55 from 50.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Amplifying Tome}} + {{ii|Hearthbound Axe}} + {{ii|Long Sword}} + {{g|1050}} = {{g|3000}}.
+** {{sbc|Stats:}} 30 attack damage, 30 ability power, 25% attack speed.
+** {{sbc|Unique Passive - Wrath:}} Basic attacks deal {{as|30 '''bonus''' magic damage}} on-hit.
+** {{sbc|Unique Passive - Seething Strike:}} Basic attacks grant {{as|8% '''bonus''' attack speed}} for 3 seconds, stacking up to 4 times for a total of {{as|32% '''bonus''' attack speed}}. At maximum stacks, basic attacks on-attack grant a ''Phantom'' stack for 6 seconds, up to 2 stacks. At 2 ''Phantom'' stacks, the next basic attack consumes all of those stacks on-attack to trigger a ''Phantom Hit'' that applies {{tip|on-hit}} effects to the target at 100% effectiveness after a {{fd|0.15}} second delay.
+** Limited to 1 '''Guinsoo's Rageblade'''.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Seething Sorrow}}.
+*** {{sbc|Stats:}} 40 attack damage, 50 ability power, 35% attack speed.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Amplifying Tome}} + {{ii|Rageknife}} + {{ii|Pickaxe}} + {{g|690}} = {{g|3200}}.
+** {{sbc|Stats:}} 30 attack damage, 30 ability power, 25% attack speed.
+** {{sbc|Unique Passive - Wrath:}} Basic attacks deal {{as|30 '''bonus''' magic damage}} on-hit. Additionally, convert every {{as|1% critical strike chance}} into {{as|{{fd|1.5}} '''additional bonus''' magic damage|magic damage}} on-hit, capped at {{as|100% critical strike chance}}, for a '''maximum''' of {{as|180 '''bonus''' magic damage}} on-hit. This damage is affected by {{tip|critical strike}} modifiers.
+** {{sbc|Unique Passive - Seething Strike:}} Basic attacks grant {{as|8% '''bonus''' attack speed}} for 3 seconds, stacking up to 4 times for a total of {{as|32% '''bonus''' attack speed}}. At maximum stacks, basic attacks on-attack grant a ''Phantom'' stack for 6 seconds, up to 2 stacks. At 2 ''Phantom'' stacks, the next basic attack consumes all of those stacks on-attack to trigger a ''Phantom Hit'' that applies {{tip|on-hit}} effects to the target at 100% effectiveness after a {{fd|0.15}} second delay.
+** {{sbc|Mythic Passive:}} Empowers each of your other Legendary items with {{as|5% armor penetration}} and {{as|6% magic penetration}}.
+** Limited to 1 {{sbc|Mythic}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Seething Sorrow}}.
+*** {{sbc|Stats:}} 40 attack damage, 50 ability power, 35% attack speed.
+
+;[[V13.24]]
+* {{sbc|Bug Fix:}} {{iis|Seething Sorrow}} Seething Strike now properly grants stacks.
+
+;[[V13.10]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Amplifying Tome}} + {{ii|Rageknife}} + {{ii|Pickaxe}} + {{g|690}} = {{g|3200}}.
+** {{sbc|Stats:}} 30 attack damage, 30 ability power, 25% attack speed.
+** {{sbc|Unique Passive - Wrath:}} Basic attacks deal {{as|30 '''bonus''' magic damage}} on-hit. Additionally, convert every {{as|1% critical strike chance}} into {{as|{{fd|1.5}} '''bonus''' magic damage}} on-hit, capped at {{as|100% critical strike chance}}, for a '''maximum''' of {{as|180 '''bonus''' magic damage}} on-hit. This damage is affected by {{tip|critical strike}} modifiers.
+** {{sbc|Unique Passive - Seething Strike:}} Basic attacks grant {{as|8% '''bonus''' attack speed}} for 3 seconds, stacking up to 4 times for a total of {{as|32% '''bonus''' attack speed}}. At maximum stacks, basic attacks on-attack grant a ''Phantom'' stack for 6 seconds, up to 2 stacks. At 2 ''Phantom'' stacks, the next basic attack consumes all stacks on-attack to trigger a ''Phantom Hit'' that applies {{tip|on-hit}} effects to the target at 100% effectiveness after a {{fd|0.15}} second delay.
+** {{sbc|Mythic Passive:}} Empowers other Legendary items with {{as|5% armor penetration}} and {{as|6% magic penetration}}.
+** Limited to 1 {{sbc|Mythic}} item.
+** {{cai|Living Forge|Ornn|Masterwork}} item: {{ii|Seething Sorrow}}.
+*** {{sbc|Stats:}} 40 attack damage, 50 ability power, 35% attack speed.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Rageknife}} + {{ii|Cloak of Agility}} + {{ii|Dagger}} + {{g|900}} = {{g|2600}}.
+** {{sbc|Stats:}} 45% attack speed, 20% critical strike chance.
+** {{sbc|Unique Passive - Wrath:}} Convert every {{as|1% critical strike chance}} into {{as|2 '''bonus''' physical damage}} [[on-hit]], capped at {{as|100% critical strike chance}}, for a '''maximum''' of {{as|200 '''bonus''' physical damage}} on-hit. This damage is affected by {{tip|critical strike}} modifiers.
+** {{sbc|Unique Passive - Seething Strike:}} Basic attacks [[on-attack]] grant a stack for 6 seconds, up to 2 stacks. At 2 stacks, the next basic attack consumes all stacks on-attack to trigger a ''Phantom Hit'' that applies {{tip|on-hit}} effects to the target at 100% effectiveness after a {{fd|0.15}} second delay.
+** Limited to 1 {{sbc|Crit Modifier}} / {{sbc|Marksman Capstone}} item.
+
+;[[V12.23]]
+* {{sbc|Bug Fix:}} Phantom Hit's 0 damage instance no longer counts as magic damage.
+
+;[[V11.10]]
+* Total cost reduced to {{g|2600}} from {{g|2800}}.
+** Combine cost reduced to {{g|900}} from {{g|1100}}.
+
+;[[V11.5]]
+* {{sbc|New Effect:}} On-hit damage is now capped at 100% critical strike chance.
+* {{sbc|New Effect:}} On-hit damage is now affected by critical strike damage modifiers.
+
+;[[V11.4]]
+* Attack speed increased to 45% from 40%.
+
+;[[V10.25]]
+* {{sbc|New Effect:}} Convert every {{as|1% critical strike chance}} into 2 '''bonus''' physical damage on-hit.
+* {{sbc|Old Effect:}} Deal 2 bonus physical damage on-hit for every {{as|1% critical strike chance}}, up to 200 '''bonus''' physical damage on-hit at {{as|100% critical strike chance}}, but you can no longer {{tip|critical strike|critically strike}}.
+
+;[[V10.24]]
+* {{sbc|Removed:}} No longer deals bonus damage against turrets.
+* {{sbc|Bug Fix:}} Now properly triggers at all ranges when the holder also has {{ii|Kraken Slayer}}.
+* {{sbc|Bug Fix:}} Now properly triggers {{iis|Muramana}} bonus damage every third attack.
+
+;[[V10.23#November 12th Hotfix|V10.23]] - November 12th Hotfix
+* Total cost increased to {{g|2800}} from {{g|2600}}.
+** Combined cost increased to {{g|1100}} from {{g|900}}.
+* Bonus physical damage per critical strike chance reduced to 2 from {{fd|2.25}}.
+** Maximum bonus physical damage reduced to 200 from 225.
+
+;[[V10.23]]
+* Updated icon.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Rageknife}} + {{ii|Cloak of Agility}} + {{ii|Dagger}} + {{g|900}} = {{g|2600}}.
+** {{sbc|Stats:}} 40% attack speed, 20% critical strike chance.
+** {{sbc|Unique Passive - Wrath:}} Deal {{as|{{fd|2.25}} '''bonus''' physical damage}} on-hit for every 1% critical strike chance, up to {{as|225 '''bonus''' physical damage}} on-hit at 100% critical strike chance, but can no longer critically strike. Damage applies to structures.
+** {{sbc|Unique Passive - Seething Strike:}} Every third basic attack triggers a ''Phantom Hit'' on-attack that applies on-hit effects to the target unit after a {{fd|0.15}} second delay.
+** Limited to 1 {{sbc|Crit Modifier}} item.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Amplifying Tome}} + {{ii|Recurve Bow}} + {{ii|Pickaxe}} + {{g|790}} = {{g|3100}}.
+** {{sbc|Stats:}} 25% attack speed, 25 attack damage, 25 ability power.
+** {{sbc|Passive:}} Basic attacks deal {{as|15 '''bonus''' magic damage on-hit}}.
+** {{sbc|Unique Passive - Last Whisper:}} Grants {{sti|15% '''total''' armor penetration.|link=true}}
+** {{sbc|Unique Passive - Dissolve:}} Grants {{sti|15% magic penetration.|link=true}}
+** {{sbc|Unique Passive:}} Basic attacks grant {{as|8% '''bonus''' attack speed}} on-attack, after a {{fd|0.15}} second delay, for 5 seconds, stacking up to 6 times for a maximum of {{as|48% '''bonus''' attack speed}}. {{tip|Melee}} champions can fully stack it with their fourth basic attack. While at 6 stacks gain ''Guinsoo's Rage''. {{sbc|Guinsoo's Rage:}} Every third basic attack triggers a ''Phantom Hit'' on-attack that applies on-hit effects to the target unit after a {{fd|0.15}} second delay.
+
+;[[V10.13]]
+* {{sbc|Bug Fix:}} Guinsoo's Rage no longer triggers on the target when the holder's basic attack is blocked or destroyed.
+
+;[[V9.10]]
+* Phantom hit frequency decreased to every third attack from every second attack.
+* Unique armor penetration increased to 15% at all levels from {{pp|key=%|6.5 to 15}}.
+* Unique magic resistance penetration increased to 15% at all levels from {{pp|key=%|6.5 to 15}}.
+
+;[[V8.23]]
+* Total cost reduced to {{g|3100}} from {{g|3300}}.
+** Combine cost reduced to {{g|790}} from {{g|990}}.
+* {{sbc|Removed Passive:}} Basic attacks deal 5 {{as|(+ 10% '''bonus''' AD)}} physical and 5 {{as|(+ 10% AP)}} magic damage on-hit.
+* {{sbc|New Passive:}} Basic attacks deal 15 '''bonus''' magic damage on-hit.
+* {{sbc|New Unique Passive - Last Whisper:}} Grants {{pp|key=%|6.5 to 15}} '''total''' armor penetration.
+* {{sbc|New Unique Passive - Dissolve:}} Grants {{pp|key=%|6.5 to 15}} magic penetration.
+* {{sbc|Removed:}} Basic attacks no longer grant {{as|{{fd|2.5}}% '''bonus''' AD}} and {{as|{{fd|2.5}}% AP}} for 5 seconds, stacking up to 6 times, granting a maximum of {{as|15% '''bonus''' AD}} and {{as|15% AP}}. ''Still grants the 8% attack speed per stack.''
+
+;[[V8.13]]
+* Bonus AD percentage per stack reduced to {{as|{{fd|2.5}}% '''bonus''' AD}} from {{as|4%|AD}}.
+** Maximum bonus AD percentage reduced to {{as|15% '''bonus''' AD}} from {{as|24%|AD}}.
+* Ability power percentage per stack reduced to {{as|{{fd|2.5}}% AP}} from {{as|4% AP}}.
+** Maximum ability power percentage reduced to {{as|15% AP}} from {{as|24% AP}}.
+
+;[[V8.9]]
+* {{sbc|Bug Fix:}} Fixed a bug where it interacted recursively with {{cis|Jhin}} and {{uis|Infernal Drake}} bonus attack damage-granting effects to grant more attack damage than intended. Now it stacks multiplicatively.
+
+;[[V8.7]]
+* Total cost increased to {{g|3300}} from {{g|3000}}.
+** Combine cost increased to {{g|990}} from {{g|690}}.
+
+;[[V8.6]]
+* {{sbc|New Recipe:}} {{ii|Amplifying Tome}} + {{ii|Recurve Bow}} + {{ii|Pickaxe}} + {{g|690}} = {{g|3000}}.
+** {{sbc|Old  Recipe:}} {{ii|Blasting Wand}} + {{ii|Pickaxe}} + {{ii|Recurve Bow}} + {{g|875}} = {{g|3600}}.
+* Attack damage reduced to 25 from 35.
+* Ability power reduced to 25 from 50.
+* {{sbc|Removed Passive:}} Basic attacks no longer deal 15 '''bonus''' magic damage on-hit.
+* {{sbc|New Passive:}} Basic attacks deal 5 {{as|(+ 10% '''bonus''' AD)}} physical and 5 {{as|(+ 10% AP)}} magic damage on-hit.
+* {{sbc|New Unique Passive:}} Basic attacks grant 8% attack speed, {{as|4% '''bonus''' AD}}, and {{as|4% AP}} for 5 seconds, stacking up to 6 times, granting a maximum of 48% attack speed, {{as|24% '''bonus''' AD}}, and {{as|24% AP}}. At 6 ''stacks'', gain {{sbc|Guinsoo's Rage}}. While at half stacks, {{tip|melee}} champions' next basic attack fully stack Rageblade.
+* {{sbc|Removed Unique Passive:}} Basic attacks grant 8% attack speed, 3 attack damage and 4 ability power for 5 seconds, stacking up to 6 times, granting a total of 48% attack speed, 18 attack damage and 24 ability power. At 6 ''stacks'', gain {{sbc|Guinsoo's Rage}}.
+
+;[[V6.23]]
+* Attack speed increased to 25% from 0%.
+
+;[[V6.9]]
+* {{sbc|New Recipe:}} {{ii|Blasting Wand}} + {{ii|Pickaxe}} + {{ii|Recurve Bow}} + {{g|875}} = {{g|3600}}.
+** {{sbc|Old Recipe:}} {{ii|Blasting Wand}} + {{ii|Pickaxe}} + {{g|1075}} = {{g|2800}}.
+* {{sbc|New Passive:}} Basic attacks deal 15 '''bonus''' magic damage on-hit.
+* Maximum stacks reduced to 6 from 8.
+* {{sbc|Removed:}} Melee champions no longer gain 2 stacks per hit.
+* {{sbc|Guinsoo's Rage:}}
+** {{sbc|New Effect:}} Every other basic attack triggers a Phantom Hit on-attack that applies on-hit effects to the target unit.
+** {{sbc|Old Effect:}} Basic attacks deal 20 {{as|(+ 15% '''bonus''' AD)}} {{as|(+ {{fd|7.5}}% AP)}} '''bonus''' magic damage to your target and {{tt|nearby|350 effect radius}} enemy units.
+
+;[[V5.24]]
+* Damage area of effect radius reduced to 350 from 450.
+
+;[[V5.23]]
+* Total cost increased to {{g|2800}} from {{g|2500}}.
+** Combine cost increased to {{g|1075}} from {{g|775}}.
+
+;[[V5.22]]
+* Total cost reduced to {{g|2500}} from {{g|2590}}.
+** Combine cost reduced to {{g|775}} from {{g|865}}.
+* Attack speed per stack increased to 8% from 4%.
+* {{sbc|New Effect:}} Stacking passive is now {{sbc|Unique}}.
+* {{sbc|Removed:}} No longer grants stacks from ability casts.
+* {{sbc|New Effect:}} Melee basic attacks now grant 2 stacks.
+* {{sbc|New Effect:}} Now also grants 3 attack damage and 4 ability power per stack.
+* {{sbc|New Effect:}} While you have 8 stacks, gain {{sbc|Guinsoo's Rage}}.
+* {{sbc|New Effect - Guinsoo's Rage:}} Basic attacks deal 20 {{as|(+ 15% '''bonus''' AD)}} {{as|(+ {{fd|7.5}}% AP)}} '''bonus''' magic damage to your target and {{tt|nearby|450 effect radius}} enemy units.
+* {{sbc|Removed Unique Passive - Surge:}} Falling {{as|'''below''' 50% health}} grants you 20% '''bonus''' attack speed, 10% life steal and 10% spell vamp until you exit combat (30 second cooldown).
+
+;[[V5.13]]
+* Total cost reduced to {{g|2590}} from {{g|2600}}.
+
+;[[V3.11]]
+* {{sbc|Bug Fix:}} Fixed a bug where the visual effects included the generic "increased movement speed" visual.
+
+;[[V1.0.0.152]]
+* Total cost increased to {{g|2600}} from {{g|2235}}.
+** Combine cost increased to {{g|865}} from {{g|400}}.
+* Stacking passive:
+** Ability power per stack reduced to 4 from 6.
+** Duration increased to 8 seconds from 5.
+* {{sbc|New Unique Passive:}} Falling {{as|'''below''' 50% health}} grants you 20% '''bonus''' attack speed, 10% life steal and 10% spell vamp until you exit combat (30 second cooldown).
+
+;[[V1.0.0.74]]
+* {{sbc|Bug Fix:}} Fixed an unspecified tooltip error.
+* {{sbc|Bug Fix:}} Fixed a bug where the first time you attacked a target in an attack cycle, it would not function.
+* {{sbc|New Effect:}} Now triggers on spell cast in addition to hitting a target.
+
+;[[V0.9.25.21]] - Added
+* {{ii|Guinsoo's Rageblade}}
+** {{sbc|Recipe:}} {{ii|Pickaxe}} + {{ii|Blasting Wand}} + {{g|400}}.
+** {{sbc|Passive:}} On attack or ability cast, grants 4% '''bonus''' attack speed and 6 ability power for 5 seconds, stacking up to 8 times.
+}}
+
+
+[[cs:Guinsoo's Rageblade]]
+[[de:Guinsoos Wutklinge]]
+[[es:Espadafuria de Guinsoo]]
+[[fr:Lame Enragée de Guinsoo]]
+[[pl:Ostrze Gniewu Guinsoo]]
+[[ru:Клинок ярости Гинсу]]
+[[zh:鬼索的狂暴之刃]]
+[[Category:On-hit effect items]]
+[[Category:Items with passive abilities]]

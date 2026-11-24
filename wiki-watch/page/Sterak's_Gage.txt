@@ -1,0 +1,207 @@
+{{Item info
+|goldvalue = <!--
+-->{{#vardefine:lowestBaseADChamp|{{Highest lowest stats|ad|lvl=1|size=1|sortby=bottom|get=champ}}}}<!--
+-->{{#vardefine:lowestBaseAD|{{Highest lowest stats|ad|lvl=1|size=1|sortby=bottom|get=stat}}}}<!--
+-->{{#vardefine:highestBaseADChamp|{{Highest lowest stats|ad|lvl=20|size=1|sortby=top|get=champ}}}}<!--
+-->{{#vardefine:highestBaseAD|{{Highest lowest stats|ad|lvl=20|size=1|sortby=top|get=stat}}}}<!--
+-->{{#vardefine:sterakADratio|0.5}}<!--
+-->{{gold value|Lowest base AD value ({{fd|{{#var:lowestBaseAD}}}} base AD)|nolink=}}
+* {{fd|{{#expr:{{#var:lowestBaseAD}}*{{#var:sterakADratio}}}}}} [[attack damage]] = {{g|{{#expr:{{#var:lowestBaseAD}}*{{#var:sterakADratio}}*{{#var:ad}}}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:lowestADvalue|{{#expr:{{#var:total}}+{{#var:lowestBaseAD}}*{{#var:sterakADratio}}*{{#var:ad}}}}}}}}
+{{gold value|Highest base AD value ({{fd|{{#var:highestBaseAD}}}} base AD)|nolink=}}
+* {{fd|{{#expr:{{#var:highestBaseAD}}*{{#var:sterakADratio}}}}}} [[attack damage]] = {{g|{{#expr:{{#var:highestBaseAD}}*{{#var:sterakADratio}}*{{#var:ad}}}}}}
+** '''Total Gold Value''' = {{g|{{#vardefineecho:highestADvalue|{{#expr:{{#var:total}}+{{#var:highestBaseAD}}*{{#var:sterakADratio}}*{{#var:ad}}}}}}}}
+|goldefficiency =
+* {{ii|Sterak's Gage}} is {{gec|Sterak's Gage|{{cid|Sterak's Gage|buy}}}} gold efficient at {{fd|{{#expr:({{cid|Sterak's Gage|buy}}-{{#var:total}})/{{#var:ad}}/{{#var:sterakADratio}} round 2}}}} '''base''' attack damage, when the item grants {{fd|{{#expr:({{cid|Sterak's Gage|buy}}-{{#var:total}})/{{#var:ad}}/{{#var:sterakADratio}}*{{#var:sterakADratio}} round 2}}}} '''bonus''' attack damage due to {{sbc|The Claws That Catch}}.
+* {{ii|Sterak's Gage}} is {{gec|Sterak's Gage|{{#var:lowestADvalue}}}} gold efficient on a level 1 {{#var:lowestBaseADChamp}} due to {{sbc|The Claws That Catch}}.
+* {{ii|Sterak's Gage}} is {{gec|Sterak's Gage|{{#var:highestADvalue}}}} gold efficient on a level 20 {{#var:highestBaseADChamp}} due to {{sbc|The Claws That Catch}}.
+|similaritems = Immortal Shieldbow;Maw of Malmortius;Mercury's Treads;Wit's End;Endless Hunger;Protoplasm Harness;Titanic Hydra;Spear of Shojin;Sundered Sky;Black Cleaver;Stridebreaker;Experimental Hexplate;Trinity Force;Hullbreaker;Overlord's Bloodmail
+|background =
+|notes =
+* {{nie|Lifeline}} will still trigger if damage is taken while ''below'' 30% of maximum health.
+* {{nie|Lifeline's}} shield will only become affected by {{iis|Serpent's Fang}} venom debuff after it was initially triggered and has already blocked damage.{{bug|2}}[https://www.youtube.com/watch?v=80LNTJrauEA]
+* '''Sterak's Gage''' grants a {{sbc|Lifeline}} shield amount of {{fd|{{#expr:{{cid|Sterak's Gage|hp}}*0.60}}}} by itself.
+|strategy =
+|oldicons =
+|trivia =
+* This item is related to Czech YouTuber and writer "Radek Starý" (known as [https://www.youtube.com/user/tensterakdary Sterakdary]) for achieving high number of [[Refer-A-Friend|referrals]]. Although the newer referral system was available, Sterakdary was still using the original referral system.
+* {{sbc|The Claws that Catch}} references {{w|Jabberwocky}}.
+* The item's icon was recolored for the icon of the [[Teamfight Tactics]] item {{TFTi|Trap Claw}}, from red to blue.
+* The search term 'primal' references a precursor item from development: ''Primal Talon''.
+[[File:Bilgewater Crest icon.png|link=Bilgewater#Trivia|100px|center]]
+|quotes =
+|media =
+<gallery captionalign="center" orientation="square" spacing="small">
+Sterak's Gage screenshot.png|Item VFX
+</gallery>
+|sfx =
+;Passive Triggered
+* {{sm2|Sterak's Gage passive SFX.ogg}} Passive SFX
+
+;Effect Ends
+* {{sm2|Sterak's Gage passive SFX 2.ogg}} Passive SFX
+* {{sm2|Sterak's Gage passive SFX 3.ogg}} Passive SFX
+|revisions =
+|patchhistory =
+;[[V26.16]]
+* The Claws That Catch base AD ratio increased to {{as|50% '''base''' AD}} from {{as|45%|AD}}.
+
+;Unknown Patch - estimated [[V25.10]]
+* {{sbc|Undocumented / Bug Fix:}} Now correctly counts as innately having attack damage for the purposes of {{ri|Jack of All Trades}}.
+
+;[[V14.19]]
+* The Claws that Catch bonus attack damage reduced to {{as|45% '''base''' AD}} from {{as|50%|ad}}.
+* Lifeline health ratio reduced to {{as|60% '''bonus''' health}} from {{as|80%|hp}}.
+
+;[[V14.16]]
+* {{sbc|Bug Fix:}} No longer provides an invisible +25% size when triggered.
+
+;[[V14.9]]
+* Total cost increased to {{g|3200}} from {{g|3000}}.
+** Combine cost increased to {{g|775}} from {{g|575}}.
+* Lifeline cooldown increased to 90 seconds from 60.
+
+;[[V14.6]]
+* Combine cost reduced to {{g|575}} from {{g|625}}.
+** Total cost unchanged.
+
+;[[V14.1]]
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Pickaxe}} + {{ii|Tunneler}} + {{ii|Ruby Crystal}} + {{g|625}} = {{g|3000}}.
+** {{sbc|Stats:}} 400 health, 20% tenacity.
+** {{sbc|Unique Passive - The Claws That Catch:}} Gain {{as|'''bonus''' attack damage}} equal to {{as|50% '''base''' AD}}.
+** {{sbc|Unique Passive - Lifeline:}} If you would take damage that would reduce you below {{as|30% of your '''maximum''' health}}, you first gain a shield that absorbs damage equal to {{as|80% of '''bonus''' health}} which decays over {{fd|4.5}} seconds (60 second cooldown).
+** Limited to 1 {{sbc|Lifeline}} item.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Pickaxe}} + {{ii|Phage}} + {{ii|Ruby Crystal}} + {{g|625}} = {{g|3000}}.
+** {{sbc|Stats:}} 450 health.
+** {{sbc|Unique Passive - The Claws That Catch:}} Gain {{as|'''bonus''' attack damage}} equal to {{as|50% '''base''' AD}}.
+** {{sbc|Unique Passive - Lifeline:}} If you would take damage that would reduce you below {{as|30% of your '''maximum''' health}}, you first gain a shield that absorbs damage equal to {{as|80% of '''bonus''' health}} which decays over {{fd|4.5}} seconds, as well as 25% increased size and 30% tenacity for 8 seconds (60 second cooldown).
+** Limited to 1 {{sbc|Lifeline}} item.
+
+;[[V13.14]]
+* Total cost reduced to {{g|3000}} from {{g|3100}}.
+** Combine cost reduced to {{g|625}} from {{g|725}}.
+* Health increased to 450 from 400.
+
+;[[V13.10]]
+* {{sbc|New Effect:}} Now grants 25% increased size and 30% tenacity for 8 seconds after Lifeline is triggered.
+
+;[[V12.22]]
+* {{sbc|Bug Fix:}} Lifeline shield now properly triggers from and blocks an individual damage instance even if it is greater than its shield value.
+
+;[[V12.20]]
+* Shield health ratio increased to {{as|80% '''bonus''' health}} from {{as|75%|health}}.
+* Shield duration increased to {{fd|4.5}} seconds from {{fd|3.75}}.
+* Bonus attack damage increased to {{as|50% '''base''' AD}} from {{as|45%|AD}}.
+
+;[[V12.12]]
+* {{sbc|Undocumented/Bug Fix:}} Tooltip now clarifies that the shield decays over the duration.
+
+;[[V12.11]]
+* Shield health ratio increased to {{as|75% '''bonus''' health}} from {{as|70%|health}}.
+* Bonus attack damage increased to {{as|45% '''base''' AD}} from {{as|40%|AD}}.
+* {{sbc|Bug Fix:}} Tooltip now accurately counts the damage mitigated by the shield.
+
+;[[V12.10]]
+* Shield health ratio reduced to {{as|70% '''bonus''' health}} from {{as|75%|health}}.
+
+;[[V12.3]]
+* Attack damage reduced to 0 from 50.
+* {{sbc|New Unique Passive - The Claws that Catch:}} Gain {{as|40% '''base''' AD}} as '''bonus''' attack damage.
+* {{sbc|Removed Unique Passive - Bloodlust:}} After dealing damage to or taking damage from an enemy champion, {{tip|heal}} for {{as|{{rd|2%|{{fd|1.2}}%}} of '''maximum''' health}} over 6 seconds. This stacks and refreshes per unique champion, up to 5 times, but every stack beyond the first is reduced by 50%, for a maximum of healing for {{as|{{rd|6%|{{fd|3.6}}%}} of '''maximum''' health}} over the duration.
+* {{sbc|Unique Passive - Lifeline:}}
+** {{sbc|New Effect:}} If you would take damage that would reduce you below {{as|30% of your '''maximum''' health}}, gain a {{as|75% of '''bonus''' health}} {{tip|shield}} that decays over {{fd|3.75}} seconds.
+** {{sbc|Old Effect:}} If you would take damage that would reduce you below {{as|30% of your '''maximum''' health}}, gain a 100 {{tip|shield}} for 4 seconds, increased by {{as|{{rd|8%|{{fd|4.8}}%}} '''maximum''' health}} per stack of ''Bloodlust'', up to {{as|{{rd|40%|24%}} '''maximum''' health}} at 5 ''Bloodlust'' stacks.
+
+;[[V11.14]]
+* {{sbc|Bug Fix:}} No longer refreshes readiness of the Lifeline effect on death, circumventing its cooldown.
+
+;[[V11.6]]
+* {{sbc|New Effect:}} Healing is now reduced by 50% beyond the first stack.
+* {{sbc|Bug Fix:}} Stacks beyond the first now properly grant healing.
+
+;[[V11.4]]
+* {{sbc|Bug Fix:}} Tooltip now displays the proper amount of attack damage that the item grants.
+
+;[[V11.3]]
+* Lifeline base shield reduced to 100 from 200.
+* Lifeline shield duration reduced to 4 seconds from 5.
+
+;[[V10.24]]
+* Updated icon.
+
+;[[V10.23]]
+* Now purchasable on {{tip|ranged}} champions.
+* {{sbc|New:}}
+** {{sbc|Recipe:}} {{ii|Pickaxe}} + {{ii|Phage}} + {{ii|Ruby Crystal}} + {{g|725}} = {{g|3100}}.
+** {{sbc|Stats:}} 400 health, 50 attack damage.
+** {{sbc|Unique Passive - Bloodlust:}} After dealing or taking damage against an enemy champion, heal {{as|{{rd|2%|{{fd|1.2}}%}} '''maximum''' health}} over 6 seconds. This stacks and refreshes per unique champion, up to 5 times for a maximum of healing {{as|{{rd|10%|6%}} '''maximum''' health}} over the duration.
+** {{sbc|Unique Passive - Lifeline:}} Upon taking damage that would reduce you below {{as|30% '''maximum''' health}}, gain a 200 {{tip|shield}} for 5 seconds. This shield is increased by {{as|{{rd|8%|{{fd|4.8}}%}} '''maximum''' health}} per stack of ''Bloodlust'' (60 second cooldown).
+** Limited to 1 {{sbc|Lifeline}} item.
+* {{sbc|Old:}}
+** {{sbc|Recipe:}} {{ii|Jaurim's Fist}} + {{ii|Pickaxe}} + {{ii|Ruby Crystal}} + {{g|725}} = {{g|3200}}.
+** {{sbc|Stats:}} 450 health.
+** {{sbc|Unique Passive - Giant Strength:}} Gain {{as|50% of '''base''' attack damage}} as '''bonus''' attack damage.
+** {{sbc|Unique Passive - Lifeline:}} If you take {{pp|400;400;400;400;400;400;440;500;580;700;825;950;1100;1250;1400;1550;1700;1800}} damage within 5 seconds, you gain a {{tip|shield}} for up to {{fd|3.75}} seconds equal to {{as|75% of your '''bonus''' health}}, which starts decaying after {{fd|0.75}} seconds (60 second cooldown). Triggering {{sbc|Lifeline}} grants {{sbc|Sterak's Fury}}.
+** {{sbc|Unique Passive - Sterak's Fury:}} Grants +25% increased [[size]] and +30% {{sti|Tenacity|link=true}} for 8 seconds.
+
+;[[V9.1]]
+* {{sbc|Bug Fix:}} Tooltip now shows the exact amount of damage required to trigger its shield as well as the exact shield granted.
+
+;[[V8.12]]
+* {{sbc|Removed Unique Passive:}} +50% '''base''' attack damage.
+* {{sbc|New Unique Passive - Giant Strength:}} Gain {{as|50% of '''base''' attack damage}} as '''bonus''' attack damage.
+
+;[[V7.20]]
+* {{sbc|New Recipe:}} {{ii|Jaurim's Fist}} + {{ii|Pickaxe}} + {{ii|Ruby Crystal}} + {{g|725}} = {{g|3200}}.
+** {{sbc|Old Recipe:}} {{ii|Jaurim's Fist}} + {{ii|Long Sword}} + {{g|1050}} = {{g|2600}}.
+* Health increased to 450 from 400.
+* Base AD increased to 50% from 30%.
+* {{sbc|New Effect:}} +50% base AD is now an {{sbc|Unique Passive}}.
+* {{sbc|New Effect:}} {{sbc|Lifeline}} shield now starts decaying after {{fd|0.75}} seconds.
+* {{sbc|Sterak's Fury}} bonus effect changed to 30% Tenacity from 30% additional base AD.
+* {{sbc|New Restriction:}} {{tip|Melee}} only. Form-swapping champions only benefit from the base attack bonus buff while in melee form. Shield persists through form-swapping from melee to ranged.
+
+;[[V7.10]]
+* {{sbc|Bug Fix:}} Tooltip has been updated to clarify that the buff from Sterak's Fury lasts 8 seconds, but the shield from Lifeline only lasts 3 seconds.
+
+;[[V7.9]]
+* Bonus base attack damage increased to 30% from 25%.
+* {{sbc|Sterak's Fury}}
+** Bonus base attack damage increased to 30% of base from 25%.
+** Bonus base attack damage duration increased to 8 seconds from 3.
+** Shield strength changed to {{as|75% '''bonus''' health}} from {{as|30% '''maximum''' health}}.
+
+;[[V6.23]]
+* Combine cost reduced to {{g|1050}} from {{g|1150}}.
+** Total cost reduced to {{g|2600}} from {{g|2700}}.
+
+;[[V6.10]]
+* {{sbc|Bug Fix:}} {{sbc|Lifeline}} cooldown no longer resets to full after the {{sbc|Sterak's Fury}} buff expires.
+
+;[[V6.9]]
+* Damage proc passive is now {{sbc|Unique}} and has a shared name: {{sbc|Lifeline}} with {{ii|Hexdrinker}} and {{ii|Maw of Malmortius}}.
+
+;[[V6.4]]'''
+* {{sbc|New Recipe:}} {{ii|Jaurim's Fist}} + {{ii|Long Sword}} + {{g|1150}} = {{g|2700}}
+** {{sbc|Old Recipe:}} {{ii|Jaurim's Fist}} + {{ii|Ruby Crystal}} + {{g|1100}} = {{g|2700}}
+* Health reduced to 400 from 500.
+
+;[[V5.22]]
+* {{sbc|New Recipe:}} {{ii|Jaurim's Fist}} + {{ii|Ruby Crystal}} + {{g|1100}} = {{g|2700}}
+** {{sbc|Old Recipe:}} {{ii|Giant's Belt}} + {{ii|Long Sword}} + {{g|1190}} = {{g|2550}}
+
+;[[V5.16]] added
+* Recipe: {{ii|Giant's Belt}} + {{ii|Long Sword}} + {{g|1190}} = {{g|2550}}
+* Stats: +500 health, +25% base attack damage
+** The bonus base attack damage granted is considered to be BASE attack damage - i.e. it will increase the damage dealt by {{ii|Sheen}}, but will not affect abilities with bonus-AD ratios.
+* {{sbc|Unique Passive:}} Upon taking at least 400 - 1800 damage (based on level) within 5 seconds, grants '''Primal Rage'''.
+** '''Primal Rage:''' Grow in size and strength, gaining increase size, +25% additional base attack damage, and a rapidly decaying shield for 30% of your maximum health.
+}}
+
+
+[[de:Steraks Pegel]]
+[[fr:Gage de Sterak]]
+[[pl:Gruboskórność Steraka]]
+[[ru:Испытание Стерака]]

@@ -1,0 +1,84 @@
+{{tip|adaptive force|'''Adaptive force'''|link = false}} <onlyinclude>is a stat that grants champions either {{as|{{sti|AD|[[attack damage]]}}}} or {{as|{{sti|AP|[[ability power]]}}}}, depending on the current amount of bonus attack damage and ability power of the champion, as follows:
+
+* {{as|{{sti|'''Higher Bonus''' AD}}}} → {{as|{{sti|AD|[[Attack damage]]}}}}
+* {{as|{{sti|'''Higher''' AP}}}} → {{as|{{sti|AP|[[Ability power]]}}}}
+
+1 point of Adaptive Force provides {{as|{{fd|{{#vardefineecho:adaptiveAdRatio|0.6}}}} '''bonus''' AD}} or {{as|{{#vardefineecho:adaptiveApRatio|1}} AP}}.
+
+If the {{as|'''bonus''' attack damage}} and the {{as|ability power}} of the unit are '''equal''', the stat granted depends on the [[File:Rune_shard_Adaptive_Force.png|16px]] '''adaptive type''' of the champion.</onlyinclude>
+* If the champion's '''adaptive type''' is {{sti|physical damage|{{as|physical|physical damage}}}}, they are granted {{as|'''bonus''' AD}}.
+* If the champion's '''adaptive type''' is {{sti|magic damage|{{as|magic|magic damage}}}}, they are granted {{as|AP}}.
+
+In most cases, the [[League of Legends Wiki]] omits '''adaptive force''' in favor of displaying the amount of AD or AP granted.
+
+== Bonus stats granted by passive effects ==
+
+Attack damage and ability power granted by '''champion''' [[passive]] effects <u>do not</u> contribute towards determining whether attack damage or ability power is granted by adaptive force.
+
+Attack damage and ability power granted by '''item''' [[passive]] effects <u>do</u> contribute towards determining which stat the adaptive force gives, with few exceptions.
+
+* Item passives that contribute to adaptive force stat choice: {{iis|Dark Seal}} and {{iis|Mejai's Soulstealer}} {{nie|Glory}}, {{iis|Sterak's Gage}} {{nie|The Claws that Catch}}, {{iis|Rod of Ages}} {{nie|Timeless}}, {{iis|Dawncore}} {{nie|First Light}}, {{iis|Rabadon's Deathcap}} {{nie|Magical Opus}}, {{iis|Overlord's Bloodmail}} {{nie|Tyranny}} and {{nie|Retribution}}.
+* Item passives that don't contribute to adaptive force stat choice: {{iis|Staff of Flowing Water}} {{nie|Rapids}}, {{iis|Riftmaker}} {{nie|Void Infusion}}, {{iis|Archangel's Staff}}, {{iis|Seraph's Embrace}} {{iis|Manamune}} and {{iis|Muramana}} {{nie|Awe}}.
+
+It is important to note that the ability power granted by {{iis|Rabadon's Deathcap}} {{nie|Magical Opus}} is calculated using [[passive]] effects that do not themselves factor into adaptive force stat choice (like {{iis|Staff of Flowing Water}} {{nie|Rapids}} or {{ai|Phenomenal Evil Power|Veigar}}).
+
+=== Example ===
+'''''Last updated:''' September 5th, 2026, patch [[V26.17]].''
+
+Step by step attack damage and ability power values for {{ci|Veigar}} with various item and passive combinations.
+
+# Veigar loads into the game with 2 [[File:Rune shard Adaptive Force.png|16px|link=Rune#Shards|Adaptive force shard]] adaptive force [[Rune#Shards|rune shards]]. He has {{#vardefineecho:veigarBaseAd|{{ccd|Veigar|dam_base}}}} base attack damage. Due to his '''adaptive type''', the {{#vardefineecho:shardAdaptive|18}} adaptive force goes towards ability power.<!--
+--><br />{{sti|AD|{{as|AD}}}}: '''{{#var:veigarBaseAd}}''' ''(0 bonus)'' | {{sti|AP|{{as|AP}}}}: '''{{#vardefineecho:shardAp|{{#expr: {{#var:shardAdaptive}} * {{#var:adaptiveApRatio}} }}}}'''
+# He buys {{ii|Rabadon's Deathcap}}. The item grants {{#vardefineecho:rabadonAp|{{cid|Rabadon's Deathcap|ap}}}} {{as|AP}}, plus {{#vardefineecho:rabadonBonusAp|{{#expr: {{#var:rabadonAp}} * {{#vardefineecho:rabadonRatio|0.3}} round 2}}}} from {{nie|Magical Opus}}, giving him a total of {{#vardefineecho:totalRabadon|{{#expr: {{#var:rabadonAp}} + {{#var:rabadonBonusAp}} }}}} {{as|AP}}. The adaptive force from his runes is also amplified by the passive, providing {{#vardefineecho:opusedShardAp|{{#expr: {{#var:shardAp}} * (1 + {{#var:rabadonRatio}}) round 2}}}} {{as|AP}}.<!--
+--><br />{{sti|AD|{{as|AD}}}}: '''{{#var:veigarBaseAd}}''' ''(0 bonus)'' | {{sti|AP|{{as|AP}}}}: '''{{#vardefineecho:rabadonShardsTotal|{{#expr: {{#var:totalRabadon}} + {{#var:opusedShardAp}} round 0}}}}'''
+# In addition to {{ii|Rabadon's Deathcap}}, he buys 4 {{ii|B. F. Sword|B. F. Swords}}, which give him {{#vardefineecho:bfAd|{{#expr: 4 * {{cid|B. F. Sword|ad}} }}}} {{as|AD}}. While this is more than Rabadon's raw {{#var:rabadonAp}} {{as|AP}}, {{nie|Magical Opus}} is factored into the adaptive force stat determination. That makes Rabadon's total {{#var:totalRabadon}} {{as|AP}} compare against {{#var:bfAd}} {{as|AD}} - the adaptive force continues to grant {{as|AP}}.<!--
+--><br />{{sti|AD|{{as|AD}}}}: '''{{#expr: {{#var:veigarBaseAd}} + {{#var:bfAd}}}}''' ''({{#var:bfAd}} bonus)'' | {{sti|AP|{{as|AP}}}}: '''{{#expr: {{#var:totalRabadon}} + {{#var:opusedShardAp}} round 0}}'''
+# He then buys a {{ii|Long Sword}}, increasing his item {{as|AD}} to {{#vardefineecho:allSwordsAd|{{#expr: {{#var:bfAd}} + {{#vardefineecho:longSwordAd|{{cid|Long Sword|ad}}}} }}}}. This is more than the {{iis|Rabadon's Deathcap}} total {{#var:totalRabadon}} {{as|AP}}. As a result, the adaptive force switches to grant attack damage, providing {{#vardefineecho:adaptiveAd|{{#expr: {{#var:shardAdaptive}} * {{#var:adaptiveAdRatio}} round 2}}}} {{as|AD}}.<!--
+--><br />{{sti|AD|{{as|AD}}}}: '''{{#vardefineecho:swordsTotalAd|{{#expr: {{#var:veigarBaseAd}} + {{#var:allSwordsAd}} + {{#var:adaptiveAd}} round 0}}}}''' ''({{#expr: {{#var:allSwordsAd}} + {{#var:adaptiveAd}} round 0}} bonus)'' | {{sti|AP|{{as|AP}}}}: '''{{#var:totalRabadon}}'''
+# Without changing the items, Veigar gets 10 stacks of {{ai|Phenomenal Evil Power|Veigar}}. The {{#vardefineecho:phenomenalAp|10}} {{as|AP}} it grants doesn't factor into the adaptive force stat choice (illustrated in the next step), but the value it contributes to {{nie|Magical Opus}} does. That makes the total ability power for adaptive force check <code>{{ii|Rabadon's Deathcap|{{#var:totalRabadon}}}}{{plus}}({{ai|Phenomenal Evil Power|Veigar|{{#var:phenomenalAp}}}}{{times}}{{#var:rabadonRatio}}){{equals}}{{#expr: {{#var:totalRabadon}} + {{#vardefineecho:opusedPhenomenalAp|{{#expr: {{#var:phenomenalAp}} * {{#var:rabadonRatio}} }}}} }}</code>, which is more than the {{#var:allSwordsAd}} {{as|AD}} from 4 {{ii|B. F. Sword|B. F. Swords}} and a {{ii|Long Sword}}. The adaptive force goes back to granting {{as|AP}}. <!--
+--><br />{{sti|AD|{{as|AD}}}}: '''{{#expr: {{#var:veigarBaseAd}} + {{#var:allSwordsAd}} }}''' ''({{#var:allSwordsAd}} bonus)'' | {{sti|AP|{{as|AP}}}}: '''{{#expr: {{#var:rabadonShardsTotal}} + {{#var:phenomenalAp}} + {{#var:opusedPhenomenalAp}} round 0}}'''
+# Finally, he sells all of his items, buys a singular {{ii|Long Sword}}, and gets 10 more stacks of {{ai|Phenomenal Evil Power|Veigar}} for a total of {{#vardefineecho:finalPhenomenalAp|20}} (giving him the same amount of {{as|AP}}). That ability power is not factored into determining the adaptive force stat and since he has {{#var:longSwordAd}} {{as|AD}} from the {{ii|Long Sword}}, the adaptive force grants {{#var:adaptiveAd}} {{as|AD}}.<!--
+--><br />{{sti|AD|{{as|AD}}}}: '''{{#expr: {{#var:veigarBaseAd}} + {{#vardefineecho:finalBonusAd|{{#expr: {{#var:longSwordAd}} + {{#var:adaptiveAd}} round 0}}}} }}''' ''({{#var:finalBonusAd}} bonus)'' | {{sti|AP|{{as|AP}}}}: '''{{#var:finalPhenomenalAp}}'''
+
+== Sources of adaptive force bonuses ==
+=== Items ===
+* {{ii|Elixir of Force}}
+* {{ii|Swiftmarch}}
+
+=== Runes ===
+{{Column|2|
+* {{ri|Absolute Focus}}
+* {{ri|Conqueror}}
+* {{ri|Gathering Storm}}
+* {{ri|Jack of All Trades}}
+* {{ri|Waterwalking}}
+* [[File:Rune shard Adaptive Force.png|20px|link=Runes Reforged#Shards]] [[Runes Reforged#Shards|Adaptive force rune shard]]
+}}
+
+== Adaptive damage ==
+A similar effect can be found on:
+
+{{tip data/Adaptive damage|pst2|description}}
+
+Despite also having variable damage types, {{ri|Arcane Comet}} and {{ri|Electrocute}} do not utilize the {{tip|adaptive damage|nolink=true}} formula to determine their damage types.
+
+=== Sources of adaptive damage ===
+==== Runes ====
+{{Column|2|
+* {{ri|Dark Harvest}}
+* {{ri|Lethal Tempo}}
+* {{ri|Press the Attack}}
+* {{ri|Shield Bash}}
+* {{ri|Summon Aery}}
+}}
+
+==== Neutral Buffs ====
+* {{bi|Infernal Dragon Soul}}
+
+{{clr}}
+
+{{Gameplay elements}}
+
+[[de:Adaptive Kraft]]
+[[Category:Offensive champion statistics]]
+[[Category:Magic champion statistics]]

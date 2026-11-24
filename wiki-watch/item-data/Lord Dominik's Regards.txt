@@ -1,0 +1,30 @@
+["Lord Dominik's Regards"] = {
+        ["id"]                  = 3036,
+        ["nickname"]            = {"lw", "ldr", "doms"},
+        ["tier"]                = 3,
+        ["type"]                = {"Legendary"},
+        ["itemlimit"]           = "Fatality",
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["menu"] = {
+            ["marksman"]        = true,
+        },
+        ["stats"] = {
+            ["ad"]              = 35,
+            ["crit"]            = 25,
+            ["armpen"]          = 35,
+        },
+        ["effects"] = {
+            ["pass"] = {
+                ["name"]        = "Giant Slayer",
+                ["unique"]      = true,
+                ["description"] = "Deal {{pp|0 to 15 for 16|0 to 1500|key=%|type=target's '''bonus''' health|formula=1% per 100 bonus health, up to a maximum of 15% at 1500 bonus health.|color=health}} increased damage against enemy champions.",
+            },
+        },
+        ["recipe"]              = {"Last Whisper", "Noonquiver"},
+        ["buy"]                 = 3300,
+    },

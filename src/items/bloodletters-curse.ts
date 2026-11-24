@@ -7,11 +7,10 @@
 //
 // ASSUMPTION: on-hit damage from items (Nashor's, Wit's End...) is item damage, not
 // ability damage, so it doesn't add stacks.
-import { PATCH } from "../data/patch.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Bloodletter%27s_Curse", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Bloodletter%27s_Curse", patch: "26.23" },
   mrReductionPerStack: 0.075,
   maxStacks: 4,
 };

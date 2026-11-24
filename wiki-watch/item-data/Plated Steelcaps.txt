@@ -1,0 +1,25 @@
+["Plated Steelcaps"] = {
+        ["id"]                  = 3047,
+        ["nickname"]            = {"boots", "ninja tabi"},
+        ["tier"]                = 2,
+        ["type"]                = {"Boots"},
+        ["modes"] = {
+            ["classic sr 5v5"]  = true,
+            ["aram"]            = true,
+            ["nb"]              = true,
+            ["ar"]              = true,
+        },
+        ["stats"] = {
+            ["armor"]           = 25,
+            ["msflat"]          = 45,
+        },
+        ["effects"] = {
+            ["pass"] = {
+            	["name"]        = "Plating",
+                ["unique"]      = true,
+                ["description"] = "Reduces all incoming {{tip|basic damage}} by 10% (''excluding from [[turret]] attacks'').",
+            },
+        },
+        ["recipe"]              = {"Boots", "Cloth Armor"},
+        ["buy"]                 = 1200,
+    },

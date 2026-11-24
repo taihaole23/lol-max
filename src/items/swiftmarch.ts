@@ -5,14 +5,13 @@
 // Move speed is read once, when R is cast. That includes Experimental Hexplate's +20%
 // (it starts on R cast, in the "add" step). Move speed gained LATER in the ult (none of
 // the modelled items give any) would not be counted.
-import { PATCH } from "../data/patch.ts";
 import { adaptiveForce } from "../data/game-rules.ts";
 import { katarina } from "../data/katarina.ts";
 import { totalMoveSpeed } from "../formulas/move-speed.ts";
 import type { ItemPassive } from "./types.ts";
 
 const data = {
-  source: { url: "https://wiki.leagueoflegends.com/en-us/Swiftmarch", patch: PATCH },
+  source: { url: "https://wiki.leagueoflegends.com/en-us/Swiftmarch", patch: "26.23" },
   adaptiveForceFromMoveSpeed: 0.05,
 };
 
