@@ -124,6 +124,8 @@ const sameItems = (a: ExplainedBuild, b: ExplainedBuild) =>
 
 // One build as a button: rank (or style), damage, item icons (names on hover), cost. Clicking it
 // shows the build in the slots and the breakdowns. The label reads it all out for screen readers.
+// The icons' size on screen (and the whole card's sizes) come from --icon in style.css. The number
+// below only tells the browser the picture's size before the CSS loads: keep the two the same.
 function buildCardHtml(build: ExplainedBuild, index: number, selected: number, rank: string, name: string, extra = ""): string {
   const ordered = slotOrder(build.items);
   const label =
@@ -133,7 +135,7 @@ function buildCardHtml(build: ExplainedBuild, index: number, selected: number, r
     <li><button type="button" class="build-card${index === selected ? " selected" : ""}" data-build-index="${index}" aria-label="${escapeHtml(label)}">
       ${rank}
       <span class="build-damage">${formatDamage(build.damage)}</span>
-      <span class="build-items">${ordered.map((item) => itemIconHtml(item, 36)).join("")}${extra}</span>
+      <span class="build-items">${ordered.map((item) => itemIconHtml(item, 72)).join("")}${extra}</span>
       ${goldHtml(buildCost(build.items))}
     </button></li>`;
 }

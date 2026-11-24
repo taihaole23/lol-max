@@ -17,17 +17,32 @@ import { startTooltips } from "./ui/tooltip.ts";
 startTooltips();
 
 // ---- Theme toggle (dark by default) ----
+// The button shows an icon of the mode you'd switch TO (Eric: just a symbol): a sun on the dark
+// theme, a moon on the light one. Screen readers and the hover tooltip get the words.
+const sunIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`;
+const moonIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>`;
 const themeButton = byId<HTMLButtonElement>("theme-toggle");
 function drawThemeButton(): void {
   const next = currentTheme() === "dark" ? "light" : "dark";
-  themeButton.textContent = next === "light" ? "Light mode" : "Dark mode";
+  themeButton.innerHTML = next === "light" ? sunIcon : moonIcon;
   themeButton.setAttribute("aria-label", `Switch to ${next} mode`);
+  themeButton.title = `Switch to ${next} mode`;
 }
 themeButton.addEventListener("click", () => {
   applyTheme(currentTheme() === "dark" ? "light" : "dark");
   drawThemeButton();
 });
 drawThemeButton();
+
+// ---- Top bar: see-through at the top of a champion page, frosted as you scroll ----
+// The CSS does the look; this only tells it how far down the page is, as --bar-fade: 0 at the top,
+// rising to 1 at BAR_FADE_DISTANCE px down, so the frosted bar fades in with the scroll (Eric).
+// "passive" tells the browser this listener never blocks scrolling, so scrolling stays smooth.
+const BAR_FADE_DISTANCE = 240;
+const updateBarFade = () =>
+  document.body.style.setProperty("--bar-fade", String(Math.min(window.scrollY / BAR_FADE_DISTANCE, 1)));
+window.addEventListener("scroll", updateBarFade, { passive: true });
+updateBarFade();
 
 // ---- Pages ----
 

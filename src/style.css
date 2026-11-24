@@ -25,6 +25,8 @@
   --on-accent: #fff; /* text on an accent-coloured button */
   /* Warnings stay red on every champion page, so they always look like warnings. */
   --warning: #f0607a;
+  /* The logo's red "l": fixed, so the logo looks the same on every page (Eric). */
+  --brand: #f0607a;
   --gold: #d4ad4c;
   --success: #43b581;
   --typed: rgba(212, 173, 76, 0.16); /* a dummy stat the user typed in */
@@ -66,18 +68,21 @@
   --bg: #f3f4f7;
   --bg-glow: rgba(179, 18, 46, 0.06);
   --panel: #ffffff;
-  --panel-raised: #f2f3f6;
-  --panel-hover: #e9ebf0; /* = LIGHT_SURFACE in src/ui/champion-colors.ts: change both */
-  --border: #e0e3ea;
-  --border-strong: #c9ced9;
+  /* Boxes on the white panels (stage bar, item slots, build cards, buttons). One notch darker than
+     before (Eric: they nearly disappeared on white). */
+  --panel-raised: #e9ecf1;
+  --panel-hover: #dde1e9; /* = LIGHT_SURFACE in src/ui/champion-colors.ts: change both */
+  --border: #d4d9e2;
+  --border-strong: #aeb5c3;
   --text: #171a21;
   --muted: #5f6677;
-  --faint: #9aa1b0;
+  --faint: #868d9c;
   --accent: #b3122e;
   --accent-strong: #cc1f3d;
   --accent-soft: rgba(179, 18, 46, 0.1);
   --on-accent: #fff;
   --warning: #cc1f3d;
+  --brand: #cc1f3d;
   --gold: #9a7414;
   --success: #1d8a57;
   --typed: rgba(212, 173, 76, 0.22);
@@ -154,13 +159,38 @@ input.typed { background: var(--typed); border-color: var(--gold); }
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
+/* On a champion page the splash art carries on behind the bar (Eric: it looked like a separate
+   block). At the very top, the bar is only a soft fade from the page colour into the picture, so
+   the logo and search sit on a calm backdrop with no hard edge. As you scroll, the normal frosted
+   bar fades in on top of it, following the scroll (Eric: not all at once): main.ts sets --bar-fade
+   from 0 (top of the page) to 1 (120px down). (:has = "a body that contains a champion page".) */
+body:has(.page-champion) .topbar {
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 85%, transparent), transparent) no-repeat;
+  /* (no-repeat: otherwise the gradient repeats into the bar's 1px see-through bottom border and
+     draws a thin line there, the very edge this is meant to avoid.) */
+  backdrop-filter: none;
+  border-bottom-color: color-mix(in srgb, var(--border) calc(var(--bar-fade, 0) * 100%), transparent);
+}
+/* The frosted bar itself, as a layer behind the bar's contents, see-through by --bar-fade. */
+body:has(.page-champion) .topbar::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: color-mix(in srgb, var(--panel) 82%, transparent);
+  backdrop-filter: blur(12px);
+  opacity: var(--bar-fade, 0);
+}
+/* Light theme, on a champion page: the links in the full text colour so they read over the
+   picture. (A white glow, like the champion name's, made small text look smudged.) */
+:root[data-theme="light"] body:has(.page-champion) .topbar-links a { color: var(--text); }
 .brand { font-weight: 700; font-size: 1.2rem; letter-spacing: 0; color: var(--text); text-decoration: none; }
-.brand::first-letter { color: var(--accent-strong); }
+.brand::first-letter { color: var(--brand); }
 .topbar-search { flex: 1; max-width: 460px; }
 .topbar-links { margin-left: auto; display: flex; align-items: center; gap: var(--s4); white-space: nowrap; }
 .topbar-links a { color: var(--muted); text-decoration: none; font-weight: 500; }
 .topbar-links a:hover { color: var(--text); }
-.theme-toggle { font-size: 0.85rem; padding: var(--s1) var(--s3); }
+/* The theme switch: just a sun or moon icon (Eric), square, the icon in the text colour. */
+.theme-toggle { width: 36px; height: 36px; padding: 0; display: grid; place-items: center; color: var(--muted); }
+.theme-toggle:hover:not(:disabled) { color: var(--text); }
+.theme-toggle svg { width: 18px; height: 18px; }
 .site-footer { padding: var(--s5) var(--s4); text-align: center; color: var(--faint); font-size: 0.8rem; border-top: 1px solid var(--border); }
 
 /* ---------- Panels ---------- */
@@ -222,7 +252,7 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 /* ---------- Home page ---------- */
 .hero { min-height: 62vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: var(--s3); }
 .hero-title { font-size: clamp(2.8rem, 8vw, 4.5rem); font-weight: 700; letter-spacing: -0.01em; line-height: 1.05; }
-.hero-title::first-letter { color: var(--accent-strong); }
+.hero-title::first-letter { color: var(--brand); }
 .hero-tagline { color: var(--muted); font-size: 1.2rem; margin-bottom: var(--s5); }
 #home-search { width: min(100%, 680px); }
 .hero .field-hint { margin-top: var(--s4); }
@@ -233,6 +263,8 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
   width: 100%; height: 40px; padding: 0 var(--s4); border-radius: var(--r);
   background: var(--panel-raised); border: 1px solid var(--border);
 }
+/* Light theme: a white search box, like every search box on the web (grey looked switched off). */
+:root[data-theme="light"] .champion-search input { background: var(--panel); border-color: var(--border-strong); }
 .champion-search.large input { height: 60px; padding: 0 var(--s5); font-size: 1.15rem; box-shadow: var(--shadow); }
 .champion-search input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
 .search-results {
@@ -251,14 +283,31 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 /* Splash art behind the top of the champion page: full window width, fading out downwards.
    z-index -1 inside .page-champion (isolation) puts it behind the page but above the body colour. */
 .page-champion { position: relative; isolation: isolate; }
+/* It starts --splash-above higher than the page, so it reaches up behind the top bar (Eric: the
+   bar looked like a separate block). Just the bar's height (~65px, a little more to be safe):
+   reaching up further moves the picture up too, and hid Katarina's face behind her portrait.
+   Phones have a taller bar (it wraps onto two lines): see the phone section. */
 .champ-splash {
-  position: absolute; z-index: -1; top: calc(-1 * var(--s5)); left: 50%; width: 100vw; height: 560px; transform: translateX(-50%);
+  --splash-above: 90px;
+  position: absolute; z-index: -1; top: calc(-1 * var(--s5) - var(--splash-above)); left: 50%; width: 100vw;
+  height: calc(560px + var(--splash-above)); transform: translateX(-50%);
   background-size: cover; background-position: center 22%; opacity: 0.38;
   -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent); mask-image: linear-gradient(to bottom, #000 30%, transparent);
 }
-:root[data-theme="light"] .champ-splash { opacity: 0.22; }
-/* Which skin the splash art is, small in the top-right corner */
-.splash-credit { position: absolute; top: 0; right: 0; font-size: 0.75rem; color: var(--faint); }
+/* Light theme: see-through on white turns every colour pastel (it mixes the picture with white),
+   while on dark it only dims it. So light mode draws the picture much stronger, with slightly
+   richer colours (Eric: 0.22 and 0.42 looked washed out, 0.8 too strong; he settled on 0.5). A soft white glow keeps the dark name and subtitle readable on top. */
+:root[data-theme="light"] .champ-splash { opacity: 0.6; filter: saturate(1.25) contrast(1.05); }
+:root[data-theme="light"] .champ-name,
+:root[data-theme="light"] .champ-sub { text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.9); }
+/* Which skin the splash art is, small in the top-right corner. Plain text (Eric: no box around it),
+   with a soft shadow in the page's background colour so it still separates from busy artwork. */
+.splash-credit {
+  position: absolute; top: 0; right: 0; font-size: 0.75rem; color: var(--muted);
+  text-shadow: 0 0 6px var(--bg), 0 0 2px var(--bg);
+}
+/* Light theme: a halo made the small text look fuzzy, so no shadow, just darker text. */
+:root[data-theme="light"] .splash-credit { color: var(--text); opacity: 0.75; text-shadow: none; }
 @media (max-width: 600px) { .splash-credit { position: static; text-align: center; margin-bottom: var(--s2); } }
 .champ-hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--s3); margin: var(--s4) 0 var(--s5); }
 .champ-portrait { width: 96px; height: 96px; border-radius: var(--r); border: 2px solid var(--accent); }
@@ -286,7 +335,12 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 .rank-pips { display: flex; gap: 5px; }
 .rank-pip { width: 16px; height: 8px; padding: 0; border-radius: 1px; background: var(--panel-hover); border: none; }
 .rank-pip:hover:not(:disabled) { background: var(--border-strong); }
-.rank-pip.filled, .rank-pip.filled:hover:not(:disabled) { background: var(--accent); }
+/* Light theme: empty rank boxes in a mid grey, so they show on the white panel. */
+:root[data-theme="light"] .rank-pip { background: var(--border-strong); }
+:root[data-theme="light"] .rank-pip:hover:not(:disabled) { background: var(--muted); }
+/* (Repeated with :root[data-theme="light"] in front, or the light-theme grey above would win.) */
+.rank-pip.filled, .rank-pip.filled:hover:not(:disabled),
+:root[data-theme="light"] .rank-pip.filled, :root[data-theme="light"] .rank-pip.filled:hover:not(:disabled) { background: var(--accent); }
 
 /* ---------- Champion page: the two input panels and results ---------- */
 .workbench { display: grid; gap: var(--s5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); }
@@ -315,6 +369,9 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 .slot.landed { border: 1px solid var(--gold); animation: roll-land 280ms ease-out; }
 @keyframes roll-land { 0% { transform: scale(1.18); box-shadow: 0 0 18px rgba(212, 173, 76, 0.6); } 60% { transform: scale(0.95); } 100% { transform: scale(1); } }
 .slot.off { border-style: solid; border-color: var(--border); background: var(--panel); opacity: 0.5; }
+/* Light theme: half-faded on white was invisible. A full outline, still white inside, so a
+   switched-off slot doesn't look like an empty (grey, dashed) one. */
+:root[data-theme="light"] .slot.off { opacity: 1; }
 .lock-badge {
   position: absolute; left: -6px; top: -6px; width: 20px; height: 20px; padding: 3px;
   background: var(--gold); fill: #1a1405; border-radius: var(--r-sm); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
@@ -379,19 +436,36 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 .damage-note.is-problem { color: var(--warning); font-weight: 600; }
 
 .top-builds { list-style: none; padding: 0; margin: 0 0 var(--s6); display: grid; gap: var(--s2); }
+/* A build card is sized from ONE number: --icon, the item icons' size (Eric). Everything else
+   follows it: the gap between icons, the rank, the damage, the gold and its coin, and the columns
+   that hold them. Change --icon and the whole card scales. Phones set a smaller --icon further down;
+   max(...) keeps the text from getting smaller than it used to be. Keep --icon equal to the size
+   in results-view.ts (buildCardHtml). */
 .build-card {
-  width: 100%; display: grid; grid-template-columns: 2.5em 5.5em 1fr auto; gap: var(--s3);
+  --icon: 72px;
+  width: 100%; display: grid; grid-template-columns: calc(var(--icon) * 0.55) calc(var(--icon) * 1.5) 1fr auto; gap: var(--s3);
   text-align: left; align-items: center; padding: var(--s2) var(--s4); border-radius: var(--r);
 }
 .build-card.selected { border-color: var(--accent); background: var(--accent-soft); }
-.build-rank { color: var(--faint); font-weight: 600; }
-.build-damage { font-weight: 600; font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.build-rank { color: var(--faint); font-weight: 600; font-size: max(1rem, calc(var(--icon) * 0.25)); }
+.build-damage { font-weight: 600; font-size: max(1.2rem, calc(var(--icon) * 0.33)); font-variant-numeric: tabular-nums; }
 /* A gold amount, as in the game: the coin icon, then the number in gold */
-.gold-amount { display: inline-flex; align-items: center; gap: 4px; color: var(--text-gold); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.build-card .gold-amount { font-size: 1.05rem; }
-.build-card .gold-amount img { width: 26px; height: 26px; } /* the coin art has empty space around it */
-.build-items { display: flex; flex-wrap: wrap; gap: var(--s1); }
-.build-items img { border-radius: var(--r-sm); }
+.gold-amount { --coin: 18px; display: inline-flex; align-items: center; gap: max(4px, calc(var(--coin) / 8)); color: var(--text-gold); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* The coin picture (public/icons/ui/gold.png) is 32×32, but the coins only fill its top-left corner:
+   columns 2-20 and rows 1-16 (measured from its pixels). Centring the whole square put the coin too
+   high and too far left, with an empty strip pushing the number away (Eric spotted it). These
+   negative margins cut the empty part out of the layout, so only the visible coin is lined up
+   with the text. Each is (empty pixels on that side ÷ 32) × the drawn size, --coin. */
+.gold-amount img {
+  width: var(--coin); height: var(--coin);
+  margin: calc(var(--coin) * -1 / 32) calc(var(--coin) * -11 / 32) calc(var(--coin) * -15 / 32) calc(var(--coin) * -2 / 32);
+}
+/* 0.55: the visible coin is about as tall as the numbers (picked from a side-by-side; bigger starts
+   to blur, the picture is only 32 px). */
+.build-card .gold-amount { --coin: max(34px, calc(var(--icon) * 0.55)); font-size: max(1.05rem, calc(var(--icon) * 0.27)); }
+/* The gap between icons is an eighth of their size, so the spacing always fits (Eric). */
+.build-items { display: flex; flex-wrap: wrap; gap: calc(var(--icon) / 8); }
+.build-items img { width: var(--icon); height: var(--icon); border-radius: var(--r-sm); }
 /* Best build for each stat: a coloured tag instead of the rank */
 .styles-title { margin: var(--s4) 0 var(--s2); }
 .style-builds { margin-bottom: var(--s6); }
@@ -443,7 +517,7 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 .card-head img { border-radius: var(--r-sm); border: 1px solid var(--border-strong); }
 .card-name { font-weight: 800; font-size: 1rem; }
 .card-meta { color: var(--muted); font-size: 0.8rem; }
-.card-meta .gold-amount img { width: 14px; height: 14px; }
+.card-meta .gold-amount { --coin: 14px; }
 .card-stats { list-style: none; margin: 0 0 var(--s3); padding: var(--s2) var(--s3); background: var(--panel-raised); border-radius: var(--r-sm); }
 .card-stats li { font-weight: 600; font-variant-numeric: tabular-nums; }
 .card-effect { margin-bottom: var(--s2); }
@@ -495,15 +569,19 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
   #page { padding: var(--s4) var(--s3) var(--s6); }
   .topbar { flex-wrap: wrap; gap: var(--s2) var(--s3); padding: var(--s2) var(--s3); }
   .topbar-search { order: 3; flex-basis: 100%; max-width: none; }
+  .champ-splash { --splash-above: 120px; } /* the bar is two lines tall here */
   .panel { padding: var(--s4); border-radius: var(--r); }
   .ability-bar { padding: var(--s4) var(--s2); gap: var(--s2); }
   .ability-icon img { width: 60px; height: 60px; }
   .rank-pips { gap: 3px; }
   .rank-pip { width: 10px; height: 6px; }
   /* A 375px phone leaves 375 − 24 (page) − 32 (panel) − 2 (borders) = 317px.
-     6 slots of 36px + 5 gaps of 4px + 8px + two 30px buttons + 4px = 308px: fits. */
+     6 slots of 36px + 5 gaps of 4px + 8px + two 30px buttons + 4px = 308px: fits.
+     Narrower phones (320px) don't have room, so the slots share whatever width is left: up to
+     36px each, always square. (Fixed 36px made a 320px page scroll sideways.) */
   .slot-row { --slot: 36px; gap: var(--s2); }
-  .slots { gap: 4px; }
+  .slots { gap: 4px; flex: 0 1 auto; min-width: 0; grid-template-columns: repeat(6, minmax(0, var(--slot))); }
+  .slots .slot { width: 100%; height: auto; aspect-ratio: 1; }
   .slot-buttons button { width: 30px; height: 30px; }
   .lock-badge { width: 16px; height: 16px; left: -4px; top: -4px; padding: 2px; }
   /* Stage buttons need the whole width; the level box goes underneath */
@@ -517,8 +595,13 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
   .damage-note { text-align: left; }
   .build-card { grid-template-columns: 2em 1fr auto; }
   .build-items { grid-column: 1 / -1; }
+  /* 7 icons (6 items + boots) at full size don't fit a phone's width: 40 px keeps them on one row. */
+  .build-card { --icon: 40px; }
   .build-card .gold-amount { grid-row: 1; grid-column: 3; }
   .bar-table { overflow-x: auto; }
+  /* No room for the bars on a phone: they squeezed item names onto 3 lines. The numbers and
+     shares say the same thing. */
+  .bar-table .bar-cell, .bar-table thead th:nth-child(2) { display: none; }
   /* The item picker becomes a sheet at the bottom of the screen */
   .item-picker { position: fixed; left: 0 !important; right: 0; top: auto !important; bottom: 0; width: 100%; border-radius: var(--r-lg) var(--r-lg) 0 0; max-height: 80vh; overflow-y: auto; }
 }

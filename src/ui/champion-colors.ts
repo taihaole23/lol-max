@@ -14,7 +14,7 @@ import { championList } from "../data/champion-list.ts";
 // These must match --panel-hover in style.css: change one, change the other. (Tests can't read
 // style.css: Vitest skips CSS files.)
 export const DARK_SURFACE = "#1f2738";
-export const LIGHT_SURFACE = "#e9ebf0";
+export const LIGHT_SURFACE = "#dde1e9";
 export const MIN_TEXT_CONTRAST = 4.5; // links and coloured words
 export const MIN_SHAPE_CONTRAST = 3; // borders, switches, rank boxes
 // Text ON the accent (the Optimize button): white or near-black, whichever reads better.
