@@ -23,6 +23,12 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   - His passive: item crit chance × 2 (max 100%), 0.5 bonus AD per 1% over 100%, crits deal 95%. Base crit damage is 200% (wiki, since V26.01).
   - Q is basic damage on its target (applies on-hit, on-attack and Spellblade at 100%), so items that need ability damage don't trigger from it. R applies no on-hit (Eric).
   - Skill order: R whenever possible, then max Q, then W, then E (Eric).
+- **Garen's Q, E and R** (Eric, Nov 2026). W (Courage) "deals no damage".
+  - Q is an empowered basic attack: the attack (basic damage, on-hit / on-attack / Spellblade at 100%, can crit: "no crit / crit" like Yone's Q) + the bonus (ability damage, never crits).
+  - E: 7 spins + 1 per 25% bonus attack speed, over 3 s; item effects count until 3 s after the last spin. Crits are counted at their AVERAGE (Eric), so E shows one number.
+  - R grows with the dummy's missing health, set by the dummy's "Health %" box (below).
+  - Skill order: R whenever possible, then max E, then Q, then W.
+- **Ranged champions (Lux, Caitlyn, Veigar, Ezreal)** are planned in `PLAN-ranged-champions.md` (not started).
 - For R: "Damage" = total damage dealt to ONE target dummy during ONE full ult channel (all daggers hit),
   including on-hit / on-attack effects and item effects triggered during the channel.
   Effects that deal damage AFTER the channel ends (burns, DoTs) are counted only for the part inside the channel window. Show this rule on the site.
@@ -53,7 +59,7 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
 - Every input is editable (Eric, Step 7). A stage is a preset that fills in Katarina's level, R rank and item count, and the dummy's level and items.
   - Every rank must be legal for the level (R 6-10: rank 1, 11-15: up to 2, 16+: up to 3; Q/W/E rank n needs level 2n−1; total ≤ level).
   - Item slots: 1 to 6 legendaries with boots off, 1 to 5 with boots on.
-- The page shows a champion picker (playable: Katarina, Akali, Yone) and the champion's 4 abilities with rank boxes. Modelled abilities work; the others say "deals no damage" or "coming soon".
+- The page shows a champion picker (playable: Katarina, Akali, Yone, Garen) and the champion's 4 abilities with rank boxes. Modelled abilities work; the others say "deals no damage" or "coming soon".
 - Preset game stages:
 
   | Stage | Level | Items with boots on | Items with boots off |
@@ -69,6 +75,7 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   - Only the champion's base stats and the items' plain HP / armor / MR are used. Champion abilities and item passives are ignored.
   - A "Use recommended items" checkbox, on by default, gives the dummy a recommended item list for its champion and stage. Unchecked, the user picks the dummy's items from the legendary list, up to the stage's slot count.
   - Users can still type in the dummy's HP / armor / MR. Typing a number overrides the calculated value.
+  - A "Health %" box (Eric, Nov 2026; starts at 100) sets the dummy's health when the cast starts, for every ability of every champion: missing-health damage (Garen's R, Akali's R2) and item effects that read the dummy's health (Shadowflame, Kraken, BotRK) all see it. Show this rule on the site.
 - Item filter, used to speed up the search:
   - An item is removed only if no code anywhere reads any of its stats. Riftmaker turns HP into AP, so every item that gives HP stays in.
   - Removed items are listed on the site.

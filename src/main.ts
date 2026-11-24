@@ -8,7 +8,8 @@ import { applyChampionColors } from "./ui/champion-colors.ts";
 import { mountChampionSearch } from "./ui/champion-search.ts";
 import { byId } from "./ui/html.ts";
 import { mountChampionPage } from "./ui/pages/champion-page.ts";
-import { mountAboutPage, mountHomePage, mountNotFoundPage } from "./ui/pages/simple-pages.ts";
+import { mountHomePage } from "./ui/pages/home-page.ts";
+import { mountAboutPage, mountNotFoundPage } from "./ui/pages/simple-pages.ts";
 import { paths, startRouter, type Route } from "./ui/router.ts";
 import { applyTheme, currentTheme } from "./ui/theme.ts";
 import { startTooltips } from "./ui/tooltip.ts";
@@ -75,7 +76,7 @@ function show(route: Route): void {
 
   if (route.page === "home") {
     document.title = "lol-max: max out an ability's damage";
-    mountHomePage(root, goTo);
+    cleanUpPage = mountHomePage(root, goTo);
   } else if (route.page === "about") {
     document.title = "How it works · lol-max";
     mountAboutPage(root);

@@ -3,6 +3,7 @@
 These notes are for anyone joining the project.
 - `CLAUDE.md` says what the project is and lists its rules.
 - `PLAN.md` is the step-by-step plan for version 1.
+- `PLAN-ranged-champions.md` is a future plan (not started) for Lux, Caitlyn, Veigar and Ezreal, with Eric's decisions.
 - This file keeps a record of the decisions we made and the bugs we fixed.
 
 ## Status
@@ -110,6 +111,17 @@ These notes are for anyone joining the project.
   - New tests: `tests/yone.test.ts` (data, passive, each ability, the crit average, basic damage vs. items). The filter and beam checks (fast and slow) now also run for Yone's Q, W and R.
   - To do: Practice Tool cases for Yone (see "Unconfirmed"), and `npm run check-wiki -- --accept` once, to save first copies of his 4 ability pages and his champion data.
 
+- **Garen (Nov 24, 2026, Eric).** Q (Decisive Strike), E (Judgment) and R (Demacian Justice) are calculated; W (Courage) "deals no damage". Decisions are under "Garen" in Decisions.
+  - `src/data/garen.ts` (data), `src/simulation/garen-abilities.ts` (his casts).
+  - New for every champion (all optional, so nothing changed for Katarina, Akali and Yone):
+    - A cast is built with the champion's stats (`abilityCast(..., attacker)`), so E can count its spins from bonus attack speed.
+    - A piece of damage can be ability damage inside a basic attack (`DamagePart.abilityDamage`: Q's bonus).
+    - A cast can reduce the dummy's armor after N hits (`AbilityCast.armorReduction`: E's 25% after 6 spins).
+    - A cast can be ONE cast instance with many hits (`AbilityCast.oneCastInstance`: Eclipse gives one stack for E).
+    - The dummy can start below full health (`Target.startHpShare`), from a new "Health %" box in the dummy panel. It works for every ability of every champion (Eric, see Decisions).
+  - New tests: `tests/garen.test.ts`. The fast filter and beam checks run for his Q, E and R automatically.
+  - To do: Practice Tool cases for Garen (see "Unconfirmed"), Sundered Sky (see the checklist), and `npm run check-wiki -- --accept` once.
+
 ## Confirmed in the Practice Tool (Step 8, patch 26.23)
 - **Within one dagger: on-hit effects → R's own damage → on-attack effects** (HP bar, test 17). Was assumed the other way round.
 - **Burns tick right away, then every interval** (Liandry's, tests 12 and 20). Applied to every ticking effect (Liandry's, Blackfire, Sunfire, Hollow Radiance) at Eric's call; only Liandry's was measured.
@@ -132,6 +144,14 @@ These notes are for anyone joining the project.
   - **Black Cleaver:** Q's stack goes on after Q (basic damage), so Q doesn't benefit from it. W and R benefit from their own stack, like every ability hit.
   - **R applies no on-hit effects** (Eric; the wiki doesn't say it does).
   - **Shadowflame's 120% on Yone's magic damage** isn't reduced by his 95% crit modifier (we assume the modifier is only for his own crits).
+- **Garen (nothing measured yet).** Good first cases: Q with no items (attack + bonus), E with no items at level 1 and 18 (7 vs. 9 spins), R on a dummy at a known health.
+  - **E's spins land at the end of each turn** (3/n, 6/n ... 3 s). The wiki says each spin deals damage "when the spin is completed", not the exact timing.
+  - **E's spin count is fixed when E is cast** (the wiki doesn't say). Nothing in the item pool changes his bonus attack speed during E anyway.
+  - **E's armor reduction starts with the 7th spin** ("Enemy champions hit 6 times ... are inflicted with 25% armor reduction").
+  - **E applies no on-hit effects** (the wiki calls it "AOE DOT damage" and never mentions on-hit).
+  - **Q uses Spellblade:** casting Q grants it and the empowered attack uses it. The wiki doesn't name Spellblade for Q.
+  - **Q's attack applies on-attack effects** (Guinsoo's, Yun Tal...): it's a basic attack. The wiki only says "on-hit".
+  - **Eclipse: E is one cast instance,** so it gives one stack and never procs on its own. The wiki only special-cases Zed (one stack per tick), which suggests other ticking abilities don't.
 - **When the first dagger lands.** The wiki only says "every 0.166 seconds". We assume 0 s (`firstDaggerSeconds` in `katarina.ts`). It only matters for timed effects near the end of the channel.
 - **Whether R's 25 / 30 / 35% effectiveness also shrinks Terminus's Juxtaposition stacks** (10% pen per Dark stack), or only on-hit *damage* (our assumption). Neither the wiki nor Eric knows.
   - That daggers *do* give Juxtaposition stacks is confirmed by Eric from playing. The wiki only says "basic attacks on-hit".
@@ -500,6 +520,25 @@ validation/    Practice Tool test plan and measurements
   - Chose our own SVG icons over Riot's stat icons: nothing new to download or keep up to date, and they take the tile's colour.
   - Hover lifts the tile and tilts the icon. A tile with a minimum or Max on glows, and switching Max on pops the icon. Everything stays still for people whose system asks for reduced motion.
   - Short names on the tiles (MR, AS, Crit, Haste, MS) because the long ones were cut off; the full name is the tooltip.
+- **Garen (Eric, Nov 24, 2026): Q, E and R; W "deals no damage".** Melee, so none of the ranged-champion work (`PLAN-ranged-champions.md`) was needed first.
+  - **Q is an empowered basic attack:** the attack (100% AD, basic damage, on-hit and on-attack at full strength, can crit) + the bonus (30-150 + 50% AD, ability damage, never crits). The page shows "no crit / crit" like Yone's Q.
+  - **Q's crit bug is left out:** the wiki says a crit makes the bonus "~6.5%" bigger (a bug). "~" isn't an exact number to code.
+  - **E's crits are averaged (Eric).** Chose the average over "no crit / every spin crits" (Yone's rule): with 7+ spins, every spin critting is very unlikely below 100% crit. A crit spin deals 130% (139% with Infinity Edge): 1 + 0.3 x (crit damage - 1). The template's raw IE numbers (x1.6) are out of date; its preview shows x1.39.
+  - **E's spin count:** 7 + 1 per full 25% bonus attack speed (items + levels; level 18 alone gives 2 extra). Every spin gets the +25% "nearest enemy" bonus (one dummy = always the nearest).
+  - **E's item window is 3 s after the LAST spin** (up to 6 s), the one-hit rule. So Unending Despair's first sap (4 s) counts for E.
+  - **The dummy's "Health %" box (Eric: starts at 100%), for EVERY ability of every champion.** It sets the dummy's health when the cast starts, and every item effect sees that health too. First made for Garen's R only (its bonus is 25 / 30 / 35% of the dummy's MISSING health, so at full health R is just its base damage). Eric then chose every ability: "they still may utilize items such as Shadowflame, or have missing health damage" (Akali's R2, Kraken Slayer, Blade of the Ruined King). At 100% nothing changes: a full dummy, as before. Veigar's R will use it too (`PLAN-ranged-champions.md`).
+  - **R has no AD or AP ratio,** so builds only change its damage through item effects (Sunfire, Liandry's...). Expect odd-looking top 5s; that's the real answer.
+  - **Skill order: R whenever possible, then max E, then Q, then W.** Levels 1-3 take Q, E, W.
+  - **Garen's data (patch 26.23; his page last changed in V26.14):** R's base was lowered to 125 / 200 / 275 in V26.14. The R template's parameter list has 5 values; we use the 3 the tooltip shows, as for Yone.
+- **Home page show (Eric, Nov 24, 2026: the plain page looked "static, stagnant, rigid, lame"; he asked for "anything that's extravagant and grand").** `src/ui/pages/home-page.ts` + "Home page" in style.css. Three layers behind the search:
+  - EVERY champion's splash art, in a random order (Eric), fills the window, slowly zooming and drifting (Ken Burns), cross-fading every 7 s. Each champion is shown once before any repeats (a shuffled list, reshuffled when it runs out). A "Featuring ..." line under the search changes with it and links to that champion's page (a playable one to its calculated ability: "Katarina: Death Lotus"). The list comes from `championList`, so new champions join by themselves.
+  - Only two picture layers take turns: while one is on screen, the other loads the next picture and only fades in once it has loaded. Chose this over one layer per champion: ~170 layers would download every picture at once.
+  - Bug / cause / fix (Eric: "right at the end of the zooming, it jolts back to a default position"): the zoom animation was only on the "active" picture, so it was switched off the moment the picture started fading out, and the half-visible picture snapped back to its starting size. Fix: the outgoing picture gets "leaving", which keeps the SAME animation (same name, so the browser carries on instead of restarting); "leaving" is removed only once it's fully faded out. The zoom lasts 10 s (longer than 7 s + the 1.8 s fade) and holds its last frame. Light mode's colour boost was moved to every layer for the same reason.
+  - Damage numbers float up and fade like in game (magic purple, physical orange, true green, a big red crit about 15% of the time), kept out of the middle column. They're decoration only, not real results.
+  - The title gets a sweeping shine and a red glow; the page's parts rise in one after another. The top bar is see-through, as on champion pages.
+  - Chose these over a wall of all ~170 champion icons (busier, and 170 images to load). Only images the site already has; no new dependency.
+  - People whose system asks for reduced motion get one still picture: no slideshow, numbers, zoom or shine. Timers pause in a background tab and stop when you leave the page (`mountHomePage` returns a clean-up function now).
+  - Checked in headless Chrome: random champions (Hwei, Qiyana, Annie...), the outgoing picture is "leaving" during the fade, the Featuring link follows, numbers appear and remove themselves. Headless screenshots don't show the floating numbers mid-animation, so check them in a real browser.
 - **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
 
 ## Things we learned from the data
@@ -595,7 +634,7 @@ A test (`tests/item-checklist.test.ts`) fails if an item is missing from these t
 
 **What this checks:** only an item's *passive*. Every item's plain stats (AP, AD, HP, pen…) are already counted by `src/stats/`.
 The question for each item is: does its passive change Death Lotus damage on one dummy during one channel, under our rules (see "Rules for item passives" in Decisions)?
-(Checked for R. With Q and E added, every "modelled" item was re-read for one-hit abilities; see "Q / E details" in Decisions. With Akali added, every item was re-read for her: no on-hit at all, E's two casts at once, and R's longer window (5.5 s); see "Akali and the items" in Decisions. The "irrelevant" items stay irrelevant: each needs basic attacks or on-hit, takedowns, slows, allies, mana or other enemies. Unending Despair became "modelled" for Akali's R. With Yone added, every crit or basic-attack item was re-read: see "Yone and the items" in Decisions.)
+(Checked for R. With Q and E added, every "modelled" item was re-read for one-hit abilities; see "Q / E details" in Decisions. With Akali added, every item was re-read for her: no on-hit at all, E's two casts at once, and R's longer window (5.5 s); see "Akali and the items" in Decisions. The "irrelevant" items stay irrelevant: each needs basic attacks or on-hit, takedowns, slows, allies, mana or other enemies. Unending Despair became "modelled" for Akali's R. With Yone added, every crit or basic-attack item was re-read: see "Yone and the items" in Decisions. With Garen added, every item that needs a basic attack or a longer window was re-read: his Q is a real basic attack (Sundered Sky became "to model"), and his E's window reaches 6 s (Unending Despair now counts; Heartsteel still needs a basic attack after 3 s of charging, which neither Q nor E gives).)
 
 **Statuses:**
 - **modelled**: the passive is coded in `src/items/` and has a test.
@@ -651,7 +690,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Death's Dance | checked, irrelevant | Defensive. |
 | Dusk and Dawn | modelled | Spellblade, first dagger only: 75% base AD + 10% AP magic, then all on-hit effects once more 0.2 s later. `src/items/dusk-and-dawn.ts`. |
 | Echoes of Helia | checked, irrelevant | Needs healing allies. |
-| Eclipse | modelled | "Ever Rising Moon": 2 stacks within 2 s (one per cast instance) deal 8% of the dummy's max HP as physical damage, once (6 s cooldown). Katarina's R: each dagger counts as a separate hit (Death Lotus page), so dagger 2 procs it. Akali's E: first cast + recast are 2 casts, so the recast procs it. Akali's R: R1 and R2 are 2.5 s apart, so never. Not shrunk by R's %. `src/items/eclipse.ts`. (Was "checked, irrelevant" until Step 5d-5c.) |
+| Eclipse | modelled | "Ever Rising Moon": 2 stacks within 2 s (one per cast instance) deal 8% of the dummy's max HP as physical damage, once (6 s cooldown). Katarina's R: each dagger counts as a separate hit (Death Lotus page), so dagger 2 procs it. Akali's E: first cast + recast are 2 casts, so the recast procs it. Akali's R: R1 and R2 are 2.5 s apart, so never. Garen's E: one cast instance, so one stack and never. Not shrunk by R's %. `src/items/eclipse.ts`. (Was "checked, irrelevant" until Step 5d-5c.) |
 | Edge of Night | checked, irrelevant | Defensive. |
 | Endless Hunger | checked, irrelevant | Needs takedowns. |
 | Essence Reaver | modelled | Spellblade, first dagger only: 125% base AD + 0.5 per 1% crit chance, physical. Yone's crit chance is doubled by his passive. `src/items/essence-reaver.ts`. |
@@ -718,7 +757,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Stormrazor | modelled | Energized (dagger 1 only): 100 magic on-hit, × R's %. `src/items/stormrazor.ts`. |
 | Stormsurge | modelled | Deal 25% of the dummy's max HP within a rolling 2.5 s → lightning strike 2 s later, 125 + 10% AP magic. Inside Katarina's ult only if triggered by 0.5 s; Akali's R1 + R2 (2.5 s apart) count together. `src/items/stormsurge.ts`. |
 | Stridebreaker | checked, irrelevant | Cleave hits only other enemies; active doesn't count. |
-| Sundered Sky | checked, irrelevant | Empowers the next *basic attack*. Yone's Q is basic damage, not a basic attack. |
+| Sundered Sky | to model | Empowers the next *basic attack* against a champion: a guaranteed crit. Yone's Q is basic damage, not a basic attack: irrelevant for him. **Garen's Q IS a basic attack**, so it applies. Not modelled yet: the wiki's numbers disagree ("60% + IE 24% bonus damage" vs. its V26.01 note "critical damage ratio 80%"), and it's unclear whether Q's bonus damage is multiplied too. Until then, Garen Q builds with Sundered Sky are undercounted. |
 | Sunfire Aegis | modelled | "Immolate": 20 + 1.5% bonus HP magic damage every second (2 ticks inside the ult). `src/items/sunfire-aegis.ts`. |
 | Terminus | modelled | "Shadow": on-hit 30 + 10% bonus AD + 10% AP magic. "Juxtaposition": Dark hits (2nd, 4th, 6th on-hit) give +10% armor and magic pen each, up to 30%. `src/items/terminus.ts`. Check: see "Unconfirmed". |
 | The Collector | checked, irrelevant | Execute below 5% HP; under our overkill rule the dummy never dies. Its lethality stat counts. |
@@ -726,7 +765,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Titanic Hydra | modelled | "Cleave": on-hit 1% (melee) of Katarina's max HP, physical. `src/items/titanic-hydra.ts`. |
 | Trinity Force | modelled | Spellblade, first dagger only: 200% base AD physical. `src/items/trinity-force.ts`. |
 | Umbral Glaive | checked, irrelevant | Needs Katarina unseen; Death Lotus reveals her. |
-| Unending Despair | modelled | "Anguish": every 4 s after combat starts, 3% bonus HP as magic damage. Only Akali's R reaches 4 s (R2 at 2.5 s + 3 s of item effects); Katarina's 2.5 s ult and every one-hit ability end first. `src/items/unending-despair.ts`. (Was "checked, irrelevant" until Akali.) |
+| Unending Despair | modelled | "Anguish": every 4 s after combat starts, 3% bonus HP as magic damage. Only Akali's R (R2 at 2.5 s + 3 s of item effects) and Garen's E (last spin at 3 s + 3 s) reach 4 s; Katarina's 2.5 s ult and every one-hit ability end first. `src/items/unending-despair.ts`. (Was "checked, irrelevant" until Akali.) |
 | Void Staff | checked, irrelevant | No passive. Its 40% magic pen stat counts. |
 | Voltaic Cyclosword | modelled | "Galvanize": R's first damage triggers the Energized effect (before that damage, not shrunk): 8% of the dummy's current HP physical + 15 lethality for the whole ult. Yone's Q (basic damage) procs it through its on-hit instead. `src/items/voltaic-cyclosword.ts`. |
 | Warmog's Armor | modelled | "Warmog's Vitality": +12% of items' plain HP stats (not HP from item passives). Matters with Riftmaker / Overlord's. `src/items/warmogs-armor.ts`. |

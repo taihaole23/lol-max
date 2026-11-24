@@ -24,13 +24,15 @@ function onlyType(b: Breakdown, source: string): DamageType | undefined {
 
 // The ability's own sources, in a fixed order. Every other source is an item's name.
 const abilitySourceLabels: Record<string, string> = {
+  attack: "Basic attack", // Garen's Q: the empowered attack's own 100% AD (its bonus is "Base damage" + "AD ratio")
   base: "Base damage",
   apRatio: "AP ratio",
   adRatio: "AD ratio", // total AD: Shunpo (E), Akali's Q and E, Yone's Q
   bonusAdRatio: "Bonus AD ratio", // Death Lotus (R), Akali's R1, Yone's R
   maxHealth: "Max-health damage", // Yone's W: a share of the dummy's maximum health
-  crit: "Critical strike", // Yone's Q: what a crit adds (the breakdowns show the peak, a crit)
-  missingHealth: "Missing-health bonus", // Akali's R2: the extra from the dummy's missing health
+  crit: "Critical strike", // Yone's and Garen's Q: what a crit adds (the breakdowns show the peak, a crit)
+  averageCrit: "Critical strikes (average)", // Garen's E: what crits add on average at the build's crit chance
+  missingHealth: "Missing-health bonus", // Akali's R2, Garen's R: the extra from the dummy's missing health
 };
 
 function row(label: string, damage: number, total: number, item?: Item, damageType?: DamageType): Row {

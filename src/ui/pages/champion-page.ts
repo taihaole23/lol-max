@@ -245,6 +245,12 @@ function pageHtml(slug: string, name: string): string {
           <label class="field"><span class="field-label">Magic resist</span>${numberBoxHtml("dummy-magic-resist", "Magic resist", 10, 'min="0"')}</label>
         </div>
         <p class="field-hint">Type a number to override it. <button id="reset-stats" type="button" class="link-button">Reset</button></p>
+
+        <!-- The dummy's health when the cast starts (state.dummyHealthPercent), for every ability. -->
+        <div id="dummy-health-row" class="stat-row">
+          <label class="field"><span class="field-label">Health %</span>${numberBoxHtml("dummy-health", "Dummy health percent", 10, 'min="1" max="100"')}</label>
+        </div>
+        <p class="field-hint">Health %: the dummy's health when the ability is cast (100 = full).</p>
       </div>
 
       <div class="panel results">
@@ -621,6 +627,7 @@ function renderDummy(): void {
     .join("");
 
   byId<HTMLInputElement>("dummy-level").value = String(state.dummyLevel);
+  byId<HTMLInputElement>("dummy-health").value = String(state.dummyHealthPercent);
   byId<HTMLInputElement>("use-recommended").checked = state.useRecommendedItems;
   renderDummyItems();
 
@@ -827,6 +834,10 @@ export function mountChampionPage(root: HTMLElement, slug: string, ability: Abil
   byId<HTMLInputElement>("dummy-level").addEventListener("change", (event) => {
     const value = readNumber(event.target as HTMLInputElement);
     update((s) => (value === null ? s : actions.setDummyLevel(s, value)));
+  });
+
+  byId<HTMLInputElement>("dummy-health").addEventListener("change", (event) => {
+    update((s) => actions.setDummyHealthPercent(s, readNumber(event.target as HTMLInputElement)));
   });
 
   const statBoxes = { "dummy-hp": "hp", "dummy-armor": "armor", "dummy-magic-resist": "magicResist" } as const;

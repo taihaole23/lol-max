@@ -8,6 +8,7 @@ import { itemGroups, meleeCannotBuy } from "./item-groups.ts";
 import { itemSource } from "./items.ts";
 import { akali } from "./akali.ts";
 import { katarina } from "./katarina.ts";
+import { garen } from "./garen.ts";
 import { yone } from "./yone.ts";
 import { itemPassives } from "../items/index.ts";
 
@@ -58,6 +59,18 @@ export const sourceGroups: SourceGroup[] = [
       named("Mortal Steel (Q)", yone.mortalSteel.source),
       named("Spirit Cleave (W)", yone.spiritCleave.source),
       named("Fate Sealed (R)", yone.fateSealed.source),
+    ]),
+  },
+  {
+    title: "Garen",
+    sources: unique([
+      named("Garen: stats, abilities", garen.baseStats.source),
+      named("Garen", garen.abilities.source),
+      named("Garen", garen.adaptiveType.source),
+      named("Garen", garen.rangeType.source),
+      named("Decisive Strike (Q)", garen.decisiveStrike.source),
+      named("Judgment (E)", garen.judgment.source),
+      named("Demacian Justice (R)", garen.demacianJustice.source),
     ]),
   },
   {

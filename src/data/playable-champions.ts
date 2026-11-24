@@ -2,6 +2,7 @@
 // Adding a champion = a data file like katarina.ts, an entry in `playableChampions` below, and the
 // code that models the abilities (src/simulation/abilities.ts).
 import { akali } from "./akali.ts";
+import { garen } from "./garen.ts";
 import { katarina } from "./katarina.ts";
 import { yone } from "./yone.ts";
 
@@ -46,9 +47,10 @@ export const playableChampions = {
   katarina,
   akali,
   yone,
+  garen,
 } satisfies Record<string, ChampionKit>;
 
-// "katarina" | "akali" | "yone"
+// "katarina" | "akali" | "yone" | "garen"
 export type PlayableChampionId = keyof typeof playableChampions;
 
 export const isPlayableChampion = (slug: string): slug is PlayableChampionId => slug in playableChampions;
@@ -63,6 +65,7 @@ export const modelledAbilities: Record<PlayableChampionId, readonly DamageAbilit
   katarina: ["q", "e", "r"],
   akali: ["q", "e", "r"],
   yone: ["q", "w", "r"],
+  garen: ["q", "e", "r"],
 };
 
 // Abilities that deal no damage by themselves, with the reason the page shows instead of "coming soon".
@@ -81,6 +84,9 @@ export const noDamageAbilities: Record<PlayableChampionId, Partial<Record<Abilit
     e:
       "Soul Unbound deals no damage by itself. When it ends, it repeats part of the damage Yone dealt during " +
       "it, so its damage depends on a whole combo, and the site calculates one ability at a time.",
+  },
+  garen: {
+    w: "Courage only reduces the damage Garen takes and gives him a shield. His passive (Perseverance) only heals him.",
   },
 };
 

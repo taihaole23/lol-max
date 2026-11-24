@@ -41,6 +41,10 @@ export type PageState = {
   // "legendaries" also holds support items (a support dummy like Nami buys one).
   customDummyItems: { legendaries: (string | null)[]; boots: string | null };
   typedDummyStats: TypedStats; // numbers the user typed in; they override the calculated ones
+  // The dummy's health when the ability is cast, in % of its maximum (Eric: starts at 100).
+  // Every ability uses it (Eric): missing-health damage (Garen's R, Akali's R2) and item effects
+  // that read the dummy's health (Shadowflame, Kraken Slayer, Blade of the Ruined King...).
+  dummyHealthPercent: number;
   // The user's conditions on the build. locked[i] = the item locked into item slot i
   // (null = the optimizer chooses). Banned items are left out of every search.
   locked: (string | null)[];
@@ -70,6 +74,7 @@ export function initialState(): PageState {
     useRecommendedItems: true,
     customDummyItems: { legendaries: [], boots: null },
     typedDummyStats: noTypedStats,
+    dummyHealthPercent: 100,
     locked: [],
     lockedBoots: null,
     banned: [],
@@ -131,9 +136,12 @@ export function calculatedDummy(state: PageState): Target {
   return dummyStats(dummyPresets[state.enemyType].champion, state.dummyLevel, dummyItems(state));
 }
 
-// The dummy the search uses: calculated stats, with typed-in numbers on top.
+// The dummy the search uses: calculated stats, with typed-in numbers on top, starting the cast at
+// the "Health %" box's share of its maximum HP. (Left out at 100%: a full dummy, the default.)
 export function dummyTarget(state: PageState): Target {
-  return withTypedStats(calculatedDummy(state), state.typedDummyStats);
+  const target = withTypedStats(calculatedDummy(state), state.typedDummyStats);
+  if (state.dummyHealthPercent === 100) return target;
+  return { ...target, startHpShare: state.dummyHealthPercent / 100 };
 }
 
 // The conditions to send to the search: only locks in slots that are switched on.
@@ -403,6 +411,13 @@ export function dummySlots(state: PageState): { boots: string | null; items: (st
 // Typing a number into the dummy's HP / armor / MR box. `null` (an empty box) goes back to the calculated number.
 export function setTypedStat(state: PageState, stat: keyof TypedStats, value: number | null): PageState {
   return { ...state, typedDummyStats: { ...state.typedDummyStats, [stat]: value } };
+}
+
+// Typing in the dummy's health box: a % of its maximum, kept between 1 and 100. An empty box (null)
+// goes back to full health.
+export function setDummyHealthPercent(state: PageState, percent: number | null): PageState {
+  const value = percent === null || !Number.isFinite(percent) ? 100 : Math.min(Math.max(percent, 1), 100);
+  return { ...state, dummyHealthPercent: value };
 }
 
 export function clearTypedStats(state: PageState): PageState {

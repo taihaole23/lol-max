@@ -190,7 +190,7 @@ input.typed { background: var(--typed); border-color: var(--gold); }
    the logo and search sit on a calm backdrop with no hard edge. As you scroll, the normal frosted
    bar fades in on top of it, following the scroll (Eric: not all at once): main.ts sets --bar-fade
    from 0 (top of the page) to 1 (120px down). (:has = "a body that contains a champion page".) */
-body:has(.page-champion) .topbar {
+body:has(.page-champion) .topbar, body:has(.page-home) .topbar {
   background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 85%, transparent), transparent) no-repeat;
   /* (no-repeat: otherwise the gradient repeats into the bar's 1px see-through bottom border and
      draws a thin line there, the very edge this is meant to avoid.) */
@@ -198,7 +198,7 @@ body:has(.page-champion) .topbar {
   border-bottom-color: color-mix(in srgb, var(--border) calc(var(--bar-fade, 0) * 100%), transparent);
 }
 /* The frosted bar itself, as a layer behind the bar's contents, see-through by --bar-fade. */
-body:has(.page-champion) .topbar::before {
+body:has(.page-champion) .topbar::before, body:has(.page-home) .topbar::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: color-mix(in srgb, var(--panel) 82%, transparent);
   backdrop-filter: blur(12px);
@@ -206,7 +206,8 @@ body:has(.page-champion) .topbar::before {
 }
 /* Light theme, on a champion page: the links in the full text colour so they read over the
    picture. (A white glow, like the champion name's, made small text look smudged.) */
-:root[data-theme="light"] body:has(.page-champion) .topbar-links a { color: var(--text); }
+:root[data-theme="light"] body:has(.page-champion) .topbar-links a,
+:root[data-theme="light"] body:has(.page-home) .topbar-links a { color: var(--text); }
 .brand { font-weight: 700; font-size: 1.2rem; letter-spacing: 0; color: var(--text); text-decoration: none; }
 .brand::first-letter { color: var(--brand); }
 .topbar-search { flex: 1; max-width: 460px; }
@@ -282,6 +283,112 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 .hero-tagline { color: var(--muted); font-size: 1.2rem; margin-bottom: var(--s5); }
 #home-search { width: min(100%, 680px); }
 .hero .field-hint { margin-top: var(--s4); }
+
+/* ---------- Home page: the show behind the search (src/ui/pages/home-page.ts) ----------
+   Eric asked for "anything that's extravagant and grand". Three layers, back to front:
+   the splash art slideshow, a shade that keeps the text readable, the floating damage numbers.
+   The stage is fixed to the window (it stays put if the page scrolls) and sits behind everything:
+   .page-home is its own stacking context ("isolation"), like the champion page's splash. */
+.page-home { position: relative; isolation: isolate; }
+body:has(.page-home) .site-footer { position: relative; border-top-color: transparent; } /* drawn over the stage */
+.home-stage { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: var(--bg); }
+
+/* 1. Two picture layers take turns (home-page.ts). The "active" one fades in over 1.8 s (= fadeSeconds
+   in home-page.ts) while the "leaving" one fades out, and each slowly zooms + drifts (Ken Burns, after
+   the film-maker who made it famous). The two layers drift opposite ways.
+   The zoom must keep going while a picture fades OUT (Eric: it "jolts back to a default position"
+   when the zoom was switched off at the start of the fade). So "leaving" keeps the same animation:
+   the same animation name means the browser carries on instead of restarting it. It lasts 10 s,
+   longer than a picture's 7 s + 1.8 s fade, and "both" holds the last frame if a slow download keeps
+   a picture up longer, so it never jumps. */
+.home-slide {
+  position: absolute; inset: -4%;
+  background-size: cover; background-position: center 22%;
+  opacity: 0; transition: opacity 1.8s ease-in-out;
+  --pan: -2.5%;
+}
+.home-slide:nth-child(even) { --pan: 2.5%; }
+.home-slide.active, .home-slide.leaving { animation: home-ken-burns 10s ease-out both; }
+.home-slide.active { opacity: 0.55; }
+@keyframes home-ken-burns {
+  from { transform: scale(1.02) translateX(0); }
+  to { transform: scale(1.14) translateX(var(--pan)); }
+}
+:root[data-theme="light"] .home-slide { filter: saturate(1.25) contrast(1.05); } /* on every layer, so it can't snap off mid-fade */
+:root[data-theme="light"] .home-slide.active { opacity: 0.62; }
+
+/* 2. The shade: dark in the middle (behind the title and search) and at the bottom, lighter at the
+   edges, plus a slow-breathing glow in the site's red. */
+.home-shade {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 45%, color-mix(in srgb, var(--bg) 78%, transparent), transparent 75%),
+    linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent), transparent 30%, transparent 60%, var(--bg));
+}
+.home-shade::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 40% 30% at 50% 42%, var(--bg-glow), transparent 70%);
+  animation: home-breathe 6s ease-in-out infinite alternate;
+}
+@keyframes home-breathe { from { opacity: 0.4; transform: scale(0.95); } to { opacity: 1; transform: scale(1.1); } }
+
+/* 3. Damage numbers: bold, outlined in dark so they read over any picture, rising ~120px while
+   they fade. --drift (set per number) bends each path a little sideways. */
+.home-numbers { position: absolute; inset: 0; }
+.home-number {
+  position: absolute; font-weight: 800; font-size: 1.7rem; font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6), 0 0 14px rgba(0, 0, 0, 0.55);
+  animation: home-float 2.6s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+.home-number.magic { color: var(--text-magic); }
+.home-number.physical { color: var(--text-physical); }
+.home-number.true { color: var(--text-true); }
+.home-number.crit { color: var(--text-crit); font-size: 2.6rem; animation-name: home-crit; }
+@keyframes home-float {
+  0% { opacity: 0; transform: translate(0, 10px) scale(0.7); }
+  12% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--drift), -120px) scale(0.95); }
+}
+/* A crit punches in bigger, shakes once, then floats away like the others. */
+@keyframes home-crit {
+  0% { opacity: 0; transform: translate(0, 0) scale(2.2) rotate(-6deg); }
+  10% { opacity: 1; transform: translate(0, 0) scale(0.9) rotate(3deg); }
+  18% { transform: translate(0, 0) scale(1.08) rotate(-2deg); }
+  26% { transform: translate(0, 0) scale(1) rotate(0); }
+  100% { opacity: 0; transform: translate(var(--drift), -140px) scale(1); }
+}
+
+/* The title: a band of light sweeps across the letters every few seconds, over a soft red glow.
+   The red "l" stays red (the logo). The title, tagline, search and links rise in one after another. */
+.home-hero { min-height: calc(100vh - 200px); }
+.hero-title-text {
+  background: linear-gradient(100deg, var(--text) 40%, #fff 48%, color-mix(in srgb, var(--brand) 60%, #fff) 50%, var(--text) 58%) 0 0 / 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 24px color-mix(in srgb, var(--brand) 35%, transparent));
+  animation: home-shine 5s ease-in-out infinite;
+}
+.hero-title-text::first-letter { -webkit-text-fill-color: var(--brand); }
+@keyframes home-shine { 0%, 30% { background-position: 100% 0; } 70%, 100% { background-position: 0 0; } }
+:root[data-theme="light"] .hero-title-text {
+  background-image: linear-gradient(100deg, var(--text) 40%, color-mix(in srgb, var(--brand) 70%, var(--text)) 50%, var(--text) 58%);
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.9));
+}
+:root[data-theme="light"] .home-hero .hero-tagline,
+:root[data-theme="light"] .home-hero .hint { text-shadow: 0 0 10px rgba(255, 255, 255, 0.95); }
+.home-hero > * { animation: home-rise 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+.home-hero > :nth-child(2) { animation-delay: 0.12s; }
+.home-hero > :nth-child(3) { animation-delay: 0.24s; }
+.home-hero > :nth-child(4) { animation-delay: 0.36s; }
+.home-hero > :nth-child(5) { animation-delay: 0.48s; }
+@keyframes home-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.home-hero .hero-tagline { color: var(--text); opacity: 0.85; }
+
+/* "Featuring Katarina: Death Lotus", changing with the picture. */
+.home-featuring { color: var(--muted); font-size: 0.95rem; min-height: 1.5em; }
+.home-featuring a { font-weight: 600; }
+.home-featuring .home-skin { color: var(--faint); font-size: 0.85em; }
+.home-featuring.swap { animation: home-swap 0.7s ease-out; }
+@keyframes home-swap { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
 /* ---------- Champion search ---------- */
 .champion-search { position: relative; width: 100%; }
@@ -704,8 +811,10 @@ button.primary:hover:not(:disabled) { background: var(--accent-strong); border-c
 @media (max-width: 600px) {
   .min-stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-/* People who ask their system for less motion get no lifting, tilting or popping. */
+/* People who ask their system for less motion get no lifting, tilting or popping, and a still home page
+   (one picture, no zoom, no shine; home-page.ts also skips the slideshow and the numbers). */
 @media (prefers-reduced-motion: reduce) {
+  .home-slide.active, .home-slide.leaving, .home-shade::after, .hero-title-text, .home-hero > *, .home-featuring.swap { animation: none; }
   .stat-tile, .stat-icon svg { transition: none; }
   .stat-tile:hover, .stat-tile:hover .stat-icon svg { transform: none; }
   .stat-tile.is-max .stat-icon { animation: none; }

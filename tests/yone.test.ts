@@ -216,11 +216,11 @@ test("Q, W and R are calculated; E deals no damage by itself", () => {
   expect(isModelled("yone", "w")).toBe(true);
   expect(isModelled("yone", "r")).toBe(true);
   expect(isModelled("yone", "e")).toBe(false);
-  expect(() => abilityCast("yone", "e", 5)).toThrow();
+  expect(() => abilityCast("yone", "e", 5, false, stats([]))).toThrow();
   // W is still "no damage" for Katarina and Akali.
   expect(isModelled("katarina", "w")).toBe(false);
   expect(isModelled("akali", "w")).toBe(false);
-  expect(() => abilityCast("katarina", "w", 5)).toThrow();
+  expect(() => abilityCast("katarina", "w", 5, false, stats([]))).toThrow();
 });
 
 test("skill order: R whenever possible, then max Q, then W, then E", () => {

@@ -3,6 +3,7 @@
 // simulation actually uses.
 import { simulationRules } from "../data/game-rules.ts";
 import { akali } from "../data/akali.ts";
+import { garen } from "../data/garen.ts";
 import { katarina } from "../data/katarina.ts";
 import { yone } from "../data/yone.ts";
 import { PATCH } from "../data/patch.ts";
@@ -15,6 +16,7 @@ const r = katarina.deathLotus;
 const e = katarina.shunpo;
 const akaliR = akali.perfectExecution;
 const yonePassive = yone.critPassive;
+const judgment = garen.judgment;
 const percents = (list: readonly number[]) => list.map((x) => `${Math.round(x * 100)}`).join(" / ") + "%";
 
 export function rulesHtml(): string {
@@ -80,15 +82,42 @@ export function rulesHtml(): string {
         it, so it depends on a whole combo, and the site calculates one ability at a time.</li>
     </ul>
 
+    <h3>What "damage" means: Garen</h3>
+    <ul>
+      <li><strong>Decisive Strike (Q), one empowered attack:</strong> a basic attack (100% AD) plus Q's bonus damage.
+        The attack applies on-hit and on-attack effects (and Spellblade) at full strength and can critically strike,
+        so the page shows "no crit / crit", the same rule as Yone's Q. The bonus never crits, and it counts as
+        ability damage, so items that need ability damage (Liandry's, Luden's...) trigger from it. Item effects
+        count until ${simulationRules.oneHitWindowSeconds} s after the hit. (A game bug that makes the bonus about
+        6.5% bigger on a crit isn't counted.)</li>
+      <li><strong>Judgment (E), the whole spin:</strong> ${judgment.baseSpins} spins over ${judgment.spinSeconds} s,
+        plus 1 for every ${Math.round(judgment.bonusAttackSpeedPerExtraSpin * 100)}% bonus attack speed (from items and
+        levels) when E is cast. Each spin lands at the end of its turn, evenly spread. With one dummy it is always
+        the nearest enemy, so every spin deals ${Math.round(judgment.nearestEnemyBonus * 100)}% more. After
+        ${judgment.hitsForArmorReduction} spins the dummy has ${Math.round(judgment.armorReduction * 100)}% less armor.
+        Spins don't apply on-hit effects. Item effects count until ${simulationRules.oneHitWindowSeconds} s after the
+        last spin.</li>
+      <li><strong>E's crits are averaged:</strong> a spin that crits deals ${Math.round((1 + judgment.critBonusShare) * 100)}%
+        damage (more with Infinity Edge). With many spins, each one counts its average at your crit chance (at 40%
+        crit, 40% of what a crit would add), so E shows one number.</li>
+      <li><strong>Demacian Justice (R), one hit of true damage:</strong> its bonus grows with the dummy's
+        <em>missing</em> health, so it depends on the dummy's "Health %" box (see the rules for every champion):
+        at 100%, R is just its base damage. Its execute doesn't matter: the dummy never dies.</li>
+      <li><strong>Courage (W)</strong> deals no damage, and neither does his passive (Perseverance).</li>
+    </ul>
+
     <h3>Rules for every champion</h3>
     <ul>
       <li><strong>Overkill rule:</strong> the dummy never dies. Once a hit would kill it, it stays at
         ${simulationRules.minimumHp} HP and every later hit still counts in full. Effects that depend on the
         target's HP then see ${simulationRules.minimumHp} HP.</li>
+      <li><strong>The dummy's health:</strong> the "Health %" box (100% to start) sets the dummy's health when the
+        cast starts, for every ability. Missing-health damage (Garen's R, Akali's recast) and item effects that read
+        the dummy's health (Shadowflame, Kraken Slayer, Blade of the Ruined King) all use it.</li>
       <li><strong>Ranks follow the game's rules:</strong> Q, W and E can reach rank 1 to 5 at levels 1, 3, 5, 7
         and 9, R reaches rank 1 to 3 at levels 6, 11 and 16, and all ranks together can't be more than the level.
         The stage presets level each champion the usual way: R whenever possible, then max Q, then E, then W
-        (Yone: then W, then E).</li>
+        (Yone: then W, then E; Garen: max E, then Q, then W).</li>
       <li><strong>No runes</strong> (planned for version 2).</li>
     </ul>
 

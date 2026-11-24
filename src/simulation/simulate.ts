@@ -26,7 +26,9 @@ export type DamageEvent = {
 };
 
 // One piece of an ability hit's own damage, before armor / MR.
-export type DamagePart = { raw: number; type: DamageType; source: string };
+// `abilityDamage` overrides the cast's `basicDamage` for this one piece: Garen's Q is a basic
+// attack (basic damage), but its bonus damage is ability damage (Liandry's, Luden's... see it).
+export type DamagePart = { raw: number; type: DamageType; source: string; abilityDamage?: boolean };
 
 // What a hit's damage may depend on besides the champion's stats: which hit it is, and the dummy's
 // HP the moment it lands (before its own damage). Akali's R2 grows with the dummy's missing health.
@@ -58,6 +60,13 @@ export type AbilityCast = {
   // True if the hits are BASIC damage, not ability damage (Yone's Q on its first target). Item
   // effects that need ability damage (Liandry's, Luden's, Shojin...) then ignore them. Default false.
   basicDamage?: boolean;
+  // Armor reduction the ability itself puts on the dummy once it has landed `afterHits` hits
+  // (Garen's E: 25% after 6 spins). It applies to every later piece of damage, items' included.
+  armorReduction?: { afterHits: number; percent: number };
+  // True if all the hits are ONE cast instance (Garen's E: one spin, many hits). Items that give
+  // "one stack per cast instance" (Eclipse) then get one stack from the whole cast. Default false:
+  // each hit is its own instance (Katarina's daggers, Akali's first cast and recast).
+  oneCastInstance?: boolean;
 };
 
 // The champion's stats that matter for their abilities. Item effects may change these mid-ult.
@@ -86,7 +95,10 @@ export type Attacker = {
 };
 
 export type Target = {
-  hp: number; // at the start of the ult, so also its maximum HP (the dummy starts full)
+  hp: number; // its MAXIMUM HP
+  // The dummy's HP when the cast starts, as a share of its maximum (0.4 = 40%). Default 1 (full).
+  // Set from the page's "Health %" box (every ability). Left out at 100%.
+  startHpShare?: number;
   bonusHp: number; // the part of `hp` that comes from items (Lord Dominik's uses it)
   baseArmor: number;
   bonusArmor: number;
@@ -104,7 +116,7 @@ export type EffectContext = {
   basicDamage: boolean; // true = the cast's own hits are basic damage, not ability damage (see AbilityCast)
   attacker: Attacker; // may be changed, e.g. attack speed stacks
   target: Readonly<Target>; // read only: change it through dealDamage. `hp` is its CURRENT HP.
-  targetMaxHp: number; // the dummy's HP when the ult started
+  targetMaxHp: number; // the dummy's maximum HP (it may start lower: Target.startHpShare)
   // Deal item damage. `raw` is before armor / MR; the simulation reduces it.
   dealDamage: (raw: number, type: DamageType) => void;
   // Run something later, e.g. a burn tick 0.5 s from now.
@@ -123,6 +135,9 @@ export type DamageInfo = {
   // The ability's own damage only: which hit it belongs to (0 = the first in hitTimes). Each hit is
   // its own cast instance for Eclipse (Akali's E1 and E2 land together but are 2 casts).
   hitIndex?: number;
+  // The ability's own damage only: which cast instance it belongs to. The hit's index, except for
+  // a cast whose hits are all one instance (AbilityCast.oneCastInstance): then always 0.
+  castInstance?: number;
 };
 
 // Shred an item gives right now, on top of the champion's own penetration.
@@ -182,7 +197,8 @@ export function simulateCast(input: CastInput): SimulationResult {
   const cast = input.cast;
   // Copies, so that changes during the ult don't leak out to the caller.
   const attacker = { ...input.attacker };
-  const target = { ...input.target };
+  const target = { ...input.target, hp: input.target.hp * (input.target.startHpShare ?? 1) };
+  let hitsLanded = 0; // the ability's own hits so far (for armorReduction)
   const events: DamageEvent[] = [];
   const todo: ToDo[] = [];
 
@@ -192,6 +208,10 @@ export function simulateCast(input: CastInput): SimulationResult {
     for (const item of input.items) {
       const extra = item.shred?.(time)[resist];
       if (extra) shred = addShred(shred, extra);
+    }
+    const own = cast.armorReduction;
+    if (resist === "armor" && own && hitsLanded >= own.afterHits) {
+      shred = addShred(shred, { percentReduction: own.percent });
     }
     return shred;
   }
@@ -205,9 +225,25 @@ export function simulateCast(input: CastInput): SimulationResult {
   }
 
   // `hitIndex` is only given for the ability's own damage.
-  function dealDamage(time: number, raw: number, type: DamageType, source: string, fromItem: boolean, hitIndex?: number): void {
+  // `abilityDamage` is only given for a piece that overrides the cast's basicDamage (DamagePart).
+  function dealDamage(
+    time: number,
+    raw: number,
+    type: DamageType,
+    source: string,
+    fromItem: boolean,
+    hitIndex?: number,
+    abilityDamage?: boolean,
+  ): void {
     // 0 damage (e.g. R's AD part with no bonus AD) isn't really dealt, so it can't add stacks.
-    const info: DamageInfo = { type, fromItem, abilityDamage: !fromItem && !cast.basicDamage, hitIndex };
+    const castInstance = hitIndex === undefined ? undefined : cast.oneCastInstance ? 0 : hitIndex;
+    const info: DamageInfo = {
+      type,
+      fromItem,
+      abilityDamage: !fromItem && (abilityDamage ?? !cast.basicDamage),
+      hitIndex,
+      castInstance,
+    };
     const dealt = raw > 0;
     if (dealt) {
       for (const item of input.items) item.beforeDamage?.(contextAt(time, item), info);
@@ -268,8 +304,9 @@ export function simulateCast(input: CastInput): SimulationResult {
     // All parts are worked out first, from the dummy's HP before this hit (Akali's R2).
     const parts = cast.hitDamage(attacker, { index, targetHp: target.hp, targetMaxHp: input.target.hp });
     for (const part of parts) {
-      dealDamage(time, part.raw, part.type, part.source, false, index);
+      dealDamage(time, part.raw, part.type, part.source, false, index, part.abilityDamage);
     }
+    hitsLanded++;
 
     if (cast.appliesOnAttack) {
       for (const item of input.items) {
