@@ -47,7 +47,7 @@ export function rulesHtml(): string {
       <li>Item actives don't count.</li>
       <li>Combat starts when R is cast, or when Q or E hits, with Katarina standing right next to the dummy.</li>
       <li>Items that work on your ultimate (Malignance, Zeke's Convergence, Experimental Hexplate) only count for R.
-        Spellblade only counts for R: Q applies no on-hit effects, and Shunpo's hit lands before E grants it.</li>
+        Spellblade procs on R (first dagger) and on E's hit; Q applies no on-hit effects, so it never procs.
       <li>Stacks that fill up on their own (Rod of Ages, Energized, Dead Man's Plate) are full when R is cast.
         Stacks earned by fighting (in-combat stacks, Mejai's) start at 0 and may build up during the cast.</li>
       <li>A few timings the wiki doesn't state (like exactly when the first dagger lands) are our best guess

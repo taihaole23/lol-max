@@ -391,7 +391,7 @@ validation/    Practice Tool test plan and measurements
 - **Q / E details from the wiki (patch 26.23, `Template:Data_Katarina/...`):**
   - Q: 80 / 115 / 150 / 185 / 220 + 40% AP magic. The wiki lists no on-hit effects, so it applies none.
   - E: 20 / 30 / 40 / 50 / 60 + 40% AD + 25% AP magic, applies on-hit. "AD" = total AD (the wiki writes "bonus AD" when it means bonus). On-hit at full strength: the wiki gives no smaller number.
-  - E and Spellblade: "Shunpo's effects occur before the cast time", and Spellblade is granted by casting, so E's own hit can't use it. Spellblade only counts for R.
+  - E and Spellblade: E's own hit uses the Spellblade that casting E grants, at full strength (Eric, from playing; the wiki doesn't say). First guessed "no" from the wiki's "Shunpo's effects occur before the cast time"; Eric corrected it. Q never procs it (no on-hit).
   - ASSUMPTION: E's hit runs in the same order as a dagger (on-hit first, then its own damage). The wiki doesn't say whether E applies on-attack effects; with a single hit it would change nothing anyway.
   - Items that work on the ULTIMATE only count for R: Malignance's zone, Zeke's storm, Experimental Hexplate's Overdrive.
   - The Death Lotus shrinking bug (Liandry's, Blackfire, Luden's × R's on-hit effectiveness) is R only: Q and E get those at full size. It's now its own number, `procEffectiveness`, next to `onHitEffectiveness`.

@@ -68,11 +68,25 @@ test("E: a full Energize bar procs on the hit, unshrunk (Rapid Firecannon 40)", 
   expect(procs[0].amount).toBeCloseTo(40);
 });
 
-test("Spellblade never procs for Q or E (Q has no on-hit; E's hit comes before E grants it)", () => {
-  for (const ability of ["q", "e"] as const) {
-    expect(from(cast(ability, ["Lich Bane"]).events, "Lich Bane"), ability).toHaveLength(0);
-    expect(from(cast(ability, ["Trinity Force"]).events, "Trinity Force"), ability).toHaveLength(0);
-  }
+test("E's hit uses its own Spellblade, at full strength (Eric, from playing)", () => {
+  const lich = from(cast("e", ["Lich Bane"]).events, "Lich Bane");
+  expect(lich).toHaveLength(1);
+  expect(lich[0].time).toBe(0);
+  expect(lich[0].amount).toBeCloseTo(0.75 * baseAdAtLevel16 + 0.45 * apWith("e", ["Lich Bane"]));
+
+  const trinity = from(cast("e", ["Trinity Force"]).events, "Trinity Force");
+  expect(trinity).toHaveLength(1);
+  expect(trinity[0].amount).toBeCloseTo(2 * baseAdAtLevel16);
+});
+
+test("Dusk and Dawn with E: Spellblade, then on-hit effects once more 0.2 s later", () => {
+  const nashors = from(cast("e", ["Dusk and Dawn", "Nashor's Tooth"]).events, "Nashor's Tooth");
+  expect(nashors.map((e) => e.time)).toEqual([0, 0.2]);
+});
+
+test("Spellblade never procs for Q (it applies no on-hit effects)", () => {
+  expect(from(cast("q", ["Lich Bane"]).events, "Lich Bane")).toHaveLength(0);
+  expect(from(cast("q", ["Trinity Force"]).events, "Trinity Force")).toHaveLength(0);
 });
 
 // ---- Burns and the 3 s window ----

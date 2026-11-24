@@ -84,9 +84,10 @@ export const katarina = {
     magicAdRatio: 0.4,
     magicApRatio: 0.25,
     onHitEffectiveness: 1,
-    // Wiki: "Shunpo's effects occur before the cast time". Spellblade is granted by casting an
-    // ability, so E's own hit lands before E grants it, and can't use it.
-    spellbladeReadyForItsHit: false,
+    // E's own hit uses the Spellblade that casting E grants (Eric, from playing). The wiki doesn't
+    // say either way. (We first guessed "no" from the wiki's "Shunpo's effects occur before the
+    // cast time"; Eric corrected it.)
+    spellbladeReadyForItsHit: true,
   },
 
   // The order she levels her abilities, used by the stage presets and when the level changes.

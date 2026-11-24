@@ -64,7 +64,7 @@ function oneHitCast(key: "q" | "e", parts: (a: Attacker) => DamagePart[], applie
     appliesOnAttack: false, // the wiki doesn't say either applies on-attack effects
     onHitEffectiveness,
     procEffectiveness: 1, // the shrinking bug is Death Lotus only
-    spellbladeReadyForHits: false, // Q applies no on-hit at all, so it can't use Spellblade; E: see below
+    spellbladeReadyForHits: false, // Q applies no on-hit at all, so it can't use Spellblade; E overrides this below
   };
 }
 
