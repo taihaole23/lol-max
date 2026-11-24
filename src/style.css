@@ -212,12 +212,14 @@ h3 { font-size: 0.95rem; margin: 0 0 8px; }
 /* Top 5 builds */
 .top-builds { list-style: none; padding: 0; margin: 12px 0 20px; display: grid; gap: 6px; }
 .build-card {
-  width: 100%; display: grid; grid-template-columns: 2.5em 5em 1fr; gap: 8px;
-  text-align: left; align-items: baseline;
+  width: 100%; display: grid; grid-template-columns: 2.5em 5.5em 1fr; gap: 10px;
+  text-align: left; align-items: center; padding: 6px 10px;
 }
 .build-rank { color: var(--muted); }
-.build-damage { font-weight: 700; font-variant-numeric: tabular-nums; }
-.build-items { font-size: 0.85rem; }
+.build-damage { font-weight: 800; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.build-items { display: flex; flex-wrap: wrap; gap: 4px; }
+.row-label { display: inline-flex; align-items: center; gap: 8px; }
+.row-label img { border-radius: 4px; }
 
 /* Split bars (damage type, ability vs. items): parts separated by a 2px gap, rounded ends */
 .splits, .bar-tables { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 20px; }
@@ -264,7 +266,9 @@ footer { margin: 24px 0 8px; text-align: center; }
   .slot-row { --slot: 36px; gap: 8px; }
   .slots { gap: 4px; }
   .slot-buttons button { width: 28px; height: 28px; }
-  .build-card { grid-template-columns: 2em 4em 1fr; }
+  /* Top 5 on phones: rank and damage on one line, the item icons underneath */
+  .build-card { grid-template-columns: 2em 1fr; }
+  .build-items { grid-column: 1 / -1; }
 }
 
 .dummy-items { margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px; }

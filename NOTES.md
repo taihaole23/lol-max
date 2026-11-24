@@ -67,7 +67,7 @@ These notes are for anyone joining the project.
     - `src/ui/theme.ts` handles the dark default and the light toggle; `vercel.json` makes every address load the site.
     - Checked on the built site in headless Chrome: every page, typing in the search, Enter, the back button, a remembered light mode on a direct `/katarina/r` load, Ahri's "coming soon" page, a bad address. No console errors.
   - Part 3 (champion page layout) is done: ability icons with names on hover, a fixed 6-slot item row (boots on the left) with − / + that never move, item icons, enemy types with the dummy champion's icon, the dummy's items as icons. Checked in headless Chrome: the − / + buttons sat at exactly the same screen position after every slot change and boots toggle; fits a 375 px phone. No console errors.
-  - Part 4: results as "damage + item icons" rows.
+  - Part 4 (results) is done: each top-5 build is one row (rank, damage, item icons with boots first, names on hover), and item lines in "By source" and "What each item adds" show their icon. Checked in headless Chrome, dark, light and phone. **The redesign is done; next is Step 9 (deploy), which Eric does himself.**
 
 ## Confirmed in the Practice Tool (Step 8, patch 26.23)
 - **Within one dagger: on-hit effects → R's own damage → on-attack effects** (HP bar, test 17). Was assumed the other way round.

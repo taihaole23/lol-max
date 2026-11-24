@@ -33,6 +33,16 @@ test("marginal: 'No items' first, one row per item, 'Item interactions' last", (
   expect(rows).toHaveLength(items.length + 2);
 });
 
+test("item rows carry their item (for the icon); the ability's rows and the totals don't", () => {
+  const byLabel = new Map(sourceRows(e.breakdown).map((r) => [r.label, r]));
+  expect(byLabel.get("Nashor's Tooth")?.item?.name).toBe("Nashor's Tooth");
+  expect(byLabel.get("Base damage")?.item).toBeUndefined();
+  const marginal = marginalRows(e);
+  expect(marginal[0].item).toBeUndefined(); // "No items"
+  expect(marginal.at(-1)!.item).toBeUndefined(); // "Item interactions"
+  expect(marginal.slice(1, -1).every((r) => r.item?.name === r.label)).toBe(true);
+});
+
 test("a build with no item effects: ability = 100%, items = 0%", () => {
   const plain = explainBuild(6, [getItem("Rabadon's Deathcap")], presetDummy("tank", "early"));
   const [ability, itemEffects] = abilityVsItemRows(plain.breakdown);

@@ -2,7 +2,9 @@
 // The numbers come from breakdown-rows.ts; this file only decides how they look.
 import type { ExplainedBuild } from "../optimizer/messages.ts";
 import { abilityVsItemRows, marginalRows, sourceRows, typeRows, type Row } from "./breakdown-rows.ts";
+import type { Item } from "../data/items.ts";
 import { escapeHtml } from "./html.ts";
+import { iconPath, itemIconHtml } from "./icons.ts";
 
 // Whole numbers with thousands separators; a real minus sign for negatives ("−120").
 export function formatDamage(damage: number): string {
@@ -54,7 +56,7 @@ function barTable(title: string, firstColumn: string, rows: Row[], note: string)
       const width = r.damage > 0 ? (r.damage / biggest) * 100 : 0;
       return `
         <tr title="${escapeHtml(r.label)}: ${formatDamage(r.damage)} (${formatShare(r.share)})">
-          <th scope="row">${escapeHtml(r.label)}</th>
+          <th scope="row"><span class="row-label">${r.item ? `<img src="${iconPath.item(r.item)}" alt="" width="20" height="20" loading="lazy" />` : ""}${escapeHtml(r.label)}</span></th>
           <td class="bar-cell"><div class="bar" style="width:${width}%"></div></td>
           <td class="number">${formatDamage(r.damage)}</td>
           <td class="number muted">${formatShare(r.share)}</td>
@@ -96,16 +98,22 @@ export function breakdownHtml(build: ExplainedBuild): string {
     </div>`;
 }
 
-// The top 5, as buttons. Clicking one shows it in the slots and the breakdowns.
+// Boots first, then the other items: the same order as the item slots.
+const isBoots = (item: Item) => item.category === "boots" || item.category === "boots-tier-3";
+const slotOrder = (items: Item[]) => [...items.filter(isBoots), ...items.filter((item) => !isBoots(item))];
+
+// The top 5, as buttons: rank, damage, then the item icons (names on hover). Clicking one shows
+// it in the slots and the breakdowns. The button's label reads the names out for screen readers.
 export function topBuildsHtml(builds: ExplainedBuild[], selected: number): string {
   const cards = builds
     .map((build, i) => {
-      const names = build.items.map((item) => escapeHtml(item.name)).join(", ");
+      const ordered = slotOrder(build.items);
+      const label = `Build ${i + 1}: ${formatDamage(build.damage)} damage, ${ordered.map((item) => item.name).join(", ")}`;
       return `
-        <li><button type="button" class="build-card${i === selected ? " selected" : ""}" data-build-index="${i}">
+        <li><button type="button" class="build-card${i === selected ? " selected" : ""}" data-build-index="${i}" aria-label="${escapeHtml(label)}">
           <span class="build-rank">#${i + 1}</span>
           <span class="build-damage">${formatDamage(build.damage)}</span>
-          <span class="build-items">${names}</span>
+          <span class="build-items">${ordered.map((item) => itemIconHtml(item, 36)).join("")}</span>
         </button></li>`;
     })
     .join("");

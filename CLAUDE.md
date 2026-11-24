@@ -93,6 +93,9 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
 - Static site, no backend, no secrets. Everything runs in the browser.
 - Keep the stack small and beginner-readable: Vite + plain TypeScript, no framework. Confirm before adding any dependency.
 - The optimizer runs in a Web Worker so the page doesn't freeze.
+- Pages (decided in the redesign after Step 8): home with a big champion search, `/<champion>/<ability>` pages, and `/about` for the rules and sources. Real web addresses: `vercel.json` sends every address to `index.html`.
+- Dark theme by default, with a light toggle. Icons (champions, abilities, items) are saved copies made by `scripts/update-icons.mjs`; the site never loads anything from Riot while running.
+- Adding a champion must stay data-only for the pages: the search, the champion page and the icons all come from data.
 - Hosted from a public GitHub repo with auto-deploy on push; custom domain.
 
 ## How to work with Eric (important)
