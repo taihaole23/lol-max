@@ -6,19 +6,20 @@
 // A Guinsoo's Phantom Hit is an on-hit too, so it also gives a stack.
 // The damage is on-hit, so it's shrunk by R's 25 / 30 / 35%.
 // "Boarding Party" (minion buff) doesn't matter.
-import type { ItemPassive } from "./types.ts";
+import { meleeWielder, type ItemPassive } from "./types.ts";
 
 const data = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Hullbreaker", patch: "26.23" },
   stacksToProc: 4,
   baseAdRatio: 1.2,
   maxHealthRatio: 0.05,
+  rangedShare: 0.7, // wiki: ranged champions get 70% of both numbers (84% base AD, 3.5% max health)
 };
 
 export const hullbreaker: ItemPassive = {
   name: "Hullbreaker",
   source: data.source,
-  createEffect: () => {
+  createEffect: (wielder = meleeWielder) => {
     let stacks = 0;
     return {
       name: "Hullbreaker",
@@ -29,7 +30,8 @@ export const hullbreaker: ItemPassive = {
         }
         stacks = 0;
         const { baseAd, health } = context.attacker;
-        const damage = data.baseAdRatio * baseAd + data.maxHealthRatio * health;
+        const share = wielder.ranged ? data.rangedShare : 1;
+        const damage = share * (data.baseAdRatio * baseAd + data.maxHealthRatio * health);
         context.dealDamage(damage * context.onHitEffectiveness, "physical");
       },
     };

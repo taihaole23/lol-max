@@ -51,6 +51,10 @@ It's for fun ("dopamine maxing"), but the math has to be right. Every hit, on-hi
 | <img src="public/icons/champion/akali.png" width="28" align="center" /> **Akali** | Q · E · R |
 | <img src="public/icons/champion/yone.png" width="28" align="center" /> **Yone** | Q · W · R |
 | <img src="public/icons/champion/garen.png" width="28" align="center" /> **Garen** | Q · E · R |
+| <img src="public/icons/champion/lux.png" width="28" align="center" /> **Lux** | Q · E · R |
+| <img src="public/icons/champion/caitlyn.png" width="28" align="center" /> **Caitlyn** | Q · E · R |
+| <img src="public/icons/champion/veigar.png" width="28" align="center" /> **Veigar** | Q · W · R |
+| <img src="public/icons/champion/ezreal.png" width="28" align="center" /> **Ezreal** | Q · W · E · R |
 
 Every other champion has a page too, with their abilities marked "coming soon".
 

@@ -14,7 +14,8 @@
     "update-icons": "node scripts/update-icons.mjs",
     "patch-day": "node scripts/patch-day.mjs",
     "check-wiki": "node scripts/check-wiki.mjs",
-    "patch-diff": "node scripts/patch-diff.mjs"
+    "patch-diff": "node scripts/patch-diff.mjs",
+    "new-champion": "node scripts/new-champion.mjs"
   },
   "devDependencies": {
     "jpeg-js": "^0.4.4",

@@ -13,22 +13,26 @@
 //   (unshrunk). We still let those proc on dagger 1's on-hit at R's %. Only matters for
 //   Voltaic + Rapid Firecannon / Stormrazor; e.g. Stormrazor's 100 would be 35 instead of 100.
 import type { EffectContext } from "../simulation/simulate.ts";
-import type { ItemPassive } from "./types.ts";
+import { meleeWielder, type ItemPassive } from "./types.ts";
 
 const data = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Voltaic_Cyclosword", patch: "26.23" },
   currentHealthDamage: 0.08,
   meleeLethality: 15,
+  rangedCurrentHealthDamage: 0.06, // wiki: 8% melee, 6% ranged
+  rangedLethality: 12, // wiki: 15 melee, 12 ranged
 };
 
 export const voltaicCyclosword: ItemPassive = {
   name: "Voltaic Cyclosword",
   source: data.source,
-  createEffect: () => {
+  createEffect: (wielder = meleeWielder) => {
+    const ratio = wielder.ranged ? data.rangedCurrentHealthDamage : data.currentHealthDamage;
+    const lethality = wielder.ranged ? data.rangedLethality : data.meleeLethality;
     let firedAt: number | undefined; // undefined = not fired yet
     function fire(context: EffectContext, effectiveness: number): void {
       firedAt = context.time; // set first: the damage below runs beforeDamage again
-      context.dealDamage(data.currentHealthDamage * context.target.hp * effectiveness, "physical");
+      context.dealDamage(ratio * context.target.hp * effectiveness, "physical");
     }
     return {
       name: "Voltaic Cyclosword",
@@ -41,7 +45,7 @@ export const voltaicCyclosword: ItemPassive = {
         fire(context, context.onHitEffectiveness);
       },
       shred: (time) =>
-        firedAt !== undefined && time >= firedAt ? { armor: { flatPenetration: data.meleeLethality } } : {},
+        firedAt !== undefined && time >= firedAt ? { armor: { flatPenetration: lethality } } : {},
     };
   },
 };

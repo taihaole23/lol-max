@@ -3,7 +3,8 @@
 These notes are for anyone joining the project.
 - `CLAUDE.md` says what the project is and lists its rules.
 - `PLAN.md` is the step-by-step plan for version 1.
-- `PLAN-ranged-champions.md` is a future plan (not started) for Lux, Caitlyn, Veigar and Ezreal, with Eric's decisions.
+- `PLAN-ranged-champions.md` was the plan for Lux, Caitlyn, Veigar and Ezreal, with Eric's decisions. It's done (Nov 25, 2026).
+- "Adding a champion" (below) is the checklist for the next one.
 - This file keeps a record of the decisions we made and the bugs we fixed.
 
 ## Status
@@ -132,7 +133,19 @@ These notes are for anyone joining the project.
 - **An AD build against 150 armor** (Lord Dominik's, Voltaic, BotRK, Guinsoo's, Yun Tal, Gunmetal Greaves; test 23, HP bar within 0.6%).
 - **Statikk Shiv, Yun Tal, Kraken Slayer and Shadowflame together** (test 22, within 0.2%). Not checked one by one, so a small error in one could hide behind another, but none is big.
 
+- **Ranged champions: Lux, Caitlyn, Veigar, Ezreal (Nov 25, 2026, Eric: "just do everything").** Built from `PLAN-ranged-champions.md`, plus a faster way to add champions. Decisions are under "Ranged champions" in Decisions.
+  - **Abilities as data:** `src/simulation/ability-spec.ts`. A data file can list each ability as hits (time + parts: base by rank, AP / AD / bonus AD ratios, damage type) with optional flags (on-hit, on-attack, Spellblade, basic damage) and a `modifier` (`missingHealth`, `critChance`). All four new champions are data only: no `*-abilities.ts` file. Katarina, Akali, Yone and Garen keep their own code (nothing about them changed).
+  - **`scripts/new-champion.mjs <Name>`** reads the wiki (champion data module + each ability's data template) and writes a draft `src/data/<slug>.ts`: stats, attack range, adaptive type, ability names, and each ability's numbers parsed from its "leveling" text, with the raw text kept as a comment. A person then sets the skill order, removes abilities that deal no damage and adds what the text can't say (hit times, flags, modifiers).
+  - **Ranged support:** `rangeType` can be `"ranged"` with an `attackRange`. Item effects get a `Wielder` (`src/items/types.ts`: ranged or not, and the distance to the dummy), so items use their ranged numbers (BotRK, Eclipse, Hexplate, Titanic, Hullbreaker, Kraken, Voltaic, Bastionbreaker) and auras check their radius (Sunfire, Hollow Radiance, Abyssal Mask, Unending Despair). Runaan's Hurricane is buyable by ranged champions only. Horizon Focus and Hexoptics C44 (they need distance) are now modelled.
+  - **Veigar's stacks box** (`stackPassive` in his data file, `stacks` in the page state and the search request).
+  - Checked: `npm test` (all pass, plus `tests/ranged-champions.test.ts` and `tests/items/horizon-focus.test.ts`), `npm run test:slow`, `npm run build`. Not checked in a browser yet.
+  - To do: Practice Tool cases for the four (see "Unconfirmed"), and `npm run check-wiki -- --accept` once, to save first copies of their ability pages and champion data.
+
 ## Unconfirmed: to check in the Practice Tool (Step 8)
+- **Ranged champions (nothing measured yet).** Good first cases: Lux R with Abyssal Mask (aura reaches from 550?), Caitlyn E with Abyssal Mask (out of reach from 650?), Ezreal Q with Trinity Force (its own cast's Spellblade), Ezreal Q with Hexoptics C44 (+10%), and Lux R with Horizon Focus (+10% on the triggering hit).
+  - **Distances:** we put the dummy exactly at the champion's attack range (edge to edge) and use a 65-unit radius for both. Auras are measured as the wiki says (Sunfire "centred", Abyssal Mask "centre to edge"). No case is within 100 units of a radius except Abyssal Mask vs. Caitlyn (715 vs. 700) and Unending Despair vs. 550-range champions (680 vs. 650).
+  - **Kraken Slayer (ranged):** stacks on-attack, which we run right after the hit's damage, so its proc reads the dummy's health after that hit.
+  - **Caitlyn's R crit bonus** = 30% × crit chance × (crit damage − 1): +30% at 100% crit, +39% with Infinity Edge (the wiki template's formula).
 - **Akali (nothing measured yet).** Good first cases: R on a 1,000 HP dummy with no items (R2's bonus), and E with Eclipse.
   - **R2's timing:** we put R2 exactly 2.5 s after R1's hit. The wiki's 2.5 s "static cooldown" may count from R1's cast instead (R1 has a 0.25 s cast time), which would make it ~2.25 s after the hit. It changes which burn ticks land before R2 (its bonus) and the item window.
   - **R2's bonus uses the dummy's HP just before R2 lands,** and grows evenly up to +200% at 70% missing (the wiki table).
@@ -189,12 +202,13 @@ You need Node.js (v24 works). In a terminal inside this folder:
 | `npm run dev` | Starts the site on your computer. Open the link it prints. The page reloads when you save a file. |
 | `npm test` | Runs every test once and shows pass/fail. |
 | `npm run test:watch` | Re-runs the tests every time you save. |
-| `npm run test:slow` | The slow optimizer checks (~3 minutes): the beam search against trying every Late build, for each enemy type. Run it before each release and after changing item passives or the search. `npm test` skips these. |
+| `npm run test:slow` | The slow optimizer checks (about 1 hour since the ranged champions: 164 checks, 58 min on Nov 25, 2026): the beam search against trying every Late build, for each enemy type and every champion's abilities. Run it before each release and after changing item passives or the search. `npm test` skips these. |
 | `npm run update-items -- 16.23.1` | Downloads Riot's item data and saves the snapshot `src/data/items.<patch>.json`. The number is Data Dragon's version for our patch. Only needed when the patch changes. |
 | `npm run update-icons -- 16.23.1` | Downloads every champion, ability and item icon and the splash art, and picks each champion page's colour from its splash. Run it after `update-items`. |
 | `npm run patch-day` | Patch day, the automatic part: switches to the newest patch, downloads everything, lists what changed (items and wiki) and runs the tests. Writes `patch-report.md`. In Claude Code, `/patch-day` runs this and then works through the report. |
 | `npm run check-wiki` | Shows what changed on the wiki since the saved copies in `wiki-watch/`. `npm run check-wiki -- --accept` saves the wiki as it is now (only after every change is handled). |
 | `npm run patch-diff` | Compares the two newest item snapshots. |
+| `npm run new-champion -- Lux` | Reads a champion from the wiki and writes a draft data file `src/data/<slug>.ts` (never overwrites one). See "Adding a champion". |
 | `node scripts/splash-colors.mjs` | Only re-picks the splash colours from the saved splashes (no download). For trying out changes to how colours are picked. |
 | `npm run build` | Type-checks the code (`tsc`), then builds the real website into `dist/`. This is what Vercel runs. |
 
@@ -296,14 +310,14 @@ validation/    Practice Tool test plan and measurements
   - The old CLAUDE.md wording ("items that share a unique passive can't be combined") would have wrongly blocked such pairs, so it was changed.
   - When two items share a passive name, the passive only counts once. That's handled where the passive is coded (5d).
 - **Item groups come from the wiki's item data module, not its "Item group" overview page:** the module is what each item page's "Limitations" section is built from, and all 250 stats we compared in it matched Data Dragon for 26.23. The overview page says it's from V26.12.
-- **Runaan's Hurricane is never in a build:** ranged champions only, and Katarina is melee.
+- **Runaan's Hurricane is only for ranged champions** (Lux, Caitlyn, Veigar, Ezreal). Its bolts hit OTHER enemies, so on one dummy it's just its stats.
 - **Mid quest = tier-3 boots, nothing else:** with the toggle on, the optimizer may pick tier-3 boots; with it off, they're not allowed. (Eric, Step 5c.)
 - **Rules for item passives (Eric, Step 5c).** These are shown on the site with the other rules:
   - **Item actives don't count.** Clicking an item isn't part of the ability's damage.
   - **Combat starts when R is cast.**
   - **Stacks that fill up on their own are full** when R starts: Rod of Ages (grows each minute), Energized items and Dead Man's Plate (charge while walking).
   - **Stacks you earn by fighting start at 0:** Mejai's, Hubris, Heartsteel's permanent HP, and "per second in combat" stacks like Liandry's and Riftmaker. They can still build up *during* the ult.
-  - **Katarina is right next to the dummy** (she usually blinks onto her target before ulting). So aura items like Sunfire Aegis reach it, and Horizon Focus (600+ range) never triggers.
+  - **Katarina is right next to the dummy** (she usually blinks onto her target before ulting). So aura items like Sunfire Aegis reach it, and Horizon Focus (600+ range) never triggers. Every melee champion stands next to it; ranged champions stand at their attack range (see "Ranged champions").
 - **Katarina has no mana** (wiki: resource "None"), so mana from items does nothing: Archangel's, Manamune and Winter's Approach passives are irrelevant for her.
 - **Each item file keeps its numbers in a `data` object at the top, with a source and patch (Step 5d):** the same rule as the data files (no magic numbers in formulas), but next to the only code that uses them, so one file tells the whole story of an item.
 - **Stat passives run in four fixed steps (Step 5d-1):** add → convert (HP → AP / AD) → adaptive force → percent (Rabadon's). Why this order, from the wiki:
@@ -539,6 +553,16 @@ validation/    Practice Tool test plan and measurements
   - Chose these over a wall of all ~170 champion icons (busier, and 170 images to load). Only images the site already has; no new dependency.
   - People whose system asks for reduced motion get one still picture: no slideshow, numbers, zoom or shine. Timers pause in a background tab and stop when you leave the page (`mountHomePage` returns a clean-up function now).
   - Checked in headless Chrome: random champions (Hwei, Qiyana, Annie...), the outgoing picture is "leaving" during the fade, the Featuring link follows, numbers appear and remove themselves. Headless screenshots don't show the floating numbers mid-animation, so check them in a real browser.
+- **Ranged champions (Nov 25, 2026): Lux, Caitlyn, Veigar, Ezreal.** Eric's decisions from `PLAN-ranged-champions.md` (Veigar's stacks box with presets 50 / 125 / 200 / 300, Ezreal's W detonated by a 0-damage attack with no on-hit, Caitlyn's W "deals no damage", ranged champions at their attack range), plus:
+  - **Chose abilities as data over one code file per champion,** so most champions are a data file only. Chose NOT to move Katarina, Akali, Yone and Garen onto it: their code works and is tested, and rewriting it would only risk changing numbers. New modifiers get added to `ability-spec.ts` (with a test) when a new champion needs one.
+  - **Chose a draft-writing script over reading the wiki while the site runs:** the site stays static, every number is still checked by a person, and the draft keeps the wiki's raw text next to each number.
+  - **Distances:** the dummy stands exactly at the champion's attack range, edge to edge (how attack range works). Both champions have a 65-unit radius (wiki, Range: "an edge range of 550 units is equivalent to a centered range of 680 units"). Each aura is measured the way its wiki text says. Sunfire / Hollow Radiance (325) and Unending Despair (650, centred) never reach a ranged champion's dummy. Abyssal Mask (700, centre to edge) reaches it from 550 (615), not from Caitlyn's 650 (715).
+  - **Travel time is ignored** (missiles land when cast), like Katarina's daggers. Veigar's W keeps its 1.2 s delay ("from the start of the cast time").
+  - **Lux's E** counts only the recast (detonation), cast right away. **Caitlyn's R** lands at 0 s (combat starts when the bullet fires, like a one-hit ability); its crit-chance bonus is its own line in the breakdown. **Veigar's R** uses the dummy's "Health %" box: +1.5% per 1% missing, up to +100% at 2/3 missing.
+  - **Ezreal's Q is basic AND ability damage** (wiki: "deals basic damage, but also triggers spell effects"): `damageKind: "both"`. It applies on-hit and on-attack and uses its own cast's Spellblade (wiki, Spellblade: abilities that apply on-hit effects can trigger it), like Katarina's E. Black Cleaver treats it as ability damage (its stack goes on before the hit).
+  - **Ranged item numbers** come from the wiki's item data (melee / ranged pairs): BotRK 6%, Eclipse 5%, Hexplate 25% AS + 10% MS, Titanic 0.5%, Hullbreaker 70%, Kraken 80% (and on-attack instead of on-hit), Voltaic 6% + 12 lethality, Bastionbreaker 20 + 0.75 per lethality. Other items with ranged numbers only change things the site doesn't count (move speed, healing, slows, omnivamp).
+  - **Skill orders:** Lux R > E > Q > W (mid Lux maxes E), Caitlyn R > Q > E > W, Veigar R > Q > W > E, Ezreal R > Q > E > W.
+  - **Champion stats** came from the wiki's champion data module (the same numbers as the plan's table, read the day before).
 - **Patch numbers:** Riot now numbers patches by year (26.x in 2026). Data Dragon still uses the old style for the same patch: Data Dragon `16.23.1` = patch 26.23. The site uses the 26.x name.
 
 ## Things we learned from the data
@@ -587,6 +611,19 @@ validation/    Practice Tool test plan and measurements
 
 ## Still open
 None right now.
+
+## Adding a champion
+1. `node scripts/new-champion.mjs <Name>` writes a draft `src/data/<slug>.ts` from the wiki.
+2. Finish the draft. For each ability, read the wiki text kept above it:
+   - Remove abilities that deal no damage, and write why in `noDamageAbilities` (step 3).
+   - Set the hit times, and the flags: on-hit, on-attack, Spellblade, `damageKind` (basic / ability / both).
+   - Anything that grows with the dummy's missing health or with crit chance is a `modifier`. Anything else new needs a new modifier kind in `src/simulation/ability-spec.ts`, with a test. A kit that really can't be data (Katarina's daggers) gets its own `<slug>-abilities.ts` like hers.
+   - Set the skill order. Check the stats against the wiki's infobox.
+3. In `src/data/playable-champions.ts`: add the champion to `playableChampions`, `modelledAbilities` and `noDamageAbilities`. In `src/simulation/abilities.ts`: add `<slug>: fromSpecs("<slug>")` (the type check reminds you).
+4. Add the ability pages to `abilityPages` in `scripts/check-wiki.mjs`.
+5. Tests: copy one champion's block from `tests/ranged-champions.test.ts` (each ability worked out by hand at level 18). The search, sources and page tests pick the champion up by themselves.
+6. If the champion's passive changes their stats (Yone's crits, Veigar's stacks), it goes in the data file (`critPassive`, `stackPassive`) and `championStats`.
+7. Update CLAUDE.md's scope, NOTES.md (decisions), and the skill-order line on the about page (`src/ui/info-view.ts`).
 
 ## Bugs (bug / cause / fix)
 - **Minimum stats: the beam missed builds (caught by the new slow test).**
@@ -673,7 +710,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 ### Legendary items
 | Item | Status | Why |
 |---|---|---|
-| Abyssal Mask | modelled | "Unmake": the dummy takes 12% more magic damage (after MR) from every source. Katarina is next to it. `src/items/abyssal-mask.ts`. |
+| Abyssal Mask | modelled | "Unmake": the dummy takes 12% more magic damage (after MR) from every source, within 700 units (centre to edge). Melee: always. Ranged: from 550 yes, from Caitlyn's 650 no. `src/items/abyssal-mask.ts`. |
 | Actualizer | checked, irrelevant | Active only. |
 | Archangel's Staff | checked, irrelevant | AP from mana, but Katarina has no mana (wiki: resource "None"). Its AP stat counts. |
 | Ardent Censer | checked, irrelevant | Needs healing allies. |
@@ -705,11 +742,11 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Guardian Angel | checked, irrelevant | Defensive. |
 | Guinsoo's Rageblade | modelled | "Wrath": 30 magic on-hit. "Seething Strike": daggers 1-4 give +8% attack speed each (from the next dagger); Phantom Hits (every on-hit effect again, 0.15 s later, at R's %) after daggers 7, 10, 13. `src/items/guinsoos-rageblade.ts`. |
 | Heartsteel | checked, irrelevant | "Colossal Consumption": 1 stack per second near the dummy, procs at 3. Stacks start at 0 when R is cast (Eric, Step 5d-6), so the 3rd comes at 3 s, after the ult. Permanent HP stacks also start at 0. Akali: the proc is an empowered basic attack, and her abilities apply no on-hit. |
-| Hexoptics C44 | checked, irrelevant | Increases basic damage by distance (1% per 50 units). Yone's Q is basic damage, but he stands right next to the dummy: 0%. |
+| Hexoptics C44 | modelled | +1% basic damage per 50 units (edge to edge), up to 10%. Melee: 0%. Ranged (550+): 10%, only on basic damage (Ezreal's Q). `src/items/hexoptics-c44.ts`. |
 | Hextech Gunblade | checked, irrelevant | Active only. |
 | Hextech Rocketbelt | checked, irrelevant | Active only. |
 | Hollow Radiance | modelled | "Immolate": 15 + 1% bonus HP magic damage every second (2 ticks inside the ult). "Desolate" needs a kill: irrelevant. `src/items/hollow-radiance.ts`. |
-| Horizon Focus | checked, irrelevant | Needs 600+ range; R's daggers only reach 550. |
+| Horizon Focus | modelled | "Hypershot": ability damage from 600+ units (centred) marks the dummy: +10% damage, the triggering hit included. Melee: never (130 units). Ranged: always. `src/items/horizon-focus.ts`. |
 | Hubris | checked, irrelevant | Needs takedowns (starts at 0 stacks). |
 | Hullbreaker | modelled | "Skipper": every 5th on-hit (daggers 5, 10, 15) deals 120% base AD + 5% of Katarina's max HP physical, × R's %. `src/items/hullbreaker.ts`. |
 | Iceborn Gauntlet | modelled | Spellblade, first dagger only: 150% base AD physical. `src/items/iceborn-gauntlet.ts`. |
@@ -747,7 +784,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Redemption | checked, irrelevant | Active only. |
 | Riftmaker | modelled | "Void Infusion": AP = 2% bonus HP. "Void Corruption": +2% damage per second in combat, up to 8%, starting at 0 when R is cast. `src/items/riftmaker.ts`. |
 | Rod of Ages | modelled | "Timeless" is full (grows with time): +100 HP, +30 AP, and +1 level for her stats (max 18). The level doesn't change R's rank. `src/items/rod-of-ages.ts`. |
-| Runaan's Hurricane | checked, irrelevant | Ranged champions only; Katarina can't buy it (in `katarinaCannotBuy`). |
+| Runaan's Hurricane | checked, irrelevant | Ranged champions only (`meleeCannotBuy`). Its bolts hit other enemies: on one dummy only its stats count. |
 | Rylai's Crystal Scepter | checked, irrelevant | Slow. |
 | Serpent's Fang | checked, irrelevant | Reduces shields; the dummy has none. |
 | Serylda's Grudge | checked, irrelevant | Slow. Its pen stat counts. |

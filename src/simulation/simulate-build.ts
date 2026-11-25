@@ -9,7 +9,7 @@
 // (src/items/sundered-sky.ts). Its crit replaces the normal one, so the build's crit chance doesn't
 // matter then.
 import type { Item } from "../data/items.ts";
-import type { DamageAbilityKey, PlayableChampionId } from "../data/playable-champions.ts";
+import { rangeOf, type DamageAbilityKey, type PlayableChampionId } from "../data/playable-champions.ts";
 import { effectsFor } from "../items/index.ts";
 import { checkAbilityRank, rRankAtLevel } from "../stats/ability-ranks.ts";
 import { championStats } from "../stats/champion-stats.ts";
@@ -36,7 +36,7 @@ function runOnce(run: Run, crit: boolean): SimulationResult {
     cast: abilityCast(run.champion, run.ability, run.rank, crit, run.attacker),
     attacker: run.attacker,
     target: run.target,
-    items: effectsFor(run.items), // fresh effects for every run: they keep their own stacks
+    items: effectsFor(run.items, rangeOf(run.champion)), // fresh effects for every run: they keep their own stacks
   });
 }
 
@@ -57,14 +57,16 @@ function prepare(
   target: Target,
   rank: number,
   ability: DamageAbilityKey,
+  stacks: number,
 ): Run {
   // The rank comes from the champion's own level, not Rod of Ages' extra level.
   checkAbilityRank(level, ability, rank);
-  return { champion, ability, rank, items, target, attacker: championStats(champion, level, items, ability) };
+  return { champion, ability, rank, items, target, attacker: championStats(champion, level, items, ability, stacks) };
 }
 
 // `rank` and `ability` are default parameters: leave them out and it's R at the highest
 // rank the level allows. The site always passes the ability and rank the user picked.
+// `stacks`: the champion's passive stacks (Veigar's Phenomenal Evil), 0 for everyone else.
 export function simulateBuild(
   champion: PlayableChampionId,
   level: number,
@@ -72,8 +74,9 @@ export function simulateBuild(
   target: Target,
   rank: number = rRankAtLevel(level),
   ability: DamageAbilityKey = "r",
+  stacks = 0,
 ): SimulationResult {
-  const run = prepare(champion, level, items, target, rank, ability);
+  const run = prepare(champion, level, items, target, rank, ability, stacks);
   if (sunderedSkyCrits(run)) return runOnce(withSunderedSkyCrit(run), true);
   const chance = abilityCanCrit(champion, ability) ? run.attacker.critChance : 0;
   // The peak: a crit if the build can crit at all, otherwise the normal cast.
@@ -88,9 +91,10 @@ export function critTotals(
   target: Target,
   rank: number = rRankAtLevel(level),
   ability: DamageAbilityKey = "r",
+  stacks = 0,
 ): CritTotals | undefined {
   if (!abilityCanCrit(champion, ability)) return undefined;
-  const run = prepare(champion, level, items, target, rank, ability);
+  const run = prepare(champion, level, items, target, rank, ability, stacks);
   const total = (result: SimulationResult) => result.events.reduce((sum, e) => sum + e.amount, 0);
   if (sunderedSkyCrits(run)) {
     const crit = total(runOnce(withSunderedSkyCrit(run), true));

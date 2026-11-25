@@ -17,6 +17,7 @@ import {
   modelledAbilities,
   noDamageAbilities,
   playableChampions,
+  kitOf,
   type AbilityKey,
 } from "../../data/playable-champions.ts";
 import { stages, type StageName } from "../../data/stages.ts";
@@ -183,6 +184,11 @@ function pageHtml(slug: string, name: string): string {
           <label class="field">
             <span class="field-label">Level</span>
             ${numberBoxHtml("level", "Level", 1, 'min="1" max="18"')}
+          </label>
+          <!-- Only for champions whose passive gives AP per stack (Veigar's Phenomenal Evil). -->
+          <label id="stacks-field" class="field" hidden>
+            <span id="stacks-label" class="field-label">Stacks</span>
+            ${numberBoxHtml("stacks", "Passive stacks", 25, 'min="0"')}
           </label>
         </div>
 
@@ -358,6 +364,12 @@ function renderSetup(): void {
     .join("");
 
   byId<HTMLInputElement>("level").value = String(state.level);
+  const stackPassive = kitOf(state.champion).stackPassive;
+  byId("stacks-field").hidden = !stackPassive;
+  if (stackPassive) {
+    byId("stacks-label").textContent = `${stackPassive.name} stacks (+${stackPassive.apPerStack} AP each)`;
+    byId<HTMLInputElement>("stacks").value = String(state.stacks);
+  }
   byId<HTMLInputElement>("boots-on").checked = state.bootsOn;
   const midQuest = byId<HTMLInputElement>("mid-quest");
   midQuest.checked = state.midQuest;
@@ -401,7 +413,7 @@ function renderMinStats(): void {
 // The grey hint in each empty minimum box: the stat of the build being shown, so you can see
 // how far a build is from a number before typing it.
 function renderMinStatHints(items: Item[] | undefined): void {
-  const stats = items ? panelStats(state.champion, state.level, items, state.ability) : null;
+  const stats = items ? panelStats(state.champion, state.level, items, state.ability, state.stacks) : null;
   for (const info of panelStatInfo) {
     byId<HTMLInputElement>(`min-${info.key}`).placeholder = stats ? shownStat(info.key, stats[info.key]) : "";
   }
@@ -715,7 +727,7 @@ function openSlotPicker(anchor: HTMLElement, slotId: string): void {
   const slot = Number(slotId);
   const others = lockedElsewhere(slot);
   const unavailable = new Map<string, string>();
-  for (const item of lockableLegendaries()) {
+  for (const item of lockableLegendaries(state.champion)) {
     const sameItem = others.find((o) => o.name === item.name);
     if (sameItem) {
       unavailable.set(item.name, `Already locked in item slot ${sameItem.slot + 1}`);
@@ -729,7 +741,7 @@ function openSlotPicker(anchor: HTMLElement, slotId: string): void {
   openItemPicker({
     anchor,
     title: `Item slot ${slot + 1}`,
-    items: lockableLegendaries().filter((i) => !banned.has(i.name)).sort(byName),
+    items: lockableLegendaries(state.champion).filter((i) => !banned.has(i.name)).sort(byName),
     unavailable,
     current: slotItems[slot] ?? null,
     onLock: (name) => update((s) => actions.lockItem(s, slot, name)),
@@ -771,7 +783,7 @@ export function mountChampionPage(root: HTMLElement, slug: string, ability: Abil
   root.innerHTML = pageHtml(slug, name);
   lastSlotsHtml = ""; // fresh, empty slots: the first render must draw them
   // Every legendary and boots the casino roll can flash through (loaded now, so it never blinks).
-  setRollPools(lockableLegendaries(), [...bootsPool("tier2"), ...bootsPool("tier3")]);
+  setRollPools(lockableLegendaries(champion), [...bootsPool("tier2"), ...bootsPool("tier3")]);
 
   root.addEventListener("click", (event) => {
     const button = (event.target as HTMLElement).closest("button");
@@ -835,6 +847,10 @@ export function mountChampionPage(root: HTMLElement, slug: string, ability: Abil
   byId<HTMLInputElement>("dummy-level").addEventListener("change", (event) => {
     const value = readNumber(event.target as HTMLInputElement);
     update((s) => (value === null ? s : actions.setDummyLevel(s, value)));
+  });
+
+  byId<HTMLInputElement>("stacks").addEventListener("change", (event) => {
+    update((s) => actions.setStacks(s, readNumber(event.target as HTMLInputElement)));
   });
 
   byId<HTMLInputElement>("dummy-health").addEventListener("change", (event) => {

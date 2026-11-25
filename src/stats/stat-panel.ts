@@ -48,8 +48,9 @@ export function panelStats(
   level: number,
   items: Item[],
   ability: DamageAbilityKey = "r",
+  stacks = 0, // Veigar's passive stacks (championStats)
 ): PanelStats {
-  const stats = championStats(champion, level, items, ability);
+  const stats = championStats(champion, level, items, ability, stacks);
   const base = playableChampions[champion].baseStats;
   return {
     health: stats.health,

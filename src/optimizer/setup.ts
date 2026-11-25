@@ -13,6 +13,7 @@ export type ChampionSetup = {
   ability: DamageAbilityKey; // the ability whose damage is calculated
   rank: number; // that ability's rank
   itemCount: number; // legendary items only; boots get their own slot on top
+  stacks?: number; // the champion's passive stacks (Veigar's Phenomenal Evil). Default 0.
 };
 
 // The preset for a stage: its level, the ability's rank in the usual skill order at that level

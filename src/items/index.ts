@@ -2,7 +2,7 @@
 // any modelled ability's damage (or aren't coded yet; see the item checklist in NOTES.md).
 import type { Item } from "../data/items.ts";
 import type { ItemEffect } from "../simulation/simulate.ts";
-import type { ItemPassive } from "./types.ts";
+import { meleeWielder, type ItemPassive, type Wielder } from "./types.ts";
 import { abyssalMask } from "./abyssal-mask.ts";
 import { bastionbreaker } from "./bastionbreaker.ts";
 import { blackCleaver } from "./black-cleaver.ts";
@@ -15,7 +15,9 @@ import { eclipse } from "./eclipse.ts";
 import { essenceReaver } from "./essence-reaver.ts";
 import { experimentalHexplate } from "./experimental-hexplate.ts";
 import { guinsoosRageblade } from "./guinsoos-rageblade.ts";
+import { hexopticsC44 } from "./hexoptics-c44.ts";
 import { hollowRadiance } from "./hollow-radiance.ts";
+import { horizonFocus } from "./horizon-focus.ts";
 import { hullbreaker } from "./hullbreaker.ts";
 import { icebornGauntlet } from "./iceborn-gauntlet.ts";
 import { immortalPath } from "./immortal-path.ts";
@@ -63,7 +65,9 @@ export const itemPassives: readonly ItemPassive[] = [
   essenceReaver,
   experimentalHexplate,
   guinsoosRageblade,
+  hexopticsC44,
   hollowRadiance,
+  horizonFocus,
   hullbreaker,
   icebornGauntlet,
   immortalPath,
@@ -109,11 +113,11 @@ export function passivesFor(items: readonly Item[]): ItemPassive[] {
   return passives;
 }
 
-// Fresh during-the-ult effects for a build, ready for the simulation.
-export function effectsFor(items: readonly Item[]): ItemEffect[] {
+// Fresh during-the-ult effects for a build, ready for the simulation. `wielder`: see types.ts.
+export function effectsFor(items: readonly Item[], wielder: Wielder = meleeWielder): ItemEffect[] {
   const effects: ItemEffect[] = [];
   for (const passive of passivesFor(items)) {
-    if (passive.createEffect) effects.push(passive.createEffect());
+    if (passive.createEffect) effects.push(passive.createEffect(wielder));
   }
   return effects;
 }

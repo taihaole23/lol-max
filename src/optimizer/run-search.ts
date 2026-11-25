@@ -27,7 +27,7 @@ export function runSearch(request: SearchRequest, onProgress: (fraction: number)
   };
   const explain = (build: FoundBuild): ExplainedBuild => ({
     ...build,
-    explanation: explainBuild(request.champion, request.level, build.items, request.target, request.rank, request.ability),
+    explanation: explainBuild(request.champion, request.level, build.items, request.target, request.rank, request.ability, request.stacks ?? 0),
   });
 
   const builds = findTopBuilds({ ...request, onProgress: (f) => report(f * mainSearchShare) });
@@ -37,12 +37,12 @@ export function runSearch(request: SearchRequest, onProgress: (fraction: number)
     const start = mainSearchShare + i * styleShare;
     const best = findTopBuilds({
       ...request,
-      constraints: styleConstraints(style.key, request.constraints),
+      constraints: styleConstraints(style.key, request.constraints, request.champion),
       onProgress: (f) => report(start + f * styleShare),
     })[0];
     return { style: style.key, build: best ? explain(best) : null };
   });
   report(1);
 
-  return { builds: builds.map(explain), styles, removedByFilter: legendaryPool(true, itemStatsFor(request.constraints?.minStats ?? {})).removedByFilter };
+  return { builds: builds.map(explain), styles, removedByFilter: legendaryPool(true, itemStatsFor(request.constraints?.minStats ?? {}), request.champion).removedByFilter };
 }

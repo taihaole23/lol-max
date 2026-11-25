@@ -11,5 +11,5 @@ const data = {
 export const sunfireAegis: ItemPassive = {
   name: "Sunfire Aegis",
   source: data.source,
-  createEffect: () => immolateEffect("Sunfire Aegis", data.baseDamage, data.bonusHealthRatio),
+  createEffect: (wielder) => immolateEffect("Sunfire Aegis", data.baseDamage, data.bonusHealthRatio, wielder),
 };

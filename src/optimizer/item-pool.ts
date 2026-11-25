@@ -1,5 +1,7 @@
-// Which items the optimizer may put in a build (the same for every playable champion: all are melee).
+// Which items the optimizer may put in a build. The same for every champion, except that only ranged
+// champions can buy ranged-only items (Runaan's Hurricane).
 import { items, type Item } from "../data/items.ts";
+import { rangeOf, type PlayableChampionId } from "../data/playable-champions.ts";
 import { meleeCannotBuy } from "../data/item-groups.ts";
 import { itemPassives } from "../items/index.ts";
 
@@ -35,9 +37,10 @@ export type ItemPool = {
 };
 
 // `useFilter: false` is only for the test that checks the filter changes nothing.
-// `extraStats`: see canChangeDamage.
-export function legendaryPool(useFilter = true, extraStats: readonly string[] = []): ItemPool {
-  const buyable = items.filter((item) => item.category === "legendary" && !meleeCannotBuy.items.includes(item.name));
+// `extraStats`: see canChangeDamage. `champion`: whose build it is (left out = a melee champion).
+export function legendaryPool(useFilter = true, extraStats: readonly string[] = [], champion?: PlayableChampionId): ItemPool {
+  const ranged = champion !== undefined && rangeOf(champion).ranged;
+  const buyable = items.filter((item) => item.category === "legendary" && (ranged || !meleeCannotBuy.items.includes(item.name)));
   if (!useFilter) return { legendaries: buyable, removedByFilter: [] };
   return {
     legendaries: buyable.filter((item) => canChangeDamage(item, extraStats)),

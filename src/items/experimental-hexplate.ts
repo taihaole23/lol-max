@@ -12,6 +12,8 @@ const data = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Experimental_Hexplate", patch: "26.23" },
   meleeBonusAttackSpeed: 0.5,
   meleePercentMoveSpeed: 0.2,
+  rangedBonusAttackSpeed: 0.25, // wiki: 50% melee, 25% ranged
+  rangedPercentMoveSpeed: 0.1, // wiki: 20% melee, 10% ranged
 };
 
 export const experimentalHexplate: ItemPassive = {
@@ -21,8 +23,8 @@ export const experimentalHexplate: ItemPassive = {
     step: "add",
     apply: (stats, context) => {
       if (context.ability !== "r") return;
-      stats.bonusAttackSpeed += data.meleeBonusAttackSpeed;
-      stats.percentMoveSpeed += data.meleePercentMoveSpeed;
+      stats.bonusAttackSpeed += context.ranged ? data.rangedBonusAttackSpeed : data.meleeBonusAttackSpeed;
+      stats.percentMoveSpeed += context.ranged ? data.rangedPercentMoveSpeed : data.meleePercentMoveSpeed;
     },
   },
 };

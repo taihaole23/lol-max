@@ -5,7 +5,7 @@
 import { dummyPresets, type EnemyType } from "../data/dummy-presets.ts";
 import { championLevels, ultimateRanks } from "../data/game-rules.ts";
 import { getItem, type Item } from "../data/items.ts";
-import { isModelled, playableChampions, type AbilityKey, type PlayableChampionId } from "../data/playable-champions.ts";
+import { isModelled, kitOf, playableChampions, type AbilityKey, type PlayableChampionId } from "../data/playable-champions.ts";
 import { stages, type StageName } from "../data/stages.ts";
 import type { BootsSetting } from "../optimizer/item-pool.ts";
 import type { SearchRequest } from "../optimizer/messages.ts";
@@ -45,6 +45,10 @@ export type PageState = {
   // Every ability uses it (Eric): missing-health damage (Garen's R, Akali's R2) and item effects
   // that read the dummy's health (Shadowflame, Kraken Slayer, Blade of the Ruined King...).
   dummyHealthPercent: number;
+  // The champion's passive stacks (Veigar's Phenomenal Evil: 1 AP each). Each stage preset fills it
+  // in (Eric: Early 50, Mid 125, Late 200, Full 300) and the user can type over it. 0 for champions
+  // without such a passive (and ignored for them).
+  stacks: number;
   // The user's conditions on the build. locked[i] = the item locked into item slot i
   // (null = the optimizer chooses). Banned items are left out of every search.
   locked: (string | null)[];
@@ -75,6 +79,7 @@ export function initialState(): PageState {
     customDummyItems: { legendaries: [], boots: null },
     typedDummyStats: noTypedStats,
     dummyHealthPercent: 100,
+    stacks: 0,
     locked: [],
     lockedBoots: null,
     banned: [],
@@ -98,7 +103,14 @@ export function championSetup(state: PageState): ChampionSetup | null {
   if (!isModelled(state.champion, ability)) return null;
   const rank = state.ranks[ability];
   if (rank < 1) return null;
-  return { champion: state.champion, level: state.level, ability, rank, itemCount: state.itemCount };
+  const stacks = kitOf(state.champion).stackPassive ? { stacks: state.stacks } : {};
+  return { champion: state.champion, level: state.level, ability, rank, itemCount: state.itemCount, ...stacks };
+}
+
+// The stage preset's stacks for a champion with a stack passive (Veigar), 0 for everyone else.
+function presetStacks(champion: PlayableChampionId, stage: StageName): number {
+  const passive = kitOf(champion).stackPassive;
+  return passive ? passive.stagePresets[stage] : 0;
 }
 
 // Why the selected ability can't be calculated, in plain words (null = it can).
@@ -157,7 +169,7 @@ export function buildConstraints(state: PageState): BuildConstraints {
 
 // What's wrong with the user's locks and bans, in plain words, or null. Shown on the page.
 export function conditionProblem(state: PageState): string | null {
-  return constraintProblem(buildConstraints(state), bootsSetting(state), state.itemCount);
+  return constraintProblem(buildConstraints(state), bootsSetting(state), state.itemCount, state.champion);
 }
 
 // What to send to the search worker, with `itemCount` legendary slots. null when the ability can't
@@ -231,7 +243,14 @@ export function applyStage(state: PageState, stage: StageName): PageState {
     dummyLevel: stages[stage].level,
     dummyLevelFollowsChampion: true,
     typedDummyStats: noTypedStats,
+    stacks: presetStacks(state.champion, stage),
   };
+}
+
+// Typing in the stacks box (Veigar). A whole number, 0 or more; an empty box goes back to the preset.
+export function setStacks(state: PageState, stacks: number | null): PageState {
+  if (stacks === null || !Number.isFinite(stacks)) return { ...state, stacks: presetStacks(state.champion, state.stage) };
+  return { ...state, stacks: Math.max(0, Math.round(stacks)) };
 }
 
 // A new level also resets the ranks to the usual skill order at that level (the user can move
@@ -273,7 +292,7 @@ export function selectAbility(state: PageState, ability: AbilityKey): PageState 
 // skill order at the same level (one champion's ranks can be wrong for another's skill order).
 export function selectChampion(state: PageState, champion: PlayableChampionId): PageState {
   if (champion === state.champion) return state;
-  return { ...state, champion, ranks: recommendedRanks(champion, state.level) };
+  return { ...state, champion, ranks: recommendedRanks(champion, state.level), stacks: presetStacks(champion, state.stage) };
 }
 
 // Locks only make sense in slots that exist: removing a slot removes its lock.

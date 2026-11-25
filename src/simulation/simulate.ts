@@ -28,7 +28,10 @@ export type DamageEvent = {
 // One piece of an ability hit's own damage, before armor / MR.
 // `abilityDamage` overrides the cast's `basicDamage` for this one piece: Garen's Q is a basic
 // attack (basic damage), but its bonus damage is ability damage (Liandry's, Luden's... see it).
-export type DamagePart = { raw: number; type: DamageType; source: string; abilityDamage?: boolean };
+// `basicDamage: true` says the piece is basic damage even though `abilityDamage` is true: Ezreal's Q
+// "deals basic damage, but also triggers spell effects". Left out: basic damage only when the cast is
+// basic damage and `abilityDamage` isn't set.
+export type DamagePart = { raw: number; type: DamageType; source: string; abilityDamage?: boolean; basicDamage?: boolean };
 
 // What a hit's damage may depend on besides the champion's stats: which hit it is, and the dummy's
 // HP the moment it lands (before its own damage). Akali's R2 grows with the dummy's missing health.
@@ -132,6 +135,9 @@ export type DamageInfo = {
   // The ability's own damage AND it counts as ability damage (true for every hit except Yone's Q,
   // which is basic damage). Items that say "dealing ability damage" check this, not `fromItem`.
   abilityDamage: boolean;
+  // The ability's own damage AND it's basic damage (Yone's Q, Garen's Q attack, Ezreal's Q). Items
+  // that boost basic damage check this (Hexoptics C44). Ezreal's Q is both basic and ability damage.
+  basicDamage?: boolean;
   // The ability's own damage only: which hit it belongs to (0 = the first in hitTimes). Each hit is
   // its own cast instance for Eclipse (Akali's E1 and E2 land together but are 2 casts).
   hitIndex?: number;
@@ -225,7 +231,7 @@ export function simulateCast(input: CastInput): SimulationResult {
   }
 
   // `hitIndex` is only given for the ability's own damage.
-  // `abilityDamage` is only given for a piece that overrides the cast's basicDamage (DamagePart).
+  // `abilityDamage` / `basicDamage` are only given for a piece that overrides the cast's basicDamage (DamagePart).
   function dealDamage(
     time: number,
     raw: number,
@@ -234,6 +240,7 @@ export function simulateCast(input: CastInput): SimulationResult {
     fromItem: boolean,
     hitIndex?: number,
     abilityDamage?: boolean,
+    basicDamage?: boolean,
   ): void {
     // 0 damage (e.g. R's AD part with no bonus AD) isn't really dealt, so it can't add stacks.
     const castInstance = hitIndex === undefined ? undefined : cast.oneCastInstance ? 0 : hitIndex;
@@ -241,6 +248,7 @@ export function simulateCast(input: CastInput): SimulationResult {
       type,
       fromItem,
       abilityDamage: !fromItem && (abilityDamage ?? !cast.basicDamage),
+      basicDamage: !fromItem && (basicDamage ?? (cast.basicDamage === true && abilityDamage === undefined)),
       hitIndex,
       castInstance,
     };
@@ -304,7 +312,7 @@ export function simulateCast(input: CastInput): SimulationResult {
     // All parts are worked out first, from the dummy's HP before this hit (Akali's R2).
     const parts = cast.hitDamage(attacker, { index, targetHp: target.hp, targetMaxHp: input.target.hp });
     for (const part of parts) {
-      dealDamage(time, part.raw, part.type, part.source, false, index, part.abilityDamage);
+      dealDamage(time, part.raw, part.type, part.source, false, index, part.abilityDamage, part.basicDamage);
     }
     hitsLanded++;
 

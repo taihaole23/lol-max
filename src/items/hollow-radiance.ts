@@ -12,5 +12,5 @@ const data = {
 export const hollowRadiance: ItemPassive = {
   name: "Hollow Radiance",
   source: data.source,
-  createEffect: () => immolateEffect("Hollow Radiance", data.baseDamage, data.bonusHealthRatio),
+  createEffect: (wielder) => immolateEffect("Hollow Radiance", data.baseDamage, data.bonusHealthRatio, wielder),
 };

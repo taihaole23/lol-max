@@ -13,7 +13,7 @@
 // It's not on-hit damage, so R's on-hit effectiveness doesn't shrink it.
 // ASSUMPTION: only the ability's own hits give stacks here. (Item damage over time can too, per
 //   the wiki, but "proc damage" can't, and most item damage is proc damage.)
-import type { ItemPassive } from "./types.ts";
+import { meleeWielder, type ItemPassive } from "./types.ts";
 
 const data = {
   source: { url: "https://wiki.leagueoflegends.com/en-us/Eclipse", patch: "26.23" },
@@ -21,12 +21,13 @@ const data = {
   stacksToProc: 2,
   stackWindowSeconds: 2,
   meleeMaxHealthDamage: 0.08,
+  rangedMaxHealthDamage: 0.05, // wiki: 8% melee, 5% ranged
 };
 
 export const eclipse: ItemPassive = {
   name: "Eclipse",
   source: data.source,
-  createEffect: () => {
+  createEffect: (wielder = meleeWielder) => {
     const stacks: { castInstance: number; time: number }[] = [];
     let used = false;
     return {
@@ -38,7 +39,8 @@ export const eclipse: ItemPassive = {
         const recent = stacks.filter((s) => context.time - s.time <= data.stackWindowSeconds);
         if (recent.length < data.stacksToProc) return;
         used = true;
-        context.dealDamage(data.meleeMaxHealthDamage * context.targetMaxHp, "physical");
+        const ratio = wielder.ranged ? data.rangedMaxHealthDamage : data.meleeMaxHealthDamage;
+        context.dealDamage(ratio * context.targetMaxHp, "physical");
       },
     };
   },

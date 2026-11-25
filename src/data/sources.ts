@@ -10,6 +10,7 @@ import { akali } from "./akali.ts";
 import { katarina } from "./katarina.ts";
 import { garen } from "./garen.ts";
 import { yone } from "./yone.ts";
+import { kitOf, playableChampions, type AbilityKey, type PlayableChampionId } from "./playable-champions.ts";
 import { itemPassives } from "../items/index.ts";
 
 export type Source = { label: string; url: string; patch: string };
@@ -21,6 +22,33 @@ const named = (label: string, source: { url: string; patch: string }): Source =>
 function unique(sources: Source[]): Source[] {
   const seen = new Set<string>();
   return sources.filter((s) => !seen.has(s.url) && seen.add(s.url));
+}
+
+// Champions whose abilities are data (`specs`): their sources come straight from their data file,
+// so adding one needs nothing here.
+function specChampionGroups(): SourceGroup[] {
+  const groups: SourceGroup[] = [];
+  for (const id of Object.keys(playableChampions) as PlayableChampionId[]) {
+    const kit = kitOf(id);
+    if (!kit.specs) continue;
+    const abilities = Object.entries(kit.specs).map(([key, spec]) => {
+      const name = kit.abilities.list.find((a) => a.key === key)?.name ?? key;
+      return named(`${name} (${(key as AbilityKey).toUpperCase()})`, spec!.source);
+    });
+    const passive = kit.stackPassive ? [named(`${kit.stackPassive.name} (passive)`, kit.stackPassive.source)] : [];
+    groups.push({
+      title: kit.name,
+      sources: unique([
+        named(`${kit.name}: stats, abilities, attack range`, kit.baseStats.source),
+        named(kit.name, kit.abilities.source),
+        named(kit.name, kit.adaptiveType.source),
+        named(kit.name, kit.rangeType.source),
+        ...passive,
+        ...abilities,
+      ]),
+    });
+  }
+  return groups;
 }
 
 export const sourceGroups: SourceGroup[] = [
@@ -73,6 +101,7 @@ export const sourceGroups: SourceGroup[] = [
       named("Demacian Justice (R)", garen.demacianJustice.source),
     ]),
   },
+  ...specChampionGroups(),
   {
     title: "Game rules",
     sources: unique([
@@ -87,6 +116,7 @@ export const sourceGroups: SourceGroup[] = [
       named("Adaptive force", gameRules.adaptiveForce.source),
       named("Move speed", gameRules.moveSpeed.source),
       named("Attack speed", gameRules.attackSpeed.source),
+      named("Range and champion size (melee and ranged positions, item auras)", gameRules.championSize.source),
     ]),
   },
   {

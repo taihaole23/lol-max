@@ -28,7 +28,11 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
   - E: 7 spins + 1 per 25% bonus attack speed, over 3 s; item effects count until 3 s after the last spin. Crits are counted at their AVERAGE (Eric), so E shows one number.
   - R grows with the dummy's missing health, set by the dummy's "Health %" box (below).
   - Skill order: R whenever possible, then max E, then Q, then W.
-- **Ranged champions (Lux, Caitlyn, Veigar, Ezreal)** are planned in `PLAN-ranged-champions.md` (not started).
+- **Ranged champions: Lux (Q, E, R), Caitlyn (Q, E, R), Veigar (Q, W, R), Ezreal (Q, W, E, R)** (Eric, Nov 2026; plan and decisions in `PLAN-ranged-champions.md`).
+  - They stand at their attack range (edge to edge); melee champions stand next to the dummy. Items use their ranged numbers, auras only count if the dummy is inside them, and Runaan's Hurricane is for ranged champions only. Show this on the site.
+  - Lux's W, Caitlyn's W and Veigar's E "deal no damage". Ezreal's W: the orb, then a 0-damage attack with no on-hit detonates it.
+  - Veigar: a "Phenomenal Evil stacks" box (1 AP each). Stage presets: Early 50, Mid 125, Late 200, Full 300. Editable.
+  - Their abilities are data (`specs` in each data file, read by `src/simulation/ability-spec.ts`). New champions should be data too when they fit; NOTES.md has the "Adding a champion" checklist and `scripts/new-champion.mjs` writes the draft.
 - For R: "Damage" = total damage dealt to ONE target dummy during ONE full ult channel (all daggers hit),
   including on-hit / on-attack effects and item effects triggered during the channel.
   Effects that deal damage AFTER the channel ends (burns, DoTs) are counted only for the part inside the channel window. Show this rule on the site.
@@ -50,7 +54,7 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
 - Item pool: completed legendary items only. No duplicates, and at most one item from each item group (the wiki's "Limitations", e.g. Void Staff + Terminus are both Blight). Items that only share a passive name can be combined, as in the real shop; the passive counts once.
 - Rules for item passives (show them on the site):
   - Item actives don't count.
-  - Combat starts when R is cast. Katarina stands right next to the dummy.
+  - Combat starts when R is cast. Melee champions stand right next to the dummy; ranged ones at their attack range.
   - Stacks that fill up on their own (Rod of Ages, Energized, Dead Man's Plate) are full at R cast. Stacks earned by fighting (Mejai's, Hubris, in-combat stacks) start at 0 and may build up during the ult.
 - Boots:
   - A toggle turns boots on or off. When on, the optimizer chooses tier-2 boots in their own slot. A build never has more than 6 slots.
@@ -59,7 +63,7 @@ The step-by-step plan for version 1 is in `PLAN.md`. Decisions and their reasons
 - Every input is editable (Eric, Step 7). A stage is a preset that fills in Katarina's level, R rank and item count, and the dummy's level and items.
   - Every rank must be legal for the level (R 6-10: rank 1, 11-15: up to 2, 16+: up to 3; Q/W/E rank n needs level 2n−1; total ≤ level).
   - Item slots: 1 to 6 legendaries with boots off, 1 to 5 with boots on.
-- The page shows a champion picker (playable: Katarina, Akali, Yone, Garen) and the champion's 4 abilities with rank boxes. Modelled abilities work; the others say "deals no damage" or "coming soon".
+- The page shows a champion picker (playable: Katarina, Akali, Yone, Garen, Lux, Caitlyn, Veigar, Ezreal) and the champion's 4 abilities with rank boxes. Modelled abilities work; the others say "deals no damage" or "coming soon".
 - Preset game stages:
 
   | Stage | Level | Items with boots on | Items with boots off |

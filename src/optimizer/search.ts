@@ -50,14 +50,14 @@ export function findTopBuilds(input: SearchInput): FoundBuild[] {
 function prepare(input: SearchInput) {
   checkSetup(input, input.boots);
   const constraints = input.constraints ?? noConstraints;
-  const problem = constraintProblem(constraints, input.boots, input.itemCount);
+  const problem = constraintProblem(constraints, input.boots, input.itemCount, input.champion);
   if (problem) throw new Error(problem);
   const banned = new Set(constraints.banned);
 
   // The pool: legendaries minus banned ones. A locked item the speed filter left out (Frozen Heart)
   // is added back at the end, so the user can still lock it in.
   const minStats = constraints.minStats ?? {};
-  const legendaries = legendaryPool(input.useFilter ?? true, itemStatsFor(minStats)).legendaries.filter((i) => !banned.has(i.name));
+  const legendaries = legendaryPool(input.useFilter ?? true, itemStatsFor(minStats), input.champion).legendaries.filter((i) => !banned.has(i.name));
   for (const name of constraints.required) {
     if (!legendaries.some((i) => i.name === name)) legendaries.push(getItem(name));
   }
@@ -85,7 +85,7 @@ function prepare(input: SearchInput) {
     // Looking for a stat's peak: only the stat matters, so the (slow) simulation is skipped.
     if (input.peakOf) return { items, damage: 0, gold, score: statsOf(items)[input.peakOf] };
 
-    const events = simulateBuild(input.champion, input.level, items, input.target, input.rank, input.ability).events;
+    const events = simulateBuild(input.champion, input.level, items, input.target, input.rank, input.ability, input.stacks ?? 0).events;
     let damage = 0;
     for (const event of events) damage += event.amount;
     if (peaks.size > 0) return { items, damage, gold, score: balancedScore(statsOf(items)) };
@@ -93,7 +93,7 @@ function prepare(input: SearchInput) {
   }
 
   // ---- Minimum stats ----
-  const statsOf = (items: Item[]) => panelStats(input.champion, input.level, items, input.ability);
+  const statsOf = (items: Item[]) => panelStats(input.champion, input.level, items, input.ability, input.stacks ?? 0);
   const limited = statsWithMinimum(minStats);
 
   // Does a finished build reach every minimum? (Always true with no minimums.)

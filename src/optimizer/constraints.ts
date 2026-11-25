@@ -1,6 +1,7 @@
 // The user's conditions on a build: items it MUST have (locked into a slot) and items it must NOT
 // have (banned). The search follows them; this file checks they make sense.
 import { getItem } from "../data/items.ts";
+import type { PlayableChampionId } from "../data/playable-champions.ts";
 import { canBeBuiltTogether } from "./legal.ts";
 import { bootsPool, legendaryPool, type BootsSetting } from "./item-pool.ts";
 import { panelStatInfo, type MinStats, type PanelStat } from "../stats/stat-panel.ts";
@@ -19,20 +20,20 @@ export type BuildConstraints = {
 
 export const noConstraints: BuildConstraints = { required: [], requiredBoots: null, banned: [], minStats: {}, maximize: [] };
 
-// Every legendary a (melee) champion can buy, INCLUDING ones the speed filter leaves out of the search:
-// a user may still lock Frozen Heart in on purpose.
-export const lockableLegendaries = () => legendaryPool(false).legendaries;
+// Every legendary the champion can buy, INCLUDING ones the speed filter leaves out of the search:
+// a user may still lock Frozen Heart in on purpose. No champion = a melee one.
+export const lockableLegendaries = (champion?: PlayableChampionId) => legendaryPool(false, [], champion).legendaries;
 
 // What's wrong with these conditions, in plain words, or null if they're fine.
 // The page shows the message; the search refuses to run on anything but null.
-export function constraintProblem(c: BuildConstraints, boots: BootsSetting, itemCount: number): string | null {
-  const allowed = new Set(lockableLegendaries().map((i) => i.name));
+export function constraintProblem(c: BuildConstraints, boots: BootsSetting, itemCount: number, champion?: PlayableChampionId): string | null {
+  const allowed = new Set(lockableLegendaries(champion).map((i) => i.name));
   const banned = new Set(c.banned);
 
   if (new Set(c.required).size !== c.required.length) return "The same item is locked in twice.";
   if (c.required.length > itemCount) return `${c.required.length} items are locked in, but there are only ${itemCount} item slots.`;
   for (const name of c.required) {
-    if (!allowed.has(name)) return `${name} isn't a completed item a melee champion can buy.`;
+    if (!allowed.has(name)) return `${name} isn't a completed item this champion can buy.`;
     if (banned.has(name)) return `${name} is both locked in and banned.`;
   }
   for (let a = 0; a < c.required.length; a++) {

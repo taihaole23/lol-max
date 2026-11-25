@@ -33,6 +33,7 @@ const abilitySourceLabels: Record<string, string> = {
   crit: "Critical strike", // Yone's and Garen's Q: what a crit adds (the breakdowns show the peak, a crit)
   averageCrit: "Critical strikes (average)", // Garen's E: what crits add on average at the build's crit chance
   missingHealth: "Missing-health bonus", // Akali's R2, Garen's R: the extra from the dummy's missing health
+  critChance: "Crit-chance bonus", // Caitlyn's R: the extra from crit chance (it never crits itself)
 };
 
 function row(label: string, damage: number, total: number, item?: Item, damageType?: DamageType): Row {

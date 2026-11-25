@@ -6,6 +6,7 @@
 // - Boots are left alone: they have their own slot and every style can use any boots.
 // - The user's locked items stay locked even if they don't give the stat (their choice wins).
 import type { Item } from "../data/items.ts";
+import type { PlayableChampionId } from "../data/playable-champions.ts";
 import { lockableLegendaries, noConstraints, type BuildConstraints } from "./constraints.ts";
 
 export type StyleKey = "ap" | "ad" | "attackSpeed";
@@ -19,10 +20,10 @@ export const buildStyles: { key: StyleKey; label: string; stat: string; short: s
 export const givesStat = (item: Item, stat: string) => (item.stats[stat] ?? 0) > 0;
 
 // The user's conditions plus "ban every legendary that doesn't give this stat".
-export function styleConstraints(style: StyleKey, constraints: BuildConstraints = noConstraints): BuildConstraints {
+export function styleConstraints(style: StyleKey, constraints: BuildConstraints = noConstraints, champion?: PlayableChampionId): BuildConstraints {
   const stat = buildStyles.find((s) => s.key === style)!.stat;
   const banned = new Set(constraints.banned);
-  for (const item of lockableLegendaries()) {
+  for (const item of lockableLegendaries(champion)) {
     if (!givesStat(item, stat) && !constraints.required.includes(item.name)) banned.add(item.name);
   }
   return { ...constraints, banned: [...banned] };

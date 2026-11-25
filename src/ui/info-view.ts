@@ -122,15 +122,24 @@ export function rulesHtml(): string {
       <li><strong>Ranks follow the game's rules:</strong> Q, W and E can reach rank 1 to 5 at levels 1, 3, 5, 7
         and 9, R reaches rank 1 to 3 at levels 6, 11 and 16, and all ranks together can't be more than the level.
         The stage presets level each champion the usual way: R whenever possible, then max Q, then E, then W
-        (Yone: then W, then E; Garen: max E, then Q, then W).</li>
+        (Yone: then W, then E; Garen and Lux: max E, then Q, then W; Veigar: max Q, then W, then E).</li>
+      <li><strong>Veigar's passive stacks</strong> (Phenomenal Evil, +1 AP each) are a box you can edit. The stage
+        presets fill in 50, 125, 200 and 300 stacks.</li>
+      <li><strong>Travel time is ignored:</strong> missiles land the moment they're cast (Veigar's W still lands
+        after its 1.2 s delay).</li>
       <li><strong>No runes</strong> (planned for version 2).</li>
     </ul>
 
     <h3>Item passives</h3>
     <ul>
       <li>Item actives don't count.</li>
-      <li>Combat starts when R is cast (Katarina) or when the first hit lands, with the champion standing right
-        next to the dummy.</li>
+      <li>Combat starts when R is cast (Katarina) or when the first hit lands. Melee champions stand right
+        next to the dummy. Ranged champions (Lux, Caitlyn, Veigar, Ezreal) stand at their attack range, so items
+        with an aura only count if the dummy is inside it: Sunfire Aegis and Hollow Radiance (325 units) and
+        Unending Despair (650) never reach it; Abyssal Mask (700, measured to the dummy's edge) reaches it from
+        550 but not from Caitlyn's 650.</li>
+      <li>Items with separate melee and ranged numbers (Blade of the Ruined King, Kraken Slayer, Eclipse...)
+        use the ranged numbers for ranged champions. Only ranged champions can buy Runaan's Hurricane.</li>
       <li>Items that work on your ultimate (Malignance, Zeke's Convergence, Experimental Hexplate) only count for R.
         For Katarina, Spellblade procs on R (first dagger) and on E's hit; her Q applies no on-hit effects, so it
         never procs.</li>

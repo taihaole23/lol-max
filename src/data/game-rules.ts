@@ -86,6 +86,15 @@ export const attackSpeed = {
   cap: 2.5,
 };
 
+// How far apart two champions are. A basic attack's range is measured EDGE to edge (a 550 attack
+// range reaches a champion whose nearest edge is 550 units from hers); auras are measured from her
+// CENTRE ("For champion-on-champion gameplay, an edge range of 550 units is equivalent to a centered
+// range of 680 units, since most champions have a gameplay radius of 65 units").
+export const championSize = {
+  source: { url: WIKI + "Range", patch: "26.23" },
+  gameplayRadius: 65,
+};
+
 // Our own rules for the simulation, not Riot's (see CLAUDE.md), so no wiki source.
 export const simulationRules = {
   // Overkill rule: the dummy never dies. Its HP stops here, and later hits still count in full.

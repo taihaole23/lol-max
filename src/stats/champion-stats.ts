@@ -15,11 +15,13 @@ export type ChampionStats = Attacker;
 
 // `chosenLevel` is the level the user picked; Rod of Ages may raise the level her stats use.
 // `ability` = the ability being cast. A few passives only switch on for one (Hexplate: casting R).
+// `stacks` = the champion's passive stacks (Veigar's Phenomenal Evil: 1 AP each). 0 for everyone else.
 export function championStats(
   champion: PlayableChampionId,
   chosenLevel: number,
   items: Item[],
   ability: DamageAbilityKey = "r",
+  stacks = 0,
 ): ChampionStats {
   const kit: ChampionKit = playableChampions[champion];
   const base = kit.baseStats;
@@ -35,7 +37,8 @@ export function championStats(
 
   const stats: ChampionStats = {
     level,
-    ap: sumStat(items, "abilityPower"),
+    // Passive AP (Veigar's stacks) counts as AP like an item's, so Rabadon's % bonus multiplies it too.
+    ap: sumStat(items, "abilityPower") + (kit.stackPassive ? kit.stackPassive.apPerStack * stacks : 0),
     apPercentBonus: 0, // item passives add to it; it's applied to `ap` at the very end
     flatMoveSpeed: base.moveSpeed + sumStat(items, "moveSpeed"),
     percentMoveSpeed: sumStat(items, "percentMoveSpeed"),
@@ -67,7 +70,8 @@ export function championStats(
 
   // Stat-changing item passives run now, after the plain stats are added up,
   // one step at a time in the order of `statSteps` (see src/items/types.ts).
-  const context = { level, baseHealth, baseAd, items, ability, adaptiveWhenTied: kit.adaptiveType.whenTied };
+  const ranged = kit.rangeType.type === "ranged";
+  const context = { level, baseHealth, baseAd, items, ability, adaptiveWhenTied: kit.adaptiveType.whenTied, ranged };
   for (const step of statSteps) {
     for (const passive of passives) {
       if (passive.stats?.step === step) passive.stats.apply(stats, context);

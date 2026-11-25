@@ -3,7 +3,8 @@ import { test, expect } from "vitest";
 import { itemGroups, meleeCannotBuy } from "../src/data/item-groups.ts";
 import { getItem } from "../src/data/items.ts";
 import { PATCH } from "../src/data/patch.ts";
-import { playableChampions } from "../src/data/playable-champions.ts";
+import { playableChampions, rangeOf, type PlayableChampionId } from "../src/data/playable-champions.ts";
+import { legendaryPool } from "../src/optimizer/item-pool.ts";
 import { canBeBuiltTogether } from "../src/optimizer/legal.ts";
 
 test("the group data is for the site's patch", () => {
@@ -18,10 +19,13 @@ test("every item in a group exists in the snapshot", () => {
   for (const name of meleeCannotBuy.items) getItem(name);
 });
 
-// The item pool leaves out ranged-only items for everyone, which is only right if every playable
-// champion is melee. A ranged champion would need the pool to depend on the champion.
-test("every playable champion is melee", () => {
-  for (const champion of Object.values(playableChampions)) expect(champion.rangeType.type, champion.name).toBe("melee");
+// Ranged-only items (Runaan's Hurricane) are in the pool for ranged champions only.
+test("ranged-only items are buyable by ranged champions only", () => {
+  for (const id of Object.keys(playableChampions) as PlayableChampionId[]) {
+    const names = legendaryPool(false, [], id).legendaries.map((i) => i.name);
+    for (const name of meleeCannotBuy.items) expect(names.includes(name), `${id}: ${name}`).toBe(rangeOf(id).ranged);
+  }
+  expect(legendaryPool(false).legendaries.map((i) => i.name)).not.toContain("Runaan's Hurricane"); // no champion = melee
 });
 
 test("no item is listed twice in the same group", () => {

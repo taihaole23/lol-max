@@ -1,9 +1,17 @@
 // The champions the user can pick to build for (the attacker, not the dummy).
-// Adding a champion = a data file like katarina.ts, an entry in `playableChampions` below, and the
-// code that models the abilities (src/simulation/abilities.ts).
+// Adding a champion: run `node scripts/new-champion.mjs <Name>` for a draft data file, finish it, and add
+// it to `playableChampions`, `modelledAbilities` and `noDamageAbilities` below. If every ability fits
+// the data shape in src/simulation/ability-spec.ts (Lux, Caitlyn, Veigar, Ezreal), that's all: no code.
+// Champions with unusual abilities (Katarina's daggers, Yone's crits) have their own code instead,
+// listed in src/simulation/abilities.ts. NOTES.md has the full checklist ("Adding a champion").
+import type { AbilitySpec } from "../simulation/ability-spec.ts";
 import { akali } from "./akali.ts";
+import { caitlyn } from "./caitlyn.ts";
+import { ezreal } from "./ezreal.ts";
 import { garen } from "./garen.ts";
 import { katarina } from "./katarina.ts";
+import { lux } from "./lux.ts";
+import { veigar } from "./veigar.ts";
 import { yone } from "./yone.ts";
 
 // Every champion has these 4 ability keys.
@@ -14,8 +22,9 @@ export type AbilityKey = "q" | "w" | "e" | "r";
 // that champion's ability code reads.
 export type ChampionKit = {
   name: string;
-  // Melee champions can't buy ranged-only items (Runaan's Hurricane), and the item pool assumes melee.
-  rangeType: { source: { url: string; patch: string }; type: "melee" };
+  // Melee champions can't buy ranged-only items (Runaan's Hurricane) and stand next to the dummy.
+  // Ranged champions stand at their attack range (wiki, edge to edge), and get items' ranged numbers.
+  rangeType: { source: { url: string; patch: string }; type: "melee" } | { source: { url: string; patch: string }; type: "ranged"; attackRange: number };
   baseStats: {
     source: { url: string; patch: string };
     health: { base: number; perLevel: number };
@@ -39,6 +48,17 @@ export type ChampionKit = {
     bonusAdPerExcessCrit: number; // bonus AD per 100% crit chance over the cap
     critDamageModifier: number; // his crits deal this share of the usual crit damage
   };
+  // Only champions whose passive gives AP per stack (Veigar). The page shows a box for the stacks,
+  // filled in by each stage preset and editable.
+  stackPassive?: {
+    source: { url: string; patch: string };
+    name: string; // "Phenomenal Evil"
+    apPerStack: number;
+    stagePresets: { early: number; mid: number; late: number; full: number };
+  };
+  // Abilities described as data (src/simulation/ability-spec.ts). Champions with their own ability
+  // code (Katarina, Akali, Yone, Garen) leave this out.
+  specs?: Partial<Record<AbilityKey, AbilitySpec>>;
 };
 
 // `satisfies` checks each entry has every ChampionKit field, without forgetting the exact
@@ -48,10 +68,18 @@ export const playableChampions = {
   akali,
   yone,
   garen,
+  lux,
+  caitlyn,
+  veigar,
+  ezreal,
 } satisfies Record<string, ChampionKit>;
 
-// "katarina" | "akali" | "yone" | "garen"
+// "katarina" | "akali" | ...
 export type PlayableChampionId = keyof typeof playableChampions;
+
+// The champion's data, seen as a ChampionKit (so optional parts like `stackPassive` can be read for
+// any champion, not only the ones that have them).
+export const kitOf = (champion: PlayableChampionId): ChampionKit => playableChampions[champion];
 
 export const isPlayableChampion = (slug: string): slug is PlayableChampionId => slug in playableChampions;
 
@@ -66,6 +94,10 @@ export const modelledAbilities: Record<PlayableChampionId, readonly DamageAbilit
   akali: ["q", "e", "r"],
   yone: ["q", "w", "r"],
   garen: ["q", "e", "r"],
+  lux: ["q", "e", "r"],
+  caitlyn: ["q", "e", "r"],
+  veigar: ["q", "w", "r"],
+  ezreal: ["q", "w", "e", "r"],
 };
 
 // Abilities that deal no damage by themselves, with the reason the page shows instead of "coming soon".
@@ -88,7 +120,25 @@ export const noDamageAbilities: Record<PlayableChampionId, Partial<Record<Abilit
   garen: {
     w: "Courage only reduces the damage Garen takes and gives him a shield. His passive (Perseverance) only heals him.",
   },
+  lux: {
+    w: "Prismatic Barrier only shields Lux and her allies. Her passive (Illumination) isn't modelled.",
+  },
+  caitlyn: {
+    w:
+      "Yordle Snap Trap deals no damage by itself: its damage comes from Caitlyn's passive (Headshot) on the " +
+      "trapped enemy, and the site doesn't model her passive.",
+  },
+  veigar: {
+    e: "Event Horizon only creates a cage that stuns enemies who touch its edge.",
+  },
+  ezreal: {},
 };
+
+// The champion's range type and how far from the dummy she stands (src/items/types.ts, Wielder).
+export function rangeOf(champion: PlayableChampionId): { ranged: boolean; distance: number } {
+  const range: ChampionKit["rangeType"] = playableChampions[champion].rangeType;
+  return range.type === "ranged" ? { ranged: true, distance: range.attackRange } : { ranged: false, distance: 0 };
+}
 
 export function isDamageAbility(key: AbilityKey): key is DamageAbilityKey {
   return (damageAbilities as readonly string[]).includes(key);

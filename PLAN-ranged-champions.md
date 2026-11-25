@@ -1,6 +1,7 @@
-# Future plan: ranged champions (Lux, Caitlyn, Veigar, Ezreal)
+# Plan: ranged champions (Lux, Caitlyn, Veigar, Ezreal)
 
-Status: **planned, not started** (Nov 2026). Garen was done first instead.
+Status: **done** (Nov 25, 2026). What was built, and the decisions made on the way, are in NOTES.md
+("Ranged champions" in Status and Decisions). Veigar's W uses the wiki's 1.2 s, not 1.221.
 Numbers below were read from the wiki on 2026-11-24 (patch 26.23). Re-check them before building,
 since a patch may have changed them.
 

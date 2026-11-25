@@ -39,6 +39,19 @@ const abilityPages = [
   "Template:Data_Yone/Mortal_Steel",
   "Template:Data_Yone/Spirit_Cleave",
   "Template:Data_Yone/Fate_Sealed",
+  "Template:Data_Lux/Light_Binding",
+  "Template:Data_Lux/Lucent_Singularity",
+  "Template:Data_Lux/Final_Spark",
+  "Template:Data_Caitlyn/Piltover_Peacemaker",
+  "Template:Data_Caitlyn/90_Caliber_Net",
+  "Template:Data_Caitlyn/Ace_in_the_Hole",
+  "Template:Data_Veigar/Baleful_Strike",
+  "Template:Data_Veigar/Dark_Matter",
+  "Template:Data_Veigar/Primordial_Burst",
+  "Template:Data_Ezreal/Mystic_Shot",
+  "Template:Data_Ezreal/Essence_Flux",
+  "Template:Data_Ezreal/Arcane_Shift",
+  "Template:Data_Ezreal/Trueshot_Barrage",
 ];
 
 // Big data modules: only the blocks we use are kept, not the whole page.
@@ -99,7 +112,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // If the wiki says "too many requests" (429) or is briefly down (5xx), wait and try again: 5 s,
 // then 10, 20, 40 (or as long as the wiki asks, in its Retry-After header).
-async function rawPage(page) {
+export async function rawPage(page) {
   const url = `${WIKI}${encodeURI(page).replaceAll("'", "%27")}?action=raw`;
   for (let attempt = 0; ; attempt++) {
     const response = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
@@ -116,7 +129,7 @@ async function rawPage(page) {
 // One entry of a Lua data module:   ["Liandry's Torment"] = {  ...  },
 // From that line to the closing brace at the same indent.
 // Upper/lower case is ignored: Riot writes "Blade of The Ruined King", the wiki "Blade of the Ruined King".
-function luaBlock(text, name) {
+export function luaBlock(text, name) {
   const lines = text.split("\n");
   const quoted = JSON.stringify(name).slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const header = new RegExp(`^\\s*\\["${quoted}"\\]\\s*=\\s*\\{`, "i");

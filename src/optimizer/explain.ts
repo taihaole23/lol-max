@@ -27,10 +27,11 @@ export function explainBuild(
   target: Target,
   rank?: number,
   ability?: DamageAbilityKey,
+  stacks = 0, // Veigar's passive stacks (championStats)
 ): BuildExplanation {
-  const totalOf = (build: Item[]) => breakdown(simulateBuild(champion, level, build, target, rank, ability).events).total;
+  const totalOf = (build: Item[]) => breakdown(simulateBuild(champion, level, build, target, rank, ability, stacks).events).total;
 
-  const result = breakdown(simulateBuild(champion, level, items, target, rank, ability).events);
+  const result = breakdown(simulateBuild(champion, level, items, target, rank, ability, stacks).events);
   const noItemsDamage = totalOf([]);
   const marginal = items.map((item) => ({
     item,
@@ -38,7 +39,7 @@ export function explainBuild(
   }));
   const sumOfMarginals = marginal.reduce((sum, m) => sum + m.damage, 0);
 
-  const crit = critTotals(champion, level, items, target, rank, ability);
+  const crit = critTotals(champion, level, items, target, rank, ability, stacks);
 
   return {
     breakdown: result,
