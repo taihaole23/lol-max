@@ -8,6 +8,7 @@ import type { Breakdown } from "../simulation/breakdown.ts";
 import type { CritTotals } from "../simulation/simulate-build.ts";
 import { escapeHtml } from "./html.ts";
 import { goldHtml, itemIconHtml } from "./icons.ts";
+import { sunderedSkyData } from "../items/sundered-sky.ts";
 
 // A row's label, coloured by damage type when it has exactly one (purple magic, orange physical).
 function labelHtml(r: Row): string {
@@ -93,6 +94,9 @@ function abilitySplit(b: Breakdown): string {
 }
 
 export const alwaysCrits = (crit: CritTotals) => crit.chance >= 1;
+// The hover text on an always-crit number: why it always crits.
+export const alwaysCritTitle = (crit: CritTotals) =>
+  crit.guaranteedBy ? `Crit (${crit.guaranteedBy} always crits)` : "Crit (100% crit chance)";
 // 0% crit chance: Q can never crit, so the crit number would never happen (Eric).
 export const neverCrits = (crit: CritTotals) => crit.chance <= 0;
 
@@ -100,7 +104,7 @@ export const neverCrits = (crit: CritTotals) => crit.chance <= 0;
 // Used on the build cards; the big total builds the same two spans itself so it can count up.
 export function critPairHtml(crit: CritTotals): string {
   // 100% crit chance: Q always crits, so the no-crit number would never happen (Eric).
-  if (alwaysCrits(crit)) return `<span class="crit" title="Crit (100% crit chance)">${formatDamage(crit.crit)}</span>`;
+  if (alwaysCrits(crit)) return `<span class="crit" title="${alwaysCritTitle(crit)}">${formatDamage(crit.crit)}</span>`;
   if (neverCrits(crit)) return formatDamage(crit.noCrit);
   return (
     `<span class="no-crit" title="No crit">${formatDamage(crit.noCrit)}</span>` +
@@ -115,6 +119,9 @@ export function critPairHtml(crit: CritTotals): string {
 // if the build can crit at all), and the breakdowns show that peak (Eric).
 function critHtml(crit: CritTotals): string {
   const chance = `${Math.round(crit.chance * 100)}%`;
+  if (crit.guaranteedBy) {
+    return `<p class="crit-totals">${crit.guaranteedBy}: Q always crits, for ${Math.round(sunderedSkyData.critDamageRatio * 100)}% of the usual crit damage: <strong class="crit">${formatDamage(crit.crit)}</strong>.</p>`;
+  }
   if (alwaysCrits(crit)) {
     return `<p class="crit-totals">100% crit chance: Q always crits, for <strong class="crit">${formatDamage(crit.crit)}</strong>.</p>`;
   }

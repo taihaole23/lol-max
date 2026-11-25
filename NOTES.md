@@ -627,6 +627,10 @@ None right now.
   - Bug: those items were coded at full damage, and Eclipse was marked as never procing from R.
   - Cause: we only read the item pages. The notes on R's own data page (`Template:Data_Katarina/Death_Lotus`) list a bug where R's on-hit effectiveness also shrinks those 3 items, and say each dagger counts as a separate hit for Eclipse.
   - Fix: those 3 items now multiply by R's on-hit effectiveness, and Eclipse is modelled. Lesson: for every new effect, also read the ability's own data page notes.
+- **Home page: "Featuring" and "Patch" lines drawn over the search results (Nov 25, 2026).**
+  - Bug: typing in the home search, the list of champions had the Featuring and Patch lines on top of it.
+  - Cause: every line under the title rises in with a CSS animation that uses `transform`. An element with a transform becomes its own layer (a "stacking context"), and layers later in the page are drawn on top, so the lines after the search covered its list, whatever its `z-index`.
+  - Fix: `#home-search` gets `position: relative; z-index: 5`, which puts its whole layer above its siblings.
 
 ## Item checklist
 Every legendary and boots item in the snapshot, checked in Step 5c against the wiki (patch 26.23).
@@ -634,7 +638,7 @@ A test (`tests/item-checklist.test.ts`) fails if an item is missing from these t
 
 **What this checks:** only an item's *passive*. Every item's plain stats (AP, AD, HP, pen…) are already counted by `src/stats/`.
 The question for each item is: does its passive change Death Lotus damage on one dummy during one channel, under our rules (see "Rules for item passives" in Decisions)?
-(Checked for R. With Q and E added, every "modelled" item was re-read for one-hit abilities; see "Q / E details" in Decisions. With Akali added, every item was re-read for her: no on-hit at all, E's two casts at once, and R's longer window (5.5 s); see "Akali and the items" in Decisions. The "irrelevant" items stay irrelevant: each needs basic attacks or on-hit, takedowns, slows, allies, mana or other enemies. Unending Despair became "modelled" for Akali's R. With Yone added, every crit or basic-attack item was re-read: see "Yone and the items" in Decisions. With Garen added, every item that needs a basic attack or a longer window was re-read: his Q is a real basic attack (Sundered Sky became "to model"), and his E's window reaches 6 s (Unending Despair now counts; Heartsteel still needs a basic attack after 3 s of charging, which neither Q nor E gives).)
+(Checked for R. With Q and E added, every "modelled" item was re-read for one-hit abilities; see "Q / E details" in Decisions. With Akali added, every item was re-read for her: no on-hit at all, E's two casts at once, and R's longer window (5.5 s); see "Akali and the items" in Decisions. The "irrelevant" items stay irrelevant: each needs basic attacks or on-hit, takedowns, slows, allies, mana or other enemies. Unending Despair became "modelled" for Akali's R. With Yone added, every crit or basic-attack item was re-read: see "Yone and the items" in Decisions. With Garen added, every item that needs a basic attack or a longer window was re-read: his Q is a real basic attack (Sundered Sky became "to model", then "modelled"), and his E's window reaches 6 s (Unending Despair now counts; Heartsteel still needs a basic attack after 3 s of charging, which neither Q nor E gives).)
 
 **Statuses:**
 - **modelled**: the passive is coded in `src/items/` and has a test.
@@ -757,7 +761,7 @@ Source for every row: the item's wiki page, read through the wiki's item data mo
 | Stormrazor | modelled | Energized (dagger 1 only): 100 magic on-hit, × R's %. `src/items/stormrazor.ts`. |
 | Stormsurge | modelled | Deal 25% of the dummy's max HP within a rolling 2.5 s → lightning strike 2 s later, 125 + 10% AP magic. Inside Katarina's ult only if triggered by 0.5 s; Akali's R1 + R2 (2.5 s apart) count together. `src/items/stormsurge.ts`. |
 | Stridebreaker | checked, irrelevant | Cleave hits only other enemies; active doesn't count. |
-| Sundered Sky | to model | Empowers the next *basic attack* against a champion: a guaranteed crit. Yone's Q is basic damage, not a basic attack: irrelevant for him. **Garen's Q IS a basic attack**, so it applies. Not modelled yet: the wiki's numbers disagree ("60% + IE 24% bonus damage" vs. its V26.01 note "critical damage ratio 80%"), and it's unclear whether Q's bonus damage is multiplied too. Until then, Garen Q builds with Sundered Sky are undercounted. |
+| Sundered Sky | modelled | "Lightshield Strike": the next *basic attack* against a champion crits for 80% of total crit damage (160%, 184% with Infinity Edge; the wiki's "60% + IE 24% bonus damage" is the same number). Only Garen's Q is a basic attack (Yone's Q is basic damage, not an attack). It replaces the normal crit, so Q always crits and shows one number. The heal is ignored. `src/items/sundered-sky.ts`, `tests/items/sundered-sky.test.ts`. Check in the Practice Tool. |
 | Sunfire Aegis | modelled | "Immolate": 20 + 1.5% bonus HP magic damage every second (2 ticks inside the ult). `src/items/sunfire-aegis.ts`. |
 | Terminus | modelled | "Shadow": on-hit 30 + 10% bonus AD + 10% AP magic. "Juxtaposition": Dark hits (2nd, 4th, 6th on-hit) give +10% armor and magic pen each, up to 30%. `src/items/terminus.ts`. Check: see "Unconfirmed". |
 | The Collector | checked, irrelevant | Execute below 5% HP; under our overkill rule the dummy never dies. Its lethality stat counts. |

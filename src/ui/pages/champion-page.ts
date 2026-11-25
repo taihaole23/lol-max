@@ -33,7 +33,7 @@ import { iconPath, itemIconHtml } from "../icons.ts";
 import { closeItemPicker, openItemPicker } from "../item-picker.ts";
 import { progressLabel } from "../progress.ts";
 import { countTo, showText } from "../count-up.ts";
-import { alwaysCrits, neverCrits, breakdownHtml, buildAt, topBuildsHtml } from "../results-view.ts";
+import { alwaysCrits, alwaysCritTitle, neverCrits, breakdownHtml, buildAt, topBuildsHtml } from "../results-view.ts";
 import { paths } from "../router.ts";
 import * as searches from "../searches.ts";
 import { landGapMs, rollingAllowed, rollingSlotHtml, setRollPools, startRolling, stopRolling } from "../slot-roller.ts";
@@ -589,9 +589,10 @@ function showTotal(total: HTMLElement, build: ExplainedBuild): void {
     if (layout === "pair") {
       total.innerHTML = `<span class="no-crit" title="No crit"></span><span class="crit-slash">/</span><span class="crit" title="Crit"></span>`;
     } else if (layout === "crit") {
-      total.innerHTML = `<span class="crit" title="Crit (100% crit chance)"></span>`;
+      total.innerHTML = `<span class="crit"></span>`;
     }
   }
+  if (layout === "crit") total.querySelector<HTMLElement>(".crit")!.title = alwaysCritTitle(crit!);
   if (!crit || layout === "plain") return countTo(total, build.damage);
   if (layout === "pair") countTo(total.querySelector<HTMLElement>(".no-crit")!, crit.noCrit);
   countTo(total.querySelector<HTMLElement>(".crit")!, crit.crit);

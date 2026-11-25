@@ -8,6 +8,7 @@ import { katarina } from "../data/katarina.ts";
 import { yone } from "../data/yone.ts";
 import { PATCH } from "../data/patch.ts";
 import { sourceGroups } from "../data/sources.ts";
+import { sunderedSkyData } from "../items/sundered-sky.ts";
 import { legendaryPool } from "../optimizer/item-pool.ts";
 import { searchSettings } from "../optimizer/search.ts";
 import { escapeHtml } from "./html.ts";
@@ -90,6 +91,10 @@ export function rulesHtml(): string {
         ability damage, so items that need ability damage (Liandry's, Luden's...) trigger from it. Item effects
         count until ${simulationRules.oneHitWindowSeconds} s after the hit. (A game bug that makes the bonus about
         6.5% bigger on a crit isn't counted.)</li>
+      <li><strong>Sundered Sky on Q:</strong> Q is a real basic attack, so Sundered Sky's "Lightshield Strike"
+        makes it crit every time, for ${Math.round(sunderedSkyData.critDamageRatio * 100)}% of the usual crit damage
+        (160%, or 184% with Infinity Edge). It replaces the normal crit, so crit chance doesn't matter then, and only
+        the crit number is shown. Yone's Q is basic damage but not a basic attack, so Sundered Sky does nothing for it.</li>
       <li><strong>Judgment (E), the whole spin:</strong> ${judgment.baseSpins} spins over ${judgment.spinSeconds} s,
         plus 1 for every ${Math.round(judgment.bonusAttackSpeedPerExtraSpin * 100)}% bonus attack speed (from items and
         levels) when E is cast. Each spin lands at the end of its turn, evenly spread. With one dummy it is always

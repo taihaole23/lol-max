@@ -131,6 +131,8 @@ export function garenCast(ability: DamageAbilityKey, rank: number, crit: boolean
 }
 
 export const garenCanCrit = (ability: DamageAbilityKey) => ability === "q";
+// Q is an empowered basic attack, so Sundered Sky's guaranteed crit applies to it.
+export const garenIsBasicAttack = (ability: DamageAbilityKey) => ability === "q";
 
 // The one-line rule the page shows under the damage total.
 export function garenDamageRule(ability: DamageAbilityKey): string {

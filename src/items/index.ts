@@ -37,6 +37,7 @@ import { statikkShiv } from "./statikk-shiv.ts";
 import { steraksGage } from "./steraks-gage.ts";
 import { stormrazor } from "./stormrazor.ts";
 import { stormsurge } from "./stormsurge.ts";
+import { sunderedSky } from "./sundered-sky.ts";
 import { sunfireAegis } from "./sunfire-aegis.ts";
 import { swiftmarch } from "./swiftmarch.ts";
 import { terminus } from "./terminus.ts";
@@ -84,6 +85,7 @@ export const itemPassives: readonly ItemPassive[] = [
   steraksGage,
   stormrazor,
   stormsurge,
+  sunderedSky,
   sunfireAegis,
   swiftmarch,
   terminus,

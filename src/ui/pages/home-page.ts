@@ -7,6 +7,7 @@
 //      zooms and drifts, then cross-fades into the next every `slideSeconds`.
 //   2. Damage numbers floating up and fading, like in the game: purple magic, orange physical,
 //      green true, and now and then a big red crit.
+//      Clicking the background drops a number right where you clicked.
 //   3. A "Featuring" line under the search that names the champion on screen and links to their page.
 //
 // ~170 pictures can't all sit on the page (the browser would download every one at once), so there
@@ -166,9 +167,9 @@ export function mountHomePage(root: HTMLElement, navigate: (path: string) => voi
   showChampion(nextChampion(), cycle);
 
   // ---- 2. Damage numbers ----
-  // Each one is a <span> that CSS floats up and fades; it removes itself after. They stay out of the
-  // middle column, where the title and search are.
-  function spawnNumber(): void {
+  // Each one is a <span> that CSS floats up and fades; it removes itself after. The timed ones stay
+  // out of the middle column, where the title and search are. `at` = a click's spot on the screen.
+  function spawnNumber(at?: { x: number; y: number }): void {
     if (document.hidden) return;
     // A crit is a big physical hit (crits are physical in the game), drawn in red.
     const crit = Math.random() < show.critChance;
@@ -177,19 +178,35 @@ export function mountHomePage(root: HTMLElement, navigate: (path: string) => voi
     const span = document.createElement("span");
     span.className = `home-number ${crit ? "crit" : kind.type}`;
     span.textContent = crit ? `${value.toLocaleString("en-US")}!` : value.toLocaleString("en-US");
-    const side = Math.random() < 0.5 ? randomBetween(3, 30) : randomBetween(70, 95); // % from the left
-    span.style.left = `${side}%`;
-    span.style.top = `${randomBetween(25, 85)}%`;
+    if (at) {
+      // The numbers' box covers the whole window (position: fixed), so a click's x / y fit as they are.
+      span.classList.add("clicked");
+      span.style.left = `${at.x}px`;
+      span.style.top = `${at.y}px`;
+    } else {
+      const side = Math.random() < 0.5 ? randomBetween(3, 30) : randomBetween(70, 95); // % from the left
+      span.style.left = `${side}%`;
+      span.style.top = `${randomBetween(25, 85)}%`;
+    }
     span.style.setProperty("--drift", `${randomBetween(-40, 40).toFixed(0)}px`);
     span.addEventListener("animationend", () => span.remove());
     numbers.append(span);
   }
   const phone = window.matchMedia("(max-width: 600px)").matches;
-  const numberTimer = window.setInterval(spawnNumber, show.numberEveryMs * (phone ? 2 : 1));
+  const numberTimer = window.setInterval(() => spawnNumber(), show.numberEveryMs * (phone ? 2 : 1));
+
+  // A click on the background (not on a link, button, the search, the top bar or the footer) hits there.
+  function onClick(event: MouseEvent): void {
+    const target = event.target as Element;
+    if (target.closest("a, button, input, .champion-search, .topbar, .site-footer")) return;
+    spawnNumber({ x: event.clientX, y: event.clientY });
+  }
+  document.addEventListener("click", onClick);
 
   return () => {
     stopped = true;
     timers.forEach((t) => window.clearTimeout(t));
     window.clearInterval(numberTimer);
+    document.removeEventListener("click", onClick);
   };
 }

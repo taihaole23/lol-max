@@ -4,17 +4,23 @@
 // Crits (Yone's and Garen's Q): builds are ranked by their PEAK, the best cast they can land
 // (Eric). With any crit chance at all that's the crit run; with 0% crit chance Q can never crit,
 // so it's the no-crit run. The no-crit number for the card comes from critTotals below.
+//
+// Sundered Sky: a real basic attack (Garen's Q) always crits, for 80% of the usual crit damage
+// (src/items/sundered-sky.ts). Its crit replaces the normal one, so the build's crit chance doesn't
+// matter then.
 import type { Item } from "../data/items.ts";
 import type { DamageAbilityKey, PlayableChampionId } from "../data/playable-champions.ts";
 import { effectsFor } from "../items/index.ts";
 import { checkAbilityRank, rRankAtLevel } from "../stats/ability-ranks.ts";
 import { championStats } from "../stats/champion-stats.ts";
-import { abilityCanCrit, abilityCast } from "./abilities.ts";
+import { sunderedSky, sunderedSkyData } from "../items/sundered-sky.ts";
+import { abilityCanCrit, abilityCast, abilityIsBasicAttack } from "./abilities.ts";
 import { simulateCast, type Attacker, type SimulationResult, type Target } from "./simulate.ts";
 
 // For an ability that can crit: the total damage without and with a crit, and the crit chance.
 // The site shows both numbers (only one at 0% or 100%); builds are ranked by the peak.
-export type CritTotals = { chance: number; noCrit: number; crit: number };
+// `guaranteedBy` names the item that makes it always crit (Sundered Sky); `chance` is then 1.
+export type CritTotals = { chance: number; noCrit: number; crit: number; guaranteedBy?: string };
 
 type Run = {
   champion: PlayableChampionId;
@@ -32,6 +38,16 @@ function runOnce(run: Run, crit: boolean): SimulationResult {
     target: run.target,
     items: effectsFor(run.items), // fresh effects for every run: they keep their own stacks
   });
+}
+
+// True if Sundered Sky makes this cast's attack crit: the build has it and the ability is a basic attack.
+function sunderedSkyCrits(run: Run): boolean {
+  return abilityIsBasicAttack(run.champion, run.ability) && run.items.some((i) => i.name === sunderedSky.name);
+}
+
+// The same run, with crits shrunk to Sundered Sky's 80% of the usual crit damage (200% → 160%).
+function withSunderedSkyCrit(run: Run): Run {
+  return { ...run, attacker: { ...run.attacker, critDamage: run.attacker.critDamage * sunderedSkyData.critDamageRatio } };
 }
 
 function prepare(
@@ -58,6 +74,7 @@ export function simulateBuild(
   ability: DamageAbilityKey = "r",
 ): SimulationResult {
   const run = prepare(champion, level, items, target, rank, ability);
+  if (sunderedSkyCrits(run)) return runOnce(withSunderedSkyCrit(run), true);
   const chance = abilityCanCrit(champion, ability) ? run.attacker.critChance : 0;
   // The peak: a crit if the build can crit at all, otherwise the normal cast.
   return runOnce(run, chance > 0);
@@ -75,5 +92,9 @@ export function critTotals(
   if (!abilityCanCrit(champion, ability)) return undefined;
   const run = prepare(champion, level, items, target, rank, ability);
   const total = (result: SimulationResult) => result.events.reduce((sum, e) => sum + e.amount, 0);
+  if (sunderedSkyCrits(run)) {
+    const crit = total(runOnce(withSunderedSkyCrit(run), true));
+    return { chance: 1, noCrit: total(runOnce(run, false)), crit, guaranteedBy: sunderedSky.name };
+  }
   return { chance: run.attacker.critChance, noCrit: total(runOnce(run, false)), crit: total(runOnce(run, true)) };
 }

@@ -344,6 +344,9 @@ body:has(.page-home) .site-footer { position: relative; border-top-color: transp
 .home-number.physical { color: var(--text-physical); }
 .home-number.true { color: var(--text-true); }
 .home-number.crit { color: var(--text-crit); font-size: 2.6rem; animation-name: home-crit; }
+/* A number from a click on the background: centred on the click (`translate` moves it without
+   touching the animation's `transform`). */
+.home-number.clicked { translate: -50% -50%; }
 @keyframes home-float {
   0% { opacity: 0; transform: translate(0, 10px) scale(0.7); }
   12% { opacity: 1; transform: translate(0, 0) scale(1); }
@@ -382,6 +385,10 @@ body:has(.page-home) .site-footer { position: relative; border-top-color: transp
 .home-hero > :nth-child(5) { animation-delay: 0.48s; }
 @keyframes home-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 .home-hero .hero-tagline { color: var(--text); opacity: 0.85; }
+/* Each line above rises in with a transform, and an element with a transform becomes its own layer
+   ("stacking context"): later lines (Featuring, Patch) were drawn OVER the search's result list.
+   Lifting the search's layer above its siblings keeps the list on top. */
+.home-hero > #home-search { position: relative; z-index: 5; }
 
 /* "Featuring Katarina: Death Lotus", changing with the picture. */
 .home-featuring { color: var(--muted); font-size: 0.95rem; min-height: 1.5em; }
